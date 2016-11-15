@@ -1,0 +1,136 @@
+\documentclass[titlepage=true, parskip=full]{scrartcl}
+\usepackage[utf8]{inputenc} % use utf8 file encoding for TeX sources
+\usepackage[T1]{fontenc}    % avoid garbled Unicode text in pdf
+\usepackage[german]{babel}  % german hyphenation, quotes, etc
+\usepackage{hyperref}       % detailed hyperlink/pdf configuration
+\hypersetup{                % ‘texdoc hyperref‘ for options
+	pdftitle={PSE: Pflichtenheft},%
+	bookmarks=true,%
+}
+\usepackage{graphicx}       % provides commands for including figures
+\usepackage{csquotes}       % provides \enquote{} macro for "quotes"
+\usepackage[nonumberlist]{glossaries}     % provides glossary commands
+\usepackage{enumitem}
+
+\makeglossaries
+
+\title{Studienplanung als Generierung von Workflows mit Compliance-Anforderungen: Planerstellung und Visualisierung}
+\subtitle{Pflichtenheft}
+\author{Daniel Jungkind \and Ulrike Rheinheimer \and Hannes Kuchelmeister \and Samuel Teuber \and Nada Chatti \and Tim Niklas Uhl}
+\date{30. November 2016}
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\pagebreak
+
+%
+% % Hier beginnt die Gliederung des Pflichtenhefts
+\section{Einleitung}
+
+\section{Zielbestimmung}
+
+\subsection{Musskriterien}
+
+\subsection{Wunschkriterien}
+
+\subsection{Abgrenzungskriterien}
+
+\section{Produkteinsatz}
+
+\subsection{Anwendungsbereiche}
+
+\subsection{Zielgruppen}
+
+\subsection{Betriebsbedingungen}
+
+\section{Produktumgebung}
+
+\subsection{Software}
+
+\subsection{Hardware}
+
+\subsection{Produkt-Schnittstellen}
+
+\section{Funktionale Anforderungen}
+\begin{itemize}[nosep]
+	\item[FA10]
+\end{itemize}
+
+\section{Produktdaten}
+\begin{itemize}[nosep]
+	\item[PD10]
+\end{itemize}
+
+\section{Nichtfunktionale Anforderungen}
+\begin{itemize}[nosep]
+\item[NF10]
+\end{itemize}
+
+\section{Globale Testfälle}
+\section{Systemmodelle}
+
+\subsection{Szenarien}
+
+\subsection{Anwendungsfälle}
+
+\subsection{Objektmodell}
+
+\subsection{Dynamische Modelle}
+
+\subsection{Benutzerschnittstelle}
+
+
+
+
+%
+% % Automatisch generiertes Glossar
+%
+%\glsaddall % das sorgt dafür, dass alles Glossareinträge gedruckt werden, nicht nur die verwendeten. Das sollte nicht nötig sein!
+%\printglossaries
+%
+% % Glossareinträge
+%
+\newglossaryentry{Plug-In}
+{
+	name=Plug-In,
+	plural=Plug-Ins,
+	description={Erweiterung für \enquote{\gls{iMage}}, die zusätzliche Funktionalitäten bietet}
+}
+
+\newglossaryentry{Kunde}
+{
+	name=Kunde,
+	plural=Kunden,
+	description={Person, die den \gls{Online-Shop} besucht}
+}
+
+\newglossaryentry{Plug-In-Paket}
+{
+	name=Plug-In-Paket,
+	plural=Plug-In-Pakete,
+	description={Paket bestehend aus mehreren \glspl{Plug-In}}
+}
+
+\newglossaryentry{iMage}
+{
+	name={iMage},
+	description={Bildbearbeitungssoftware der Firma SWT. Bietet im Basispaket nur Funktionalitäten zur Skalierung und Drehung von Bildern}
+}
+
+\newglossaryentry{Internetbrowser}
+{
+	name={Internetbrowser},
+	description={Programm, mit dem Websites gefunden, gelesen und verwaltet werden können}
+}
+
+\newglossaryentry{Online-Shop}
+{
+	name={Online-Shop},
+	description={Internetseite, die Produkte zum Kauf anbietet}
+}
+
+
+\end{document}
