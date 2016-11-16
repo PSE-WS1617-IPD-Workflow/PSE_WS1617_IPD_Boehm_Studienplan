@@ -30,15 +30,96 @@
 %
 % % Hier beginnt die Gliederung des Pflichtenhefts
 \section{Einleitung}
-
+\paragraph{Aufgabenstellung}
+Ziel der Praxis der Software-Entwicklung (PSE) ist die Entwicklung eines mittelgroßen Systems im Team mit objektorientierter Softwaretechnik. Dieses soll circa 10kLOC umfassen. Hierzu wird ein objektorientierter Entwurf auf Basis von UML-Diagrammen geschaffen und unter Nutzung von Java, JavaScript, HTML und SQL implementiert. Im Anschluss soll mit Jcov oder Junit die Qualitätssicherung durchgeführt werden.\\
+Das Projekt \enquote{Studienplanung als Generierung von Workflows mit Compliance-Anforderungen: Planerstellung und Visualisierung} umfasst die Entwicklung einer Web-basierten Benutzeroberfläche eines ebenfalls zu entwickelnden Systems zur Studienplanung. Sinn dieses Systems ist das Aufstellen von Studienplänen, angepasst an Bedürfnisse, bereits erbrachte Leistungen und Zeitmöglichkeiten des Studenten. Dies soll sowohl manuell, als auch automatisch möglich sein. Die Algorithmen zur Generierung und Verifizierung von Workflows unter Berücksichtigen von Constraints sind in Form von Black Boxes gegeben und können auf die Studienpläne angewendet werden. Das gesamte System soll modular und gut erweiterbar sein.\\
+\paragraph{Im Detail heißt das:}
+Die graphische Oberfläche des Systems soll intuitiv bedienbar und benutzerzentriert gestaltet werden. Als Benutzer sind Studenten zu erwarten. Eine zusätzliche Dozentenoberfläche soll modular hinzugefügt werden können. Das System soll dem Nutzer auf dem bisherigen Studienverlauf basierend Vorschläge in Form von Studienplänen zur Planung der nächsten Semester liefern. Der Studienplan soll als Ablauf(Workflow) aufgefasst werden, so dass die Black Boxes zur Generierung und Verifizierung von Workflows eingebunden werden können. Die gegebenen Daten müssen hierzu passend umgewandelt und erhaltene Ergebnisse für den Nutzer verständlich verwertet werden. Als Aktivitäten der Workflows werden die Module und andere Lehrveranstaltungen aufgefasst. Moudule werden mit ihrem Namen, ECTS-Punkten, Angebot im Winter- oder Sommersemester und Art der Veranstaltung modelliert. Die Module sollen zu einem sinnvollen Workflow zusammengefügt werden. Die Workflows werden von Constraints beeinflusst. Dies sind: die Unterscheidung zwischen Pflicht- und Wahlveranstaltungen, Wahl eines Vertiefungsfaches, Abhängigkeiten zwischen Modulen (Voraussetzungen, Zusammenhänge, Überschneidungen), zur Verfügung stehende Semesteranzahl, gewünschte Module, bisheriger Studienverlauf, weitere gewünschte Eigenschaften.\\
+Auch graphisch sollen die Studienpläne als Workflows dargestellt werden. 
 \section{Zielbestimmung}
 
 \subsection{Musskriterien}
+\begin{itemize}
+	\item Webbasierte Benutzeroberfläche:
+	\begin{itemize}
+		\item Benutzerorientiert 
+		\item Modular erweiterbar
+		\item Nutzer: Studenten
+	\end{itemize}
+	\item Funktionen:
+	\begin{itemize}
+		\item Studienpläne manuell bearbeiten ( Module einfügen / löschen) ?
+		\item Generierung $\rightarrow$ Erstellung von möglichen Studienplänen
+		\item Berücksichtigung von Constraints:
+		\begin{itemize}
+			\item Unterscheidung zwischen Pflicht- und Wahlveranstaltungen
+			\item Wahl eines Vertiefungsfaches
+			\item Abhängigkeiten zwischen Modulen (Voraussetzungen, Zusammenhänge, Überschneidungen)
+			\item zur Verfügung stehende Semesteranzahl
+			\item gewünschte Module
+			\item bisheriger Studienverlauf
+		\end{itemize}
+		\item Verifizierung von Studienplänen
+		\begin{itemize}
+			\item Ermöglicht dieser Studienplan ein erfolgreiches Abschließen des Studiums?
+			\item Sind alle Constraints erfüllt?
+		\end{itemize}
+		\item Berücksichtigung des bisherigen Studienverlaufs
+	\end{itemize}
+	\item Gegebene Algorithmen zur Generierung und Verifizierung einbinden
+	\item Modularität
+	\item Objektorientierung
+	\item Studienplan als Workflow modellieren
+	\begin{itemize}
+		\item Module/Lehrveranstaltungen als Aktivitäten
+		\item Graphische Darstellung als Workflow
+	\end{itemize}
+	\item Module modellieren mit folgenden Details: Name, ECTS-Punkte, Angebot im Sommer- oder Wintersemester, Art der Veranstaltung
+\end{itemize}
 
 \subsection{Wunschkriterien}
-
+\begin{itemize}
+	\item Mögliches Login über Shibboleth
+	\begin{itemize}
+		\item Speichern von: Studiengang, Studienbeginn, bestandene und begonnene Prüfungsleistungen, bereits erstellte Studienpläne
+	\end{itemize}
+	\item Speichern und löschen von Studienplänen
+	\item Benennung von Studienplänen
+	\item Duplizieren von Studienplänen
+	\item Studienpläne exportieren
+	\item Vergleichsansicht für 2 (mehrere?) Pläne 
+	\item Modulübersicht
+	\begin{itemize}
+		\item Alle Module in einer Liste
+		\begin{itemize}
+			\item Durchstöbern können
+			\item Suche nach Namen
+			\item Anklicken für Details
+			\item In Stundenplan ziehen können
+		\end{itemize}
+		\item Filterbar mit Filtern: 
+		\begin{itemize}
+			\item Angebotenes Semester
+			\item Veranstaltungsart
+			\item Fachrichtung
+			\item Pflicht-/Wahlmodul
+			\item Kategorie?
+		\end{itemize}
+	\end{itemize}
+	\item Rückgängig-Button
+	\item Weitere Constraints
+	\begin{itemize}
+		\item benötigte ECTS-Punkte
+		\item ausgeschlossene Module
+	\end{itemize}
+\end{itemize}
 \subsection{Abgrenzungskriterien}
-
+\begin{itemize}
+	\item kein Notenportal
+	\item keine Vernetzung zwischen Studenten
+	\item keine Vernetzung zum Prüfungsportal
+	\item keine Unterstützung von parallelen Studiengängen
+\end{itemize}
 \section{Produkteinsatz}
 
 \subsection{Anwendungsbereiche}
