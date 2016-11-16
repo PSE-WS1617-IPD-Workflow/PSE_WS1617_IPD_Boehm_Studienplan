@@ -12,14 +12,14 @@
 \usepackage{csquotes}       % provides \enquote{} macro for "quotes"
 \usepackage[nonumberlist]{glossaries}     % provides glossary commands
 \usepackage{enumitem}
-
+\usepackage{tikz}
+\usepackage{tikz-uml}
 \makeglossaries
 
 \title{Studienplanung als Generierung von Workflows mit Compliance-Anforderungen: Planerstellung und Visualisierung}
 \subtitle{Pflichtenheft}
 \author{Daniel Jungkind \and Ulrike Rheinheimer \and Hannes Kuchelmeister \and Samuel Teuber \and Nada Chatti \and Tim Niklas Uhl}
 \date{30. November 2016}
-
 
 \begin{document}
 
@@ -76,6 +76,38 @@
 \subsection{Szenarien}
 
 \subsection{Anwendungsfälle}
+
+\begin{center}
+\resizebox{\textwidth}{!}{
+\begin{tikzpicture}
+\begin{umlsystem}{Studienplan}
+\umlusecase[x=-3]{Studienplan generieren}
+\umlusecase[x=3]{Ask Constraints}
+\umlusecase[x=-2,y=-2]{Deny Request}
+\umlusecase[x=3, y=-2]{Collect Constraints}
+\umlusecase[x=-3,y=-4]{Determine Schedule}
+\umlusecase[x=3,y=-4]{Merge Constraints} 
+\umlusecase[y=-6]{Resolve Conflicts}
+\end{umlsystem}
+
+\umlactor[x=-8]{Nutzer}
+\umlactor[x=-8,y=-6]{Participant A}
+\umlactor[x=8]{Participant B}
+\umlactor[x=8,y=-6]{Conflict Resolver} 
+
+\umlassoc{Nutzer}{usecase-1}
+\umlassoc{Nutzer}{usecase-3}
+\umlassoc{Participant A}{usecase-5}
+\umlassoc{Participant B}{usecase-2}
+\umlassoc{Participant B}{usecase-4}
+\umlassoc{Conflict Resolver}{usecase-7}
+
+\umlextend{usecase-2}{usecase-3}
+\umlinclude{usecase-5}{usecase-7}
+
+\end{tikzpicture}
+}
+\end{center}
 
 \subsection{Objektmodell}
 
