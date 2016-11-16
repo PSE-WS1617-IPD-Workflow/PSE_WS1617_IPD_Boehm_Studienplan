@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc} % use utf8 file encoding for TeX sources
 \usepackage[T1]{fontenc}    % avoid garbled Unicode text in pdf
 \usepackage{palatino}	      % because "Computer Modern" standard font is illegible
-\usepackage[german]{babel}  % german hyphenation, quotes, etc
+\usepackage[ngerman]{babel}  % german hyphenation, quotes, etc
 \usepackage{hyperref}       % detailed hyperlink/pdf configuration
 \hypersetup{                % ‘texdoc hyperref‘ for options
 	pdftitle={PSE: Pflichtenheft},%
@@ -14,6 +14,8 @@
 \usepackage{enumitem}
 \usepackage{tikz}
 \usepackage{tikz-uml}
+\usepackage{comment}
+
 \makeglossaries
 
 \title{Studienplanung als Generierung von Workflows mit Compliance-Anforderungen: Planerstellung und Visualisierung}
@@ -31,27 +33,27 @@
 % % Hier beginnt die Gliederung des Pflichtenhefts
 \section{Einleitung}
 \paragraph{Aufgabenstellung}
-Ziel der Praxis der Software-Entwicklung (PSE) ist die Entwicklung eines mittelgroßen Systems im Team mit objektorientierter Softwaretechnik. Dieses soll circa 10kLOC umfassen. Hierzu wird ein objektorientierter Entwurf auf Basis von UML-Diagrammen geschaffen und unter Nutzung von Java, JavaScript, HTML und SQL implementiert. Im Anschluss soll mit Jcov oder Junit die Qualitätssicherung durchgeführt werden.\\
-Das Projekt \enquote{Studienplanung als Generierung von Workflows mit Compliance-Anforderungen: Planerstellung und Visualisierung} umfasst die Entwicklung einer Web-basierten Benutzeroberfläche eines ebenfalls zu entwickelnden Systems zur Studienplanung. Sinn dieses Systems ist das Aufstellen von Studienplänen, angepasst an Bedürfnisse, bereits erbrachte Leistungen und Zeitmöglichkeiten des Studenten. Dies soll sowohl manuell, als auch automatisch möglich sein. Die Algorithmen zur Generierung und Verifizierung von Workflows unter Berücksichtigen von Constraints sind in Form von Black Boxes gegeben und können auf die Studienpläne angewendet werden. Das gesamte System soll modular und gut erweiterbar sein.\\
+Ziel der Praxis der Software-Entwicklung (PSE) ist die Entwicklung eines mittelgroßen Systems im Team mit objektorientierter Softwaretechnik. Dieses soll circa 10~kLOC umfassen. Hierzu wird ein objektorientierter Entwurf auf Basis von UML-Diagrammen geschaffen und unter Nutzung von Java, JavaScript, HTML und SQL implementiert. Im Anschluss soll mit JCov oder JUnit die Qualitätssicherung durchgeführt werden.\\
+Das Projekt \enquote{Studienplanung als Generierung von Workflows mit Compliance"=Anforderungen: Planerstellung und Visualisierung} umfasst die Entwicklung einer webbasierten Benutzeroberfläche eines ebenfalls zu entwickelnden Systems zur Studienplanung. Sinn dieses Systems ist das Aufstellen von Studienplänen, angepasst an Bedürfnisse, bereits erbrachte Leistungen und Zeitmöglichkeiten des Studenten. Dies soll sowohl manuell, als auch automatisch möglich sein. Die Algorithmen zur Generierung und Verifizierung von Workflows unter Berücksichtigen von Constraints sind in Form von Black Boxes gegeben und können auf die Studienpläne angewendet werden. Das gesamte System soll modular und gut erweiterbar sein.\\
 \paragraph{Im Detail heißt das:}
-Die graphische Oberfläche des Systems soll intuitiv bedienbar und benutzerzentriert gestaltet werden. Als Benutzer sind Studenten zu erwarten. Eine zusätzliche Dozentenoberfläche soll modular hinzugefügt werden können. Das System soll dem Nutzer auf dem bisherigen Studienverlauf basierend Vorschläge in Form von Studienplänen zur Planung der nächsten Semester liefern. Der Studienplan soll als Ablauf(Workflow) aufgefasst werden, so dass die Black Boxes zur Generierung und Verifizierung von Workflows eingebunden werden können. Die gegebenen Daten müssen hierzu passend umgewandelt und erhaltene Ergebnisse für den Nutzer verständlich verwertet werden. Als Aktivitäten der Workflows werden die Module und andere Lehrveranstaltungen aufgefasst. Moudule werden mit ihrem Namen, ECTS-Punkten, Angebot im Winter- oder Sommersemester und Art der Veranstaltung modelliert. Die Module sollen zu einem sinnvollen Workflow zusammengefügt werden. Die Workflows werden von Constraints beeinflusst. Dies sind: die Unterscheidung zwischen Pflicht- und Wahlveranstaltungen, Wahl eines Vertiefungsfaches, Abhängigkeiten zwischen Modulen (Voraussetzungen, Zusammenhänge, Überschneidungen), zur Verfügung stehende Semesteranzahl, gewünschte Module, bisheriger Studienverlauf, weitere gewünschte Eigenschaften.\\
+Die graphische Oberfläche des Systems soll intuitiv bedienbar und benutzerzentriert gestaltet werden. Als Benutzer sind Studenten zu erwarten. Eine zusätzliche Dozentenoberfläche soll modular hinzugefügt werden können. Das System soll dem Nutzer auf dem bisherigen Studienverlauf basierend Vorschläge in Form von Studienplänen zur Planung der nächsten Semester liefern. Der Studienplan soll als Ablauf(Workflow) aufgefasst werden, so dass die Black-Boxes zur Generierung und Verifizierung von Workflows eingebunden werden können. Die gegebenen Daten müssen hierzu passend umgewandelt und erhaltene Ergebnisse für den Nutzer verständlich verwertet werden. Als Aktivitäten der Workflows werden die Module und andere Lehrveranstaltungen aufgefasst. Module werden mit ihrem Namen, ECTS-Punkten, Angebot im Winter- oder Sommersemester und Art der Veranstaltung modelliert. Die Module sollen zu einem sinnvollen Workflow zusammengefügt werden. Die Workflows werden von Constraints beeinflusst. Dies sind: die Unterscheidung zwischen Pflicht- und Wahlveranstaltungen, Wahl eines Vertiefungsfaches, Abhängigkeiten zwischen Modulen (Voraussetzungen, Zusammenhänge, Überschneidungen), zur Verfügung stehende Semesteranzahl, gewünschte Module, bisheriger Studienverlauf, weitere gewünschte Eigenschaften.\\
 Auch graphisch sollen die Studienpläne als Workflows dargestellt werden. 
 \section{Zielbestimmung}
 
 \subsection{Musskriterien}
-\begin{itemize}
+\begin{itemize}[nosep]
 	\item Webbasierte Benutzeroberfläche:
-	\begin{itemize}
+	\begin{itemize}[nosep]
 		\item Benutzerorientiert 
 		\item Modular erweiterbar
 		\item Nutzer: Studenten
 	\end{itemize}
 	\item Funktionen:
-	\begin{itemize}
+	\begin{itemize}[nosep]
 		\item Studienpläne manuell bearbeiten ( Module einfügen / löschen) ?
 		\item Generierung $\rightarrow$ Erstellung von möglichen Studienplänen
 		\item Berücksichtigung von Constraints:
-		\begin{itemize}
+		\begin{itemize}[nosep]
 			\item Unterscheidung zwischen Pflicht- und Wahlveranstaltungen
 			\item Wahl eines Vertiefungsfaches
 			\item Abhängigkeiten zwischen Modulen (Voraussetzungen, Zusammenhänge, Überschneidungen)
@@ -60,7 +62,7 @@ Auch graphisch sollen die Studienpläne als Workflows dargestellt werden.
 			\item bisheriger Studienverlauf
 		\end{itemize}
 		\item Verifizierung von Studienplänen
-		\begin{itemize}
+		\begin{itemize}[nosep]
 			\item Ermöglicht dieser Studienplan ein erfolgreiches Abschließen des Studiums?
 			\item Sind alle Constraints erfüllt?
 		\end{itemize}
@@ -70,7 +72,7 @@ Auch graphisch sollen die Studienpläne als Workflows dargestellt werden.
 	\item Modularität
 	\item Objektorientierung
 	\item Studienplan als Workflow modellieren
-	\begin{itemize}
+	\begin{itemize}[nosep]
 		\item Module/Lehrveranstaltungen als Aktivitäten
 		\item Graphische Darstellung als Workflow
 	\end{itemize}
@@ -78,9 +80,9 @@ Auch graphisch sollen die Studienpläne als Workflows dargestellt werden.
 \end{itemize}
 
 \subsection{Wunschkriterien}
-\begin{itemize}
+\begin{itemize}[nosep]
 	\item Mögliches Login über Shibboleth
-	\begin{itemize}
+	\begin{itemize}[nosep]
 		\item Speichern von: Studiengang, Studienbeginn, bestandene und begonnene Prüfungsleistungen, bereits erstellte Studienpläne
 	\end{itemize}
 	\item Speichern und löschen von Studienplänen
@@ -89,16 +91,16 @@ Auch graphisch sollen die Studienpläne als Workflows dargestellt werden.
 	\item Studienpläne exportieren
 	\item Vergleichsansicht für 2 (mehrere?) Pläne 
 	\item Modulübersicht
-	\begin{itemize}
+	\begin{itemize}[nosep]
 		\item Alle Module in einer Liste
-		\begin{itemize}
+		\begin{itemize}[nosep]
 			\item Durchstöbern können
 			\item Suche nach Namen
 			\item Anklicken für Details
 			\item In Stundenplan ziehen können
 		\end{itemize}
 		\item Filterbar mit Filtern: 
-		\begin{itemize}
+		\begin{itemize}[nosep]
 			\item Angebotenes Semester
 			\item Veranstaltungsart
 			\item Fachrichtung
@@ -108,13 +110,13 @@ Auch graphisch sollen die Studienpläne als Workflows dargestellt werden.
 	\end{itemize}
 	\item Rückgängig-Button
 	\item Weitere Constraints
-	\begin{itemize}
+	\begin{itemize}[nosep]
 		\item benötigte ECTS-Punkte
 		\item ausgeschlossene Module
 	\end{itemize}
 \end{itemize}
 \subsection{Abgrenzungskriterien}
-\begin{itemize}
+\begin{itemize}[nosep]
 	\item kein Notenportal
 	\item keine Vernetzung zwischen Studenten
 	\item keine Vernetzung zum Prüfungsportal
@@ -191,8 +193,6 @@ Auch graphisch sollen die Studienpläne als Workflows dargestellt werden.
 \end{center}
 
 \subsection{Objektmodell}
-
-\subsection{Dynamische Modelle}
 
 \subsection{Benutzerschnittstelle}
 
