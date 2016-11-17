@@ -1,0 +1,63 @@
+
+Versionsverwaltung: 
+	-GIT
+
+Server: 
+	-Apache Tomcat
+	-Apache
+	-MySQL
+
+Entwurf:
+	-Eclipse Papyrus oder Umbrello
+	-MySQLWorkbench
+
+Implementierung:
+	-Koala GUI für CSS Präprozessor) 
+	-Adobe Brackets (mit Closure Linter [req. Python], SCSS Lint, Karma Runner, Theseus for Brackets) 
+	-Eclipse
+	-Checkstyle
+	-EclipseCodeFormatting
+	-EclipseCleanupTool
+	-HeidiSQL
+
+BuildTools:
+	-Maven (Java-Backend)
+	-Ant (JavaScript Frontend)
+	-Google Closure Compiler
+	-SCSS (CSS Präprozessor)
+
+
+Code Coverage:
+	Frontend:
+		-karma-coverage (Karma Plugin uses Istanbul)
+	Backend:
+		-JCov
+
+Testing:
+	Backend:
+		-Junit
+	Frontend:
+		-Selenium (Webtests)
+		-Karma
+
+GUI:
+	Adobe Photoshop
+Dokumentation:
+	-JavaDocs
+	-JsDoc
+	-Latex
+
+Browser:
+	-Firefox
+	-Chrome
+
+Betriebssystem:
+	-Windows 8.1/10
+	-Mac OS X ?
+	-Xubuntu 15.04 ?
+
+Kommunikationsplatform:
+	-Telegram
+
+Feature/IssueTracking:
+	-Github Issue Tracker
