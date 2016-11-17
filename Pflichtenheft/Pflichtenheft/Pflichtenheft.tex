@@ -10,7 +10,7 @@
 }
 \usepackage{graphicx}       % provides commands for including figures
 \usepackage{csquotes}       % provides \enquote{} macro for "quotes"
-\usepackage[nonumberlist]{glossaries}     % provides glossary commands
+\usepackage[nonumberlist, numberedsection]{glossaries}     % provides glossary commands
 \usepackage{enumitem}
 \usepackage{tikz}
 \usepackage{tikz-uml}
@@ -161,34 +161,8 @@ Auch graphisch sollen die Studienpläne als Workflows dargestellt werden.
 \subsection{Anwendungsfälle}
 
 \begin{center}
-\resizebox{\textwidth}{!}{
-\begin{tikzpicture}
-\begin{umlsystem}{Studienplan}
-\umlusecase[x=-3]{Studienplan generieren}
-\umlusecase[x=3]{Ask Constraints}
-\umlusecase[x=-2,y=-2]{Deny Request}
-\umlusecase[x=3, y=-2]{Collect Constraints}
-\umlusecase[x=-3,y=-4]{Determine Schedule}
-\umlusecase[x=3,y=-4]{Merge Constraints} 
-\umlusecase[y=-6]{Resolve Conflicts}
-\end{umlsystem}
-
-\umlactor[x=-8]{Nutzer}
-\umlactor[x=-8,y=-6]{Participant A}
-\umlactor[x=8]{Participant B}
-\umlactor[x=8,y=-6]{Conflict Resolver} 
-
-\umlassoc{Nutzer}{usecase-1}
-\umlassoc{Nutzer}{usecase-3}
-\umlassoc{Participant A}{usecase-5}
-\umlassoc{Participant B}{usecase-2}
-\umlassoc{Participant B}{usecase-4}
-\umlassoc{Conflict Resolver}{usecase-7}
-
-\umlextend{usecase-2}{usecase-3}
-\umlinclude{usecase-5}{usecase-7}
-
-\end{tikzpicture}
+\resizebox{\textwidth}{!} {
+	\input{diagrams/use_cases/generation}
 }
 \end{center}
 
@@ -196,55 +170,6 @@ Auch graphisch sollen die Studienpläne als Workflows dargestellt werden.
 
 \subsection{Benutzerschnittstelle}
 
-
-
-
-%
-% % Automatisch generiertes Glossar
-%
-%\glsaddall % das sorgt dafür, dass alles Glossareinträge gedruckt werden, nicht nur die verwendeten. Das sollte nicht nötig sein!
-%\printglossaries
-%
-% % Glossareinträge
-%
-\newglossaryentry{Plug-In}
-{
-	name=Plug-In,
-	plural=Plug-Ins,
-	description={Erweiterung für \enquote{\gls{iMage}}, die zusätzliche Funktionalitäten bietet}
-}
-
-\newglossaryentry{Kunde}
-{
-	name=Kunde,
-	plural=Kunden,
-	description={Person, die den \gls{Online-Shop} besucht}
-}
-
-\newglossaryentry{Plug-In-Paket}
-{
-	name=Plug-In-Paket,
-	plural=Plug-In-Pakete,
-	description={Paket bestehend aus mehreren \glspl{Plug-In}}
-}
-
-\newglossaryentry{iMage}
-{
-	name={iMage},
-	description={Bildbearbeitungssoftware der Firma SWT. Bietet im Basispaket nur Funktionalitäten zur Skalierung und Drehung von Bildern}
-}
-
-\newglossaryentry{Internetbrowser}
-{
-	name={Internetbrowser},
-	description={Programm, mit dem Websites gefunden, gelesen und verwaltet werden können}
-}
-
-\newglossaryentry{Online-Shop}
-{
-	name={Online-Shop},
-	description={Internetseite, die Produkte zum Kauf anbietet}
-}
-
+\input{content/glossaries}
 
 \end{document}
