@@ -10,7 +10,7 @@
 }
 \usepackage{graphicx}       % provides commands for including figures
 \usepackage{csquotes}       % provides \enquote{} macro for "quotes"
-\usepackage[nonumberlist]{glossaries}     % provides glossary commands
+\usepackage[nonumberlist, numberedsection]{glossaries}     % provides glossary commands
 \usepackage{enumitem}
 \usepackage{tikz}
 \usepackage{tikz-uml}
@@ -31,220 +31,24 @@
 
 %
 % % Hier beginnt die Gliederung des Pflichtenhefts
-\section{Einleitung}
-\paragraph{Aufgabenstellung}
-Ziel der Praxis der Software-Entwicklung (PSE) ist die Entwicklung eines mittelgroßen Systems im Team mit objektorientierter Softwaretechnik. Dieses soll circa 10~kLOC umfassen. Hierzu wird ein objektorientierter Entwurf auf Basis von UML-Diagrammen geschaffen und unter Nutzung von Java, JavaScript, HTML und SQL implementiert. Im Anschluss soll mit JCov oder JUnit die Qualitätssicherung durchgeführt werden.\\
-Das Projekt \enquote{Studienplanung als Generierung von Workflows mit Compliance"=Anforderungen: Planerstellung und Visualisierung} umfasst die Entwicklung einer webbasierten Benutzeroberfläche eines ebenfalls zu entwickelnden Systems zur Studienplanung. Sinn dieses Systems ist das Aufstellen von Studienplänen, angepasst an Bedürfnisse, bereits erbrachte Leistungen und Zeitmöglichkeiten des Studenten. Dies soll sowohl manuell, als auch automatisch möglich sein. Die Algorithmen zur Generierung und Verifizierung von Workflows unter Berücksichtigen von Constraints sind in Form von Black Boxes gegeben und können auf die Studienpläne angewendet werden. Das gesamte System soll modular und gut erweiterbar sein.\\
-\paragraph{Im Detail heißt das:}
-Die graphische Oberfläche des Systems soll intuitiv bedienbar und benutzerzentriert gestaltet werden. Als Benutzer sind Studenten zu erwarten. Eine zusätzliche Dozentenoberfläche soll modular hinzugefügt werden können. Das System soll dem Nutzer auf dem bisherigen Studienverlauf basierend Vorschläge in Form von Studienplänen zur Planung der nächsten Semester liefern. Der Studienplan soll als Ablauf(Workflow) aufgefasst werden, so dass die Black-Boxes zur Generierung und Verifizierung von Workflows eingebunden werden können. Die gegebenen Daten müssen hierzu passend umgewandelt und erhaltene Ergebnisse für den Nutzer verständlich verwertet werden. Als Aktivitäten der Workflows werden die Module und andere Lehrveranstaltungen aufgefasst. Module werden mit ihrem Namen, ECTS-Punkten, Angebot im Winter- oder Sommersemester und Art der Veranstaltung modelliert. Die Module sollen zu einem sinnvollen Workflow zusammengefügt werden. Die Workflows werden von Constraints beeinflusst. Dies sind: die Unterscheidung zwischen Pflicht- und Wahlveranstaltungen, Wahl eines Vertiefungsfaches, Abhängigkeiten zwischen Modulen (Voraussetzungen, Zusammenhänge, Überschneidungen), zur Verfügung stehende Semesteranzahl, gewünschte Module, bisheriger Studienverlauf, weitere gewünschte Eigenschaften.\\
-Auch graphisch sollen die Studienpläne als Workflows dargestellt werden. 
-\section{Zielbestimmung}
+\input{content/intro}
+ 
+\input{content/project_goals}
 
-\subsection{Musskriterien}
-\begin{itemize}[nosep]
-	\item Webbasierte Benutzeroberfläche:
-	\begin{itemize}[nosep]
-		\item Benutzerorientiert 
-		\item Modular erweiterbar
-		\item Nutzer: Studenten
-	\end{itemize}
-	\item Funktionen:
-	\begin{itemize}[nosep]
-		\item Studienpläne manuell bearbeiten ( Module einfügen / löschen) ?
-		\item Generierung $\rightarrow$ Erstellung von möglichen Studienplänen
-		\item Berücksichtigung von Constraints:
-		\begin{itemize}[nosep]
-			\item Unterscheidung zwischen Pflicht- und Wahlveranstaltungen
-			\item Wahl eines Vertiefungsfaches
-			\item Abhängigkeiten zwischen Modulen (Voraussetzungen, Zusammenhänge, Überschneidungen)
-			\item zur Verfügung stehende Semesteranzahl
-			\item gewünschte Module
-			\item bisheriger Studienverlauf
-		\end{itemize}
-		\item Verifizierung von Studienplänen
-		\begin{itemize}[nosep]
-			\item Ermöglicht dieser Studienplan ein erfolgreiches Abschließen des Studiums?
-			\item Sind alle Constraints erfüllt?
-		\end{itemize}
-		\item Berücksichtigung des bisherigen Studienverlaufs
-	\end{itemize}
-	\item Gegebene Algorithmen zur Generierung und Verifizierung einbinden
-	\item Modularität
-	\item Objektorientierung
-	\item Studienplan als Workflow modellieren
-	\begin{itemize}[nosep]
-		\item Module/Lehrveranstaltungen als Aktivitäten
-		\item Graphische Darstellung als Workflow
-	\end{itemize}
-	\item Module modellieren mit folgenden Details: Name, ECTS-Punkte, Angebot im Sommer- oder Wintersemester, Art der Veranstaltung
-\end{itemize}
+\input{content/product_use}
 
-\subsection{Wunschkriterien}
-\begin{itemize}[nosep]
-	\item Mögliches Login über Shibboleth
-	\begin{itemize}[nosep]
-		\item Speichern von: Studiengang, Studienbeginn, bestandene und begonnene Prüfungsleistungen, bereits erstellte Studienpläne
-	\end{itemize}
-	\item Speichern und löschen von Studienplänen
-	\item Benennung von Studienplänen
-	\item Duplizieren von Studienplänen
-	\item Studienpläne exportieren
-	\item Vergleichsansicht für 2 (mehrere?) Pläne 
-	\item Modulübersicht
-	\begin{itemize}[nosep]
-		\item Alle Module in einer Liste
-		\begin{itemize}[nosep]
-			\item Durchstöbern können
-			\item Suche nach Namen
-			\item Anklicken für Details
-			\item In Stundenplan ziehen können
-		\end{itemize}
-		\item Filterbar mit Filtern: 
-		\begin{itemize}[nosep]
-			\item Angebotenes Semester
-			\item Veranstaltungsart
-			\item Fachrichtung
-			\item Pflicht-/Wahlmodul
-			\item Kategorie?
-		\end{itemize}
-	\end{itemize}
-	\item Rückgängig-Button
-	\item Weitere Constraints
-	\begin{itemize}[nosep]
-		\item benötigte ECTS-Punkte
-		\item ausgeschlossene Module
-	\end{itemize}
-\end{itemize}
-\subsection{Abgrenzungskriterien}
-\begin{itemize}[nosep]
-	\item kein Notenportal
-	\item keine Vernetzung zwischen Studenten
-	\item keine Vernetzung zum Prüfungsportal
-	\item keine Unterstützung von parallelen Studiengängen
-\end{itemize}
-\section{Produkteinsatz}
+\input{content/product_environment}
 
-\subsection{Anwendungsbereiche}
+\input{content/func_requirements}
 
-\subsection{Zielgruppen}
+\input{content/nonfunc_requirements}
 
-\subsection{Betriebsbedingungen}
+\input{content/system_modell}
 
-\section{Produktumgebung}
+\input{content/global_usecases}
 
-\subsection{Software}
+\input{content/gui}
 
-\subsection{Hardware}
-
-\subsection{Produkt-Schnittstellen}
-
-\section{Funktionale Anforderungen}
-\begin{itemize}[nosep]
-	\item[FA10]
-\end{itemize}
-
-\section{Produktdaten}
-\begin{itemize}[nosep]
-	\item[PD10]
-\end{itemize}
-
-\section{Nichtfunktionale Anforderungen}
-\begin{itemize}[nosep]
-\item[NF10]
-\end{itemize}
-
-\section{Globale Testfälle}
-\section{Systemmodelle}
-
-\subsection{Szenarien}
-
-\subsection{Anwendungsfälle}
-
-\begin{center}
-\resizebox{\textwidth}{!}{
-\begin{tikzpicture}
-\begin{umlsystem}{Studienplan}
-\umlusecase[x=-3]{Studienplan generieren}
-\umlusecase[x=3]{Ask Constraints}
-\umlusecase[x=-2,y=-2]{Deny Request}
-\umlusecase[x=3, y=-2]{Collect Constraints}
-\umlusecase[x=-3,y=-4]{Determine Schedule}
-\umlusecase[x=3,y=-4]{Merge Constraints} 
-\umlusecase[y=-6]{Resolve Conflicts}
-\end{umlsystem}
-
-\umlactor[x=-8]{Nutzer}
-\umlactor[x=-8,y=-6]{Participant A}
-\umlactor[x=8]{Participant B}
-\umlactor[x=8,y=-6]{Conflict Resolver} 
-
-\umlassoc{Nutzer}{usecase-1}
-\umlassoc{Nutzer}{usecase-3}
-\umlassoc{Participant A}{usecase-5}
-\umlassoc{Participant B}{usecase-2}
-\umlassoc{Participant B}{usecase-4}
-\umlassoc{Conflict Resolver}{usecase-7}
-
-\umlextend{usecase-2}{usecase-3}
-\umlinclude{usecase-5}{usecase-7}
-
-\end{tikzpicture}
-}
-\end{center}
-
-\subsection{Objektmodell}
-
-\subsection{Benutzerschnittstelle}
-
-
-
-
-%
-% % Automatisch generiertes Glossar
-%
-%\glsaddall % das sorgt dafür, dass alles Glossareinträge gedruckt werden, nicht nur die verwendeten. Das sollte nicht nötig sein!
-%\printglossaries
-%
-% % Glossareinträge
-%
-\newglossaryentry{Plug-In}
-{
-	name=Plug-In,
-	plural=Plug-Ins,
-	description={Erweiterung für \enquote{\gls{iMage}}, die zusätzliche Funktionalitäten bietet}
-}
-
-\newglossaryentry{Kunde}
-{
-	name=Kunde,
-	plural=Kunden,
-	description={Person, die den \gls{Online-Shop} besucht}
-}
-
-\newglossaryentry{Plug-In-Paket}
-{
-	name=Plug-In-Paket,
-	plural=Plug-In-Pakete,
-	description={Paket bestehend aus mehreren \glspl{Plug-In}}
-}
-
-\newglossaryentry{iMage}
-{
-	name={iMage},
-	description={Bildbearbeitungssoftware der Firma SWT. Bietet im Basispaket nur Funktionalitäten zur Skalierung und Drehung von Bildern}
-}
-
-\newglossaryentry{Internetbrowser}
-{
-	name={Internetbrowser},
-	description={Programm, mit dem Websites gefunden, gelesen und verwaltet werden können}
-}
-
-\newglossaryentry{Online-Shop}
-{
-	name={Online-Shop},
-	description={Internetseite, die Produkte zum Kauf anbietet}
-}
-
+\input{content/glossaries}
 
 \end{document}
