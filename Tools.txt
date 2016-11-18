@@ -8,24 +8,21 @@ Server:
 	-MySQL
 
 Entwurf:
-	-Eclipse Papyrus oder Umbrello
+	-Eclipse Papyrus
 	-MySQLWorkbench
 
 Implementierung:
-	-Koala GUI für CSS Präprozessor) 
-	-Adobe Brackets (mit Closure Linter [req. Python], SCSS Lint, Karma Runner, Theseus for Brackets) 
-	-Eclipse
+	-Adobe Brackets (mit Closure Linter [req. Python], Annotate, SCSS Lint, Theseus for Brackets) 
+	-Eclipse Neon(Oracle Enterprise Pack)
 	-Checkstyle
 	-EclipseCodeFormatting
 	-EclipseCleanupTool
-	-HeidiSQL
+	(-HeidiSQL)
 
 BuildTools:
-	-Maven (Java-Backend)
-	-Ant (JavaScript Frontend)
+	-Ant
 	-Google Closure Compiler
 	-SCSS (CSS Präprozessor)
-
 
 Code Coverage:
 	Frontend:
@@ -34,17 +31,18 @@ Code Coverage:
 		-JCov
 
 Testing:
-	Backend:
+	Unit-Tests:
 		-Junit
+		-Karma
 	Frontend:
 		-Selenium (Webtests)
-		-Karma
 
 GUI:
-	Adobe Photoshop
+	-Adobe Photoshop
+
 Dokumentation:
 	-JavaDocs
-	-JsDoc
+	-JsDoc 3
 	-Latex
 
 Browser:
@@ -52,9 +50,9 @@ Browser:
 	-Chrome
 
 Betriebssystem:
-	-Windows 8.1/10
-	-Mac OS X ?
-	-Xubuntu 15.04 ?
+	-Windows 7/8.1/10
+	-Mac OS 10.12
+	-Xubuntu 15.04
 
 Kommunikationsplatform:
 	-Telegram
