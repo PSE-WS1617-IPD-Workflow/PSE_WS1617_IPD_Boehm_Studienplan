@@ -1,36 +1,30 @@
 \section{Globale Testfälle}
 
 \renewcommand{\arraystretch}{1.24}  % for proper row spacing
+\setlength{\LTpre}{3pt}  % adjust top margin of longtables
+\setlength{\LTpost}{0pt} % adjust bottom margin of longtables
 
-% usecase* environment
-% #1: 3 + (number of lines of the first content row) // to fix ugly orphan-headings
-% #2: Title of the use case
-\newenvironment{usecase*}[2]{
-	\needspace{#1\baselineskip} % Fix ugly orphan-heading 
-	\subsubsection*{#2}  
-	\hspace{1pt}\vspace{-2\baselineskip}  % ugly orphan-heading fix
-	\begin{longtable}{|>{\hspace{0pt}}p{.18\linewidth}|p{.34\linewidth}|p{.44\linewidth}|}   % >{\hspace{0pt}}  necessary to allow hyphenation of the first word of the column's paragraph. (YTF isn't this standard behaviour?!)
-		\hhline{|=|=|=|}
-		\textbf{Stand} & \textbf{Aktion} & \textbf{Reaktion} \\
+% usecase environment
+% #1: Title of the use case
+% #2: Ausgangs-Stand
+\newenvironment{usecase}[2]{
+	\subsubsection*{#1}  
+	\addcontentsline{toc}{subsubsection}{#1} 
+	\vspace{-\baselineskip}\textbf{Ausgangs-Stand: }#2
+	\begin{longtable}{|p{.44\linewidth}|p{.55\linewidth}|}
+		\hhline{|=|=|}
+		\textbf{Aktion} & \textbf{Reaktion} \\
 		\hline 
 		\endfirsthead
 		
 		\hline
-		\textbf{Stand} & \textbf{Aktion} & \textbf{Reaktion} \\
+		\textbf{Aktion} & \textbf{Reaktion} \\
 		\endhead
 		
-		\hhline{|=|=|=|}
+		\hhline{|=|=|}
 		\endlastfoot
 }{
-	\end{longtable}
-}
-
-% usecase environment
-% #1: Title of the use case
-\newenvironment{usecase}[1]{
-	\begin{usecase*}{5}{#1}
-}{
-	\end{usecase*}
+	\end{longtable} \vspace{-12pt}
 }
 
 % tblitemize environment
@@ -62,91 +56,91 @@
 
 
 \begin{usecase}{A10: Erstanmeldung}
-	Geöffnete Seite, unangemeldet
-	& Nutzer loggt sich zum ersten Mal via Shibboleth ein
+	{Geöffnete Seite, unangemeldet}
+	Nutzer loggt sich zum ersten Mal via Shibboleth ein
 	& Dem Nutzer erscheint eine Willkommensseite; mitsamt der Eingabe"=Formulare wie in /A40/ beschrieben.\\ 
 	\hline
-	& Nutzer füllt die Formulare aus.
+	Nutzer füllt die Formulare aus.
 	& Dem Nutzer erscheint die Hauptansicht, auf der bislang keine Studienpläne vorhanden sind. 	
 \end{usecase}
 
 \begin{usecase}{A20: Login}
-	Geöffnete Seite, unangemeldet
-	& Nutzer loggt sich via Shibboleth ein
+	{Geöffnete Seite, unangemeldet}
+	Nutzer loggt sich via Shibboleth ein
 	& Dem Nutzer erscheint die Hauptansicht mit ggfs. bereits angelegten Studienplänen
 \end{usecase}
 
 \begin{usecase}{A30: Logout}
-	Geöffnete Seite, angemeldet, beliebige Ansicht
-	& Nutzer klickt auf den Logout"=Knopf.
+	{Geöffnete Seite, angemeldet, beliebige Ansicht}
+	Nutzer klickt auf den Logout"=Knopf.
 	& Dem Nutzer erscheint die Login-Seite, er wird bis zur nächsten Anmeldung nicht mehr als eingeloggt erkannt.
 \end{usecase}
 
 \begin{usecase}{A40: Profil bearbeiten}
-	Geöffnete Seite, angemeldet, beliebige Ansicht
-	& Nutzer klickt auf den Profil"=Knopf.
+	{Geöffnete Seite, angemeldet, beliebige Ansicht}
+	Nutzer klickt auf den Profil"=Knopf.
 	& Dem Nutzer erscheint ein Formular zur Eingabe von Studienbeginn und Studiengang. \\ 
 	\hline
-	& Nutzer gibt diese Informationen ein und drückt auf den Weiter"=Knopf.
+	Nutzer gibt diese Informationen ein und drückt auf den Weiter"=Knopf.
 	& Dem Nutzer erscheint ein Formular zur Eingabe des aktuellen Studienstands: Er kann festlegen, welche Prüfungsleistungen er schon begonnen und in welchem Semester er sie bestanden hat. \\
 	\hline
-	& Nutzer kann nun Module als begonnen markieren, indem er sie in den Studienplan ins jeweilige Semester hineinzieht (/A140/), und sie als bestanden markieren, indem er den entsprechenden Knopf im jeweiligen Modul anwählt. Modulfilterung (/A110/) ist in dieser Ansicht möglich.
+	Nutzer kann nun Module als begonnen markieren, indem er sie in den Studienplan ins jeweilige Semester hineinzieht (/A140/), und sie als bestanden markieren, indem er den entsprechenden Knopf im jeweiligen Modul anwählt. Modulfilterung (/A110/) ist in dieser Ansicht möglich.
 	Nach Eingabe dieser Informationen drückt er den Weiter"=Knopf.
 	& Dem Nutzer erscheint die Ansicht, in welcher er den Profil"~Knopf betätigt hat, oder im Fall /A10/ die Hauptansicht.
 \end{usecase}
 
 \begin{usecase}{A50: Neuen Studienplan anlegen}
-	Hauptansicht
-	& Nutzer klickt auf den Knopf „Neuen Studienplan erstellen“.
+	{Hauptansicht}
+	Nutzer klickt auf den Knopf „Neuen Studienplan erstellen“.
 	& Dem Nutzer erscheint ein Popup, welches ihn nach dem Studienplan-Namen fragt; voreingestellt ist „Neuer~Studienplan~1“. \\
 	\hline
-	& Nutzer gibt gewünschten Namen ein und bestätigt.
+	Nutzer gibt gewünschten Namen ein und bestätigt.
 	& Der neue Studienplan öffnet sich in der Bearbeitungsansicht und wird zur Liste der bereits erstellten Pläne hinzugefügt. Er gilt als bislang nicht überprüft.
 \end{usecase}
 	
 \begin{usecase}{A60: Studienplan umbenennen}
-	Bearbeitungsansicht mit offenem Studienplan
-	& Nutzer klickt auf den Namen des Studienplans
+	{Bearbeitungsansicht mit offenem Studienplan}
+	Nutzer klickt auf den Namen des Studienplans
 	& Dem Nutzer erscheint ein Popup, welches ihn nach dem neuen Studienplan"=Namen fragt; voreingestellt ist der alte Name. \\
 	\hline
-	& Nutzer gibt gewünschten Namen ein und bestätigt.
+	Nutzer gibt gewünschten Namen ein und bestätigt.
 	& Der Nutzer kehrt zur Bearbeitungsansicht zurück, der Name des Studienplans hat sich geändert.
 \end{usecase}
 
 \begin{usecase}{A70: Studienplan duplizieren}
-	Hauptansicht, es exist. mind. ein Studienplan
-	& Nutzer klickt rechts eines Studienplans „\$Name“ auf „Duplizieren“.
+	{Hauptansicht, es exist. mind. ein Studienplan}
+	Nutzer klickt rechts eines Studienplans „\$Name“ auf „Duplizieren“.
 	& Eine Kopie des Studienplans namens „\$Name – Kopie~\#n“ taucht unter dem Ersten auf (\#n beschreibt die kleinste Zahl $\ge 1$, die keine Namenskollisionen hervorruft).
 \end{usecase}
 
 \begin{usecase}{A80: Studienplan löschen}
-	Hauptansicht, es exist. mind. ein Studienplan
-	& Nutzer klickt rechts eines Studienplans auf „Löschen“.
+	{Hauptansicht, es exist. mind. ein Studienplan}
+	Nutzer klickt rechts eines Studienplans auf „Löschen“.
 	& Nutzer wird mittels Dialog gebeten, das Löschen des Studienplans zu bestätigen. \\
 	\hline
-	& Nutzer entscheidet sich für Bestätigung oder Abbruch.
+	Nutzer entscheidet sich für Bestätigung oder Abbruch.
 	& Der Dialog verschwindet, dem Nutzer erscheint die Hauptansicht. Falls er das Löschen bestätigt hat, existiert der genannte Studienplan nun nicht mehr.
 \end{usecase}
 
-\begin{usecase*}{12}{A90: Mehrere Studienpläne duplizieren/löschen}
-	Hauptansicht, es exist. mind. ein Studienplan
-	& Nutzer wählt einen oder mehrere Studienpläne mittels der Anwahlkästchen aus (oder auch alle durch Wählen des obersten Hakens in der Leiste).
+\begin{usecase}{A90: Mehrere Studienpläne duplizieren/löschen}
+	{Hauptansicht, es exist. mind. ein Studienplan}
+	Nutzer wählt einen oder mehrere Studienpläne mittels der Anwahlkästchen aus (oder auch alle durch Wählen des obersten Hakens in der Leiste).
 	Danach wählt der Nutzer im Aktions"=Wahlfeld „Duplizieren“ oder „Löschen“.
 	& Es folgt das Vorgehen wie in /A70/ bzw. /A80/, zusammengefasst angewandt auf die markierten Studienpläne.
-\end{usecase*}
+\end{usecase}
 
 \begin{usecase}{A100: Vergleichsansicht für Studienpläne}
-	Hauptansicht, es exist. mind. zwei Studienpläne
-	& Nutzer wählt genau zwei Studienpläne mittels Anwahlkästchen aus. Im Aktions"=Wahlfeld betätigt er die Vergleichsansicht.
+	{Hauptansicht, es exist. mind. zwei Studienpläne}
+	Nutzer wählt genau zwei Studienpläne mittels Anwahlkästchen aus. Im Aktions"=Wahlfeld betätigt er die Vergleichsansicht.
 	& Dem Nutzer erscheint die Vergleichsansicht. \\
 	\hline
-	& Nutzer schließt die Vergleichsansicht. 
+	Nutzer schließt die Vergleichsansicht. 
 	& Der Nutzer kehrt zur Hauptansicht zurück.
 \end{usecase}
 
-\begin{usecase*}{39}{A110: Module in der Suchleiste filtern}
-	Bearbeitungsansicht, Studienplan geöffnet, Suchleiste wird angezeigt
-	& Der Nutzer kann in der Suchleiste Module filtern durch Wählen...
+\begin{usecase}{A110: Module in der Suchleiste filtern}
+	{Bearbeitungsansicht, Studienplan geöffnet, Suchleiste wird angezeigt}
+	Der Nutzer kann in der Suchleiste Module filtern durch Wählen...
 	\begin{tblitemize}
 		\item des ECTS"=Intervalls (Klick auf „ECTS“ und Ziehen an den Reglern)
 		\item der Veranstaltungsart $\in$ \{Vorlesung, Praktikum, Seminar\} (Klick auf „Art“ und Auswahl)
@@ -169,16 +163,16 @@
 		\item den gewählten Suchbegriff im Titel enthalten
 	\end{tblitemize} \\
 	\hline
-	& Der Nutzer kann gesetzte Filter durch Klicken auf das Kreuzchen im Filter"=Knopf wieder zurücksetzen.
+	Der Nutzer kann gesetzte Filter durch Klicken auf das Kreuzchen im Filter"=Knopf wieder zurücksetzen.
 	& Entsprechende Filter treten außer Kraft und die Suchleiste aktualisiert sich wie oben.
-\end{usecase*}
+\end{usecase}
 
 \begin{usecase}{A120: Info-Popup zu einem Modul anzeigen}
-	Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul im Studienplan verteilt
-	& Nutzer klickt in der Tabelle auf ein Modul.
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul im Studienplan verteilt}
+	Nutzer klickt in der Tabelle auf ein Modul.
 	& Das Modul wird farblich hervorgehoben. \\
 	\hline
-	& Nutzer klickt erneut auf das Modul.
+	Nutzer klickt erneut auf das Modul.
 	& Auf der Seite öffnet sich ein Info-Popup über der Tabelle; es enthält
 	\begin{tblitemize}
 		\item Titel und Modulnummer
@@ -188,86 +182,86 @@
 		\item Symbol"=Buttons zum Liken (/A180/) und Disliken (/A190/) des Moduls
 	\end{tblitemize} \\
 	\hline
-	& Nutzer kann nun das Modul liken/disliken (/A180/ bzw. /A190/).
+	Nutzer kann nun das Modul liken/disliken (/A180/ bzw. /A190/).
 	& Reaktion wie in /A180/ bzw. /A190/. \\
 	\hline
-	& Nutzer klickt im Popup auf den Schließen"=Button. 
+	Nutzer klickt im Popup auf den Schließen"=Button. 
 	& Das Popup schließt sich, Rückkehr zur Bearbeitungsansicht; das Modul bleibt hervorgehoben. \\
 	
-	& (Alternative: Nutzer klickt auf eine Stelle außerhalb des Popups.)
+	(Alternative: Nutzer klickt auf eine Stelle außerhalb des Popups.)
 	& (Alternative: Das Popup schließt sich, der Mausklick außerhalb des Popups wird ausgeführt.)
 \end{usecase}
 
-\begin{usecase*}{10}{A130: Info-Leiste zu einem Modul anzeigen}
-	Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul in der Suchleiste aufgelistet
-	& Nutzer klickt auf ein Modul in der Suchleiste.
+\begin{usecase}{A130: Info-Leiste zu einem Modul anzeigen}
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul in der Suchleiste aufgelistet}
+	Nutzer klickt auf ein Modul in der Suchleiste.
 	& Die Suchleiste verwandelt sich in eine Info-Leiste und zeigt den Inhalt von /A120/ an. \\
 	\hline
-	& Nutzer klickt in der Info-Leiste auf den Zurück-Knopf.
+	Nutzer klickt in der Info-Leiste auf den Zurück-Knopf.
 	& Die Leiste kehrt zur exakt vorherigen Suchansicht zurück.
-\end{usecase*}
+\end{usecase}
 
 \begin{usecase}{A140: Modul in Plan einfügen}
-	Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein Modul in der Suchleiste aufgelistet
-	& Der Nutzer hält seine Maustaste über einem Modul in der Suchleiste gedrückt, zieht es in eine Semester"=Zeile und lässt es fallen.
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein Modul in der Suchleiste aufgelistet}
+	Der Nutzer hält seine Maustaste über einem Modul in der Suchleiste gedrückt, zieht es in eine Semester"=Zeile und lässt es fallen.
 	& Das Modul erscheint an der Zielstelle und gilt als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“.
 \end{usecase}
 
-\begin{usecase*}{13}{A150: Multimodul in Plan einfügen}
-	Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein Multimodul in der Suchleiste aufgelistet
-	& Der Nutzer hält seine Maustaste über einem Multimodul in der Suchleiste gedrückt, zieht es in eine Start"=Semester"=Zeile und lässt es fallen.
+\begin{usecase}{A150: Multimodul in Plan einfügen}
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein Multimodul in der Suchleiste aufgelistet}
+	Der Nutzer hält seine Maustaste über einem Multimodul in der Suchleiste gedrückt, zieht es in eine Start"=Semester"=Zeile und lässt es fallen.
 	& Die Untermodule erscheinen in der Tabelle in aufeinanderfolgenden Semester"=Zeilen (ggfs. werden neue Semester"=Zeilen hinzugefügt), beginnend bei der Start"=Zeile. Die Untermodule gelten als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“.
-\end{usecase*}
+\end{usecase}
 
 \begin{usecase}{A160: Modul aus Plan löschen}
-	Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul im Studienplan verteilt
-	& Der Nutzer klickt auf ein Modul in der Tabelle.
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul im Studienplan verteilt}
+	Der Nutzer klickt auf ein Modul in der Tabelle.
 	& Das Modul erscheint ausgewählt. \\
 	\hline
-	& Der Nutzer klickt auf den Löschen-Knopf des Moduls. 
+	Der Nutzer klickt auf den Löschen-Knopf des Moduls. 
 	& Das Modul verschwindet und gilt als niht platziert, die ECTS der entsprechenden Semester"=Zeile und die Gesamt"=ECTS verringern sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“.
 \end{usecase}
 
-\begin{usecase*}{13}{A170: Modul innerhalb Plan verschieben}
-	Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul im Studienplan verteilt, mind. zwei Semester"=Zeilen in der Tabelle
-	& Der Nutzer hält seine Maustaste über einem Modul in der Tabelle gedrückt, zieht es in eine Semester"=Zeile ungleich der vorherigen und lässt es fallen.
+\begin{usecase}{A170: Modul innerhalb Plan verschieben}
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul im Studienplan verteilt, mind. zwei Semester"=Zeilen in der Tabelle}
+	Der Nutzer hält seine Maustaste über einem Modul in der Tabelle gedrückt, zieht es in eine Semester"=Zeile ungleich der vorherigen und lässt es fallen.
 	& Das Modul verschiebt sich dorthin, die Semester-ECTS der Ausgangs"= und der Ziel"=Zeile ändern sich entsprechend und der Überprüfungsstatus de Studienplans ändert sich zu „nicht überprüft“.
-\end{usecase*}
+\end{usecase}
 
 \begin{usecase}{A180: Modul liken}
-	Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul in der Suchleiste aufgelistet
-	& Nutzer klickt auf das Like-Symbol eines der in der Suchleiste aufgeführten Module.
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul in der Suchleiste aufgelistet}
+	Nutzer klickt auf das Like-Symbol eines der in der Suchleiste aufgeführten Module.
 	& Modul bereits im Like-Zustand? $\Rightarrow$ Modul verlässt den Like-Zustand \newline
 	Ansonsten $\Rightarrow$ verlässt das Modul evtl. den Dislike-Zustand und kommt in den Like-Zustand. \newline
 	Das Like-Symbol erscheint entspr. aktiv bzw. inaktiv. \\
 \end{usecase}
 
 \begin{usecase}{A190: Modul disliken}
-	Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul in der Suchleiste aufgelistet
-	& Nutzer klickt auf das Dislike-Symbol eines der in der Suchleiste aufgeführten Module.
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul in der Suchleiste aufgelistet}
+	Nutzer klickt auf das Dislike-Symbol eines der in der Suchleiste aufgeführten Module.
 	& Modul bereits im Dislike-Zustand? $\Rightarrow$ Modul verlässt den Dislike-Zustand \newline
 	Ansonsten $\Rightarrow$ verlässt das Modul evtl. den Like-Zustand und kommt in den Dislike-Zustand. \newline
 	Das Dislike-Symbol erscheint entspr. aktiv bzw. inaktiv. \\
 \end{usecase}
 
 \begin{usecase}{A200: Semester im Plan hinzufügen}
-	Bearbeitungsansicht, Studienplan geöffnet
-	& Der Nutzer klickt in der Semester"=Leiste auf „Weiteres Semester hinzufügen“.
+	{Bearbeitungsansicht, Studienplan geöffnet}
+	Der Nutzer klickt in der Semester"=Leiste auf „Weiteres Semester hinzufügen“.
 	& In der Tabelle erscheint unten eine neue leere Semester"=Zeile mit 0~ECTS.
 \end{usecase}
 
-\begin{usecase*}{11}{A210: Semester aus Plan löschen}
-	Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile in der Tabelle vorhanden
-	& Der Nutzer klickt in einer Semester"=Zeile auf „Semester löschen“.
+\begin{usecase}{A210: Semester aus Plan löschen}
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile in der Tabelle vorhanden}
+	Der Nutzer klickt in einer Semester"=Zeile auf „Semester löschen“.
 	& Falls die Zeile leer ist, wird der Nutzer mittels Popup gebeten, das Löschen der Zeile zu bestätigen. \\
 	\hline
-	& Der Nutzer entscheidet sich für Bestätigen oder Abbruch.
+	Der Nutzer entscheidet sich für Bestätigen oder Abbruch.
 	& Der Nutzer kehrt zur vorherigen Bearbeitungsansicht zurück. Falls er das Löschen bestätigt hat, verschwindet die Semester"=Zeile; dadurch gelten alle darin enthaltenen Module nicht mehr als platziert und der Überprüfungsstatus des Studienplans ändert sich zu „nicht überprüft“; ferner aktualisieren sich die Gesamt-ECTS.
-\end{usecase*}
+\end{usecase}
 
 \begin{usecase}{A215: Abgeschlossene Semester im Plan ein"=/ausblenden}
-	Bearbeitungsansicht, Studienplan geöffnet
-	& Nutzer klickt auf „Abgeschlossene Semester ein-/ausblenden“.
+	{Bearbeitungsansicht, Studienplan geöffnet}
+	Nutzer klickt auf „Abgeschlossene Semester ein-/ausblenden“.
 	& Die Zeilen bereits abgeschlossener Semester werden (wieder) aus"=/eingeblendet.
 \end{usecase}
 
@@ -280,7 +274,9 @@
 \end{usecase}
 
 
-	
+\bigskip
 
 % reset
 \renewcommand{\arraystretch}{1.0}
+\setlength{\LTpre}{\bigskipamount}
+\setlength{\LTpost}{\bigskipamount}
