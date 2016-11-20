@@ -1,12 +1,213 @@
 \section{Globale Testfälle}
 
+\renewcommand{\arraystretch}{1.24}  % for proper row spacing
+\newenvironment{usecase}[1]{
+	\subsubsection*{#1} 
+	\hspace{1pt}\vspace{-2\baselineskip}  % ugly orphan-heading fix
+	\begin{longtable}{|>{\hspace{0pt}}p{.18\linewidth}|p{.34\linewidth}|p{.44\linewidth}|}   % >{\hspace{0pt}}  necessary to allow hyphenation of the first word of the column's paragraph. (YTF isn't this standard behaviour?!)
+		\hline
+		\textbf{Stand} & \textbf{Aktion} & \textbf{Reaktion} \\
+		\hline 
+		\endfirsthead
+		
+		\hline
+		\textbf{Stand} & \textbf{Aktion} & \textbf{Reaktion} \\
+		\endhead
+		
+		\hline
+		\endlastfoot
+}{
+	\end{longtable}
+}
 
-\subsection{Szenarien}
+
+
+
+
+\subsection{Testszenarien}
+
+
+
+
+
 
 \subsection{Anwendungsfälle}
 
 \begin{center}
-\resizebox{\textwidth}{!} {
-	\input{diagrams/use_cases/generation}
-}
+	\resizebox{\textwidth}{!} {
+		\input{diagrams/use_cases/generation}
+	}
 \end{center}
+
+
+
+\begin{usecase}{A10: Erstanmeldung}
+	Geöffnete Seite, unangemeldet
+	& Nutzer loggt sich zum ersten Mal via Shibboleth ein
+	& Dem Nutzer erscheint eine Willkommensseite; mitsamt der Eingabe"=Formulare wie in /A40/ beschrieben.\\ 
+	\hline
+	& Nutzer füllt die Formulare aus.
+	& Dem Nutzer erscheint die Hauptseite, auf der bislang keine Studienpläne vorhanden sind. 	
+\end{usecase}
+
+\begin{usecase}{A20: Login}
+	Geöffnete Seite, unangemeldet
+	& Nutzer loggt sich via Shibboleth ein
+	& Dem Nutzer erscheint die Hauptseite mit ggfs. bereits angelegten Studienplänen
+\end{usecase}
+
+\begin{usecase}{A30: Logout}
+	Geöffnete Seite, angemeldet, beliebige Ansicht
+	& Nutzer klickt auf den Logout"=Knopf.
+	& Dem Nutzer erscheint die Login-Seite, er wird bis zur nächsten Anmeldung nicht mehr als eingeloggt erkannt.
+\end{usecase}
+
+\begin{usecase}{A40: Profil bearbeiten}
+	Geöffnete Seite, angemeldet, beliebige Ansicht
+	& Nutzer klickt auf den Profil"=Knopf.
+	& Dem Nutzer erscheint ein Formular zur Eingabe von Studienbeginn und Studiengang. \\ 
+	\hline
+	& Nutzer gibt diese Informationen ein und drückt auf den Weiter"=Knopf.
+	& Dem Nutzer erscheint ein Formular zur Eingabe des aktuellen Studienstands: Er kann festlegen, welche Prüfungsleistungen er schon begonnen und in welchem Semester er sie bestanden hat. \\
+	\hline
+	& Nutzer kann nun Module als begonnen markieren, indem er sie in den Studienplan ins jeweilige Semester hineinzieht (/A140/), und sie als bestanden markieren, indem er den entsprechenden Knopf im jeweiligen Modul anwählt. Modulfilterung (/A110/) ist in dieser Ansicht möglich.
+	Nach Eingabe dieser Informationen drückt er den Weiter"=Knopf.
+	& Dem Nutzer erscheint die Ansicht, in welcher er den Profil"~Knopf betätigt hat, oder im Fall /A10/ die Hauptansicht.
+\end{usecase}
+
+\begin{usecase}{A50: Neuen Studienplan anlegen}
+	Hauptansicht
+	& Nutzer klickt auf den Knopf „Neuen Studienplan erstellen“.
+	& Dem Nutzer erscheint ein Popup, welches ihn nach dem Studienplan-Namen fragt; voreingestellt ist „Neuer~Studienplan~1“. \\
+	\hline
+	& Nutzer gibt gewünschten Namen ein und bestätigt.
+	& Der neue Studienplan öffnet sich in der Bearbeitungsansicht und wird zur Liste der bereits erstellten Pläne hinzugefügt.
+\end{usecase}
+	
+\begin{usecase}{A60: Studienplan umbenennen}
+	Bearbeitungsansicht mit offenem Studienplan
+	& Nutzer klickt auf den Namen des Studienplans
+	& Dem Nutzer erscheint ein Popup, welches ihn nach dem neuen Studienplan"=Namen fragt; voreingestellt ist der alte Name. \\
+	\hline
+	& Nutzer gibt gewünschten Namen ein und bestätigt.
+	& Der Nutzer kehrt zur Bearbeitungsansicht zurück, der Name des Studienplans hat sich geändert.
+\end{usecase}
+
+\begin{usecase}{A70: Studienplan duplizieren}
+	Hauptansicht, es exist. mind. ein Studienplan
+	& Nutzer klickt rechts eines Studienplans „\$Name“ auf „Duplizieren“.
+	& Ein neuer Studienplan namens „\$Name – Kopie~\#n“ taucht unter dem Ersten auf (\#n beschreibt die kleinste Zahl $\ge 1$, die keine Namenskollisionen hervorruft).
+\end{usecase}
+
+\begin{usecase}{A80: Studienplan löschen}
+	Hauptansicht, es exist. mind. ein Studienplan
+	& Nutzer klickt rechts eines Studienplans auf „Löschen“.
+	& Nutzer wird mittels Dialog gebeten, das Löschen des Studienplans zu bestätigen. \\
+	\hline
+	& Nutzer entscheidet sich für Bestätigung oder Abbruch.
+	& Der Dialog verschwindet, dem Nutzer erscheint die Hauptansicht. Falls er das Löschen bestätigt hat, existiert der genannte Studienplan nun nicht mehr.
+\end{usecase}
+
+\begin{usecase}{A90: Mehrere Studienpläne duplizieren/löschen}
+	Hauptansicht, es exist. mind. ein Studienplan
+	& Nutzer wählt einen oder mehrere Studienpläne mittels der Anwahlkästchen aus (oder auch alle durch Wählen des obersten Hakens in der Leiste).
+	Danach wählt der Nutzer im Aktions"=Wahlfeld „Duplizieren“ oder „Löschen“.
+	& Es folgt das Vorgehen wie in /A70/ bzw. /A80/, zusammengefasst angewandt auf die markierten Studienpläne.
+\end{usecase}
+
+\begin{usecase}{A100: Vergleichsansicht für Studienpläne}
+	Hauptansicht, es exist. mind. zwei Studienpläne
+	& Nutzer wählt genau zwei Studienpläne mittels Anwahlkästchen aus. Im Aktions"=Wahlfeld betätigt er die Vergleichsansicht.
+	& Dem Nutzer erscheint die Vergleichsansicht. \\
+	\hline
+	& Nutzer schließt die Vergleichsansicht. 
+	& Der Nutzer kehrt zur Hauptansicht zurück.
+\end{usecase}
+
+% TODO Fix ugly orphan-heading (workaround fails unfortunately)
+\begin{usecase}{A110: Module in der Suchleiste filtern}
+	Bearbeitungsansicht mit offenem Studienplan, Suchleiste wird angezeigt
+	& Der Nutzer kann in der Suchleiste Module filtern durch Wählen...
+	\begin{itemize}[nosep,leftmargin=12pt]
+		\item des ECTS"=Intervalls (Klick auf „ECTS“ und Ziehen an den Reglern)
+		\item der Veranstaltungsart $\in$ \{Vorlesung, Praktikum, Seminar\} (Klick auf „Art“ und Auswahl)
+		\item der Kategorie (bzw. des Themenbereiches) (Klick auf „Kategorie“ und Auswahl)
+		\item des Turnus $\in$ \{WS, SS, WS/SS\} (Klick auf „WS/SS“ und Auswahl)
+		\item ob Pflicht-, Wahlveranstaltungen oder beides anzuzeigen ist (Klick auf „Pflicht/Wahl“ und Auswahl)
+		\item der Fachrichtung (Klick auf „Fachrichtung“ und Auswahl)
+		\item ob bereits platzierte Module anzuzeigen sind (Klick auf „mit Platzierten?“ und Auswahl)
+		\item eines Suchbegriffes, nach welchem die Titel der Module gefiltert werden (Eingabe von Text ins Suchfeld)
+	\end{itemize}\hspace{0pt}\vspace{-\baselineskip}
+	& In der Suchleiste werden entspr. der Nutzerfilterung alle Module angezeigt, die...
+	\begin{itemize}[nosep,leftmargin=12pt]
+		\item im gewählten ECTS"=Intervall liegen
+		\item der gewählten Veranstaltungsart entsprechen
+		\item zur gewählten Kategorie gehören
+		\item im gewählten Turnnus stattfinden
+		\item Pflicht-, Wahlveranstaltungen oder beides sind
+		\item zur gewählten Fachrichtung gehören
+		\item bereits platziert worden sind oder nicht
+		\item den gewählten Suchbegriff im Titel enthalten
+	\end{itemize}\hspace{0pt}\vspace{-\baselineskip} \\
+	\hline
+	& Der Nutzer kann gesetzte Filter durch Klicken auf das Kreuzchen im Filter"-Knopf wieder zurücksetzen.
+	& Entsprechende Filter treten außer Kraft und die Suchleiste aktualisiert sich wie oben.
+\end{usecase}
+
+\begin{usecase}{A120: Info-Popup anzeigen}
+	
+\end{usecase}
+
+\begin{usecase}{A130: Info-Leiste anzeigen}
+	
+\end{usecase}
+
+\begin{usecase}{A140: Modul in Plan einfügen}
+	
+\end{usecase}
+
+\begin{usecase}{A150: Multimodul in Plan einfügen}
+	
+\end{usecase}
+
+\begin{usecase}{A160: Modul aus Plan löschen}
+	
+\end{usecase}
+
+\begin{usecase}{A170: Modul innerhalb Plan verschieben}
+	
+\end{usecase}
+
+\begin{usecase}{A180: Modul liken}
+	
+\end{usecase}
+
+\begin{usecase}{A190: Modul disliken}
+	
+\end{usecase}
+
+\begin{usecase}{A200: Semester im Plan hinzufügen}
+	
+\end{usecase}
+
+\begin{usecase}{A210: Semester aus Plan löschen}
+	
+\end{usecase}
+
+\begin{usecase}{A215: Abgeschlossene Semester im Plan ausblenden}
+	
+\end{usecase}
+
+\begin{usecase}{A220: Studienplan auf Korrektheit überprüfen}
+	
+\end{usecase}
+
+\begin{usecase}{A230: Studienplan vervollständigen lassen}
+	
+\end{usecase}
+
+
+	
+
+% reset
+\renewcommand{\arraystretch}{1.0}
