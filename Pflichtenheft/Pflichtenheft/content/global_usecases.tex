@@ -219,7 +219,10 @@
 \begin{usecase}{\lA{150}: Multimodul in Plan einfügen}
 	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein Multimodul in der Suchleiste aufgelistet}
 	Der Nutzer hält seine Maustaste über einem Multimodul in der Suchleiste gedrückt, zieht es in eine Start"=Semester"=Zeile und lässt es fallen.
-	& Die Untermodule erscheinen in der Tabelle in aufeinanderfolgenden Semester"=Zeilen (ggfs. werden neue Semester"=Zeilen hinzugefügt), beginnend bei der Start"=Zeile. Die Untermodule gelten als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“.
+	& Die Untermodule erscheinen in der Tabelle in aufeinanderfolgenden Semester"=Zeilen (ggfs. werden neue Semester"=Zeilen hinzugefügt), beginnend bei der Start"=Zeile. Die Untermodule gelten als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“. \\
+	\hline
+	Der Nutzer kann nun mit der Maus über das „Anker“"=Symbol eines Untermoduls hovern.
+	& Alle zum Multimodul gehörigen Untermodule werden als zusammenhängend hervorgehoben, solange sich die Maus über dem Symbol befindet.
 \end{usecase}
 
 \begin{usecase}{\lA{160}: Modul aus Plan löschen}
@@ -275,17 +278,61 @@
 \end{usecase}
 
 \begin{usecase}{\lA{220}: Studienplan auf Korrektheit überprüfen}
-	
+	{Bearbeitungsansicht, Studienplan geöffnet mit Überprüfungsstatus „nicht überprüft“}
+	Nutzer klickt auf „Überprüfen“.
+	& Ggfs. erscheint ein Ladekreis während längerer Wartezeit. \newline 
+	Nach Abschluss der Überprüfung erhält der Plan den Status „korrekt“ oder „fehlerhaft“, was dem Nutzer auch durch eine Notification am Bildschirmrand gemeldet wird. Module, die Konflikte hervorrufen, werden mit einer roten „Fehler“"=Markierung gekennzeichnet. \\
+	\hline
+	Nutzer kann nun mit der Maus über fehlerhafte Module hovern.
+	& Daraufhin erscheint ein Tooltip, das den jeweiligen Konflikt erklärt. \\
+	\hline
+	Der Nutzer kann Änderungen am Plan vornehmen (\refA{140} bis \refA{170}). 
+	& Daraufhin verschwinden die „Fehler“"=Markierungen ggfs. und der Plan erhält den Status „nicht überprüft“.
 \end{usecase}
 
 \begin{usecase}{\lA{230}: Studienplan vervollständigen lassen}
-	
+	{Bearbeitungsansicht, Studienplan geöffnet, es können bereits Module im Plan verteilt sein (s. \refA{140} und \refA{150}); Module können Präferenzen haben (\refA{180} und \refA{190})}
+	Nutzer klickt auf den Knopf „Plan vervollständigen“.
+	& Dem Nutzer erscheint das Vervollständigungs"=Formular, in welchem folgende Daten abgefragt werden:
+	\begin{tblitemize}
+		\item Zieleigenschaft des vervollständigten Plans:
+		\begin{tblitemize}
+			\item ECTS"=Minimum
+			\item Gewünschte Vertiefungsrichtung
+			\item Möglichst schneller Studienabschluss
+			\item Möglichst gleichmäßig über alle Semester verteilte ECTS
+		\end{tblitemize}
+		\item Semesterbegrenzungen für ECTS
+		\item Minimale/Maximale Semesterzahl
+		\item Angabe der gewünschten Vertiefungsrichtungen
+	\end{tblitemize} \\
+	\hline
+	Nutzer gibt geforderte Daten ein und bestätigt.
+	& Das System generiert – sofern möglich – einen vollständigen, den Kriterien des Nutzers und des zugrundeliegenden Datensatzes entsprechenden Studienplan. \newline
+	Im Erfolgsfall erscheint dieser Studienplan dem Nutzer zur Ansicht mitsamt einer entsprechenden Notification am Bildschirmrand. Der vervollständigte Plan hat den Status „korrekt“. Dem Nutzer wird in der Seitenleiste angeboten, den vorgeschlagenen Plan...
+	\begin{tblitemize}
+		\item zu verwerfen,
+		\item zu übernehmen,
+		\item oder unter neuem Namen zu speichern.
+	\end{tblitemize} \newline
+	Im Fehlerfall erscheint eine entspr. Notification am Bildschirmrand. Der Ausgangsplan erscheint und hat den Status „fehlerhaft“; der Nutzer wird wie in \refA{220} über „Fehler“"=Markierungen auf Konflikte hingewiesen. \\
+	\hline
+	Im Erfolgsfall kann der Nutzer nun den vervollständigten Plan betrachten und durch Klick auf Module im Plan entspr. Info"=Leiste (\refA{130}) anzeigen.
+	Er entscheidet sich letztlich zwischen den drei genannten Optionen. 
+	& „Verwerfen“: Der Nutzer wird gebeten, das Verwerfen des Vorschlags zu bestätigen. \newline
+	„Übernehmen“: Der Vorschlag wird in den Ausgangsplan übernommen. Dem Nutzer erscheint die Bearbeitungsansicht mit dem vervollständigten „korrekten“ Plan. \newline
+	„Unter neuem Namen speichern“:  Der Nutzer wird via Popup nach einem Namen für den Vorschlag gefragt. \\
+	\hline
+	„Verwerfen“: Der Nutzer wählt Bestätigung oder Abbruch. \newline
+	„Unter neuem Namen speichern“: Der Nutzer gibt den Namen ein. 
+	& „Verwerfen“: Im Falle der Bestätigung kehrt der Nutzer in die ursprüngliche Bearbeitungsansicht mit dem Ausgangsplan im alten Status zurück. Lehnt der Nutzer dies ab, so kehrt er zur Vorschlagsansicht zurück, wo ihm wieder die drei Optionen angeboten werden. \newline
+	„Unter neuem Namen speichern“: Der Vorschlag wird in einen neuen Plan mit angegebenem Namen gespeichert. Dem Nutzer erscheint die Bearbeitungsansicht mit dem neuen, vervollständigten Plan. Dieser Plan hat den Status „korrekt“.
 \end{usecase}
 
 
 \bigskip
 
-% reset
+% reset changes
 \renewcommand{\arraystretch}{1.0}
 \setlength{\LTpre}{\bigskipamount}
 \setlength{\LTpost}{\bigskipamount}
