@@ -5,7 +5,7 @@
 \setlength{\LTpost}{0pt} % adjust bottom margin of longtables
 
 % usecase environment
-% #1: Title of the use case
+% #1: Title of the use case, like "\lA{n}: Title"
 % #2: Initial state description
 \newenvironment{usecase}[2]{
 	\subsubsection*{#1}  
@@ -262,7 +262,7 @@
 \begin{usecase}{\lA{210}: Semester aus Plan löschen}
 	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile in der Tabelle vorhanden}
 	Der Nutzer klickt in einer Semester"=Zeile auf „Semester löschen“.
-	& Falls die Zeile leer ist, wird der Nutzer mittels Popup gebeten, das Löschen der Zeile zu bestätigen. \\
+	& Falls die Zeile nicht leer ist, wird der Nutzer mittels Popup gebeten, das Löschen der Zeile zu bestätigen. Falls doch, entfällt das Popup und es erfolgt sofort die nächste Reaktion.\\
 	\hline
 	Der Nutzer entscheidet sich für Bestätigen oder Abbruch.
 	& Der Nutzer kehrt zur vorherigen Bearbeitungsansicht zurück. Falls er das Löschen bestätigt hat, verschwindet die Semester"=Zeile; dadurch gelten alle darin enthaltenen Module nicht mehr als platziert und der Überprüfungsstatus des Studienplans ändert sich zu „nicht überprüft“; ferner aktualisieren sich die Gesamt-ECTS.
