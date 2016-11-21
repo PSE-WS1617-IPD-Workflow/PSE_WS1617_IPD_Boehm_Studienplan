@@ -4,6 +4,30 @@
 \setlength{\LTpre}{3pt}  % adjust top margin of longtables
 \setlength{\LTpost}{0pt} % adjust bottom margin of longtables
 
+% scenario environment
+% #1: Scenario title
+\newenvironment{scenario}[1]{
+	\vspace{-\baselineskip}
+	\subsubsection{#1} 
+	\vspace{-\baselineskip}
+	\begin{enumerate}[nosep]
+}{
+	\end{enumerate}
+}
+
+% scenario* environment
+% #1: Scenario title
+% #2: Initial description
+\newenvironment{scenario*}[2]{
+	\vspace{-\baselineskip}
+	\subsubsection{#1} \vspace{-\baselineskip}
+	\hspace{0pt}#2  \vspace{-\baselineskip}
+	\begin{enumerate}[nosep]
+}{
+	\end{enumerate}
+}
+
+
 % usecase environment
 % #1: Title of the use case, like "\lA{n}: Title"
 % #2: Initial state description
@@ -46,11 +70,90 @@
 \newcommand{\refA}[1]{\hyperref[A#1]{/A#1/}}
 
 
-
 \subsection{Testszenarien}
+Folgende Funktionssequenzen müssen überprüft werden:
 
+\begin{scenario}{Erststart mit „halbherziger Bedienung“}
+	\item \nameref{A10} (ohne Angabe bereits belegter Module)
+	\item \nameref{A50}
+	\item \nameref{A220} – Ergebnis „fehlerhaft“ (da unvollständig)
+	\item \nameref{A230} mit anschließendem Verwerfen
+	\item \nameref{A240}
+	\item \nameref{A80} 
+	\item \nameref{A30}
+\end{scenario}
 
+\begin{scenario}{Einfache Vervollständigung}
+	\item \nameref{A20}
+	\item \nameref{A40} – erste zwei Semester anschließend belegt
+	\item \nameref{A50}
+	\item \nameref{A230} mit anschließendem Übernehmen des Plans
+	\item \nameref{A60} 
+	\item \nameref{A240}
+	\item \nameref{A30}
+\end{scenario}
 
+\begin{scenario*}{Bearbeitung eines Studienplans}
+	{Nutzer ist bereits eingeloggt und hat mind. einen Studienplan.}
+	\item \nameref{A55}
+	\item \nameref{A110} 
+	\item \nameref{A130} und wieder schließen
+	\item \nameref{A140}
+	\item \nameref{A160}
+	\item \nameref{A110} 
+	\item \nameref{A150} und über das „Anker“"=Symbol eines Bestandteils davon hovern
+	\item \nameref{A215} (danach: ausgeblendet)
+	\item \nameref{A170}
+	\item \nameref{A110}
+	\item \nameref{A190}
+	\item \nameref{A180} (selbes Modul – es ist dann im Like-Status) 
+	\item \nameref{A140}
+	\item \nameref{A120}
+	\item \nameref{A240}
+\end{scenario*}
+
+\begin{scenario}{Profil bearbeiten}
+	\item \nameref{A55}
+	\item \nameref{A215} (danach: eingeblendet)
+	\item \nameref{A110}
+	\item \nameref{A40} – dabei Änderung der Semester-Belegung
+	\item Anschließend sollte die Änderung im Plan gezeigt werden und die Suchleiste sich im selben Zustand befinden wie vor Schritt 4.
+\end{scenario}
+
+\begin{scenario}{Vervollständigung mit mehreren Alternativen}
+	\item \nameref{A20}
+	\item \nameref{A50}
+	\item \nameref{A110}
+	\item \nameref{A140} oder \nameref{A150}
+	\item Schritte 3–4 mehrmals wiederholen, sodass Abhängigkeitsfehler vorhanden sind und der Plan noch unvollständig ist
+	\item \nameref{A220}: Es werden Abhängigkeitsfehler gemeldet
+	\item Mittels \nameref{A160} und \nameref{A170} Abhängigkeitsfehler beheben
+	\item \nameref{A220}: Der Plan ist unvollständig
+	\item \nameref{A230} mit anschließendem Speichern unter neuem Namen
+	\item \nameref{A240}
+	\item \nameref{A55} (den in Schritt 2 erstellten Plan)
+	\item \nameref{A230} mit anderen Zielkriterien als in Schritt 9 und anschließendem Speichern unter neuem Namen
+	\item \nameref{A240}
+	\item \nameref{A100} (die zwei generierten Pläne)
+\end{scenario}
+
+\begin{scenario}{Studienpläne duplizieren und löschen}
+	\item \nameref{A20}
+	\item \nameref{A50}
+	\item \nameref{A240}
+	\item \nameref{A70}
+	\item \nameref{A90}: Duplizieren aller vorhandenen Studienpläne
+	\item Mehrmaliges Wiederholen von Schritt 5.
+	\item \nameref{A90}: Alle Studienpläne löschen.
+\end{scenario}
+
+\begin{scenario}{Semester"=Zeilen anpassen}
+	\item \nameref{A20}
+	\item \nameref{A50}
+	\item Mehrmals \nameref{A210}, bis keine mehr vorhanden sind.
+	\item Mehrmals \nameref{A200}
+	\item \nameref{A240}
+\end{scenario}
 
 
 
@@ -91,7 +194,7 @@
 	& Dem Nutzer erscheint ein Formular zur Eingabe von Studienbeginn und Studiengang. \\ 
 	\hline
 	Nutzer gibt diese Informationen ein und drückt auf den Weiter"=Knopf.
-	& Dem Nutzer erscheint ein Formular zur Eingabe des aktuellen Studienstands: Er kann festlegen, welche Prüfungsleistungen er schon begonnen und in welchem Semester er sie bestanden hat. \\
+	& Dem Nutzer erscheint ein Formular zur Eingabe des aktuellen Studienstands: Er kann festlegen, welche Prüfungsleistungen er schon begonnen und in welchem Semester er sie bestanden hat. Sechs leere Semester"=Zeilen sind als Startwert vorgegeben.\\
 	\hline
 	Nutzer kann nun Module als begonnen markieren, indem er sie in den Studienplan ins jeweilige Semester hineinzieht (\refA{140}), und sie als bestanden markieren, indem er den entsprechenden Knopf im jeweiligen Modul anwählt. Modulfilterung (\refA{110}) ist in dieser Ansicht möglich.
 	Nach Eingabe dieser Informationen drückt er den Weiter"=Knopf.
@@ -104,7 +207,13 @@
 	& Dem Nutzer erscheint ein Popup, welches ihn nach dem Studienplan-Namen fragt; voreingestellt ist „Neuer~Studienplan~1“. \\
 	\hline
 	Nutzer gibt gewünschten Namen ein und bestätigt.
-	& Der neue Studienplan öffnet sich in der Bearbeitungsansicht und wird zur Liste der bereits erstellten Pläne hinzugefügt. Er gilt als bislang nicht überprüft.
+	& Der neue Studienplan öffnet sich in der Bearbeitungsansicht und wird zur Liste der bereits erstellten Pläne hinzugefügt. Er gilt als bislang nicht überprüft und enthält bereits die in der Profilansicht hinzugefügten bereits belegten Module.
+\end{usecase}
+
+\begin{usecase}{\lA{55}: Studienplan anzeigen}
+	{Hauptansicht, es exist. mind. ein Studienplan}
+	Nutzer klickt auf den Namen eines Studienplans oder rechts davon auf „Anzeigen“.
+	& Der gewählte Studienplan öffnet sich in der Bearbeitungsansicht.
 \end{usecase}
 	
 \begin{usecase}{\lA{60}: Studienplan umbenennen}
@@ -113,13 +222,13 @@
 	& Dem Nutzer erscheint ein Popup, welches ihn nach dem neuen Studienplan"=Namen fragt; voreingestellt ist der alte Name. \\
 	\hline
 	Nutzer gibt gewünschten Namen ein und bestätigt.
-	& Der Nutzer kehrt zur Bearbeitungsansicht zurück, der Name des Studienplans hat sich geändert.
+	& Das Popup verschwindet und die vorherige Ansicht erscheint wieder, wobei sich der Name des Studienplans sich geändert hat.
 \end{usecase}
 
 \begin{usecase}{\lA{70}: Studienplan duplizieren}
 	{Hauptansicht, es exist. mind. ein Studienplan}
 	Nutzer klickt rechts eines Studienplans „\$Name“ auf „Duplizieren“.
-	& Eine Kopie des Studienplans namens „\$Name – Kopie~\#n“ taucht unter dem Ersten auf (\#n beschreibt die kleinste Zahl $\ge 1$, die keine Namenskollisionen hervorruft).
+	& Eine Kopie des Studienplans namens „\$Name – Kopie~\#n“ taucht unter dem Kopierten in der Studienplanliste auf (\#n beschreibt die kleinste Zahl $\ge 1$, die keine Namenskollisionen hervorruft).
 \end{usecase}
 
 \begin{usecase}{\lA{80}: Studienplan löschen}
@@ -305,6 +414,7 @@
 		\item Semesterbegrenzungen für ECTS
 		\item Minimale/Maximale Semesterzahl
 		\item Angabe der gewünschten Vertiefungsrichtungen
+		\item Präferenzen für Module (Like oder Dislike)
 	\end{tblitemize} \\
 	\hline
 	Nutzer gibt geforderte Daten ein und bestätigt.
@@ -327,6 +437,12 @@
 	„Unter neuem Namen speichern“: Der Nutzer gibt den Namen ein. 
 	& „Verwerfen“: Im Falle der Bestätigung kehrt der Nutzer in die ursprüngliche Bearbeitungsansicht mit dem Ausgangsplan im alten Status zurück. Lehnt der Nutzer dies ab, so kehrt er zur Vorschlagsansicht zurück, wo ihm wieder die drei Optionen angeboten werden. \newline
 	„Unter neuem Namen speichern“: Der Vorschlag wird in einen neuen Plan mit angegebenem Namen gespeichert. Dem Nutzer erscheint die Bearbeitungsansicht mit dem neuen, vervollständigten Plan. Dieser Plan hat den Status „korrekt“.
+\end{usecase}
+
+\begin{usecase}{\lA{240}: Schließen des Studienplans mit Wechsel zur Hauptansicht}
+	{Bearbeitungsansicht, Studienplan geöffnet}
+	Nutzer betätigt den Schalter zur Hauptansicht.
+	& Die Hauptansicht erscheint, der zuvor bearbeitete Studienplan trägt nun ggfs. auch einen neuen Namen (\refA{60}) und einen neuen Überprüfungsstatus (\refA{220}).
 \end{usecase}
 
 
