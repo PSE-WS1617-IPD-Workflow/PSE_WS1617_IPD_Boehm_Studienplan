@@ -211,13 +211,13 @@
 \end{usecase}
 
 \begin{usecase}{\lA{140}: Modul in Plan einfügen}
-	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein Modul in der Suchleiste aufgelistet}
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Modul in der Suchleiste aufgelistet}
 	Der Nutzer hält seine Maustaste über einem Modul in der Suchleiste gedrückt, zieht es in eine Semester"=Zeile und lässt es fallen.
 	& Das Modul erscheint an der Zielstelle und gilt als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“.
 \end{usecase}
 
 \begin{usecase}{\lA{150}: Multimodul in Plan einfügen}
-	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein Multimodul in der Suchleiste aufgelistet}
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Multimodul in der Suchleiste aufgelistet}
 	Der Nutzer hält seine Maustaste über einem Multimodul in der Suchleiste gedrückt, zieht es in eine Start"=Semester"=Zeile und lässt es fallen.
 	& Die Untermodule erscheinen in der Tabelle in aufeinanderfolgenden Semester"=Zeilen (ggfs. werden neue Semester"=Zeilen hinzugefügt), beginnend bei der Start"=Zeile. Die Untermodule gelten als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“. \\
 	\hline
@@ -308,7 +308,7 @@
 	\end{tblitemize} \\
 	\hline
 	Nutzer gibt geforderte Daten ein und bestätigt.
-	& Das System generiert – sofern möglich – einen vollständigen, den Kriterien des Nutzers und des zugrundeliegenden Datensatzes entsprechenden Studienplan. \newline
+	& Das System generiert – sofern möglich – einen vollständigen, den Kriterien des Nutzers und des zugrundeliegenden Datensatzes entsprechenden Studienplan. Dabei werden auch Modulpräferenzen, bereits belegte/bestandene sowie eingeplante Module berücksichtigt. \newline
 	Im Erfolgsfall erscheint dieser Studienplan dem Nutzer zur Ansicht mitsamt einer entsprechenden Notification am Bildschirmrand. Der vervollständigte Plan hat den Status „korrekt“. Dem Nutzer wird in der Seitenleiste angeboten, den vorgeschlagenen Plan...
 	\begin{tblitemize}
 		\item zu verwerfen,
