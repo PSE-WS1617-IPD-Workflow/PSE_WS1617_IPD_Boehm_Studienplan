@@ -1,34 +1,47 @@
 Einleitung:
 	Aufgabenstellung:
-		- Was ist Zeitm�glichkeiten?
-		- Sinn des Systems ist das Aufstellen von Studienpl�nen(...)
-			-Satz unvollst�ndig?! Einklammern anstelle von Kommata?!
-	Im Detail hei�t das:
+		- Was ist Zeitmöglichkeiten?
+		  - gemeint/besser passend ist wohl „zeitliche Möglichkeiten“. –DJ
+		- Sinn des Systems ist das Aufstellen von Studienplänen(...)
+			-Satz unvollständig?! Einklammern anstelle von Kommata?!
+		    - Wieso? Der Satz passt. Evtl. für bessere Lesbarkeit „...das Aufstellen von Studienplänen -- angepasst an Bedürfnisse, bereits erbrachte ...“ –DJ
+	Im Detail heißt das:
 		- Kommata fehlen?!
+		  - Wo? Im ganzen Abschnitt?  –DJ
 Zielbestimmung:
 	Musskriterien:
-		- Modular erweiterbar nicht nur bei webbasierter Oberfl�che?! vlt keine Unterpunkte f�r Webbasierte Benutzeroberfl�che.
+		- Modular erweiterbar nicht nur bei webbasierter Oberfläche?! vlt keine Unterpunkte für Webbasierte Benutzeroberfläche.
 		- Studienplan erstellen sollte vor bearbeiten kommen.
-		- Generierung nicht erstellung nennen sonder Vervollst�ndigung.
+		- Generierung nicht erstellung nennen sonder Vervollständigung.
 		- Constraints =!= Constraints (unterschiedliche Namen)
-		- Ber�cksichtigung des bisherigen (..) - ist das nicht Teilfunktion des generieren und m�sste eher Eintragung oder sowas hei�en?!
-		- Graphische Darstellung als Workflow - SEID IHR WAHNSINNIG!!!!!!!???111�!!!��!!!
+		- Berücksichtigung des bisherigen (..) - ist das nicht Teilfunktion des generieren und müsste eher Eintragung oder sowas heißen?!
+		- Graphische Darstellung als Workflow - SEID IHR WAHNSINNIG!!!!!!!???111ß!!!ßß!!!
 		
 	-Zielsetzung zu spezifische
 	
 	Wunschkriteriuen:
-		- Speichern und l�schen von Studienpl�nen (sosos speichern ist also optional)
+		- Speichern und löschen von Studienplänen (sosos speichern ist also optional)
 
-		- Durchst�bern - umformulieren
+		- Durchstöbern - umformulieren
 		- Filterbar mit Filtern -> Pleonasmus -> doppeltgemoppelt
 
 Produkteinsatz:
 	- Doppelnennungen?!
 
 
-Globale Testf�lle
-	Anwendungsf�lle:
+Globale Testfälle
+	Anwendungsfälle:
 		- Anstelle von erscheint bitte sowas wie wird weitergeleitet auf.
+		  - Frei nach den SWT-Folien: „Danach wird der Kunde auf die Hauptseite weitergeleitet“ – Wer leitet weiter? Wie? (Passiv-Konstrukte vermeiden! Wobei ich mich jetzt auch nicht durchgehend dran gehalten hab... Hm.) –DJ
 		- A60 der Nutzer kehrt ist keine Reaktion wenn schon dann weitergeleitet.
+		  – Stimmt. –DJ
 		- A70: was ist unter dem ersten?!
-		- A80: klickt rechts eines Studienplans auf L�schen - zu Detailiert, falls sich Buttons noch �ndern.
+		  – wird verbessert. –DJ
+		- A80: klickt rechts eines Studienplans auf Löschen - zu Detailiert, falls sich Buttons noch ändern.
+      – Zitat Snelting-Tipps: „[Das Pflichtenheft] darf keinen Spielraum für Interpretationen offen lassen.“ :P –DJ
+
+Benutzerschnittstelle
+  - Es wäre vllt. sinnvoll, die GUI-Screens nicht in den nächsten Abschnitt hineinhängen zu lassen. –DJ
+
+Entwicklungsumgebung:
+  - Da der Abschnitt eh auf zwei Seiten passen wird (nachdem die GUI-Bilder da raus sind...), lohnt es sich wohl nicht wirklich, subsubsection zu verwenden. Vllt. lieber subsubsection*, dann werden keine Inhaltsverzeichniseinträge generiert (lohnt sich bei 10 Punkten auf ~2 Seiten eh nicht...) –DJ
