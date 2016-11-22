@@ -74,7 +74,7 @@
 Folgende Funktionssequenzen müssen überprüft werden:
 
 \begin{scenario}{Erststart mit „halbherziger Bedienung“}
-	\item \nameref{A10} (ohne Angabe bereits belegter Module)
+	\item \nameref{A10} (ohne Angabe bereits belegter \glspl{Modul})
 	\item \nameref{A50}
 	\item \nameref{A220} – Ergebnis „fehlerhaft“ (da unvollständig)
 	\item \nameref{A230} mit anschließendem Verwerfen
@@ -102,12 +102,12 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	\item \nameref{A140}
 	\item \nameref{A160}
 	\item \nameref{A110} 
-	\item \nameref{A150} und über das „Anker“"=Symbol eines Bestandteils davon hovern
+	\item \nameref{A150} und über das „Anker“"=Symbol eines Bestandteils davon \gls{hovern}
 	\item \nameref{A215} (danach: ausgeblendet)
 	\item \nameref{A170}
 	\item \nameref{A110}
 	\item \nameref{A190}
-	\item \nameref{A180} (selbes Modul – es ist dann positiv bewertet) 
+	\item \nameref{A180} (selbes \gls{Modul} – es ist dann positiv bewertet) 
 	\item \nameref{A140}
 	\item \nameref{A120}
 	\item \nameref{A240}
@@ -160,17 +160,19 @@ Folgende Funktionssequenzen müssen überprüft werden:
 
 \subsection{Anwendungsfälle}
 
-\begin{center}
-	\resizebox{\textwidth}{!} {
-		\input{diagrams/use_cases/generation}
-	}
-\end{center}
-
-
+\begin{comment}
+	%use case diagrams are nice, but about 30 use cases are a little bit too much I guess
+	\begin{center}
+		\resizebox{\textwidth}{!} 
+		{
+			\input{diagrams/use_cases/generation}
+		}
+	\end{center}
+\end{comment}
 
 \begin{usecase}{\lA{10}: Erstanmeldung}
 	{Geöffnete Seite, unangemeldet}
-	Nutzer loggt sich zum ersten Mal via Shibboleth Identity Provider ein
+	Nutzer loggt sich zum ersten Mal via \gls{Shibboleth Identity Provider} ein
 	& Dem Nutzer erscheint eine Willkommensseite; mitsamt der Eingabe"=Formulare wie in \refA{40} beschrieben.\\ 
 	\hline
 	Nutzer füllt die Formulare aus.
@@ -179,7 +181,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 
 \begin{usecase}{\lA{20}: Login}
 	{Geöffnete Seite, unangemeldet}
-	Nutzer loggt sich via Shibboleth Identity Provider ein
+	Nutzer loggt sich via \gls{Shibboleth Identity Provider} ein
 	& Dem Nutzer erscheint die Hauptansicht mit ggfs. bereits angelegten Studienplänen
 \end{usecase}
 
@@ -205,7 +207,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \begin{usecase}{\lA{50}: Neuen Studienplan anlegen}
 	{Hauptansicht}
 	Nutzer klickt auf den Knopf „Neuen Studienplan erstellen“.
-	& Dem Nutzer erscheint ein Popup, welches ihn nach dem Studienplan-Namen fragt; voreingestellt ist „Neuer~Studienplan~1“. \\
+	& Dem Nutzer erscheint ein \gls{Popup}, welches ihn nach dem Studienplan-Namen fragt; voreingestellt ist „Neuer~Studienplan~1“. \\
 	\hline
 	Nutzer gibt gewünschten Namen ein und bestätigt.
 	& Der neue Studienplan öffnet sich in der Bearbeitungsansicht und wird zur Liste der bereits erstellten Pläne hinzugefügt. Er gilt als bislang nicht überprüft und enthält bereits die in der Profilansicht hinzugefügten bereits belegten Module.
@@ -220,10 +222,10 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \begin{usecase}{\lA{60}: Studienplan umbenennen}
 	{Bearbeitungsansicht mit offenem Studienplan}
 	Nutzer klickt auf den Namen des Studienplans
-	& Dem Nutzer erscheint ein Popup, welches ihn nach dem neuen Studienplan"=Namen fragt; voreingestellt ist der alte Name. \\
+	& Dem Nutzer erscheint ein \gls{Popup}, welches ihn nach dem neuen Studienplan"=Namen fragt; voreingestellt ist der alte Name. \\
 	\hline
 	Nutzer gibt gewünschten Namen ein und bestätigt.
-	& Das Popup verschwindet und die vorherige Ansicht erscheint wieder, wobei sich der Name des Studienplans sich geändert hat.
+	& Das \gls{Popup} verschwindet und die vorherige Ansicht erscheint wieder, wobei sich der Name des Studienplans sich geändert hat.
 \end{usecase}
 
 \begin{usecase}{\lA{70}: Studienplan duplizieren}
@@ -298,7 +300,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	& Das Modul wird farblich hervorgehoben. \\
 	\hline
 	Nutzer klickt erneut auf das Modul.
-	& Auf der Seite öffnet sich ein Info-Popup über der Tabelle; es enthält
+	& Auf der Seite öffnet sich ein Info-\gls{Popup} über der Tabelle; es enthält
 	\begin{tblitemize}
 		\item Titel und Modulnummer
 		\item Dozent, ECTS, Modulbeschreibung, evtl. Turnus, Dauer (in Semestern)
@@ -310,11 +312,11 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	Nutzer kann nun das Modul positiv/negativ bewerten (\refA{180} bzw. \refA{190}).
 	& Reaktion wie in \refA{180} bzw. \refA{190}. \\
 	\hline
-	Nutzer klickt im Popup auf den Schließen"=Button. 
-	& Das Popup schließt sich, Rückkehr zur Bearbeitungsansicht; das Modul bleibt hervorgehoben. \\
+	Nutzer klickt im \gls{Popup} auf den Schließen"=Button. 
+	& Das \gls{Popup} schließt sich, Rückkehr zur Bearbeitungsansicht; das Modul bleibt hervorgehoben. \\
 	
-	(Alternative: Nutzer klickt auf eine Stelle außerhalb des Popups.)
-	& (Alternative: Das Popup schließt sich, der Mausklick außerhalb des Popups wird entsprechend ausgeführt.)
+	(Alternative: Nutzer klickt auf eine Stelle außerhalb des \gls{Popup}s.)
+	& (Alternative: Das \gls{Popup} schließt sich, der Mausklick außerhalb des \gls{Popup}s wird entsprechend ausgeführt.)
 \end{usecase}
 
 \begin{usecase}{\lA{130}: Info-Leiste zu einem Modul anzeigen}
@@ -327,17 +329,17 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \end{usecase}
 
 \begin{usecase}{\lA{140}: Modul in Plan einfügen}
-	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Modul oder Teilmodul in der Suchleiste aufgelistet}
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Modul oder \gls{Teilmodul} in der Suchleiste aufgelistet}
 	Der Nutzer hält seine Maustaste über einem Modul oder einem Teilmodul in der Suchleiste gedrückt, zieht es in eine Semester"=Zeile und lässt es fallen.
 	& Das Modul erscheint an der Zielstelle und gilt als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“.
 \end{usecase}
 
 \begin{usecase}{\lA{150}: Modul mit Teilmodulen in Plan einfügen}
-	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Modul mit Teilmodulen in der Suchleiste aufgelistet}
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Modul mit \glslink{Teilmodul}{Teilmodulen} in der Suchleiste aufgelistet}
 	Der Nutzer hält seine Maustaste über einem Modul mit Teilmodulen in der Suchleiste gedrückt, zieht es in eine Start"=Semester"=Zeile und lässt es fallen.
 	& Die Teilmodule erscheinen in der Tabelle in aufeinanderfolgenden Semester"=Zeilen (ggfs. werden neue Semester"=Zeilen hinzugefügt), beginnend bei der Start"=Zeile. Die Teilmodule gelten als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“. \\
 	\hline
-	Der Nutzer kann nun mit der Maus über das „Anker“"=Symbol eines Teilmoduls hovern.
+	Der Nutzer kann nun mit der Maus über das „Anker“"=Symbol eines Teilmoduls \gls{hovern}.
 	& Alle zum selben Modul gehörigen Teilmodule werden als zusammenhängend hervorgehoben, solange sich die Maus über dem Symbol befindet.
 \end{usecase}
 
@@ -381,7 +383,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \begin{usecase}{\lA{210}: Semester aus Plan löschen}
 	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile in der Tabelle vorhanden}
 	Der Nutzer klickt in einer Semester"=Zeile auf „Semester löschen“.
-	& Falls die Zeile nicht leer ist, wird der Nutzer mittels Popup gebeten, das Löschen der Zeile zu bestätigen. Falls doch, entfällt das Popup und es erfolgt sofort die nächste Reaktion.\\
+	& Falls die Zeile nicht leer ist, wird der Nutzer mittels \gls{Popup} gebeten, das Löschen der Zeile zu bestätigen. Falls doch, entfällt das \gls{Popup} und es erfolgt sofort die nächste Reaktion.\\
 	\hline
 	Der Nutzer entscheidet sich für Bestätigen oder Abbruch.
 	& Der Nutzer kehrt zur vorherigen Bearbeitungsansicht zurück. Falls er das Löschen bestätigt hat, verschwindet die Semester"=Zeile; dadurch gelten alle darin enthaltenen Module nicht mehr als platziert und der Überprüfungsstatus des Studienplans ändert sich zu „nicht überprüft“; ferner aktualisieren sich die Gesamt-ECTS.
@@ -397,10 +399,10 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	{Bearbeitungsansicht, Studienplan geöffnet mit Überprüfungsstatus „nicht überprüft“}
 	Nutzer klickt auf „Überprüfen“.
 	& Ggfs. erscheint ein Ladekreis während längerer Wartezeit. \newline 
-	Nach Abschluss der Überprüfung erhält der Plan den Status „korrekt“ oder „fehlerhaft“, was dem Nutzer auch durch eine Notification am Bildschirmrand gemeldet wird. Module, die Konflikte hervorrufen, werden mit einer roten „Fehler“"=Markierung gekennzeichnet. \\
+	Nach Abschluss der Überprüfung erhält der Plan den Status „korrekt“ oder „fehlerhaft“, was dem Nutzer auch durch eine \gls{Notification} am Seitenrand gemeldet wird. Module, die Konflikte hervorrufen, werden mit einer roten „Fehler“"=Markierung gekennzeichnet. \\
 	\hline
-	Nutzer kann nun mit der Maus über fehlerhafte Module hovern.
-	& Daraufhin erscheint ein Tooltip, das den jeweiligen Konflikt erklärt. \\
+	Nutzer kann nun mit der Maus über fehlerhafte Module \gls{hovern}.
+	& Daraufhin erscheint ein \gls{Tooltip}, das den jeweiligen Konflikt erklärt. \\
 	\hline
 	Der Nutzer kann Änderungen am Plan vornehmen (\refA{140} bis \refA{170}). 
 	& Daraufhin verschwinden die „Fehler“"=Markierungen und der Plan erhält den Status „nicht überprüft“.
@@ -426,19 +428,19 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	\hline
 	Nutzer gibt geforderte Daten ein und bestätigt.
 	& Das System generiert – sofern möglich – einen vollständigen, den Kriterien des Nutzers und des zugrundeliegenden Datensatzes entsprechenden Studienplan. Dabei werden auch Modulpräferenzen, bereits belegte/bestandene sowie eingeplante Module berücksichtigt. \newline
-	Im Erfolgsfall erscheint dieser Studienplan dem Nutzer zur Ansicht mitsamt einer entsprechenden Notification am Bildschirmrand. Der vervollständigte Plan hat den Status „korrekt“. Dem Nutzer wird in der Seitenleiste angeboten, den vorgeschlagenen Plan...
+	Im Erfolgsfall erscheint dieser Studienplan dem Nutzer zur Ansicht mitsamt einer entsprechenden \gls{Notification} am Seitenrand. Der vervollständigte Plan hat den Status „korrekt“. Dem Nutzer wird in der Seitenleiste angeboten, den vorgeschlagenen Plan...
 	\begin{tblitemize}
 		\item zu verwerfen,
 		\item zu übernehmen,
 		\item oder unter neuem Namen zu speichern.
 	\end{tblitemize} \newline
-	Im Fehlerfall erscheint eine entspr. Notification am Bildschirmrand. Der Ausgangsplan erscheint und hat den Status „fehlerhaft“; der Nutzer wird wie in \refA{220} über „Fehler“"=Markierungen auf Konflikte hingewiesen. \\
+	Im Fehlerfall erscheint eine entspr. \gls{Notification} am Seitenrand. Der Ausgangsplan erscheint und hat den Status „fehlerhaft“; der Nutzer wird wie in \refA{220} über „Fehler“"=Markierungen auf Konflikte hingewiesen. \\
 	\hline
 	Im Erfolgsfall kann der Nutzer nun den vervollständigten Plan betrachten und durch Klick auf Module im Plan entspr. Info"=Leiste (\refA{130}) anzeigen.
 	Er entscheidet sich letztlich zwischen den drei genannten Optionen. 
 	& „Verwerfen“: Der Nutzer wird gebeten, das Verwerfen des Vorschlags zu bestätigen. \newline
 	„Übernehmen“: Der Vorschlag wird in den Ausgangsplan übernommen. Dem Nutzer erscheint die Bearbeitungsansicht mit dem vervollständigten „korrekten“ Plan. \newline
-	„Unter neuem Namen speichern“:  Der Nutzer wird via Popup nach einem Namen für den Vorschlag gefragt. \\
+	„Unter neuem Namen speichern“:  Der Nutzer wird via \gls{Popup} nach einem Namen für den Vorschlag gefragt. \\
 	\hline
 	„Verwerfen“: Der Nutzer wählt Bestätigung oder Abbruch. \newline
 	„Unter neuem Namen speichern“: Der Nutzer gibt den Namen ein. 
