@@ -90,6 +90,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	\item \nameref{A230} mit anschließendem Übernehmen des Plans
 	\item \nameref{A60} 
 	\item \nameref{A240}
+	\item \nameref{A85}
 	\item \nameref{A30}
 \end{scenario}
 
@@ -227,17 +228,23 @@ Folgende Funktionssequenzen müssen überprüft werden:
 
 \begin{usecase}{\lA{70}: Studienplan duplizieren}
 	{Hauptansicht, es exist. mind. ein Studienplan}
-	Nutzer klickt rechts eines Studienplans „\$Name“ auf „Duplizieren“.
+	Nutzer klickt neben einem Studienplan „\$Name“ auf „Duplizieren“.
 	& Eine Kopie des Studienplans namens „\$Name – Kopie~\#n“ taucht unter dem Kopierten in der Studienplanliste auf (\#n beschreibt die kleinste Zahl $\ge 1$, die keine Namenskollisionen hervorruft).
 \end{usecase}
 
 \begin{usecase}{\lA{80}: Studienplan löschen}
 	{Hauptansicht, es exist. mind. ein Studienplan}
-	Nutzer klickt rechts eines Studienplans auf „Löschen“.
+	Nutzer klickt neben einem Studienplan auf „Löschen“.
 	& Nutzer wird mittels Dialog gebeten, das Löschen des Studienplans zu bestätigen. \\
 	\hline
 	Nutzer entscheidet sich für Bestätigung oder Abbruch.
 	& Der Dialog verschwindet, dem Nutzer erscheint die Hauptansicht. Falls er das Löschen bestätigt hat, existiert der genannte Studienplan nun nicht mehr.
+\end{usecase}
+
+\begin{usecase}{\lA{85}: Studienplan exportieren}
+	{Hauptansicht, es exist. mind. ein Studienplan}
+	Nutzer klickt neben einem Studienplan auf „Exportieren“.
+	& Das System generiert eine PDF"=Zusammenfassung des Studienplans, welche dem Nutzer vom Browser zum Download angeboten wird.
 \end{usecase}
 
 \begin{usecase}{\lA{90}: Mehrere Studienpläne duplizieren/löschen}
@@ -320,18 +327,18 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \end{usecase}
 
 \begin{usecase}{\lA{140}: Modul in Plan einfügen}
-	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Modul in der Suchleiste aufgelistet}
-	Der Nutzer hält seine Maustaste über einem Modul in der Suchleiste gedrückt, zieht es in eine Semester"=Zeile und lässt es fallen.
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Modul oder Teilmodul in der Suchleiste aufgelistet}
+	Der Nutzer hält seine Maustaste über einem Modul oder einem Teilmodul in der Suchleiste gedrückt, zieht es in eine Semester"=Zeile und lässt es fallen.
 	& Das Modul erscheint an der Zielstelle und gilt als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“.
 \end{usecase}
 
-\begin{usecase}{\lA{150}: Multimodul in Plan einfügen}
-	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Multimodul in der Suchleiste aufgelistet}
-	Der Nutzer hält seine Maustaste über einem Multimodul in der Suchleiste gedrückt, zieht es in eine Start"=Semester"=Zeile und lässt es fallen.
-	& Die Untermodule erscheinen in der Tabelle in aufeinanderfolgenden Semester"=Zeilen (ggfs. werden neue Semester"=Zeilen hinzugefügt), beginnend bei der Start"=Zeile. Die Untermodule gelten als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“. \\
+\begin{usecase}{\lA{150}: Modul mit Teilmodulen in Plan einfügen}
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Modul mit Teilmodulen in der Suchleiste aufgelistet}
+	Der Nutzer hält seine Maustaste über einem Modul mit Teilmodulen in der Suchleiste gedrückt, zieht es in eine Start"=Semester"=Zeile und lässt es fallen.
+	& Die Teilmodule erscheinen in der Tabelle in aufeinanderfolgenden Semester"=Zeilen (ggfs. werden neue Semester"=Zeilen hinzugefügt), beginnend bei der Start"=Zeile. Die Teilmodule gelten als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“. \\
 	\hline
-	Der Nutzer kann nun mit der Maus über das „Anker“"=Symbol eines Untermoduls hovern.
-	& Alle zum Multimodul gehörigen Untermodule werden als zusammenhängend hervorgehoben, solange sich die Maus über dem Symbol befindet.
+	Der Nutzer kann nun mit der Maus über das „Anker“"=Symbol eines Teilmoduls hovern.
+	& Alle zum selben Modul gehörigen Teilmodule werden als zusammenhängend hervorgehoben, solange sich die Maus über dem Symbol befindet.
 \end{usecase}
 
 \begin{usecase}{\lA{160}: Modul aus Plan löschen}
