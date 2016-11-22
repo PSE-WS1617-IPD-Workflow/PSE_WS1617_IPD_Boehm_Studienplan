@@ -1,0 +1,9 @@
+\section{Systemmodelle}
+\begin{figure}[!htb]
+	\resizebox{\textwidth}{!} {
+		\input{diagrams/system_model}
+	}
+\end{figure}
+Das System basiert auf einer Client-Server-Architektur mit einer starken Trennung zwischen der Benutzerschnittstelle und dem Anwendungsserver. Der Nutzer gibt die benötigten Daten über die Benutzerschnittstelle ein. Die Verarbeitung findet serverseitig statt. Die \gls{Weboberflaeche} sendet hierfür eine Anfrage über einen \gls{Rest}-\gls{Webservice}
+ und erhält über diese Schnittstelle eine Antwort zurück. \\
+Auf dem Anwendungsserver werden die notwendigen Berechnungen durchgeführt, sowie die Produktdaten verarbeitet und gesichert.
