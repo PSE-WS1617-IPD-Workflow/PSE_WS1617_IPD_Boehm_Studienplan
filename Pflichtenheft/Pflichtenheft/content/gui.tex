@@ -41,7 +41,7 @@ Durch den \gls{Wizard} soll sichergestellt werden, dass der Nutzer alle für das
 
 \subsection{Hauptseite}
 \label{subsec:gui-hauptseite}
-Die Hauptseite des Systems (Abbildung \ref{fig:gui-hauptseite-1}) stellt für den Nutzer die zentrale Anlaufstelle für alle Anwendungsfälle dar. Der Nutzer kann auf dieser Seite seine vorhandenen \glspl{Studienplan} anzeigen, duplizieren, löschen sowie exportieren. Über das selektieren von mehreren Plänen, kann er auch Pläne vergleichen oder mehrere gleichzeitig löschen. Mittels des Plus-Buttons kann er darüber hinaus neue \glspl{Studienplan} erstellen.\newline
+Die Hauptseite des Systems (Abbildung \ref{fig:gui-hauptseite-1}) stellt für den Nutzer die zentrale Anlaufstelle für alle Anwendungsfälle dar. Der Nutzer kann auf dieser Seite seine vorhandenen \glspl{Studienplan} anzeigen, duplizieren, löschen sowie exportieren. Auch sieht der Nutzer über das farbige Icon bereits ob der Plan in seinem jetzigen Zustand verifiziert ist (grün) oder es ein Problem mit dem Plan gibt (rot). Über das selektieren von mehreren Plänen, kann er auch Pläne vergleichen oder mehrere gleichzeitig löschen. Mittels des Plus-Buttons kann er darüber hinaus neue \glspl{Studienplan} erstellen.\newline
 Beim Klick auf "Anzeigen" wird der Nutzer auf die Seite zur manuellen Bearbeitung von \glspl{Studienplan} (siehe Kapitel \ref{subsec:gui-manuelle-bearbeitung}) geleitet. Beim Klick auf das "+" wird er nach einem Namen für die Seite gefragt und anschließend ebenfalls auf die Seite zur manuellen Bearbeitung weitergeleitet.
 \begin{figure}[!htb]
 	\caption{}
@@ -52,7 +52,16 @@ Beim Klick auf "Anzeigen" wird der Nutzer auf die Seite zur manuellen Bearbeitun
 
 \subsection{Manuelle Studienplan-Bearbeitung}
 \label{subsec:gui-manuelle-bearbeitung}
-In dieser Ansicht (Abbildung \ref{fig:gui-bearbeitung-1}) ist es dem Nutzer möglich, seinen \gls{Studienplan} manuell zu bearbeiten. Hierfür kann er mittels \gls{Drag-and-Drop} \glspl{Modul} oder \glspl{Teilmodul} (z.B. das \gls{Teilmodul} Analysis I in der Abbildung) in das gewünschte Semester zu ziehen. Hierdurch wird es dem \gls{Studienplan} hinzugefügt.
+In dieser Ansicht (Abbildung \ref{fig:gui-bearbeitung-1}) ist es dem Nutzer möglich, seinen \gls{Studienplan} manuell zu bearbeiten. Hierfür kann er mittels \gls{Drag-and-Drop} \glspl{Modul} oder \glspl{Teilmodul} (z.B. das \gls{Teilmodul} Analysis I in der Abbildung) in das gewünschte Semester zu ziehen. Durch das Ziehen wird das \gls{Modul} dem \gls{Studienplan} hinzugefügt. Durch einen Klick auf den Namen des \gls{Studienplan}s kann auch dieser verändert werden.
+\subparagraph{Verifizierung}
+Mit einem Klick auf "Überprüfen" wird der Plan verifiziert (siehe Kapitel \ref{subsec:gui-verifizierung}).\newline
+Ist das Icon neben dem Button gelb wurde der aktuelle Stand des \gls{Studienplan}s noch nicht verifiziert. Ist das Icon rot ist die Verifizierung fehlgeschlagen. Wenn das Icon grün ist war die Verifizierung erfolgreich.
+\subparagraph{Generierung}
+Mit einem Klick auf den Button "Plan vervollständigen" gelangt man zum "Generierungs-Wizard" (siehe Kapitel \ref{subsec:gui-generierung}). Für die Generierung kann man bereits auf dieser Seite in der Sidebar (mit Hilfe der Pfeil-Buttons) Präferenzen für die Module angeben. Diese werden bei der späteren Generierung berücksichtigt.
+\subparagraph{Farbkonvention}
+\glspl{Modul} werden in der Sidebar auf der rechten Seite grau sobald sie bereits im \gls{Studienplan} vorhanden sind.\newline
+\glslink{Modul begonnen}{Begonnene} \glspl{Modul} werden mit blauem Hintergrund angezeigt.
+\glslink{Modul abgeschlossen}{Abgeschlossene} \glspl{Modul} werden mit einem grünen Haken angezeigt.
 \begin{figure}[!htb]
 	\caption{}
 	\label{fig:gui-bearbeitung-1}
@@ -60,8 +69,9 @@ In dieser Ansicht (Abbildung \ref{fig:gui-bearbeitung-1}) ist es dem Nutzer mög
 	\includegraphics[width=0.7\textwidth]{../GUI/ergebnisse/bearbeitung-1.png}
 \end{figure}
 
-\subsubsection{Module filtern}
-Module sind filterbar.
+\subsubsection{Modul-Sidebar}
+\label{subsec:gui-modul-sidebar}
+In der Seitenleiste kann man die Module nach verschiedenen Kriterien filtern (Abbildungen \ref{fig:gui-module-filtern-1} und \ref{fig:gui-module-filtern-2}). Hierfür gibt es zum einen vorgefertigte Filter, welche durch Buttons einstellbar sind und zum anderen eine Freitextsuche. Die ausgewählten Filter werden sofort angewendet.
 \begin{figure}[!htb]
 	\caption{}
 	\label{fig:gui-module-filtern-1}
@@ -76,7 +86,7 @@ Module sind filterbar.
 \end{figure}
 
 \subsubsection{Modul-Informationen anzeigen}
-Modulinformationen lassen sich auch anzeigen
+Beim Klick auf ein Modul wird die reguläre Modul-Filter-Sidebar unsichtbar (siehe Kapitel \ref{subsec:gui-modul-sidebar}) und es wird stattdessen eine Sidebar mit Informationen über das jeweilige Modul angezeigt (Abbildung \ref{fig:gui-modul-info-1}).
 \begin{figure}[!htb]
 	\caption{}
 	\label{fig:gui-modul-info-1}
@@ -86,7 +96,8 @@ Modulinformationen lassen sich auch anzeigen
 
 
 \subsection{Generierungs-Wizard}
-Hier kann man Stundenpläne generieren.
+\label{subsec:gui-generierung}
+Bei der Studienplan-Generierung wir der \gls{Benutzer} zunächst nach den Zielen des Studienplans gefragt (Abbildung \ref{fig:gui-generierung-1}). Anschließend kann er Präferenzen für \glspl{Modul} angeben (Abbildung \ref{fig:gui-generierung-2}). Auf der darauffolgenden Seite werden noch einige vom Ziel des Studienplans abhängige Fragen gestellt (Abbildung \ref{fig:gui-generierung-3}). Anschließend wird dann der generierte Studienplan angezeigt (Abbildung \ref{fig:gui-generierung-4}). Hier hat der \gls{Benutzer} die Wahl den Plan zu verwerfen, zu übernehmen oder unter einem anderen Namen zu speichern.
 \begin{figure}[!htb]
 	\caption{}
 	\label{fig:gui-generierung-1}
@@ -116,7 +127,10 @@ Hier kann man Stundenpläne generieren.
 \end{figure}
 
 \subsection{Verifizierung}
-Verifizierung ist auch möglich mittels dieser Darstellung.
+\label{subsec:gui-verifizierung}
+Nach einem Klick auf den Button "Überprüfen" wird die Verifizierung im Hintergrund durchgeführt.\newline
+Schlägt die Verifikation fehl (Abbildung \ref{fig:gui-verifizierung-2}), bekommt der \gls{Benutzer} eine Benachrichtigung in der unteren rechten Ecke angezeigt. Das Icon neben "Überprüfen" wird rot und die \glspl{Modul}, welche in dieser Form nicht belegt werden können erhalten einen roten Rahmen.\newline
+Ist die Verifikation erfolgreich (Abbildung \ref{fig:gui-verifizierung-1}), erscheint ein grünes Icon neben dem Button "Überprüfen" und der \gls{Benutzer} erhält ebenfalls eine Benachrichtigung in der unteren rechten Ecke.
 \begin{figure}[!htb]
 	\caption{}
 	\label{fig:gui-verifizierung-1}
@@ -131,7 +145,7 @@ Verifizierung ist auch möglich mittels dieser Darstellung.
 \end{figure}
 
 \subsection{Profil}
-So sieht das Profil aus.
+Im Profil (Abbildung \ref{fig:gui-profil-1}) ist es dem Benutzer möglich, seine bisher \glslink{Modul begonnen}{begonnenen} und \glslink{Modul abgeschlossen}{abgeschlossenen} \glspl{Modul} zu bearbeiten.
 \begin{figure}[!htb]
 	\caption{}
 	\label{fig:gui-profil-1}
