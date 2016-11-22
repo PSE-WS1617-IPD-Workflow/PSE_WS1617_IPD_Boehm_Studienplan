@@ -107,7 +107,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	\item \nameref{A170}
 	\item \nameref{A110}
 	\item \nameref{A190}
-	\item \nameref{A180} (selbes Modul – es ist dann im Like-Status) 
+	\item \nameref{A180} (selbes Modul – es ist dann positiv bewertet) 
 	\item \nameref{A140}
 	\item \nameref{A120}
 	\item \nameref{A240}
@@ -304,10 +304,10 @@ Folgende Funktionssequenzen müssen überprüft werden:
 		\item Dozent, ECTS, Modulbeschreibung, evtl. Turnus, Dauer (in Semestern)
 		\item aktuell gewählte ECTS (bezügl. gewählter Teilleistungen)
 		\item optionale Teilleistungen und Pflichtbestandteile (dazu ECTS und Verantwortliche)
-		\item Symbol"=Buttons zum Liken (\refA{180}) und Disliken (\refA{190}) des Moduls
+		\item Buttons zum positiven (\refA{180}) und negativen Bewerten(\refA{190})  des Moduls
 	\end{tblitemize} \\
 	\hline
-	Nutzer kann nun das Modul liken/disliken (\refA{180} bzw. \refA{190}).
+	Nutzer kann nun das Modul positiv/negativ bewerten (\refA{180} bzw. \refA{190}).
 	& Reaktion wie in \refA{180} bzw. \refA{190}. \\
 	\hline
 	Nutzer klickt im Popup auf den Schließen"=Button. 
@@ -356,20 +356,20 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	& Das Modul verschiebt sich dorthin, die Semester-ECTS der Ausgangs"= und der Ziel"=Zeile ändern sich entsprechend und der Überprüfungsstatus de Studienplans ändert sich zu „nicht überprüft“.
 \end{usecase}
 
-\begin{usecase}{\lA{180}: Modul liken}
+\begin{usecase}{\lA{180}: Modul positiv bewerten}
 	{Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul in der Suchleiste aufgelistet}
-	Nutzer klickt auf das Like-Symbol eines der in der Suchleiste aufgeführten Module.
-	& Modul bereits im Like-Zustand? $\Rightarrow$ Modul verlässt den Like-Zustand \newline
-	Ansonsten $\Rightarrow$ verlässt das Modul evtl. den Dislike-Zustand und kommt in den Like-Zustand. \newline
-	Das Like-Symbol erscheint entspr. aktiv bzw. inaktiv. \\
+	Nutzer klickt auf das positive Bewertungs"=Symbol eines der in der Suchleiste aufgeführten Module.
+	& Modul bereits positiv bewertet? $\Rightarrow$ Modul nicht mehr positiv (also neutral) bewertet. \newline
+	Ansonsten $\Rightarrow$ ist das Modul evtl. nicht mehr negativ, sondern positiv bewertet. \newline
+	Das positive Bewertungs"=Symbol erscheint entspr. aktiv bzw. inaktiv. \\
 \end{usecase}
 
-\begin{usecase}{\lA{190}: Modul disliken}
+\begin{usecase}{\lA{190}: Modul negativ bewerten}
 	{Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul in der Suchleiste aufgelistet}
-	Nutzer klickt auf das Dislike-Symbol eines der in der Suchleiste aufgeführten Module.
-	& Modul bereits im Dislike-Zustand? $\Rightarrow$ Modul verlässt den Dislike-Zustand \newline
-	Ansonsten $\Rightarrow$ verlässt das Modul evtl. den Like-Zustand und kommt in den Dislike-Zustand. \newline
-	Das Dislike-Symbol erscheint entspr. aktiv bzw. inaktiv. \\
+	Nutzer klickt auf das negative Bewertungs"=Symbol eines der in der Suchleiste aufgeführten Module.
+	& Modul bereits negativ bewertet? $\Rightarrow$ Modul nicht mehr negativ (also neutral) bewertet. \newline
+	Ansonsten $\Rightarrow$ ist das Modul evtl. nicht mehr positiv, sondern negativ bewertet. \newline
+	Das negative Bewertungs"=Symbol erscheint entspr. aktiv bzw. inaktiv. \\
 \end{usecase}
 
 \begin{usecase}{\lA{200}: Semester im Plan hinzufügen}
@@ -421,7 +421,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 		\item Semesterbegrenzungen für ECTS
 		\item Minimale/Maximale Semesterzahl
 		\item Angabe der gewünschten Vertiefungsrichtungen
-		\item Präferenzen für Module (Like oder Dislike)
+		\item Präferenzen für Module (positive oder negative Bewertungen)
 	\end{tblitemize} \\
 	\hline
 	Nutzer gibt geforderte Daten ein und bestätigt.
