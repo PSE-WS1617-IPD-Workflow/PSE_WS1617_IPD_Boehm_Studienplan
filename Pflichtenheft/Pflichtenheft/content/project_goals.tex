@@ -5,13 +5,15 @@
 	\item Webbasierte Benutzeroberfläche:
 	\begin{itemize}[nosep]
 		\item Benutzerorientiert 
-		\item Modular erweiterbar
 		\item Nutzer: Studenten
 	\end{itemize}
 	\item Funktionen:
 	\begin{itemize}[nosep]
-		\item Studienpläne manuell bearbeiten ( Module einfügen / löschen) ?
-		\item Generierung $\rightarrow$ Erstellung von möglichen Studienplänen
+		\item Login
+			\begin{itemize}[nosep]
+					\item Speichern von: Studiengang, Studienbeginn, bestandene und begonnene Prüfungsleistungen, bereits erstellte Studienpläne
+				\end{itemize}
+		\item Generierung $\rightarrow$ Erstellung/Vervollständigung von möglichen Studienplänen
 		\item Berücksichtigung von Constraints:
 		\begin{itemize}[nosep]
 			\item Unterscheidung zwischen Pflicht- und Wahlveranstaltungen
@@ -21,52 +23,52 @@
 			\item gewünschte Module
 			\item bisheriger Studienverlauf
 		\end{itemize}
+		\item Studienpläne manuell bearbeiten ( Module einfügen / löschen)
+		\item Speichern und Löschen von Studienplänen
 		\item Verifizierung von Studienplänen
 		\begin{itemize}[nosep]
 			\item Ermöglicht dieser Studienplan ein erfolgreiches Abschließen des Studiums?
 			\item Sind alle Constraints erfüllt?
 		\end{itemize}
-		\item Berücksichtigung des bisherigen Studienverlaufs
 	\end{itemize}
 	\item Gegebene Algorithmen zur Generierung und Verifizierung einbinden
 	\item Modularität
+	\item Modular erweiterbar
 	\item Objektorientierung
 	\item Studienplan als Workflow modellieren
 	\begin{itemize}[nosep]
 		\item Module/Lehrveranstaltungen als Aktivitäten
-		\item Graphische Darstellung als Workflow
 	\end{itemize}
 	\item Module modellieren mit folgenden Details: Name, ECTS-Punkte, Angebot im Sommer- oder Wintersemester, Art der Veranstaltung
+	\item Module auf einen Studienplan bezogen positiv oder negativ bewerten und dies dem Studienplan zugeordnet speichern
+	\item Modulübersicht
+		\item Alle Module in einer Liste
+			\begin{itemize}[nosep]
+				\item betrachten können
+				\item Suche nach Namen
+				\item Anklicken für Details
+				\item In Stundenplan ziehen können
+			\end{itemize}
 \end{itemize}
 
 \subsection{Wunschkriterien}
 \label{subsec:project_goals-wunschkriterien}
 \begin{itemize}[nosep]
-	\item Mögliches Login über Shibboleth
-	\begin{itemize}[nosep]
-		\item Speichern von: Studiengang, Studienbeginn, bestandene und begonnene Prüfungsleistungen, bereits erstellte Studienpläne
-	\end{itemize}
-	\item Speichern und löschen von Studienplänen
+	\item  Login über Shibboleth	
 	\item Benennung von Studienplänen
 	\item Duplizieren von Studienplänen
 	\item Studienpläne exportieren
 	\item Vergleichsansicht für 2 (mehrere?) Pläne 
 	\item Modulübersicht
-	\begin{itemize}[nosep]
-		\item Alle Module in einer Liste
-		\begin{itemize}[nosep]
-			\item Durchstöbern können
-			\item Suche nach Namen
-			\item Anklicken für Details
-			\item In Stundenplan ziehen können
-		\end{itemize}
-		\item Filterbar mit Filtern: 
+	\begin{itemize}[nosep]	
+		\item Suche durch folgende Filter spezifizierbar : 
 		\begin{itemize}[nosep]
 			\item Angebotenes Semester
 			\item Veranstaltungsart
 			\item Fachrichtung
 			\item Pflicht-/Wahlmodul
-			\item Kategorie?
+			\item Kategorie
+			\item ECTS-Bereich
 		\end{itemize}
 	\end{itemize}
 	\item Rückgängig-Button
@@ -75,11 +77,18 @@
 		\item benötigte ECTS-Punkte
 		\item ausgeschlossene Module
 	\end{itemize}
+	\item Studienpläne mit anderen teilen
 \end{itemize}
 \subsection{Abgrenzungskriterien}
 \begin{itemize}[nosep]
 	\item kein Notenportal
 	\item keine Vernetzung zwischen Studenten
-	\item keine Vernetzung zum Prüfungsportal
+	\item keine Schnittstelle zum Prüfungsportal
 	\item keine Unterstützung von parallelen Studiengängen
+	\item der Nutzer kann keine eigenen Module erstellen
+	\item Vorlesungsuhrzeiten und -details sind unerheblich
+	\item nicht handyfähig (bei Bedarf: per App)
+	\item Lösungsalgorithmen werden nicht entworfen
+	\item Sonderanträge können nicht berücksichtigt/eingebracht werden
+	\item was nicht im Modulhandbuch genannt ist, ist nicht möglich
 \end{itemize}

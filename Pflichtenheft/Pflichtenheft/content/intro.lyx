@@ -1,0 +1,133 @@
+#LyX file created by tex2lyx 2.0.8.1
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\paperfontsize default
+\spacing single
+\use_hyperref 0
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 0
+\use_mathdots 0
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+
+Einleitung
+\end_layout
+
+\begin_layout Paragraph
+
+Aufgabenstellung
+\end_layout
+
+\begin_layout Standard
+
+Ziel der Praxis der Software-Entwicklung (PSE) ist die Entwicklung eines mittelgroÃen Systems im Team mit objektorientierter Softwaretechnik. Dieses soll circa 10
+\begin_inset space ~
+
+\end_inset
+
+kLOC umfassen. Hierzu wird ein objektorientierter Entwurf auf Basis von UML-Diagrammen geschaffen und unter Nutzung von Java, JavaScript, HTML und SQL implementiert. Im Anschluss soll mit JCov oder JUnit die QualitÃ¤tssicherung durchgefÃ¼hrt werden.
+\begin_inset Newline newline
+\end_inset
+
+ Das Projekt 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+enquote
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+Studienplanung als Generierung von Workflows mit Compliance"=Anforderungen: Planerstellung und Visualisierung
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ umfasst die Entwicklung einer webbasierten BenutzeroberflÃ¤che eines ebenfalls zu entwickelnden Systems zur Studienplanung. Sinn dieses Systems ist das Aufstellen von StudienplÃ¤nen, angepasst an BedÃ¼rfnisse, bereits erbrachte Leistungen und ZeitmÃ¶glichkeiten des Studenten. Dies soll sowohl manuell, als auch automatisch mÃ¶glich sein. Die Algorithmen zur Generierung und Verifizierung von Workflows unter BerÃ¼cksichtigen von Constraints sind in Form von Black Boxes gegeben und kÃ¶nnen auf die StudienplÃ¤ne angewendet werden. Das gesamte System soll modular und gut erweiterbar sein.
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+Im Detail heiÃt das:
+\end_layout
+
+\begin_layout Standard
+
+Die graphische OberflÃ¤che des Systems soll intuitiv bedienbar und benutzerzentriert gestaltet werden. Als Benutzer sind Studenten zu erwarten. Eine zusÃ¤tzliche DozentenoberflÃ¤che soll modular hinzugefÃ¼gt werden kÃ¶nnen. Das System soll dem Nutzer auf dem bisherigen Studienverlauf basierend VorschlÃ¤ge in Form von StudienplÃ¤nen zur Planung der nÃ¤chsten Semester liefern. Der Studienplan soll als Ablauf(Workflow) aufgefasst werden, so dass die Black-Boxes zur Generierung und Verifizierung von Workflows eingebunden werden kÃ¶nnen. Die gegebenen Daten mÃ¼ssen hierzu passend umgewandelt und erhaltene Ergebnisse fÃ¼r den Nutzer verstÃ¤ndlich verwertet werden. Als AktivitÃ¤ten der Workflows werden die Module und andere Lehrveranstaltungen aufgefasst. Module werden mit ihrem Namen, ECTS-Punkten, Angebot im Winter- oder Sommersemester und Art der Veranstaltung modelliert. Die Module sollen zu einem sinnvollen Workflow zusammengefÃ¼gt werden. Die Workflows werden von Constraints beeinflusst. Dies sind: die Unterscheidung zwischen Pflicht- und Wahlveranstaltungen, Wahl eines Vertiefungsfaches, AbhÃ¤ngigkeiten zwischen Modulen (Voraussetzungen, ZusammenhÃ¤nge, Ãberschneidungen), zur VerfÃ¼gung stehende Semesteranzahl, gewÃ¼nschte Module, bisheriger Studienverlauf, weitere gewÃ¼nschte Eigenschaften.
+\begin_inset Newline newline
+\end_inset
+
+ Auch graphisch sollen die StudienplÃ¤ne als Workflows dargestellt werden.
+\end_layout
+
+\end_body
+\end_document
