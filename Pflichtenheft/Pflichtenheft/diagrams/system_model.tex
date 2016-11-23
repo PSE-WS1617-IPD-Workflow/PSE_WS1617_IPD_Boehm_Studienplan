@@ -22,7 +22,9 @@
 	\end{umlpackage}
 	
 	\begin{umlpackage}[x=-8, y=0]{Client}
+	\begin{umlcomponent}[name=browser]{\gls{Internetbrowser}}
 	\begin{umlcomponent}[name=ob]{\gls{Weboberflaeche}}
+	\end{umlcomponent}
 	\end{umlcomponent}
 	\end{umlpackage}
 	\umlassemblyconnector[interface=REST-Webservice]{Programm-Logik}{ob}
