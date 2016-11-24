@@ -5,25 +5,24 @@
 	\item Webbasierte Benutzeroberfläche:
 	\begin{itemize}[nosep]
 		\item Benutzerorientiert 
-		\item Nutzer: Studenten
+		\item \gls{Benutzer}: Studenten
 	\end{itemize}
 	\item Funktionen:
 	\begin{itemize}[nosep]
 		\item Login
 			\begin{itemize}[nosep]
-					\item Speichern von: Studiengang, Studienbeginn, bestandene und begonnene Prüfungsleistungen, bereits erstellte Studienpläne
+					\item Speichern von: \gls{Studiengang}, \gls{Semester des Studienbeginns}, bestandene und begonnene Prüfungsleistungen, bereits erstellte \glspl{Studienplan}
 				\end{itemize}
-		\item Generierung $\rightarrow$ Erstellung/Vervollständigung von möglichen Studienplänen
-		\item Berücksichtigung von Constraints:
+		\item Generierung $\rightarrow$ Erstellung/Vervollständigung von möglichen \glspl{Studienplan} unter Berücksichtigung von Constraints:
 		\begin{itemize}[nosep]
 			\item Unterscheidung zwischen Pflicht- und Wahlveranstaltungen
 			\item Wahl eines Vertiefungsfaches
-			\item Abhängigkeiten zwischen Modulen (Voraussetzungen, Zusammenhänge, Überschneidungen)
+			\item Abhängigkeiten zwischen \glspl{Modul}n (Voraussetzungen, Zusammenhänge, Überschneidungen)
 			\item zur Verfügung stehende Semesteranzahl
-			\item gewünschte Module
+			\item gewünschte \glspl{Modul}
 			\item bisheriger Studienverlauf
-		\end{itemize}
-		\item Studienpläne manuell bearbeiten ( Module einfügen / löschen)
+			\end{itemize}
+		\item \glspl{Studienplan} manuell bearbeiten ( Module einfügen / löschen)
 		\item Speichern und Löschen von Studienplänen
 		\item Verifizierung von Studienplänen
 		\begin{itemize}[nosep]
@@ -31,14 +30,8 @@
 			\item Sind alle Constraints erfüllt?
 		\end{itemize}
 	\end{itemize}
-	\item Gegebene Algorithmen zur Generierung und Verifizierung einbinden
-	\item Modularität
-	\item Modular erweiterbar
-	\item Objektorientierung
-	\item Studienplan als Workflow modellieren
-	\begin{itemize}[nosep]
-		\item Module/Lehrveranstaltungen als Aktivitäten
-	\end{itemize}
+	\item \glslink{modular}{Modularität}
+	\item \glslink{modular}{Modular} erweiterbar
 	\item Module modellieren mit folgenden Details: Name, ECTS-Punkte, Angebot im Sommer- oder Wintersemester, Art der Veranstaltung
 	\item Module auf einen Studienplan bezogen positiv oder negativ bewerten und dies dem Studienplan zugeordnet speichern
 	\item Modulübersicht
@@ -69,7 +62,7 @@
 			\item Kategorie
 			\item ECTS-Bereich
 		\end{itemize}
-		\item Detailansicht eines Moduls für Details
+		\item Detailansicht eines Moduls bei Anklicken
 	\end{itemize}
 	\item Rückgängig-Button
 	\item Weitere Constraints
@@ -88,7 +81,7 @@
 	\item der Nutzer kann keine eigenen Module erstellen
 	\item Vorlesungsuhrzeiten und -details sind unerheblich
 	\item nicht handyfähig (bei Bedarf: per App)
-	\item Lösungsalgorithmen werden nicht entworfen
+	\item Der Entwurf von guten Generierungsalgorithmen ist nicht Ziel dieses Projektes
 	\item Sonderanträge können nicht berücksichtigt/eingebracht werden
 	\item was nicht im Modulhandbuch genannt ist, ist nicht möglich
 \end{itemize}
