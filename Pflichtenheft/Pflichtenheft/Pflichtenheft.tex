@@ -21,6 +21,9 @@
 \usepackage{hhline}
 \usepackage{placeins}
 \usepackage{needspace}
+\usepackage[toc, page]{appendix}
+
+\addto\captionsngerman{\let\appendixtocname\appendixname\let\appendixpagename\appendixname}
 
 % fix hyphenation
 \hyphenation{Log-out Log-in Ak-tions Ak-tion ge-öff-net liken dis-liken Like Dis-like No-ti-fi-ca-tion Mo-dule}
@@ -78,9 +81,10 @@
 
 \input{content/dev_environment}
 
-\appendix
+\newpage
+\begin{appendices}
+	\input{content/addendum}
 
-\input{content/addendum}
-
-\printglossaries
+	\printglossaries
+\end{appendices}
 \end{document}
