@@ -1,5 +1,6 @@
 \section{Globale Testfälle}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\arraystretch}{1.24}  % for proper row spacing
 \setlength{\LTpre}{3pt}  % adjust top margin of longtables
 \setlength{\LTpost}{0pt} % adjust bottom margin of longtables
@@ -33,7 +34,7 @@
 % #2: Initial state description
 \newenvironment{usecase}[2]{
 	\subsubsection*{#1}  
-	\addcontentsline{toc}{subsubsection}{#1} 
+	%\addcontentsline{toc}{subsubsection}{#1} 
 	\vspace{-\baselineskip}\textbf{Ausgangs-Stand: } #2
 	\begin{longtable}{|p{.44\linewidth}|p{.55\linewidth}|}
 		\hhline{|=|=|}
@@ -69,6 +70,15 @@
 % #1: number of the A-abbrev. (without leading A)
 \newcommand{\refA}[1]{\hyperref[A#1]{/A#1/}}
 
+\newcommand{\opt}{*} 
+
+\newcommand{\case}[1]{\textit{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Im Folgenden werden Testszenarien und Anwendungsfälle beschrieben, die das Systemverhalten benutzungsorientiert beschreiben.
+
+Eine Stern-Markierung (\opt) weist in diesem Kapitel auf Kann-Anforderungen hin, deren spätere Umsetzung nicht garantiert wird.
 
 \subsection{Testszenarien}
 Folgende Funktionssequenzen müssen überprüft werden:
@@ -102,7 +112,6 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	\item \nameref{A140}
 	\item \nameref{A160}
 	\item \nameref{A110} 
-	\item \nameref{A150} und über das „Anker“"=Symbol eines Bestandteils davon \gls{hovern}
 	\item \nameref{A215} (danach: ausgeblendet)
 	\item \nameref{A170}
 	\item \nameref{A110}
@@ -113,19 +122,20 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	\item \nameref{A240}
 \end{scenario*}
 
-\begin{scenario}{Profil bearbeiten}
+\begin{scenario*}{Profil bearbeiten}
+	{Nutzer ist bereits eingeloggt und hat mind. einen Studienplan.}
 	\item \nameref{A55}
 	\item \nameref{A215} (danach: eingeblendet)
 	\item \nameref{A110}
 	\item \nameref{A40} – dabei Änderung der Semester-Belegung
 	\item Anschließend sollte die Änderung im Plan gezeigt werden und die Suchleiste sich im selben Zustand befinden wie vor Schritt 4.
-\end{scenario}
+\end{scenario*}
 
 \begin{scenario}{Vervollständigung mit mehreren Alternativen}
 	\item \nameref{A20}
 	\item \nameref{A50}
 	\item \nameref{A110}
-	\item \nameref{A140} oder \nameref{A150}
+	\item \nameref{A140}
 	\item Schritte 3–4 mehrmals wiederholen, sodass Abhängigkeitsfehler vorhanden sind und der Plan noch unvollständig ist
 	\item \nameref{A220}: Es werden Abhängigkeitsfehler gemeldet
 	\item Mittels \nameref{A160} und \nameref{A170} Abhängigkeitsfehler beheben
@@ -161,6 +171,19 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \subsection{Anwendungsfälle}
 
 \begin{comment}
+	•Profil-Verwaltung
+	  A10–A30, A40
+	•Studienplan-Verwaltung
+	  A50–A100
+	•Modulnavigation
+	  A110–130
+	•Studienplan-Bearbeitung und Navigation
+	  A140–A175, A200–A210, A215, A240
+	•A220: Studienplan auf Korrektheit prüfen
+	•A230: Studienplan vervollständigen lassen
+\end{comment}
+
+\begin{comment}
 	%use case diagrams are nice, but about 30 use cases are a little bit too much I guess
 	\begin{center}
 		\resizebox{\textwidth}{!} 
@@ -182,7 +205,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \begin{usecase}{\lA{20}: Login}
 	{Geöffnete Seite, unangemeldet}
 	Nutzer loggt sich via \gls{Shibboleth Identity Provider} ein
-	& Dem Nutzer erscheint die Hauptansicht mit ggfs. bereits angelegten Studienplänen
+	& Dem Nutzer erscheint die Hauptansicht mit ggf. bereits angelegten Studienplänen
 \end{usecase}
 
 \begin{usecase}{\lA{30}: Logout}
@@ -197,11 +220,11 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	& Dem Nutzer erscheint ein Formular zur Eingabe von \glslink{Semester des Studienbeginns}{Studienbeginn} und \gls{Studiengang}. \\ 
 	\hline
 	Nutzer gibt diese Informationen ein und drückt auf den Weiter"=Knopf.
-	& Dem Nutzer erscheint ein Formular zur Eingabe des aktuellen Studienstands: Er kann festlegen, welche Prüfungsleistungen er schon \glslink{Modul begonnen}{begonnen} und in welchem Semester er sie \glslink{Modul abgeschlossen}{bestanden} hat. Sechs leere Semester"=Zeilen sind als Startwert vorgegeben.\\
+	& Dem Nutzer erscheint ein Formular zur Eingabe des aktuellen Studienstands: Er kann festlegen, welche Prüfungsleistungen er  in welchem Semester \glslink{Modul abgeschlossen}{bestanden} hat. Als Startwert sind so viele Semester"=Zeilen vorgegeben, wie der Nutzer laut vorheriger Angabe bereits abgeschlossen hat.\\
 	\hline
-	Nutzer kann nun Module als begonnen markieren, indem er sie in den Studienplan ins jeweilige Semester hineinzieht (\refA{140}), und sie als bestanden markieren, indem er den entsprechenden Knopf im jeweiligen Modul anwählt. Modulfilterung (\refA{110}) ist in dieser Ansicht möglich.
+	Nutzer kann nun Module als bestanden markieren, indem er sie in den Studienplan ins jeweilige Semester hineinzieht (\refA{140}). Modulfilterung (\refA{110}) ist in dieser Ansicht möglich.
 	Nach Eingabe dieser Informationen drückt er den Weiter"=Knopf.
-	& Dem Nutzer erscheint die Ansicht, in welcher er den Profil"~Knopf betätigt hat, oder im Fall \refA{10} die Hauptansicht.
+	& Dem Nutzer erscheint die Ansicht, in welcher er den Profil"~Knopf betätigt hat, oder im Fall \refA{10} die Hauptansicht. Sofern er seine \glslink{Modul abgeschlossen}{bestandenen Prüfungsleistungen} verändert hat, gelten alle bereits vorhandenen Studienpläne als „nicht überprüft“.
 \end{usecase}
 
 \begin{usecase}{\lA{50}: Neuen Studienplan anlegen}
@@ -219,16 +242,16 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	& Der gewählte Studienplan öffnet sich in der Bearbeitungsansicht.
 \end{usecase}
 	
-\begin{usecase}{\lA{60}: Studienplan umbenennen}
+\begin{usecase}{\lA{60}: Studienplan umbenennen\opt}
 	{Bearbeitungsansicht mit offenem Studienplan}
 	Nutzer klickt auf den Namen des Studienplans
 	& Dem Nutzer erscheint ein \gls{Popup}, welches ihn nach dem neuen Studienplan"=Namen fragt; voreingestellt ist der alte Name. \\
 	\hline
 	Nutzer gibt gewünschten Namen ein und bestätigt.
-	& Das \gls{Popup} verschwindet und die vorherige Ansicht erscheint wieder, wobei sich der Name des Studienplans sich geändert hat.
+	& Das \gls{Popup} verschwindet und die vorherige Ansicht erscheint wieder, wobei der Name des Studienplans sich geändert hat.
 \end{usecase}
 
-\begin{usecase}{\lA{70}: Studienplan duplizieren}
+\begin{usecase}{\lA{70}: Studienplan duplizieren*}
 	{Hauptansicht, es exist. mind. ein Studienplan}
 	Nutzer klickt neben einem Studienplan „\$Name“ auf „Duplizieren“.
 	& Eine Kopie des Studienplans namens „\$Name – Kopie~\#n“ taucht unter dem Kopierten in der Studienplanliste auf (\#n beschreibt die kleinste Zahl $\ge 1$, die keine Namenskollisionen hervorruft).
@@ -243,20 +266,21 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	& Der Dialog verschwindet, dem Nutzer erscheint die Hauptansicht. Falls er das Löschen bestätigt hat, existiert der genannte Studienplan nun nicht mehr.
 \end{usecase}
 
-\begin{usecase}{\lA{85}: Studienplan exportieren}
+\begin{usecase}{\lA{85}: Studienplan exportieren\opt}
 	{Hauptansicht, es exist. mind. ein Studienplan}
 	Nutzer klickt neben einem Studienplan auf „Exportieren“.
 	& Das System generiert eine PDF"=Zusammenfassung des Studienplans, welche dem Nutzer vom Browser zum Download angeboten wird.
 \end{usecase}
 
-\begin{usecase}{\lA{90}: Mehrere Studienpläne duplizieren/löschen}
+\begin{usecase}{\lA{90}: Mehrere Studienpläne duplizieren\opt/löschen/teilen\opt}
 	{Hauptansicht, es exist. mind. ein Studienplan}
 	Nutzer wählt einen oder mehrere Studienpläne mittels der Anwahlkästchen aus (oder auch alle durch Wählen des obersten Hakens in der Leiste).
-	Danach wählt der Nutzer im Aktions"=Wahlfeld „Duplizieren“ oder „Löschen“.
-	& Es folgt das Vorgehen wie in \refA{70} bzw. \refA{80}, zusammengefasst angewandt auf die markierten Studienpläne.
+	Danach wählt der Nutzer im Aktions"=Wahlfeld „Duplizieren“\opt, „Löschen“ oder „Teilen“\opt.
+	& \case{„Duplizieren“/„Löschen“}: Es folgt das Vorgehen wie in \refA{70} bzw. \refA{80}, zusammengefasst angewandt auf die markierten Studienpläne. \newline
+	\case{„Teilen“}: Dem Nutzer wird ein \gls{Popup} angezeigt, in welchem URLs zum Teilen der gewählten Studienpläne kopierfähig aufgelistet werden. Die derart geteilten Studienpläne sind nur schreibgeschützt von außen einsehbar.
 \end{usecase}
 
-\begin{usecase}{\lA{100}: Vergleichsansicht für Studienpläne}
+\begin{usecase}{\lA{100}: Vergleichsansicht für Studienpläne\opt}
 	{Hauptansicht, es exist. mind. zwei Studienpläne}
 	Nutzer wählt genau zwei Studienpläne mittels Anwahlkästchen aus. Im Aktions"=Wahlfeld betätigt er die Vergleichsansicht.
 	& Dem Nutzer erscheint die Vergleichsansicht. \\
@@ -269,24 +293,24 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	{Bearbeitungsansicht, Studienplan geöffnet, Suchleiste wird angezeigt}
 	Der Nutzer kann in der Suchleiste Module filtern durch Wählen...
 	\begin{tblitemize}
-		\item des ECTS"=Intervalls (Klick auf „ECTS“ und Ziehen an den Reglern)
-		\item der Veranstaltungsart $\in\hspace{-3pt}\{$ Vorlesung, Praktikum, Seminar $\}$ (Klick auf „Art“ und Auswahl)
-		\item der Kategorie (bzw. des Themenbereiches) (Klick auf „Kategorie“ und Auswahl)
-		\item des Turnus $\in \{$ WS, SS, WS/SS $\}$ (Klick auf „WS/SS“ und Auswahl)
-		\item ob Pflicht-, Wahlveranstaltungen oder beides anzuzeigen ist (Klick auf „Pflicht/Wahl“ und Auswahl)
-		\item der Fachrichtung (Klick auf „Fachrichtung“ und Auswahl)
-		\item ob bereits platzierte Module anzuzeigen sind (Klick auf „mit Platzierten?“ und Auswahl)
+		\item des ECTS"=Intervalls\opt (Klick auf „ECTS“ und Ziehen an den Reglern)
+		\item der Veranstaltungsart\opt $\in\hspace{-3pt}\{$ Vorlesung, Praktikum, Seminar $\}$ (Klick auf „Art“ und Auswahl)
+		\item der Kategorie\opt (bzw. des Themenbereiches) (Klick auf „Kategorie“ und Auswahl)
+		\item des Turnus\opt $\in \{$ WS, SS, WS/SS $\}$ (Klick auf „WS/SS“ und Auswahl)
+		\item ob Pflicht-, Wahlveranstaltungen oder beides anzuzeigen ist\opt (Klick auf „Pflicht/Wahl“ und Auswahl)
+		\item der Fachrichtung\opt (Klick auf „Fachrichtung“ und Auswahl)
+		\item ob bereits platzierte Module anzuzeigen sind\opt (Klick auf „mit Platzierten?“ und Auswahl)
 		\item eines Suchbegriffes, nach welchem die Titel der Module gefiltert werden (Eingabe von Text ins Suchfeld)
 	\end{tblitemize}
 	& In der Suchleiste werden entspr. der Nutzerfilterung alle Module angezeigt, die...
 	\begin{tblitemize}
-		\item im gewählten ECTS"=Intervall liegen
-		\item der gewählten Veranstaltungsart entsprechen
-		\item zur gewählten Kategorie gehören
-		\item im gewählten Turnus stattfinden
-		\item Pflicht-, Wahlveranstaltungen oder beides sind
-		\item zur gewählten Fachrichtung gehören
-		\item bereits platziert worden sind oder nicht
+		\item im gewählten ECTS"=Intervall liegen\opt
+		\item der gewählten Veranstaltungsart entsprechen\opt
+		\item zur gewählten Kategorie gehören\opt
+		\item im gewählten Turnus stattfinden\opt
+		\item Pflicht-, Wahlveranstaltungen oder beides sind\opt
+		\item zur gewählten Fachrichtung gehören\opt
+		\item bereits platziert worden sind oder nicht\opt
 		\item den gewählten Suchbegriff im Titel enthalten
 	\end{tblitemize} \\
 	\hline
@@ -294,7 +318,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	& Entsprechende Filter treten außer Kraft und die Suchleiste aktualisiert sich wie oben.
 \end{usecase}
 
-\begin{usecase}{\lA{120}: Info-Popup zu einem Modul anzeigen}
+\begin{usecase}{\lA{120}: Info-Popup zu einem Modul anzeigen\opt}
 	{Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul im Studienplan verteilt}
 	Nutzer klickt in der Tabelle auf ein Modul.
 	& Das Modul wird farblich hervorgehoben. \\
@@ -319,7 +343,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	& (Alternative: Das \gls{Popup} schließt sich, der Mausklick außerhalb des \gls{Popup}s wird entsprechend ausgeführt.)
 \end{usecase}
 
-\begin{usecase}{\lA{130}: Info-Leiste zu einem Modul anzeigen}
+\begin{usecase}{\lA{130}: Info-Leiste zu einem Modul anzeigen\opt}
 	{Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul in der Suchleiste aufgelistet}
 	Nutzer klickt auf ein Modul in der Suchleiste.
 	& Die Suchleiste verwandelt sich in eine Info-Leiste und zeigt den Inhalt von \refA{120} an. \\
@@ -329,18 +353,9 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \end{usecase}
 
 \begin{usecase}{\lA{140}: Modul in Plan einfügen}
-	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Modul oder \gls{Teilmodul} in der Suchleiste aufgelistet}
-	Der Nutzer hält seine Maustaste über einem Modul oder einem Teilmodul in der Suchleiste gedrückt, zieht es in eine Semester"=Zeile und lässt es fallen.
+	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Modul in der Suchleiste aufgelistet}
+	Der Nutzer hält seine Maustaste über einem Modul in der Suchleiste gedrückt, zieht es in eine Semester"=Zeile und lässt es fallen.
 	& Das Modul erscheint an der Zielstelle und gilt als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“.
-\end{usecase}
-
-\begin{usecase}{\lA{150}: Modul mit Teilmodulen in Plan einfügen}
-	{Bearbeitungsansicht, Studienplan geöffnet, mind. eine Semester"=Zeile vorhanden, mind. ein unplatziertes Modul mit \glslink{Teilmodul}{Teilmodulen} in der Suchleiste aufgelistet}
-	Der Nutzer hält seine Maustaste über einem Modul mit Teilmodulen in der Suchleiste gedrückt, zieht es in eine Start"=Semester"=Zeile und lässt es fallen.
-	& Die Teilmodule erscheinen in der Tabelle in aufeinanderfolgenden Semester"=Zeilen (ggfs. werden neue Semester"=Zeilen hinzugefügt), beginnend bei der Start"=Zeile. Die Teilmodule gelten als platziert, Gesamt"= und Zeilen"=ECTS erhöhen sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“. \\
-	\hline
-	Der Nutzer kann nun mit der Maus über das „Anker“"=Symbol eines Teilmoduls \gls{hovern}.
-	& Alle zum selben Modul gehörigen Teilmodule werden als zusammenhängend hervorgehoben, solange sich die Maus über dem Symbol befindet.
 \end{usecase}
 
 \begin{usecase}{\lA{160}: Modul aus Plan löschen}
@@ -349,13 +364,19 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	& Das Modul erscheint ausgewählt. \\
 	\hline
 	Der Nutzer klickt auf den Löschen-Knopf des Moduls. 
-	& Das Modul verschwindet und gilt als niht platziert, die ECTS der entsprechenden Semester"=Zeile und die Gesamt"=ECTS verringern sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“.
+	& Das Modul verschwindet und gilt als nicht platziert, die ECTS der entsprechenden Semester"=Zeile und die Gesamt"=ECTS verringern sich. Der Überprüfungsstatus des Plans ändert sich zu „nicht überprüft“.
 \end{usecase}
 
 \begin{usecase}{\lA{170}: Modul innerhalb Plan verschieben}
 	{Bearbeitungsansicht, Studienplan geöffnet, mind. ein Modul im Studienplan verteilt, mind. zwei Semester"=Zeilen in der Tabelle}
 	Der Nutzer hält seine Maustaste über einem Modul in der Tabelle gedrückt, zieht es in eine Semester"=Zeile ungleich der vorherigen und lässt es fallen.
 	& Das Modul verschiebt sich dorthin, die Semester-ECTS der Ausgangs"= und der Ziel"=Zeile ändern sich entsprechend und der Überprüfungsstatus de Studienplans ändert sich zu „nicht überprüft“.
+\end{usecase}
+
+\begin{usecase}{\lA{175}: Studienplanänderung rückgängig machen\opt}
+	{Bearbeitungsansicht, Studienplan geöffnet}
+	Der Nutzer klickt auf den „Rückgängig“"=Button.
+	& Die letzte Einfüge-, Lösch- oder Verschiebe-Operation wird – falls existent – rückgängig gemacht, d.h., der Status vor dem Durchführen der Operation wird wiederhergestellt.
 \end{usecase}
 
 \begin{usecase}{\lA{180}: Modul positiv bewerten}
@@ -398,10 +419,10 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \begin{usecase}{\lA{220}: Studienplan auf Korrektheit überprüfen}
 	{Bearbeitungsansicht, Studienplan geöffnet mit Überprüfungsstatus „nicht überprüft“}
 	Nutzer klickt auf „Überprüfen“.
-	& Ggfs. erscheint ein Ladekreis während längerer Wartezeit. \newline 
+	& Ggf. erscheint ein Ladekreis während längerer Wartezeit. \newline 
 	Nach Abschluss der Überprüfung erhält der Plan den Status „korrekt“ oder „fehlerhaft“, was dem Nutzer auch durch eine \gls{Notification} am Seitenrand gemeldet wird. Module, die Konflikte hervorrufen, werden mit einer roten „Fehler“"=Markierung gekennzeichnet. \\
 	\hline
-	Nutzer kann nun mit der Maus über fehlerhafte Module \gls{hovern}.
+	Nutzer kann nun mit der Maus über fehlerhafte Module fahren.
 	& Daraufhin erscheint ein \gls{Tooltip}, das den jeweiligen Konflikt erklärt. \\
 	\hline
 	Der Nutzer kann Änderungen am Plan vornehmen (\refA{140} bis \refA{170}). 
@@ -436,7 +457,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	\end{tblitemize} \newline
 	Im Fehlerfall erscheint eine entspr. \gls{Notification} am Seitenrand. Der Ausgangsplan erscheint und hat den Status „fehlerhaft“; der Nutzer wird wie in \refA{220} über „Fehler“"=Markierungen auf Konflikte hingewiesen. \\
 	\hline
-	Im Erfolgsfall kann der Nutzer nun den vervollständigten Plan betrachten und durch Klick auf Module im Plan entspr. Info"=Leiste (\refA{130}) anzeigen.
+	Im Erfolgsfall kann der Nutzer nun den vervollständigten Plan betrachten und durch Klick auf Module im Plan entspr. Info"=Leiste (\refA{130}*) anzeigen.
 	Er entscheidet sich letztlich zwischen den drei genannten Optionen. 
 	& „Verwerfen“: Der Nutzer wird gebeten, das Verwerfen des Vorschlags zu bestätigen. \newline
 	„Übernehmen“: Der Vorschlag wird in den Ausgangsplan übernommen. Dem Nutzer erscheint die Bearbeitungsansicht mit dem vervollständigten „korrekten“ Plan. \newline
@@ -451,7 +472,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \begin{usecase}{\lA{240}: Schließen des Studienplans mit Wechsel zur Hauptansicht}
 	{Bearbeitungsansicht, Studienplan geöffnet}
 	Nutzer betätigt den Schalter zur Hauptansicht.
-	& Die Hauptansicht erscheint, der zuvor bearbeitete Studienplan trägt nun ggfs. auch einen neuen Namen (\refA{60}) und einen neuen Überprüfungsstatus (\refA{220}).
+	& Die Hauptansicht erscheint, der zuvor bearbeitete Studienplan trägt nun ggf. auch einen neuen Namen (\refA{60}) und einen neuen Überprüfungsstatus (\refA{220}).
 \end{usecase}
 
 
