@@ -167,22 +167,25 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \end{scenario}
 
 
-
+\needspace{1.1\textwidth}
 \subsection{Anwendungsfälle}
 
 Die folgenden Anwendungsfalldiagramme bieten einen Überblick über die im Anschluss beschriebenen Anwendungsfälle.
 
-\begin{comment}
-	%use case diagrams are nice, but about 30 use cases are a little bit too much I guess
-	\begin{center}
-		\resizebox{\textwidth}{!} 
-		{
-			\input{diagrams/use_cases/generation}
-		}
-	\end{center}
-\end{comment}
+\begin{center}
+	\resizebox{\textwidth}{!} {
+		\input{diagrams/use_cases/profile-related}
+	}
+\end{center}
 
-\subsubsection{Profil- und Studienplanverwaltung}
+\begin{center}	
+	\resizebox{\textwidth}{!} {
+		\input{diagrams/use_cases/plan-related}
+	}
+\end{center}
+
+
+\subsubsection{Profil- und Studienplan-Verwaltung}
 
 \begin{usecase}{\lA{10}: Erstanmeldung}
 	{Geöffnete Seite, unangemeldet}
@@ -322,13 +325,16 @@ Die folgenden Anwendungsfalldiagramme bieten einen Überblick über die im Ansch
 	\end{tblitemize} \\
 	\hline
 	Der \glslink{Benutzer}{Nutzer} setzt bei Bedarf gesetzte Filter durch Klicken auf das Kreuzchen im Filter"=Button wieder zurück.
-	& Entsprechende Filter treten außer Kraft und die Suchleiste aktualisiert sich wie oben.
+	& Entsprechende Filter treten außer Kraft und die Suchleiste aktualisiert sich wie oben. \\
+	\hline
+	Der \glslink{Benutzer}{Nutzer} klickt bei Bedarf auf ein in der Suchleiste aufgelistetes Modul.
+	& Reaktion wie in \refA{130}.
 \end{usecase}
 
 \begin{usecase}{\lA{130}: Info-Leiste zu einem Modul anzeigen\opt}
-	{Bearbeitungsansicht, \gls{Studienplan} geöffnet, mind. ein \gls{Modul} in der Suchleiste aufgelistet}
-	\glslink{Benutzer}{Nutzer} klickt auf ein Modul in der Suchleiste.
-	& Das Modul wird farblich hervorgehoben und die Suchleiste verwandelt sich in eine Info-Leiste, welche dem \glslink{Benutzer}{Nutzer} folgende Informationen anzeigt:
+	{Bearbeitungsansicht, \gls{Studienplan} geöffnet, mind. ein \gls{Modul} in der Suchleiste aufgelistet bzw. im Studienplan verteilt}
+	\glslink{Benutzer}{Nutzer} klickt auf ein Modul in der Suchleiste/im Studienplan.
+	& Das Modul wird im Studienplan farblich hervorgehoben und die Suchleiste verwandelt sich in eine Info-Leiste, welche dem \glslink{Benutzer}{Nutzer} folgende Informationen anzeigt:
 	\begin{tblitemize}
 		\item Titel und Modulnummer
 		\item Dozent, \glslink{ECTS-Punkte}{ECTS}, Modulbeschreibung, evtl. Turnus, Dauer (in Semestern)
@@ -415,7 +421,7 @@ Die folgenden Anwendungsfalldiagramme bieten einen Überblick über die im Ansch
 	\glslink{Benutzer}{Nutzer} fährt bei Bedarf mit der Maus über fehlerhafte Module.
 	& Daraufhin wird ein \gls{Tooltip} angezeigt, das den jeweiligen Konflikt erklärt. \\
 	\hline
-	Der \glslink{Benutzer}{Nutzer} nimmt bei Bedarf Änderungen am Studienplan vor (\refA{140} bis \refA{170}). 
+	Der \glslink{Benutzer}{Nutzer} nimmt bei Bedarf Änderungen am Studienplan vor (\refA{140} bis \refA{175}). 
 	& Daraufhin verschwinden die „Fehler“"=Markierungen und der Studienplan erhält den Status „nicht \glslink{Verifizierung}{überprüft}“.
 \end{usecase}
 
