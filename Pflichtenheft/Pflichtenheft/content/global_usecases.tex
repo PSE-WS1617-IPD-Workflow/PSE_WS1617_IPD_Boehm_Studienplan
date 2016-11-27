@@ -420,7 +420,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	{Bearbeitungsansicht, Studienplan geöffnet mit Überprüfungsstatus „nicht überprüft“}
 	Nutzer klickt auf „Überprüfen“.
 	& Ggf. erscheint ein Ladekreis während längerer Wartezeit. \newline 
-	Nach Abschluss der Überprüfung erhält der Plan den Status „korrekt“ oder „fehlerhaft“, was dem Nutzer auch durch eine \gls{Notification} am Seitenrand gemeldet wird. Module, die Konflikte hervorrufen, werden mit einer roten „Fehler“"=Markierung gekennzeichnet. \\
+	Nach Abschluss der Überprüfung erhält der Plan den Status „korrekt“ oder „fehlerhaft“, was dem Nutzer auch durch eine \gls{Benachrichtigung} am Seitenrand gemeldet wird. Module, die Konflikte hervorrufen, werden mit einer roten „Fehler“"=Markierung gekennzeichnet. \\
 	\hline
 	Nutzer kann nun mit der Maus über fehlerhafte Module fahren.
 	& Daraufhin erscheint ein \gls{Tooltip}, das den jeweiligen Konflikt erklärt. \\
@@ -449,13 +449,13 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	\hline
 	Nutzer gibt geforderte Daten ein und bestätigt.
 	& Das System generiert – sofern möglich – einen vollständigen, den Kriterien des Nutzers und des zugrundeliegenden Datensatzes entsprechenden Studienplan. Dabei werden auch Modulpräferenzen, bereits belegte/bestandene sowie eingeplante Module berücksichtigt. \newline
-	Im Erfolgsfall erscheint dieser Studienplan dem Nutzer zur Ansicht mitsamt einer entsprechenden \gls{Notification} am Seitenrand. Der vervollständigte Plan hat den Status „korrekt“. Dem Nutzer wird in der Seitenleiste angeboten, den vorgeschlagenen Plan...
+	Im Erfolgsfall erscheint dieser Studienplan dem Nutzer zur Ansicht mitsamt einer entsprechenden \gls{Benachrichtigung} am Seitenrand. Der vervollständigte Plan hat den Status „korrekt“. Dem Nutzer wird in der Seitenleiste angeboten, den vorgeschlagenen Plan...
 	\begin{tblitemize}
 		\item zu verwerfen,
 		\item zu übernehmen,
 		\item oder unter neuem Namen zu speichern.
 	\end{tblitemize} \newline
-	Im Fehlerfall erscheint eine entspr. \gls{Notification} am Seitenrand. Der Ausgangsplan erscheint und hat den Status „fehlerhaft“; der Nutzer wird wie in \refA{220} über „Fehler“"=Markierungen auf Konflikte hingewiesen. \\
+	Im Fehlerfall erscheint eine entspr. \gls{Benachrichtigung} am Seitenrand. Der Ausgangsplan erscheint und hat den Status „fehlerhaft“; der Nutzer wird wie in \refA{220} über „Fehler“"=Markierungen auf Konflikte hingewiesen. \\
 	\hline
 	Im Erfolgsfall kann der Nutzer nun den vervollständigten Plan betrachten und durch Klick auf Module im Plan entspr. Info"=Leiste (\refA{130}*) anzeigen.
 	Er entscheidet sich letztlich zwischen den drei genannten Optionen. 
