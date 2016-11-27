@@ -15,8 +15,8 @@
 	\begin{umlpackage}{Server}
 	\begin{umlcomponent}[x=0, y=0]{Programm-Logik}
 	\end{umlcomponent}
-	\node[database] (db1) at (-2,-2) {{\tiny Nutzerdaten}};
-	\node[database] (db2) at (2,-2) {{\tiny Modulhandbuch}};
+	\node[database] (db1) at (-2,-2) {{\tiny Benutzerdaten}};
+	\node[database] (db2) at (2,-2) {{\tiny Moduldaten}};
 	\umlVHassemblyconnector[last arm, dashed]{Programm-Logik}{db1}
 	\umlVHassemblyconnector[last arm, dashed]{Programm-Logik}{db2}
 	\end{umlpackage}
