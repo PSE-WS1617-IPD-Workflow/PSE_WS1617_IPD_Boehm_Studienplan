@@ -3,41 +3,40 @@
 \subsection{Einführung}
 Die Benutzeroberfläche muss so aufgebaut sein, dass auch unerfahrene \glspl{Benutzer} das System problemlos verwenden können.
 Um die Benutzerführung zu optimieren, werden insbesondere sogenannte \glspl{Wizard} verwendet. In diesen wird der Benutzer dann durch die verschiedenen Schritte eines gegebenen Ablaufs geführt. Darüber hinaus wird an vielen Stellen das \gls{Drag-and-Drop}-Konzept verwendet.
-Hierdurch wird die Benutzeroberfläche intuitiver und die Dauer der einzelnen Interaktionen des Nutzers mit dem System wird verkürzt.
+Hierdurch wird die Benutzeroberfläche intuitiver und die Dauer der einzelnen Interaktionen des \glslink{Benutzer}{Benutzers} mit dem System wird verkürzt.
 
 Wir gehen hier von einem \gls{Benutzer} aus, der sich im 2. Fachsemester seines Studiums befindet und im ersten Semester alle Prüfungen bis auf Programmieren bestanden hat.
 Alle Angaben zur Benutzeroberfläche sind vorläufig, da auch viele der Wunschkriterien aus den Kapiteln \ref{subsec:project_goals-wunschkriterien}, \ref{subsec:func_requirements-erweitert} und \ref{subsec:nonfunc_requirements-kann} in dieser Oberfläche realisiert werden. Die exakte visuelle Ausgestaltung der Elemente ist ebenfalls vorläufig.
 \subsection{Login}
 Abbildung \ref{fig:gui-login-1} zeigt die Login-Seite. Diese sollte recht minimalistisch sein und lediglich die Möglichkeit bieten, sich mit Hilfe des \gls{Shibboleth Identity Provider}s einzuloggen.
 
-Loggt sich der Nutzer zum ersten Mal in das System ein, wird er zum Registrierungs"=\gls{Wizard} (siehe Kapitel \ref{subsec:gui-registrierung}) weitergeleitet. Wenn er sich bereits zuvor schon einmal eingeloggt hat, wird er auf die Hauptseite (siehe Kapitel \ref{subsec:gui-hauptseite}) weitergeleitet.
+Loggt sich der \gls{Benutzer} zum ersten Mal in das System ein, wird er zum Registrierungs"=\gls{Wizard} (siehe Kapitel \ref{subsec:gui-registrierung}) weitergeleitet. Wenn er sich bereits zuvor schon einmal eingeloggt hat, wird er auf die Hauptseite (siehe Kapitel \ref{subsec:gui-hauptseite}) weitergeleitet.
 \subsection{Registrierungs-Wizard}
 \label{subsec:gui-registrierung}
-Nach dem Login wird man zum Registrierungs-\gls{Wizard}s weitergeleitet. Auf der ersten Seite (Abbildung \ref{fig:gui-registrierung-1}) wird der Nutzer dort nach grundlegenden Informationen, wie dem \gls{Studiengang} und dem \gls{Semester des Studienbeginns}, gefragt. Die Eingabe dieser Daten ist verpflichtend.
+Nach dem Login wird man zum Registrierungs-\gls{Wizard}s weitergeleitet. Auf der ersten Seite (Abbildung \ref{fig:gui-registrierung-1}) wird der \gls{Benutzer} dort nach grundlegenden Informationen, wie dem \gls{Studiengang} und dem \gls{Semester des Studienbeginns}, gefragt. Die Eingabe dieser Daten ist verpflichtend.
 
-Nachdem der Nutzer dann auf den Pfeil in der unteren Ecke geklickt hat, wird er auf die zweite Seite des \gls{Wizard}s (Abbildung \ref{fig:gui-registrierung-2}) weitergeleitet. Hier kann er angeben, welche \glspl{Modul} er bereits \glslink{Modul begonnen}{begonnen} und/oder \glslink{Modul abgeschlossen}{abgeschlossen} hat. 
-Nach dem Bearbeiten der zweiten Seite des \gls{Wizard}s und dem Klick auf den Pfeil, wird der Nutzer auf die Hauptseite des Systems (siehe Kapitel \ref{subsec:gui-hauptseite}) weitergeleitet.
+Nachdem der \gls{Benutzer} dann auf den Pfeil in der unteren Ecke geklickt hat, wird er auf die zweite Seite des \gls{Wizard}s (Abbildung \ref{fig:gui-registrierung-2}) weitergeleitet. Hier kann er angeben, welche \glspl{Modul} er bereits \glslink{Modul abgeschlossen}{abgeschlossen} hat. 
+Nach dem Bearbeiten der zweiten Seite des \gls{Wizard}s und dem Klick auf den Pfeil, wird der \gls{Benutzer} auf die Hauptseite des Systems (siehe Kapitel \ref{subsec:gui-hauptseite}) weitergeleitet.
 
-Durch den \gls{Wizard} soll sichergestellt werden, dass der Nutzer alle für das System relevanten Daten (siehe Kapitel \ref{subsec:product_data-benutzerdaten}) eingibt, bevor er mit der Nutzung beginnt.
+Durch den \gls{Wizard} soll sichergestellt werden, dass der \gls{Benutzer} alle für das System relevanten Daten (siehe Kapitel \ref{subsec:product_data-benutzerdaten}) eingibt, bevor er mit der Nutzung beginnt.
 
 
 \subsection{Hauptseite}
 \label{subsec:gui-hauptseite}
-Die Hauptseite des Systems (Abbildung \ref{fig:gui-hauptseite-1}) stellt für den Nutzer die zentrale Anlaufstelle für alle Anwendungsfälle dar. Der Nutzer kann auf dieser Seite seine vorhandenen \glspl{Studienplan} anzeigen, duplizieren, löschen sowie exportieren. Auch sieht der Nutzer über das farbige Icon, ob der Plan in seinem jetzigen Zustand als korrekt (grün) oder fehlerhaft (rot) eingestuft wurde. Über das Selektieren von mehreren Plänen kann er Pläne vergleichen, mehrere duplizieren oder mehrere gleichzeitig löschen. Mittels des \enquote{Plus}-Buttons kann er darüber hinaus neue \glspl{Studienplan} erstellen.\newline
-Beim Klick auf \enquote{Anzeigen} wird der Nutzer auf die Seite zur manuellen Bearbeitung von \glspl{Studienplan}n (siehe Kapitel \ref{subsec:gui-manuelle-bearbeitung}) geleitet. Beim Klick auf das \enquote{Plus}-Zeichen wird er nach einem Namen für den Plan gefragt und anschließend ebenfalls auf die Seite zur manuellen Bearbeitung weitergeleitet.
+Die Hauptseite des Systems (Abbildung \ref{fig:gui-hauptseite-1}) stellt für den \gls{Benutzer} die zentrale Anlaufstelle für alle Anwendungsfälle dar. Der \gls{Benutzer} kann auf dieser Seite seine vorhandenen \glspl{Studienplan} anzeigen, duplizieren, löschen sowie exportieren. Auch sieht der \gls{Benutzer} über das farbige Icon, ob der Plan in seinem jetzigen Zustand als korrekt (grün) oder fehlerhaft (rot) eingestuft wurde. Über das Selektieren von mehreren Plänen kann er Pläne vergleichen, mehrere duplizieren oder mehrere gleichzeitig löschen. Mittels des \enquote{Plus}-Buttons kann er darüber hinaus neue \glspl{Studienplan} erstellen.\newline
+Beim Klick auf \enquote{Anzeigen} wird der \gls{Benutzer} auf die Seite zur manuellen Bearbeitung von \glspl{Studienplan}n (siehe Kapitel \ref{subsec:gui-manuelle-bearbeitung}) geleitet. Beim Klick auf das \enquote{Plus}-Zeichen wird er nach einem Namen für den Plan gefragt und anschließend ebenfalls auf die Seite zur manuellen Bearbeitung weitergeleitet.
 
 
 \subsection{Manuelle Studienplan-Bearbeitung}
 \label{subsec:gui-manuelle-bearbeitung}
-In dieser Ansicht (Abbildung \ref{fig:gui-bearbeitung-1}) ist es dem Nutzer möglich, seinen \gls{Studienplan} manuell zu bearbeiten. Hierfür kann er mittels \gls{Drag-and-Drop} \glspl{Modul} oder \glspl{Teilmodul} (z.B. das \gls{Teilmodul} Analysis I in der Abbildung) in das gewünschte Semester ziehen. Durch das Ziehen wird das \gls{Modul} dem \gls{Studienplan} hinzugefügt. Durch einen Klick auf den Namen des \gls{Studienplan}s kann auch der Name verändert werden. Mittels der \enquote{+} und \enquote{-} Buttons lassen sich Semester hinzufügen bzw. entfernen.
+In dieser Ansicht (Abbildung \ref{fig:gui-bearbeitung-1}) ist es dem \gls{Benutzer} möglich, seinen \gls{Studienplan} manuell zu bearbeiten. Hierfür kann er mittels \gls{Drag-and-Drop} \glspl{Modul}   in das gewünschte Semester ziehen. Durch das Ziehen wird das \gls{Modul} dem \gls{Studienplan} hinzugefügt. Durch einen Klick auf den Namen des \gls{Studienplan}s kann auch der Name verändert werden. Mittels der \enquote{+} und \enquote{-} Buttons lassen sich Semester hinzufügen bzw. entfernen.
 \subparagraph{Verifizierung}
 Mit einem Klick auf \enquote{Überprüfen} wird der Plan verifiziert (siehe Kapitel \ref{subsec:gui-verifizierung}).\newline
 Ist das Icon neben dem Button gelb, wurde der aktuelle Stand des \gls{Studienplan}s noch nicht verifiziert. Ist das Icon rot, ist der \gls{Studienplan} fehlerhaft. Wenn das Icon grün ist, war die Verifizierung erfolgreich.
 \subparagraph{Generierung}
 Mit einem Klick auf den Button \enquote{Plan vervollständigen} gelangt man zum \enquote{Generierungs"=Wizard} (siehe Kapitel \ref{subsec:gui-generierung}). Für die Generierung kann man bereits auf dieser Seite in der Seitenleiste (mit Hilfe der Pfeil"=Buttons) Präferenzen für die Module angeben. Diese werden bei der späteren Generierung berücksichtigt.
 \subparagraph{Farbkonvention}
-\glspl{Modul} werden in der Seitenleiste auf der rechten Seite augegraut, sobald sie bereits im \gls{Studienplan} vorhanden sind.\newline
-\glslink{Modul begonnen}{Begonnene} \glspl{Modul} werden mit blauem Hintergrund angezeigt.
+\glspl{Modul} werden in der Seitenleiste auf der rechten Seite ausgegraut, sobald sie bereits im \gls{Studienplan} vorhanden sind.\newline
 \glslink{Modul abgeschlossen}{Abgeschlossene} \glspl{Modul} werden mit einem grünen Haken angezeigt.
 
 
@@ -64,4 +63,7 @@ Ist die Verifizierung erfolgreich (Abbildung \ref{fig:gui-verifizierung-1}), ers
 
 
 \subsection{Profil}
-In der Profilansicht (Abbildung \ref{fig:gui-profil-1}) ist es dem Benutzer möglich, seine bisher \glslink{Modul begonnen}{begonnenen} und \glslink{Modul abgeschlossen}{abgeschlossenen} \glspl{Modul} zu bearbeiten.
+In der Profilansicht (Abbildung \ref{fig:gui-profil-1}) ist es dem Benutzer möglich, seine bisher \glslink{Modul abgeschlossen}{abgeschlossenen} \glspl{Modul} zu bearbeiten.
+
+\subsection{Vergleichen}
+In der Vergleichsansicht (Abbildung \ref{fig:gui-vergleich-1}) sieht der \gls{Benutzer} zwei Studienpläne und kann diese vergleichen. Fährt der Benutzer mit der Maus über eine Modul so wird dieses (falls vorhanden) auch im anderen Studienplan farblich hervorgehoben.

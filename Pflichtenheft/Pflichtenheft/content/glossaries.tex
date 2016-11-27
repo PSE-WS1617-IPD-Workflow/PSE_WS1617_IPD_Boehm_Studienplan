@@ -98,13 +98,7 @@
 {
 	name=Modul,
 	plural=Module,
-	description={Ein Modul ist ein Teilblock des Studiums, welcher aus verschiedenartigen Veranstaltungen (genannt \glspl{Teilmodul}) bestehen kann und für welchen man nach Ablegung eventueller \glspl{Modulpruefung} eine festgelegte Anzahl an ECTS-Punkten erhält}
-}
-\newglossaryentry{Teilmodul}
-{
-	name=Teilmodul,
-	plural=Teilmodule,
-	description={Ein Teilmodul ist eine universitäre Veranstaltung, welche als Teil eines Moduls besucht werden kann und mittels einer (wie auch immer gearteten) \gls{Modulpruefung} bestanden werden kann}
+	description={Ein Modul ist ein Teilblock des Studiums, welchen man \glslink{Modul abgeschlossen}{bestehen} kann und für welchen man nach Ablegung eventueller \glspl{Modulpruefung} eine festgelegte Anzahl an ECTS-Punkten erhält}
 }
 \newglossaryentry{Modulpruefung}
 {
@@ -124,28 +118,16 @@
 	description={Ein \gls{Modul} gilt als abgeschlossen, wenn der \gls{Benutzer} alle nach Modulhandbuch notwendigen \glspl{Modulpruefung} bestanden hat}
 }
 
-\newglossaryentry{Modul begonnen}
-{
-	name=Modul begonnen,
-	description={Ein \gls{Modul} gilt als begonnen, wenn der \gls{Benutzer} zu mindestens einer \gls{Modulpruefung} \glslink{Zur Pruefung angetreten}{angetreten} ist}
-}
-
 \newglossaryentry{Studienplan}
 {
 	name=Studienplan,
 	plural=Studienpläne,
-	description={Eine Zuordnung von Modulen zu Semestern, in welcher enthalten ist, wann welches Modul planmäßig \glslink{Modul begonnen}{begonnen} werden soll}
+	description={Eine Zuordnung von Modulen zu Semestern, in welcher enthalten ist, wann welches Modul planmäßig \glslink{Modul abgeschlossen}{abgeschlossen} werden soll}
 }
 \newglossaryentry{Weboberflaeche}{
 	name={Weboberfl{\"a}che},
 	description={Eine auf HTML, CSS und JavaScript basierende, mit einem \gls{Internetbrowser} anzeigbare Benutzeroberfläche}
 }
-
-
-
-
-
-
 \newglossaryentry{Popup}
 {
 	name=Popup,
@@ -188,14 +170,26 @@ description={Ein \gls{Studienplan} kann "verifiziert" werden. Das heißt, es wir
 {
 name=Constraint,
 plural=Constraints,
-description={Als Constraints werden die Bedingungen bezeichnet, die ein \gls{Studienplan} erfüllen soll, und auch von der \gls{Generierung} berücksichtigt werden}
+description={Als Constraints werden die Anforderungen bezeichnet, die ein \gls{Studienplan} erfüllen soll. Diese müssen auch von der \gls{Generierung} berücksichtigt werden. Zwingende Constraints sind die \glspl{System-Constraint}. Optionale (bei der \gls{Generierung} zu optimierende) Constraints sind die \glspl{Nutzer-Constraint} sowie die \gls{Nutzer-Zielfunktion}}
 }
 
 \newglossaryentry{System-Constraint}{
 	name={System-Constraint},
 	plural={System-Constraints},
-	description={tbd}
+	description={System-Constraints sind die vom Modul-Handbuch vorgegebenen Abhängigkeiten und Vorgaben, die von jedem \gls{Studienplan} erfüllt werden müssen}
 }
+\newglossaryentry{Nutzer-Constraint}{
+	name={Nutzer-Constraint},
+	plural={Nutzer-Constraints},
+	description={Nutzer-Constraints sind die vom \gls{Benutzer} für einen spezifischen \gls{Studienplan} vorgegebenen Bedingungen, die der Studienplan bei der \gls{Generierung} erfüllen muss. Hierzu gehört der Wunsch in einem gegebenen Semester eine bestimmte Vorlesung hören zu wollen, aber auch Dinge wie die maximale Anzahl an ECTS-Punkten pro Semester}
+}
+
+\newglossaryentry{Nutzer-Zielfunktion}{
+	name={Nutzer-Zielfunktion},
+	plural={Nutzer-Zielfunktionen},
+	description={Die Nutzer-Zielfunktion ist eine den Studienplan nach gegebenen Parametern bewertende Funktion, die bei der \gls{Generierung} von Heuristiken zu optimieren ist}
+}
+
 \newglossaryentry{Parallelstudium}
 {
 name=Parallelstudium,
