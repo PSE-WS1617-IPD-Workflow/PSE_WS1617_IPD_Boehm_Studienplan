@@ -1,0 +1,54 @@
+Einleitung:
+	Aufgabenstellung:
+		- Sinn des Systems ist das Aufstellen von Studienplänen(...)
+			-Satz unvollständig?! Einklammern anstelle von Kommata?!
+		    - Wieso? Der Satz passt. Evtl. für bessere Lesbarkeit „...das Aufstellen von Studienplänen -- angepasst an Bedürfnisse, bereits erbrachte ...“ –DJ
+	Im Detail heißt das:
+		- Kommata fehlen?!
+		  - Wo? Im ganzen Abschnitt?  –DJ
+		  - hab keine notwendigen, fehlenden Kommata gefunden...und zu viele optionale Kommata machen das lesen oft nur schwerer... -UR
+Zielbestimmung:
+	Musskriterien:
+		- Modular erweiterbar nicht nur bei webbasierter Oberfläche?! vlt keine Unterpunkte für Webbasierte Benutzeroberfläche.
+			->geändert 
+		- Studienplan erstellen sollte vor bearbeiten kommen.
+			-> geändert
+		- Generierung nicht erstellung nennen sonder Vervollständigung.
+			-> geändert in Erstellung/Vervollständigung
+		- Constraints =!= Constraints (unterschiedliche Namen) 
+			--> HÄ?
+		- Berücksichtigung des bisherigen (..) - ist das nicht Teilfunktion des generieren und müsste eher Eintragung oder sowas heißen?!
+			-> gelöscht, da schon als Constraints genannt	
+		- Graphische Darstellung als Workflow - SEID IHR WAHNSINNIG!!!!!!!???111ß!!!ßß!!! -war schon raus, bloß nicht online ;)
+		
+	-Zielsetzung zu spezifische
+	
+	Wunschkriteriuen:
+		- Speichern und löschen von Studienplänen (sosos speichern ist also optional)
+
+		- Durchstöbern - umformulieren -> erledigt
+		- Filterbar mit Filtern -> Pleonasmus -> doppeltgemoppelt 
+			-> erledigt
+
+Produkteinsatz:
+	- Doppelnennungen?!
+	-"um Module zu testen, die eingeführt werden sollen." , vielleicht auch um Module einzufügen, oder was immer....also vielleicht besser nicht begründen
+
+Produkt-Daten:
+  - Benutzername fehlt nun. –DJ
+
+Nichtfunktionale Anorderungen:
+	-fehlt da nicht Objektoptimierung und dass die Black Boxes verwendet werden sollen?
+	-ist die Zeitbegrenzung zur Modulsuche keine Kann-Anforderung?
+	-Das Wort "muss" in den Kann-Anforderungen ist vielleicht ein wenig paradox...vllt eher sollte?
+
+Globale Testfälle
+	Anwendungsfälle:
+		- Anstelle von erscheint bitte sowas wie wird weitergeleitet auf.
+		  - Frei nach den SWT-Folien: „Danach wird der Kunde auf die Hauptseite weitergeleitet“ – Wer leitet weiter? Wie? (Passiv-Konstrukte vermeiden! Wobei ich mich jetzt auch nicht durchgehend dran gehalten hab... Hm.) –DJ
+
+Benutzerschnittstelle
+  - Ins Profil sollte noch die Möglichkeit, wie bei der Registrierung Studiengang und -beginn zu ändern. –DJ
+
+Entwicklungsumgebung:
+  - Da der Abschnitt eh auf zwei Seiten passen wird (nachdem die GUI-Bilder da raus sind...), lohnt es sich wohl nicht wirklich, subsubsection zu verwenden. Vllt. lieber subsubsection*, dann werden keine Inhaltsverzeichniseinträge generiert (lohnt sich bei 10 Punkten auf ~2 Seiten eh nicht...) –DJ

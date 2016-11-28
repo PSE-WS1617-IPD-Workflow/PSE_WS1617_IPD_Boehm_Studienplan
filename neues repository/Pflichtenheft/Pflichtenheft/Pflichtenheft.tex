@@ -1,0 +1,90 @@
+\documentclass[titlepage=true, parskip=full]{scrartcl}
+\usepackage[utf8]{inputenc} % use utf8 file encoding for TeX sources
+\usepackage[T1]{fontenc}    % avoid garbled Unicode text in pdf
+\usepackage{palatino}	      % because "Computer Modern" standard font is illegible
+\usepackage{mathpazo}
+\usepackage[ngerman]{babel}  % german hyphenation, quotes, etc
+\usepackage{hyperref}       % detailed hyperlink/pdf configuration
+\hypersetup{                % ‘texdoc hyperref‘ for options
+	pdftitle={PSE: Pflichtenheft},%
+	bookmarks=true,%
+}
+\usepackage{graphicx}       % provides commands for including figures
+\usepackage{csquotes}       % provides \enquote{} macro for "quotes"
+\usepackage[nonumberlist, numberedsection]{glossaries}     % provides glossary commands
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{tikz-uml}
+\usepackage{comment}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hhline}
+\usepackage{placeins}
+\usepackage{needspace}
+\usepackage[toc, page]{appendix}
+
+\addto\captionsngerman{\let\appendixtocname\appendixname\let\appendixpagename\appendixname}
+
+% fix hyphenation
+\hyphenation{Log-out Log-in Ak-tions Ak-tion ge-öff-net liken dis-liken Like Dis-like No-ti-fi-ca-tion Mo-dule}
+
+\usepackage{enumitem}
+\setlist[itemize]{nosep}
+\shorthandon{"}
+\makeglossaries
+\input{content/glossaries}
+\shorthandoff{"}
+
+\begin{document}
+	
+\begin{titlepage}
+	\centering
+	{\huge \bfseries \sffamily Studienplanung als Generierung von Workflows mit Compliance-Anforderungen: Planerstellung und Visualisierung\par}
+	\vspace{1cm}
+	{\LARGE Pflichtenheft\par}
+	\vfill
+	\begin{tabular}{>{\Large}c}
+		Nada Chatti\\
+		Daniel Jungkind\\
+		Hannes Kuchelmeister\\
+		Ulrike Rheinheimer\\
+		Paul Samuel M. Teuber\\
+		Tim Niklas Uhl
+	\end{tabular}
+	\vfill
+	30. November 2016
+\end{titlepage}
+\tableofcontents
+\pagebreak
+
+%
+% % Hier beginnt die Gliederung des Pflichtenhefts
+\input{content/intro}
+ 
+\input{content/project_goals}
+
+\input{content/product_use}
+
+\input{content/product_environment}
+
+\input{content/func_requirements}
+
+\input{content/product_data}
+
+\input{content/nonfunc_requirements}
+
+\input{content/system_model}
+
+\input{content/global_usecases}
+
+\input{content/gui}
+
+\input{content/dev_environment}
+
+\newpage
+\begin{appendices}
+	\input{content/addendum}
+
+	\printglossaries
+\end{appendices}
+\end{document}

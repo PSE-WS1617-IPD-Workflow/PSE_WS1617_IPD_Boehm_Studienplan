@@ -1,0 +1,18 @@
+- Generierung und Verifikation
+	-> Selbst auch bisschen was überlegen
+	-> Technologie: MySQL Datenbank (zur Verfügung gestellt)
+	-> 3 Relationen:
+		1. Modulhandbuch
+		2. Abhängigkeiten
+			Verschiedene Abhängigkeitstypen
+				1: HM1 (Modul1) Voraussetzung für HM2 (Modul2)
+				2: Überschneidung (genau zur gleichen Zeit)
+				3: Zusammenhang (nur beides gemeinsam)
+				4: Zusammenhang Übergreifend
+			[Fiktiv, evtl. vereinfacht]
+		3. Regeln
+	- Wahl das eine oder das andere um ECTS-Grenze nicht zu überschreiten
+	- Wahl des Semesters
+
+-> "Kleine" Generierung und Verifikation selbest
+-> Kapseln der Verifikation und Generierung (wird später ersetzt)

@@ -14,34 +14,54 @@
 		\item [FA41]Anzeigen einer Übersicht aller gespeicherten \glspl{Studienplan}
 		\item [FA50] Generierung von \glslink{Studienplan}{Studienplänen} unter Berücksichtigung folgender \glspl{Constraint}:
 			\begin{itemize}[nosep]
-			\item von Pflichtveranstaltungen
-			\item der Wahl eines Vertiefungsfaches
-			\item von Abhängigkeiten zwischen \glspl{Modul}n
-			\item der zur Verfügung stehenden Semesteranzahl
-			\item gewünschter \glspl{Modul}
-			\item des bisherigen Studienverlaufs
+				\item \glspl{System-Constraint}
+				\begin{itemize}[nosep]
+					\item Pflichtveranstaltungen
+					\item Abhängigkeiten zwischen \glslink{Modul}{Modulen}
+				\end{itemize}
+				\item \glspl{Nutzer-Constraint}
+				\begin{itemize}[nosep]
+					\item gewünschtes Vertiefungsfaches
+					\item gewünschte Semesteranzahl
+					\item gewünschte \glspl{Modul}
+					\item  bisheriger Studienverlauf
+					\item gleichmäßige ECTS-Verteilung über die Semester
+				\end{itemize}
+				\item \glspl{Nutzer-Zielfunktion}
+				\begin{itemize}[nosep]
+					\item \gls{ECTS-Punkte}-Minimierung
+					\item möglichst schneller Studienabschluss
+				\end{itemize}
 			\end{itemize}
 		\item [FA60] \gls{Verifizierung} von \glslink{Studienplan}{Studienplänen}
 		\item [FA70] \glspl{Studienplan} manuell bearbeiten
 		\item[FA80] Bearbeitungsansicht mit einem \gls{Studienplan} und Modulübersicht anzeigen  
 		\item [FA90]Speichern und Löschen von \glslink{Studienplan}{Studienplänen}	
 		\item[FA110] \glspl{Modul} suchen (Volltextsuche)
-		\item[FA120] \glspl{Modul} einem \gls{Studienplan} zufügen
+		\item[FA120] \glspl{Modul} einem \gls{Studienplan} hinzufügen
 		\item[FA125] \glspl{Modul} studienplanbezogen positiv oder negativ bewerten (berücksichtigt \gls{Generierung})
 		\end{itemize}
-	\subsection{Erweiterte Funktionen}
+	\subsection{Optionale  Funktionale Anforderungen}
 		\label{subsec:func_requirements-erweitert}
 		\begin{itemize}[nosep]
+		\item [FA128] vergangene Semester ein- und ausblenden
 		\item [FA130] \glspl{Modul} filtern
 		\begin{itemize}
-		\item Angebotenes Semester
+		\item Turnus
 		\item Veranstaltungsart
 		\item Fachrichtung
 		\item Pflicht-/Wahlmodul
-		\item Kategorie
+		\item Themengebiet
 		\item ECTS-Bereich
 		\end{itemize}
-		\item[FA135] einzelne \gls{Modul} anzeigen (Detailansicht)
+		\item[FA135] einzelne \glspl{Modul} anzeigen (Detailansicht)
+			\begin{itemize}[nosep]
+						\item Name
+						\item \gls{ECTS-Punkte}
+						\item Angebot im Sommer- oder Wintersemester
+						\item Art der Veranstaltung	
+						\item Beschreibung
+					\end{itemize}
 		\item [FA140]	Benennung von
 		\glslink{Studienplan}{Studienplänen}
 		\item [FA150] Duplizieren von \glslink{Studienplan}{Studienplänen}

@@ -1,0 +1,92 @@
+\section{Zielbestimmung}
+
+\subsection{Musskriterien}
+\begin{itemize}[nosep]
+	\item Webbasierte Benutzeroberfläche:
+	\begin{itemize}[nosep]
+		\item Benutzerorientiert 
+	\end{itemize}
+	\item Funktionen:
+	\begin{itemize}[nosep]
+		\item Login
+			\begin{itemize}[nosep]
+					\item Speichern von: \gls{Studiengang}, \gls{Semester des Studienbeginns}, bestandene Prüfungsleistungen, bereits erstellte \glspl{Studienplan}
+				\end{itemize}
+		\item \gls{Generierung} $\rightarrow$ Erstellung/Vervollständigung von möglichen \glslink{Studienplan}{Studienplänen} unter Berücksichtigung von \glspl{Constraint}:
+		\begin{itemize}[nosep]
+			\item Unterscheidung zwischen Pflicht- und Wahlveranstaltungen
+			\item Wahl eines Vertiefungsfaches
+			\item Abhängigkeiten zwischen \glslink{Modul}{Modulen} (Voraussetzungen, Zusammenhänge, Überschneidungen)
+			\item zur Verfügung stehende Semesteranzahl
+			\item gewünschte \glspl{Modul}
+			\item bisheriger Studienverlauf
+			\end{itemize}
+		\item \glspl{Studienplan} manuell bearbeiten ( \glspl{Modul} einfügen / löschen)
+		\item Speichern und Löschen von \glslink{Studienplan}{Studienplänen}
+		\item \gls{Verifizierung} von \glslink{Studienplan}{Studienplänen}
+		\begin{itemize}[nosep]
+			\item Ermöglicht dieser \gls{Studienplan} ein erfolgreiches Abschließen des Studiums?
+			\item Sind alle \glspl{Constraint} erfüllt?
+		\end{itemize}
+	\end{itemize}
+	\item \glslink{modular}{Modularität}
+	\item \glslink{modular}{Modular} erweiterbar	 
+	\item \glspl{Modul} auf einen \gls{Studienplan} bezogen positiv oder negativ bewerten und dies dem \gls{Studienplan} zugeordnet speichern
+	\item Modulübersicht
+		\item Alle \glspl{Modul} in einer Liste
+			\begin{itemize}[nosep]
+				\item Betrachten können
+				\item Suche nach Namen
+				\item In \gls{Studienplan} ziehen können
+			\end{itemize}
+\end{itemize}
+
+\subsection{Wunschkriterien}
+\label{subsec:project_goals-wunschkriterien}
+\begin{itemize}[nosep]
+	\item  Login über \gls{Shibboleth Identity Provider}	
+	\item Benennung von \glslink{Studienplan}{Studienplänen}
+	\item Duplizieren von \glslink{Studienplan}{Studienplänen}
+	\item \glspl{Studienplan} exportieren
+	\item Vergleichsansicht für 2 (mehrere?) \glspl{Studienplan}
+	\item Modulübersicht
+	\begin{itemize}[nosep]	
+		\item Suche durch folgende Filter spezifizierbar : 
+		\begin{itemize}[nosep]
+			\item Angebotenes Semester
+			\item Veranstaltungsart
+			\item Fachrichtung
+			\item Pflicht-/Wahlmodul
+			\item Kategorie
+			\item ECTS-Bereich
+		\end{itemize}
+		\item Detailansicht eines \glslink{Modul}{Moduls} bei Anklicken mit
+		\begin{itemize}[nosep]
+			\item Name
+			\item \gls{ECTS-Punkte}
+			\item Angebot im Sommer- oder Wintersemester
+			\item Art der Veranstaltung	
+			\item Beschreibung
+		\end{itemize}
+	\end{itemize}
+	\item Rückgängig-Button
+	\item Weitere \glspl{Constraint}
+	\begin{itemize}[nosep]
+		\item benötigte \gls{ECTS-Punkte}
+		\item ausgeschlossene \glspl{Modul}
+	\end{itemize}
+	\item \glspl{Studienplan} mit anderen teilen
+\end{itemize}
+\subsection{Abgrenzungskriterien}
+\begin{itemize}[nosep]
+	\item kein Notenportal
+	\item keine Vernetzung zwischen Studenten
+	\item keine Schnittstelle zum Prüfungsportal
+	\item keine Unterstützung von \glspl{Parallelstudium}
+	\item der \gls{Benutzer} kann keine eigenen \glspl{Modul} erstellen
+	\item Vorlesungsuhrzeiten und -details nicht abrufbar
+	\item nicht für mobile Endgeräte geeignet (bei Bedarf: per App)
+	\item der Entwurf von guten Generierungsalgorithmen ist nicht Ziel dieses Projektes
+	\item Sonderanträge können nicht berücksichtigt/eingebracht werden
+	\item was nicht im Modulhandbuch genannt ist, ist nicht möglich
+\end{itemize}
