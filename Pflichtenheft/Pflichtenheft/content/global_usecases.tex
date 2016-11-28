@@ -105,7 +105,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \end{scenario}
 
 \begin{scenario*}{Bearbeitung eines Studienplans}
-	{\glslink{Benutzer}{Nutzer} ist bereits eingeloggt und hat mind. einen \gls{Studienplan}.}
+	{\glslink{Benutzer}{Nutzer} ist bereits eingeloggt und hat mind. einen \gls{Studienplan} angelegt.}
 	\item \nameref{A55}
 	\item \nameref{A110} 
 	\item \nameref{A130} und wieder schließen
@@ -121,7 +121,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 \end{scenario*}
 
 \begin{scenario*}{Profil bearbeiten}
-	{\glslink{Benutzer}{Nutzer} ist bereits eingeloggt und hat mind. einen \gls{Studienplan}.}
+	{\glslink{Benutzer}{Nutzer} ist bereits eingeloggt und hat mind. einen \gls{Studienplan} angelegt.}
 	\item \nameref{A55}
 	\item \nameref{A215} (danach: eingeblendet)
 	\item \nameref{A110}
@@ -136,7 +136,7 @@ Folgende Funktionssequenzen müssen überprüft werden:
 	\item \nameref{A140}
 	\item Schritte 3–4 mehrmals wiederholen, sodass Abhängigkeitsfehler vorhanden sind und der \gls{Studienplan} noch unvollständig ist
 	\item \nameref{A220}: Es werden Abhängigkeitsfehler gemeldet
-	\item Mittels \nameref{A150} und \nameref{A160} Abhängigkeitsfehler beheben
+	\item Mittels \enquote{\nameref{A150}} und \enquote{\nameref{A160}} Abhängigkeitsfehler beheben
 	\item \nameref{A220}: Der Studienplan ist unvollständig
 	\item \nameref{A230} mit anschließendem Speichern unter neuem Namen
 	\item \nameref{A57}
@@ -193,7 +193,7 @@ Die folgenden Anwendungsfalldiagramme bieten einen Überblick über die im Ansch
 	& Dem \glslink{Benutzer}{Nutzer} wird eine Willkommensseite angezeigt; mitsamt der Eingabe"=Formulare wie in \refA{40} beschrieben.\\ 
 	\hline
 	\glslink{Benutzer}{Nutzer} füllt die Formulare aus.
-	& Dem \glslink{Benutzer}{Nutzer} wird Hauptansicht angezeigt, auf der bislang keine \glslink{Studienplan}{Studienpläne} vorhanden sind. 	
+	& Dem \glslink{Benutzer}{Nutzer} wird die Hauptansicht angezeigt, auf der bislang keine \glslink{Studienplan}{Studienpläne} vorhanden sind. 	
 \end{usecase}
 
 \begin{usecase}{\lA{20}: Login}
@@ -369,7 +369,7 @@ Die folgenden Anwendungsfalldiagramme bieten einen Überblick über die im Ansch
 \begin{usecase}{\lA{170}: Studienplanänderung rückgängig machen\opt}
 	{Bearbeitungsansicht, \gls{Studienplan} geöffnet}
 	Der \glslink{Benutzer}{Nutzer} klickt auf den „Rückgängig“"=Button.
-	& Die letzte Einfüge-, Lösch- oder Verschiebe-Operation (\refA{140}, \refA{150}, \refA{160}) wird – falls existent – rückgängig gemacht, d.h., der Status vor dem Durchführen der Operation wird wiederhergestellt.
+	& Die letzte Einfüge-, Lösch- oder Verschiebe-Operation (\refA{140}, \refA{150}, \refA{160}) wird – falls existent – rückgängig gemacht, d.h. der Status vor dem Durchführen der Operation wird wiederhergestellt.
 \end{usecase}
 
 \begin{usecase}{\lA{180}: Modul positiv bewerten}
