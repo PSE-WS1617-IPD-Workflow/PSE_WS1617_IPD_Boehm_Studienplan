@@ -1,0 +1,80 @@
+\documentclass[titlepage=true, parskip=full]{scrartcl}
+\usepackage[utf8]{inputenc} % use utf8 file encoding for TeX sources
+\usepackage[T1]{fontenc}    % avoid garbled Unicode text in pdf
+\usepackage{palatino}	      % because "Computer Modern" standard font is illegible
+\usepackage{mathpazo}
+\usepackage[ngerman]{babel}  % german hyphenation, quotes, etc
+\usepackage{hyperref}       % detailed hyperlink/pdf configuration
+\hypersetup{                % ‘texdoc hyperref‘ for options
+	pdftitle={PSE: Entwurfsdokumentation},%
+	bookmarks=true,%
+}
+\usepackage{graphicx}       % provides commands for including figures
+\usepackage{csquotes}       % provides \enquote{} macro for "quotes"
+\usepackage[nonumberlist, numberedsection]{glossaries}     % provides glossary commands
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{tikz-uml}
+\usepackage{comment}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hhline}
+\usepackage{placeins}
+\usepackage{needspace}
+\usepackage[toc, page]{appendix}
+
+\addto\captionsngerman{\let\appendixtocname\appendixname\let\appendixpagename\appendixname}
+
+% fix hyphenation
+\hyphenation{Log-out Log-in Ak-tions Ak-tion ge-öff-net liken dis-liken Like Dis-like No-ti-fi-ca-tion Mo-dule}
+
+\usepackage{enumitem}
+\setlist[itemize]{nosep}
+\shorthandon{"}
+\makeglossaries
+\input{content/glossaries}
+\shorthandoff{"}
+
+\begin{document}
+	
+\begin{titlepage}
+	\centering
+	{\huge \bfseries \sffamily Studienplanung als Generierung von Workflows mit Compliance-Anforderungen: Planerstellung und Visualisierung\par}
+	\vspace{1cm}
+	{\LARGE Entwurfsdokumentation\par}
+	\vfill
+	\begin{tabular}{>{\Large}c}
+		Nada Chatti\\
+		Daniel Jungkind\\
+		Hannes Kuchelmeister\\
+		Ulrike Rheinheimer\\
+		Paul Samuel M. Teuber\\
+		Tim Niklas Uhl
+	\end{tabular}
+	\vfill
+	11. Januar 2017
+\end{titlepage}
+\tableofcontents
+\pagebreak
+
+%
+% % Hier beginnt die Gliederung des Pflichtenhefts
+\input{content/intro}
+ 
+\input{content/structure}
+
+\input{content/class_descriptions}
+
+\input{content/procedure_descriptions}
+
+\input{content/database_description}
+
+\input{content/class_index}
+
+\newpage
+\begin{appendices}
+	\input{content/addendum}
+
+	\printglossaries
+\end{appendices}
+\end{document}
