@@ -1,0 +1,38 @@
+\section{REST-Webservice Spezifikation}
+
+\subsection{Zugriffsstruktur}
+
+\begin{longtable}{| l | l | p{3cm} | p{3cm} |}
+	\hline
+	\textbf{Methode} & \textbf{URL} & \textbf{Beschreibung} & \textbf{Kommunikationsdaten (Note to self: finde schöneres Wort!)} \\ \hline \hline
+	GET & /login & URL unter welcher sich ein Nutzer wie in \ref{subsec:api-auth} spezifiziert authentifizieren kann. & --- \\
+	\hline
+	& & & \\ \hline
+	POST & /students & Erstellt einen Studenten & tbd
+	\\ \hline
+	GET & /students/\{student\_id\} & Lese Informationen über Student & tbd
+	\\ \hline
+	PUT & /students/\{student\_id\} & Bearbeite Informationen über Student & tbd
+	\\ \hline
+	DELETE & /students/\{student\_id\} & Löscht Nutzer & tbd \\ \hline
+	& & & \\ \hline
+	POST & /plans & Erstellt neuen Studienplan & tbd \\ \hline
+	GET & /plans/\{plan\_id\} & Lese Plan & tbd \\ \hline
+	PUT & /plans/\{plan\_id\} & Bearbeite Plan & tbd \\ \hline
+	DELETE & /plans/\{plan\_id\} & Lösche Plan & tbd \\ \hline
+	PATCH & /plans/\{plan\_id\} & Erhalte Link zum teilen des Plans & tbd \\ \hline
+	& & & \\ \hline
+	GET & /plans/\{plan\_id\}/verification & Verifiziere den Plan und gebe das Ergebnis zurück & tbd \\ \hline
+	POST & /plans/\{plan\_id\}/verification & Verifiziere den Plan und speichere das Ergebnis als Eigenschaft des Plans & tbd \\ \hline
+	& & & \\ \hline
+	PUT & /plans/\{plan\_id\}/proposal & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & tbd \\ \hline
+	& & & \\ \hline
+	GET & /plans/\{plan\_id\}/pdf & Retrieve pdf version of plan & tbd \\ \hline
+	\hline
+\end{longtable}
+
+\subsection{Authentifizierung}
+\label{subsec:api-auth}
+\subsection{Spezifikation der Statuscodes}
+
+\subsection{Spezifikation der JSON-Datenobjekte}
