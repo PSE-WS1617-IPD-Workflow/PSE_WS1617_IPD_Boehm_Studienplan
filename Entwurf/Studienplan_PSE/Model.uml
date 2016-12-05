@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_lM5vELiaEeavH9sFQSsLvg" name="Model">
   <packagedElement xmi:type="uml:Package" xmi:id="_hjPysLiYEeavH9sFQSsLvg" name="Modul-DAO">
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_tp3UULiaEeavH9sFQSsLvg" importedPackage="_PVXQkLfVEea2RYsZ51fiPw"/>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_tp3UULiaEeavH9sFQSsLvg">
+      <importedPackage xmi:type="uml:Package" href="Modul_Model.uml#_PVXQkLfVEea2RYsZ51fiPw"/>
+    </packageImport>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_PVXQkLfVEea2RYsZ51fiPw" name="Modul-Model"/>
-  <packagedElement xmi:type="uml:Package" xmi:id="_bNE2oLifEeavH9sFQSsLvg" name="CopyOf_Modul-DAO_1">
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_bNE2obifEeavH9sFQSsLvg" importedPackage="_PVXQkLfVEea2RYsZ51fiPw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_bb9nMLifEeavH9sFQSsLvg" name="CopyOf_Modul-DAO_2">
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_bb9nMbifEeavH9sFQSsLvg" importedPackage="_PVXQkLfVEea2RYsZ51fiPw"/>
-  </packagedElement>
+  <packagedElement xmi:type="uml:Package" href="Modul_Model.uml#_PVXQkLfVEea2RYsZ51fiPw"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_d_LK0LifEeavH9sFQSsLvg" name="Sudyplan-DAO">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_nIA-oLifEeavH9sFQSsLvg" importedPackage="_haZUgLifEeavH9sFQSsLvg"/>
   </packagedElement>
