@@ -1,31 +1,69 @@
 \section{REST-Webservice Spezifikation}
+\subsection{Konvention}
+Atomare Werte werden mittels \jsonatom{name} angegeben, wobei name ein eindeutiger Bezeichner für den Wert ist.\\
+Zusammengesetzte JSON-Datenklassen werden mittels \jsonobj{name} angegebenm wobei name ein eindeutiger Bezeichner für das JSON-Datenklassen ist.\\
+Teile einer zusammengesetzten JSON-Datenklasse werden mittels \jsonpart{name}{prop1, prop2, prop3} angegeben, wobei prop1, prop2, prop3 die einzigen Werte sind, welche angezeigt werden.
+\input{json/Daniel}
+\input{json/Hannes}
+\input{json/Samuel}
+\subsection{Atomare Werte}
 
+\subsection{Spezifikation der JSON-Datenklassen}
+\begin{lstlisting}[language=json,firstnumber=-3]
+(*\jsonobj{Modul}*) = {
+	"menu": {
+		"id": (*\jsonatom{Modul-ID}*),
+		"value": "File",
+		"popup": {
+			"menuitem": [
+				{"value": "New", "onclick": "CreateNewDoc()"},
+				{"value": "Open", "onclick": "OpenDoc()"},
+				{"value": "Close", "onclick": "blub"}
+			]
+		}
+	},
+	"foo" : "bar",
+	"bar" : "foo"
+}
+\end{lstlisting}
+\jsonpart{Modul}{menu, foo} wäre die JSON-Datenklasse \jsonobj{Modul} ohne bar.
 \subsection{Zugriffsstruktur}
 
 \begin{tabularx}{\textwidth}{@{} | X | X | X | X | @{}}
 	\hline
 	\textbf{Methode} & \textbf{URL} & \textbf{Beschreibung} & \textbf{\hspace{0pt}Kommunikationsdaten (Note to self: finde schöneres Wort!)} \\ \hline  \hline
+	\\ \hline
 	& & & \\ \hline
-	POST & /students & Erstellt einen Studenten & tbd
+	GET & /student & Lese Informationen über Student & tbd	\\ \hline
+	PUT & /student & Ersetze Informationen über Student & tbd
 	\\ \hline
-	GET & /students/\{student\_id\} & Lese Informationen über Student & tbd
-	\\ \hline
-	PUT & /students/\{student\_id\} & Bearbeite Informationen über Student & tbd
-	\\ \hline
-	DELETE & /students/\{student\_id\} & Löscht Nutzer & tbd \\ \hline
+	DELETE & /student & Löscht Student & tbd \\ \hline
 	& & & \\ \hline
 	POST & /plans & Erstellt neuen Studienplan & tbd \\ \hline
+	GET & /plans & Lese Planliste & tbd \\ \hline
 	GET & /plans/\{plan\_id\} & Lese Plan & tbd \\ \hline
-	PATCH & /plans/\{plan\_id\} & Bearbeite Plan & tbd \\ \hline
+	PUT & /plans/\{plan\_id\} & Ersetze Plan (inkl. Verifikations-Informationen)k & tbd \\ \hline
+	PATCH & /plans/\{plan\_id\} & Bearbeite Plan: Semester erstellen, Name ändern, Semester löschen (setzte Verifizierung zurück) & tbd \\ \hline
 	DELETE & /plans/\{plan\_id\} & Lösche Plan & tbd \\ \hline
+	POST & /plans/\{plan\_id\} & Dupliziere Plan & tbd \\ \hline
+\end{tabularx}
+\begin{tabularx}{\textwidth}{@{} | X | X | X | X | @{}}
+	GET & /plans/\{plan\_id\}/modules & Lese Modul-Liste (gefiltert) & tbd \\ \hline
+	GET & /plans/\{plan\_id\}/modules/\{module\_id\} & Lese Modul mit \{module\_id\} & tbd \\ \hline
+	PUT & /plans/\{plan\_id\}/modules/\{module\_id\} & Setze Modul in Plan in gegebenes Semester, setzte Verifizierung zurück & tbd \\ \hline
+	PATCH & /plans/\{plan\_id\}/modules/\{module\_id\} & Bearbeite Modul in Plan (also setze in anderes Semester), setze Verifizierung zurück & tbd \\ \hline
+	DELETE & /plans/\{plan\_id\}/modules/\{module\_id\} & Lösche Modul aus Plan, setzte Verifizierung zurück & tbd \\ \hline
+	PUT & /plans/\{plan\_id\}/modules/\{module\_id\}/preference & Setze Bewertung für Modul & tbd \\ \hline
 	& & & \\ \hline
-	GET & /plans/\{plan\_id\}/verification & Verifiziere den Plan und gebe das Ergebnis zurück & tbd \\ \hline
-	POST & /plans/\{plan\_id\}/verification & Verifiziere den Plan und speichere das Ergebnis als Eigenschaft des Plans & tbd \\ \hline
+	GET & /plans/\{plan\_id\}/verification & Verifiziere den Plan, gebe das Ergebnis zurück und speichere es in der Datenbank & tbd \\ \hline
 	& & & \\ \hline
 	PUT & /plans/\{plan\_id\}/proposal & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & tbd \\ \hline
 	& & & \\ \hline
-	GET & /plans/\{plan\_id\}/pdf & Retrieve pdf version of plan & tbd \\ \hline
-	GET & /plans/\{plan\_id\}/share & Erhalte Link zum teilen des Plans & tbd \\ \hline
+	GET & /plans/\{plan\_id\}/pdf & Lese PDF-Version des Plans & tbd \\ \hline
+	GET & /plans/\{plan\_id\}/share & Lese Link zum teilen des Plans & tbd \\ \hline
+	& & & \\ \hline
+	GET  & /filters & Lade Filtertypen und Beschränkungen & tbd \\ \hline
+	GET & /objective-functions & Lese Liste mit allen vorhandenen Zielfunktionen & tbd \\ \hline
 \end{tabularx}
 
 \subsection{Authentifizierung}
@@ -82,5 +120,3 @@ Der Datenaustausch beim Aufruf der Schnittstellen ist wie folgt spezifiziert:\\
 	\end{itemize} & \\
 \end{tabularx}
 \subsection{Spezifikation der Statuscodes}
-
-\subsection{Spezifikation der JSON-Datenobjekte}
