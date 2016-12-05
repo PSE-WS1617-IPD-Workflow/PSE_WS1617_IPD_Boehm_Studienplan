@@ -4,7 +4,7 @@
 
 \begin{tabularx}{\textwidth}{@{} | X | X | X | X | @{}}
 	\hline
-	\textbf{Methode} & \textbf{URL} & \textbf{Beschreibung} & \textbf{Kommunikationsdaten (Note to self: finde schöneres Wort!)} \\ \hline  \hline
+	\textbf{Methode} & \textbf{URL} & \textbf{Beschreibung} & \textbf{\hspace{0pt}Kommunikationsdaten (Note to self: finde schöneres Wort!)} \\ \hline  \hline
 	& & & \\ \hline
 	POST & /students & Erstellt einen Studenten & tbd
 	\\ \hline
@@ -16,9 +16,8 @@
 	& & & \\ \hline
 	POST & /plans & Erstellt neuen Studienplan & tbd \\ \hline
 	GET & /plans/\{plan\_id\} & Lese Plan & tbd \\ \hline
-	PUT & /plans/\{plan\_id\} & Bearbeite Plan & tbd \\ \hline
+	PATCH & /plans/\{plan\_id\} & Bearbeite Plan & tbd \\ \hline
 	DELETE & /plans/\{plan\_id\} & Lösche Plan & tbd \\ \hline
-	PATCH & /plans/\{plan\_id\} & Erhalte Link zum teilen des Plans & tbd \\ \hline
 	& & & \\ \hline
 	GET & /plans/\{plan\_id\}/verification & Verifiziere den Plan und gebe das Ergebnis zurück & tbd \\ \hline
 	POST & /plans/\{plan\_id\}/verification & Verifiziere den Plan und speichere das Ergebnis als Eigenschaft des Plans & tbd \\ \hline
@@ -26,7 +25,7 @@
 	PUT & /plans/\{plan\_id\}/proposal & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & tbd \\ \hline
 	& & & \\ \hline
 	GET & /plans/\{plan\_id\}/pdf & Retrieve pdf version of plan & tbd \\ \hline
-	\hline
+	GET & /plans/\{plan\_id\}/share & Erhalte Link zum teilen des Plans & tbd \\ \hline
 \end{tabularx}
 
 \subsection{Authentifizierung}
