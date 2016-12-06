@@ -1,1 +1,53 @@
-blub
+\subsection{Authentifizierung}
+\label{subsec:api-auth}
+\paragraph{Zugrundeliegende Spezifikation} Die Authentifizierung am REST-Webservice erfolgt über eine OAuth 2.0 Schnittstelle nach RFC 6749 (siehe \cite{rfc6749}).
+Für das momentane System ist hierbei nur der \textit{Implicit-Grant-Typ} notwendig, jedoch sollte das System mindestens um den \textit{Authorization-Code-Grant-Typ} erweitert werden können.
+\paragraph{Registrierung der Klienten}
+Wir unterscheiden zwischen zwei Typen von Klienten: vertrauenswürdigen sowie öffentlichen Klienten. Die Definitionen hierzu finden sich auch in RFC 6749. Bei der Webapp unseres Systems handelt es sich auf Grund der Zugänglichkeit des Codes sowie der Daten um einen öffentlichen Klienten.
+\subparagraph{Vertrauenswürdiger Klient}
+Für einen vertrauenswürdigen Klienten werden folgende Informationen gespeichert:\\
+\begin{tabularx}{\textwidth}{@{} | X | X | @{}}
+	\hline
+	\textbf{Name} & \textbf{Beschreibung}\\ \hline \hline
+	api\_key & Eindeutige öffentliche ID des Klienten. Beginnt mit dem Präfix \enquote{key-} \\ \hline
+	api\_secret & Nur dem Klienten bekannte Kennung. Beginnt mit dem Präfix \enquote{secret-} \\ \hline
+	scope & Berechtigungen des Klienten. Vorerst immer \enquote{student} \\ \hline
+	redirect\_url & URL an welche beim \textit{Implicit-Grant} bzw. \textit{Authorization-Code-Grant} weitergeleitet wird. \\ \hline
+	origin & Domains, von welchen aus der Klient auf die Ressourcen zugreifen darf. Wird als Regulärer Ausdruck angegeben. \\
+	\hline
+\end{tabularx}
+
+\subparagraph{Öffentlicher Klient}
+Für einen öffentlichen Klienten werden folgende Informationen gespeichert:\\
+\begin{tabularx}{\textwidth}{@{} | X | X | @{}}
+	\hline
+	\textbf{Name} & \textbf{Beschreibung}\\ \hline \hline
+	api\_key & Eindeutige öffentliche ID des Klienten. Beginnt mit dem Präfix \enquote{key-} \\ \hline
+	api\_secret & NULL (wird nicht benötigt) \\ \hline
+	scope & Berechtigungen des Klienten. Vorerst immer \enquote{student} \\ \hline
+	redirect\_url & URL an welche beim \textit{Implicit-Grant} bzw. \textit{Authorization-Code-Grant} weitergeleitet wird. \\ \hline
+	origin & Domains, von welchen aus der Klient auf die Ressourcen zugreifen darf. Wird als Regulärer Ausdruck angegeben. \\
+	\hline
+\end{tabularx}
+\paragraph{Schnittstellen}
+Für die Authentifizierung werden folgende Schnittstellen verwendet:
+\begin{table}
+	\begin{tabularx}{\textwidth}{@{} | X | X | X | X | @{}}
+		\hline
+		\textbf{Methode} & \textbf{URL} & \textbf{Beschreibung} & \textbf{Kommunikation} \\ \hline \hline
+		GET & /auth/login & Der in RFC 6749, Kapitel 3.1 definierte \textit{Authorization Endpoint} & --- \\ \hline
+		POST & /auth/token & Der in RFC 6749, Kapitel 3.2 definierte \textit{Token Endpoint} & --- \\ \hline
+	\end{tabularx}
+\end{table}
+Beim Login wird hierbei der Webbrowser des Benutzers an auf die Seite /auth/login weitergeleitet, auf welcher er sich authentifiziert. Anschließend wird er auf die Hauptseite der Webapp weitergeleitet.
+\paragraph{Datenaustausch}
+Der Datenaustausch beim Aufruf der Schnittstellen ist wie folgt spezifiziert:\\
+\begin{tabularx}{\textwidth}{@{} | X | X | X | @{}}
+	\hline
+	\textbf{Posten} & \textbf{Implicit-Grant} & \textbf{Authorization-Code-Grant} \\ \hline
+	Anfrage-Header &
+	\begin{itemize}
+		\item[]
+		\item[client\_id] \{api\_key\}
+	\end{itemize} & \\
+\end{tabularx}
