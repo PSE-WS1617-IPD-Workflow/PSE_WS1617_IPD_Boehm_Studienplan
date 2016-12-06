@@ -1,0 +1,39 @@
+<<Modul>> = {
+	"id": <Modul-ID>,
+	"name": <Modul-Name>,
+	"semester": <Modul-Semester>,
+	"creditpoints": <Modul-Creditpoints>,
+	"lecturer": <Modul-Dozent>,
+	"preference" <Modul-Präferenz>
+	"constrains": [<<Constraint>>, ..., <<Constraint>>]	
+}
+<<Constraint>> = {
+	"first": <<Modul[id]>>,
+	"second": <<Modul[id]>>,
+	"type": <Constraint-Typ>,
+	"description": <Constraint-Name>	
+}
+
+/plans/{plan_id}/modules/
+	GET:
+	{
+		"modules":[<<Modul[id, name, creditpoints, lecturer]>>, ..., <<Modul[id, name, creditpoints, lecturer]>>]
+	}
+/plans/{plan_id}/modules/{modul_id}
+	GET:
+	{
+		"modul": <<Modul>>
+	}
+	PUT, PATCH:
+	{
+		"modul": <<Modul[id, semester]>>
+	}
+	DELETE
+	{
+		"modul": <<Modul[id]>>
+	}
+/plans/{plan_id}/modules/{modul_id}/preference
+	PUT
+	{
+		"modul": <<Modul[id, preference]>>
+	}
