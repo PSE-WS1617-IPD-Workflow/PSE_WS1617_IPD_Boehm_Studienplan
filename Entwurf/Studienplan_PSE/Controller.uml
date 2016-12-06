@@ -6,25 +6,33 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_OApAoLsHEea-uPszIhxKkQ">
     <importedPackage xmi:type="uml:Model" href="MainModel.uml#_vqV8QLcDEeag2fAimjvU5Q"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_SnqiwLuOEea-uPszIhxKkQ" name="RESTPlanCollection">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_otX40LuSEea-uPszIhxKkQ" name="post"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_rjbf8LuSEea-uPszIhxKkQ" name="get"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_xjVM4LuSEea-uPszIhxKkQ" name="put"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_SnqiwLuOEea-uPszIhxKkQ" name="RESTPlans">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_otX40LuSEea-uPszIhxKkQ" name="createPlan"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_rjbf8LuSEea-uPszIhxKkQ" name="getAllPlans"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_xjVM4LuSEea-uPszIhxKkQ" name="replacePlan" concurrency="concurrent"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_2tGpcLuaEea-uPszIhxKkQ" name="getPlan"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_9Z__QLuaEea-uPszIhxKkQ" name="editPlan"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_AbYsoLubEea-uPszIhxKkQ" name="deletePlan"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_FmEBwLubEea-uPszIhxKkQ" name="duplicatePlan"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_To0dwLuOEea-uPszIhxKkQ" name="RESTFIlter">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_3ZJGgLuOEea-uPszIhxKkQ" name="uifilterelement" type="_p8pFILuOEea-uPszIhxKkQ" aggregation="shared" association="_3ZGqQLuOEea-uPszIhxKkQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Fo7XQLuVEea-uPszIhxKkQ"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FpAPwLuVEea-uPszIhxKkQ" value="*"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_4h0XELuUEea-uPszIhxKkQ" name="get"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_4h0XELuUEea-uPszIhxKkQ" name="getAllFilters"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_VDBx8LuOEea-uPszIhxKkQ" name="RESTObjectiveFunction">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_O1vFELuVEea-uPszIhxKkQ" name="get"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_aK00Y7udEea-uPszIhxKkQ" name="objectivefunction" type="_GwydkLudEea-uPszIhxKkQ" aggregation="shared" association="_aK00YLudEea-uPszIhxKkQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b38dgLudEea-uPszIhxKkQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b3-5wLudEea-uPszIhxKkQ" value="*"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_O1vFELuVEea-uPszIhxKkQ" name="getAllObjectiveFunctions"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_c5jCQLuOEea-uPszIhxKkQ" name="RESTController">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_QQNmYLuSEea-uPszIhxKkQ" name="put"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_U6-FULuSEea-uPszIhxKkQ" name="get"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_eRvAYLuSEea-uPszIhxKkQ" name="delete"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_c5jCQLuOEea-uPszIhxKkQ" name="RESTStudent">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_QQNmYLuSEea-uPszIhxKkQ" name="replaceInformation"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_U6-FULuSEea-uPszIhxKkQ" name="getInformation"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_eRvAYLuSEea-uPszIhxKkQ" name="deleteStudent"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_p8pFILuOEea-uPszIhxKkQ" name="Filter"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_3ZGqQLuOEea-uPszIhxKkQ" memberEnd="_3ZJGgLuOEea-uPszIhxKkQ _3ZJGgbuOEea-uPszIhxKkQ">
@@ -43,37 +51,52 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_26GSsLuREea-uPszIhxKkQ" name="ECTSFilter"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_-liUYLuREea-uPszIhxKkQ" client="_zQ1tALuREea-uPszIhxKkQ" supplier="_r3lSYLuPEea-uPszIhxKkQ"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="__U8YELuREea-uPszIhxKkQ" client="_26GSsLuREea-uPszIhxKkQ" supplier="_ZyO2kLuPEea-uPszIhxKkQ"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_BBT90LuTEea-uPszIhxKkQ" name="RESTPlan">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_FcRtQLuTEea-uPszIhxKkQ" name="get"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_JgtMALuTEea-uPszIhxKkQ" name="put"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_MUlB0LuTEea-uPszIhxKkQ" name="patch"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_NAfFkLuTEea-uPszIhxKkQ" name="delete"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_SKtHsLuTEea-uPszIhxKkQ" name="post"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_uEiVULuTEea-uPszIhxKkQ" name="RESTPlanModuleCollection">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="__EZTQ7uUEea-uPszIhxKkQ" name="filter" type="_p8pFILuOEea-uPszIhxKkQ" aggregation="shared" association="__EZTQLuUEea-uPszIhxKkQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IngoQLuVEea-uPszIhxKkQ"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_In5p0LuVEea-uPszIhxKkQ" value="*"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_uEiVULuTEea-uPszIhxKkQ" name="RESTPlanModules">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IDnFc7ufEea-uPszIhxKkQ" name="filter" type="_p8pFILuOEea-uPszIhxKkQ" aggregation="shared" association="_IDnFcLufEea-uPszIhxKkQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OSwvULufEea-uPszIhxKkQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OTWlMLufEea-uPszIhxKkQ" value="*"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_1wBaULuTEea-uPszIhxKkQ" name="get"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_yUnDYLuTEea-uPszIhxKkQ" name="RESTPlanModul">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_6-2PoLuTEea-uPszIhxKkQ" name="get"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="__GT0QLuTEea-uPszIhxKkQ" name="put"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="__7fv0LuTEea-uPszIhxKkQ" name="patch"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_Cq1q8LuUEea-uPszIhxKkQ" name="delete"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_1wBaULuTEea-uPszIhxKkQ" name="getAllModules"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Y99qkLubEea-uPszIhxKkQ" name="getModule"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_eZT48LubEea-uPszIhxKkQ" name="changeModuleSemester"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_f8uMcLubEea-uPszIhxKkQ" name="putModuleSemester"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_lPr64LubEea-uPszIhxKkQ" name="removeModuleSemester"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_pQEnILubEea-uPszIhxKkQ" name="setModulePreference"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_aPqnMLuUEea-uPszIhxKkQ" name="RESTPlanGenerator">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_dTY24LuUEea-uPszIhxKkQ" name="put"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_U3x7g7ufEea-uPszIhxKkQ" name="objectivefunction" type="_GwydkLudEea-uPszIhxKkQ" aggregation="shared" association="_U3x7gLufEea-uPszIhxKkQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WePjALufEea-uPszIhxKkQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WeR_QLufEea-uPszIhxKkQ" value="*"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_7QEo4LubEea-uPszIhxKkQ" name="generatePlan"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_oh-2QLuUEea-uPszIhxKkQ" name="RESTPlanVerificator">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_qbVkkLuUEea-uPszIhxKkQ" name="get"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_qbVkkLuUEea-uPszIhxKkQ" name="verifyPlan"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="__EZTQLuUEea-uPszIhxKkQ" memberEnd="__EZTQ7uUEea-uPszIhxKkQ __EZTRLuUEea-uPszIhxKkQ">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__EZTQbuUEea-uPszIhxKkQ" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="__EZTQruUEea-uPszIhxKkQ" key="nature" value="UML_Nature"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9TtUkLubEea-uPszIhxKkQ" name="RESTPlanConverter">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Qxe74LucEea-uPszIhxKkQ" name="convertPlanToPDF"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_AQJ3kLucEea-uPszIhxKkQ" name="RESTPlanShare">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_OUUV4LucEea-uPszIhxKkQ" name="sharePlan"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_GwydkLudEea-uPszIhxKkQ" name="ObjectiveFunction"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_aK00YLudEea-uPszIhxKkQ" memberEnd="_aK00Y7udEea-uPszIhxKkQ _aK00ZLudEea-uPszIhxKkQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aK00YbudEea-uPszIhxKkQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aK00YrudEea-uPszIhxKkQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="__EZTRLuUEea-uPszIhxKkQ" name="restplanmodulecollection" type="_uEiVULuTEea-uPszIhxKkQ" association="__EZTQLuUEea-uPszIhxKkQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_aK00ZLudEea-uPszIhxKkQ" name="restobjectivefunction" type="_VDBx8LuOEea-uPszIhxKkQ" association="_aK00YLudEea-uPszIhxKkQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IDnFcLufEea-uPszIhxKkQ" memberEnd="_IDnFc7ufEea-uPszIhxKkQ _IDnFdLufEea-uPszIhxKkQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IDnFcbufEea-uPszIhxKkQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_IDnFcrufEea-uPszIhxKkQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IDnFdLufEea-uPszIhxKkQ" name="restplanmodules" type="_uEiVULuTEea-uPszIhxKkQ" association="_IDnFcLufEea-uPszIhxKkQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_U3x7gLufEea-uPszIhxKkQ" memberEnd="_U3x7g7ufEea-uPszIhxKkQ _U3x7hLufEea-uPszIhxKkQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_U3x7gbufEea-uPszIhxKkQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_U3x7grufEea-uPszIhxKkQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_U3x7hLufEea-uPszIhxKkQ" name="restplangenerator" type="_aPqnMLuUEea-uPszIhxKkQ" association="_U3x7gLufEea-uPszIhxKkQ"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="__4xDwLlVEeavH9sFQSsLvg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__4xDwblVEeavH9sFQSsLvg" source="http://www.eclipse.org/uml2/2.0.0/UML">
