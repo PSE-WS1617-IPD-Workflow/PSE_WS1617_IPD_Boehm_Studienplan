@@ -25,14 +25,20 @@
 \usepackage[toc, page]{appendix}
 \usepackage{tabularx}
 
+\usepackage{microtype}
 \usepackage{MnSymbol}
 \usetikzlibrary{positioning}
 \input{style/json}
 
+% needed to define linebreak points without hyphenation (useful for URL wrapping)
+\newcommand{\+}{\discretionary{}{}{}}
+
+\renewcommand{\arraystretch}{1.24}  % for proper row spacing in tables
+
 \addto\captionsngerman{\let\appendixtocname\appendixname\let\appendixpagename\appendixname}
 
 % fix hyphenation
-\hyphenation{Log-out Log-in Ak-tions Ak-tion ge-öff-net liken dis-liken Like Dis-like No-ti-fi-ca-tion Mo-dule}
+\hyphenation{Log-out Log-in Ak-tions Ak-tion ge-öff-net liken dis-liken Like Dis-like No-ti-fi-ca-tion Mo-dule inkl Au-tho-ri-za-tion}
 
 \usepackage{enumitem}
 \setlist[itemize]{nosep}
