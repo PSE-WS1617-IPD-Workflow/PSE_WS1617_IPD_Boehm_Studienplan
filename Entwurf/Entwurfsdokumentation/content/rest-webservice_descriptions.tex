@@ -29,7 +29,7 @@ Teile einer zusammengesetzten JSON-Datenklasse werden mittels \jsonpart{name}{pr
 \jsonpart{Modul}{menu, foo} wäre die JSON-Datenklasse \jsonobj{Modul} ohne bar.
 \subsection{Zugriffsstruktur}
 
-\begin{tabularx}{\textwidth}{@{} | X | X | X | X | @{}}
+\begin{longtable}{| >{\hspace{0pt}} p{.11\linewidth} | >{\hspace{0pt}} p{.27\linewidth} | >{\hspace{0pt}} p{.27\linewidth} | >{\hspace{0pt}} p{.29\linewidth} | }
 	\hline
 	\textbf{Methode} & \textbf{URL} & \textbf{Beschreibung} & \textbf{\hspace{0pt}Kommunikationsdaten (Note to self: finde schöneres Wort!)} \\ \hline  \hline
 	\\ \hline
@@ -42,29 +42,27 @@ Teile einer zusammengesetzten JSON-Datenklasse werden mittels \jsonpart{name}{pr
 	POST & /plans & Erstellt neuen Studienplan & tbd \\ \hline
 	GET & /plans & Lese Planliste & tbd \\ \hline
 	GET & /plans/\{plan\_id\} & Lese Plan & tbd \\ \hline
-	PUT & /plans/\{plan\_id\} & Ersetze Plan (inkl. Verifikations-Informationen)k & tbd \\ \hline
+	PUT & /plans/\{plan\_id\} & Ersetze Plan (inkl. Verifikations-Informationen) & tbd \\ \hline
 	PATCH & /plans/\{plan\_id\} & Bearbeite Plan: Semester erstellen, Name ändern, Semester löschen (setzte Verifizierung zurück) & tbd \\ \hline
 	DELETE & /plans/\{plan\_id\} & Lösche Plan & tbd \\ \hline
 	POST & /plans/\{plan\_id\} & Dupliziere Plan & tbd \\ \hline
-\end{tabularx}
-\begin{tabularx}{\textwidth}{@{} | X | X | X | X | @{}}
-	GET & /plans/\{plan\_id\}/modules & Lese Modul-Liste (gefiltert) & tbd \\ \hline
-	GET & /plans/\{plan\_id\}/modules/\{module\_id\} & Lese Modul mit \{module\_id\} & tbd \\ \hline
-	PUT & /plans/\{plan\_id\}/modules/\{module\_id\} & Setze Modul in Plan in gegebenes Semester, setzte Verifizierung zurück & tbd \\ \hline
-	PATCH & /plans/\{plan\_id\}/modules/\{module\_id\} & Bearbeite Modul in Plan (also setze in anderes Semester), setze Verifizierung zurück & tbd \\ \hline
-	DELETE & /plans/\{plan\_id\}/modules/\{module\_id\} & Lösche Modul aus Plan, setzte Verifizierung zurück & tbd \\ \hline
-	PUT & /plans/\{plan\_id\}/modules/\{module\_id\}/preference & Setze Bewertung für Modul & tbd \\ \hline
+	GET & /plans/\{plan\_id\}/\+modules & Lese Modul-Liste (gefiltert) & tbd \\ \hline
+	GET & /plans/\{plan\_id\}/\+modules/\{module\_id\} & Lese Modul mit \{module\_id\} & tbd \\ \hline
+	PUT & /plans/\{plan\_id\}/\+modules/\{module\_id\} & Setze Modul in Plan in gegebenes Semester, setzte Verifizierung zurück & tbd \\ \hline
+	PATCH & /plans/\{plan\_id\}/\+modules/\{module\_id\} & Bearbeite Modul in Plan (also setze in anderes Semester), setze Verifizierung zurück & tbd \\ \hline
+	DELETE & /plans/\{plan\_id\}/\+modules/\{module\_id\} & Lösche Modul aus Plan, setzte Verifizierung zurück & tbd \\ \hline
+	PUT & /plans/\{plan\_id\}/\+modules/\{module\_id\}/\+preference & Setze Bewertung für Modul & tbd \\ \hline
 	& & & \\ \hline
-	GET & /plans/\{plan\_id\}/verification & Verifiziere den Plan, gebe das Ergebnis zurück und speichere es in der Datenbank & tbd \\ \hline
+	GET & /plans/\{plan\_id\}/\+verification & Verifiziere den Plan, gebe das Ergebnis zurück und speichere es in der Datenbank & tbd \\ \hline
 	& & & \\ \hline
-	GET & /plans/\{plan\_id\}/proposal & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & tbd \\ \hline
+	GET & /plans/\{plan\_id\}/\+proposal & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & tbd \\ \hline
 	& & & \\ \hline
 	GET & /plans/\{plan\_id\}/pdf & Lese PDF-Version des Plans & tbd \\ \hline
-	GET & /plans/\{plan\_id\}/share & Lese Link zum teilen des Plans & tbd \\ \hline
+	GET & /plans/\{plan\_id\}/\+share & Lese Link zum teilen des Plans & tbd \\ \hline
 	& & & \\ \hline
 	GET  & /filters & Lade Filtertypen und Beschränkungen & tbd \\ \hline
 	GET & /objective-functions & Lese Liste mit allen vorhandenen Zielfunktionen & tbd \\ \hline
-\end{tabularx}
+\end{longtable}
 
 
 \subsection{Spezifikation der Statuscodes}
