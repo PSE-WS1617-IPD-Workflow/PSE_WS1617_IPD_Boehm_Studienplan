@@ -3,9 +3,9 @@
 Atomare Werte werden mittels \jsonatom{name} angegeben, wobei name ein eindeutiger Bezeichner für den Wert ist.\\
 Zusammengesetzte JSON-Datenklassen werden mittels \jsonobj{name} angegebenm wobei name ein eindeutiger Bezeichner für das JSON-Datenklassen ist.\\
 Teile einer zusammengesetzten JSON-Datenklasse werden mittels \jsonpart{name}{prop1, prop2, prop3} angegeben, wobei prop1, prop2, prop3 die einzigen Werte sind, welche angezeigt werden.
-\input{json/Daniel}
-\input{json/Hannes}
-\input{json/Samuel}
+\input{content/json/Daniel}
+\input{content/json/Hannes}
+\input{content/json/Samuel}
 \subsection{Atomare Werte}
 
 \subsection{Spezifikation der JSON-Datenklassen}
@@ -57,7 +57,7 @@ Teile einer zusammengesetzten JSON-Datenklasse werden mittels \jsonpart{name}{pr
 	& & & \\ \hline
 	GET & /plans/\{plan\_id\}/verification & Verifiziere den Plan, gebe das Ergebnis zurück und speichere es in der Datenbank & tbd \\ \hline
 	& & & \\ \hline
-	PUT & /plans/\{plan\_id\}/proposal & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & tbd \\ \hline
+	GET & /plans/\{plan\_id\}/proposal & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & tbd \\ \hline
 	& & & \\ \hline
 	GET & /plans/\{plan\_id\}/pdf & Lese PDF-Version des Plans & tbd \\ \hline
 	GET & /plans/\{plan\_id\}/share & Lese Link zum teilen des Plans & tbd \\ \hline
@@ -66,57 +66,5 @@ Teile einer zusammengesetzten JSON-Datenklasse werden mittels \jsonpart{name}{pr
 	GET & /objective-functions & Lese Liste mit allen vorhandenen Zielfunktionen & tbd \\ \hline
 \end{tabularx}
 
-\subsection{Authentifizierung}
-\label{subsec:api-auth}
-\paragraph{Zugrundeliegende Spezifikation} Die Authentifizierung erfolgt über die Implementierung einer OAuth 2.0 Schnittstelle nach RFC 6749 (Zitieren!).
-Für das momentane System ist hierbei nur der \textit{Implicit-Grant-Typ} notwendig, jedoch sollte das System mindestens um den \textit{Authorization-Code-Grant-Typ} erweitert werden können.
-\paragraph{Registrierung der Klienten}
-Wir unterscheiden zwischen zwei Typen von Klienten: vertrauenswürdigen sowie öffentlichen Klienten. Die Definitionen hierzu finden sich auch in RFC 6749. Bei der Webapp unseres Systems handelt es sich auf Grund der Zugänglichkeit des Codes sowie der Daten um einen öffentlichen Klienten.
-\subparagraph{Vertrauenswürdiger Klient}
-Für einen vertrauenswürdigen Klienten werden folgende Informationen gespeichert:\\
-\begin{tabularx}{\textwidth}{@{} | X | X | @{}}
-	\hline
-	\textbf{Name} & \textbf{Beschreibung}\\ \hline \hline
-	api\_key & Eindeutige öffentliche ID des Klienten. Beginnt mit dem Präfix \enquote{key-} \\ \hline
-	api\_secret & Nur dem Klienten bekannte Kennung. Beginnt mit dem Präfix \enquote{secret-} \\ \hline
-	scope & Berechtigungen des Klienten. Vorerst immer \enquote{student} \\ \hline
-	redirect\_url & URL an welche beim \textit{Implicit-Grant} bzw. \textit{Authorization-Code-Grant} weitergeleitet wird. \\ \hline
-	origin & Domains, von welchen aus der Klient auf die Ressourcen zugreifen darf. Wird als Regulärer Ausdruck angegeben. \\
-	\hline
-\end{tabularx}
 
-\subparagraph{Öffentlicher Klient}
-Für einen öffentlichen Klienten werden folgende Informationen gespeichert:\\
-\begin{tabularx}{\textwidth}{@{} | X | X | @{}}
-	\hline
-	\textbf{Name} & \textbf{Beschreibung}\\ \hline \hline
-	api\_key & Eindeutige öffentliche ID des Klienten. Beginnt mit dem Präfix \enquote{key-} \\ \hline
-	api\_secret & NULL (wird nicht benötigt) \\ \hline
-	scope & Berechtigungen des Klienten. Vorerst immer \enquote{student} \\ \hline
-	redirect\_url & URL an welche beim \textit{Implicit-Grant} bzw. \textit{Authorization-Code-Grant} weitergeleitet wird. \\ \hline
-	origin & Domains, von welchen aus der Klient auf die Ressourcen zugreifen darf. Wird als Regulärer Ausdruck angegeben. \\
-	\hline
-\end{tabularx}
-\paragraph{Schnittstellen}
-Für die Authentifizierung werden folgende Schnittstellen verwendet:
-\begin{table}
-\begin{tabularx}{\textwidth}{@{} | X | X | X | X | @{}}
-	\hline
-	\textbf{Methode} & \textbf{URL} & \textbf{Beschreibung} & \textbf{Kommunikation} \\ \hline \hline
-	GET & /auth/login & Der in RFC 6749, Kapitel 3.1 definierte \textit{Authorization Endpoint} & --- \\ \hline
-	POST & /auth/token & Der in RFC 6749, Kapitel 3.2 definierte \textit{Token Endpoint} & --- \\ \hline
-\end{tabularx}
-\end{table}
-Beim Login wird hierbei der Webbrowser des Benutzers an auf die Seite /auth/login weitergeleitet, auf welcher er sich authentifiziert. Anschließend wird er auf die Hauptseite der Webapp weitergeleitet.
-\paragraph{Datenaustausch}
-Der Datenaustausch beim Aufruf der Schnittstellen ist wie folgt spezifiziert:\\
-\begin{tabularx}{\textwidth}{@{} | X | X | X | @{}}
-	\hline
-	\textbf{Posten} & \textbf{Implicit-Grant} & \textbf{Authorization-Code-Grant} \\ \hline
-	Anfrage-Header &
-	\begin{itemize}
-		\item[]
-		\item[client\_id] \{api\_key\}
-	\end{itemize} & \\
-\end{tabularx}
 \subsection{Spezifikation der Statuscodes}
