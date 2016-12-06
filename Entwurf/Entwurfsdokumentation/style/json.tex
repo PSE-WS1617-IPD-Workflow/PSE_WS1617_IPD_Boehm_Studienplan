@@ -1,4 +1,3 @@
-\usepackage{bera}% optional: just to have a nice mono-spaced font
 \usepackage{listings}
 \usepackage{xcolor}
 
@@ -10,7 +9,7 @@
 % Kommandos für Atomare und JSON-Werte:
 \newcommand{\jsonatom}[1]{$\langle\textnormal{\textit{#1}}\rangle$}
 \newcommand{\jsonobj}[1]{$\llangle\textnormal{\textit{#1}}\rrangle$}
-\newcommand{\jsonpart}[2]{$\llangle\textnormal{\textit{#1}[#2]}\rrangle$}
+\newcommand{\jsonpart}[2]{$\llangle\textnormal{\textit{#1}\,[#2]}\rrangle$}
 
 \lstdefinelanguage{json}{
     basicstyle=\normalfont\ttfamily,
@@ -41,3 +40,4 @@
       {[}{{{\color{delim}{[}}}}{1}
       {]}{{{\color{delim}{]}}}}{1},
 }
+
