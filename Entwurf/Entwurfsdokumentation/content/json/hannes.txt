@@ -4,14 +4,16 @@
 	"semester": <Modul-Semester>,
 	"creditpoints": <Modul-Creditpoints>,
 	"lecturer": <Modul-Dozent>,
-	"preference" <Modul-Präferenz>
+	"preference" <Modul-Präferenz>,
+	"description": <Modul-Beschreibung>,	
 	"constrains": [<<Constraint>>, ..., <<Constraint>>]	
 }
 <<Constraint>> = {
+	"name": <Constraint-Name>,
 	"first": <<Modul[id]>>,
 	"second": <<Modul[id]>>,
 	"type": <Constraint-Typ>,
-	"description": <Constraint-Name>	
+	"description": <Constraint-Beschreibung>	
 }
 
 /plans/{plan_id}/modules/
@@ -37,3 +39,16 @@
 	{
 		"modul": <<Modul[id, preference]>>
 	}
+
+Überbleibsel:
+
+<<Filter>> = {
+	"id": <Filter-ID>,
+	"tooltipp": <Filter-Tooltipp>,
+	"specification": <<Filter-Eigenschaften>>
+}
+<<Objective>> = {
+	"id": <Zielfunktion-ID>,
+	"name": <Zielfunktion-Name>,
+	"description": <Zielfunktion-Beschreibung>
+}
