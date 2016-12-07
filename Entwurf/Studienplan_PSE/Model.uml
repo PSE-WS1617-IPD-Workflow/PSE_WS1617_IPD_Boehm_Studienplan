@@ -7,9 +7,11 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Package" href="Modul_Model.uml#_PVXQkLfVEea2RYsZ51fiPw"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_d_LK0LifEeavH9sFQSsLvg" name="Sudyplan-DAO">
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_nIA-oLifEeavH9sFQSsLvg" importedPackage="_haZUgLifEeavH9sFQSsLvg"/>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_nIA-oLifEeavH9sFQSsLvg">
+      <importedPackage xmi:type="uml:Package" href="Studyplan_Model.uml#_haZUgLifEeavH9sFQSsLvg"/>
+    </packageImport>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_haZUgLifEeavH9sFQSsLvg" name="Studyplan-Model"/>
+  <packagedElement xmi:type="uml:Package" href="Studyplan_Model.uml#_haZUgLifEeavH9sFQSsLvg"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="__G7-MLlVEeavH9sFQSsLvg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__G7-MblVEeavH9sFQSsLvg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
