@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_hjPysLiYEeavH9sFQSsLvg" name="Modul-DAO">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_tp3UULiaEeavH9sFQSsLvg">
+    <importedPackage xmi:type="uml:Package" href="Modul_Model.uml#_PVXQkLfVEea2RYsZ51fiPw"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_YLSJMLyHEealiq5a5SolQQ" name="AbstractModuleDao">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_dLCAsLyHEealiq5a5SolQQ" name="getModuleById"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_hhfqoLyHEealiq5a5SolQQ" name="getModulesByFilter"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ZZGnMLyHEealiq5a5SolQQ" name="ModuleDao">
+    <generalization xmi:type="uml:Generalization" xmi:id="_cKRHQLyHEealiq5a5SolQQ" general="_YLSJMLyHEealiq5a5SolQQ"/>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Rcy38LyHEealiq5a5SolQQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Rcy38byHEealiq5a5SolQQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Rcy38ryHEealiq5a5SolQQ" source="duplicatedProfile"/>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Rcy387yHEealiq5a5SolQQ" source="duplicatedProfile"/>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+  </profileApplication>
+</uml:Package>
