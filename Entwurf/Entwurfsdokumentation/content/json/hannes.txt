@@ -1,10 +1,11 @@
 <<Modul>> = {
 	"id": <Modul-ID>,
 	"name": <Modul-Name>,
+	"completed": <true|false>
 	"semester": <Modul-Semester>,
 	"creditpoints": <Modul-Creditpoints>,
 	"lecturer": <Modul-Dozent>,
-	"preference" <Modul-Präferenz>,
+	"preference" <good|bad|neutral>,
 	"description": <Modul-Beschreibung>,	
 	"constrains": [<<Constraint>>, ..., <<Constraint>>]	
 }
@@ -15,11 +16,65 @@
 	"type": <Constraint-Typ>,
 	"description": <Constraint-Beschreibung>	
 }
+<<Filter>> = {
+	"id": <Filter-ID>,
+	"tooltipp": <Filter-Tooltipp>,
+	"specification": <<Filter-Eigenschaften>>
+}
+<<Objective>> = {
+	"id": <Zielfunktion-ID>,
+	"name": <Zielfunktion-Name>,
+	"description": <Zielfunktion-Beschreibung>
+}
+<<Studienplan>> = {
+	"id": <Studienplan-ID>,
+	"status": <verified|error|unknown>,
+	"name": <Studienplan-Name>,
+	"modules":[<<Modul[id, name, completed, semester, creditpoints, lecturer]>>, ..., <<Modul[id, name, completed, semester, creditpoints, lecturer]>>]
+	"violations": <<Modul[id, constrains]>>	
+}
+<<CopyLink>> = {
+	"id": <Studienplan-ID>,
+	"token": <CopyToken>
+}
+/plans
+	POST:
+	{
+		"plan": <<Studienplan[name]>
+	}
+	POST return:
+	{
+		"plan": <<Studienplan[id, status, name]>>
+	}
+	GET
+	{
+		"plans": [<<Studienplan|id, status, name>>]
+	}
+/plans/{plan_id}
+	GET, PUT
+	{
+		"plan": <<Studienplan>>
+	}
+	PATCH
+	{
+		"plan": <<Studienplan[status]>>
+	}
+	DELETE
+	{
+		"successful": <true|false>
+	}
+	POST
+	{
+		"plan": <<Studienplan[name]>>
+	}
 
+/*
+Es sollten nur noch nicht abgeschlossene  Module zurückgegeben werden.
+*/
 /plans/{plan_id}/modules/
 	GET:
 	{
-		"modules":[<<Modul[id, name, creditpoints, lecturer]>>, ..., <<Modul[id, name, creditpoints, lecturer]>>]
+		"modules":[<<Modul[id, name, creditpoints, lecturer, preference]>>, ..., <<Modul[id, name, creditpoints, lecturer, preference]>>]
 	}
 /plans/{plan_id}/modules/{modul_id}
 	GET:
@@ -39,16 +94,30 @@
 	{
 		"modul": <<Modul[id, preference]>>
 	}
+/plans/{plan_id}/verification
+	GET
+	{
+		"plan": <<Studienplan[id,status, violations]>>
+	}
+/plans/{plan_id}/proposal/{objective_id}
+	GET
+	{
+		"plan": <<Studienplan[id, modules]>>
+	}
+/plans/{plan_id}/pdf
+	GET (just return pdf file)
+/plans/{plan_id}/share
+	GET
+	{
+		"plan":<<CopyLink>>
+	}
+/filters
+	GET
+	{
+	
+	}
+/objective-functions
+	GET
+	{
 
-Überbleibsel:
-
-<<Filter>> = {
-	"id": <Filter-ID>,
-	"tooltipp": <Filter-Tooltipp>,
-	"specification": <<Filter-Eigenschaften>>
-}
-<<Objective>> = {
-	"id": <Zielfunktion-ID>,
-	"name": <Zielfunktion-Name>,
-	"description": <Zielfunktion-Beschreibung>
-}
+	}
