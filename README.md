@@ -7,6 +7,7 @@ Guidelines for commits:
 Please always refer to the corresponding issues in a commit. (Especially useful if commit message is just e.g. "minor changes")
 
 Please don't use git add --all always. We don't want trash files in our repo.
+Please only commit compiling code. Otherwise you gonna crash others workspace.
 
 ##Tools
 Install [Eclipse Papyrus](https://eclipse.org/papyrus/download.html)
