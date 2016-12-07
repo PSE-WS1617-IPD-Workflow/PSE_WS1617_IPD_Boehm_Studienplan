@@ -10,7 +10,7 @@ Die zugrundeliegende Spezifikation verteilt klare Rollen an die verschiedenen Ak
 		\textbf{Rolle} & \textbf{Subsystem}\\ \hline \hline
 		\textit{resouce owner} & Benutzer \\ \hline
 		\textit{resource server} & REST-Webservice \\ \hline
-		\textit{client} & Aktuell ausschließlich die WebApp. Zukünftig vielleicht weitere Systeme, welche auf die API zugreifen \\ \hline
+		\textit{client} & Aktuell ausschließlich die WebApp. Zukünftig vielleicht weitere Systeme, welche auf den REST-Webservice zugreifen \\ \hline
 		\textit{authorization server} & REST-Webservice \\ \hline
 		\textit{user agent} & Web-Browser des Benutzers \\
 		\hline
@@ -59,7 +59,7 @@ Für einen öffentlichen Klienten werden die Informationen aus Tabelle  \ref{tab
 \end{table}
 \paragraph{Schnittstellen}
 Für die Authentifizierung werden die Schnittstellen aus Tabelle \ref{tab:api-auth-endpoints} verwendet.
-Beim Login wird hierbei der Web-Browser des Benutzers, welcher die WebApp geöffnet, und auf den Button \enquote{Login} geklickt hat, an auf den URI /auth/login des REST-Webservice weitergeleitet. Auf dieser Seite kann sich der Nutzer authentifizieren. Anschließend wird er auf die Hauptseite der WebApp weitergeleitet. Die Kommunikation der Authentifizierungsdaten zwischen Klient und REST-Webservice verläuft über den \textit{Query} \cite[Kap 3.4]{rfc3986} bzw. das \textit{Fragment} \cite[Kap. 3.5]{rfc3986} des URI.
+Beim Login wird hierbei der Web-Browser des Benutzers, welcher die WebApp geöffnet, und auf den Button \enquote{Login} geklickt hat, an den URI /auth/login des REST-Webservice weitergeleitet. Auf dieser Seite kann sich der Nutzer authentifizieren. Anschließend wird er auf die Hauptseite der WebApp weitergeleitet. Die Kommunikation der Authentifizierungsdaten zwischen Klient und REST-Webservice verläuft über den \textit{Query} \cite[Kap 3.4]{rfc3986} bzw. das \textit{Fragment} \cite[Kap. 3.5]{rfc3986} des URI.
 
 \begin{table}
 	\begin{tabularx}{\textwidth}{@{} | X | X | X | @{}}
