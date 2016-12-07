@@ -1,7 +1,7 @@
 % restusecase environment
 % #1: Title of the use case, like "A{n}: Title"
 \newenvironment{restusecase}[1]{
-	\begin{longtable}{|p{.44\linewidth}|p{.55\linewidth}|}
+	\begin{longtable}{|p{.43\linewidth}|p{.55\linewidth}|}
 		\multicolumn{2}{@{}l}{\textsf{\textbf{#1}}} \vspace{2pt} \\
 		\hhline{|=|=|}
 		\textbf{Aufruf} & \textbf{Antwort} \\
@@ -22,6 +22,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\FloatBarrier
 \subsection{Umsetzung der Anwendungsfälle mittels REST-Kommunikation}
 
 TODO: Zitiere Pflichtenheft? Oder irgendein allg. Hinweis?
@@ -54,7 +55,7 @@ TODO: Zitiere Pflichtenheft? Oder irgendein allg. Hinweis?
 \end{restusecase}
 
 \begin{restusecase}{A30: Logout}
-	(Session beenden?) & 
+	(Session beenden? Wie?) & 
 \end{restusecase}
 
 \begin{restusecase}{A40: Profil bearbeiten}
@@ -119,7 +120,7 @@ TODO: Zitiere Pflichtenheft? Oder irgendein allg. Hinweis?
 	\case{Teilen}: \newline
 	GET /plans/\jsonatom{Plan-ID}/share
 	& \case{Duplizieren/Löschen}: (Bestätigung/Fehler) \newline
-	\case{Teilen}: [\jsonatom{Studienplan-URL}, ...]
+	\case{Teilen}: [\jsonobj{CopyLink}, ...]
 \end{restusecase}
 
 \begin{restusecase}{A100: Vergleichsansicht für Studienpläne}
@@ -131,51 +132,73 @@ TODO: Zitiere Pflichtenheft? Oder irgendein allg. Hinweis?
 \end{restusecase}
 
 \begin{restusecase}{A110: Module in der Suchleiste filtern}
-	
+	GET /plan/\jsonatom{Plan-ID}/\+modules\+?\jsonatom{filter}=\jsonatom{value}...
+	& [\jsonpart{Modul}{id, name, creditpoints, lecturer, preference}, ...]
 \end{restusecase}
 
 \begin{restusecase}{A130: Info-Leiste zu einem Modul anzeigen}
-	
+	\multicolumn{2}{|l|}{--- (bereits bei A110 abgerufen).}
 \end{restusecase}
 
 \begin{restusecase}{A140: Modul in Studienplan einfügen}
-	
+	PUT /plans/\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID}  \newline  \jsonpart{Modul}{id, semester}
+	& (Bestätigung/Fehler)
 \end{restusecase}
 
 \begin{restusecase}{A150: Modul aus Studienplan löschen}
-	
+	DELETE /plans/\jsonatom{Plan-ID}/\+modules/\jsonatom{Modul-ID} 
+	& (Bestätigung/Fehler)
 \end{restusecase}
 
 \begin{restusecase}{A160: Modul innerhalb Studienplan verschieben}
-	
+	PATCH /plans/\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID}  \newline  \jsonpart{Modul}{semester}
+	& (Bestätigung/Fehler)
 \end{restusecase}
 
 \begin{restusecase}{A170: Studienplanänderung rückgängig machen}
-	
+	\multicolumn{2}{|l|}{(abhängig von letzter Änderung)}
 \end{restusecase}
 
 \begin{restusecase}{A180: Modul positiv bewerten / A190: Modul negativ bewerten}
-	
+	PUT /plans/\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID}/\+preference \newline \jsonpart{Modul}{id, preference}
+	& (Bestätigung/Fehler)
 \end{restusecase}
 
 \begin{restusecase}{A200: Semester im Studienplan hinzufügen}
-	
+	TODO: Semesteranzahl speichern? &
 \end{restusecase}
 
 \begin{restusecase}{A210: Semester aus Studienplan löschen}
-	
+	TODO: Semesteranzahl speichern? &
 \end{restusecase}
 
 \begin{restusecase}{A215: Abgeschlossene Semester im Studienplan ein-/ausblenden}
-	--- & ---
+	\multicolumn{2}{|l|}{---}
 \end{restusecase}
 
 \begin{restusecase}{A220: Studienplan auf Korrektheit überprüfen}
-	
+	GET /plans/\jsonatom{Plan-ID}/verification 
+	& \jsonpart{Studienplan}{id, status, violations}
 \end{restusecase}
 
 \begin{restusecase}{A230: Studienplan vervollständigen lassen}
-	
+	GET /objective-functions
+	& [\jsonobj{Objective}, ...] \\
+	\hline
+	\multicolumn{2}{|l|}{(Zum Festlegen von Präferenzen siehe A110, A180, A190)} \\
+	\hline
+	GET /plans/\jsonatom{Plan-ID}/proposal/\+\jsonatom{Zielfunktions-ID}?\jsonatom{prop}=\jsonatom{value}... 
+	& \jsonpart{Studienplan}{id, modules} oder Fehlercode. \\
+	\hline
+	\case{Verwerfen}: --- 
+	& --- \\
+	\case{Übernehmen}: PUT /plans/\jsonatom{Plan-ID} \newline \jsonobj{Studienplan}
+	& (Bestätigung/Fehler) \\
+	\case{Unter neuem Namen speichern}: \newline 
+	1. POST /plans \newline \jsonatom{Studienplan-Name}
+	& (Bestätigung/Fehler) \\
+	2. PUT /plans/\jsonatom{Plan-ID} \newline \jsonobj{Studienplan}
+	& (Bestätigung/Fehler) \\
 \end{restusecase}
 
 
@@ -189,7 +212,6 @@ TODO: Zitiere Pflichtenheft? Oder irgendein allg. Hinweis?
 		"jahr": (*\jsonatom{Jahr}*)
 	},
 	"abgeschlossene-module": [(*\jsonobj{Modul}*), ...]
-	//Nur als Modulliste oder Semestern zugeordnet?
 }
 
 (*\jsonobj{Studienfach}*) = {
