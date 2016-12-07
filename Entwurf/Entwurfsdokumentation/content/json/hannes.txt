@@ -1,11 +1,12 @@
 <<Modul>> = {
 	"id": <Modul-ID>,
 	"name": <Modul-Name>,
-	"completed": <true|false>
+	"category" : <Modul-Category-Name>,
+	"completed": <Modul-Completed>
 	"semester": <Modul-Semester>,
 	"creditpoints": <Modul-Creditpoints>,
 	"lecturer": <Modul-Dozent>,
-	"preference" <good|bad|neutral>,
+	"preference" <Modul-Preferenz>,
 	"description": <Modul-Beschreibung>,	
 	"constrains": [<<Constraint>>, ..., <<Constraint>>]	
 }
@@ -18,6 +19,7 @@
 }
 <<Filter>> = {
 	"id": <Filter-ID>,
+	"name":<Filter-Name>
 	"tooltipp": <Filter-Tooltipp>,
 	"specification": <<Filter-Eigenschaften>>
 }
@@ -28,7 +30,8 @@
 }
 <<Studienplan>> = {
 	"id": <Studienplan-ID>,
-	"status": <verified|error|unknown>,
+	"status": <Studienplan-Status>,
+	"creditpoints_sum":<Studienplan-Creditpoints-Sum>,
 	"name": <Studienplan-Name>,
 	"modules":[<<Modul[id, name, completed, semester, creditpoints, lecturer]>>, ..., <<Modul[id, name, completed, semester, creditpoints, lecturer]>>]
 	"violations": <<Modul[id, constrains]>>	
@@ -44,11 +47,11 @@
 	}
 	POST return:
 	{
-		"plan": <<Studienplan[id, status, name]>>
+		"plan": <<Studienplan[id, status, creditpoints-sum, name]>>
 	}
 	GET
 	{
-		"plans": [<<Studienplan|id, status, name>>]
+		"plans": [<<Studienplan[id, status, creditpoints-sum, name]>>, ..., <<Studienplan[id, status, creditpoints-sum, name]>>]
 	}
 /plans/{plan_id}
 	GET, PUT
@@ -57,15 +60,19 @@
 	}
 	PATCH
 	{
-		"plan": <<Studienplan[status]>>
+		"plan": <<Studienplan[name]>>
 	}
 	DELETE
 	{
-		"successful": <true|false>
+		"successful": <Delete-Success-Message>
 	}
 	POST
 	{
 		"plan": <<Studienplan[name]>>
+	}
+	return
+	{
+		"plan": <<Studienplan[id, status, creditpoints-sum, name]>>
 	}
 
 /*
@@ -79,20 +86,20 @@ Es sollten nur noch nicht abgeschlossene  Module zurückgegeben werden.
 /plans/{plan_id}/modules/{modul_id}
 	GET:
 	{
-		"modul": <<Modul>>
+		"module": <<Modul>>
 	}
 	PUT, PATCH:
 	{
-		"modul": <<Modul[id, semester]>>
+		"module": <<Modul[id, semester]>>
 	}
 	DELETE
 	{
-		"modul": <<Modul[id]>>
+		"module": <<Modul[id]>>
 	}
 /plans/{plan_id}/modules/{modul_id}/preference
 	PUT
 	{
-		"modul": <<Modul[id, preference]>>
+		"module": <<Modul[id, preference]>>
 	}
 /plans/{plan_id}/verification
 	GET
