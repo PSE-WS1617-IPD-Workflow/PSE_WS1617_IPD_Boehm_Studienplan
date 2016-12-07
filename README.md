@@ -6,7 +6,7 @@ Please have Telegram open while making changes. Sometimes there are conflicts an
 Guidelines for commits:
 Please always refer to the corresponding issues in a commit. (Especially useful if commit message is just e.g. "minor changes")
 
-Please don't use git add --all always. We don't want trash files in our repo.
+Please don't always use ```git add --all```. We don't want trash files in our repo.
 Please only commit compiling code. Otherwise you gonna crash others workspace.
 
 ##Tools
