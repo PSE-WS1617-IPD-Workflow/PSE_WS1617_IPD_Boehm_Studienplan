@@ -6,8 +6,11 @@ Teile einer zusammengesetzten JSON-Datenklasse werden mittels \jsonpart{name}{pr
 \input{content/json/Daniel}
 \input{content/json/Hannes}
 \input{content/json/Samuel}
+
+\FloatBarrier
 \subsection{Atomare Werte}
 
+\FloatBarrier
 \subsection{Spezifikation der JSON-Datenklassen}
 \begin{lstlisting}[language=json,firstnumber=-3]
 (*\jsonobj{Modul}*) = {
@@ -27,9 +30,11 @@ Teile einer zusammengesetzten JSON-Datenklasse werden mittels \jsonpart{name}{pr
 }
 \end{lstlisting}
 \jsonpart{Modul}{menu, foo} wäre die JSON-Datenklasse \jsonobj{Modul} ohne bar.
+
+\FloatBarrier
 \subsection{Zugriffsstruktur}
 
-\begin{longtable}{| >{\hspace{0pt}} p{.11\linewidth} | >{\hspace{0pt}} p{.27\linewidth} | >{\hspace{0pt}} p{.27\linewidth} | >{\hspace{0pt}} p{.29\linewidth} | }
+\begin{longtable}{| >{\hspace{0pt}} p{.11\linewidth} | >{\hspace{0pt}} p{.26\linewidth} | >{\hspace{0pt}} p{.26\linewidth} | >{\hspace{0pt}} p{.27\linewidth} | }
 	\hline
 	\textbf{Methode} & \textbf{URL} & \textbf{Beschreibung} & \textbf{\hspace{0pt}Kommunikationsdaten (Note to self: finde schöneres Wort!)} \\ \hline  \hline
 	\\ \hline
@@ -64,5 +69,5 @@ Teile einer zusammengesetzten JSON-Datenklasse werden mittels \jsonpart{name}{pr
 	GET & /objective-functions & Lese Liste mit allen vorhandenen Zielfunktionen & tbd \\ \hline
 \end{longtable}
 
-
+\FloatBarrier
 \subsection{Spezifikation der Statuscodes}
