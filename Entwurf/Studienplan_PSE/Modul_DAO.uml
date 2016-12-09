@@ -4,8 +4,21 @@
     <importedPackage xmi:type="uml:Package" href="Modul_Model.uml#_PVXQkLfVEea2RYsZ51fiPw"/>
   </packageImport>
   <packagedElement xmi:type="uml:Class" xmi:id="_YLSJMLyHEealiq5a5SolQQ" name="AbstractModuleDao">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_dLCAsLyHEealiq5a5SolQQ" name="getModuleById"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_hhfqoLyHEealiq5a5SolQQ" name="getModulesByFilter"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_dLCAsLyHEealiq5a5SolQQ" name="getModuleById">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Mk-X0L4QEeaoO4fCpQc-Qw" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_QfgTsL4QEeaoO4fCpQc-Qw" direction="return">
+        <type xmi:type="uml:Class" href="Modul_Model.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_hhfqoLyHEealiq5a5SolQQ" name="getModulesByFilter">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8SrYkL4QEeaoO4fCpQc-Qw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHXPkL4REeaoO4fCpQc-Qw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHa58L4REeaoO4fCpQc-Qw" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_ZZGnMLyHEealiq5a5SolQQ" name="ModuleDao">
     <generalization xmi:type="uml:Generalization" xmi:id="_cKRHQLyHEealiq5a5SolQQ" general="_YLSJMLyHEealiq5a5SolQQ"/>
