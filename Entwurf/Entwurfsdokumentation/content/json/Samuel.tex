@@ -68,6 +68,7 @@ Beim Login wird hierbei der Web-Browser des Benutzers, welcher die WebApp geöff
 		GET & /auth/login & Der in RFC 6749, Kapitel 3.1 definierte \textit{Authorization Endpoint} \\ \hline
 		POST & /auth/login & Der in RFC 6749, Kapitel 3.1 definierte \textit{Authorization Endpoint} (für \textit{Resource-Owner-Password-Credentials-Grant}) \\ \hline
 		POST & /auth/token & Der in RFC 6749, Kapitel 3.2 definierte \textit{Token Endpoint} \\ \hline
+		GET & /auth/logout & Devalidiert das genutze Access-Token \\ \hline
 	\end{tabularx}
 \caption{Schnittstellen für die OAuth 2.0 Kommunikation}
 \label{tab:api-auth-endpoints}
