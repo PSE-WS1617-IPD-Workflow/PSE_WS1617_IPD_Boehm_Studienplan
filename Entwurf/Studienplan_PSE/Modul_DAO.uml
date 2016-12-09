@@ -14,9 +14,9 @@
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_hhfqoLyHEealiq5a5SolQQ" name="getModulesByFilter">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_8SrYkL4QEeaoO4fCpQc-Qw" direction="return">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHXPkL4REeaoO4fCpQc-Qw" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHa58L4REeaoO4fCpQc-Qw" value="1"/>
+        <type xmi:type="uml:Class" href="Modul_Model.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHXPkL4REeaoO4fCpQc-Qw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHa58L4REeaoO4fCpQc-Qw" value="*"/>
       </ownedParameter>
     </ownedOperation>
   </packagedElement>
