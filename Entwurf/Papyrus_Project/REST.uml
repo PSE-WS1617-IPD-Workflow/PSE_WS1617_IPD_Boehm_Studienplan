@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_cobT8LiXEeavH9sFQSsLvg" name="Controller">
+<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_cobT8LiXEeavH9sFQSsLvg" name="REST">
   <packageImport xmi:type="uml:PackageImport" xmi:id="_8rncQLiaEeavH9sFQSsLvg">
     <importedPackage xmi:type="uml:Package" href="Model.uml#_lM5vELiaEeavH9sFQSsLvg"/>
   </packageImport>
@@ -16,7 +16,8 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_FmEBwLubEea-uPszIhxKkQ" name="duplicatePlan"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_To0dwLuOEea-uPszIhxKkQ" name="RESTFIlter">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_3ZJGgLuOEea-uPszIhxKkQ" name="uifilterelement" type="_p8pFILuOEea-uPszIhxKkQ" aggregation="shared" association="_3ZGqQLuOEea-uPszIhxKkQ">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_3ZJGgLuOEea-uPszIhxKkQ" name="uifilterelement" aggregation="shared" association="_3ZGqQLuOEea-uPszIhxKkQ">
+      <type xmi:type="uml:Interface" href="Filter.uml#_p8pFILuOEea-uPszIhxKkQ"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Fo7XQLuVEea-uPszIhxKkQ"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FpAPwLuVEea-uPszIhxKkQ" value="*"/>
     </ownedAttribute>
@@ -34,25 +35,15 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_U6-FULuSEea-uPszIhxKkQ" name="getInformation"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_eRvAYLuSEea-uPszIhxKkQ" name="deleteStudent"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_p8pFILuOEea-uPszIhxKkQ" name="Filter"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_3ZGqQLuOEea-uPszIhxKkQ" memberEnd="_3ZJGgLuOEea-uPszIhxKkQ _3ZJGgbuOEea-uPszIhxKkQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3ZGqQbuOEea-uPszIhxKkQ" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3ZGqQruOEea-uPszIhxKkQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_3ZJGgbuOEea-uPszIhxKkQ" name="filtercontroller" type="_To0dwLuOEea-uPszIhxKkQ" association="_3ZGqQLuOEea-uPszIhxKkQ"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_ZyO2kLuPEea-uPszIhxKkQ" name="RangeFilter">
-    <generalization xmi:type="uml:Generalization" xmi:id="_ccyYULuPEea-uPszIhxKkQ" general="_p8pFILuOEea-uPszIhxKkQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_r3lSYLuPEea-uPszIhxKkQ" name="ListFilter">
-    <generalization xmi:type="uml:Generalization" xmi:id="_vq_5oLuPEea-uPszIhxKkQ" general="_p8pFILuOEea-uPszIhxKkQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_zQ1tALuREea-uPszIhxKkQ" name="KategorieFilter"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_26GSsLuREea-uPszIhxKkQ" name="ECTSFilter"/>
-  <packagedElement xmi:type="uml:Realization" xmi:id="_-liUYLuREea-uPszIhxKkQ" client="_zQ1tALuREea-uPszIhxKkQ" supplier="_r3lSYLuPEea-uPszIhxKkQ"/>
-  <packagedElement xmi:type="uml:Realization" xmi:id="__U8YELuREea-uPszIhxKkQ" client="_26GSsLuREea-uPszIhxKkQ" supplier="_ZyO2kLuPEea-uPszIhxKkQ"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_uEiVULuTEea-uPszIhxKkQ" name="RESTPlanModules">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_IDnFc7ufEea-uPszIhxKkQ" name="filter" type="_p8pFILuOEea-uPszIhxKkQ" aggregation="shared" association="_IDnFcLufEea-uPszIhxKkQ">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IDnFc7ufEea-uPszIhxKkQ" name="filter" aggregation="shared" association="_IDnFcLufEea-uPszIhxKkQ">
+      <type xmi:type="uml:Interface" href="Filter.uml#_p8pFILuOEea-uPszIhxKkQ"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OSwvULufEea-uPszIhxKkQ"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OTWlMLufEea-uPszIhxKkQ" value="*"/>
     </ownedAttribute>

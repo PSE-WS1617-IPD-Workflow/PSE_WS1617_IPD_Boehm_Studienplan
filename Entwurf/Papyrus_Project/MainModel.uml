@@ -3,18 +3,22 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_o1MWYLfUEea2RYsZ51fiPw"/>
   <packageImport xmi:type="uml:PackageImport" xmi:id="_QXkJ0LiYEeavH9sFQSsLvg"/>
   <packageImport xmi:type="uml:PackageImport" xmi:id="_cbpU0LiaEeavH9sFQSsLvg" importedPackage="_vqV8QLcDEeag2fAimjvU5Q"/>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_gCfr8L7KEeaRCti-wkqR-A">
+    <importedPackage xmi:type="uml:Package" href="Filter.uml#_isR5AL7HEeaRCti-wkqR-A"/>
+  </packageImport>
   <packagedElement xmi:type="uml:Package" href="Generation.uml#_O8AK0LfUEea2RYsZ51fiPw"/>
   <packagedElement xmi:type="uml:Package" href="Verification.uml#_SxHbMLfUEea2RYsZ51fiPw"/>
-  <packagedElement xmi:type="uml:Package" xmi:id="_nnmP8LfWEea2RYsZ51fiPw" name="JS-Communication"/>
-  <packagedElement xmi:type="uml:Package" xmi:id="_u9pQcLfWEea2RYsZ51fiPw" name="JS-View"/>
-  <packagedElement xmi:type="uml:Package" xmi:id="_wOsBkLfWEea2RYsZ51fiPw" name="JS-Model">
+  <packagedElement xmi:type="uml:Package" xmi:id="_nnmP8LfWEea2RYsZ51fiPw" name="JSCommunication"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_u9pQcLfWEea2RYsZ51fiPw" name="JSView"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_wOsBkLfWEea2RYsZ51fiPw" name="JSModel">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_QMBg4LfXEea2RYsZ51fiPw" importedPackage="_FgRI0LfXEea2RYsZ51fiPw"/>
     <packageImport xmi:type="uml:PackageImport" xmi:id="_Q1D20LfXEea2RYsZ51fiPw" importedPackage="_u9pQcLfWEea2RYsZ51fiPw"/>
     <packageImport xmi:type="uml:PackageImport" xmi:id="_Te_tgLfXEea2RYsZ51fiPw" importedPackage="_nnmP8LfWEea2RYsZ51fiPw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_FgRI0LfXEea2RYsZ51fiPw" name="JS-Controller"/>
-  <packagedElement xmi:type="uml:Package" href="Controller.uml#_cobT8LiXEeavH9sFQSsLvg"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_FgRI0LfXEea2RYsZ51fiPw" name="JSController"/>
+  <packagedElement xmi:type="uml:Package" href="REST.uml#_cobT8LiXEeavH9sFQSsLvg"/>
   <packagedElement xmi:type="uml:Package" href="Model.uml#_lM5vELiaEeavH9sFQSsLvg"/>
+  <packagedElement xmi:type="uml:Package" href="Filter.uml#_isR5AL7HEeaRCti-wkqR-A"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vtuncLcDEeag2fAimjvU5Q">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vt3xYLcDEeag2fAimjvU5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

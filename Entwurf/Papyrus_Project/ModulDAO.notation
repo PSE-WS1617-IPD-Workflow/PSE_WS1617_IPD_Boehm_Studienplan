@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_XnhU0LyHEealiq5a5SolQQ" type="PapyrusUMLClassDiagram" name="moduldao" measurementUnit="Pixel">
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_XnhU0LyHEealiq5a5SolQQ" type="PapyrusUMLClassDiagram" name="ModulDAO_ClassDiagram" measurementUnit="Pixel">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_frku0L7MEea4-O40fG0lTw" source="PapyrusCSSForceValue">
+    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_frku0b7MEea4-O40fG0lTw" key="canonical" value="true"/>
+  </eAnnotations>
   <children xmi:type="notation:Shape" xmi:id="_YLT-YLyHEealiq5a5SolQQ" type="Class_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_YLUlcLyHEealiq5a5SolQQ" type="Class_NameLabel"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_YLUlcbyHEealiq5a5SolQQ" type="Class_FloatingNameLabel">
@@ -13,11 +16,11 @@
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_YLUleLyHEealiq5a5SolQQ" type="Class_OperationCompartment">
       <children xmi:type="notation:Shape" xmi:id="_dLIHULyHEealiq5a5SolQQ" type="Operation_ClassOperationLabel">
-        <element xmi:type="uml:Operation" href="Modul_DAO.uml#_dLCAsLyHEealiq5a5SolQQ"/>
+        <element xmi:type="uml:Operation" href="ModulDAO.uml#_dLCAsLyHEealiq5a5SolQQ"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_dLIHUbyHEealiq5a5SolQQ"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_hhm_YLyHEealiq5a5SolQQ" type="Operation_ClassOperationLabel">
-        <element xmi:type="uml:Operation" href="Modul_DAO.uml#_hhfqoLyHEealiq5a5SolQQ"/>
+        <element xmi:type="uml:Operation" href="ModulDAO.uml#_hhfqoLyHEealiq5a5SolQQ"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_hhm_YbyHEealiq5a5SolQQ"/>
       </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_YLUlebyHEealiq5a5SolQQ"/>
@@ -31,7 +34,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_YLUlgLyHEealiq5a5SolQQ"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YLUlgbyHEealiq5a5SolQQ"/>
     </children>
-    <element xmi:type="uml:Class" href="Modul_DAO.uml#_YLSJMLyHEealiq5a5SolQQ"/>
+    <element xmi:type="uml:Class" href="ModulDAO.uml#_YLSJMLyHEealiq5a5SolQQ"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YLT-YbyHEealiq5a5SolQQ" x="30" y="140"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_ZZJDcLyHEealiq5a5SolQQ" type="Class_Shape">
@@ -57,7 +60,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_ZZJDgryHEealiq5a5SolQQ"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZZJDg7yHEealiq5a5SolQQ"/>
     </children>
-    <element xmi:type="uml:Class" href="Modul_DAO.uml#_ZZGnMLyHEealiq5a5SolQQ"/>
+    <element xmi:type="uml:Class" href="ModulDAO.uml#_ZZGnMLyHEealiq5a5SolQQ"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZZJDcbyHEealiq5a5SolQQ" x="58" y="285"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_9Q9bULyHEealiq5a5SolQQ" type="Interface_Shape">
@@ -83,22 +86,23 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_9Q-CcLyHEealiq5a5SolQQ"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9Q-CcbyHEealiq5a5SolQQ"/>
     </children>
-    <element xmi:type="uml:Interface" href="Modul_DAO.uml#_9Q7mILyHEealiq5a5SolQQ"/>
+    <element xmi:type="uml:Interface" href="ModulDAO.uml#_9Q7mILyHEealiq5a5SolQQ"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9Q9bUbyHEealiq5a5SolQQ" x="374" y="140"/>
   </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_XnhU0byHEealiq5a5SolQQ" name="diagram_compatibility_version" stringValue="1.2.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_XnhU0ryHEealiq5a5SolQQ"/>
   <styles xmi:type="style:PapyrusViewStyle" xmi:id="_XnhU07yHEealiq5a5SolQQ">
-    <owner xmi:type="uml:Package" href="Modul_DAO.uml#_hjPysLiYEeavH9sFQSsLvg"/>
+    <owner xmi:type="uml:Package" href="ModulDAO.uml#_hjPysLiYEeavH9sFQSsLvg"/>
   </styles>
-  <element xmi:type="uml:Package" href="Modul_DAO.uml#_hjPysLiYEeavH9sFQSsLvg"/>
+  <styles xmi:type="notation:CanonicalStyle" xmi:id="_frjgsL7MEea4-O40fG0lTw"/>
+  <element xmi:type="uml:Package" href="ModulDAO.uml#_hjPysLiYEeavH9sFQSsLvg"/>
   <edges xmi:type="notation:Connector" xmi:id="_cKV_wLyHEealiq5a5SolQQ" type="Generalization_Edge" source="_ZZJDcLyHEealiq5a5SolQQ" target="_YLT-YLyHEealiq5a5SolQQ">
     <children xmi:type="notation:DecorationNode" xmi:id="_cKV_w7yHEealiq5a5SolQQ" type="Generalization_StereotypeLabel">
       <styles xmi:type="notation:BooleanValueStyle" xmi:id="_cfg-gLyHEealiq5a5SolQQ" name="IS_UPDATED_POSITION" booleanValue="true"/>
       <layoutConstraint xmi:type="notation:Location" xmi:id="_cKV_xLyHEealiq5a5SolQQ" y="40"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_cKV_wbyHEealiq5a5SolQQ"/>
-    <element xmi:type="uml:Generalization" href="Modul_DAO.uml#_cKRHQLyHEealiq5a5SolQQ"/>
+    <element xmi:type="uml:Generalization" href="ModulDAO.uml#_cKRHQLyHEealiq5a5SolQQ"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_cKV_wryHEealiq5a5SolQQ" points="[46, 326, -643984, -643984]$[46, 219, -643984, -643984]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_cKeioLyHEealiq5a5SolQQ" id="(0.32,0.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_cKeiobyHEealiq5a5SolQQ" id="(0.2903225806451613,1.0)"/>

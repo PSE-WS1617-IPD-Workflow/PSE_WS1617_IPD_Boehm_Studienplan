@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_isR5AL7HEeaRCti-wkqR-A" name="Filter">
+  <packagedElement xmi:type="uml:Interface" xmi:id="_p8pFILuOEea-uPszIhxKkQ" name="Filter"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_ZyO2kLuPEea-uPszIhxKkQ" name="RangeFilter">
+    <generalization xmi:type="uml:Generalization" xmi:id="_ccyYULuPEea-uPszIhxKkQ" general="_p8pFILuOEea-uPszIhxKkQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_r3lSYLuPEea-uPszIhxKkQ" name="ListFilter">
+    <generalization xmi:type="uml:Generalization" xmi:id="_vq_5oLuPEea-uPszIhxKkQ" general="_p8pFILuOEea-uPszIhxKkQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zQ1tALuREea-uPszIhxKkQ" name="KategorieFilter"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_26GSsLuREea-uPszIhxKkQ" name="ECTSFilter"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_-liUYLuREea-uPszIhxKkQ" client="_zQ1tALuREea-uPszIhxKkQ" supplier="_r3lSYLuPEea-uPszIhxKkQ"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="__U8YELuREea-uPszIhxKkQ" client="_26GSsLuREea-uPszIhxKkQ" supplier="_ZyO2kLuPEea-uPszIhxKkQ"/>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Gn_AcL7KEeaRCti-wkqR-A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Gn_Acb7KEeaRCti-wkqR-A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Gn_ngL7KEeaRCti-wkqR-A" source="duplicatedProfile"/>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_GoA1oL7KEeaRCti-wkqR-A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GoA1ob7KEeaRCti-wkqR-A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GoA1or7KEeaRCti-wkqR-A" source="duplicatedProfile"/>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Package>

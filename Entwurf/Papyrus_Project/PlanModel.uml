@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_haZUgLifEeavH9sFQSsLvg" name="Studyplan-Model">
+<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_haZUgLifEeavH9sFQSsLvg" name="PlanModel">
   <packagedElement xmi:type="uml:Class" xmi:id="_wfe0ILubEeaCStjenx_8kw" name="User">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_ATMkoLyFEealiq5a5SolQQ" name="passedmodulentry" type="_67MlMLyEEealiq5a5SolQQ" association="_ATKvcLyFEealiq5a5SolQQ"/>
   </packagedElement>
@@ -57,7 +57,7 @@
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_v2Ob4LyEEealiq5a5SolQQ" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_v2PC8LyEEealiq5a5SolQQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_v2TUYLyEEealiq5a5SolQQ" type="_8AziQLubEeaCStjenx_8kw" association="_v2F5ALyEEealiq5a5SolQQ">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_v2TUYLyEEealiq5a5SolQQ" name="plansemester" type="_8AziQLubEeaCStjenx_8kw" association="_v2F5ALyEEealiq5a5SolQQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1Z6G4LyEEealiq5a5SolQQ"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1Z78ELyEEealiq5a5SolQQ" value="*"/>
     </ownedEnd>

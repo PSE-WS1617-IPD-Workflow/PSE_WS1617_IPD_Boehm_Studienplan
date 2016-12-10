@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_KXmMULyGEealiq5a5SolQQ" type="PapyrusUMLClassDiagram" name="DaoDiagram" measurementUnit="Pixel">
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_KXmMULyGEealiq5a5SolQQ" type="PapyrusUMLClassDiagram" name="PlanDAO_ClassDiagram" measurementUnit="Pixel">
   <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LZcq4LyGEealiq5a5SolQQ" source="PapyrusCSSForceValue">
     <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LZcq4byGEealiq5a5SolQQ" key="canonical" value="true"/>
   </eAnnotations>
   <children xmi:type="notation:Shape" xmi:id="_Rme04LyGEealiq5a5SolQQ" type="Class_Shape">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GWp7sb7REeaLZbQ0m7lA6Q" source="PapyrusCSSForceValue">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GWp7sr7REeaLZbQ0m7lA6Q" key="canonical" value="true"/>
+    </eAnnotations>
     <children xmi:type="notation:DecorationNode" xmi:id="_Rme04ryGEealiq5a5SolQQ" type="Class_NameLabel"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_Rme047yGEealiq5a5SolQQ" type="Class_FloatingNameLabel">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_Rme05LyGEealiq5a5SolQQ" y="5"/>
@@ -16,11 +19,11 @@
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_Rmfb9byGEealiq5a5SolQQ" type="Class_OperationCompartment">
       <children xmi:type="notation:Shape" xmi:id="_WyJBcLyGEealiq5a5SolQQ" type="Operation_ClassOperationLabel">
-        <element xmi:type="uml:Operation" href="Sudyplan_DAO.uml#_Wx5J0LyGEealiq5a5SolQQ"/>
+        <element xmi:type="uml:Operation" href="PlanDAO.uml#_Wx5J0LyGEealiq5a5SolQQ"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_WyJBcbyGEealiq5a5SolQQ"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_j8sXMLyGEealiq5a5SolQQ" type="Operation_ClassOperationLabel">
-        <element xmi:type="uml:Operation" href="Sudyplan_DAO.uml#_j8lpgLyGEealiq5a5SolQQ"/>
+        <element xmi:type="uml:Operation" href="PlanDAO.uml#_j8lpgLyGEealiq5a5SolQQ"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_j8sXMbyGEealiq5a5SolQQ"/>
       </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_Rmfb9ryGEealiq5a5SolQQ"/>
@@ -34,10 +37,14 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_Rmfb_byGEealiq5a5SolQQ"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Rmfb_ryGEealiq5a5SolQQ"/>
     </children>
-    <element xmi:type="uml:Class" href="Sudyplan_DAO.uml#_Rmc_sLyGEealiq5a5SolQQ"/>
+    <styles xmi:type="notation:CanonicalStyle" xmi:id="_GWp7sL7REeaLZbQ0m7lA6Q"/>
+    <element xmi:type="uml:Class" href="PlanDAO.uml#_Rmc_sLyGEealiq5a5SolQQ"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Rme04byGEealiq5a5SolQQ" x="198" y="149"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_UZ9CELyGEealiq5a5SolQQ" type="Class_Shape">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GWrw4b7REeaLZbQ0m7lA6Q" source="PapyrusCSSForceValue">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GWrw4r7REeaLZbQ0m7lA6Q" key="canonical" value="true"/>
+    </eAnnotations>
     <children xmi:type="notation:DecorationNode" xmi:id="_UZ9CEryGEealiq5a5SolQQ" type="Class_NameLabel"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_UZ9CE7yGEealiq5a5SolQQ" type="Class_FloatingNameLabel">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_UZ9CFLyGEealiq5a5SolQQ" y="5"/>
@@ -60,10 +67,14 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_UZ9pI7yGEealiq5a5SolQQ"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UZ9pJLyGEealiq5a5SolQQ"/>
     </children>
-    <element xmi:type="uml:Class" href="Sudyplan_DAO.uml#_UZ6l0LyGEealiq5a5SolQQ"/>
+    <styles xmi:type="notation:CanonicalStyle" xmi:id="_GWrw4L7REeaLZbQ0m7lA6Q"/>
+    <element xmi:type="uml:Class" href="PlanDAO.uml#_UZ6l0LyGEealiq5a5SolQQ"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UZ9CEbyGEealiq5a5SolQQ" x="237" y="350"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_ACdvELyHEealiq5a5SolQQ" type="Class_Shape">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GWs_AL7REeaLZbQ0m7lA6Q" source="PapyrusCSSForceValue">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GWs_Ab7REeaLZbQ0m7lA6Q" key="canonical" value="true"/>
+    </eAnnotations>
     <children xmi:type="notation:DecorationNode" xmi:id="_ACeWILyHEealiq5a5SolQQ" type="Class_NameLabel"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_ACeWIbyHEealiq5a5SolQQ" type="Class_FloatingNameLabel">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_ACeWIryHEealiq5a5SolQQ" y="5"/>
@@ -76,11 +87,11 @@
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_ACeWKLyHEealiq5a5SolQQ" type="Class_OperationCompartment">
       <children xmi:type="notation:Shape" xmi:id="_DIOmILyHEealiq5a5SolQQ" type="Operation_ClassOperationLabel">
-        <element xmi:type="uml:Operation" href="Sudyplan_DAO.uml#_DIGqULyHEealiq5a5SolQQ"/>
+        <element xmi:type="uml:Operation" href="PlanDAO.uml#_DIGqULyHEealiq5a5SolQQ"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_DIOmIbyHEealiq5a5SolQQ"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_FOzRELyHEealiq5a5SolQQ" type="Operation_ClassOperationLabel">
-        <element xmi:type="uml:Operation" href="Sudyplan_DAO.uml#_FOsjYLyHEealiq5a5SolQQ"/>
+        <element xmi:type="uml:Operation" href="PlanDAO.uml#_FOsjYLyHEealiq5a5SolQQ"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_FOzREbyHEealiq5a5SolQQ"/>
       </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_ACeWKbyHEealiq5a5SolQQ"/>
@@ -94,10 +105,14 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_ACeWMLyHEealiq5a5SolQQ"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ACeWMbyHEealiq5a5SolQQ"/>
     </children>
-    <element xmi:type="uml:Class" href="Sudyplan_DAO.uml#_ACbS0LyHEealiq5a5SolQQ"/>
+    <styles xmi:type="notation:CanonicalStyle" xmi:id="_GWsX8L7REeaLZbQ0m7lA6Q"/>
+    <element xmi:type="uml:Class" href="PlanDAO.uml#_ACbS0LyHEealiq5a5SolQQ"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ACdvEbyHEealiq5a5SolQQ" x="472" y="155"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_HDPDILyHEealiq5a5SolQQ" type="Class_Shape">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GWu0Mb7REeaLZbQ0m7lA6Q" source="PapyrusCSSForceValue">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GWu0Mr7REeaLZbQ0m7lA6Q" key="canonical" value="true"/>
+    </eAnnotations>
     <children xmi:type="notation:DecorationNode" xmi:id="_HDPDIryHEealiq5a5SolQQ" type="Class_NameLabel"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_HDPDI7yHEealiq5a5SolQQ" type="Class_FloatingNameLabel">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_HDPqMLyHEealiq5a5SolQQ" y="5"/>
@@ -120,23 +135,24 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_HDPqPryHEealiq5a5SolQQ"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HDPqP7yHEealiq5a5SolQQ"/>
     </children>
-    <element xmi:type="uml:Class" href="Sudyplan_DAO.uml#_HDMm4LyHEealiq5a5SolQQ"/>
+    <styles xmi:type="notation:CanonicalStyle" xmi:id="_GWu0ML7REeaLZbQ0m7lA6Q"/>
+    <element xmi:type="uml:Class" href="PlanDAO.uml#_HDMm4LyHEealiq5a5SolQQ"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HDPDIbyHEealiq5a5SolQQ" x="459" y="357"/>
   </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_KXmMUbyGEealiq5a5SolQQ" name="diagram_compatibility_version" stringValue="1.2.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_KXmMUryGEealiq5a5SolQQ"/>
   <styles xmi:type="style:PapyrusViewStyle" xmi:id="_KXmMU7yGEealiq5a5SolQQ">
-    <owner xmi:type="uml:Package" href="Sudyplan_DAO.uml#_d_LK0LifEeavH9sFQSsLvg"/>
+    <owner xmi:type="uml:Package" href="PlanDAO.uml#_d_LK0LifEeavH9sFQSsLvg"/>
   </styles>
   <styles xmi:type="notation:CanonicalStyle" xmi:id="_LZcD0LyGEealiq5a5SolQQ"/>
-  <element xmi:type="uml:Package" href="Sudyplan_DAO.uml#_d_LK0LifEeavH9sFQSsLvg"/>
+  <element xmi:type="uml:Package" href="PlanDAO.uml#_d_LK0LifEeavH9sFQSsLvg"/>
   <edges xmi:type="notation:Connector" xmi:id="_61kzcLyGEealiq5a5SolQQ" type="Generalization_Edge" source="_UZ9CELyGEealiq5a5SolQQ" target="_Rme04LyGEealiq5a5SolQQ">
     <children xmi:type="notation:DecorationNode" xmi:id="_61kzc7yGEealiq5a5SolQQ" type="Generalization_StereotypeLabel">
       <styles xmi:type="notation:BooleanValueStyle" xmi:id="_7EMeQLyGEealiq5a5SolQQ" name="IS_UPDATED_POSITION" booleanValue="true"/>
       <layoutConstraint xmi:type="notation:Location" xmi:id="_61kzdLyGEealiq5a5SolQQ" y="39"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_61kzcbyGEealiq5a5SolQQ"/>
-    <element xmi:type="uml:Generalization" href="Sudyplan_DAO.uml#_61es0LyGEealiq5a5SolQQ"/>
+    <element xmi:type="uml:Generalization" href="PlanDAO.uml#_61es0LyGEealiq5a5SolQQ"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_61kzcryGEealiq5a5SolQQ" points="[295, 367, -643984, -643984]$[289, 261, -643984, -643984]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_615jkLyGEealiq5a5SolQQ" id="(0.54,0.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_615jkbyGEealiq5a5SolQQ" id="(0.48404255319148937,1.0)"/>
@@ -147,7 +163,7 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_JEHVxLyHEealiq5a5SolQQ" x="1" y="39"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_JEHVwbyHEealiq5a5SolQQ"/>
-    <element xmi:type="uml:Generalization" href="Sudyplan_DAO.uml#_JEABALyHEealiq5a5SolQQ"/>
+    <element xmi:type="uml:Generalization" href="PlanDAO.uml#_JEABALyHEealiq5a5SolQQ"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JEHVwryHEealiq5a5SolQQ" points="[523, 357, -643984, -643984]$[529, 267, -643984, -643984]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JEa3wLyHEealiq5a5SolQQ" id="(0.34,0.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JEa3wbyHEealiq5a5SolQQ" id="(0.57,1.0)"/>
