@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_hjPysLiYEeavH9sFQSsLvg" name="ModulDAO">
   <packageImport xmi:type="uml:PackageImport" xmi:id="_tp3UULiaEeavH9sFQSsLvg">
-    <importedPackage xmi:type="uml:Package" href="Modul_Model.uml#_PVXQkLfVEea2RYsZ51fiPw"/>
+    <importedPackage xmi:type="uml:Package" href="ModulModel.uml#_PVXQkLfVEea2RYsZ51fiPw"/>
   </packageImport>
   <packagedElement xmi:type="uml:Class" xmi:id="_YLSJMLyHEealiq5a5SolQQ" name="AbstractModuleDao">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_dLCAsLyHEealiq5a5SolQQ" name="getModuleById">
@@ -9,12 +9,12 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_QfgTsL4QEeaoO4fCpQc-Qw" direction="return">
-        <type xmi:type="uml:Class" href="Modul_Model.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+        <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
       </ownedParameter>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_hhfqoLyHEealiq5a5SolQQ" name="getModulesByFilter">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_8SrYkL4QEeaoO4fCpQc-Qw" direction="return">
-        <type xmi:type="uml:Class" href="Modul_Model.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+        <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHXPkL4REeaoO4fCpQc-Qw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHa58L4REeaoO4fCpQc-Qw" value="*"/>
       </ownedParameter>
