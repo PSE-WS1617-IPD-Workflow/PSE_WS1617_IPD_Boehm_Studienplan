@@ -15,7 +15,8 @@
 	"first": <<Modul[id]>>,
 	"second": <<Modul[id]>>,
 	"type": <Constraint-Typ>,
-	"description": <Constraint-Beschreibung>	
+	"descriptionFirst": <Constraint-Beschreibung>
+	"descriptionSecond": <Constraint-Beschreibung>	
 }
 <<Filter>> = {
 	"id": <Filter-ID>,
@@ -121,10 +122,10 @@ Es sollten nur noch nicht abgeschlossene  Module zurückgegeben werden.
 /filters
 	GET
 	{
-	
+		"filters":[<<Filter>>, ..., <<Filter>>]
 	}
 /objective-functions
 	GET
 	{
-
+		"functions":[<<Objective>>, ..., <<Objective>>]
 	}
