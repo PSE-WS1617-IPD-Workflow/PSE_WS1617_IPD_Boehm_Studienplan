@@ -1,2 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"/>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_bIdokL-TEeaWJullGOJpaQ" type="PapyrusUMLClassDiagram" name="Generation_ClassDiagram" measurementUnit="Pixel">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_iDQQcb-TEeaWJullGOJpaQ" source="PapyrusCSSForceValue">
+    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_iDQQcr-TEeaWJullGOJpaQ" key="canonical" value="true"/>
+  </eAnnotations>
+  <children xmi:type="notation:Shape" xmi:id="_d9-dIL-TEeaWJullGOJpaQ" type="Interface_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_d9_EML-TEeaWJullGOJpaQ" type="Interface_NameLabel"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_d9_rQL-TEeaWJullGOJpaQ" type="Interface_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_d9_rQb-TEeaWJullGOJpaQ" y="5"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_d9_rQr-TEeaWJullGOJpaQ" type="Interface_AttributeCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_d9_rQ7-TEeaWJullGOJpaQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_d9_rRL-TEeaWJullGOJpaQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_d9_rRb-TEeaWJullGOJpaQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_d9_rRr-TEeaWJullGOJpaQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_d9_rR7-TEeaWJullGOJpaQ" type="Interface_OperationCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_lcSBwb-TEeaWJullGOJpaQ" type="Operation_InterfaceOperationLabel">
+        <element xmi:type="uml:Operation" href="Generation.uml#_lcSBwL-TEeaWJullGOJpaQ"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_lcSBwr-TEeaWJullGOJpaQ"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_d9_rSL-TEeaWJullGOJpaQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_d9_rSb-TEeaWJullGOJpaQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_d9_rSr-TEeaWJullGOJpaQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_d9_rS7-TEeaWJullGOJpaQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_d9_rTL-TEeaWJullGOJpaQ" type="Interface_NestedClassifierCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_d9_rTb-TEeaWJullGOJpaQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_d9_rTr-TEeaWJullGOJpaQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_d9_rT7-TEeaWJullGOJpaQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_d9_rUL-TEeaWJullGOJpaQ"/>
+    </children>
+    <element xmi:type="uml:Interface" href="Generation.uml#_d98A4L-TEeaWJullGOJpaQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_d9-dIb-TEeaWJullGOJpaQ" x="1058" y="55" width="248" height="165"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_sCXIcL-UEeaWJullGOJpaQ" type="Interface_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_sCXIcr-UEeaWJullGOJpaQ" type="Interface_NameLabel"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_sCXIc7-UEeaWJullGOJpaQ" type="Interface_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_sCXIdL-UEeaWJullGOJpaQ" y="5"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_sCXIdb-UEeaWJullGOJpaQ" type="Interface_AttributeCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_sCXIdr-UEeaWJullGOJpaQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_sCXId7-UEeaWJullGOJpaQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_sCXIeL-UEeaWJullGOJpaQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sCXIeb-UEeaWJullGOJpaQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_sCXIer-UEeaWJullGOJpaQ" type="Interface_OperationCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_uq-JcL-UEeaWJullGOJpaQ" type="Operation_InterfaceOperationLabel">
+        <element xmi:type="uml:Operation" href="Generation.uml#_uqzxYL-UEeaWJullGOJpaQ"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_uq-Jcb-UEeaWJullGOJpaQ"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_sCXIe7-UEeaWJullGOJpaQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_sCXIfL-UEeaWJullGOJpaQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_sCXIfb-UEeaWJullGOJpaQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sCXIfr-UEeaWJullGOJpaQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_sCXIf7-UEeaWJullGOJpaQ" type="Interface_NestedClassifierCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_sCXIgL-UEeaWJullGOJpaQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_sCXIgb-UEeaWJullGOJpaQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_sCXIgr-UEeaWJullGOJpaQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sCXIg7-UEeaWJullGOJpaQ"/>
+    </children>
+    <element xmi:type="uml:Interface" href="Generation.uml#_sCNXcL-UEeaWJullGOJpaQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sCXIcb-UEeaWJullGOJpaQ" x="26" y="65" width="958" height="163"/>
+  </children>
+  <styles xmi:type="notation:StringValueStyle" xmi:id="_bIdokb-TEeaWJullGOJpaQ" name="diagram_compatibility_version" stringValue="1.2.0"/>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_bIdokr-TEeaWJullGOJpaQ"/>
+  <styles xmi:type="style:PapyrusViewStyle" xmi:id="_bIdok7-TEeaWJullGOJpaQ">
+    <owner xmi:type="uml:Package" href="Generation.uml#_O8AK0LfUEea2RYsZ51fiPw"/>
+  </styles>
+  <styles xmi:type="notation:CanonicalStyle" xmi:id="_iDQQcL-TEeaWJullGOJpaQ"/>
+  <element xmi:type="uml:Package" href="Generation.uml#_O8AK0LfUEea2RYsZ51fiPw"/>
+</notation:Diagram>

@@ -3,6 +3,19 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_4GYWgLiaEeavH9sFQSsLvg">
     <importedPackage xmi:type="uml:Package" href="Model.uml#_lM5vELiaEeavH9sFQSsLvg"/>
   </packageImport>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_YDqTcL-WEeaWJullGOJpaQ" name="Verifier">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ZyIncL-WEeaWJullGOJpaQ" name="verify">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_pReDQL-WEeaWJullGOJpaQ" name="invalid" direction="return">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_CqvOML4OEeaoO4fCpQc-Qw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_vzSKcL-WEeaWJullGOJpaQ" name="plan">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_PPbBML-XEeaWJullGOJpaQ" name="constraints">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_CqvOML4OEeaoO4fCpQc-Qw"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_4IiBoLlVEeavH9sFQSsLvg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4IiBoblVEeavH9sFQSsLvg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

@@ -3,6 +3,36 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_3GiqILiaEeavH9sFQSsLvg">
     <importedPackage xmi:type="uml:Package" href="Model.uml#_lM5vELiaEeavH9sFQSsLvg"/>
   </packageImport>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_d98A4L-TEeaWJullGOJpaQ" name="ObjectiveFunction">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_lcSBwL-TEeaWJullGOJpaQ" name="evaluate">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_uB3-kL-TEeaWJullGOJpaQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_-IDX8L-TEeaWJullGOJpaQ" name="plan">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_sCNXcL-UEeaWJullGOJpaQ" name="Generator">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_uqzxYL-UEeaWJullGOJpaQ" name="generate">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_1FNB8L-UEeaWJullGOJpaQ" direction="return">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_BO2UUL-VEeaWJullGOJpaQ" name="objectiveFunction" type="_d98A4L-TEeaWJullGOJpaQ"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IlZEEL-VEeaWJullGOJpaQ" name="currentPlan">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_QEoc0L-VEeaWJullGOJpaQ" name="constraints">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_CqvOML4OEeaoO4fCpQc-Qw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_dsvRQL-VEeaWJullGOJpaQ" name="modules">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_odfeEL-VEeaWJullGOJpaQ" name="passed">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_67MlMLyEEealiq5a5SolQQ"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_3E3lMLlVEeavH9sFQSsLvg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3E3lMblVEeavH9sFQSsLvg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
