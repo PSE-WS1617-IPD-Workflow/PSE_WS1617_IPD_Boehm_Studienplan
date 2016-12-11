@@ -1,60 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_PVXQkLfVEea2RYsZ51fiPw" name="ModulModel">
-  <packagedElement xmi:type="uml:Class" xmi:id="_0RnMgL4NEeaoO4fCpQc-Qw" name="Module">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_yaFYQr4PEeaoO4fCpQc-Qw" name="moduleconstraint" type="_CqvOML4OEeaoO4fCpQc-Qw" association="_yaExML4PEeaoO4fCpQc-Qw"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_0fQVAr4PEeaoO4fCpQc-Qw" name="category" type="_6zsZcL4NEeaoO4fCpQc-Qw" association="_0fPt8L4PEeaoO4fCpQc-Qw"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_1J7psL4PEeaoO4fCpQc-Qw" name="moduledescription" type="_1pGj4L4NEeaoO4fCpQc-Qw" association="_1J6bkL4PEeaoO4fCpQc-Qw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_1pGj4L4NEeaoO4fCpQc-Qw" name="ModuleDescription"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_6zsZcL4NEeaoO4fCpQc-Qw" name="Category"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_CqvOML4OEeaoO4fCpQc-Qw" name="ModuleConstraint">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_xCO0gL4PEeaoO4fCpQc-Qw" name="moduleconstrainttype" type="_gmxusL4PEeaoO4fCpQc-Qw" association="_xCFDgL4PEeaoO4fCpQc-Qw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Enumeration" xmi:id="_VdHvIL4OEeaoO4fCpQc-Qw" name="CycleType">
-    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_b0NNAL4OEeaoO4fCpQc-Qw" name="WINTER_TERM"/>
-    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_gSYBcL4OEeaoO4fCpQc-Qw" name="SUMMER_TERM"/>
-    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_hKgjUL4OEeaoO4fCpQc-Qw" name="ALWAYS"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_9HiO4L4OEeaoO4fCpQc-Qw" name="PrerequisiteModuleConstraintType">
-    <generalization xmi:type="uml:Generalization" xmi:id="_XhLcIL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_IO3IoL4PEeaoO4fCpQc-Qw" name="OverlappingModuleConstraintType">
-    <generalization xmi:type="uml:Generalization" xmi:id="_YNyqgL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_S2aWIL4PEeaoO4fCpQc-Qw" name="LinkModuleConstraintType">
-    <generalization xmi:type="uml:Generalization" xmi:id="_ZDh_sL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_gmxusL4PEeaoO4fCpQc-Qw" name="ModuleConstraintType"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_xCFDgL4PEeaoO4fCpQc-Qw" memberEnd="_xCO0gL4PEeaoO4fCpQc-Qw _xCPbkL4PEeaoO4fCpQc-Qw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xCM_UL4PEeaoO4fCpQc-Qw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xCM_Ub4PEeaoO4fCpQc-Qw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_xCPbkL4PEeaoO4fCpQc-Qw" name="moduleconstraint" type="_CqvOML4OEeaoO4fCpQc-Qw" association="_xCFDgL4PEeaoO4fCpQc-Qw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_yaExML4PEeaoO4fCpQc-Qw" memberEnd="_yaFYQr4PEeaoO4fCpQc-Qw _yaF_UL4PEeaoO4fCpQc-Qw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yaFYQL4PEeaoO4fCpQc-Qw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yaFYQb4PEeaoO4fCpQc-Qw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_yaF_UL4PEeaoO4fCpQc-Qw" name="module" type="_0RnMgL4NEeaoO4fCpQc-Qw" association="_yaExML4PEeaoO4fCpQc-Qw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_0fPt8L4PEeaoO4fCpQc-Qw" memberEnd="_0fQVAr4PEeaoO4fCpQc-Qw _0fQ8EL4PEeaoO4fCpQc-Qw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0fQVAL4PEeaoO4fCpQc-Qw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0fQVAb4PEeaoO4fCpQc-Qw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_0fQ8EL4PEeaoO4fCpQc-Qw" name="module" type="_0RnMgL4NEeaoO4fCpQc-Qw" association="_0fPt8L4PEeaoO4fCpQc-Qw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_1J6bkL4PEeaoO4fCpQc-Qw" memberEnd="_1J7psL4PEeaoO4fCpQc-Qw _1J7psb4PEeaoO4fCpQc-Qw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1J7CoL4PEeaoO4fCpQc-Qw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1J7Cob4PEeaoO4fCpQc-Qw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_1J7psb4PEeaoO4fCpQc-Qw" name="module" type="_0RnMgL4NEeaoO4fCpQc-Qw" association="_1J6bkL4PEeaoO4fCpQc-Qw"/>
-  </packagedElement>
-  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_WIyXALsIEea-uPszIhxKkQ">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WIyXAbsIEea-uPszIhxKkQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
-    </eAnnotations>
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WIyXArsIEea-uPszIhxKkQ" source="duplicatedProfile"/>
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WI0zQLsIEea-uPszIhxKkQ" source="duplicatedProfile"/>
-    <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
-  </profileApplication>
-</uml:Package>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ActionLanguage="http://www.omg.org/spec/ALF/20120827/ActionLanguage-Profile" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.omg.org/spec/ALF/20120827/ActionLanguage-Profile pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ">
+  <uml:Package xmi:id="_PVXQkLfVEea2RYsZ51fiPw" name="ModulModel">
+    <packagedElement xmi:type="uml:Class" xmi:id="_0RnMgL4NEeaoO4fCpQc-Qw" name="Module">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_yaFYQr4PEeaoO4fCpQc-Qw" name="moduleconstraint" type="_CqvOML4OEeaoO4fCpQc-Qw" association="_yaExML4PEeaoO4fCpQc-Qw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_0fQVAr4PEeaoO4fCpQc-Qw" name="category" type="_6zsZcL4NEeaoO4fCpQc-Qw" association="_0fPt8L4PEeaoO4fCpQc-Qw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_1J7psL4PEeaoO4fCpQc-Qw" name="moduledescription" type="_1pGj4L4NEeaoO4fCpQc-Qw" association="_1J6bkL4PEeaoO4fCpQc-Qw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_1pGj4L4NEeaoO4fCpQc-Qw" name="ModuleDescription"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_6zsZcL4NEeaoO4fCpQc-Qw" name="Category"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_CqvOML4OEeaoO4fCpQc-Qw" name="ModuleConstraint">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_xCO0gL4PEeaoO4fCpQc-Qw" name="moduleconstrainttype" type="_gmxusL4PEeaoO4fCpQc-Qw" association="_xCFDgL4PEeaoO4fCpQc-Qw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_VdHvIL4OEeaoO4fCpQc-Qw" name="CycleType">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_b0NNAL4OEeaoO4fCpQc-Qw" name="WINTER_TERM"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_gSYBcL4OEeaoO4fCpQc-Qw" name="SUMMER_TERM"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_hKgjUL4OEeaoO4fCpQc-Qw" name="ALWAYS"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_9HiO4L4OEeaoO4fCpQc-Qw" name="PrerequisiteModuleConstraintType">
+      <generalization xmi:type="uml:Generalization" xmi:id="_XhLcIL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_IO3IoL4PEeaoO4fCpQc-Qw" name="OverlappingModuleConstraintType">
+      <generalization xmi:type="uml:Generalization" xmi:id="_YNyqgL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_S2aWIL4PEeaoO4fCpQc-Qw" name="LinkModuleConstraintType">
+      <generalization xmi:type="uml:Generalization" xmi:id="_ZDh_sL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_gmxusL4PEeaoO4fCpQc-Qw" name="ModuleConstraintType" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_MPAz8L-GEeazg8GXsi18cQ" name="start">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_epiOgL-GEeazg8GXsi18cQ">
+          <body></body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_XsCJgL-JEeaWJullGOJpaQ" name="end"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_7gfrYL-JEeaWJullGOJpaQ" name="isValid">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_mScccL-NEeaWJullGOJpaQ" name="first">
+          <type xmi:type="uml:Class" href="PlanModel.uml#_adXTkL-HEeazg8GXsi18cQ"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_0W2yYL-NEeaWJullGOJpaQ" name="second">
+          <type xmi:type="uml:Class" href="PlanModel.uml#_adXTkL-HEeazg8GXsi18cQ"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_5U9rIL-NEeaWJullGOJpaQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_xCFDgL4PEeaoO4fCpQc-Qw" memberEnd="_xCO0gL4PEeaoO4fCpQc-Qw _xCPbkL4PEeaoO4fCpQc-Qw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xCM_UL4PEeaoO4fCpQc-Qw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xCM_Ub4PEeaoO4fCpQc-Qw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_xCPbkL4PEeaoO4fCpQc-Qw" name="moduleconstraint" type="_CqvOML4OEeaoO4fCpQc-Qw" association="_xCFDgL4PEeaoO4fCpQc-Qw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_yaExML4PEeaoO4fCpQc-Qw" memberEnd="_yaFYQr4PEeaoO4fCpQc-Qw _yaF_UL4PEeaoO4fCpQc-Qw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yaFYQL4PEeaoO4fCpQc-Qw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yaFYQb4PEeaoO4fCpQc-Qw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_yaF_UL4PEeaoO4fCpQc-Qw" name="module" type="_0RnMgL4NEeaoO4fCpQc-Qw" association="_yaExML4PEeaoO4fCpQc-Qw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_0fPt8L4PEeaoO4fCpQc-Qw" memberEnd="_0fQVAr4PEeaoO4fCpQc-Qw _0fQ8EL4PEeaoO4fCpQc-Qw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0fQVAL4PEeaoO4fCpQc-Qw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0fQVAb4PEeaoO4fCpQc-Qw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_0fQ8EL4PEeaoO4fCpQc-Qw" name="module" type="_0RnMgL4NEeaoO4fCpQc-Qw" association="_0fPt8L4PEeaoO4fCpQc-Qw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_1J6bkL4PEeaoO4fCpQc-Qw" memberEnd="_1J7psL4PEeaoO4fCpQc-Qw _1J7psb4PEeaoO4fCpQc-Qw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1J7CoL4PEeaoO4fCpQc-Qw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1J7Cob4PEeaoO4fCpQc-Qw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_1J7psb4PEeaoO4fCpQc-Qw" name="module" type="_0RnMgL4NEeaoO4fCpQc-Qw" association="_1J6bkL4PEeaoO4fCpQc-Qw"/>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_WIyXALsIEea-uPszIhxKkQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WIyXAbsIEea-uPszIhxKkQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WIyXArsIEea-uPszIhxKkQ" source="duplicatedProfile"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WI0zQLsIEea-uPszIhxKkQ" source="duplicatedProfile"/>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+    </profileApplication>
+  </uml:Package>
+  <ActionLanguage:TextualRepresentation xmi:id="_ep-6cL-GEeazg8GXsi18cQ" base_Comment="_epiOgL-GEeazg8GXsi18cQ" language="org.eclipse.papyrus.uml.textedit.property.xtext.UmlProperty"/>
+</xmi:XMI>
