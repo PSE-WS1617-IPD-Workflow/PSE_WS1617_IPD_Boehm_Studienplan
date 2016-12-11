@@ -22,8 +22,14 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EOib4LugEeaCStjenx_8kw"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EOq-wLugEeaCStjenx_8kw" value="*"/>
     </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="__dUbwL_VEeaCWKyYbzcIZw" name="getPassedModulEntries">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_luURgL_WEeaCWKyYbzcIZw" type="_adXTkL-HEeazg8GXsi18cQ" direction="return" effect="read"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_F5SZoL_WEeaCWKyYbzcIZw" name="getPlanEntries">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_fFlC8L_WEeaCWKyYbzcIZw" type="_adXTkL-HEeazg8GXsi18cQ" direction="return" effect="read"/>
+    </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_8AziQLubEeaCStjenx_8kw" name="PlanSemester">
+  <packagedElement xmi:type="uml:Class" xmi:id="_8AziQLubEeaCStjenx_8kw" name="PlanEntry">
     <generalization xmi:type="uml:Generalization" xmi:id="_maoW0L-HEeazg8GXsi18cQ" general="_adXTkL-HEeazg8GXsi18cQ"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_v2QRELyEEealiq5a5SolQQ" name="modules" type="_-AY0YLubEeaCStjenx_8kw" association="_v2F5ALyEEealiq5a5SolQQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0h9LMLyEEealiq5a5SolQQ"/>

@@ -3,7 +3,7 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_3GiqILiaEeavH9sFQSsLvg">
     <importedPackage xmi:type="uml:Package" href="Model.uml#_lM5vELiaEeavH9sFQSsLvg"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_d98A4L-TEeaWJullGOJpaQ" name="ObjectiveFunction">
+  <packagedElement xmi:type="uml:Interface" xmi:id="_d98A4L-TEeaWJullGOJpaQ" name="PartialObjectiveFunction">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_lcSBwL-TEeaWJullGOJpaQ" name="evaluate">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_uB3-kL-TEeaWJullGOJpaQ" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
@@ -22,16 +22,30 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_IlZEEL-VEeaWJullGOJpaQ" name="currentPlan">
         <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_QEoc0L-VEeaWJullGOJpaQ" name="constraints">
-        <type xmi:type="uml:Class" href="ModulModel.uml#_CqvOML4OEeaoO4fCpQc-Qw"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_dsvRQL-VEeaWJullGOJpaQ" name="modules">
-        <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_odfeEL-VEeaWJullGOJpaQ" name="passed">
-        <type xmi:type="uml:Class" href="PlanModel.uml#_67MlMLyEEealiq5a5SolQQ"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_dsvRQL-VEeaWJullGOJpaQ" name="moduleDAO">
+        <type xmi:type="uml:Class" href="ModulDAO.uml#_ZZGnMLyHEealiq5a5SolQQ"/>
       </ownedParameter>
     </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2BAncL_XEeaxStBhqAYAig" name="ObjectiveFunction" isAbstract="true">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_iQmikL_YEeakRZ7oH0A0uA" name="partialobjectivefunction" type="_d98A4L-TEeaWJullGOJpaQ" aggregation="shared">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_miHbEL_YEeakRZ7oH0A0uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_miKeYL_YEeakRZ7oH0A0uA" value="*"/>
+      <association xmi:type="uml:Association" href="MainModel.uml#_iQktYL_YEeakRZ7oH0A0uA"/>
+    </ownedAttribute>
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_gX4tcL_YEeakRZ7oH0A0uA" client="_2BAncL_XEeaxStBhqAYAig" supplier="_d98A4L-TEeaWJullGOJpaQ" contract="_d98A4L-TEeaWJullGOJpaQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_NKVTcL_YEeakRZ7oH0A0uA" name="AtomObjectiveFunction" isAbstract="true">
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_hQABML_YEeakRZ7oH0A0uA" client="_NKVTcL_YEeakRZ7oH0A0uA" supplier="_d98A4L-TEeaWJullGOJpaQ" contract="_d98A4L-TEeaWJullGOJpaQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_t8TUsL_YEeakRZ7oH0A0uA" name="StandardObjectiveFunction">
+    <generalization xmi:type="uml:Generalization" xmi:id="_OktxUL_ZEeakRZ7oH0A0uA" general="_2BAncL_XEeaxStBhqAYAig"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6cSDcL_YEeakRZ7oH0A0uA" name="MinimalECTSAtomObjectiveFunction">
+    <generalization xmi:type="uml:Generalization" xmi:id="_N5eb8L_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Aw0joL_ZEeakRZ7oH0A0uA" name="LowStandardDeviationSemesterECTSAtomObjectiveFunction">
+    <generalization xmi:type="uml:Generalization" xmi:id="_NPwwkL_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_3E3lMLlVEeavH9sFQSsLvg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3E3lMblVEeavH9sFQSsLvg" source="http://www.eclipse.org/uml2/2.0.0/UML">
