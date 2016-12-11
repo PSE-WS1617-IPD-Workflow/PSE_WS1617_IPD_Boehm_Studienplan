@@ -3,9 +3,14 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_0RnMgL4NEeaoO4fCpQc-Qw" name="Module">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_yaFYQr4PEeaoO4fCpQc-Qw" name="moduleconstraint" type="_CqvOML4OEeaoO4fCpQc-Qw" association="_yaExML4PEeaoO4fCpQc-Qw"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_Q7rzQL_aEea9O5XOZdMjrw" name="category" type="_6zsZcL4NEeaoO4fCpQc-Qw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ygAzoL_cEearRKVJonHAjg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ygAzob_cEearRKVJonHAjg" value="*"/>
       <association xmi:type="uml:Association" href="MainModel.uml#_Q7pXAL_aEea9O5XOZdMjrw"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_1J7psL4PEeaoO4fCpQc-Qw" name="moduledescription" type="_1pGj4L4NEeaoO4fCpQc-Qw" association="_1J6bkL4PEeaoO4fCpQc-Qw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_1J7psL4PEeaoO4fCpQc-Qw" name="moduledescription" type="_1pGj4L4NEeaoO4fCpQc-Qw" association="_1J6bkL4PEeaoO4fCpQc-Qw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w5PDEL_cEearRKVJonHAjg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_w5Y0EL_cEearRKVJonHAjg" value="*"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_3InskL_TEeacgfGrT4PzPg" name="evaluate">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_Bya80L_UEeacgfGrT4PzPg" name="invalid" type="_CqvOML4OEeaoO4fCpQc-Qw" direction="return" effect="read"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_4RuNML_UEeacgfGrT4PzPg" name="plan">
