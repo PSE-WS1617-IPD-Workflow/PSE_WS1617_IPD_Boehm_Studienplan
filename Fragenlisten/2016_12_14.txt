@@ -1,0 +1,8 @@
+- Module Constraints im Model: isValid() Methode?
+	-> Problem: Wie zukünftig Aussagenlogische Formeln
+	-> Es muss gelten A UND B
+		-> A = Der Verifizierer bekommt spezifizierte Constraint Types (=entscheidet nicht selbst über Validität der Constraints)
+		-> B = Die Constraint Types müssen irgendwo spezifiziert werden
+			-> Model?
+			-> Eigenes Plugin?
+			-> Mond?
