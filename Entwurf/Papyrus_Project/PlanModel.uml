@@ -1,108 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_haZUgLifEeavH9sFQSsLvg" name="PlanModel">
-  <packagedElement xmi:type="uml:Class" xmi:id="_wfe0ILubEeaCStjenx_8kw" name="User">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_ATMkoLyFEealiq5a5SolQQ" name="passedmodulentry" type="_67MlMLyEEealiq5a5SolQQ" association="_ATKvcLyFEealiq5a5SolQQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_0j0zULubEeaCStjenx_8kw" name="Plan">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_W6TUQLucEeaCStjenx_8kw" name="planId">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_bsR1gLucEeaCStjenx_8kw" name="uniqueId">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_cLI7wLucEeaCStjenx_8kw" name="name">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_cjslsLucEeaCStjenx_8kw" name="state" type="_Nij24LueEeaCStjenx_8kw"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_eBFJsLucEeaCStjenx_8kw" name="creditPoints">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_NtI5wrufEeaCStjenx_8kw" name="user" type="_wfe0ILubEeaCStjenx_8kw" association="_NtHroLufEeaCStjenx_8kw"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_xxdckrufEeaCStjenx_8kw" name="plansemester" type="_8AziQLubEeaCStjenx_8kw" association="_xxc1gLufEeaCStjenx_8kw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EOib4LugEeaCStjenx_8kw"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EOq-wLugEeaCStjenx_8kw" value="*"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="__dUbwL_VEeaCWKyYbzcIZw" name="getPassedModulEntries">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_luURgL_WEeaCWKyYbzcIZw" type="_adXTkL-HEeazg8GXsi18cQ" direction="return" effect="read"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_F5SZoL_WEeaCWKyYbzcIZw" name="getPlanEntries">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_fFlC8L_WEeaCWKyYbzcIZw" type="_adXTkL-HEeazg8GXsi18cQ" direction="return" effect="read"/>
-    </ownedOperation>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_8AziQLubEeaCStjenx_8kw" name="PlanEntry">
-    <generalization xmi:type="uml:Generalization" xmi:id="_maoW0L-HEeazg8GXsi18cQ" general="_adXTkL-HEeazg8GXsi18cQ"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_v2QRELyEEealiq5a5SolQQ" name="modules" type="_-AY0YLubEeaCStjenx_8kw" association="_v2F5ALyEEealiq5a5SolQQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0h9LMLyEEealiq5a5SolQQ"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0iAOgLyEEealiq5a5SolQQ" value="*"/>
-    </ownedAttribute>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_-AY0YLubEeaCStjenx_8kw" name="Module"/>
-  <packagedElement xmi:type="uml:Enumeration" xmi:id="_Nij24LueEeaCStjenx_8kw" name="VerificationState">
-    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Rw-_ILueEeaCStjenx_8kw" name="NOT_VERIFIED"/>
-    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_aDxUsLueEeaCStjenx_8kw" name="VALID"/>
-    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_co6yALueEeaCStjenx_8kw" name="INVALID"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_NtHroLufEeaCStjenx_8kw" name="belongs to" memberEnd="_NtI5wrufEeaCStjenx_8kw _NtJg0LufEeaCStjenx_8kw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NtI5wLufEeaCStjenx_8kw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NtI5wbufEeaCStjenx_8kw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_NtJg0LufEeaCStjenx_8kw" name="plan" type="_0j0zULubEeaCStjenx_8kw" association="_NtHroLufEeaCStjenx_8kw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_U6FooLufEeaCStjenx_8kw"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_U6Ir8LufEeaCStjenx_8kw" value="*"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_xxc1gLufEeaCStjenx_8kw" memberEnd="_xxdckrufEeaCStjenx_8kw _xxeDoLufEeaCStjenx_8kw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xxdckLufEeaCStjenx_8kw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xxdckbufEeaCStjenx_8kw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_xxeDoLufEeaCStjenx_8kw" name="plan" type="_0j0zULubEeaCStjenx_8kw" association="_xxc1gLufEeaCStjenx_8kw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7plYQLufEeaCStjenx_8kw" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7pmmYLufEeaCStjenx_8kw" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_v2F5ALyEEealiq5a5SolQQ" memberEnd="_v2QRELyEEealiq5a5SolQQ _v2TUYLyEEealiq5a5SolQQ">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_v2Ob4LyEEealiq5a5SolQQ" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_v2PC8LyEEealiq5a5SolQQ" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_v2TUYLyEEealiq5a5SolQQ" name="plansemester" type="_8AziQLubEeaCStjenx_8kw" association="_v2F5ALyEEealiq5a5SolQQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1Z6G4LyEEealiq5a5SolQQ"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1Z78ELyEEealiq5a5SolQQ" value="*"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_67MlMLyEEealiq5a5SolQQ" name="PassedModulEntry">
-    <generalization xmi:type="uml:Generalization" xmi:id="_nQDi8L-HEeazg8GXsi18cQ" general="_adXTkL-HEeazg8GXsi18cQ"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_CWf5ILyFEealiq5a5SolQQ" name="module" type="_-AY0YLubEeaCStjenx_8kw" association="_CWeD8LyFEealiq5a5SolQQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_ATKvcLyFEealiq5a5SolQQ" memberEnd="_ATMkoLyFEealiq5a5SolQQ _ATMkobyFEealiq5a5SolQQ">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ATL9kLyFEealiq5a5SolQQ" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ATL9kbyFEealiq5a5SolQQ" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_ATMkobyFEealiq5a5SolQQ" name="user" type="_wfe0ILubEeaCStjenx_8kw" association="_ATKvcLyFEealiq5a5SolQQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_CWeD8LyFEealiq5a5SolQQ" memberEnd="_CWf5ILyFEealiq5a5SolQQ _CWf5IbyFEealiq5a5SolQQ">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CWfSELyFEealiq5a5SolQQ" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CWfSEbyFEealiq5a5SolQQ" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_CWf5IbyFEealiq5a5SolQQ" name="passedmodulentry" type="_67MlMLyEEealiq5a5SolQQ" association="_CWeD8LyFEealiq5a5SolQQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_adXTkL-HEeazg8GXsi18cQ" name="Entry" isAbstract="true">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_eNxqIL-HEeazg8GXsi18cQ" name="semester">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-    </ownedAttribute>
-  </packagedElement>
-  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_fiz3oLubEeaCStjenx_8kw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fiz3obubEeaCStjenx_8kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
-      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
-    </eAnnotations>
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fiz3orubEeaCStjenx_8kw" source="duplicatedProfile"/>
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fi1FwLubEeaCStjenx_8kw" source="duplicatedProfile"/>
-    <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
-  </profileApplication>
-  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_fi2T4LubEeaCStjenx_8kw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fi2T4bubEeaCStjenx_8kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
-      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
-    </eAnnotations>
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fi2T4rubEeaCStjenx_8kw" source="duplicatedProfile"/>
-    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
-  </profileApplication>
-</uml:Package>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ActionLanguage="http://www.omg.org/spec/ALF/20120827/ActionLanguage-Profile" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.omg.org/spec/ALF/20120827/ActionLanguage-Profile pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ">
+  <uml:Package xmi:id="_haZUgLifEeavH9sFQSsLvg" name="PlanModel">
+    <packagedElement xmi:type="uml:Class" xmi:id="_wfe0ILubEeaCStjenx_8kw" name="User"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_0j0zULubEeaCStjenx_8kw" name="Plan">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_W6TUQLucEeaCStjenx_8kw" name="planId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_bsR1gLucEeaCStjenx_8kw" name="uniqueId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_cLI7wLucEeaCStjenx_8kw" name="name">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_cjslsLucEeaCStjenx_8kw" name="state" type="_Nij24LueEeaCStjenx_8kw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_eBFJsLucEeaCStjenx_8kw" name="creditPoints">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_NtI5wrufEeaCStjenx_8kw" name="user" type="_wfe0ILubEeaCStjenx_8kw" association="_NtHroLufEeaCStjenx_8kw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_LOdvUMBqEeafN5EhaYGTYw" name="moduleentry" type="_5yGmIMBpEeafN5EhaYGTYw" association="_LOY20MBqEeafN5EhaYGTYw"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="__dUbwL_VEeaCWKyYbzcIZw" name="getPassedModulEntries">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_luURgL_WEeaCWKyYbzcIZw" direction="return" effect="read"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_F5SZoL_WEeaCWKyYbzcIZw" name="getPlanEntries">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_fFlC8L_WEeaCWKyYbzcIZw" direction="return" effect="read"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_Nij24LueEeaCStjenx_8kw" name="VerificationState">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Rw-_ILueEeaCStjenx_8kw" name="NOT_VERIFIED"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_aDxUsLueEeaCStjenx_8kw" name="VALID"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_co6yALueEeaCStjenx_8kw" name="INVALID"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_NtHroLufEeaCStjenx_8kw" name="belongs to" memberEnd="_NtI5wrufEeaCStjenx_8kw _NtJg0LufEeaCStjenx_8kw" navigableOwnedEnd="_NtJg0LufEeaCStjenx_8kw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NtI5wLufEeaCStjenx_8kw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NtI5wbufEeaCStjenx_8kw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_NtJg0LufEeaCStjenx_8kw" name="plan" type="_0j0zULubEeaCStjenx_8kw" association="_NtHroLufEeaCStjenx_8kw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_U6FooLufEeaCStjenx_8kw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_U6Ir8LufEeaCStjenx_8kw" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_5yGmIMBpEeafN5EhaYGTYw" name="ModuleEntry">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_dSdgQMBqEeafN5EhaYGTYw" name="module">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_gwkl4MBqEeafN5EhaYGTYw" name="semester">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_nNov8MBqEeafN5EhaYGTYw">
+          <body></body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_LOY20MBqEeafN5EhaYGTYw" memberEnd="_LOdvUMBqEeafN5EhaYGTYw _LOdvUcBqEeafN5EhaYGTYw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LObTEMBqEeafN5EhaYGTYw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LOb6IMBqEeafN5EhaYGTYw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_LOdvUcBqEeafN5EhaYGTYw" name="plan" type="_0j0zULubEeaCStjenx_8kw" association="_LOY20MBqEeafN5EhaYGTYw"/>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_fiz3oLubEeaCStjenx_8kw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fiz3obubEeaCStjenx_8kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fiz3orubEeaCStjenx_8kw" source="duplicatedProfile"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fi1FwLubEeaCStjenx_8kw" source="duplicatedProfile"/>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_fi2T4LubEeaCStjenx_8kw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fi2T4bubEeaCStjenx_8kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fi2T4rubEeaCStjenx_8kw" source="duplicatedProfile"/>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+    </profileApplication>
+  </uml:Package>
+  <ActionLanguage:TextualRepresentation xmi:id="_hdjAoMBqEeafN5EhaYGTYw" language="org.eclipse.papyrus.uml.textedit.property.xtext.UmlProperty"/>
+  <ActionLanguage:TextualRepresentation xmi:id="_j_q_IMBqEeafN5EhaYGTYw" language="org.eclipse.papyrus.uml.textedit.property.xtext.UmlProperty"/>
+  <ActionLanguage:TextualRepresentation xmi:id="_nNp-EMBqEeafN5EhaYGTYw" base_Comment="_nNov8MBqEeafN5EhaYGTYw" language="org.eclipse.papyrus.uml.textedit.property.xtext.UmlProperty"/>
+</xmi:XMI>
