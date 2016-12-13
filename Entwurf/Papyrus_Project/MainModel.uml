@@ -6,14 +6,10 @@
   </packageImport>
   <packagedElement xmi:type="uml:Package" href="Generation.uml#_O8AK0LfUEea2RYsZ51fiPw"/>
   <packagedElement xmi:type="uml:Package" href="Verification.uml#_SxHbMLfUEea2RYsZ51fiPw"/>
-  <packagedElement xmi:type="uml:Package" xmi:id="_nnmP8LfWEea2RYsZ51fiPw" name="JSCommunication"/>
-  <packagedElement xmi:type="uml:Package" xmi:id="_u9pQcLfWEea2RYsZ51fiPw" name="JSView"/>
-  <packagedElement xmi:type="uml:Package" xmi:id="_wOsBkLfWEea2RYsZ51fiPw" name="JSModel">
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_QMBg4LfXEea2RYsZ51fiPw" importedPackage="_FgRI0LfXEea2RYsZ51fiPw"/>
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_Q1D20LfXEea2RYsZ51fiPw" importedPackage="_u9pQcLfWEea2RYsZ51fiPw"/>
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_Te_tgLfXEea2RYsZ51fiPw" importedPackage="_nnmP8LfWEea2RYsZ51fiPw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_FgRI0LfXEea2RYsZ51fiPw" name="JSController"/>
+  <packagedElement xmi:type="uml:Package" href="JsStorage.uml#_nnmP8LfWEea2RYsZ51fiPw"/>
+  <packagedElement xmi:type="uml:Package" href="JSView.uml#_u9pQcLfWEea2RYsZ51fiPw"/>
+  <packagedElement xmi:type="uml:Package" href="JSModel.uml#_wOsBkLfWEea2RYsZ51fiPw"/>
+  <packagedElement xmi:type="uml:Package" href="JSRouter.uml#_FgRI0LfXEea2RYsZ51fiPw"/>
   <packagedElement xmi:type="uml:Package" href="REST.uml#_cobT8LiXEeavH9sFQSsLvg"/>
   <packagedElement xmi:type="uml:Package" href="Model.uml#_lM5vELiaEeavH9sFQSsLvg"/>
   <packagedElement xmi:type="uml:Package" href="Filter.uml#_isR5AL7HEeaRCti-wkqR-A"/>
