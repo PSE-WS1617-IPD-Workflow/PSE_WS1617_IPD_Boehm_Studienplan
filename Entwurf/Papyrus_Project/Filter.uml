@@ -5,11 +5,7 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_qtj4AMCtEeaPXJNH_43Mqw" type="_wio-kMC5EearftWngfiKFw" direction="return"/>
     </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_zQ1tALuREea-uPszIhxKkQ" name="CategoryFilter">
-    <generalization xmi:type="uml:Generalization" xmi:id="_EX9awMGMEearRqCd-mFB6A" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_vd0ZoMC7EearftWngfiKFw" name="getDescriptor"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_26GSsLuREea-uPszIhxKkQ" name="ECTSFilter">
+  <packagedElement xmi:type="uml:Class" xmi:id="_26GSsLuREea-uPszIhxKkQ" name="ECTSFilter" isLeaf="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_n-wfoMGCEea0yOFvxPpmvQ" general="_4zyO8MF1EeaM6M-4jd6ZbA"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_UBAlgMGHEea0yOFvxPpmvQ" name="getDescriptor"/>
   </packagedElement>
@@ -74,7 +70,7 @@
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_BrPr8MGDEea0yOFvxPpmvQ" client="_4zyO8MF1EeaM6M-4jd6ZbA" supplier="_vd38kMGCEea0yOFvxPpmvQ"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_b6x68MGDEea0yOFvxPpmvQ" name="CompoundFilter">
+  <packagedElement xmi:type="uml:Class" xmi:id="_b6x68MGDEea0yOFvxPpmvQ" name="MultiFilter">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_KrmcsMGEEea0yOFvxPpmvQ" name="getCondition">
       <ownedComment xmi:type="uml:Comment" xmi:id="_VDZ-AMGEEea0yOFvxPpmvQ" annotatedElement="_KrmcsMGEEea0yOFvxPpmvQ">
         <body>/*&#xD;
@@ -85,22 +81,6 @@
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_lGfckMGDEea0yOFvxPpmvQ" client="_b6x68MGDEea0yOFvxPpmvQ" supplier="_p8pFILuOEea-uPszIhxKkQ"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_ivFjgMGHEea0yOFvxPpmvQ" name="CycleFilter">
-    <generalization xmi:type="uml:Generalization" xmi:id="_KMPtkMGMEearRqCd-mFB6A" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_ivGKksGHEea0yOFvxPpmvQ" name="getDescriptor"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_p1sZ0MGHEea0yOFvxPpmvQ" name="KindFilter">
-    <generalization xmi:type="uml:Generalization" xmi:id="_M0Jj8MGMEearRqCd-mFB6A" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_p1sZ0sGHEea0yOFvxPpmvQ" name="getDescriptor"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_sNL1oMGHEea0yOFvxPpmvQ" name="DisciplinFilter">
-    <generalization xmi:type="uml:Generalization" xmi:id="_OLua4MGMEearRqCd-mFB6A" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_sNL1osGHEea0yOFvxPpmvQ" name="getDescriptor"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_tRoVMMGHEea0yOFvxPpmvQ" name="ObligatoryFilter">
-    <generalization xmi:type="uml:Generalization" xmi:id="_QKa8MMGMEearRqCd-mFB6A" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_tRoVMsGHEea0yOFvxPpmvQ" name="getDescriptor"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_qmRI4MGMEeaDGu-4-Q8w1w" name="ContainsFilter" isAbstract="true">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_FpHrMMGNEeaDGu-4-Q8w1w" name="substring" visibility="private" isReadOnly="true">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -115,7 +95,7 @@
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_dLUxQMGNEeaDGu-4-Q8w1w" client="_qmRI4MGMEeaDGu-4-Q8w1w" supplier="_vd38kMGCEea0yOFvxPpmvQ"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_jOChoMGNEeaDGu-4-Q8w1w" name="TitleFilter">
+  <packagedElement xmi:type="uml:Class" xmi:id="_jOChoMGNEeaDGu-4-Q8w1w" name="TitleFilter" isLeaf="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_IkooMMHcEeaMG_BKqLGAKw" general="_qmRI4MGMEeaDGu-4-Q8w1w"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_6AipEMGNEeaDGu-4-Q8w1w" name="getDescriptor"/>
   </packagedElement>
@@ -143,6 +123,26 @@ public String toJSON() {&#xD;
     <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_IkwAIMHgEeaMG_BKqLGAKw" name="DISCIPLIN"/>
     <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_JtwPkMHgEeaMG_BKqLGAKw" name="OBLIGATORY"/>
     <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Kg6x4MHgEeaMG_BKqLGAKw" name="TITLE"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_TCDkIMHuEeafqK_E3KwnEw" name="CategoryFilter">
+    <generalization xmi:type="uml:Generalization" xmi:id="_y6yQQMHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_7HB48MHuEeafqK_E3KwnEw" name="getDescriptor"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_XgO_oMHuEeafqK_E3KwnEw" name="CycleFilter">
+    <generalization xmi:type="uml:Generalization" xmi:id="_z51ScMHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_8UejgMHuEeafqK_E3KwnEw" name="getDescriptor"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_kdoDIMHuEeafqK_E3KwnEw" name="KindFilter">
+    <generalization xmi:type="uml:Generalization" xmi:id="_0YaE0MHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_9cX_sMHuEeafqK_E3KwnEw" name="getDescriptor"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_jvoUsMHuEeafqK_E3KwnEw" name="DisciplinFilter">
+    <generalization xmi:type="uml:Generalization" xmi:id="_05upMMHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="__vi8MMHuEeafqK_E3KwnEw" name="getDescriptor"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_iySisMHuEeafqK_E3KwnEw" name="ObligatoryFilter">
+    <generalization xmi:type="uml:Generalization" xmi:id="_1puiwMHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_AtOscMHvEeafqK_E3KwnEw" name="getDescriptor"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Gn_AcL7KEeaRCti-wkqR-A">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Gn_Acb7KEeaRCti-wkqR-A" source="http://www.eclipse.org/uml2/2.0.0/UML">
