@@ -1,9 +1,10 @@
+goog.provide("StudyplanApp.Exceptions.TemplateNotFoundException");
 /**
- * @implements {AppException}
+ * @implements {StudyplanApp.Exceptions.AppException}
  * @constructor
  * @param {string} keyParam The key of the template
  */
-function TemplateNotFoundException(keyParam) {
+StudyplanApp.Exceptions.TemplateNotFoundException = function (keyParam) {
     "use strict";
     this.key = keyParam;
-}
+};

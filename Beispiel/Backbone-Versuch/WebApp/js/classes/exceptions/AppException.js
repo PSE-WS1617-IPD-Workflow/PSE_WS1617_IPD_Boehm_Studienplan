@@ -1,6 +1,7 @@
+goog.provide("StudyplanApp.Exceptions.AppException");
 /**
  * @interface
  */
-function AppException() {
+StudyplanApp.Exceptions.AppException = function () {
     "use strict";
-}
+};

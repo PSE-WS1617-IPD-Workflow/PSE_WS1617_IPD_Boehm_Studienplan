@@ -1,20 +1,21 @@
+goog.provide("StudyplanApp.Views.AppView");
 /**
  * Main View of App
  * @constructor 
  * @extends {Backbone.View}
  */
-var AppView = Backbone.View.extend({
+StudyplanApp.Views.AppView = Backbone.View.extend({
     el: "body",
-    template: AppTemplateRegistry.getTemplate("templates/wrapper.html"),
+    template: StudyplanApp.Templating.TemplateRegistry.getInstance().getTemplate("templates/wrapper.html"),
     /**
-     * @this {AppView}
+     * @this {StudyplanApp.Views.AppView}
      */
     initialize : function () {
         "use strict";
         this.render();
     },
     /**
-     * @this {AppView}
+     * @this {StudyplanApp.Views.AppView}
      */
     render : function () {
         "use strict";

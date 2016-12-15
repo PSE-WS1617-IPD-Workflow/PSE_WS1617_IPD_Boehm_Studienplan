@@ -38,7 +38,7 @@
          destfile="${basedir}/tmp/jst_comment.js" overwrite="yes">
          <filelist dir="${basedir}/tmp/" files="jst.js"/>
       <header>/**
- * @this {TemplateFactory}
+ * @this {StudyplanApp.Templating.TemplateRegistryInterface}
  */
 function TemplateLoader() {
 </header> 
@@ -46,12 +46,13 @@ function TemplateLoader() {
       <concat
               destfile="${basedir}/tmp/jst_comment.js" append="yes">
 }
-TemplateLoader.bind(AppTemplateRegistry)();</concat>
+TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</concat>
     <jscomp compilationLevel="simple" warning="verbose" 
         debug="false" output="${basedir}/js/compiled/app.js">
 
       <externs dir="${basedir}/build/externs">
         <file name="extern.js"/>
+        <file name="cookie.js"/>
         <file name="require.js"/>
         <file name="jquery.js"/>
         <file name="backbone.js"/>
@@ -62,17 +63,20 @@ TemplateLoader.bind(AppTemplateRegistry)();</concat>
         <file name="TemplateNotFoundException.js"/>  
       </sources>
       <sources dir="${basedir}/js/classes/templates">
-        <file name="TemplateFactory.js"/>  
+          <file name="TemplateRegistryInterface.js"/>
+        <file name="TemplateRegistry.js"/>  
+      </sources>
+        <sources dir="${basedir}/js/classes/sync">
+      <file name="CookieSync.js"/>  
+        </sources>
+      <sources dir="${basedir}/js/">
+          <file name="config.js"/>
       </sources>
       <sources dir="${basedir}/tmp/">
         <file name="jst_comment.js"/>  
       </sources>
       <sources dir="${basedir}/js/classes/view">
         <file name="AppView.js"/>
-      </sources>
-      <sources dir="${basedir}/js/">
-          <file name="config.js"/>
-          <!--<file name="init.js"/>-->
       </sources>
     </jscomp>
 
