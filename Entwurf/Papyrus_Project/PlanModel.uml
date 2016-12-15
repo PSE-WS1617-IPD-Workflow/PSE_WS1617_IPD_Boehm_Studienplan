@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ActionLanguage="http://www.omg.org/spec/ALF/20120827/ActionLanguage-Profile" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.omg.org/spec/ALF/20120827/ActionLanguage-Profile pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ">
   <uml:Package xmi:id="_haZUgLifEeavH9sFQSsLvg" name="PlanModel">
-    <packagedElement xmi:type="uml:Class" xmi:id="_wfe0ILubEeaCStjenx_8kw" name="User"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_wfe0ILubEeaCStjenx_8kw" name="User">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_OCyJgsK5EeavfrO5hlCymA" name="moduleentry" type="_5yGmIMBpEeafN5EhaYGTYw" association="_OCwUUMK5EeavfrO5hlCymA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QeL08MK5EeavfrO5hlCymA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QeaecMK5EeavfrO5hlCymA" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_0j0zULubEeaCStjenx_8kw" name="Plan">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_W6TUQLucEeaCStjenx_8kw" name="planId">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
@@ -17,7 +22,14 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_NtI5wrufEeaCStjenx_8kw" name="user" type="_wfe0ILubEeaCStjenx_8kw" association="_NtHroLufEeaCStjenx_8kw"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_LOdvUMBqEeafN5EhaYGTYw" name="moduleentry" type="_5yGmIMBpEeafN5EhaYGTYw" association="_LOY20MBqEeafN5EhaYGTYw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_LOdvUMBqEeafN5EhaYGTYw" name="moduleentry" type="_5yGmIMBpEeafN5EhaYGTYw" association="_LOY20MBqEeafN5EhaYGTYw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D7oTUMK5EeavfrO5hlCymA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D7qIgMK5EeavfrO5hlCymA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_7_BpIcK4EeavfrO5hlCymA" name="modulepreference" type="_hTkTIMK4EeavfrO5hlCymA" association="_7_AbAMK4EeavfrO5hlCymA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Bv9tAMK5EeavfrO5hlCymA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BwMWgMK5EeavfrO5hlCymA" value="*"/>
+      </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="__dUbwL_VEeaCWKyYbzcIZw" name="getPassedModulEntries">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_luURgL_WEeaCWKyYbzcIZw" direction="return" effect="read"/>
       </ownedOperation>
@@ -55,6 +67,31 @@
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LOb6IMBqEeafN5EhaYGTYw" key="nature" value="UML_Nature"/>
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_LOdvUcBqEeafN5EhaYGTYw" name="plan" type="_0j0zULubEeaCStjenx_8kw" association="_LOY20MBqEeafN5EhaYGTYw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_hTkTIMK4EeavfrO5hlCymA" name="ModulePreference">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_oyKLoMK4EeavfrO5hlCymA" name="module">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_GUrOUMK5EeavfrO5hlCymA" name="type" type="_r4SPEMK4EeavfrO5hlCymA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_r4SPEMK4EeavfrO5hlCymA" name="PreferenceType">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_0vaAwMK4EeavfrO5hlCymA" name="POSITIVE"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_2HqNIMK4EeavfrO5hlCymA" name="NEGATIVE"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_7_AbAMK4EeavfrO5hlCymA" memberEnd="_7_BpIcK4EeavfrO5hlCymA _7_CQMMK4EeavfrO5hlCymA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7_BCEMK4EeavfrO5hlCymA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7_BpIMK4EeavfrO5hlCymA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_7_CQMMK4EeavfrO5hlCymA" name="plan" type="_0j0zULubEeaCStjenx_8kw" association="_7_AbAMK4EeavfrO5hlCymA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-lCCEMK4EeavfrO5hlCymA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-lHhoMK4EeavfrO5hlCymA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_OCwUUMK5EeavfrO5hlCymA" memberEnd="_OCyJgsK5EeavfrO5hlCymA _OCywkMK5EeavfrO5hlCymA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_OCyJgMK5EeavfrO5hlCymA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OCyJgcK5EeavfrO5hlCymA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_OCywkMK5EeavfrO5hlCymA" name="user" type="_wfe0ILubEeaCStjenx_8kw" association="_OCwUUMK5EeavfrO5hlCymA"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_fiz3oLubEeaCStjenx_8kw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fiz3obubEeaCStjenx_8kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
