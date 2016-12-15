@@ -6,6 +6,14 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QeL08MK5EeavfrO5hlCymA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QeaecMK5EeavfrO5hlCymA" value="*"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_9uyhIMK5EeavfrO5hlCymA" name="userId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ARzQcMK6EeavfrO5hlCymA" name="username">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_J7YZ0MK6EeavfrO5hlCymA" name="discipline"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_te5VoMK6EeavfrO5hlCymA" name="studyStart" type="_RPcn4MK7EeavfrO5hlCymA"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_0j0zULubEeaCStjenx_8kw" name="Plan">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_W6TUQLucEeaCStjenx_8kw" name="planId">
@@ -92,6 +100,16 @@
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OCyJgcK5EeavfrO5hlCymA" key="nature" value="UML_Nature"/>
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_OCywkMK5EeavfrO5hlCymA" name="user" type="_wfe0ILubEeaCStjenx_8kw" association="_OCwUUMK5EeavfrO5hlCymA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_RPcn4MK7EeavfrO5hlCymA" name="Semester">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_W--WgMK7EeavfrO5hlCymA" name="semesterType">
+        <type xmi:type="uml:Enumeration" href="ModulModel.uml#_VdHvIL4OEeaoO4fCpQc-Qw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_pzbUAMK7EeavfrO5hlCymA" name="year"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_iljYEMK7EeavfrO5hlCymA" name="SemesterType">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_mbfu4MK7EeavfrO5hlCymA" name="WINTER_TERM"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_oM4M8MK7EeavfrO5hlCymA" name="SUMMER_TERM"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_fiz3oLubEeaCStjenx_8kw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fiz3obubEeaCStjenx_8kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
