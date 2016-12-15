@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<project basedir="." default="compile">
+  <!-- GRUNT Support -->
+    <macrodef name="exec-node">
+        <attribute name="module" description="The name of the NodeJS module to execute"/>
+        <attribute name="failonerror" default="true" description="Fail if the exit code is not 0"/>
+        <element name="args" implicit="yes" description="Argument to pass to the exec task"/>
+        <sequential>
+            <exec executable="cmd.exe" failonerror="@{failonerror}" osfamily="winnt">
+                <arg line="/c  @{module}" />
+                <args/>
+
+                <!-- Windows cmd output workaround: http://stackoverflow.com/a/10359327/227349 -->
+                <!-- Forces node's stderror and stdout to a temporary file -->
+                <arg line=" &gt; _tempfile.out 2&lt;&amp;1"/>
+
+                <!-- If command exits with an error, then output the temporary file        -->
+                <!-- to stdout delete the temporary file and finally exit with error level 1  -->
+                <!-- so that the apply task can catch the error if @failonerror="true"        -->
+                <arg line=" || (type _tempfile.out &amp; del _tempfile.out &amp; exit /b 1)"/>
+
+                <!-- Otherwise, just type the temporary file and delete it-->
+                <arg line=" &amp; type _tempfile.out &amp; del _tempfile.out &amp;"/>
+            </exec>
+            <exec executable="@{module}" failonerror="@{failonerror}" osfamily="unix">
+                <args/>
+            </exec>
+        </sequential>
+    </macrodef>
+  <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask"
+           classpath="${basedir}/build/closure.jar"/>
+    
+  <target name="compile">
+    <exec-node module="grunt">
+        <arg value="jst" />
+    </exec-node>
+     <concat
+         destfile="${basedir}/tmp/jst_comment.js" overwrite="yes">
+         <filelist dir="${basedir}/tmp/" files="jst.js"/>
+      <header>/**
+ * @this {StudyplanApp.Templating.TemplateRegistryInterface}
+ */
+function TemplateLoader() {
+</header> 
+      </concat>
+      <concat
+              destfile="${basedir}/tmp/jst_comment.js" append="yes">
+}
+TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</concat>
+    <jscomp compilationLevel="simple" warning="verbose" 
+        debug="false" output="${basedir}/js/compiled/app.js">
+
+      <externs dir="${basedir}/build/externs">
+        <file name="extern.js"/>
+        <file name="cookie.js"/>
+        <file name="require.js"/>
+        <file name="jquery.js"/>
+        <file name="backbone.js"/>
+        <file name="underscore.js"/>
+      </externs>
+      <sources dir="${basedir}/js/classes/exceptions">
+        <file name="AppException.js"/>  
+        <file name="TemplateNotFoundException.js"/>  
+      </sources>
+      <sources dir="${basedir}/js/classes/templates">
+          <file name="TemplateRegistryInterface.js"/>
+        <file name="TemplateRegistry.js"/>  
+      </sources>
+        <sources dir="${basedir}/js/classes/sync">
+      <file name="CookieSync.js"/>  
+        </sources>
+      <sources dir="${basedir}/js/">
+          <file name="config.js"/>
+      </sources>
+      <sources dir="${basedir}/tmp/">
+        <file name="jst_comment.js"/>  
+      </sources>
+      <sources dir="${basedir}/js/classes/view">
+        <file name="AppView.js"/>
+      </sources>
+    </jscomp>
+
+  </target>
+
+</project>

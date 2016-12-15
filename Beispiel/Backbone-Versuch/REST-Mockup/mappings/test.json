@@ -1,0 +1,16 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPath": "/auth/login",
+        "queryParameters" : {
+          "response_type": { "equalTo":"token"},
+          "client-id": { "equalTo":"key-123"},
+          "scope" : { "equalTo":"student"},
+          "state" : { "equalTo":"abc"}
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": "state thing\n",
+    }
+}
