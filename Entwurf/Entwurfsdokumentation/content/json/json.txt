@@ -20,7 +20,8 @@
 }
 <<Filter>> = {
 	"id": <Filter-ID>,
-	"name":<Filter-Name>
+	"name":<Filter-Name>,
+	"value": <Filter-Value>,
 	"tooltipp": <Filter-Tooltipp>,
 	"specification": <<Filter-Eigenschaften>>
 }
@@ -52,7 +53,7 @@
 	}
 	GET
 	{
-		"plans": [<<Studienplan[id, status, creditpoints-sum, name]>>, ..., <<Studienplan[id, status, creditpoints-sum, name]>>]
+		"plans": [<<Studienplan[id, status, creditpoints-sum, name]>>, ...]
 	}
 /plans/{plan_id}
 	GET, PUT
@@ -63,7 +64,7 @@
 	{
 		"plan": <<Studienplan[name]>>
 	}
-	DELETE
+	DELETE return
 	{
 		"successful": <Delete-Success-Message>
 	}
@@ -71,7 +72,7 @@
 	{
 		"plan": <<Studienplan[name]>>
 	}
-	return
+	GET, PUT, POST, PATCH return
 	{
 		"plan": <<Studienplan[id, status, creditpoints-sum, name]>>
 	}
@@ -80,7 +81,7 @@
 Es sollten nur noch nicht abgeschlossene  Module zurückgegeben werden.
 */
 /plans/{plan_id}/modules/
-	GET:
+	GET (list of applied filters and their respective value as URL parameters):
 	{
 		"modules":[<<Modul[id, name, creditpoints, lecturer, preference]>>, ..., <<Modul[id, name, creditpoints, lecturer, preference]>>]
 	}
