@@ -33,6 +33,19 @@
       <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
     </ownedEnd>
   </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_tbs0AMGDEea0yOFvxPpmvQ" memberEnd="_tbxsgMGDEea0yOFvxPpmvQ _tb0v0MGDEea0yOFvxPpmvQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tbvQQMGDEea0yOFvxPpmvQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tbv3UMGDEea0yOFvxPpmvQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_tb0v0MGDEea0yOFvxPpmvQ" aggregation="shared" association="_tbs0AMGDEea0yOFvxPpmvQ">
+      <type xmi:type="uml:Class" href="Filter.uml#_b6x68MGDEea0yOFvxPpmvQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_tbxsgMGDEea0yOFvxPpmvQ" name="filters" association="_tbs0AMGDEea0yOFvxPpmvQ">
+      <type xmi:type="uml:Interface" href="Filter.uml#_p8pFILuOEea-uPszIhxKkQ"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_40_AcMGDEea0yOFvxPpmvQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_41FHEMGDEea0yOFvxPpmvQ" value="*"/>
+    </ownedEnd>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vtuncLcDEeag2fAimjvU5Q">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vt3xYLcDEeag2fAimjvU5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

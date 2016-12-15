@@ -107,6 +107,16 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_CqyRgr4OEeaoO4fCpQc-Qw" y="5"/>
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_CqyRg74OEeaoO4fCpQc-Qw" type="Class_AttributeCompartment">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_DU8hIMHlEeahd4_UvC1eqw" source="PapyrusCSSForceValue">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_DU_kcMHlEeahd4_UvC1eqw" key="mutable" value="true"/>
+      </eAnnotations>
+      <children xmi:type="notation:Shape" xmi:id="_CpqIcMHlEeahd4_UvC1eqw" type="Property_ClassAttributeLabel">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_DU_kccHlEeahd4_UvC1eqw" source="PapyrusCSSForceValue">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_DU_kcsHlEeahd4_UvC1eqw" key="mutable" value="true"/>
+        </eAnnotations>
+        <element xmi:type="uml:Property" href="ModulModel.uml#_q84wQMBnEeafN5EhaYGTYw"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_CpqIccHlEeahd4_UvC1eqw"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_CqyRhL4OEeaoO4fCpQc-Qw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_CqyRhb4OEeaoO4fCpQc-Qw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_CqyRhr4OEeaoO4fCpQc-Qw"/>
