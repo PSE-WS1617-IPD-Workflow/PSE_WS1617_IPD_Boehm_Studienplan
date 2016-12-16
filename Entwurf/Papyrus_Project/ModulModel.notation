@@ -301,6 +301,28 @@
     <element xmi:type="uml:Class" href="ModulModel.uml#_gmxusL4PEeaoO4fCpQc-Qw"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gmzj4b4PEeaoO4fCpQc-Qw" x="501" y="325"/>
   </children>
+  <children xmi:type="notation:Shape" xmi:id="_gFzdoMO3EearScbIBXJIIw" type="Enumeration_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_gF154MO3EearScbIBXJIIw" type="Enumeration_NameLabel"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_gF154cO3EearScbIBXJIIw" type="Enumeration_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_gF154sO3EearScbIBXJIIw" y="5"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_gF1548O3EearScbIBXJIIw" type="Enumeration_LiteralCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_htJ18MO3EearScbIBXJIIw" type="EnumerationLiteral_LiteralLabel">
+        <element xmi:type="uml:EnumerationLiteral" href="ModulModel.uml#_hrg3MMO3EearScbIBXJIIw"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_htJ18cO3EearScbIBXJIIw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_mu9i8MO3EearScbIBXJIIw" type="EnumerationLiteral_LiteralLabel">
+        <element xmi:type="uml:EnumerationLiteral" href="ModulModel.uml#_mtSvAMO3EearScbIBXJIIw"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_mu9i8cO3EearScbIBXJIIw"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_gF155MO3EearScbIBXJIIw"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_gF155cO3EearScbIBXJIIw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_gF155sO3EearScbIBXJIIw"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gF1558O3EearScbIBXJIIw"/>
+    </children>
+    <element xmi:type="uml:Enumeration" href="ModulModel.uml#_gCMI8MO3EearScbIBXJIIw"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gFzdocO3EearScbIBXJIIw" x="1025" y="183"/>
+  </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_y-L1wb4NEeaoO4fCpQc-Qw" name="diagram_compatibility_version" stringValue="1.2.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_y-L1wr4NEeaoO4fCpQc-Qw"/>
   <styles xmi:type="style:PapyrusViewStyle" xmi:id="_y-L1w74NEeaoO4fCpQc-Qw">

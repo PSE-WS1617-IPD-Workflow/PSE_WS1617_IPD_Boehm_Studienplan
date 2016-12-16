@@ -1179,6 +1179,23 @@
             <element xmi:type="uml:Class" href="ModulModel.uml#_gmxusL4PEeaoO4fCpQc-Qw"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WwIQEb7HEeaRCti-wkqR-A" x="559" y="231"/>
           </children>
+          <children xmi:type="notation:Shape" xmi:id="_gGOUYMO3EearScbIBXJIIw" type="Enumeration_Shape_CN">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gIlE0MO3EearScbIBXJIIw" source="PapyrusCSSForceValue">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gIlE0cO3EearScbIBXJIIw" key="mutable" value="true"/>
+            </eAnnotations>
+            <children xmi:type="notation:DecorationNode" xmi:id="_gGOUYsO3EearScbIBXJIIw" type="Enumeration_NameLabel_CN"/>
+            <children xmi:type="notation:DecorationNode" xmi:id="_gGOUY8O3EearScbIBXJIIw" type="Enumeration_FloatingNameLabel_CN">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_gGOUZMO3EearScbIBXJIIw" y="5"/>
+            </children>
+            <children xmi:type="notation:BasicCompartment" xmi:id="_gGOUZcO3EearScbIBXJIIw" type="Enumeration_LiteralCompartment_CN">
+              <styles xmi:type="notation:TitleStyle" xmi:id="_gGOUZsO3EearScbIBXJIIw"/>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_gGOUZ8O3EearScbIBXJIIw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_gGOUaMO3EearScbIBXJIIw"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gGOUacO3EearScbIBXJIIw"/>
+            </children>
+            <element xmi:type="uml:Enumeration" href="ModulModel.uml#_gCMI8MO3EearScbIBXJIIw"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gGOUYcO3EearScbIBXJIIw" x="446" y="296"/>
+          </children>
           <styles xmi:type="notation:TitleStyle" xmi:id="_PVYetLfVEea2RYsZ51fiPw"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PVYetbfVEea2RYsZ51fiPw"/>
         </children>

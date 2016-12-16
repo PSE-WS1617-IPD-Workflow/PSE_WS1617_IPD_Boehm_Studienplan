@@ -48,6 +48,7 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_eMBPoL_UEeacgfGrT4PzPg" name="second" effect="read">
         <type xmi:type="uml:Class" href="PlanModel.uml#_5yGmIMBpEeafN5EhaYGTYw"/>
       </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_L8GH8MO4EearScbIBXJIIw" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_xCFDgL4PEeaoO4fCpQc-Qw" memberEnd="_xCO0gL4PEeaoO4fCpQc-Qw _xCPbkL4PEeaoO4fCpQc-Qw">
@@ -70,6 +71,10 @@
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1J7Cob4PEeaoO4fCpQc-Qw" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_1J7psb4PEeaoO4fCpQc-Qw" name="module" type="_0RnMgL4NEeaoO4fCpQc-Qw" association="_1J6bkL4PEeaoO4fCpQc-Qw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_gCMI8MO3EearScbIBXJIIw" name="ModuleOrientatio">
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_hrg3MMO3EearScbIBXJIIw" name="FIRST"/>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_mtSvAMO3EearScbIBXJIIw" name="SECOND"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_WIyXALsIEea-uPszIhxKkQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WIyXAbsIEea-uPszIhxKkQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
