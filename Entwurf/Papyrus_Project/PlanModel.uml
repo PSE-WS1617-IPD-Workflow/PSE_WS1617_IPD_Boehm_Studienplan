@@ -38,9 +38,6 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Bv9tAMK5EeavfrO5hlCymA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BwMWgMK5EeavfrO5hlCymA" value="*"/>
       </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="__dUbwL_VEeaCWKyYbzcIZw" name="getPassedModulEntries">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_luURgL_WEeaCWKyYbzcIZw" direction="return" effect="read"/>
-      </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_F5SZoL_WEeaCWKyYbzcIZw" name="getPlanEntries">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_fFlC8L_WEeaCWKyYbzcIZw" direction="return" effect="read"/>
       </ownedOperation>
@@ -70,7 +67,7 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_LOY20MBqEeafN5EhaYGTYw" memberEnd="_LOdvUMBqEeafN5EhaYGTYw _LOdvUcBqEeafN5EhaYGTYw">
+    <packagedElement xmi:type="uml:Association" xmi:id="_LOY20MBqEeafN5EhaYGTYw" name="contains" memberEnd="_LOdvUMBqEeafN5EhaYGTYw _LOdvUcBqEeafN5EhaYGTYw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LObTEMBqEeafN5EhaYGTYw" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LOb6IMBqEeafN5EhaYGTYw" key="nature" value="UML_Nature"/>
       </eAnnotations>
@@ -95,7 +92,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-lHhoMK4EeavfrO5hlCymA" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_OCwUUMK5EeavfrO5hlCymA" memberEnd="_OCyJgsK5EeavfrO5hlCymA _OCywkMK5EeavfrO5hlCymA">
+    <packagedElement xmi:type="uml:Association" xmi:id="_OCwUUMK5EeavfrO5hlCymA" name="hasPassed" memberEnd="_OCyJgsK5EeavfrO5hlCymA _OCywkMK5EeavfrO5hlCymA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_OCyJgMK5EeavfrO5hlCymA" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OCyJgcK5EeavfrO5hlCymA" key="nature" value="UML_Nature"/>
       </eAnnotations>
