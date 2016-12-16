@@ -5,11 +5,12 @@
 \definecolor{background}{HTML}{EEEEEE}
 \definecolor{delim}{RGB}{20,105,176}
 \colorlet{numb}{magenta!60!black}
+\definecolor{listingstr}{RGB}{0,0,160}
 
 % Kommandos für Atomare und JSON-Werte:
 \newcommand{\jsonatom}[1]{$\langle\textnormal{\textit{#1}}\rangle$}
 \newcommand{\jsonobj}[1]{$\llangle\textnormal{\textit{#1}}\rrangle$}
-\newcommand{\jsonpart}[2]{$\llangle\textnormal{\textit{#1}}$\,[#2]$\rrangle$}
+\newcommand{\jsonpart}[2]{$\llangle\textnormal{\textit{#1}}$\,\textnormal{[#2]}$\rrangle$}
 
 \lstdefinelanguage{json}{
     basicstyle=\normalfont\ttfamily,
@@ -22,6 +23,9 @@
     breaklines=true,
     frame=lines,
     backgroundcolor=\color{background},
+    string=[m]{"},
+    morestring=[m]{"},
+    stringstyle=\color{listingstr},
     literate=
      *{0}{{{\color{numb}0}}}{1}
       {1}{{{\color{numb}1}}}{1}
