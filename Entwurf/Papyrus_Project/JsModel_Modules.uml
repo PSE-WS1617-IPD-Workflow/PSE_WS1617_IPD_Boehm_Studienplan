@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_AXnoEMPMEeaCPewWEdcdGQ" name="Modules">
+  <packagedElement xmi:type="uml:Class" xmi:id="_zWYJ4MPMEeaCPewWEdcdGQ" name="ModuleCollection" isAbstract="true">
+    <generalization xmi:type="uml:Generalization" xmi:id="_bpad8MPPEeaCPewWEdcdGQ">
+      <general xmi:type="uml:Class" href="JSModel.uml#_IGXccMPMEeaCPewWEdcdGQ"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_nz-y0MPOEeaCPewWEdcdGQ" name="module" type="_9TRbYMPNEeaCPewWEdcdGQ" association="_nz8WkMPOEeaCPewWEdcdGQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_q1GacMPOEeaCPewWEdcdGQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_q1IPoMPOEeaCPewWEdcdGQ" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9TRbYMPNEeaCPewWEdcdGQ" name="Module">
+    <generalization xmi:type="uml:Generalization" xmi:id="_2NhrQMPOEeaCPewWEdcdGQ">
+      <general xmi:type="uml:Class" href="JSModel.uml#_IGXccMPMEeaCPewWEdcdGQ"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FUN9ksPPEeaCPewWEdcdGQ" name="preference" type="_DE9QsMPPEeaCPewWEdcdGQ" association="_FUNWgMPPEeaCPewWEdcdGQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_nz8WkMPOEeaCPewWEdcdGQ" name="contains" memberEnd="_nz-y0MPOEeaCPewWEdcdGQ _nz_Z4MPOEeaCPewWEdcdGQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nz-LwMPOEeaCPewWEdcdGQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nz-LwcPOEeaCPewWEdcdGQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_nz_Z4MPOEeaCPewWEdcdGQ" name="collection" type="_zWYJ4MPMEeaCPewWEdcdGQ" association="_nz8WkMPOEeaCPewWEdcdGQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DE9QsMPPEeaCPewWEdcdGQ" name="Preference">
+    <generalization xmi:type="uml:Generalization" xmi:id="_fynvAMPPEeaCPewWEdcdGQ">
+      <general xmi:type="uml:Class" href="JSModel.uml#_IGXccMPMEeaCPewWEdcdGQ"/>
+    </generalization>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FUNWgMPPEeaCPewWEdcdGQ" memberEnd="_FUN9ksPPEeaCPewWEdcdGQ _FUN9k8PPEeaCPewWEdcdGQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FUN9kMPPEeaCPewWEdcdGQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FUN9kcPPEeaCPewWEdcdGQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FUN9k8PPEeaCPewWEdcdGQ" name="module" type="_9TRbYMPNEeaCPewWEdcdGQ" association="_FUNWgMPPEeaCPewWEdcdGQ"/>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_gyYqQMPMEeaCPewWEdcdGQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gyYqQcPMEeaCPewWEdcdGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gyYqQsPMEeaCPewWEdcdGQ" source="duplicatedProfile"/>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gyYqQ8PMEeaCPewWEdcdGQ" source="duplicatedProfile"/>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_gyZRUMPMEeaCPewWEdcdGQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gyZRUcPMEeaCPewWEdcdGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gyZRUsPMEeaCPewWEdcdGQ" source="duplicatedProfile"/>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gyZRU8PMEeaCPewWEdcdGQ" source="duplicatedProfile"/>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Package>

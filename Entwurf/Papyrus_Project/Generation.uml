@@ -38,14 +38,23 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_NKVTcL_YEeakRZ7oH0A0uA" name="AtomObjectiveFunction" isAbstract="true">
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_hQABML_YEeakRZ7oH0A0uA" client="_NKVTcL_YEeakRZ7oH0A0uA" supplier="_d98A4L-TEeaWJullGOJpaQ" contract="_d98A4L-TEeaWJullGOJpaQ"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_t8TUsL_YEeakRZ7oH0A0uA" name="StandardObjectiveFunction">
+  <packagedElement xmi:type="uml:Class" xmi:id="_t8TUsL_YEeakRZ7oH0A0uA" name="PercentageAggregationObjectiveFunction">
     <generalization xmi:type="uml:Generalization" xmi:id="_OktxUL_ZEeakRZ7oH0A0uA" general="_2BAncL_XEeaxStBhqAYAig"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_6cSDcL_YEeakRZ7oH0A0uA" name="MinimalECTSAtomObjectiveFunction">
     <generalization xmi:type="uml:Generalization" xmi:id="_N5eb8L_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Aw0joL_ZEeakRZ7oH0A0uA" name="LowStandardDeviationSemesterECTSAtomObjectiveFunction">
+  <packagedElement xmi:type="uml:Class" xmi:id="_Aw0joL_ZEeakRZ7oH0A0uA" name="minimalStandardAverageDeviationECTSAtomObjectiveFunction">
     <generalization xmi:type="uml:Generalization" xmi:id="_NPwwkL_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_EVyXsMPVEeac84FPKfy0yg" name="MinimalSemestersAtomObjectiveFunction">
+    <generalization xmi:type="uml:Generalization" xmi:id="_DREV4MPWEeac84FPKfy0yg" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LWidoMPVEeac84FPKfy0yg" name="ModulePreferencesAtomObjectiveFunction">
+    <generalization xmi:type="uml:Generalization" xmi:id="_CX7HYMPWEeac84FPKfy0yg" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_8QIpwMPVEeac84FPKfy0yg" name="ThresholdObjectiveFunction">
+    <generalization xmi:type="uml:Generalization" xmi:id="__HwXIMPVEeac84FPKfy0yg" general="_2BAncL_XEeaxStBhqAYAig"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_3E3lMLlVEeavH9sFQSsLvg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3E3lMblVEeavH9sFQSsLvg" source="http://www.eclipse.org/uml2/2.0.0/UML">
