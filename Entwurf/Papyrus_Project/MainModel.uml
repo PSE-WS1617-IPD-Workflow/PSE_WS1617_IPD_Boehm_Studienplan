@@ -46,6 +46,56 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_41FHEMGDEea0yOFvxPpmvQ" value="*"/>
     </ownedEnd>
   </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_7zg2MMQ4EeauQtLZObTczA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7ziEUMQ4EeauQtLZObTczA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7ziEUcQ4EeauQtLZObTczA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <memberEnd xmi:type="uml:Property" href="REST.uml#_7zirYMQ4EeauQtLZObTczA"/>
+    <memberEnd xmi:type="uml:Property" href="#_7zirYcQ4EeauQtLZObTczA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_7zirYcQ4EeauQtLZObTczA" name="restplanverificator" association="_7zg2MMQ4EeauQtLZObTczA">
+      <type xmi:type="uml:Class" href="REST.uml#_oh-2QLuUEea-uPszIhxKkQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_rLCLkMQ5EeauQtLZObTczA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rLCyoMQ5EeauQtLZObTczA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rLCyocQ5EeauQtLZObTczA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <memberEnd xmi:type="uml:Property" href="REST.uml#_rLCyosQ5EeauQtLZObTczA"/>
+    <memberEnd xmi:type="uml:Property" href="#_rLDZsMQ5EeauQtLZObTczA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_rLDZsMQ5EeauQtLZObTczA" name="restplans" association="_rLCLkMQ5EeauQtLZObTczA">
+      <type xmi:type="uml:Class" href="REST.uml#_SnqiwLuOEea-uPszIhxKkQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_uUAusMQ5EeauQtLZObTczA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_uUAuscQ5EeauQtLZObTczA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_uUBVwMQ5EeauQtLZObTczA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <memberEnd xmi:type="uml:Property" href="REST.uml#_uUBVwcQ5EeauQtLZObTczA"/>
+    <memberEnd xmi:type="uml:Property" href="#_uUBVwsQ5EeauQtLZObTczA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_uUBVwsQ5EeauQtLZObTczA" name="reststudent" association="_uUAusMQ5EeauQtLZObTczA">
+      <type xmi:type="uml:Class" href="REST.uml#_c5jCQLuOEea-uPszIhxKkQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_wNkRUMQ5EeauQtLZObTczA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wNkRUcQ5EeauQtLZObTczA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wNkRUsQ5EeauQtLZObTczA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <memberEnd xmi:type="uml:Property" href="REST.uml#_wNkRU8Q5EeauQtLZObTczA"/>
+    <memberEnd xmi:type="uml:Property" href="#_wNk4YMQ5EeauQtLZObTczA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_wNk4YMQ5EeauQtLZObTczA" name="restplanconverter" association="_wNkRUMQ5EeauQtLZObTczA">
+      <type xmi:type="uml:Class" href="REST.uml#_9TtUkLubEea-uPszIhxKkQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_8-BsEMQ5EeauQtLZObTczA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8-CTIMQ5EeauQtLZObTczA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_8-CTIcQ5EeauQtLZObTczA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <memberEnd xmi:type="uml:Property" href="REST.uml#_8-CTIsQ5EeauQtLZObTczA"/>
+    <memberEnd xmi:type="uml:Property" href="#_8-CTI8Q5EeauQtLZObTczA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_8-CTI8Q5EeauQtLZObTczA" name="restfilter" association="_8-BsEMQ5EeauQtLZObTczA">
+      <type xmi:type="uml:Class" href="REST.uml#_To0dwLuOEea-uPszIhxKkQ"/>
+    </ownedEnd>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vtuncLcDEeag2fAimjvU5Q">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vt3xYLcDEeag2fAimjvU5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

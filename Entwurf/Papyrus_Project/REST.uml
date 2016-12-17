@@ -6,7 +6,14 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_OApAoLsHEea-uPszIhxKkQ">
     <importedPackage xmi:type="uml:Model" href="MainModel.uml#_vqV8QLcDEeag2fAimjvU5Q"/>
   </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_oUi8EMQ4EeauQtLZObTczA">
+    <importedPackage xmi:type="uml:Package" href="Filter.uml#_isR5AL7HEeaRCti-wkqR-A"/>
+  </packageImport>
   <packagedElement xmi:type="uml:Class" xmi:id="_SnqiwLuOEea-uPszIhxKkQ" name="RESTPlans">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_rLCyosQ5EeauQtLZObTczA" name="abstractplandao">
+      <type xmi:type="uml:Class" href="PlanDAO.uml#_ACbS0LyHEealiq5a5SolQQ"/>
+      <association xmi:type="uml:Association" href="MainModel.uml#_rLCLkMQ5EeauQtLZObTczA"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_otX40LuSEea-uPszIhxKkQ" name="createPlan"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_rjbf8LuSEea-uPszIhxKkQ" name="getAllPlans"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_xjVM4LuSEea-uPszIhxKkQ" name="replacePlan" concurrency="concurrent"/>
@@ -16,16 +23,27 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_FmEBwLubEea-uPszIhxKkQ" name="duplicatePlan"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_To0dwLuOEea-uPszIhxKkQ" name="RESTFilter">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_8-CTIsQ5EeauQtLZObTczA" name="filterdescriptor">
+      <type xmi:type="uml:Class" href="Filter.uml#_eO6zUMOdEeaiRIvYnaUryA"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DhYEUMQ6EeauQtLZObTczA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Dh4aoMQ6EeauQtLZObTczA" value="*"/>
+      <association xmi:type="uml:Association" href="MainModel.uml#_8-BsEMQ5EeauQtLZObTczA"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_4h0XELuUEea-uPszIhxKkQ" name="getAllFilters"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_VDBx8LuOEea-uPszIhxKkQ" name="RESTObjectiveFunction">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_aK00Y7udEea-uPszIhxKkQ" name="objectivefunction" type="_GwydkLudEea-uPszIhxKkQ" aggregation="shared" association="_aK00YLudEea-uPszIhxKkQ">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_aK00Y7udEea-uPszIhxKkQ" name="objectivefunction" aggregation="shared" association="_aK00YLudEea-uPszIhxKkQ">
+      <type xmi:type="uml:Interface" href="Generation.uml#_d98A4L-TEeaWJullGOJpaQ"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b38dgLudEea-uPszIhxKkQ" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b3-5wLudEea-uPszIhxKkQ" value="*"/>
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_O1vFELuVEea-uPszIhxKkQ" name="getAllObjectiveFunctions"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_c5jCQLuOEea-uPszIhxKkQ" name="RESTStudent">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_uUBVwcQ5EeauQtLZObTczA" name="abstractuserdao">
+      <type xmi:type="uml:Class" href="PlanDAO.uml#_Rmc_sLyGEealiq5a5SolQQ"/>
+      <association xmi:type="uml:Association" href="MainModel.uml#_uUAusMQ5EeauQtLZObTczA"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_QQNmYLuSEea-uPszIhxKkQ" name="replaceInformation"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_U6-FULuSEea-uPszIhxKkQ" name="getInformation"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_eRvAYLuSEea-uPszIhxKkQ" name="deleteStudent"/>
@@ -47,22 +65,30 @@
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_aPqnMLuUEea-uPszIhxKkQ" name="RESTPlanGenerator">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_U3x7g7ufEea-uPszIhxKkQ" name="objectivefunction" type="_GwydkLudEea-uPszIhxKkQ" aggregation="shared" association="_U3x7gLufEea-uPszIhxKkQ">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_U3x7g7ufEea-uPszIhxKkQ" name="objectivefunction" aggregation="shared" association="_U3x7gLufEea-uPszIhxKkQ">
+      <type xmi:type="uml:Interface" href="Generation.uml#_d98A4L-TEeaWJullGOJpaQ"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WePjALufEea-uPszIhxKkQ"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WeR_QLufEea-uPszIhxKkQ" value="*"/>
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_7QEo4LubEea-uPszIhxKkQ" name="generatePlan"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_oh-2QLuUEea-uPszIhxKkQ" name="RESTPlanVerificator">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_7zirYMQ4EeauQtLZObTczA" name="verifier">
+      <type xmi:type="uml:Interface" href="Verification.uml#_YDqTcL-WEeaWJullGOJpaQ"/>
+      <association xmi:type="uml:Association" href="MainModel.uml#_7zg2MMQ4EeauQtLZObTczA"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_qbVkkLuUEea-uPszIhxKkQ" name="verifyPlan"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_9TtUkLubEea-uPszIhxKkQ" name="RESTPlanConverter">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wNkRU8Q5EeauQtLZObTczA" name="abstractplandao">
+      <type xmi:type="uml:Class" href="PlanDAO.uml#_ACbS0LyHEealiq5a5SolQQ"/>
+      <association xmi:type="uml:Association" href="MainModel.uml#_wNkRUMQ5EeauQtLZObTczA"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_Qxe74LucEea-uPszIhxKkQ" name="convertPlanToPDF"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_AQJ3kLucEea-uPszIhxKkQ" name="RESTPlanShare">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_OUUV4LucEea-uPszIhxKkQ" name="sharePlan"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_GwydkLudEea-uPszIhxKkQ" name="ObjectiveFunction"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_aK00YLudEea-uPszIhxKkQ" memberEnd="_aK00Y7udEea-uPszIhxKkQ _aK00ZLudEea-uPszIhxKkQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aK00YbudEea-uPszIhxKkQ" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aK00YrudEea-uPszIhxKkQ" key="nature" value="UML_Nature"/>
@@ -74,9 +100,6 @@
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_U3x7grufEea-uPszIhxKkQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_U3x7hLufEea-uPszIhxKkQ" name="restplangenerator" type="_aPqnMLuUEea-uPszIhxKkQ" association="_U3x7gLufEea-uPszIhxKkQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Usage" xmi:id="_IMR4AMOcEeaiRIvYnaUryA" client="_To0dwLuOEea-uPszIhxKkQ">
-    <supplier xmi:type="uml:Class" href="Filter.uml#_eO6zUMOdEeaiRIvYnaUryA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_Ot1ggMOcEeaiRIvYnaUryA" client="_uEiVULuTEea-uPszIhxKkQ">
     <supplier xmi:type="uml:Class" href="Filter.uml#_eO6zUMOdEeaiRIvYnaUryA"/>
