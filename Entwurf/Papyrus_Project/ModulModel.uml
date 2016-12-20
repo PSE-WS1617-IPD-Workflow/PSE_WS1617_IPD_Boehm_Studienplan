@@ -11,12 +11,40 @@
       <association xmi:type="uml:Association" href="MainModel.uml#_Q7pXAL_aEea9O5XOZdMjrw"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_1J7psL4PEeaoO4fCpQc-Qw" name="moduledescription" type="_1pGj4L4NEeaoO4fCpQc-Qw" association="_1J6bkL4PEeaoO4fCpQc-Qw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w5PDEL_cEearRKVJonHAjg"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_w5Y0EL_cEearRKVJonHAjg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w5PDEL_cEearRKVJonHAjg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_w5Y0EL_cEearRKVJonHAjg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_T39PMMbBEeatB58sIl8nCg" name="discipline" type="_BPEogMbBEeatB58sIl8nCg" association="_T33IkMbBEeatB58sIl8nCg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_310IMMbCEeatB58sIl8nCg" name="moduleId" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_7E2QAMbCEeatB58sIl8nCg" name="name" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_-f2-UMbCEeatB58sIl8nCg" name="creditPoints" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_sQjwwMbMEeatL4q6a14nzw" name="cycleType" type="_VdHvIL4OEeaoO4fCpQc-Qw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_1pGj4L4NEeaoO4fCpQc-Qw" name="ModuleDescription">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_R8G7oMbDEeatB58sIl8nCg" name="descriptionId">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKAbAMbDEeatB58sIl8nCg" name="descriptionText">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ZaG-QMbDEeatB58sIl8nCg" name="lecturer">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_1pGj4L4NEeaoO4fCpQc-Qw" name="ModuleDescription"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_6zsZcL4NEeaoO4fCpQc-Qw" name="Category"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6zsZcL4NEeaoO4fCpQc-Qw" name="Category">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_qmtNIMbDEeatB58sIl8nCg" name="categoryId">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_tu00oMbDEeatB58sIl8nCg" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_CqvOML4OEeaoO4fCpQc-Qw" name="ModuleConstraint">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_xCO0gL4PEeaoO4fCpQc-Qw" name="moduleconstrainttype" type="_gmxusL4PEeaoO4fCpQc-Qw" association="_xCFDgL4PEeaoO4fCpQc-Qw">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zz8oEL_ZEear27jMIUi8Fw" value="1"/>
@@ -70,11 +98,34 @@
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1J7CoL4PEeaoO4fCpQc-Qw" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1J7Cob4PEeaoO4fCpQc-Qw" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_1J7psb4PEeaoO4fCpQc-Qw" name="module" type="_0RnMgL4NEeaoO4fCpQc-Qw" association="_1J6bkL4PEeaoO4fCpQc-Qw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_1J7psb4PEeaoO4fCpQc-Qw" name="module" type="_0RnMgL4NEeaoO4fCpQc-Qw" association="_1J6bkL4PEeaoO4fCpQc-Qw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iwcpQMbIEea23Zo7NbkDJw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iwfFgMbIEea23Zo7NbkDJw" value="*"/>
+    </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Enumeration" xmi:id="_gCMI8MO3EearScbIBXJIIw" name="ModuleOrientatio">
-    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_hrg3MMO3EearScbIBXJIIw" name="FIRST"/>
-    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_mtSvAMO3EearScbIBXJIIw" name="SECOND"/>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_gCMI8MO3EearScbIBXJIIw" name="ModuleOrientation">
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_hrg3MMO3EearScbIBXJIIw" name="LEFT_TO_RIGHT"/>
+    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_mtSvAMO3EearScbIBXJIIw" name="RIGHT_TO_LEFT"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BPEogMbBEeatB58sIl8nCg" name="Discipline">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_EYeCYMbBEeatB58sIl8nCg" name="disciplineId">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_H_gagMbBEeatB58sIl8nCg" name="description">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_T33IkMbBEeatB58sIl8nCg" memberEnd="_T39PMMbBEeatB58sIl8nCg _T392QMbBEeatB58sIl8nCg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_T36y8MbBEeatB58sIl8nCg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_T37aAMbBEeatB58sIl8nCg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_T392QMbBEeatB58sIl8nCg" name="module" type="_0RnMgL4NEeaoO4fCpQc-Qw" association="_T33IkMbBEeatB58sIl8nCg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_r67qkMbCEeatB58sIl8nCg" name="SemesterLinkModuleConstraintType">
+    <generalization xmi:type="uml:Generalization" xmi:id="_0CmVQMbCEeatB58sIl8nCg" general="_S2aWIL4PEeaoO4fCpQc-Qw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wmUboMbCEeatB58sIl8nCg" name="PlanLinkModuleConstraintType">
+    <generalization xmi:type="uml:Generalization" xmi:id="_0hl-YMbCEeatB58sIl8nCg" general="_S2aWIL4PEeaoO4fCpQc-Qw"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_WIyXALsIEea-uPszIhxKkQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WIyXAbsIEea-uPszIhxKkQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
