@@ -107,6 +107,16 @@
   <packagedElement xmi:type="uml:Usage" xmi:id="_XOw_wMOcEeaiRIvYnaUryA" client="_uEiVULuTEea-uPszIhxKkQ">
     <supplier xmi:type="uml:Interface" href="Filter.uml#_p8pFILuOEea-uPszIhxKkQ"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_P5z_0MbbEeapWM4q1-_jpA" name="AuthorizationRequestFilter">
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_i5yQ0MbbEeapWM4q1-_jpA" client="_P5z_0MbbEeapWM4q1-_jpA" supplier="_ewI64MbbEeapWM4q1-_jpA" contract="_ewI64MbbEeapWM4q1-_jpA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_ewI64MbbEeapWM4q1-_jpA" name="ContainerRequestFilter">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_lQGn8MbbEeapWM4q1-_jpA" name="filter"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_32LLMMbbEeapWM4q1-_jpA" name="MainApplication">
+    <generalization xmi:type="uml:Generalization" xmi:id="_9r8EsMbbEeapWM4q1-_jpA" general="_6DohQMbbEeapWM4q1-_jpA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6DohQMbbEeapWM4q1-_jpA" name="ResourceConfig"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="__4xDwLlVEeavH9sFQSsLvg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__4xDwblVEeavH9sFQSsLvg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
