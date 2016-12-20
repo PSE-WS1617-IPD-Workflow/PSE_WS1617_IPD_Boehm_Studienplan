@@ -84,6 +84,10 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0j5ExLubEeaCStjenx_8kw"/>
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_0j5ExbubEeaCStjenx_8kw" type="Class_OperationCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_aqXz4MOwEearScbIBXJIIw" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="PlanModel.uml#_aongYMOwEearScbIBXJIIw"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_aqXz4cOwEearScbIBXJIIw"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_0j5ExrubEeaCStjenx_8kw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_0j5Ex7ubEeaCStjenx_8kw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_0j5EyLubEeaCStjenx_8kw"/>
@@ -242,10 +246,6 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RRRz58K7EeavfrO5hlCymA"/>
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_RRRz6MK7EeavfrO5hlCymA" type="Class_OperationCompartment">
-      <children xmi:type="notation:Shape" xmi:id="_tQJb8MbAEeatB58sIl8nCg" type="Operation_ClassOperationLabel">
-        <element xmi:type="uml:Operation" href="PlanModel.uml#_tL7qUMbAEeatB58sIl8nCg"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_tQJb8cbAEeatB58sIl8nCg"/>
-      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_RRRz6cK7EeavfrO5hlCymA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_RRRz6sK7EeavfrO5hlCymA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_RRRz68K7EeavfrO5hlCymA"/>
@@ -258,7 +258,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RRRz8cK7EeavfrO5hlCymA"/>
     </children>
     <element xmi:type="uml:Class" href="PlanModel.uml#_RPcn4MK7EeavfrO5hlCymA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RRRM0cK7EeavfrO5hlCymA" x="65" y="418"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RRRM0cK7EeavfrO5hlCymA" x="21" y="400"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_im2_oMK7EeavfrO5hlCymA" type="Enumeration_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_im2_osK7EeavfrO5hlCymA" type="Enumeration_NameLabel"/>
