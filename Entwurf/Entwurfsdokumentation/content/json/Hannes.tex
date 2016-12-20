@@ -36,6 +36,19 @@
 	"specification": (*\jsonobj{Filter-Eigenschaften}*)
 }
 \end{lstlisting}
+\begin{lstlisting}[language=json,firstnumber=1]
+(*\jsonobj{Filter-Eigenschaften}*) = {
+	"type": (*\jsonatom{Filter-Typ}*),
+	"value": (*\jsonatom{Filter-Value}*)
+
+	EITHER (
+		"max": (*\jsonatom{Filter-ID}*),
+		"min": (*\jsonatom{Filter-Name}*),
+	) OR (
+		"items": [(*\jsonatom{Selectable-Item}*), ...]
+	)
+}
+\end{lstlisting}
 
 \subsubsection{Objective Function}
 \begin{lstlisting}[language=json,firstnumber=1]
