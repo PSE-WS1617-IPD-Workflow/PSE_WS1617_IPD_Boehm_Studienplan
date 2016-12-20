@@ -3,8 +3,8 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_nIA-oLifEeavH9sFQSsLvg">
     <importedPackage xmi:type="uml:Package" href="PlanModel.uml#_haZUgLifEeavH9sFQSsLvg"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Rmc_sLyGEealiq5a5SolQQ" name="AbstractUserDao">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_Wx5J0LyGEealiq5a5SolQQ" name="getUserById">
+  <packagedElement xmi:type="uml:Class" xmi:id="_Rmc_sLyGEealiq5a5SolQQ" name="AbstractUserDao" isAbstract="true">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Wx5J0LyGEealiq5a5SolQQ" name="getUserById" isAbstract="true">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_hda4YLyGEealiq5a5SolQQ" name="userId">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
       </ownedParameter>
@@ -12,18 +12,42 @@
         <type xmi:type="uml:Class" href="PlanModel.uml#_wfe0ILubEeaCStjenx_8kw"/>
       </ownedParameter>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_j8lpgLyGEealiq5a5SolQQ" name="updateUser" concurrency="concurrent">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_j8lpgLyGEealiq5a5SolQQ" name="updateUser" concurrency="concurrent" isAbstract="true">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_1EwrYLyGEealiq5a5SolQQ" name="user">
         <type xmi:type="uml:Class" href="PlanModel.uml#_wfe0ILubEeaCStjenx_8kw"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_1eyW4Mb4EeapWM4q1-_jpA" name="deleteUser" isAbstract="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_3gcsoMb4EeapWM4q1-_jpA" name="user">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_wfe0ILubEeaCStjenx_8kw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_9Rv84Mb4EeapWM4q1-_jpA" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
       </ownedParameter>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_UZ6l0LyGEealiq5a5SolQQ" name="UserDao">
     <generalization xmi:type="uml:Generalization" xmi:id="_61es0LyGEealiq5a5SolQQ" general="_Rmc_sLyGEealiq5a5SolQQ"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_ACbS0LyHEealiq5a5SolQQ" name="AbstractPlanDao">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_DIGqULyHEealiq5a5SolQQ" name="getPlanById"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_FOsjYLyHEealiq5a5SolQQ" name="savePlan"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ACbS0LyHEealiq5a5SolQQ" name="AbstractPlanDao" isAbstract="true">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_DIGqULyHEealiq5a5SolQQ" name="getPlanById" isAbstract="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_O5Ow8Mb5EeapWM4q1-_jpA" direction="return">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_R1MLwMb5EeapWM4q1-_jpA" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_FOsjYLyHEealiq5a5SolQQ" name="updatePlan" isAbstract="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_W5t1kMb5EeapWM4q1-_jpA" name="plan">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Jw160Mb5EeapWM4q1-_jpA" name="deletePlan" isAbstract="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Zl8LQMb5EeapWM4q1-_jpA" name="plan">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_HDMm4LyHEealiq5a5SolQQ" name="PlanDao">
     <generalization xmi:type="uml:Generalization" xmi:id="_JEABALyHEealiq5a5SolQQ" general="_ACbS0LyHEealiq5a5SolQQ"/>

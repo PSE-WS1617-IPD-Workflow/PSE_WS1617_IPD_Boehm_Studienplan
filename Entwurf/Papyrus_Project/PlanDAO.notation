@@ -26,6 +26,10 @@
         <element xmi:type="uml:Operation" href="PlanDAO.uml#_j8lpgLyGEealiq5a5SolQQ"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_j8sXMbyGEealiq5a5SolQQ"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_1gltsMb4EeapWM4q1-_jpA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="PlanDAO.uml#_1eyW4Mb4EeapWM4q1-_jpA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1gltscb4EeapWM4q1-_jpA"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_Rmfb9ryGEealiq5a5SolQQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_Rmfb97yGEealiq5a5SolQQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_Rmfb-LyGEealiq5a5SolQQ"/>
@@ -94,6 +98,10 @@
         <element xmi:type="uml:Operation" href="PlanDAO.uml#_FOsjYLyHEealiq5a5SolQQ"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_FOzREbyHEealiq5a5SolQQ"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_Jyrt4Mb5EeapWM4q1-_jpA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="PlanDAO.uml#_Jw160Mb5EeapWM4q1-_jpA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Jyrt4cb5EeapWM4q1-_jpA"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_ACeWKbyHEealiq5a5SolQQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_ACeWKryHEealiq5a5SolQQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_ACeWK7yHEealiq5a5SolQQ"/>
@@ -107,7 +115,7 @@
     </children>
     <styles xmi:type="notation:CanonicalStyle" xmi:id="_GWsX8L7REeaLZbQ0m7lA6Q"/>
     <element xmi:type="uml:Class" href="PlanDAO.uml#_ACbS0LyHEealiq5a5SolQQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ACdvEbyHEealiq5a5SolQQ" x="472" y="155"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ACdvEbyHEealiq5a5SolQQ" x="433" y="149"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_HDPDILyHEealiq5a5SolQQ" type="Class_Shape">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GWu0Mb7REeaLZbQ0m7lA6Q" source="PapyrusCSSForceValue">
@@ -137,7 +145,7 @@
     </children>
     <styles xmi:type="notation:CanonicalStyle" xmi:id="_GWu0ML7REeaLZbQ0m7lA6Q"/>
     <element xmi:type="uml:Class" href="PlanDAO.uml#_HDMm4LyHEealiq5a5SolQQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HDPDIbyHEealiq5a5SolQQ" x="459" y="357"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HDPDIbyHEealiq5a5SolQQ" x="480" y="351"/>
   </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_KXmMUbyGEealiq5a5SolQQ" name="diagram_compatibility_version" stringValue="1.2.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_KXmMUryGEealiq5a5SolQQ"/>
@@ -166,6 +174,6 @@
     <element xmi:type="uml:Generalization" href="PlanDAO.uml#_JEABALyHEealiq5a5SolQQ"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JEHVwryHEealiq5a5SolQQ" points="[523, 357, -643984, -643984]$[529, 267, -643984, -643984]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JEa3wLyHEealiq5a5SolQQ" id="(0.34,0.0)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JEa3wbyHEealiq5a5SolQQ" id="(0.57,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JEa3wbyHEealiq5a5SolQQ" id="(0.5662650602409639,1.0)"/>
   </edges>
 </notation:Diagram>
