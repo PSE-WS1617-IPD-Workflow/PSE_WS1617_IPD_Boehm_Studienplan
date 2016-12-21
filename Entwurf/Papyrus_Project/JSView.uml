@@ -3,6 +3,14 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_2_qWsMK5EeafkJA2mXH8uA">
     <importedPackage xmi:type="uml:Package" href="JSModel.uml#_wOsBkLfWEea2RYsZ51fiPw"/>
   </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IEUhcMdjEea29-bQWKStRA" name="MainView">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_dgl1wMdjEea29-bQWKStRA" name="setHeader"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_o-wiMMdjEea29-bQWKStRA" name="setContent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_0ek0cMdjEea29-bQWKStRA" name="options" isUnique="false"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" href="JsView_ViewComponents.uml#_Jm9Y4MdjEea29-bQWKStRA"/>
+  <packagedElement xmi:type="uml:Package" href="JsView_SubView.uml#_OsRF0MdjEea29-bQWKStRA"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_uxfnQMFMEea4cKsDHzskZQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_uxfnQcFMEea4cKsDHzskZQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

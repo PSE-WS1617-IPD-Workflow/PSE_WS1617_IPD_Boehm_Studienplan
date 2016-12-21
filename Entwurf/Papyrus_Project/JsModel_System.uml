@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_E-nBUMPMEeaCPewWEdcdGQ" name="System">
+  <packagedElement xmi:type="uml:Class" xmi:id="_fjBqAMbTEea_vtQ7PzZ20Q" name="Filter">
+    <generalization xmi:type="uml:Generalization" xmi:id="_cyMkUMbXEeasRKsBOCfOGQ" general="_IGXccMPMEeaCPewWEdcdGQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hHBMUMbTEea_vtQ7PzZ20Q" name="FilterCollection">
+    <generalization xmi:type="uml:Generalization" xmi:id="_zqs7MMbZEeayQsYlrW195g" general="_j8UosMbXEeasRKsBOCfOGQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_kHesoMbTEea_vtQ7PzZ20Q" name="filter" type="_fjBqAMbTEea_vtQ7PzZ20Q" aggregation="composite" association="_kHYmAMbTEea_vtQ7PzZ20Q">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_t6OZEMbTEeaDo5Q3a9GKqw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_t6hUAMbTEeaDo5Q3a9GKqw" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_kHYmAMbTEea_vtQ7PzZ20Q" memberEnd="_kHesoMbTEea_vtQ7PzZ20Q _kHmocMbTEea_vtQ7PzZ20Q">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kHc3cMbTEea_vtQ7PzZ20Q" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kHc3ccbTEea_vtQ7PzZ20Q" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_kHmocMbTEea_vtQ7PzZ20Q" name="filtercollection" type="_hHBMUMbTEea_vtQ7PzZ20Q" association="_kHYmAMbTEea_vtQ7PzZ20Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wZfQ0MbTEeaDo5Q3a9GKqw" name="ObjectiveFunction">
+    <generalization xmi:type="uml:Generalization" xmi:id="_Ba5UoMbaEeayQsYlrW195g" general="_IGXccMPMEeaCPewWEdcdGQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_y7hIsMbTEeaDo5Q3a9GKqw" name="ObjectiveFunctionCollection">
+    <generalization xmi:type="uml:Generalization" xmi:id="_Cz6WAMbaEeayQsYlrW195g" general="_j8UosMbXEeasRKsBOCfOGQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_04PUEMbTEeaDo5Q3a9GKqw" name="objectivefunction" type="_wZfQ0MbTEeaDo5Q3a9GKqw" aggregation="composite" association="_04MQwMbTEeaDo5Q3a9GKqw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FSQPcMbUEeaVr7AotRm3tQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FSXkMMbUEeaVr7AotRm3tQ" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_04MQwMbTEeaDo5Q3a9GKqw" memberEnd="_04PUEMbTEeaDo5Q3a9GKqw _04TlgMbTEeaDo5Q3a9GKqw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_04OF8MbTEeaDo5Q3a9GKqw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_04OF8cbTEeaDo5Q3a9GKqw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_04TlgMbTEeaDo5Q3a9GKqw" name="objectivefunctioncollection" type="_y7hIsMbTEeaDo5Q3a9GKqw" association="_04MQwMbTEeaDo5Q3a9GKqw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Jr_9gMPMEeaCPewWEdcdGQ" name="CookieModel"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IGXccMPMEeaCPewWEdcdGQ" name="OAuthModel"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ToricMbUEeaVr7AotRm3tQ" name="SearchModuleCollection">
+    <generalization xmi:type="uml:Generalization" xmi:id="_-XwTwMbZEeayQsYlrW195g">
+      <general xmi:type="uml:Class" href="JsModel_Modules.uml#_zWYJ4MPMEeaCPewWEdcdGQ"/>
+    </generalization>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_j8UosMbXEeasRKsBOCfOGQ" name="OAuthCollection" isAbstract="true"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_qiLJUMPMEeaCPewWEdcdGQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qiLJUcPMEeaCPewWEdcdGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
