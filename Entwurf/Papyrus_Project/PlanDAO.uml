@@ -6,7 +6,7 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_Rmc_sLyGEealiq5a5SolQQ" name="AbstractUserDao" isAbstract="true">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_Wx5J0LyGEealiq5a5SolQQ" name="getUserById" isAbstract="true">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_hda4YLyGEealiq5a5SolQQ" name="userId">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_4pnSMLyGEealiq5a5SolQQ" direction="return">
         <type xmi:type="uml:Class" href="PlanModel.uml#_wfe0ILubEeaCStjenx_8kw"/>
