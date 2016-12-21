@@ -52,6 +52,27 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_HDMm4LyHEealiq5a5SolQQ" name="PlanDao">
     <generalization xmi:type="uml:Generalization" xmi:id="_JEABALyHEealiq5a5SolQQ" general="_ACbS0LyHEealiq5a5SolQQ"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D7lKcMdjEeaKAuw-lER4lw" name="AbstractSecurityProvider">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_UlQ5gMdjEeaKAuw-lER4lw" name="generateAuthorizationContext" visibility="public" isAbstract="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_2L21oMdjEeaKAuw-lER4lw" name="user">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_wfe0ILubEeaCStjenx_8kw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_4BBngMdjEeaKAuw-lER4lw" direction="return">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_hulyIMdhEeaKAuw-lER4lw"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_YkIi0MdjEeaKAuw-lER4lw" name="getAuthorizationContext" visibility="public" isAbstract="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_frpYEMdjEeaKAuw-lER4lw" name="accessToken">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_vSwP0MdjEeaKAuw-lER4lw" direction="return">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_hulyIMdhEeaKAuw-lER4lw"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LkxJYMdjEeaKAuw-lER4lw" name="SecurityProvider">
+    <generalization xmi:type="uml:Generalization" xmi:id="_NqFQEMdjEeaKAuw-lER4lw" general="_D7lKcMdjEeaKAuw-lER4lw"/>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_FVmSELyGEealiq5a5SolQQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FVmSEbyGEealiq5a5SolQQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
