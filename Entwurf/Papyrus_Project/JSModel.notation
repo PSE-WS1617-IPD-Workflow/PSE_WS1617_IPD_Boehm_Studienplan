@@ -233,6 +233,35 @@
         <element xmi:type="uml:Class" href="JsModel_Plans.uml#_p_60wMbVEeasRKsBOCfOGQ"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ITI7ocbWEeasRKsBOCfOGQ" x="939" y="125"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_dyNC0MdmEea29-bQWKStRA" type="Class_Shape_CN">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_d8EJcMdmEea29-bQWKStRA" source="PapyrusCSSForceValue">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_d8EJccdmEea29-bQWKStRA" key="mutable" value="true"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_dyNC0sdmEea29-bQWKStRA" type="Class_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_dyNC08dmEea29-bQWKStRA" type="Class_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_dyNC1MdmEea29-bQWKStRA" y="5"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_dyNC1cdmEea29-bQWKStRA" type="Class_AttributeCompartment_CN">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_dyNC1sdmEea29-bQWKStRA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_dyNC18dmEea29-bQWKStRA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_dyNC2MdmEea29-bQWKStRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dyNC2cdmEea29-bQWKStRA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_dyNC2sdmEea29-bQWKStRA" type="Class_OperationCompartment_CN">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_dyNC28dmEea29-bQWKStRA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_dyNC3MdmEea29-bQWKStRA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_dyNC3cdmEea29-bQWKStRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dyNC3sdmEea29-bQWKStRA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_dyNC38dmEea29-bQWKStRA" type="Class_NestedClassifierCompartment_CN">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_dyNC4MdmEea29-bQWKStRA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_dyNC4cdmEea29-bQWKStRA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_dyNC4sdmEea29-bQWKStRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dyNC48dmEea29-bQWKStRA"/>
+        </children>
+        <element xmi:type="uml:Class" href="JsModel_Plans.uml#__S1WUMdlEea29-bQWKStRA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dyNC0cdmEea29-bQWKStRA"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_Dt1V8sPMEeaCPewWEdcdGQ"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Dt1V88PMEeaCPewWEdcdGQ"/>
     </children>

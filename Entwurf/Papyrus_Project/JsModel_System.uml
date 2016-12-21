@@ -32,14 +32,26 @@
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_04TlgMbTEeaDo5Q3a9GKqw" name="objectivefunctioncollection" type="_y7hIsMbTEeaDo5Q3a9GKqw" association="_04MQwMbTEeaDo5Q3a9GKqw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Jr_9gMPMEeaCPewWEdcdGQ" name="CookieModel"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_IGXccMPMEeaCPewWEdcdGQ" name="OAuthModel"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Jr_9gMPMEeaCPewWEdcdGQ" name="CookieModel" isAbstract="true">
+    <generalization xmi:type="uml:Generalization" xmi:id="_5rHqcMdmEea29-bQWKStRA">
+      <general xmi:type="uml:DataType" href="BackboneJs.uml#_UjZmYMdlEea29-bQWKStRA"/>
+    </generalization>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IGXccMPMEeaCPewWEdcdGQ" name="OAuthModel" isAbstract="true">
+    <generalization xmi:type="uml:Generalization" xmi:id="_8xb7IMdmEea29-bQWKStRA">
+      <general xmi:type="uml:DataType" href="BackboneJs.uml#_UjZmYMdlEea29-bQWKStRA"/>
+    </generalization>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_ToricMbUEeaVr7AotRm3tQ" name="SearchModuleCollection">
     <generalization xmi:type="uml:Generalization" xmi:id="_-XwTwMbZEeayQsYlrW195g">
       <general xmi:type="uml:Class" href="JsModel_Modules.uml#_zWYJ4MPMEeaCPewWEdcdGQ"/>
     </generalization>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_j8UosMbXEeasRKsBOCfOGQ" name="OAuthCollection" isAbstract="true"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_j8UosMbXEeasRKsBOCfOGQ" name="OAuthCollection" visibility="protected" isAbstract="true">
+    <generalization xmi:type="uml:Generalization" xmi:id="_ARNNoMdnEea29-bQWKStRA">
+      <general xmi:type="uml:DataType" href="BackboneJs.uml#_VkyK4MdlEea29-bQWKStRA"/>
+    </generalization>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_qiLJUMPMEeaCPewWEdcdGQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qiLJUcPMEeaCPewWEdcdGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

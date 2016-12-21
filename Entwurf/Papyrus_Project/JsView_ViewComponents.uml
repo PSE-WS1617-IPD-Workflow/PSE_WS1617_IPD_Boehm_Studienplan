@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Jm9Y4MdjEea29-bQWKStRA" name="ViewComponents">
+  <packagedElement xmi:type="uml:Class" xmi:id="_3a5e0MdnEea29-bQWKStRA" name="PlanListElement"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_oxZCUMdoEea29-bQWKStRA" name="PlanList">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_p_nwAMdoEea29-bQWKStRA" name="planlistelement" type="_3a5e0MdnEea29-bQWKStRA" association="_p_kssMdoEea29-bQWKStRA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_riZxYMdoEea29-bQWKStRA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ribmkMdoEea29-bQWKStRA" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_p_kssMdoEea29-bQWKStRA" memberEnd="_p_nwAMdoEea29-bQWKStRA _p_raYMdoEea29-bQWKStRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_p_mh4MdoEea29-bQWKStRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_p_mh4cdoEea29-bQWKStRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_p_raYMdoEea29-bQWKStRA" name="planlist" type="_oxZCUMdoEea29-bQWKStRA" association="_p_kssMdoEea29-bQWKStRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_uOEGYMdoEea29-bQWKStRA" name="Plan">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_x-4sosdoEea29-bQWKStRA" name="semester" type="_wbIa4MdoEea29-bQWKStRA" association="_x-3egMdoEea29-bQWKStRA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yt8LAMdoEea29-bQWKStRA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yt_1YMdoEea29-bQWKStRA" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wbIa4MdoEea29-bQWKStRA" name="Semester"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_x-3egMdoEea29-bQWKStRA" memberEnd="_x-4sosdoEea29-bQWKStRA _x-4so8doEea29-bQWKStRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_x-4soMdoEea29-bQWKStRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_x-4socdoEea29-bQWKStRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_x-4so8doEea29-bQWKStRA" name="plan" type="_uOEGYMdoEea29-bQWKStRA" association="_x-3egMdoEea29-bQWKStRA"/>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_UjibMMdjEea29-bQWKStRA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UjibMcdjEea29-bQWKStRA" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

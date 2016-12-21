@@ -4,8 +4,16 @@
     <importedPackage xmi:type="uml:Package" href="JSModel.uml#_wOsBkLfWEea2RYsZ51fiPw"/>
   </packageImport>
   <packagedElement xmi:type="uml:Class" xmi:id="_IEUhcMdjEea29-bQWKStRA" name="MainView">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_dgl1wMdjEea29-bQWKStRA" name="setHeader"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_dgl1wMdjEea29-bQWKStRA" name="setHeader">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mHO-oMdnEea29-bQWKStRA" name="header">
+        <type xmi:type="uml:DataType" href="BackboneJs.uml#_S55R8MdlEea29-bQWKStRA"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_n-lh0MdnEea29-bQWKStRA" name="options"/>
+    </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_o-wiMMdjEea29-bQWKStRA" name="setContent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_g1fYMMdnEea29-bQWKStRA" name="content">
+        <type xmi:type="uml:DataType" href="BackboneJs.uml#_S55R8MdlEea29-bQWKStRA"/>
+      </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_0ek0cMdjEea29-bQWKStRA" name="options" isUnique="false"/>
     </ownedOperation>
   </packagedElement>
