@@ -3,7 +3,7 @@
   <uml:Package xmi:id="_haZUgLifEeavH9sFQSsLvg" name="PlanModel">
     <packagedElement xmi:type="uml:Class" xmi:id="_wfe0ILubEeaCStjenx_8kw" name="User">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_9uyhIMK5EeavfrO5hlCymA" name="userId" visibility="private">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_ARzQcMK6EeavfrO5hlCymA" name="username" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -117,13 +117,17 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_hulyIMdhEeaKAuw-lER4lw" name="AuthorizationContext">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_mDnRoMdhEeaKAuw-lER4lw" name="user" type="_wfe0ILubEeaCStjenx_8kw" association="_mDjAMMdhEeaKAuw-lER4lw"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_m7OPEMdhEeaKAuw-lER4lw" name="accessToken">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_m7OPEMdhEeaKAuw-lER4lw" name="accessToken" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_whrzAMdhEeaKAuw-lER4lw" name="expiryDate">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_whrzAMdhEeaKAuw-lER4lw" name="expiryDate" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_4uuF4MdhEeaKAuw-lER4lw" name="scope" type="_DbMPoMdiEeaKAuw-lER4lw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_4uuF4MdhEeaKAuw-lER4lw" name="scope" visibility="private" type="_DbMPoMdiEeaKAuw-lER4lw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_fMAdoMeCEeaB85R6YEOTVA" name="refreshToken" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_SHuSgMeDEeaB85R6YEOTVA" name="restclient" type="_kj2sEMeCEeaB85R6YEOTVA" association="_SHqBEMeDEeaB85R6YEOTVA"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_mDjAMMdhEeaKAuw-lER4lw" memberEnd="_mDnRoMdhEeaKAuw-lER4lw _mDvNcMdhEeaKAuw-lER4lw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mDlccMdhEeaKAuw-lER4lw" source="org.eclipse.papyrus">
@@ -132,6 +136,31 @@
       <ownedEnd xmi:type="uml:Property" xmi:id="_mDvNcMdhEeaKAuw-lER4lw" name="authorizationcontext" type="_hulyIMdhEeaKAuw-lER4lw" association="_mDjAMMdhEeaKAuw-lER4lw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_DbMPoMdiEeaKAuw-lER4lw" name="AuthorizationScope"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_kj2sEMeCEeaB85R6YEOTVA" name="RESTClient">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_wyU0EMeCEeaB85R6YEOTVA" name="apiKey" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_zdOUEMeCEeaB85R6YEOTVA" name="apiSecret" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_22XaIMeCEeaB85R6YEOTVA" name="origin" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_8qJ9sMeCEeaB85R6YEOTVA" name="redirectUrl" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="__e5WMMeCEeaB85R6YEOTVA" name="scopes" visibility="private" type="_DbMPoMdiEeaKAuw-lER4lw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DGRskMeDEeaB85R6YEOTVA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DGXzMMeDEeaB85R6YEOTVA" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_SHqBEMeDEeaB85R6YEOTVA" memberEnd="_SHuSgMeDEeaB85R6YEOTVA _SHu5kMeDEeaB85R6YEOTVA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SHsdUMeDEeaB85R6YEOTVA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SHtEYMeDEeaB85R6YEOTVA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_SHu5kMeDEeaB85R6YEOTVA" name="authorizationcontext" type="_hulyIMdhEeaKAuw-lER4lw" association="_SHqBEMeDEeaB85R6YEOTVA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cZMiUMeDEeaB85R6YEOTVA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cZYIgMeDEeaB85R6YEOTVA" value="*"/>
+      </ownedEnd>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_fiz3oLubEeaCStjenx_8kw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fiz3obubEeaCStjenx_8kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
