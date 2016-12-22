@@ -1,0 +1,73 @@
+\documentclass[titlepage=true, parskip=full]{scrartcl}
+\usepackage[utf8]{inputenc} % use utf8 file encoding for TeX sources
+\usepackage[T1]{fontenc}    % avoid garbled Unicode text in pdf
+\usepackage{palatino}	      % because "Computer Modern" standard font is illegible
+\usepackage{mathpazo}
+\usepackage[ngerman]{babel}  % german hyphenation, quotes, etc
+\usepackage{hyperref}       % detailed hyperlink/pdf configuration
+\hypersetup{                % ‘texdoc hyperref‘ for options
+	pdftitle={PSE: Entwurfsdokumentation},%
+	bookmarks=true,%
+}
+\usepackage{graphicx}       % provides commands for including figures
+\usepackage{csquotes}       % provides \enquote{} macro for "quotes"
+\usepackage[nonumberlist, numberedsection]{glossaries}     % provides glossary commands
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{tikz-uml}
+\usepackage{tikz-er2}
+\usepackage{comment}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hhline}
+\usepackage{placeins}
+\usepackage{needspace}
+\usepackage[toc, page]{appendix}
+\usepackage{tabularx}
+
+\usepackage{microtype}
+\usepackage{MnSymbol}
+\usetikzlibrary{positioning}
+\begin{document}
+	\subsection{Einstieg}
+Wir nehmen zunächst an, dass eine Menge an Modulen $M$ in der Form $(id_{modul}, ects, constraints)$ gegeben ist.
+Hierbei besteht $constraints$ aus einer Menge an Constraints der Form $(id_{modul1}, id_{modul2}, typ)$ mit $typ \in \{prerequisite, both, symmetry, antisymmetry\}$\\
+Wir beschreiben einen \textit{Studienplan} als eine Menge $P$ von Tupeln der Form $(num_{semester}, modul)$ wobei $num_{semester} \in \mathbb{N} \cup \{\infty\}$ ($\infty$ ist hierbei für ewige Studenten, welche Module schieben wollen) und $modul$ wie oben beschrieben. Eine \textit{Familie} beschreibt eine Menge von \textit{Studienplänen}.\\
+Weiter existiert eine Zielfunktion über die Menge aller Studienpläne $\Psi$: $\sigma\colon \Psi \to [0,1]$
+	\subsection{Genetischer Algorithmus}
+Der Algorithmus erhält die oben beschriebene Menge $M$ und generiert mit Hilfe von  \ref{subsec:genalg-random-generation} eine \textit{Famile} $F$ mit $|F| = O \in \mathbb{N}$ \textit{Studienplänen}.\\
+Anschließend wählt er ein beliebiges $p \in \{q \in F | \sigma(q)=max \{\sigma(t)|t \in F \} \}$.\\
+Mittels \ref{subsec:genalg-random-modification} wird auf Basis von $p$ eine neue Familie $F'$ mit $|F'| = O$ erstellt, aus welcher erneut ein $p' \in \{q \in F' | \sigma(q)=max \{\sigma(t)|t \in F' \} \}$ gewählt wird. Der letzte Schritt wird mit $p := p'$ dann $R \in \mathbb{N}$ mal wiederholt.
+Anschließend wird das letzte generierte $p'$ als generierter Studienplan ausgegeben.
+	\subsection{Zufällige Generierung}
+	\label{subsec:genalg-random-generation}
+	Zunächst generieren wir auf Basis der übergebenen Module $m \in M$ einen Graphen $G = (V, E)$ mit
+	\[V = \{M \cup \{m | \exists n \in M: es\ ex.\ ein\ Constraint\\\] \[ der\ Form\ (id_m, id_n, prerequisite),\ (id_m, id_n, both)\ oder\ (id_n, id_m, both) \}\]
+	\[E = { (m, n) | es\ ex.\ ein\ Constraint\ der\ Form\ (id_m, id_n, prerequisite)\ oder\ (id_m, id_n, both)}\].
+	Bei \textit{both} ist zu beachten, dass m oder m und n bestandene Module sein können, nicht jedoch nur n.
+	\begin{equation}
+	\Sigma_{m\in V}m.ects \ge 180
+	\label{equ:genalg-enough-ects}
+	\end{equation}
+	Zunächst definieren wir die Menge $Z=\emptyset$ aller zufällig hinzugefügten Module.
+	Ist die Ungleichung erfüllt so ist der Studienplan damit fertiggestellt und kann mittels \ref{subsec:genalg-contract-topolog-sort} der Plan fertig gestellt werden.
+	Wenn dem nicht so ist wird für ein zufälliges Modul m des Vertiefungs-Fachs gesetzt:
+	\[Z' = Z \cup \{m\}\]
+	\[V' = V \cup \{m\} \cup \{n | es\ ex.\ ein\ Constraint\\\]\[der\ Form\ (id_m, id_n, prerequisite),\ (id_m, id_n, both)\}
+	\]
+	\[E' = E \cup \{ (n, m) | es\ ex.\ ein\ Constraint\ der Form\ (id_n, id_m, prerequisite)\ oder\ (id_n, id_m, both)\}\]
+	Anschließend wird erneut (\ref{equ:genalg-enough-ects}) überprüft und erneut wie oben beschrieben vorgegangen.
+	\subsection{Zufällige Modifizierung}
+	\label{subsec:genalg-random-modification}
+	Für einen beliebigen wie in \ref{subsec:genalg-random-generation} als Graph dargestellten Plan, wähle man zufällig ein Modul $m \in Z$ und lösche diese samt seiner nur für dieses Modul $m$ benötigten Abhängigkeiten. Diesen Schritt führe man $l \in \mathbb{N}$ mal aus.\\
+	Anschließend füge man wie in \ref{subsec:genalg-random-generation} beschrieben erneut Module hinzu bis (\ref{equ:genalg-enough-ects}) wieder erfüllt wird.
+	
+	\subsection{Kontraktion der topologischen Sortierung}
+	\label{subsec:genalg-contract-topolog-sort}
+	Zunächst wird der Graph mittels Tiefensuche topologisch sortiert.
+	Anschließend paralallelisierung mit dem unten beschriebenen Algorithmus.
+	Hierbei werden die bereits gesetzen Module zunächst in die vom Nutzer vorgegebenen Semester gesetzt.
+	Hier würde ich dann aber tatsächlich den Pseudocode hinsetzen:
+	https://docs.google.com/document/d/1GjRJpvLLVv-inBgDgmrVt-f3btAeqErk6v5kuAnb7Yk/edit?usp=sharing
+	
+\end{document}
