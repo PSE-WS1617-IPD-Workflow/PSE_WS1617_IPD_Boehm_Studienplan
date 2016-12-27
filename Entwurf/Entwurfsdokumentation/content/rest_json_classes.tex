@@ -7,7 +7,7 @@
 (*\lbljsonobj{Student}*) = {
 	"subject": (*\jsonpart{Studienfach}{id}*),
 	"study-start": (*\jsonobj{Studienbeginn}*),
-	"passed-modules": (*\jsonlist{\jsonpart{Modul}{id}}*)
+	"passed-modules": (*\jsonlist{\jsonpart{Modul}{id, semester}}*)
 }
 \end{lstlisting}
 
@@ -90,7 +90,7 @@
     "status": (*\jsonatom{Studienplan-Status}*),
     "creditpoints-sum": (*\jsonatom{Studienplan-Gesamt-Creditpoints}*),
     "name": (*\jsonatom{Studienplan-Name}*),
-    "modules": (*\jsonlist{\jsonpart{Modul}{id, name, passed, semester, creditpoints, lecturer}}*)
+    "modules": (*\jsonlist{\jsonpart{Modul}{id, name, semester, creditpoints, lecturer}}*)
     "violations": (*\jsonpart{Modul}{id, constraints}*)	
 }
 \end{lstlisting}
@@ -100,6 +100,12 @@
 \begin{json}
 (*\lbljsonobj{ModulesResult}*) = {
 	"modules": (*\jsonlist{\jsonpart{Modul}{id, name, creditpoints, lecturer}}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{ModuleResult}*) = {
+	"module": (*\jsonpart{Modul}{id, name, category, creditpoints, lecturer, description, constraints}*)
 }	
 \end{json}
 

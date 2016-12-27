@@ -19,18 +19,20 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 	%===============================================================================================
 	GET & /modules &  Lese planunabhängige Modul-Liste (gefiltert) (Name, ECTS und Dozent) & Anfrage: ??? \newline Rückgabe: \jsonobj{ModulesResult} \\
 	% Module Zugriff wie bei /plans bloß unabhängig (ohne Präferenzen) für  Profilansicht
+	\hline
+	GET & /modules/\jsonatom{Modul-ID} & Lese Modul (planunabhängig) & Anfrage: --- \newline Rückgabe: \jsonobj{ModuleResult} \\
 	\hhline{|=|=|=|=|} 
-	GET & /student & Lese Informationen über Student & Anfrage: ??? \newline Rückgabe: \jsonobj{StudentResult} \\ 
+	GET & /student & Lese Informationen über Student & Anfrage: --- \newline Rückgabe: \jsonobj{StudentResult} \\ 
 	\hline
 	PUT & /student & Ersetze Informationen über Student, lösche Verifikationsinformationen & Anfrage: \jsonobj{StudentPutRequest} \newline Rückgabe: \jsonobj{StudentResult} \\ 
 	\hline
 	DELETE & /student & Löscht Student & Anfrage: \jsonobj{StudentDeleteRequest} \newline Rückgabe: --- \\ 
 	\hhline{|=|=|=|=|} 
-	GET & /plans & Lese Planliste & Anfrage: ??? \newline Rückgabe: \jsonobj{PlansGetResult} \\ 
+	GET & /plans & Lese Planliste & Anfrage: --- \newline Rückgabe: \jsonobj{PlansGetResult} \\ 
 	\hline
 	POST & /plans & Erstellt neuen Studienplan & Anfrage: \jsonobj{PlansPostRequest} \newline Rückgabe: \jsonobj{PlansPostResult} \\ 
 	\hhline{|=|=|=|=|} 
-	GET & /plans/\jsonatom{Plan-ID} & Lese Plan & Anfrage: ??? \newline Rückgabe: \jsonobj{PlanResult} \\ 
+	GET & /plans/\jsonatom{Plan-ID} & Lese Plan & Anfrage: --- \newline Rückgabe: \jsonobj{PlanResult} \\ 
 	\hline
 	PUT & /plans/\jsonatom{Plan-ID} & Ersetze Plan & Anfrage: \jsonobj{PlanPutRequest} \newline Rückgabe: \jsonobj{PlanResult}\\ 
 	\hline
@@ -42,7 +44,7 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 	\hhline{|=|=|=|=|} 
 	GET & /plans/\+\jsonatom{Plan-ID}/\+modules & Lese Modul-Liste (gefiltert) (Name, ECTS, Dozent und Präferenz) & Anfrage: ??? \newline Rückgabe: \jsonobj{PlanModulesResult} \\ 
 	\hhline{|=|=|=|=|} 
-	GET & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID} & Lese Modul mit \jsonatom{Modul-ID} & Anfrage: ??? \newline Rückgabe: \jsonobj{PlanModuleResult} \\ 
+	GET & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID} & Lese Modul mit \jsonatom{Modul-ID} & Anfrage: --- \newline Rückgabe: \jsonobj{PlanModuleResult} \\ 
 	\hline
 	PUT & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID} & Setze Modul in Plan in gegebenes Semester, setzte Verifizierung zurück & Anfrage: \jsonobj{PlanModulePutRequest} \newline Rückgabe: \jsonobj{PlanModulePutResult} \\ 
 	\hline
