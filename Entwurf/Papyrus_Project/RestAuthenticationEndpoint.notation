@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_BYmpcMwbEea1QL77delSmA" type="PapyrusUMLClassDiagram" name="RestAuthenticatioinEndpoint_ClassDiagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_J_1lAMwbEea1QL77delSmA" type="Class_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_J_2MEMwbEea1QL77delSmA" type="Class_NameLabel"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_J_2MEcwbEea1QL77delSmA" type="Class_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_J_2MEswbEea1QL77delSmA" y="5"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_J_2ME8wbEea1QL77delSmA" type="Class_AttributeCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_J_2MFMwbEea1QL77delSmA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_J_2MFcwbEea1QL77delSmA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_J_2MFswbEea1QL77delSmA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_2MF8wbEea1QL77delSmA"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_J_2zIMwbEea1QL77delSmA" type="Class_OperationCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_TrS9sMwbEea1QL77delSmA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_TrLB4MwbEea1QL77delSmA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_TrS9scwbEea1QL77delSmA"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_WaGGQMwbEea1QL77delSmA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_WaCb4MwbEea1QL77delSmA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_WaGGQcwbEea1QL77delSmA"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_XepTgMwbEea1QL77delSmA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_XelCEMwbEea1QL77delSmA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_XepTgcwbEea1QL77delSmA"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_J_2zIcwbEea1QL77delSmA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_J_2zIswbEea1QL77delSmA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_J_2zI8wbEea1QL77delSmA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_2zJMwbEea1QL77delSmA"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_J_2zJcwbEea1QL77delSmA" type="Class_NestedClassifierCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_J_2zJswbEea1QL77delSmA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_J_2zJ8wbEea1QL77delSmA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_J_2zKMwbEea1QL77delSmA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_2zKcwbEea1QL77delSmA"/>
+    </children>
+    <element xmi:type="uml:Class" href="RestAuthenticationEndpoint.uml#_J_yhsMwbEea1QL77delSmA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_1lAcwbEea1QL77delSmA" x="189" y="64" width="208" height="186"/>
+  </children>
+  <styles xmi:type="notation:StringValueStyle" xmi:id="_BYmpccwbEea1QL77delSmA" name="diagram_compatibility_version" stringValue="1.2.0"/>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_BYmpcswbEea1QL77delSmA"/>
+  <styles xmi:type="style:PapyrusViewStyle" xmi:id="_BYmpc8wbEea1QL77delSmA">
+    <owner xmi:type="uml:Package" href="RestAuthenticationEndpoint.uml#_4JzXkMwaEea1QL77delSmA"/>
+  </styles>
+  <element xmi:type="uml:Package" href="RestAuthenticationEndpoint.uml#_4JzXkMwaEea1QL77delSmA"/>
+</notation:Diagram>

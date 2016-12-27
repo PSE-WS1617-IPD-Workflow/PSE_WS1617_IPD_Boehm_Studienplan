@@ -210,6 +210,9 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_e0d1QMdfEeacSbfY4AKGzA" name="getModules"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_qFookMtyEeaIBcC0jCetUA" name="JSONObject"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_F3J4YMwbEea1QL77delSmA" client="_cobT8LiXEeavH9sFQSsLvg">
+    <supplier xmi:type="uml:Package" href="RestAuthenticationEndpoint.uml#_4JzXkMwaEea1QL77delSmA"/>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="__4xDwLlVEeavH9sFQSsLvg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__4xDwblVEeavH9sFQSsLvg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
