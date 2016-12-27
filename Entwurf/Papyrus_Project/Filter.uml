@@ -31,6 +31,9 @@
 */</body>
       </ownedComment>
     </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_bVuIwMyJEeaplOwEKWQXaA" name="getDescriptor" isAbstract="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_bVuIwcyJEeaplOwEKWQXaA" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_uSW0YMFxEeawXJ3PDM1dRw" client="_hjMaIMFxEeawXJ3PDM1dRw" supplier="_vd38kMGCEea0yOFvxPpmvQ"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_4zyO8MF1EeaM6M-4jd6ZbA" name="RangeFilter" isAbstract="true">
@@ -48,6 +51,9 @@
        return descriptor.between(min).and(max) //or similar&#xD;
      */</body>
       </ownedComment>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_W8rE4MyJEeaplOwEKWQXaA" name="getDescriptor" isAbstract="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_W8rE4cyJEeaplOwEKWQXaA" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_vd38kMGCEea0yOFvxPpmvQ" name="AttributeFilter">
@@ -79,6 +85,9 @@
   return descriptor.contains(substring); //? or similar&#xD;
 */</body>
       </ownedComment>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_dm_AwMyJEeaplOwEKWQXaA" name="getDescriptor" isAbstract="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_dm_AwcyJEeaplOwEKWQXaA" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_dLUxQMGNEeaDGu-4-Q8w1w" client="_qmRI4MGMEeaDGu-4-Q8w1w" supplier="_vd38kMGCEea0yOFvxPpmvQ"/>
@@ -145,7 +154,7 @@
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_DWq3IMOgEeaE5o1HSz0A6w" name="TITLE"/>
     </nestedClassifier>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_3J_L0MyHEeaplOwEKWQXaA" name="NullFilter">
+  <packagedElement xmi:type="uml:Class" xmi:id="_3J_L0MyHEeaplOwEKWQXaA" name="TrueFilter">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_RkLysMyIEeaplOwEKWQXaA" name="getCondition">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_RkLyscyIEeaplOwEKWQXaA" type="_wio-kMC5EearftWngfiKFw" direction="return"/>
     </ownedOperation>
