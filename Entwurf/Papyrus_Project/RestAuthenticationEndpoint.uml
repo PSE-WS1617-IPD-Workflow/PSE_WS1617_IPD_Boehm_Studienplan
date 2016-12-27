@@ -1,9 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_4JzXkMwaEea1QL77delSmA" name="RestAuthenticationEndpoint">
-  <packagedElement xmi:type="uml:Class" xmi:id="_J_yhsMwbEea1QL77delSmA" name="AuthResource">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TrLB4MwbEea1QL77delSmA" name="getLogin"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_WaCb4MwbEea1QL77delSmA" name="postLogin"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_XelCEMwbEea1QL77delSmA" name="getToken"/>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_d87IEMwnEea1QL77delSmA" annotatedElement="_7b8usMwjEea1QL77delSmA _kgDsoMwhEea1QL77delSmA _gOZqMMwhEea1QL77delSmA">
+    <body>Gibt Fehler zurück, da nicht implementiert&#xD;
+</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_tRSqAMwnEea1QL77delSmA" annotatedElement="_0zHHkMwlEea1QL77delSmA">
+    <body>Gibt Fehler zurück, da der GrantType unbekannt ist.</body>
+  </ownedComment>
+  <ownedComment xmi:type="uml:Comment" xmi:id="_AUX5YMwoEea1QL77delSmA" annotatedElement="_jTz78MwhEea1QL77delSmA">
+    <body>Es fehlt hier noch der Bezug zur Relation, welche die Passwörter speichert</body>
+  </ownedComment>
+  <packagedElement xmi:type="uml:Class" xmi:id="_J_yhsMwbEea1QL77delSmA" name="AuthResource" visibility="package">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Yon5sMwjEea1QL77delSmA" name="grantType" visibility="private" type="_sSNhsMweEea1QL77delSmA"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_TrLB4MwbEea1QL77delSmA" name="getLogin">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jmZ14MwjEea1QL77delSmA" name="clientId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_srQhkMwjEea1QL77delSmA" name="scope">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_vqONEMwjEea1QL77delSmA" name="state">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_WaCb4MwbEea1QL77delSmA" name="postToken">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_0T3KUMwmEea1QL77delSmA" name="params" type="_u_LkoMwmEea1QL77delSmA"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_sSNhsMweEea1QL77delSmA" name="GrantType">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_z_Ol0MwgEea1QL77delSmA" name="getLogin">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_BCsp4MwmEea1QL77delSmA" name="clientId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Eb-S0MwmEea1QL77delSmA" name="scope">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_L9Pr4MwmEea1QL77delSmA" name="state">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_2mHIgMwgEea1QL77delSmA" name="postLogin">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_L0VyEMwnEea1QL77delSmA" name="params" type="_u_LkoMwmEea1QL77delSmA"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_gOZqMMwhEea1QL77delSmA" name="AuthorizationCodeGrant"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_jTz78MwhEea1QL77delSmA" name="ImplicitGrantType"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_kgDsoMwhEea1QL77delSmA" name="PasswordCredentialsGrant"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_zZXDMMwhEea1QL77delSmA" client="_kgDsoMwhEea1QL77delSmA" supplier="_sSNhsMweEea1QL77delSmA"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_z1ry0MwhEea1QL77delSmA" client="_jTz78MwhEea1QL77delSmA" supplier="_sSNhsMweEea1QL77delSmA"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_0R2xcMwhEea1QL77delSmA" client="_gOZqMMwhEea1QL77delSmA" supplier="_sSNhsMweEea1QL77delSmA"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_7b8usMwjEea1QL77delSmA" name="RefreshGrant"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_-ZYwMMwjEea1QL77delSmA" client="_7b8usMwjEea1QL77delSmA" supplier="_sSNhsMweEea1QL77delSmA"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_0zHHkMwlEea1QL77delSmA" name="UnknownGrant"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_9c_HcMwlEea1QL77delSmA" client="_0zHHkMwlEea1QL77delSmA" supplier="_sSNhsMweEea1QL77delSmA"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_u_LkoMwmEea1QL77delSmA" name="MultivaluedMap&lt;String, String>">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_u_LkocwmEea1QL77delSmA" annotatedElement="_u_LkoMwmEea1QL77delSmA">
+      <body>for Jersey</body>
+    </ownedComment>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_-Zi3UMwaEea1QL77delSmA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-Zi3UcwaEea1QL77delSmA" source="http://www.eclipse.org/uml2/2.0.0/UML">
