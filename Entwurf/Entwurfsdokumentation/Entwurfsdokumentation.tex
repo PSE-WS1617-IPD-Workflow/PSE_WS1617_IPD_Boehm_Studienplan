@@ -38,8 +38,16 @@
 
 \renewcommand{\arraystretch}{1.24}  % for proper row spacing in tables
 
+
+% For Christ's sake, I'm sick and tired of this f*cking orphan/widow crap!
+\widowpenalty=10000
+\clubpenalty=10000
+% Source: somewhere on tex.stackexchange.com
+
 \renewcommand{\to}{\longrightarrow} % proper math typography
 \newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
 
 \addto\captionsngerman{\let\appendixtocname\appendixname\let\appendixpagename\appendixname}
 
