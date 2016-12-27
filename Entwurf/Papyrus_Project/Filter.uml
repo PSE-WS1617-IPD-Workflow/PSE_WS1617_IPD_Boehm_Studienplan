@@ -145,6 +145,12 @@
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_DWq3IMOgEeaE5o1HSz0A6w" name="TITLE"/>
     </nestedClassifier>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_3J_L0MyHEeaplOwEKWQXaA" name="NullFilter">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_RkLysMyIEeaplOwEKWQXaA" name="getCondition">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_RkLyscyIEeaplOwEKWQXaA" type="_wio-kMC5EearftWngfiKFw" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_69OM4MyHEeaplOwEKWQXaA" client="_3J_L0MyHEeaplOwEKWQXaA" supplier="_p8pFILuOEea-uPszIhxKkQ"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Gn_AcL7KEeaRCti-wkqR-A">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Gn_Acb7KEeaRCti-wkqR-A" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
