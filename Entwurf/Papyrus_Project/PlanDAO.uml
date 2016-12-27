@@ -3,54 +3,48 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_nIA-oLifEeavH9sFQSsLvg">
     <importedPackage xmi:type="uml:Package" href="PlanModel.uml#_haZUgLifEeavH9sFQSsLvg"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Rmc_sLyGEealiq5a5SolQQ" name="AbstractUserDao" isAbstract="true">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_Wx5J0LyGEealiq5a5SolQQ" name="getUserById" isAbstract="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_hda4YLyGEealiq5a5SolQQ" name="userId">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_4pnSMLyGEealiq5a5SolQQ" direction="return">
+  <packagedElement xmi:type="uml:Class" xmi:id="_UZ6l0LyGEealiq5a5SolQQ" name="HibernateUserDao">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_U7TZIMyAEeahEeG7zvbxmg" name="updateUser" concurrency="concurrent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_U7TZIcyAEeahEeG7zvbxmg" name="user">
         <type xmi:type="uml:Class" href="PlanModel.uml#_wfe0ILubEeaCStjenx_8kw"/>
       </ownedParameter>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_j8lpgLyGEealiq5a5SolQQ" name="updateUser" concurrency="concurrent" isAbstract="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_1EwrYLyGEealiq5a5SolQQ" name="user">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_U7WccMyAEeahEeG7zvbxmg" name="deleteUser">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_U7WcccyAEeahEeG7zvbxmg" name="user">
         <type xmi:type="uml:Class" href="PlanModel.uml#_wfe0ILubEeaCStjenx_8kw"/>
       </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_1eyW4Mb4EeapWM4q1-_jpA" name="deleteUser" isAbstract="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_3gcsoMb4EeapWM4q1-_jpA" name="user">
-        <type xmi:type="uml:Class" href="PlanModel.uml#_wfe0ILubEeaCStjenx_8kw"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_9Rv84Mb4EeapWM4q1-_jpA" direction="return">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_U7WccsyAEeahEeG7zvbxmg" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
       </ownedParameter>
     </ownedOperation>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_UZ6l0LyGEealiq5a5SolQQ" name="UserDao">
-    <generalization xmi:type="uml:Generalization" xmi:id="_61es0LyGEealiq5a5SolQQ" general="_Rmc_sLyGEealiq5a5SolQQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_ACbS0LyHEealiq5a5SolQQ" name="AbstractPlanDao" isAbstract="true">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_DIGqULyHEealiq5a5SolQQ" name="getPlanById" isAbstract="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_O5Ow8Mb5EeapWM4q1-_jpA" direction="return">
-        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_U7XqkMyAEeahEeG7zvbxmg" name="getUserById">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_U7XqkcyAEeahEeG7zvbxmg" name="userId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_R1MLwMb5EeapWM4q1-_jpA" name="id">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-      </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_FOsjYLyHEealiq5a5SolQQ" name="updatePlan" isAbstract="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_W5t1kMb5EeapWM4q1-_jpA" name="plan">
-        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
-      </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_Jw160Mb5EeapWM4q1-_jpA" name="deletePlan" isAbstract="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Zl8LQMb5EeapWM4q1-_jpA" name="plan">
-        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_U7XqksyAEeahEeG7zvbxmg" direction="return">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_wfe0ILubEeaCStjenx_8kw"/>
       </ownedParameter>
     </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_HDMm4LyHEealiq5a5SolQQ" name="PlanDao">
-    <generalization xmi:type="uml:Generalization" xmi:id="_JEABALyHEealiq5a5SolQQ" general="_ACbS0LyHEealiq5a5SolQQ"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_HDMm4LyHEealiq5a5SolQQ" name="HibneratePlanDao">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ZPDGQMyAEeahEeG7zvbxmg" name="updatePlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZPDGQcyAEeahEeG7zvbxmg" name="plan">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ZPFigMyAEeahEeG7zvbxmg" name="deletePlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZPFigcyAEeahEeG7zvbxmg" name="plan">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ZPHXsMyAEeahEeG7zvbxmg" name="getPlanById" concurrency="concurrent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZPHXscyAEeahEeG7zvbxmg" direction="return">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZPHXssyAEeahEeG7zvbxmg" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_D7lKcMdjEeaKAuw-lER4lw" name="AbstractSecurityProvider">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_UlQ5gMdjEeaKAuw-lER4lw" name="generateAuthorizationContext" visibility="public" isAbstract="true">
@@ -73,6 +67,51 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_LkxJYMdjEeaKAuw-lER4lw" name="SecurityProvider">
     <generalization xmi:type="uml:Generalization" xmi:id="_NqFQEMdjEeaKAuw-lER4lw" general="_D7lKcMdjEeaKAuw-lER4lw"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_lOX0cMx_EeahEeG7zvbxmg" name="UserDao">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_qTZNgMx_EeahEeG7zvbxmg" name="deleteUser">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qTZNgcx_EeahEeG7zvbxmg" name="user">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_wfe0ILubEeaCStjenx_8kw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qTZNgsx_EeahEeG7zvbxmg" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_qTZ0kMx_EeahEeG7zvbxmg" name="updateUser" concurrency="concurrent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qTZ0kcx_EeahEeG7zvbxmg" name="user">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_wfe0ILubEeaCStjenx_8kw"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_qTZ0ksx_EeahEeG7zvbxmg" name="getUserById">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qTZ0k8x_EeahEeG7zvbxmg" name="userId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qTZ0lMx_EeahEeG7zvbxmg" direction="return">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_wfe0ILubEeaCStjenx_8kw"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_t47JwMx_EeahEeG7zvbxmg" name="PlanDao">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_xUpCsMx_EeahEeG7zvbxmg" name="getPlanById" concurrency="concurrent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_xUpCscx_EeahEeG7zvbxmg" direction="return">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_xUpCssx_EeahEeG7zvbxmg" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_xUppwMx_EeahEeG7zvbxmg" name="deletePlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_xUppwcx_EeahEeG7zvbxmg" name="plan">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_xUppwsx_EeahEeG7zvbxmg" name="updatePlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_xUppw8x_EeahEeG7zvbxmg" name="plan">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_0j0zULubEeaCStjenx_8kw"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_R45_IMyAEeahEeG7zvbxmg" client="_UZ6l0LyGEealiq5a5SolQQ" supplier="_lOX0cMx_EeahEeG7zvbxmg"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_SlMdYMyAEeahEeG7zvbxmg" client="_HDMm4LyHEealiq5a5SolQQ" supplier="_t47JwMx_EeahEeG7zvbxmg"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_FVmSELyGEealiq5a5SolQQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FVmSEbyGEealiq5a5SolQQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
