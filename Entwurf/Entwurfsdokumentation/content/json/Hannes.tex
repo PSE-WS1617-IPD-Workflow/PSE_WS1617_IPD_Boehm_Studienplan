@@ -57,6 +57,14 @@
 	"name": (*\jsonatom{Zielfunktion-Name}*),
 	"description": (*\jsonatom{Zielfunktion-Beschreibung}*)
 }
+(*\jsonobj{Objective-Preferences}*) = {
+	"min_Semesters": (*\jsonatom{minimum Semesters}*)
+	"max_Semesters": (*\jsonatom{maximum Semesters}*)
+	"target_Semesters": (*\jsonatom{ideal Semesters}*)
+	"max_Semester_ECTS": (*\jsonatom{maximum ECTS per Semester}*)
+	"min_Semester_ECTS": (*\jsonatom{minimum ECTS per Semester}*)
+	"target_Semester_ECTS": (*\jsonatom{ideal ECTS per Semester}*)
+}
 \end{lstlisting}
 
 \subsubsection{Studienplan}
@@ -183,20 +191,18 @@ GET
 GET
 \begin{lstlisting}[language=json,firstnumber=1]
 {
+	"preferences": (*\jsonobj{Objective-Preferences}*)
+}
+\end{lstlisting}
+return
+\begin{lstlisting}[language=json,firstnumber=1]
+{
 	"plan": (*\jsonpart{Studienplan}{id, modules}*)
 }
 \end{lstlisting}
 
 \subsubsection{/plans/\{plan\_id\}/pdf}
 GET (just return pdf file)
-
-\subsubsection{/plans/\{plan\_id\}/share}
-GET
-\begin{lstlisting}[language=json,firstnumber=1]
-{
-	"plan":(*\jsonobj{CopyLink}*)
-}
-\end{lstlisting}
 
 \subsubsection{/filters}
 GET
