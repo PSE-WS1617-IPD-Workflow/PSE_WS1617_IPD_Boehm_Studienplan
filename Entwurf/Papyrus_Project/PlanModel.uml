@@ -8,7 +8,9 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_ARzQcMK6EeavfrO5hlCymA" name="username" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_J7YZ0MK6EeavfrO5hlCymA" name="discipline" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_J7YZ0MK6EeavfrO5hlCymA" name="discipline" visibility="private">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_BPEogMbBEeatB58sIl8nCg"/>
+      </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_te5VoMK6EeavfrO5hlCymA" name="studyStart" visibility="private" type="_RPcn4MK7EeavfrO5hlCymA"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_nG4ZAcb_EeapWM4q1-_jpA" name="moduleentry" type="_5yGmIMBpEeafN5EhaYGTYw" association="_nG3x8Mb_EeapWM4q1-_jpA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pd4soMb_EeapWM4q1-_jpA"/>
@@ -133,7 +135,10 @@
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mDlccMdhEeaKAuw-lER4lw" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mDmDgMdhEeaKAuw-lER4lw" key="nature" value="UML_Nature"/>
       </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mDvNcMdhEeaKAuw-lER4lw" name="authorizationcontext" type="_hulyIMdhEeaKAuw-lER4lw" association="_mDjAMMdhEeaKAuw-lER4lw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_mDvNcMdhEeaKAuw-lER4lw" name="authorizationcontext" type="_hulyIMdhEeaKAuw-lER4lw" association="_mDjAMMdhEeaKAuw-lER4lw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hNeZkMx5EeadS8RmcnY8pA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hNgOwMx5EeadS8RmcnY8pA" value="*"/>
+      </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_DbMPoMdiEeaKAuw-lER4lw" name="AuthorizationScope"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_kj2sEMeCEeaB85R6YEOTVA" name="RESTClient">
