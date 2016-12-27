@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_PVXQkLfVEea2RYsZ51fiPw" name="ModulModel">
-  <packagedElement xmi:type="uml:Class" xmi:id="_0RnMgL4NEeaoO4fCpQc-Qw" name="Module">
+  <packagedElement xmi:type="uml:Class" xmi:id="_0RnMgL4NEeaoO4fCpQc-Qw" name="Module" visibility="public">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_yaFYQr4PEeaoO4fCpQc-Qw" name="moduleconstraint" type="_CqvOML4OEeaoO4fCpQc-Qw" association="_yaExML4PEeaoO4fCpQc-Qw">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_a-jrUMBnEeafN5EhaYGTYw"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_a-mHkMBnEeafN5EhaYGTYw" value="*"/>
@@ -19,7 +19,7 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ySluYMb9EeapWM4q1-_jpA" value="1"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_310IMMbCEeatB58sIl8nCg" name="moduleId" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_7E2QAMbCEeatB58sIl8nCg" name="name" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
