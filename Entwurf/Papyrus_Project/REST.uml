@@ -14,13 +14,47 @@
       <type xmi:type="uml:Class" href="PlanDAO.uml#_ACbS0LyHEealiq5a5SolQQ"/>
       <association xmi:type="uml:Association" href="MainModel.uml#_rLCLkMQ5EeauQtLZObTczA"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_otX40LuSEea-uPszIhxKkQ" name="createPlan"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_rjbf8LuSEea-uPszIhxKkQ" name="getPlans"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_xjVM4LuSEea-uPszIhxKkQ" name="replacePlan" concurrency="concurrent"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_2tGpcLuaEea-uPszIhxKkQ" name="getPlan"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_9Z__QLuaEea-uPszIhxKkQ" name="editPlan"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_AbYsoLubEea-uPszIhxKkQ" name="deletePlan"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_FmEBwLubEea-uPszIhxKkQ" name="duplicatePlan"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_otX40LuSEea-uPszIhxKkQ" name="createPlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_0n10UMt4EeaIBcC0jCetUA" name="jsonPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_rjbf8LuSEea-uPszIhxKkQ" name="getPlans">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_-yEMoMt4EeaIBcC0jCetUA" name="jsonPlanList" type="_qFookMtyEeaIBcC0jCetUA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__lWqwMt4EeaIBcC0jCetUA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__lgbwMt4EeaIBcC0jCetUA" value="*"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_xjVM4LuSEea-uPszIhxKkQ" name="replacePlan" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_W06-IMt4EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_c5hk4Mt4EeaIBcC0jCetUA" name="jsonPlan" type="_qFookMtyEeaIBcC0jCetUA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_nvBHwMt4EeaIBcC0jCetUA" name="jsonNewPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_2tGpcLuaEea-uPszIhxKkQ" name="getPlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_K3mNUMt0EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mY60UMt0EeaIBcC0jCetUA" name="jsonPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_9Z__QLuaEea-uPszIhxKkQ" name="editPlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TXwo0Mt6EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_dRMzIMt6EeaIBcC0jCetUA" name="jsonPlan" type="_qFookMtyEeaIBcC0jCetUA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qBywwMt6EeaIBcC0jCetUA" name="jsonChangedPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_AbYsoLubEea-uPszIhxKkQ" name="deletePlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CK1CwMt6EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_DhUNMMt9EeaIBcC0jCetUA" name="jsonStatus" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_FmEBwLubEea-uPszIhxKkQ" name="duplicatePlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jmSiYMt5EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_77bhQMt5EeaIBcC0jCetUA" name="jsonPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_To0dwLuOEea-uPszIhxKkQ" name="RESTFilter">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_8-CTIsQ5EeauQtLZObTczA" name="filterdescriptor">
@@ -44,17 +78,72 @@
       <type xmi:type="uml:Class" href="PlanDAO.uml#_Rmc_sLyGEealiq5a5SolQQ"/>
       <association xmi:type="uml:Association" href="MainModel.uml#_uUAusMQ5EeauQtLZObTczA"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_QQNmYLuSEea-uPszIhxKkQ" name="replaceInformation"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_U6-FULuSEea-uPszIhxKkQ" name="getInformation"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_eRvAYLuSEea-uPszIhxKkQ" name="deleteStudent"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_QQNmYLuSEea-uPszIhxKkQ" name="replaceInformation">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_74tH8Mt6EeaIBcC0jCetUA" name="jsonStudentInformation" type="_qFookMtyEeaIBcC0jCetUA"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_U6-FULuSEea-uPszIhxKkQ" name="getInformation">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_3gjb8Mt6EeaIBcC0jCetUA" name="jsonStudentInformation" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_eRvAYLuSEea-uPszIhxKkQ" name="deleteStudent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_-rJTAMt9EeaIBcC0jCetUA" name="jsonStatus" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_uEiVULuTEea-uPszIhxKkQ" name="RESTPlanModules">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_1wBaULuTEea-uPszIhxKkQ" name="getModules"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_Y99qkLubEea-uPszIhxKkQ" name="getModule"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_eZT48LubEea-uPszIhxKkQ" name="changeModuleSemester"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_f8uMcLubEea-uPszIhxKkQ" name="putModuleSemester"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_lPr64LubEea-uPszIhxKkQ" name="removeModuleSemester"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_pQEnILubEea-uPszIhxKkQ" name="setModulePreference"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_1wBaULuTEea-uPszIhxKkQ" name="getModules">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_90OkAMt7EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_e1pzAMt7EeaIBcC0jCetUA" name="jsonFilter" type="_qFookMtyEeaIBcC0jCetUA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_kdvc4Mt7EeaIBcC0jCetUA" name="jsonModules" type="_qFookMtyEeaIBcC0jCetUA"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Y99qkLubEea-uPszIhxKkQ" name="getModule">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_640i0Mt7EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ortSIMt7EeaIBcC0jCetUA" name="module_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_rlTVcMt7EeaIBcC0jCetUA" name="jsonModule" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_eZT48LubEea-uPszIhxKkQ" name="changeModuleSemester">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_EuiqwMt8EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_G5UgQMt8EeaIBcC0jCetUA" name="module_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_WZtE8Mt8EeaIBcC0jCetUA" name="jsonSavedModule" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_gd6U0Mt8EeaIBcC0jCetUA" name="jsonChangeModule" type="_qFookMtyEeaIBcC0jCetUA"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_f8uMcLubEea-uPszIhxKkQ" name="putModuleSemester">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_k0Zz8Mt8EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_nJ_LQMt8EeaIBcC0jCetUA" name="module_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_sOhcIMt8EeaIBcC0jCetUA" name="jsonPutModule" type="_qFookMtyEeaIBcC0jCetUA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_v02poMt8EeaIBcC0jCetUA" name="jsonSavedModule" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_lPr64LubEea-uPszIhxKkQ" name="removeModuleSemester">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_4SgycMt8EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8KkCEMt8EeaIBcC0jCetUA" name="module_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_KcG1EMt9EeaIBcC0jCetUA" name="jsonStatus" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_pQEnILubEea-uPszIhxKkQ" name="setModulePreference">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q6bjYMt9EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TV3rEMt9EeaIBcC0jCetUA" name="module_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_XP20YMt9EeaIBcC0jCetUA" name="jsonModulePreference" type="_qFookMtyEeaIBcC0jCetUA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_cQF0EMt9EeaIBcC0jCetUA" name="jsonSavedModulePreference" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_GWq2sMObEeaiRIvYnaUryA" name="getFilterFromRequest" visibility="private">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_GWq2scObEeaiRIvYnaUryA" name="params">
         <type xmi:type="uml:Class" href="Filter.uml#_3xeH4MOaEeaiRIvYnaUryA"/>
@@ -120,6 +209,7 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_byt7gMdfEeacSbfY4AKGzA" name="RESTModules">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_e0d1QMdfEeacSbfY4AKGzA" name="getModules"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_qFookMtyEeaIBcC0jCetUA" name="JSONObject"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="__4xDwLlVEeavH9sFQSsLvg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__4xDwblVEeavH9sFQSsLvg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
