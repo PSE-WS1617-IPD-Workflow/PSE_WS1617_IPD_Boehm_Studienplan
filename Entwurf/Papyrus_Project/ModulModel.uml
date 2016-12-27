@@ -28,6 +28,9 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_sQjwwMbMEeatL4q6a14nzw" name="cycleType" visibility="private" type="_VdHvIL4OEeaoO4fCpQc-Qw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_tZ6kQMxYEea7FKVRIQ7ugA" name="compulsory" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_1pGj4L4NEeaoO4fCpQc-Qw" name="ModuleDescription">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_R8G7oMbDEeatB58sIl8nCg" name="descriptionId" visibility="private">
@@ -64,12 +67,39 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_9HiO4L4OEeaoO4fCpQc-Qw" name="PrerequisiteModuleConstraintType">
     <generalization xmi:type="uml:Generalization" xmi:id="_XhLcIL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_8ilXEMxZEea7FKVRIQ7ugA" name="isValid">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8ilXEcxZEea7FKVRIQ7ugA" name="first" effect="read">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_5yGmIMBpEeafN5EhaYGTYw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8ilXEsxZEea7FKVRIQ7ugA" name="second" effect="read">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_5yGmIMBpEeafN5EhaYGTYw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8ilXE8xZEea7FKVRIQ7ugA" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_IO3IoL4PEeaoO4fCpQc-Qw" name="OverlappingModuleConstraintType">
     <generalization xmi:type="uml:Generalization" xmi:id="_YNyqgL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_-aO1MMxZEea7FKVRIQ7ugA" name="isValid">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_-aO1McxZEea7FKVRIQ7ugA" name="first" effect="read">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_5yGmIMBpEeafN5EhaYGTYw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_-aO1MsxZEea7FKVRIQ7ugA" name="second" effect="read">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_5yGmIMBpEeafN5EhaYGTYw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_-aO1M8xZEea7FKVRIQ7ugA" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+    </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_S2aWIL4PEeaoO4fCpQc-Qw" name="LinkModuleConstraintType">
+  <packagedElement xmi:type="uml:Class" xmi:id="_S2aWIL4PEeaoO4fCpQc-Qw" name="LinkModuleConstraintType" isAbstract="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_ZDh_sL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_JuGWIMxaEea7FKVRIQ7ugA" name="isValid" isAbstract="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JuGWIcxaEea7FKVRIQ7ugA" name="first" effect="read">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_5yGmIMBpEeafN5EhaYGTYw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JuGWIsxaEea7FKVRIQ7ugA" name="second" effect="read">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_5yGmIMBpEeafN5EhaYGTYw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JuGWI8xaEea7FKVRIQ7ugA" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_gmxusL4PEeaoO4fCpQc-Qw" name="ModuleConstraintType" isAbstract="true">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_VB30QL_UEeacgfGrT4PzPg" name="isValid" isAbstract="true">
@@ -129,6 +159,15 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_r67qkMbCEeatB58sIl8nCg" name="SemesterLinkModuleConstraintType">
     <generalization xmi:type="uml:Generalization" xmi:id="_0CmVQMbCEeatB58sIl8nCg" general="_S2aWIL4PEeaoO4fCpQc-Qw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LYbxAMxaEea7FKVRIQ7ugA" name="isValid" isAbstract="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LYcYEMxaEea7FKVRIQ7ugA" name="first" effect="read">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_5yGmIMBpEeafN5EhaYGTYw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LYcYEcxaEea7FKVRIQ7ugA" name="second" effect="read">
+        <type xmi:type="uml:Class" href="PlanModel.uml#_5yGmIMBpEeafN5EhaYGTYw"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LYcYEsxaEea7FKVRIQ7ugA" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_wmUboMbCEeatB58sIl8nCg" name="PlanLinkModuleConstraintType">
     <generalization xmi:type="uml:Generalization" xmi:id="_0hl-YMbCEeatB58sIl8nCg" general="_S2aWIL4PEeaoO4fCpQc-Qw"/>
