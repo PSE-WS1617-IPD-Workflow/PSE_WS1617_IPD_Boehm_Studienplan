@@ -3,27 +3,50 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_tp3UULiaEeavH9sFQSsLvg">
     <importedPackage xmi:type="uml:Package" href="ModulModel.uml#_PVXQkLfVEea2RYsZ51fiPw"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_YLSJMLyHEealiq5a5SolQQ" name="AbstractModuleDao">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_dLCAsLyHEealiq5a5SolQQ" name="getModuleById">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Mk-X0L4QEeaoO4fCpQc-Qw" name="id">
+  <packagedElement xmi:type="uml:Class" xmi:id="_ZZGnMLyHEealiq5a5SolQQ" name="HibernateModuleDao">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ZRX-UMx8EeahEeG7zvbxmg" name="getModulesByFilter">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZRX-Ucx8EeahEeG7zvbxmg" direction="return">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZRX-Usx8EeahEeG7zvbxmg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZRX-U8x8EeahEeG7zvbxmg" value="*"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZRX-VMx8EeahEeG7zvbxmg" name="filter">
+        <type xmi:type="uml:Interface" href="Filter.uml#_p8pFILuOEea-uPszIhxKkQ"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZRX-Vcx8EeahEeG7zvbxmg" name="start">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_QfgTsL4QEeaoO4fCpQc-Qw" direction="return">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZRX-Vsx8EeahEeG7zvbxmg" name="end">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_mH49wMx8EeahEeG7zvbxmg" name="getModuleById">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mH49wcx8EeahEeG7zvbxmg" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mH49wsx8EeahEeG7zvbxmg" direction="return">
         <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
       </ownedParameter>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_hhfqoLyHEealiq5a5SolQQ" name="getModulesByFilter">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8SrYkL4QEeaoO4fCpQc-Qw" direction="return">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_mH7aAMx8EeahEeG7zvbxmg" name="getModulesByFilter">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mH7aAcx8EeahEeG7zvbxmg" direction="return">
         <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHXPkL4REeaoO4fCpQc-Qw"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHa58L4REeaoO4fCpQc-Qw" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mH7aAsx8EeahEeG7zvbxmg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mH7aA8x8EeahEeG7zvbxmg" value="*"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mH7aBMx8EeahEeG7zvbxmg" name="filter">
+        <type xmi:type="uml:Interface" href="Filter.uml#_p8pFILuOEea-uPszIhxKkQ"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_1dWE0Mx8EeahEeG7zvbxmg" name="getRandomModuleByFilter">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_1dWE0cx8EeahEeG7zvbxmg" name="filter">
+        <type xmi:type="uml:Interface" href="Filter.uml#_p8pFILuOEea-uPszIhxKkQ"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_1dWE0sx8EeahEeG7zvbxmg" direction="return">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
       </ownedParameter>
     </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_ZZGnMLyHEealiq5a5SolQQ" name="ModuleDao">
-    <generalization xmi:type="uml:Generalization" xmi:id="_cKRHQLyHEealiq5a5SolQQ" general="_YLSJMLyHEealiq5a5SolQQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_9Q7mILyHEealiq5a5SolQQ" name="ModuleFilter"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_jV_JUMC0EeaPXJNH_43Mqw" name="ModuleColumnNames" isLeaf="true">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_jV_JUcC0EeaPXJNH_43Mqw" name="CREDIT_POINTS" isStatic="true" isReadOnly="true">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -47,6 +70,51 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_EmKwAMx7EeadS8RmcnY8pA" name="ModuleDao">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_dLCAsLyHEealiq5a5SolQQ" name="getModuleById">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Mk-X0L4QEeaoO4fCpQc-Qw" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_QfgTsL4QEeaoO4fCpQc-Qw" direction="return">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_hhfqoLyHEealiq5a5SolQQ" name="getModulesByFilter">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8SrYkL4QEeaoO4fCpQc-Qw" direction="return">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BHXPkL4REeaoO4fCpQc-Qw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BHa58L4REeaoO4fCpQc-Qw" value="*"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8LmXcMx6EeadS8RmcnY8pA" name="filter">
+        <type xmi:type="uml:Interface" href="Filter.uml#_p8pFILuOEea-uPszIhxKkQ"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_K_2ZcMx8EeahEeG7zvbxmg" name="getModulesByFilter">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_K_2Zccx8EeahEeG7zvbxmg" direction="return">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_K_2Zcsx8EeahEeG7zvbxmg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_K_2Zc8x8EeahEeG7zvbxmg" value="*"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_K_2ZdMx8EeahEeG7zvbxmg" name="filter">
+        <type xmi:type="uml:Interface" href="Filter.uml#_p8pFILuOEea-uPszIhxKkQ"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_OmDEEMx8EeahEeG7zvbxmg" name="start">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Rw1lEMx8EeahEeG7zvbxmg" name="end">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_rlM7AMx8EeahEeG7zvbxmg" name="getRandomModuleByFilter">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_vf_8oMx8EeahEeG7zvbxmg" name="filter">
+        <type xmi:type="uml:Interface" href="Filter.uml#_p8pFILuOEea-uPszIhxKkQ"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_zVSzMMx8EeahEeG7zvbxmg" direction="return">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_YrGd8Mx7EeadS8RmcnY8pA" client="_ZZGnMLyHEealiq5a5SolQQ" supplier="_EmKwAMx7EeadS8RmcnY8pA"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Rcy38LyHEealiq5a5SolQQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Rcy38byHEealiq5a5SolQQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
