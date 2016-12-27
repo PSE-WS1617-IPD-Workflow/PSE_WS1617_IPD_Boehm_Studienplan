@@ -42,6 +42,32 @@
     <element xmi:type="uml:Class" href="JSRouter.uml#_si-OoMwrEeaUspSTNf28yQ"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sjAD0cwrEeaUspSTNf28yQ" x="80" y="90" width="320" height="320"/>
   </children>
+  <children xmi:type="notation:Shape" xmi:id="_oYA0oMwsEeaUspSTNf28yQ" type="Class_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_oYBbsMwsEeaUspSTNf28yQ" type="Class_NameLabel"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_oYCCwMwsEeaUspSTNf28yQ" type="Class_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_oYCCwcwsEeaUspSTNf28yQ" y="5"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_oYCp0MwsEeaUspSTNf28yQ" type="Class_AttributeCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_oYCp0cwsEeaUspSTNf28yQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_oYCp0swsEeaUspSTNf28yQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_oYCp08wsEeaUspSTNf28yQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oYCp1MwsEeaUspSTNf28yQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_oYCp1cwsEeaUspSTNf28yQ" type="Class_OperationCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_oYCp1swsEeaUspSTNf28yQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_oYCp18wsEeaUspSTNf28yQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_oYCp2MwsEeaUspSTNf28yQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oYCp2cwsEeaUspSTNf28yQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_oYCp2swsEeaUspSTNf28yQ" type="Class_NestedClassifierCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_oYCp28wsEeaUspSTNf28yQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_oYCp3MwsEeaUspSTNf28yQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_oYCp3cwsEeaUspSTNf28yQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oYCp3swsEeaUspSTNf28yQ"/>
+    </children>
+    <element xmi:type="uml:Class" href="JSRouter.uml#_oX7VEMwsEeaUspSTNf28yQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oYA0ocwsEeaUspSTNf28yQ" x="444" y="88" width="301" height="330"/>
+  </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_LqtYIcwrEeaUspSTNf28yQ" name="diagram_compatibility_version" stringValue="1.2.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_LqtYIswrEeaUspSTNf28yQ"/>
   <styles xmi:type="style:PapyrusViewStyle" xmi:id="_LqtYI8wrEeaUspSTNf28yQ">
