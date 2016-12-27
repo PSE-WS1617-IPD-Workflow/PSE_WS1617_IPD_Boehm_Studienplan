@@ -53,7 +53,7 @@
   <packagedElement xmi:type="uml:Interface" xmi:id="_vd38kMGCEea0yOFvxPpmvQ" name="AttributeFilter">
     <generalization xmi:type="uml:Generalization" xmi:id="_L_bRgMGDEea0yOFvxPpmvQ" general="_p8pFILuOEea-uPszIhxKkQ"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_DHBGYMGDEea0yOFvxPpmvQ" name="getDescriptor">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_HeUd0MGDEea0yOFvxPpmvQ" direction="return"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_HeUd0MGDEea0yOFvxPpmvQ" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_BrPr8MGDEea0yOFvxPpmvQ" client="_4zyO8MF1EeaM6M-4jd6ZbA" supplier="_vd38kMGCEea0yOFvxPpmvQ"/>

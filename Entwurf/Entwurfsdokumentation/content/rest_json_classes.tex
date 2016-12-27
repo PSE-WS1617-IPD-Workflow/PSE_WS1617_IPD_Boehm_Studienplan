@@ -1,0 +1,242 @@
+\FloatBarrier
+\subsection{Spezifikation der JSON-Datenklassen}
+
+\subsubsection*{Modellklassen}
+
+\begin{lstlisting}[language=json]
+(*\lbljsonobj{Student}*) = {
+	"subject": (*\jsonpart{Studienfach}{id}*),
+	"study-start": (*\jsonobj{Studienbeginn}*),
+	"passed-modules": (*\jsonlist{\jsonpart{Modul}{id}}*)
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=json]
+(*\lbljsonobj{Studienbeginn}*) = {
+	"cycle": (*\jsonatom{Turnus}*),
+	"year": (*\jsonatom{Jahr}*)
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=json]	
+(*\lbljsonobj{Studienfach}*) = {
+	"id": (*\jsonatom{Studienfach-ID}*),
+	"name": (*\jsonatom{Studienfach-Name}*)
+}
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=json]
+(*\lbljsonobj{Modul}*) = {
+	"id": (*\jsonatom{Modul-ID}*),
+	"name": (*\jsonatom{Modul-Name}*),
+	"category" : (*\jsonatom{Modul-Kategorie}*),
+	//"passed"? Not needed!
+	"semester": (*\jsonatom{Modul-Semester}*),
+	"creditpoints": (*\jsonatom{Modul-Creditpoints}*),
+	"lecturer": (*\jsonatom{Modul-Dozent}*),
+	"preference" (*\jsonatom{Modul-Präferenz}*),
+	"description": (*\jsonatom{Modul-Beschreibung}*),	
+	"constraints": (*\jsonlist{\jsonobj{Constraint}}*)
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=json]
+(*\lbljsonobj{Constraint}*) = {
+	"name": (*\jsonatom{Constraint-Name}*),
+	"first": (*\jsonpart{Modul}{id}*),
+	"second": (*\jsonpart{Modul}{id}*),
+	"type": (*\jsonatom{Constraint-Typ}*),
+	"description-first": (*\jsonatom{Constraint-Beschreibung}*)
+	"description-second": (*\jsonatom{Constraint-Beschreibung}*)	
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=json]
+(*\lbljsonobj{Filter}*) = {
+	"id": (*\jsonatom{Filter-ID}*),
+	"name": (*\jsonatom{Filter-Name}*),
+	"value": (*\jsonatom{Filter-Wert}*),
+	"tooltip": (*\jsonatom{Filter-Tooltip}*),
+	"specification": (*\jsonobj{Filter-Eigenschaften}*)
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=json]
+(*\lbljsonobj{Filter-Eigenschaften}*) = {
+	"type": (*\jsonatom{Filter-Typ}*),
+	case type == "range": {
+		"max": (*\jsonatom{Filter-Maximum}*),
+		"min": (*\jsonatom{Filter-Minimum}*),
+	},
+	case type == "list": {
+		"items": (*\jsonlist{\jsonatom{Filter-Wahlitem}}*)
+	},
+	case type == "contains": {}
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=json]
+(*\lbljsonobj{Zielfunktion}*) = {
+	"id": (*\jsonatom{Zielfunktion-ID}*),
+	"name": (*\jsonatom{Zielfunktion-Name}*),
+	"description": (*\jsonatom{Zielfunktion-Beschreibung}*)
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=json]
+(*\lbljsonobj{Studienplan}*) = {
+    "id": (*\jsonatom{Studienplan-ID}*),
+    "status": (*\jsonatom{Studienplan-Status}*),
+    "creditpoints-sum": (*\jsonatom{Studienplan-Gesamt-Creditpoints}*),
+    "name": (*\jsonatom{Studienplan-Name}*),
+    "modules": (*\jsonlist{\jsonpart{Modul}{id, name, passed, semester, creditpoints, lecturer}}*)
+    "violations": (*\jsonpart{Modul}{id, constraints}*)	
+}
+\end{lstlisting}
+
+\subsubsection*{Kommunikations-Datenstrukturen}
+
+\begin{json}
+(*\lbljsonobj{ModulesResult}*) = {
+	"modules": (*\jsonlist{\jsonpart{Modul}{id, name, creditpoints, lecturer}}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{StudentResult}*) = {
+	"student": (*\jsonobj{Student}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{StudentPutRequest}*) = {
+	"student": (*\jsonobj{Student}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{StudentDeleteRequest}*) = {
+	"student": (*\jsonpart{Student}{id}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlansGetResult}*) = {
+	"plans": (*\jsonlist{\jsonpart{Studienplan}{id, status, creditpoints-sum, name}}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlansPostRequest}*) = {
+	"plan": (*\jsonpart{Studienplan}{name}*)
+}	
+\end{json} 
+
+\begin{json}
+(*\lbljsonobj{PlansPostResult}*) = {
+	"plan": (*\jsonpart{Studienplan}{id, name}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlanResult}*) = {
+	"plan": (*\jsonobj{Studienplan}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlanPutRequest}*) = {
+	"plan": (*\jsonobj{Studienplan}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlanResult}*) = {
+	"plan": (*\jsonobj{Studienplan}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlanPatchPostRequest}*) = {
+	"plan": (*\jsonpart{Studienplan}{name}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlanPatchPostResult}*) = {
+	"plan": (*\jsonpart{Studienplan}{id, name}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlanModulesResult}*) = {
+	"modules": (*\jsonlist{\jsonpart{Modul}{id, name, creditpoints, lecturer, preference}}*)
+}	
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlanModuleResult}*) = {
+	"module": (*\jsonobj{Modul}*)
+}
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlanModulePutRequest}*) = {
+	"module": (*\jsonpart{Modul}{id, semester}*)
+}
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlanModulePutResult}*) = {
+	"module": (*\jsonpart{Modul}{id, semester}*)
+}
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlanModuleDeleteRequest}*) = {
+	"module": (*\jsonpart{Modul}{id}*)
+}
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{ModulePreferencePutRequest}*) = {
+	"module": (*\jsonpart{Modul}{id, preference}*)
+}
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{ModulePreferencePutResult}*) = {
+	"module": (*\jsonpart{Modul}{id, preference}*)
+}
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlanVerificationResult}*) = {
+	"plan": (*\jsonpart{Studienplan}{id, status, violations}*)
+}
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{PlanProposalResult}*) = {
+	"plan": (*\jsonpart{Studienplan}{status, modules, violations}*)
+}
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{FiltersResult}*) = {
+	"filters": (*\jsonlist{\jsonobj{Filter}}*)
+}
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{ObjectiveFunctionsResult}*) = {
+	"functions": (*\jsonlist{\jsonobj{Zielfunktion}}*)
+}
+\end{json}
+
+\begin{json}
+(*\lbljsonobj{SubjectsResult}*) = {
+	"subjects": (*\jsonlist{\jsonobj{Studienfach}}*)
+}
+\end{json}

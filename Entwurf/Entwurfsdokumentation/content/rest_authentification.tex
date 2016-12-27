@@ -1,20 +1,20 @@
 \subsection{Authentifizierung}
 \label{subsec:api-auth}
-\paragraph{Zugrundeliegende Spezifikation} Die Authentifizierung am REST-Webservice erfolgt über eine OAuth 2.0 Schnittstelle nach RFC 6749 (siehe \cite{rfc6749}).
-Für das momentane System ist hierbei nur die Authentifizierung über \textit{Implicit-Grant} \cite[Kap. 4.2]{rfc6749} notwendig, jedoch sollte das System mindestens um \textit{Authorization-Code-Grant} \cite[Kap. 4.1]{rfc6749} und \textit{Resource-Owner-Password-Credentials-Grant} \cite[Kap. 4.3]{rfc6749} erweitert werden können, weshalb die Basis für diesen Authentifizierungstyp ebenfalls implementiert wird. Bei dem Versuch eine Authentifizierung mittels \textit{Authorization-Code-Grant} oder \textit{Resource-Owner-Password-Credentials-Grant} auszuführen, wird dann eine Fehlermeldung zurück gegeben.\\
-Die zugrundeliegende Spezifikation verteilt klare Rollen an die verschiedenen Akteure, welche an der Interaktion der Systeme beteiligt sind. In Tabelle \ref{tab:api-auth-roles} ist angegeben, welches Subsystem die jeweiligen Rollen bei der OAuth-Authentifizierung in unserem System übernimmt
+\paragraph{Zugrundeliegende Spezifikation} Die Authentifizierung am REST-Webservice erfolgt über eine OAuth-2.0-Schnittstelle nach RFC 6749 (siehe \cite{rfc6749}).
+Für das momentane System ist hierbei nur die Authentifizierung über \textit{Implicit-Grant} \cite[Kap. 4.2]{rfc6749} notwendig, jedoch sollte das System mindestens um \textit{Authorization-Code-Grant} \cite[Kap. 4.1]{rfc6749} und \textit{Resource-Owner-Password-Credentials-Grant} \cite[Kap. 4.3]{rfc6749} erweitert werden können, weshalb die Basis für diesen Authentifizierungstyp ebenfalls implementiert wird. Bei dem Versuch, eine Authentifizierung mittels \textit{Authorization-Code-Grant} oder \textit{Resource-Owner-Password-Credentials-Grant} durchzuführen, wird dann eine Fehlermeldung zurück gegeben.\\
+Die zugrundeliegende Spezifikation verteilt klare Rollen an die verschiedenen Akteure, welche an der Interaktion der Systeme beteiligt sind. In Tabelle \ref{tab:api-auth-roles} ist angegeben, welches Subsystem die jeweiligen Rollen bei der OAuth-Authentifizierung in unserem System übernimmt.
 
 \begin{table}
-	\begin{tabularx}{\textwidth}{@{} | X | X | @{}}
+	\begin{tabular}{@{} | p{.3\textwidth} | p{.7\textwidth} | @{}} 
 		\hline
-		\textbf{Rolle} & \textbf{Subsystem}\\ \hline \hline
+		\textbf{Rolle} & \textbf{Subsystem}\\ \hhline{|=|=|}
 		\textit{resouce owner} & Benutzer \\ \hline
 		\textit{resource server} & REST-Webservice \\ \hline
 		\textit{client} & Aktuell ausschließlich die WebApp. Zukünftig vielleicht weitere Systeme, welche auf den REST-Webservice zugreifen \\ \hline
 		\textit{authorization server} & REST-Webservice \\ \hline
 		\textit{user agent} & Web-Browser des Benutzers \\
 		\hline
-	\end{tabularx}
+	\end{tabular}
 	\caption{Rollen in der OAuth 2.0 Spezifikation}
 	\label{tab:api-auth-roles}
 \end{table}
@@ -27,102 +27,103 @@ Wir unterscheiden zwischen zwei Typen von Klienten: \textit{Vertrauenswürdige} 
 \subparagraph{Vertrauenswürdiger Klient}
 Für einen vertrauenswürdigen Klienten werden die Informationen aus Tabelle \ref{tab:api-auth-confidential-client-data} gespeichert.\\
 \begin{table}
-	\begin{tabularx}{\textwidth}{@{} | X | X | @{}}
+	\begin{tabular}{@{} | p{.16\textwidth} | p{.84\textwidth} | @{}} 
 		\hline
-		\textbf{Name} & \textbf{Beschreibung}\\ \hline \hline
+		\textbf{Name} & \textbf{Beschreibung}\\ \hhline{|=|=|}
 		\textit{api\_key} & Eindeutige, öffentliche ID des Klienten. Beginnt mit dem Präfix \enquote{key-} \\ \hline
 		\textit{api\_secret} & Nur dem Klienten bekannte Kennung. Beginnt mit dem Präfix \enquote{secret-} \\ \hline
 		\textit{scope} & Berechtigungen (auch mehrere) die der Klient anfordern darf. Vorerst immer nur \enquote{student} \\ \hline
 		\textit{redirect\_url} & URL an welche beim \textit{Implicit-Grant} bzw. \textit{Authorization-Code-Grant} weitergeleitet wird. \\ \hline
 		\textit{origin} & Domains, von welchen aus der Klient auf die Ressourcen zugreifen darf. Wird als Regulärer Ausdruck angegeben. Dieser Wert wird bei Anfragen mit Hilfe des \textit{Referer-Header} überprüft. \\
 		\hline
-	\end{tabularx}
-\caption{Daten eines vertrauenswürdigen Klienten}
-\label{tab:api-auth-confidential-client-data}
+	\end{tabular}
+	\caption{Daten eines vertrauenswürdigen Klienten}
+	\label{tab:api-auth-confidential-client-data}
 \end{table}
 
 \subparagraph{Öffentlicher Klient}
 Für einen öffentlichen Klienten werden die Informationen aus Tabelle  \ref{tab:api-auth-public-client-data} gespeichert. \\
 \begin{table}
-	\begin{tabularx}{\textwidth}{@{} | X | X | @{}}
+	\begin{tabular}{@{} | p{.3\textwidth} | p{.7\textwidth} | @{}} 
 		\hline
-		\textbf{Name} & \textbf{Beschreibung}\\ \hline \hline
+		\textbf{Name} & \textbf{Beschreibung}\\ \hhline{|=|=|}
 		api\_key & Eindeutige, öffentliche ID des Klienten. Beginnt mit dem Präfix \enquote{key-} \\ \hline
 		api\_secret & NULL (wird nicht benötigt) \\ \hline
 		scope & Berechtigungen (auch mehrere) die der Klient anfordern darf. Vorerst immer nur \enquote{student} \\ \hline
 		redirect\_url & URL an welche beim \textit{Implicit-Grant} weitergeleitet wird. \\ \hline
 		origin & Domains, von welchen aus der Klient auf die Ressourcen zugreifen darf. Wird als Regulärer Ausdruck angegeben. Dieser Wert wird bei Anfragen mit Hilfe des \textit{Referer-Header} überprüft. \\
 		\hline
-	\end{tabularx}
-\caption{Daten eines öffentlichen Klienten}
-\label{tab:api-auth-public-client-data}
+	\end{tabular}
+	\caption{Daten eines öffentlichen Klienten}
+	\label{tab:api-auth-public-client-data}
 \end{table}
 \paragraph{Schnittstellen}
 Für die Authentifizierung werden die Schnittstellen aus Tabelle \ref{tab:api-auth-endpoints} verwendet.
-Beim Login wird hierbei der Web-Browser des Benutzers, welcher die WebApp geöffnet, und auf den Button \enquote{Login} geklickt hat, an den URI /auth/login des REST-Webservice weitergeleitet. Auf dieser Seite kann sich der Nutzer authentifizieren. Anschließend wird er auf die Hauptseite der WebApp weitergeleitet. Die Kommunikation der Authentifizierungsdaten zwischen Klient und REST-Webservice verläuft über den \textit{Query} \cite[Kap 3.4]{rfc3986} bzw. das \textit{Fragment} \cite[Kap. 3.5]{rfc3986} des URI.
+Beim Login wird hierbei der Web-Browser des Benutzers, welcher die Web-App geöffnet, und auf den Button \enquote{Login} geklickt hat, an den URI /auth/login des REST-Webservice weitergeleitet. Auf dieser Seite kann sich der Nutzer authentifizieren. Anschließend wird er auf die Hauptseite der Web-App weitergeleitet. Die Kommunikation der Authentifizierungsdaten zwischen Klient und REST-Webservice verläuft über den \textit{Query} \cite[Kap 3.4]{rfc3986} bzw. das \textit{Fragment} \cite[Kap. 3.5]{rfc3986} des URI.
 
 \begin{table}
-	\begin{tabularx}{\textwidth}{@{} | X | X | X | @{}}
+	\begin{tabulary}{\textwidth}{|l|l|p{.6\textwidth}|} 
 		\hline
-		\textbf{Methode} & \textbf{URL} & \textbf{Beschreibung} \\ \hline \hline
+		\textbf{Methode} & \textbf{URL} & \textbf{Beschreibung} \\ \hhline{|=|=|=|}
 		GET & /auth/login & Der in RFC 6749, Kapitel 3.1 definierte \textit{Authorization Endpoint} \\ \hline
-		POST & /auth/login & Der in RFC 6749, Kapitel 3.1 definierte \textit{Authorization Endpoint} (für \textit{Resource-Owner-Password-Credentials-Grant}) \\ \hline
 		POST & /auth/token & Der in RFC 6749, Kapitel 3.2 definierte \textit{Token Endpoint} \\ \hline
 		GET & /auth/logout & Devalidiert das genutze Access-Token \\ \hline
-	\end{tabularx}
+	\end{tabulary}
 \caption{Schnittstellen für die OAuth 2.0 Kommunikation}
 \label{tab:api-auth-endpoints}
 \end{table}
 
 \paragraph{Authentifizierungs-Vorgang}
-Es wird hier lediglich die Authentifizierung mittels \textit{Implicit-Grant} beschrieben, da andere Authentifizierungs-Typen nicht implementiert werden.\\
-Zunächst leitet der Klient den Web-Browser des Nutzers beim Login auf den URI /auth/login des REST-Webservice weiter. Hierbei werden im \textit{Query}  die Parameter aus Tabelle \ref{tab:api-auth-login-req-params} übergeben.\\
-Wenn die \textit{client\_id} einem Klienten des REST-Webservice zuordenbar ist, wird der Web-Browser des Nutzers nach der Authentifizierung an den \textit{redirect\_url} weitergeleitet. Ist die \textit{client\_id} nicht zuordenbar, so wird ein \verb|420 Policy Not Fulfilled| Status-Code mit einer Fehlermeldung zurückgegeben.
+Es wird hier lediglich die Authentifizierung mittels \textit{Implicit"=Grant} beschrieben, da andere Authentifizierungs-Typen nicht zur Implementierung vorgesehen sind. \\
+Zunächst leitet der Klient den Web-Browser des Nutzers beim Login auf den URI \mbox{/auth/login} des REST-Webservice weiter. Hierbei werden im \textit{Query}  die Parameter aus Tabelle \ref{tab:api-auth-login-req-params} übergeben.\\
+Wenn die \textit{client\_id} einem Klienten des REST-Webservice zuordenbar ist, wird der Web-Browser des Nutzers nach der Authentifizierung an den \textit{redirect\_url} weitergeleitet. Ist die \textit{client\_id} nicht zuordenbar, so wird ein Status-Code \texttt{420 Policy Not Fulfilled} mit einer Fehlermeldung zurückgegeben.
 Die Authentifizierung schlägt in folgenden Fällen mit den Parametern aus Tabelle \ref{tab:api-auth-login-res-error} im \textit{Fragment} fehl (siehe hierfür auch \cite[Kap. 4.2.2.1]{rfc6749}):
-\begin{itemize}
-	\item[invalid\_request] Fehlen von in Tabelle \ref{tab:api-auth-login-req-params} spezifizierten Parametern
-	\item[unsupported\_response\_type] Nicht unterstützter \textit{response\_type} (alles außer \enquote{token})
-	\item[invalid\_scope] Nicht unterstützter \textit{scope} (momentan ist der einzige unterstützte Scope \enquote{student})
-	\item[server\_error] Fehler des Servers
-\end{itemize}
-Ist die Authentifizierung erfolgreich so werden bei der Weiterleitung die Parameter aus Tabelle \ref{tab:api-auth-login-res-success} im \textit{Fragment} übergeben.
+
+\begin{tabular}{@{} p{.3\linewidth} @{\hspace{.05\linewidth}} p{.65\linewidth}@{}}
+	invalid\_request & Fehlen von in Tabelle \ref{tab:api-auth-login-req-params} spezifizierten Parametern \\
+	unsupported\_response\_type & Nicht unterstützter \textit{response\_type} (alles außer \enquote{token})   \\
+	invalid\_scope & Nicht unterstützter \textit{scope} (momentan ist der einzige unterstützte Scope \enquote{student}) \\
+	server\_error & Fehler des Servers
+\end{tabular}
+
+Ist die Authentifizierung erfolgreich, so werden bei der Weiterleitung die Parameter aus Tabelle \ref{tab:api-auth-login-res-success} im \textit{Fragment} übergeben.
 \begin{table}
-	\begin{tabularx}{\textwidth}{@{} | X | X | @{}}
+	\begin{tabular}{@{} | p{.2\linewidth} | p{.8\linewidth} | @{}}
 		\hline
-		\textbf{Parameter} & \textbf{Beschreibung}\\ \hline \hline
+		\textbf{Parameter} & \textbf{Beschreibung}\\ \hhline{|=|=|}
 		\textit{response\_type} & Für die Authentifizierung mittels \textit{Implicit-Grant} der Wert \enquote{token}. Für Authentifizierung mittels \textit{Authorization-Code-Grant} der Wert \enquote{code}. Für Authentifizierung mittels \textit{Resource-Owner-Password-Credentials-Grant} der Wert \enquote{password}. \\ \hline
 		\textit{client\_id} & Den \textit{api\_key} des Klienten \\ \hline
 		\textit{scope} & In den ersten Versionen des Systems immer \enquote{student}. Später möglicherweise auch andere Werte. \\ \hline
 		\textit{state} & Ein im Web-Browser gespeicherter, nicht von dritten veränderbarer Schlüssel, der vom REST-Webservice in der Antwort mitgesendet wird.\\
 		\hline
-	\end{tabularx}
+	\end{tabular}
 	\caption{Übergebene Parameter bei der Weiterleitung an /auth/login}
 	\label{tab:api-auth-login-req-params}
 \end{table}
 
 \begin{table}
-	\begin{tabularx}{\textwidth}{@{} | X | X | @{}}
+	\begin{tabular}{@{} | p{.2\linewidth} | p{.8\linewidth} | @{}}
 		\hline
-		\textbf{Parameter} & \textbf{Beschreibung}\\ \hline \hline
+		\textbf{Parameter} & \textbf{Beschreibung}\\ \hhline{|=|=|}
 		\textit{error} & Ein den Fehler identifizierenden Schlüssel (siehe hierfür auch \cite[Kap. 4.2.2.1]{rfc6749})\\ \hline
 		\textit{state} & Das bei der Anfrage vom Klienten übergebene \textit{state}-Parameter\\
 		\hline
-	\end{tabularx}
+	\end{tabular}
 	\caption{Übergebene Parameter bei einer fehlgeschlagenen Authentifizierung}
 	\label{tab:api-auth-login-res-error}
 \end{table}
 
 \begin{table}
-	\begin{tabularx}{\textwidth}{@{} | X | X | @{}}
+	\begin{tabular}{@{} | p{.2\linewidth} | p{.8\linewidth} | @{}}
 		\hline
-		\textbf{Parameter} & \textbf{Beschreibung}\\ \hline \hline
+		\textbf{Parameter} & \textbf{Beschreibung}\\ \hhline{|=|=|}
 		\textit{access\_token} & Ein Token, mit welchem der Klient im Namen des Nutzers auf den REST-Webservice zugreifen kann\\ \hline
 		\textit{token\_type} & \enquote{Bearer} (siehe \cite[Kap. 7.1]{rfc6749}) \\ \hline
 		\textit{expires\_in} & Dauer, welche das \textit{access\_token} gültig ist. \\ \hline
 		\textit{scope} & In den ersten Versionen des Systems immer \enquote{student}. Später möglicherweise auch andere Werte.\\ \hline
 		\textit{state} & Das bei der Anfrage vom Klienten übergebene \textit{state}-Parameter\\
 		\hline
-	\end{tabularx}
+	\end{tabular}
 	\caption{Übergebene Parameter bei einer erfolgreichen Authentifizierung}
 	\label{tab:api-auth-login-res-success}
 \end{table}

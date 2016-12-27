@@ -1,0 +1,64 @@
+\FloatBarrier
+\subsection{Zugriffsstruktur}
+
+TODO: GET-Anfrageparameter! 
+Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Methoden und URIs beschrieben. 
+\begin{longtable}{| >{\hspace{0pt}} p{.11\textwidth} | >{\hspace{0pt}} p{.24\textwidth} | >{\hspace{0pt}} p{.26\textwidth} | >{\hspace{0pt}} p{.34\textwidth} |}
+	\hline
+	\textbf{Methode} & \textbf{URI} & \textbf{Beschreibung} & \textbf{Anfrage-Parameter\+/Rückgabewerte} \\ 
+	\hhline{|=|=|=|=|}  
+	\endfirsthead
+	
+	\hline
+	\textbf{Methode} & \textbf{URI} & \textbf{Beschreibung} & \textbf{Anfrage-Parameter\+/Rückgabewerte} \\ 
+	\hhline{|=|=|=|=|}  
+	\endhead
+	
+	\hhline{|=|=|=|=|}   
+	\endlastfoot
+	%===============================================================================================
+	GET & /modules &  Lese planunabhängige Modul-Liste (gefiltert) (Name, ECTS und Dozent) & Anfrage: ??? \newline Rückgabe: \jsonobj{ModulesResult} \\
+	% Module Zugriff wie bei /plans bloß unabhängig (ohne Präferenzen) für  Profilansicht
+	\hhline{|=|=|=|=|} 
+	GET & /student & Lese Informationen über Student & Anfrage: ??? \newline Rückgabe: \jsonobj{StudentResult} \\ 
+	\hline
+	PUT & /student & Ersetze Informationen über Student, lösche Verifikationsinformationen & Anfrage: \jsonobj{StudentPutRequest} \newline Rückgabe: \jsonobj{StudentResult} \\ 
+	\hline
+	DELETE & /student & Löscht Student & Anfrage: \jsonobj{StudentDeleteRequest} \newline Rückgabe: --- \\ 
+	\hhline{|=|=|=|=|} 
+	GET & /plans & Lese Planliste & Anfrage: ??? \newline Rückgabe: \jsonobj{PlansGetResult} \\ 
+	\hline
+	POST & /plans & Erstellt neuen Studienplan & Anfrage: \jsonobj{PlansPostRequest} \newline Rückgabe: \jsonobj{PlansPostResult} \\ 
+	\hhline{|=|=|=|=|} 
+	GET & /plans/\jsonatom{Plan-ID} & Lese Plan & Anfrage: ??? \newline Rückgabe: \jsonobj{PlanResult} \\ 
+	\hline
+	PUT & /plans/\jsonatom{Plan-ID} & Ersetze Plan & Anfrage: \jsonobj{PlanPutRequest} \newline Rückgabe: \jsonobj{PlanResult}\\ 
+	\hline
+	PATCH & /plans/\jsonatom{Plan-ID} & Bearbeite Plan: Name ändern & Anfrage: \jsonobj{PlanPatchPostRequest} \newline Rückgabe: \jsonobj{PlanPatchPostResult} \\ 
+	\hline
+	DELETE & /plans/\jsonatom{Plan-ID} & Lösche Plan & --- \\ 
+	\hline
+	POST & /plans/\jsonatom{Plan-ID} & Dupliziere Plan & Anfrage: \jsonobj{PlanPatchPostRequest} \newline Rückgabe: \jsonobj{PlanPatchPostResult} \\ 
+	\hhline{|=|=|=|=|} 
+	GET & /plans/\+\jsonatom{Plan-ID}/\+modules & Lese Modul-Liste (gefiltert) (Name, ECTS, Dozent und Präferenz) & Anfrage: ??? \newline Rückgabe: \jsonobj{PlanModulesResult} \\ 
+	\hhline{|=|=|=|=|} 
+	GET & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID} & Lese Modul mit \jsonatom{Modul-ID} & Anfrage: ??? \newline Rückgabe: \jsonobj{PlanModuleResult} \\ 
+	\hline
+	PUT & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID} & Setze Modul in Plan in gegebenes Semester, setzte Verifizierung zurück & Anfrage: \jsonobj{PlanModulePutRequest} \newline Rückgabe: \jsonobj{PlanModulePutResult} \\ 
+	\hline
+	DELETE & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID} & Lösche Modul aus Plan, setzte Verifizierung zurück & Anfrage: \jsonobj{PlanModuleDeleteRequest} \newline Rückgabe: --- \\ 
+	\hline
+	PUT & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID}/\+preference & Setze Bewertung für Modul & Anfrage: \jsonobj{ModulePreferencePutRequest} \newline Rückgabe: \jsonobj{ModulePreferencePutResult} \\ 
+	\hhline{|=|=|=|=|} 
+	GET & /plans/\+\jsonatom{Plan-ID}/\+verification & Verifiziere den Plan, gebe das Ergebnis zurück und speichere es in der Datenbank  &  Anfrage: ??? \newline Rückgabe: \jsonobj{PlanVerificationResult} \\ 
+	\hhline{|=|=|=|=|} 
+	GET & /plans/\+\jsonatom{Plan-ID}/\+proposal/\+\jsonatom{Zielfunktion-ID} & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & Anfrage: ??? \newline Rückgabe: \jsonobj{PlanProposalResult} \\ 
+	\hhline{|=|=|=|=|} 
+	GET & /plans/\+\jsonatom{Plan-ID}/\+pdf & Lese PDF-Version des Plans & Anfrage: ??? \newline Rückgabe: (Weiterleitung auf PDF) \\  
+	\hhline{|=|=|=|=|} 
+	GET  & /filters & Lade Filtertypen und Beschränkungen & Anfrage: --- \newline Rückgabe: \jsonobj{FiltersResult} \\ 
+	\hline %\hhline{|=|=|=|=|} 
+	GET & /objective-functions & Lese Liste mit allen vorhandenen Zielfunktionen & Anfrage: --- \newline Rückgabe: \jsonobj{ObjectiveFunctionsResult} \\ 
+	\hhline{|=|=|=|=|} 
+	GET & /subjects & Lese Liste mit allen angebotenen Studienfächern & Anfrage: --- \newline Rückgabe: \jsonobj{SubjectsResult} \\ 
+\end{longtable}
