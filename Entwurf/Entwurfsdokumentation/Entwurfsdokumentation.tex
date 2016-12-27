@@ -3,6 +3,7 @@
 \usepackage[T1]{fontenc}    % avoid garbled Unicode text in pdf
 \usepackage{palatino}	      % because "Computer Modern" standard font is illegible
 \usepackage{mathpazo}
+\usepackage{amsmath}
 \usepackage[ngerman]{babel}  % german hyphenation, quotes, etc
 \usepackage{hyperref}       % detailed hyperlink/pdf configuration
 \hypersetup{                % ‘texdoc hyperref‘ for options
@@ -24,21 +25,26 @@
 \usepackage{needspace}
 \usepackage[toc, page]{appendix}
 \usepackage{tabularx}
+\usepackage{tabulary}
 
 \usepackage{microtype}
 \usepackage{MnSymbol}
 \usetikzlibrary{positioning}
 \input{style/json}
+\input{style/algo}
 
 % needed to define linebreak points without hyphenation (useful for URL wrapping)
 \newcommand{\+}{\discretionary{}{}{}}
 
 \renewcommand{\arraystretch}{1.24}  % for proper row spacing in tables
 
+\renewcommand{\to}{\longrightarrow} % proper math typography
+\newcommand{\NN}{\mathbb{N}}
+
 \addto\captionsngerman{\let\appendixtocname\appendixname\let\appendixpagename\appendixname}
 
 % fix hyphenation
-\hyphenation{Log-out Log-in Ak-tions Ak-tion ge-öff-net liken dis-liken Like Dis-like No-ti-fi-ca-tion Mo-dule inkl Au-tho-ri-za-tion}
+\hyphenation{Log-out Log-in Ak-tions Ak-tion ge-öff-net liken dis-liken Like Dis-like No-ti-fi-ca-tion Mo-dule inkl Au-tho-ri-za-tion Web-App}
 
 \usepackage{enumitem}
 \setlist[itemize]{nosep}

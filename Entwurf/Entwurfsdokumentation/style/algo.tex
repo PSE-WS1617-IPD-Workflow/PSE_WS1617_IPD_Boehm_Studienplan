@@ -1,0 +1,40 @@
+\usepackage[vlined]{algorithm2e}
+% see http://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf  for more information
+\DontPrintSemicolon
+\SetKwSwitch{Switch}{Case}{Other}{case}{of}{}{else}{}{}
+\SetKw{KwAssert}{assert}
+\SetKw{KwInvariant}{invariant}
+\SetKw{KwStep}{step}
+\SetKw{KwDownto}{downto}	
+\SetKw{KwArrayOf}{array of }
+\SetKw{KwArray}{array }
+\SetKw{KwOf}{ of }
+\SetKw{KwNot}{ not }
+\SetKw{KwIs}{ is }
+\SetKw{KwAnd}{ and }
+\SetKw{KwOr}{ or }
+\SetKw{KwBreak}{break}
+\SetKw{KwThrow}{throw}
+\SetKw{KwTrue}{true}
+\SetKw{KwFalse}{false}
+\SetKwBlock{KwFunc}{function}{}
+\SetKwBlock{KwProc}{procedure}{}
+\newcommand{\Function}[2]{\KwFunc({#1}){#2}}
+\newcommand{\Procedure}[2]{\KwProc({#1}){#2}}
+\SetKwData{KwList}{List}
+\SetKwData{KwSet}{Set}
+\newcommand{\KwListOf}{\KwList \KwOf}
+\newcommand{\KwSetOf}{\KwSet \KwOf}
+\SetKwComment{Comment}{// }{}
+\newcommand{\LComment}[1]{\hspace{-2pt}\Comment*[l]{#1}}
+\newcommand{\RComment}[1]{$ \qquad $ \Comment*[h]{#1} \\}
+\newcommand{\RCommentNoBreak}[1]{$ \qquad $ \Comment*[h]{#1}}
+\newcommand{\MyCommentSty}[1]{\emph{\textcolor{gray}{#1}}}
+\SetCommentSty{MyCommentSty}
+\SetFuncSty{emph}
+\definecolor{kwblue}{rgb}{0.3,0.3,1}
+\newcommand{\MyKwSty}[1]{\textcolor{kwblue}{\textbf{#1}}}
+\SetKwSty{MyKwSty}
+\newcommand{\Call}[2]{\FuncSty{#1}(#2)}
+\newcommand{\pluseq}{\mathrel{+}=}
+\newcommand{\Var}[1]{\textit{#1}}

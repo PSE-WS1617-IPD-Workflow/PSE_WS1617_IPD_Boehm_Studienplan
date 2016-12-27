@@ -1,75 +1,16 @@
-\section{REST-Webservice Spezifikation}
-\subsection{Konvention}
-Atomare Werte werden mittels \jsonatom{name} angegeben, wobei name ein eindeutiger Bezeichner für den Wert ist.\\
-Zusammengesetzte JSON-Datenklassen werden mittels \jsonobj{name} angegeben, wobei name ein eindeutiger Bezeichner für das JSON-Datenklassen ist.\\
-Teile einer zusammengesetzten JSON-Datenklasse werden mittels \jsonpart{name}{prop1, prop2, prop3} angegeben, wobei prop1, prop2, prop3 die einzigen Werte sind, welche angezeigt werden.
-\input{content/json/Daniel}
-\input{content/json/Hannes}
-\input{content/json/Samuel}
+\section{REST-Webservice-Spezifikation}
+\subsection{Notation}
+Atomare Werte werden mittels \jsonatom{Name} angegeben, wobei \textit{Name} ein eindeutiger Bezeichner für den Wert ist.\\
+JSON-Datenklassen werden mittels \jsonobj{Name} angegeben, wobei \textit{Name} ein eindeutiger Bezeichner für die JSON-Datenklasse ist.\\
+JSON-Objekte, die nur eine Teilmenge aller Attribute einer JSON-Datenklasse \jsonobj{Name} enthalten, werden mittels \jsonpart{Name}{$\textnormal{prop}_1, ..., \textnormal{prop}_n$} angegeben, wobei $\textnormal{prop}_1, ..., \textnormal{prop}_n$ die enthaltenen Attribute benennen.
 
-\FloatBarrier
-\subsection{Atomare Werte}
+\input{content/rest_authentification}
 
-\FloatBarrier
-\subsection{Spezifikation der JSON-Datenklassen}
-\begin{lstlisting}[language=json,firstnumber=-3]
-(*\jsonobj{Modul}*) = {
-	"menu": {
-		"id": (*\jsonatom{Modul-ID}*),
-		"value": "File",
-		"popup": {
-			"menuitem": [
-				{"value": "New", "onclick": "CreateNewDoc()"},
-				{"value": "Open", "onclick": "OpenDoc()"},
-				{"value": "Close", "onclick": "blub"}
-			]
-		}
-	},
-	"foo" : "bar",
-	"bar" : "foo"
-}
-\end{lstlisting}
-\jsonpart{Modul}{menu, foo} wäre die JSON-Datenklasse \jsonobj{Modul} ohne bar.
+\input{content/rest_atoms}
 
-\FloatBarrier
-\subsection{Zugriffsstruktur}
-%Jede Seite einaml den Titel
-\begin{longtable}{| >{\hspace{0pt}} p{.11\linewidth} | >{\hspace{0pt}} p{.26\linewidth} | >{\hspace{0pt}} p{.26\linewidth} | >{\hspace{0pt}} p{.27\linewidth} | }
-	\hline
-	\textbf{Methode} & \textbf{URI} & \textbf{Beschreibung} & \textbf{\hspace{0pt}Kommunikationsdaten (Note to self: finde schöneres Wort!)} \\ \hline  \hline
-	\\ \hline
-	& & & \\ \hline
-	GET & /student & Lese Informationen über Student & tbd	\\ \hline
-	PUT & /student & Ersetze Informationen über Student, lösche Verifikationsinformationen & tbd
-	\\ \hline
-	DELETE & /student & Löscht Student & tbd \\ \hline
-	& & & \\ \hline
-	POST & /plans & Erstellt neuen Studienplan & tbd \\ \hline
-	GET & /plans & Lese Planliste & tbd \\ \hline
-	GET & /plans/\{plan\_id\} & Lese Plan & tbd \\ \hline
-	PUT & /plans/\{plan\_id\} & Ersetze Plan & tbd \\ \hline
-	PATCH & /plans/\{plan\_id\} & Bearbeite Plan: Name ändern (setzte Verifizierung zurück) & tbd \\ \hline
-	DELETE & /plans/\{plan\_id\} & Lösche Plan & tbd \\ \hline
-	POST & /plans/\{plan\_id\} & Dupliziere Plan & tbd \\ \hline
-	GET & /plans/\{plan\_id\}/\+modules & Lese Modul-Liste (gefiltert) (Name, ECTS, Dozent und Präferenz) & tbd \\ \hline
-	GET & /plans/\{plan\_id\}/\+modules/\{module\_id\} & Lese Modul mit \{module\_id\} & tbd \\ \hline
-	% Wie harmoniert das mit JavaScript? Beides zusammen? PUT zu POST machen? Sont was?
-	PUT & /plans/\{plan\_id\}/\+modules/\{module\_id\} & Setze Modul in Plan in gegebenes Semester, setzte Verifizierung zurück & tbd \\ \hline
-	DELETE & /plans/\{plan\_id\}/\+modules/\{module\_id\} & Lösche Modul aus Plan, setzte Verifizierung zurück & tbd \\ \hline
-	PUT & /plans/\{plan\_id\}/\+modules/\{module\_id\}/\+preference & Setze Bewertung für Modul & tbd \\ \hline
-	& & & \\ \hline
-	GET & /plans/\{plan\_id\}/\+verification & Verifiziere den Plan, gebe das Ergebnis zurück und speichere es in der Datenbank & tbd \\ \hline
-	& & & \\ \hline
-	GET & /plans/\{plan\_id\}/\+proposal & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & tbd \\ \hline
-	& & & \\ \hline
-	GET & /plans/\{plan\_id\}/pdf & Lese PDF-Version des Plans & tbd \\ \hline
-	GET & /plans/\{plan\_id\}/\+share & Lese Link zum teilen des Plans & tbd \\ \hline
-	& & & \\ \hline
-	GET  & /filters & Lade Filtertypen und Beschränkungen & tbd \\ \hline
-	GET & /objective-functions & Lese Liste mit allen vorhandenen Zielfunktionen & tbd \\ \hline
-	GET & /subjects & Lese Liste mit allen angebotenen Studienfächern & tbd \\ \hline
-	% Module Zugriff wie bei /plans bloß unabhängig (ohne Präferenzen) für  Profilansicht
-\end{longtable}
+\input{content/rest_json_classes}
 
-\FloatBarrier
-\subsection{Spezifikation der Statuscodes}
+\input{content/rest_commands}
+
+\input{content/rest_status_codes}
+

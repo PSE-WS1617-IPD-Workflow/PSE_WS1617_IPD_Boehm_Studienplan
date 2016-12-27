@@ -1,0 +1,92 @@
+\subsection{Generierungs-Algorithmus}
+
+\newcommand{\id}[1]{\textit{id}_{#1}}
+\newenvironment{nstabbing}{
+	\setlength{\topsep}{-\parskip}%
+	\setlength{\partopsep}{0pt}%
+	\tabbing
+}{\endtabbing}
+
+\subsubsection{Einstieg}
+Wir nehmen zunächst an, dass eine Menge an Modulen $M$ in der Form $(\id{\textit{modul}}, \textit{ects}, \textit{constraints})$ gegeben ist.
+Hierbei besteht \textit{constraints} aus einer Menge an Constraints der Form $(\id{\textit{modul1}}, \id{\textit{modul2}}, \textit{typ})$ mit $\textit{typ} \in \{\textit{prerequisite}, \textit{both}, \textit{symmetry}, \textit{antisymmetry}\}$ \\
+Wir beschreiben einen \textit{Studienplan} als eine Menge $P$ von Tupeln der Form $(\textit{num}_{\textit{semester}}, \textit{modul})$ wobei $\textit{num}_{\textit{semester}} \in \NN \cup \{\infty\}$ ($\infty$ ist hierbei für ewige Studenten, welche Module schieben wollen) und \textit{modul} wie oben beschrieben. Eine \textit{Familie} beschreibt eine Menge von \textit{Studienplänen}.\\
+Weiter existiert über der Menge aller Studienpläne $\Psi$ eine Zielfunktion  $\sigma : \Psi \to [0,1]$.
+
+\subsubsection{Genetischer Algorithmus}
+Der Algorithmus erhält die oben beschriebene Menge $M$ und generiert mit Hilfe von  \ref{subsec:genalg-random-generation} eine \textit{Famile} $F$ mit $|F| = O \in \NN$ \textit{Studienplänen}.\\
+Anschließend wählt er ein beliebiges $p \in \{q \in F \mid \sigma(q)=\max \{\sigma(t) \mid t \in F \} \}$.\\
+Mittels \ref{subsec:genalg-random-modification} wird auf Basis von $p$ eine neue Familie $F'$ mit $|F'| = O$ erstellt, aus welcher erneut ein $p' \in \{q \in F' \mid \sigma(q) = \max \{\sigma(t) \mid t \in F' \} \}$ gewählt wird. Der letzte Schritt wird mit $p := p'$ dann $R \in \NN$ mal wiederholt.
+Anschließend wird das letzte generierte $p'$ als generierter Studienplan ausgegeben.
+
+\subsubsection{Zufällige Generierung}
+\label{subsec:genalg-random-generation}
+Zunächst generieren wir auf Basis der übergebenen Module $m \in M$ einen Graphen $G = (V, E)$ mit 
+\begin{nstabbing}
+	\quad $V = M \cup \{m \mid \exists n \in M: $ \= es ex. ein Constraint der Form $ (\id{m}, \id{n}, \textit{prerequisite}) $, \\ 
+	\> $ (\id{m}, \id{n}, \textit{both}) $ oder $ (\id{n}, \id{m}, \textit{both}) \} $, 
+\end{nstabbing}
+\begin{nstabbing}
+	\quad $E = \{ (m, n) \mid $ \= es ex. ein Constraint der Form $ (\id{m}, \id{n}, \textit{prerequisite}) $ \\
+	\> oder $ (\id{m}, \id{n}, \textit{both})  \} $.
+\end{nstabbing}
+Bei \textit{both} ist zu beachten, dass $ m $ oder $ m $ und $ n $ bestandene Module sein können, nicht jedoch nur $ n $.
+\begin{equation}
+\sum_{m\in V}m.ects \geqslant 180
+\label{equ:genalg-enough-ects}
+\end{equation}
+Zunächst definieren wir die Menge $Z=\emptyset$ aller zufällig hinzugefügten Module.
+Ist die Ungleichung erfüllt, so ist der Studienplan damit fertiggestellt und mittels \ref{subsec:genalg-contract-topolog-sort} kann der Plan fertig gestellt werden.
+Ist die Ungleichung nicht erfüllt, wird für ein zufälliges Modul $m$ des gewählten Vertiefungs-Fachs gesetzt:
+\begin{align*} 
+	Z' &:= Z \cup \{m\} \\
+	V' &:= V \cup \{m\} \cup \{n \mid \text{es ex. ein Constraint der Form $ (\id{m}, \id{n}, \textit{prerequisite}) $, $ (\id{m}, \id{n}, \textit{both}) $ } \}  \\
+	E' &:= E \cup \{ (n, m) \mid \text{es ex. ein Constraint der Form $(\id{n}, \id{m}, \textit{prerequisite})$, $(\id{n}, \id{m}, \textit{both})$ } \}
+\end{align*}
+Anschließend wird erneut Ungleichung (\ref{equ:genalg-enough-ects}) überprüft und wie oben beschrieben vorgegangen.
+
+\subsubsection{Zufällige Modifizierung}
+\label{subsec:genalg-random-modification}
+Für einen beliebigen wie in \ref{subsec:genalg-random-generation} als Graph dargestellten Plan, wähle man zufällig ein Modul $m \in Z$ und lösche diese samt seiner nur für dieses Modul $m$ benötigten Abhängigkeiten. Diesen Schritt führe man $l \in \mathbb{N}$ mal aus.\\
+Anschließend füge man -- wie in \ref{subsec:genalg-random-generation} beschrieben -- erneut Module hinzu, bis Ungleichung (\ref{equ:genalg-enough-ects}) wieder erfüllt wird.
+
+\subsubsection{Kontraktion der topologischen Sortierung}
+\label{subsec:genalg-contract-topolog-sort}
+Zunächst wird der Graph mittels Tiefensuche topologisch sortiert und
+anschließend  mit unten beschriebenen Algorithmus parallelisiert.
+Hierbei werden die bereits gesetzen Module zunächst in die vom Nutzer vorgegebenen Semester gesetzt.
+
+Sei also $G = (V,E)$ ein DAG und $s: \{1,..,|V|\} \to V$ seine topologische Sortierung, $c: V \to Q$ die Gewichtungsfunktion. Sei weiter $P = V \times V$ eine symmetrische, transitive Relation von Knoten, welche nicht parallel gesetzt werden dürfen.
+Sei weiter $ k \in \NN $ das Maximum pro parallelem Schritt.
+Weiter sei $ p: V \times \NN \to \{\KwTrue, \KwFalse\} $ eine Funktion, die angibt, ob ein gegebener Knoten in ein gegebenes Semester gesetzt werden darf (Winter- und Sommersemester-Regelung).
+
+\begin{algorithm}
+	\LComment{Initialisiere:}
+	$\Var{bucketAllocation} : \KwArray [1...|V|] \KwOf \NN $ \;
+	$\Var{bucketSum} : \KwArray [1...|V|] \KwOf \NN $ \;
+	$\Var{minPos} := \langle 1,...,1 \rangle: \KwArray [1...|V|] \KwOf \NN $ \;
+	\BlankLine
+	\LComment{Iteriere über alle $v \in V$ in topologischer Sortierung}
+	\For{$i := 1$ \KwTo $|V|$}{
+		$v := s(i)$ \;
+		$\Var{set} := \KwFalse$ \;
+		\For{$j := \Var{minPos}[i]$ \KwTo $|V|$}{
+			\If{$c(v) + \Var{bucketSum}[j] \leqslant k $ \\
+				\Indp \KwAnd $\forall(v,u) \in P: \Var{bucketAllocation}[s^{-1} (u)] \ne j $ \\ 
+				\KwAnd $p(v,j) $ \\ }{
+				$\Var{bucketAllocation}[i] := j $ \RCommentNoBreak{setze v in Bucket j} \;
+				$\Var{bucketSum}[j] \pluseq c(v)$ \;
+				\ForEach{$(v,u) \in E$}{
+					$ \Var{minPos}[i] := \max \{j + 1, \Var{minPos}[i]\} $ \;
+				}
+				$\Var{set} := true$ \;
+				\KwBreak \;
+			}
+		}
+		\If{$\KwNot \Var{set}$}{
+			\KwThrow Exception  \RCommentNoBreak{Knoten zu groß} \;
+		} 
+	} 
+\end{algorithm}
+
+% https://docs.google.com/document/d/1GjRJpvLLVv-inBgDgmrVt-f3btAeqErk6v5kuAnb7Yk/edit?usp=sharing
