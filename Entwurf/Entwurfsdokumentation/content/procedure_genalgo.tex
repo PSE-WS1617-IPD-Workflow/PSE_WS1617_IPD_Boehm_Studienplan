@@ -9,10 +9,10 @@
 
 \subsubsection{Einstieg}
 Wir nehmen zunächst an, dass eine Menge an Modulen $M$ in der Form $(\id{\textit{modul}}, \textit{ects}, \textit{constraints})$ gegeben ist.
-Hierbei besteht \textit{constraints} aus einer Menge an Constraints der Form $(\id{\textit{modul1}}, \id{\textit{modul2}}, \textit{typ})$ mit $\textit{typ} \in \{\textit{prerequisite}, \textit{both}, \textit{symmetry}, \textit{antisymmetry}\}$ \\
-Wir sehen im Folgenden einen Constraint der Form $(\id{\textit{modul1}}, \id{\textit{modul2}}, \textit{both})$ und $(\id{\textit{modul2}}, \id{\textit{modul1}}, \textit{both})$ als Äquivalent an.\\
+Hierbei besteht \textit{constraints} aus einer Menge an Constraints der Form $(\id{\textit{modul1}}, \id{\textit{modul2}}, \textit{typ})$ mit $\textit{typ} \in \{\textit{prerequisite}, \textit{both}, \textit{symmetry}, \textit{antisymmetry}\}$. \\
+Constraints der Form $(\id{\textit{modul1}}, \id{\textit{modul2}}, \textit{both})$ und $(\id{\textit{modul2}}, \id{\textit{modul1}}, \textit{both})$ gelten im Folgenden als äquivalent.\\
 Wir sehen $ \mathcal{M} $ als die Menge aller vorhandenen Module an.
-Wir beschreiben einen \textit{Studienplan} als eine Menge $P$ von Tupeln der Form $(\textit{num}_{\textit{semester}}, \textit{modul})$ wobei $\textit{num}_{\textit{semester}} \in \NN \cup \{\infty\}$ ($\infty$ ist hierbei für ewige Studenten, welche Module schieben wollen) und \textit{modul} wie oben beschrieben. Eine \textit{Familie} beschreibt eine Menge von \textit{Studienplänen}.\\
+Wir beschreiben einen \textit{Studienplan} als eine Menge $P$ von Tupeln der Form $(\textit{num}_{\textit{semester}}, \textit{modul})$, wobei $\textit{num}_{\textit{semester}} \in \NN \cup \{\infty\}$\footnote{$\infty$ steht hierbei für ewige Studenten, welche Module schieben wollen.} und \textit{modul} wie oben beschrieben. Eine \textit{Familie} beschreibt eine Menge von \textit{Studienplänen}. \\
 Weiter existiert über der Menge aller Studienpläne $\Psi$ eine Zielfunktion  $\sigma : \Psi \to [0,1]$.
 
 \subsubsection{Genetischer Algorithmus}
@@ -40,7 +40,7 @@ Bei \textit{both} ist zu beachten, dass $ m $ oder $ m $ und $ n $ bestandene Mo
 \label{equ:genalg-enough-ects}
 \end{equation}
 Zunächst definieren wir die Menge $Z=\emptyset$ aller zufällig hinzugefügten Module.
-Ist die Ungleichung \ref{equ:genalg-enough-ects} erfüllt, so ist der Studienplan damit fertiggestellt und mittels \ref{subsec:genalg-contract-topolog-sort} kann der Plan fertig gestellt werden.
+Ist die Ungleichung \ref{equ:genalg-enough-ects} erfüllt, so kann mittels \ref{subsec:genalg-contract-topolog-sort} der Plan fertiggestellt werden.
 Ist die Ungleichung nicht erfüllt, wird für ein zufälliges Modul $m$ des gewählten Vertiefungs-Fachs gesetzt:
 \begin{nstabbing} 
 	\quad $Z' := Z \cup \{m\}$ \\
@@ -50,7 +50,7 @@ Ist die Ungleichung nicht erfüllt, wird für ein zufälliges Modul $m$ des gew�
 	\quad $E' := E \cup \{ (n, m) \in V' \times V' \mid$ \= es ex. ein Constraint der Form $(\id{n}, \id{m}, \textit{prerequisite})$,\\
 	\> $(\id{n}, \id{m}, \textit{both})  \}$
 \end{nstabbing}
-Auch hier wird der Prozess zur Erweiterung von $V'$ iterativ vorgenommen bis alle Constraint-Module in $V'$ aufgenommen wurden.
+Auch hier wird der Prozess zur Erweiterung von $V'$ iterativ vorgenommen, bis alle Constraint-Module in $V'$ aufgenommen wurden.
 Anschließend wird erneut Ungleichung (\ref{equ:genalg-enough-ects}) überprüft und wie oben beschrieben vorgegangen.
 
 \subsubsection{Zufällige Modifizierung}
@@ -64,7 +64,7 @@ Zunächst wird der Graph mittels Tiefensuche topologisch sortiert und
 anschließend  mit unten beschriebenen Algorithmus parallelisiert.
 Hierbei werden die bereits gesetzen Module zunächst in die vom Nutzer vorgegebenen Semester gesetzt.
 
-Sei also $G = (V,E)$ ein DAG und $s: \{1,..,|V|\} \to V$ seine topologische Sortierung, $c: V \to Q$ die Gewichtungsfunktion. Sei weiter $P = V \times V$ eine symmetrische, transitive Relation von Knoten, welche nicht parallel gesetzt werden dürfen.
+Sei also $G = (V,E)$ ein DAG und $s: \{1,..,|V|\} \to V$ seine topologische Sortierung, $c: V \to [0,1]$ die Gewichtungsfunktion. Sei weiter $P = V \times V$ eine symmetrische, transitive Relation von Knoten, welche nicht parallel gesetzt werden dürfen.
 Sei weiter $ k \in \NN $ das Maximum pro parallelem Schritt.
 Weiter sei $ p: V \times \NN \to \{\KwTrue, \KwFalse\} $ eine Funktion, die angibt, ob ein gegebener Knoten in ein gegebenes Semester gesetzt werden darf (Winter- und Sommersemester-Regelung sowie (Anti-)Symmetrie-Constraints).
 
@@ -87,7 +87,7 @@ Weiter sei $ p: V \times \NN \to \{\KwTrue, \KwFalse\} $ eine Funktion, die angi
 				\ForEach{$(v,u) \in E$}{
 					$ \Var{minPos}[i] := \max \{j + 1, \Var{minPos}[i]\} $ \;
 				}
-				$\Var{set} := true$ \;
+				$\Var{set} := \KwTrue$ \;
 				\KwBreak \;
 			}
 		}
