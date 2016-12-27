@@ -28,6 +28,9 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_sQjwwMbMEeatL4q6a14nzw" name="cycleType" visibility="private" type="_VdHvIL4OEeaoO4fCpQc-Qw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ijKhgMx2Eea7FKVRIQ7ugA" name="compulsory" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_1pGj4L4NEeaoO4fCpQc-Qw" name="ModuleDescription">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_R8G7oMbDEeatB58sIl8nCg" name="descriptionId" visibility="private">
