@@ -3,6 +3,12 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_zLhWsMK5EeafkJA2mXH8uA">
     <importedPackage xmi:type="uml:Package" href="JSView.uml#_u9pQcLfWEea2RYsZ51fiPw"/>
   </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_si-OoMwrEeaUspSTNf28yQ" name="MainRouter">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_0yoXsMwrEeaUspSTNf28yQ" name="mainPage"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_19vf8MwrEeaUspSTNf28yQ" name="editPage"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_34KlQMwrEeaUspSTNf28yQ" name="comparisonPage"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CXttUMwsEeaUspSTNf28yQ" name="loginPage"/>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_xlO6MMFMEea4cKsDHzskZQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xlO6McFMEea4cKsDHzskZQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

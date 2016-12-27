@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_PnAEAMwqEeaUspSTNf28yQ" type="PapyrusUMLClassDiagram" name="Class Diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_S44EcMwqEeaUspSTNf28yQ" type="DataType_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_S44EcswqEeaUspSTNf28yQ" type="DataType_NameLabel"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_S44Ec8wqEeaUspSTNf28yQ" type="DataType_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_S44rgMwqEeaUspSTNf28yQ" y="5"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_S44rgcwqEeaUspSTNf28yQ" type="DataType_AttributeCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_S44rgswqEeaUspSTNf28yQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_S44rg8wqEeaUspSTNf28yQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_S44rhMwqEeaUspSTNf28yQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S44rhcwqEeaUspSTNf28yQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_S44rhswqEeaUspSTNf28yQ" type="DataType_OperationCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_S44rh8wqEeaUspSTNf28yQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_S44riMwqEeaUspSTNf28yQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_S44ricwqEeaUspSTNf28yQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S44riswqEeaUspSTNf28yQ"/>
+    </children>
+    <element xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S44EccwqEeaUspSTNf28yQ" x="223" y="84"/>
+  </children>
+  <styles xmi:type="notation:StringValueStyle" xmi:id="_PnAEAcwqEeaUspSTNf28yQ" name="diagram_compatibility_version" stringValue="1.2.0"/>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_PnAEAswqEeaUspSTNf28yQ"/>
+  <styles xmi:type="style:PapyrusViewStyle" xmi:id="_PnAEA8wqEeaUspSTNf28yQ">
+    <owner xmi:type="uml:Model" href="JavascriptBasics.uml#_Pm4IMMwqEeaUspSTNf28yQ"/>
+  </styles>
+  <element xmi:type="uml:Model" href="JavascriptBasics.uml#_Pm4IMMwqEeaUspSTNf28yQ"/>
+</notation:Diagram>
