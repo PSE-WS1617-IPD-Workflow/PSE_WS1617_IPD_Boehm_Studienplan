@@ -10,6 +10,8 @@
 \subsubsection{Einstieg}
 Wir nehmen zunächst an, dass eine Menge an Modulen $M$ in der Form $(\id{\textit{modul}}, \textit{ects}, \textit{constraints})$ gegeben ist.
 Hierbei besteht \textit{constraints} aus einer Menge an Constraints der Form $(\id{\textit{modul1}}, \id{\textit{modul2}}, \textit{typ})$ mit $\textit{typ} \in \{\textit{prerequisite}, \textit{both}, \textit{symmetry}, \textit{antisymmetry}\}$ \\
+Wir sehen im Folgenden einen Constraint der Form $(\id{\textit{modul1}}, \id{\textit{modul2}}, \textit{both})$ und $(\id{\textit{modul2}}, \id{\textit{modul1}}, \textit{both})$ als Äquivalent an.\\
+Wir sehen $ \mathcal{M} $ als die Menge aller vorhandenen Module an.
 Wir beschreiben einen \textit{Studienplan} als eine Menge $P$ von Tupeln der Form $(\textit{num}_{\textit{semester}}, \textit{modul})$ wobei $\textit{num}_{\textit{semester}} \in \NN \cup \{\infty\}$ ($\infty$ ist hierbei für ewige Studenten, welche Module schieben wollen) und \textit{modul} wie oben beschrieben. Eine \textit{Familie} beschreibt eine Menge von \textit{Studienplänen}.\\
 Weiter existiert über der Menge aller Studienpläne $\Psi$ eine Zielfunktion  $\sigma : \Psi \to [0,1]$.
 
@@ -23,26 +25,32 @@ Anschließend wird das letzte generierte $p'$ als generierter Studienplan ausgeg
 \label{subsec:genalg-random-generation}
 Zunächst generieren wir auf Basis der übergebenen Module $m \in M$ einen Graphen $G = (V, E)$ mit 
 \begin{nstabbing}
-	\quad $V = M \cup \{m \mid \exists n \in M: $ \= es ex. ein Constraint der Form $ (\id{m}, \id{n}, \textit{prerequisite}) $, \\ 
-	\> $ (\id{m}, \id{n}, \textit{both}) $ oder $ (\id{n}, \id{m}, \textit{both}) \} $, 
+	\quad $V := M$\\
+	\quad $V' := V \cup \{m \in \mathcal{M} \mid \exists n \in V: $ \= es ex. ein Constraint der Form $ (\id{m}, \id{n}, \textit{prerequisite}), $ \\ 
+	\> $ (\id{m}, \id{n}, \textit{both}) \} $ oder $ (\id{m}, \id{n}, \textit{symmetry}) \} $, 
 \end{nstabbing}
 \begin{nstabbing}
-	\quad $E = \{ (m, n) \mid $ \= es ex. ein Constraint der Form $ (\id{m}, \id{n}, \textit{prerequisite}) $ \\
+	\quad $E := \{ (m, n) \in V' \times V' \mid $ \= es ex. ein Constraint der Form $ (\id{m}, \id{n}, \textit{prerequisite}) $ \\
 	\> oder $ (\id{m}, \id{n}, \textit{both})  \} $.
 \end{nstabbing}
+Der Prozess zur Generierung von $V'$ wird solange weitergeführt, bis alle Abhängigkeiten enthalten sind.
 Bei \textit{both} ist zu beachten, dass $ m $ oder $ m $ und $ n $ bestandene Module sein können, nicht jedoch nur $ n $.
 \begin{equation}
 \sum_{m\in V}m.ects \geqslant 180
 \label{equ:genalg-enough-ects}
 \end{equation}
 Zunächst definieren wir die Menge $Z=\emptyset$ aller zufällig hinzugefügten Module.
-Ist die Ungleichung erfüllt, so ist der Studienplan damit fertiggestellt und mittels \ref{subsec:genalg-contract-topolog-sort} kann der Plan fertig gestellt werden.
+Ist die Ungleichung \ref{equ:genalg-enough-ects} erfüllt, so ist der Studienplan damit fertiggestellt und mittels \ref{subsec:genalg-contract-topolog-sort} kann der Plan fertig gestellt werden.
 Ist die Ungleichung nicht erfüllt, wird für ein zufälliges Modul $m$ des gewählten Vertiefungs-Fachs gesetzt:
-\begin{align*} 
-	Z' &:= Z \cup \{m\} \\
-	V' &:= V \cup \{m\} \cup \{n \mid \text{es ex. ein Constraint der Form $ (\id{m}, \id{n}, \textit{prerequisite}) $, $ (\id{m}, \id{n}, \textit{both}) $ } \}  \\
-	E' &:= E \cup \{ (n, m) \mid \text{es ex. ein Constraint der Form $(\id{n}, \id{m}, \textit{prerequisite})$, $(\id{n}, \id{m}, \textit{both})$ } \}
-\end{align*}
+\begin{nstabbing} 
+	\quad $Z' := Z \cup \{m\}$ \\
+	\quad $V' := V' \cup \{m\}$ \\
+	\quad $V' := V' \cup \{ n \in \mathcal{M} \mid \exists l \in V':$ \= es ex. ein Constraint der Form  $(\id{l}, \id{n}, \textit{prerequisite}), $ \\
+	\>  $(\id{l}, \id{n}, \textit{both})$  oder $(\id{l}, \id{n}, \textit{symmetry}) \}$  \\
+	\quad $E' := E \cup \{ (n, m) \in V' \times V' \mid$ \= es ex. ein Constraint der Form $(\id{n}, \id{m}, \textit{prerequisite})$,\\
+	\> $(\id{n}, \id{m}, \textit{both})  \}$
+\end{nstabbing}
+Auch hier wird der Prozess zur Erweiterung von $V'$ iterativ vorgenommen bis alle Constraint-Module in $V'$ aufgenommen wurden.
 Anschließend wird erneut Ungleichung (\ref{equ:genalg-enough-ects}) überprüft und wie oben beschrieben vorgegangen.
 
 \subsubsection{Zufällige Modifizierung}
@@ -58,7 +66,7 @@ Hierbei werden die bereits gesetzen Module zunächst in die vom Nutzer vorgegebe
 
 Sei also $G = (V,E)$ ein DAG und $s: \{1,..,|V|\} \to V$ seine topologische Sortierung, $c: V \to Q$ die Gewichtungsfunktion. Sei weiter $P = V \times V$ eine symmetrische, transitive Relation von Knoten, welche nicht parallel gesetzt werden dürfen.
 Sei weiter $ k \in \NN $ das Maximum pro parallelem Schritt.
-Weiter sei $ p: V \times \NN \to \{\KwTrue, \KwFalse\} $ eine Funktion, die angibt, ob ein gegebener Knoten in ein gegebenes Semester gesetzt werden darf (Winter- und Sommersemester-Regelung).
+Weiter sei $ p: V \times \NN \to \{\KwTrue, \KwFalse\} $ eine Funktion, die angibt, ob ein gegebener Knoten in ein gegebenes Semester gesetzt werden darf (Winter- und Sommersemester-Regelung sowie (Anti-)Symmetrie-Constraints).
 
 \begin{algorithm}
 	\LComment{Initialisiere:}
