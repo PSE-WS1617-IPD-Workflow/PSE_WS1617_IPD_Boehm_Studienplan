@@ -15,6 +15,7 @@ this.render();&#xD;
       <type xmi:type="uml:Class" href="JsModel_Plans.uml#_kX2ZAMbVEeasRKsBOCfOGQ"/>
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_WrxcUMzwEeaiINyVGHRfeA" name="addPlan"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="__-jMwM0LEeavo6is7kUH4g" name="compare"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_zLHrsMdnEea29-bQWKStRA" name="PlanEditPage">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_D9WJIM0CEeak492nI_BnEQ" name="sidebar">
@@ -24,8 +25,13 @@ this.render();&#xD;
       <type xmi:type="uml:Class" href="JsView_ViewComponents.uml#_uOEGYMdoEea29-bQWKStRA"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_MjLWgM0CEeak492nI_BnEQ" name="headBar">
-      <type xmi:type="uml:DataType" href="BackboneJs.uml#_S55R8MdlEea29-bQWKStRA"/>
+      <type xmi:type="uml:Class" href="JsView_ViewComponents.uml#_JwJ7oM0KEeavo6is7kUH4g"/>
     </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_z5gtkM0LEeavo6is7kUH4g" name="showModuleDetails">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_7fsb0M0LEeavo6is7kUH4g" name="module">
+        <type xmi:type="uml:Class" href="JsModel_Modules.uml#_9TRbYMPNEeaCPewWEdcdGQ"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_6ALmIMzlEeaiINyVGHRfeA" name="Header">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_LaT6sMzmEeaiINyVGHRfeA" name="sessionInformation">
