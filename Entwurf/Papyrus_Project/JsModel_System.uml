@@ -121,6 +121,36 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_QULekMzkEeaiINyVGHRfeA" type="_gUJ-wMzjEeaiINyVGHRfeA" association="_QUBtkMzkEeaiINyVGHRfeA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_jlv14MzkEeaiINyVGHRfeA" name="SimpleModuleCollection"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_u5Bv4M0DEeameZvbSNUikg" name="NotificationCollection">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_6Oi2oM0DEeameZvbSNUikg" name="notification" type="_w4JH8M0DEeameZvbSNUikg" association="_6OfMQM0DEeameZvbSNUikg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7m04MM0DEeameZvbSNUikg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7m3UcM0DEeameZvbSNUikg" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BON-gM0EEeameZvbSNUikg" name="instance" visibility="private" isStatic="true" type="_u5Bv4M0DEeameZvbSNUikg"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_DTCV8M0EEeameZvbSNUikg" name="getInstance" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_KlSbkM0EEeameZvbSNUikg" type="_u5Bv4M0DEeameZvbSNUikg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_No1FEM0EEeameZvbSNUikg" name="add">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_RvrlsM0EEeameZvbSNUikg" name="notification" type="_w4JH8M0DEeameZvbSNUikg"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_w4JH8M0DEeameZvbSNUikg" name="Notification">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_z4NmsM0DEeameZvbSNUikg" name="title" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_1e0_MM0DEeameZvbSNUikg" name="text" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_3H7rAM0DEeameZvbSNUikg" name="wasShown" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_6OfMQM0DEeameZvbSNUikg" memberEnd="_6Oi2oM0DEeameZvbSNUikg _6OsAkM0DEeameZvbSNUikg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6OiPkM0DEeameZvbSNUikg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6OiPkc0DEeameZvbSNUikg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_6OsAkM0DEeameZvbSNUikg" name="notificationcollection" type="_u5Bv4M0DEeameZvbSNUikg" association="_6OfMQM0DEeameZvbSNUikg"/>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_qiLJUMPMEeaCPewWEdcdGQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qiLJUcPMEeaCPewWEdcdGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

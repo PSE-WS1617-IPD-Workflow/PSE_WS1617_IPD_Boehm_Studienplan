@@ -9,8 +9,17 @@ welche wiederum die Render-Funktionen &quot;unterliegender&quot; Views aufruft.&
     <importedPackage xmi:type="uml:Package" href="JSModel.uml#_wOsBkLfWEea2RYsZ51fiPw"/>
   </packageImport>
   <packagedElement xmi:type="uml:Class" xmi:id="_IEUhcMdjEea29-bQWKStRA" name="MainView">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_Gh-SwMzmEeaiINyVGHRfeA" name="sessionInformation">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Gh-SwMzmEeaiINyVGHRfeA" name="sessionInformation" visibility="private">
       <type xmi:type="uml:Class" href="JsModel_User.uml#_OddvIMPREeaCPewWEdcdGQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ESt_YM0GEeavo6is7kUH4g" name="header" visibility="private">
+      <type xmi:type="uml:DataType" href="BackboneJs.uml#_S55R8MdlEea29-bQWKStRA"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F0RRsM0GEeavo6is7kUH4g" name="content" visibility="private">
+      <type xmi:type="uml:DataType" href="BackboneJs.uml#_S55R8MdlEea29-bQWKStRA"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_KBdD0M0GEeavo6is7kUH4g" name="notificationCentre" visibility="private">
+      <type xmi:type="uml:Class" href="JsView_ViewComponents.uml#_2VJtwM0EEeameZvbSNUikg"/>
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_dgl1wMdjEea29-bQWKStRA" name="setHeader">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_mHO-oMdnEea29-bQWKStRA" name="header">

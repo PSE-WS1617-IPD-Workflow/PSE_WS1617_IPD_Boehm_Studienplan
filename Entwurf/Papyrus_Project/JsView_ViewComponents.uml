@@ -30,8 +30,19 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yt8LAMdoEea29-bQWKStRA"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yt_1YMdoEea29-bQWKStRA" value="*"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_w25nQM0CEeameZvbSNUikg" name="plan" visibility="private">
+      <type xmi:type="uml:Class" href="JsModel_Plans.uml#_i4mMwMbVEeasRKsBOCfOGQ"/>
+    </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_wbIa4MdoEea29-bQWKStRA" name="Semester"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wbIa4MdoEea29-bQWKStRA" name="Semester">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_8RzkUM0CEeameZvbSNUikg" name="moduleCollection" visibility="private">
+      <type xmi:type="uml:Class" href="JsModel_Plans.uml#_p_60wMbVEeasRKsBOCfOGQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_GShbUM0DEeameZvbSNUikg" name="modulebox" type="_9CVCUM0CEeameZvbSNUikg" association="_GSYRYM0DEeameZvbSNUikg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IHKowM0DEeameZvbSNUikg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IHQIUM0DEeameZvbSNUikg" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_x-3egMdoEea29-bQWKStRA" memberEnd="_x-4sosdoEea29-bQWKStRA _x-4so8doEea29-bQWKStRA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_x-4soMdoEea29-bQWKStRA" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_x-4socdoEea29-bQWKStRA" key="nature" value="UML_Nature"/>
@@ -57,6 +68,80 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_yjQLcMzuEeaiINyVGHRfeA" name="GenerationWizardComponent3">
     <generalization xmi:type="uml:Generalization" xmi:id="_ApS5EMzvEeaiINyVGHRfeA" general="_QeUi8MztEeaiINyVGHRfeA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9CVCUM0CEeameZvbSNUikg" name="ModuleBox">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="__v9tQM0CEeameZvbSNUikg" name="module" visibility="private">
+      <type xmi:type="uml:Class" href="JsModel_Modules.uml#_9TRbYMPNEeaCPewWEdcdGQ"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_GSYRYM0DEeameZvbSNUikg" memberEnd="_GShbUM0DEeameZvbSNUikg _GSkeoM0DEeameZvbSNUikg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GSfmIM0DEeameZvbSNUikg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GSfmIc0DEeameZvbSNUikg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_GSkeoM0DEeameZvbSNUikg" name="semester" type="_wbIa4MdoEea29-bQWKStRA" association="_GSYRYM0DEeameZvbSNUikg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_NfZ4wM0DEeameZvbSNUikg" name="ModuleFinder">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Tis38M0DEeameZvbSNUikg" name="lazyLoadingModuleCollection" visibility="private">
+      <type xmi:type="uml:Class" href="JsModel_System.uml#_gUJ-wMzjEeaiINyVGHRfeA"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_p0YKQM0DEeameZvbSNUikg" name="isSidebar">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VpTtMs0FEeameZvbSNUikg" name="modulefilter" type="_qSK5gM0DEeameZvbSNUikg" association="_VpSfEM0FEeameZvbSNUikg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_W_zmEc0FEeameZvbSNUikg" name="modulelist" type="_jN928M0DEeameZvbSNUikg" association="_W_yX8M0FEeameZvbSNUikg"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_adDa8M0DEeameZvbSNUikg" name="onScroll"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_fZ0P4M0DEeameZvbSNUikg" name="onSearch"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_jN928M0DEeameZvbSNUikg" name="ModuleList">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_hHnjkM0FEeameZvbSNUikg" name="modules">
+      <type xmi:type="uml:Class" href="JsModel_System.uml#_jlv14MzkEeaiINyVGHRfeA"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_kx9uYs0FEeameZvbSNUikg" name="modulebox" type="_9CVCUM0CEeameZvbSNUikg" association="_kx8gQM0FEeameZvbSNUikg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lpU0MM0FEeameZvbSNUikg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lpXQcM0FEeameZvbSNUikg" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_qSK5gM0DEeameZvbSNUikg" name="ModuleFilter"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2VJtwM0EEeameZvbSNUikg" name="NotificationCentre">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_9_pUQM0EEeameZvbSNUikg" name="notificationCollection" visibility="private">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_9_pUQc0EEeameZvbSNUikg" annotatedElement="_9_pUQM0EEeameZvbSNUikg">
+        <body>Wird mittels NotificationCollection.getInstance() geladen.&#xD;
+MainView ist ein Observer der NotificationCollection und zeigt neue Notifications ggf. an.</body>
+      </ownedComment>
+      <type xmi:type="uml:Class" href="JsModel_System.uml#_u5Bv4M0DEeameZvbSNUikg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_NSucwc0FEeameZvbSNUikg" name="notificationbox" type="_C7KzEM0FEeameZvbSNUikg" association="_NStOoM0FEeameZvbSNUikg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_C7KzEM0FEeameZvbSNUikg" name="NotificationBox">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_HyNagM0FEeameZvbSNUikg" name="notification" visibility="private">
+      <type xmi:type="uml:Class" href="JsModel_System.uml#_w4JH8M0DEeameZvbSNUikg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_KSiCMM0FEeameZvbSNUikg" name="onClose"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Pvwf4M0FEeameZvbSNUikg" name="blurOut"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_NStOoM0FEeameZvbSNUikg" memberEnd="_NSucwc0FEeameZvbSNUikg _NSvD0M0FEeameZvbSNUikg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NSt1sM0FEeameZvbSNUikg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NSucwM0FEeameZvbSNUikg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_NSvD0M0FEeameZvbSNUikg" name="notificationcentre" type="_2VJtwM0EEeameZvbSNUikg" association="_NStOoM0FEeameZvbSNUikg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_VpSfEM0FEeameZvbSNUikg" memberEnd="_VpTtMs0FEeameZvbSNUikg _VpUUQM0FEeameZvbSNUikg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VpTtMM0FEeameZvbSNUikg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_VpTtMc0FEeameZvbSNUikg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_VpUUQM0FEeameZvbSNUikg" name="modulefinder" type="_NfZ4wM0DEeameZvbSNUikg" association="_VpSfEM0FEeameZvbSNUikg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_W_yX8M0FEeameZvbSNUikg" memberEnd="_W_zmEc0FEeameZvbSNUikg _W_zmEs0FEeameZvbSNUikg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_W_y_AM0FEeameZvbSNUikg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_W_zmEM0FEeameZvbSNUikg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_W_zmEs0FEeameZvbSNUikg" name="modulefinder" type="_NfZ4wM0DEeameZvbSNUikg" association="_W_yX8M0FEeameZvbSNUikg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_kx8gQM0FEeameZvbSNUikg" memberEnd="_kx9uYs0FEeameZvbSNUikg _kyBYwM0FEeameZvbSNUikg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kx9uYM0FEeameZvbSNUikg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kx9uYc0FEeameZvbSNUikg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_kyBYwM0FEeameZvbSNUikg" name="modulelist" type="_jN928M0DEeameZvbSNUikg" association="_kx8gQM0FEeameZvbSNUikg"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_UjibMMdjEea29-bQWKStRA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UjibMcdjEea29-bQWKStRA" source="http://www.eclipse.org/uml2/2.0.0/UML">

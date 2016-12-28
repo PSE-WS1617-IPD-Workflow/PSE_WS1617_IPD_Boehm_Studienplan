@@ -16,7 +16,17 @@ this.render();&#xD;
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_WrxcUMzwEeaiINyVGHRfeA" name="addPlan"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_zLHrsMdnEea29-bQWKStRA" name="PlanEditPage"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zLHrsMdnEea29-bQWKStRA" name="PlanEditPage">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_D9WJIM0CEeak492nI_BnEQ" name="sidebar">
+      <type xmi:type="uml:DataType" href="BackboneJs.uml#_S55R8MdlEea29-bQWKStRA"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_IoYU4M0CEeak492nI_BnEQ" name="plan">
+      <type xmi:type="uml:Class" href="JsView_ViewComponents.uml#_uOEGYMdoEea29-bQWKStRA"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MjLWgM0CEeak492nI_BnEQ" name="headBar">
+      <type xmi:type="uml:DataType" href="BackboneJs.uml#_S55R8MdlEea29-bQWKStRA"/>
+    </ownedAttribute>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_6ALmIMzlEeaiINyVGHRfeA" name="Header">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_LaT6sMzmEeaiINyVGHRfeA" name="sessionInformation">
       <type xmi:type="uml:Class" href="JsModel_User.uml#_OddvIMPREeaCPewWEdcdGQ"/>
@@ -36,7 +46,6 @@ this.render();&#xD;
   <packagedElement xmi:type="uml:Dependency" xmi:id="_Y7Pr8MztEeaiINyVGHRfeA" client="_OsRF0MdjEea29-bQWKStRA">
     <supplier xmi:type="uml:Package" href="JsView_ViewComponents.uml#_Jm9Y4MdjEea29-bQWKStRA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_B-iNsMzvEeaiINyVGHRfeA" name="ProposedPlanPage"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_WkzvYMdjEea29-bQWKStRA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WkzvYcdjEea29-bQWKStRA" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
