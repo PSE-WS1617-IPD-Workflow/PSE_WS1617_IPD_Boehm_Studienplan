@@ -154,6 +154,36 @@
     <element xmi:type="uml:Interface" href="ModulDAO.uml#_EmKwAMx7EeadS8RmcnY8pA"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Eo-MYcx7EeadS8RmcnY8pA" x="110" y="90"/>
   </children>
+  <children xmi:type="notation:Shape" xmi:id="_98grQM0FEeaeur3W-lAVrQ" type="Class_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_98grQs0FEeaeur3W-lAVrQ" type="Class_NameLabel"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_98grQ80FEeaeur3W-lAVrQ" type="Class_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_98grRM0FEeaeur3W-lAVrQ" y="5"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_98hSUM0FEeaeur3W-lAVrQ" type="Class_AttributeCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_98hSUc0FEeaeur3W-lAVrQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_98hSUs0FEeaeur3W-lAVrQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_98hSU80FEeaeur3W-lAVrQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_98hSVM0FEeaeur3W-lAVrQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_98hSVc0FEeaeur3W-lAVrQ" type="Class_OperationCompartment">
+      <children xmi:type="notation:Shape" xmi:id="__CajYM0FEeaeur3W-lAVrQ" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="ModulDAO.uml#__CO9MM0FEeaeur3W-lAVrQ"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="__CajYc0FEeaeur3W-lAVrQ"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_98hSVs0FEeaeur3W-lAVrQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_98hSV80FEeaeur3W-lAVrQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_98hSWM0FEeaeur3W-lAVrQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_98hSWc0FEeaeur3W-lAVrQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_98hSWs0FEeaeur3W-lAVrQ" type="Class_NestedClassifierCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_98hSW80FEeaeur3W-lAVrQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_98hSXM0FEeaeur3W-lAVrQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_98hSXc0FEeaeur3W-lAVrQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_98hSXs0FEeaeur3W-lAVrQ"/>
+    </children>
+    <element xmi:type="uml:Class" href="ModulDAO.uml#_98e2EM0FEeaeur3W-lAVrQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_98grQc0FEeaeur3W-lAVrQ" x="696" y="56"/>
+  </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_XnhU0byHEealiq5a5SolQQ" name="diagram_compatibility_version" stringValue="1.2.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_XnhU0ryHEealiq5a5SolQQ"/>
   <styles xmi:type="style:PapyrusViewStyle" xmi:id="_XnhU07yHEealiq5a5SolQQ">

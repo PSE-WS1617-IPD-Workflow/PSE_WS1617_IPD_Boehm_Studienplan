@@ -112,6 +112,16 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_R45_IMyAEeahEeG7zvbxmg" client="_UZ6l0LyGEealiq5a5SolQQ" supplier="_lOX0cMx_EeahEeG7zvbxmg"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_SlMdYMyAEeahEeG7zvbxmg" client="_HDMm4LyHEealiq5a5SolQQ" supplier="_t47JwMx_EeahEeG7zvbxmg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_-KazIMz_Eeaeur3W-lAVrQ" name="PlanDaoFactory" visibility="public">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Gry-UM0AEeaeur3W-lAVrQ" name="getPlanDao" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_KUlC4M0AEeaeur3W-lAVrQ" type="_t47JwMx_EeahEeG7zvbxmg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="__x7jgMz_Eeaeur3W-lAVrQ" name="UserDaoFactory">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_K5aOQM0AEeaeur3W-lAVrQ" name="getUserDao" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_OF7NkM0AEeaeur3W-lAVrQ" type="_lOX0cMx_EeahEeG7zvbxmg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_FVmSELyGEealiq5a5SolQQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FVmSEbyGEealiq5a5SolQQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
