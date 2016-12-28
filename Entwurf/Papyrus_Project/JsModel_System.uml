@@ -2,6 +2,15 @@
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_E-nBUMPMEeaCPewWEdcdGQ" name="System">
   <packagedElement xmi:type="uml:Class" xmi:id="_fjBqAMbTEea_vtQ7PzZ20Q" name="Filter">
     <generalization xmi:type="uml:Generalization" xmi:id="_cyMkUMbXEeasRKsBOCfOGQ" general="_IGXccMPMEeaCPewWEdcdGQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LcPicMzoEeaiINyVGHRfeA" name="name" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Nzg70MzoEeaiINyVGHRfeA" name="type" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_QsEdUMzoEeaiINyVGHRfeA" name="parameters" visibility="private">
+      <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_hHBMUMbTEea_vtQ7PzZ20Q" name="FilterCollection">
     <generalization xmi:type="uml:Generalization" xmi:id="_zqs7MMbZEeayQsYlrW195g" general="_j8UosMbXEeasRKsBOCfOGQ"/>
@@ -18,6 +27,12 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_wZfQ0MbTEeaDo5Q3a9GKqw" name="ObjectiveFunction">
     <generalization xmi:type="uml:Generalization" xmi:id="_Ba5UoMbaEeayQsYlrW195g" general="_IGXccMPMEeaCPewWEdcdGQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FiKwsMzoEeaiINyVGHRfeA" name="name" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_HO1t4MzoEeaiINyVGHRfeA" name="description" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_y7hIsMbTEeaDo5Q3a9GKqw" name="ObjectiveFunctionCollection">
     <generalization xmi:type="uml:Generalization" xmi:id="_Cz6WAMbaEeayQsYlrW195g" general="_j8UosMbXEeasRKsBOCfOGQ"/>
@@ -42,16 +57,70 @@
       <general xmi:type="uml:DataType" href="BackboneJs.uml#_UjZmYMdlEea29-bQWKStRA"/>
     </generalization>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_ToricMbUEeaVr7AotRm3tQ" name="SearchModuleCollection">
+  <packagedElement xmi:type="uml:Class" xmi:id="_ToricMbUEeaVr7AotRm3tQ" name="SearchModuleCollection" isAbstract="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_-XwTwMbZEeayQsYlrW195g">
       <general xmi:type="uml:Class" href="JsModel_Modules.uml#_zWYJ4MPMEeaCPewWEdcdGQ"/>
     </generalization>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_NBXqAMzkEeaiINyVGHRfeA" name="sync">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_NBXqAczkEeaiINyVGHRfeA" name="method">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_NBXqAszkEeaiINyVGHRfeA" name="model">
+        <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_NBXqA8zkEeaiINyVGHRfeA" name="options">
+        <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_j8UosMbXEeasRKsBOCfOGQ" name="OAuthCollection" visibility="protected" isAbstract="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_ARNNoMdnEea29-bQWKStRA">
       <general xmi:type="uml:DataType" href="BackboneJs.uml#_VkyK4MdlEea29-bQWKStRA"/>
     </generalization>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_-MxCsMziEeaiINyVGHRfeA" name="IndependentSearchModuleCollection">
+    <generalization xmi:type="uml:Generalization" xmi:id="_D0ybIMzjEeaiINyVGHRfeA" general="_ToricMbUEeaVr7AotRm3tQ"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_c_ZpcMzjEeaiINyVGHRfeA" name="url">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_c_ZpcczjEeaiINyVGHRfeA" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_AIJKQMzjEeaiINyVGHRfeA" name="PlanSearchModuleCollection">
+    <generalization xmi:type="uml:Generalization" xmi:id="_ETzSYMzjEeaiINyVGHRfeA" general="_ToricMbUEeaVr7AotRm3tQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_SY8oIMzjEeaiINyVGHRfeA" name="postId">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_dVa8wMzjEeaiINyVGHRfeA" name="url">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_dVa8wczjEeaiINyVGHRfeA" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_gUJ-wMzjEeaiINyVGHRfeA" name="SearchLazyLoadingCollection">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_QUGmEMzkEeaiINyVGHRfeA" type="_ToricMbUEeaVr7AotRm3tQ" association="_QUBtkMzkEeaiINyVGHRfeA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SRpQ0MzkEeaiINyVGHRfeA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SRuJUMzkEeaiINyVGHRfeA" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_EytxEMzlEeaiINyVGHRfeA" name="filters" visibility="private" type="_hHBMUMbTEea_vtQ7PzZ20Q"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_bBL3AMzoEeaiINyVGHRfeA" name="highestLoaded" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_XiVHUMzkEeaiINyVGHRfeA" name="getModules">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_6k_Y0MzkEeaiINyVGHRfeA" type="_jlv14MzkEeaiINyVGHRfeA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Awn0oMzlEeaiINyVGHRfeA" name="loadMoreModules()"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_NDwaMMzlEeaiINyVGHRfeA" name="setFilters">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_NDwaMczlEeaiINyVGHRfeA" name="filters" type="_hHBMUMbTEea_vtQ7PzZ20Q"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_QUBtkMzkEeaiINyVGHRfeA" visibility="private" memberEnd="_QUGmEMzkEeaiINyVGHRfeA _QULekMzkEeaiINyVGHRfeA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QUEw4MzkEeaiINyVGHRfeA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_QUEw4czkEeaiINyVGHRfeA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QULekMzkEeaiINyVGHRfeA" type="_gUJ-wMzjEeaiINyVGHRfeA" association="_QUBtkMzkEeaiINyVGHRfeA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_jlv14MzkEeaiINyVGHRfeA" name="SimpleModuleCollection"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_qiLJUMPMEeaCPewWEdcdGQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qiLJUcPMEeaCPewWEdcdGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

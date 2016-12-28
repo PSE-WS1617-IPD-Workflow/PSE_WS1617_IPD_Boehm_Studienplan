@@ -4,12 +4,34 @@
     <generalization xmi:type="uml:Generalization" xmi:id="_ZElz8MPTEeaCPewWEdcdGQ">
       <general xmi:type="uml:Class" href="JSModel.uml#_Jr_9gMPMEeaCPewWEdcdGQ"/>
     </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_QOvLoMzpEeaiINyVGHRfeA" name="access_token" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VjK5sMzpEeaiINyVGHRfeA" name="loggedIn" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Zw0JYczqEeaiINyVGHRfeA" name="student" type="_UHYTEMPTEeaCPewWEdcdGQ" association="_Zwv38MzqEeaiINyVGHRfeA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_UHYTEMPTEeaCPewWEdcdGQ" name="Student">
     <generalization xmi:type="uml:Generalization" xmi:id="_bZKeoMPTEeaCPewWEdcdGQ">
       <general xmi:type="uml:Class" href="JSModel.uml#_IGXccMPMEeaCPewWEdcdGQ"/>
     </generalization>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_sWgwkcPTEeaCPewWEdcdGQ" name="passedModules" type="_p0e4sMPTEeaCPewWEdcdGQ" association="_sWficMPTEeaCPewWEdcdGQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MdfSIMzqEeaiINyVGHRfeA" name="userId" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MdhuYMzqEeaiINyVGHRfeA" name="username" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_iLugMMzqEeaiINyVGHRfeA" name="discipline">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_rSPYwMzqEeaiINyVGHRfeA" name="studystartCycle">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_v-MxkMzqEeaiINyVGHRfeA" name="studyStartYear">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_sWficMPTEeaCPewWEdcdGQ" name="passed" memberEnd="_sWgwkcPTEeaCPewWEdcdGQ _sWgwksPTEeaCPewWEdcdGQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sWgJgMPTEeaCPewWEdcdGQ" source="org.eclipse.papyrus">
@@ -21,6 +43,12 @@
     <generalization xmi:type="uml:Generalization" xmi:id="_9vkuIMPTEeaCPewWEdcdGQ">
       <general xmi:type="uml:Class" href="JsModel_Modules.uml#_zWYJ4MPMEeaCPewWEdcdGQ"/>
     </generalization>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Zwv38MzqEeaiINyVGHRfeA" memberEnd="_Zw0JYczqEeaiINyVGHRfeA _Zw0JYszqEeaiINyVGHRfeA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZwziUMzqEeaiINyVGHRfeA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Zw0JYMzqEeaiINyVGHRfeA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Zw0JYszqEeaiINyVGHRfeA" name="sessioninformation" type="_OddvIMPREeaCPewWEdcdGQ" association="_Zwv38MzqEeaiINyVGHRfeA"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_sADckMPMEeaCPewWEdcdGQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sADckcPMEeaCPewWEdcdGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">

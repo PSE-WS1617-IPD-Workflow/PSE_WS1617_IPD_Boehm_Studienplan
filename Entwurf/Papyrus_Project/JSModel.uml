@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_wOsBkLfWEea2RYsZ51fiPw" name="JSModel">
+  <ownedComment xmi:type="uml:Comment" xmi:id="_mgLNYMzpEeaiINyVGHRfeA">
+    <body>Alle Modellklassen erben von Backbone.Model, alle Collections von Backbone.Collection.&#xD;
+Der Zugriff auf die Attribute der Objekte, das setzen selbiger, das speichern, abrufen sowie weitere grundlegende Funktionen werden über die vorhandenen Methoden in den Modellklassen modelliert.&#xD;
+An einigen Stellen wurde darauf verzichtet eine noch detailliertere Klassenstruktur aufzubauen (wie diese z.B. im Modell auf dem Server vorhanden ist). Diese Entscheidung basierte auf 2 Faktoren:&#xD;
+Zum einen ist diese Klassenstruktur auf dem Server deshalb sinnvoll, weil die Klassen dort direkt auf den Tabellen aufbauen - dies ist hier (wo die Klassen auf der REST-API aufbauen) nicht der Fall.&#xD;
+Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das Laufzeitverhalten der Applikation auswirken.</body>
+  </ownedComment>
   <packageImport xmi:type="uml:PackageImport" xmi:id="__Ny1wMK5EeafkJA2mXH8uA">
     <importedPackage xmi:type="uml:Package" href="JsStorage.uml#_nnmP8LfWEea2RYsZ51fiPw"/>
   </packageImport>

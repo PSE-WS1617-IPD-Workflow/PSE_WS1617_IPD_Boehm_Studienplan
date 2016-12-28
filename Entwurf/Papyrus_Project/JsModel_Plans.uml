@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_DtySoMPMEeaCPewWEdcdGQ" name="Plans">
-  <packagedElement xmi:type="uml:Class" xmi:id="_i4mMwMbVEeasRKsBOCfOGQ" name="Plan">
+  <packagedElement xmi:type="uml:Class" xmi:id="_i4mMwMbVEeasRKsBOCfOGQ" name="Plan" visibility="package">
     <generalization xmi:type="uml:Generalization" xmi:id="_ExqcIMbaEeayQsYlrW195g">
       <general xmi:type="uml:Class" href="JsModel_System.uml#_IGXccMPMEeaCPewWEdcdGQ"/>
     </generalization>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_97E7osbVEeasRKsBOCfOGQ" name="semestercollection" type="_lwu3gMbVEeasRKsBOCfOGQ" association="_97DtgMbVEeasRKsBOCfOGQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ubpjwMbWEeasRKsBOCfOGQ" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ubqx4MbWEeasRKsBOCfOGQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_mDYZIMzoEeaiINyVGHRfeA" name="planId" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_mDa1YMzoEeaiINyVGHRfeA" name="name" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_mDfG0MzoEeaiINyVGHRfeA" name="creditPoints" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_yhaAEMzoEeaiINyVGHRfeA" name="verificationState" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_kX2ZAMbVEeasRKsBOCfOGQ" name="PlanCollection" visibility="package">
@@ -28,6 +40,9 @@
     <generalization xmi:type="uml:Generalization" xmi:id="_M5ro8MbWEeasRKsBOCfOGQ">
       <general xmi:type="uml:Class" href="JsModel_Modules.uml#_zWYJ4MPMEeaCPewWEdcdGQ"/>
     </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ZvkF0MziEeaiINyVGHRfeA" name="planId" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_9LOMAMbVEeasRKsBOCfOGQ" memberEnd="_9LTEgMbVEeasRKsBOCfOGQ _9LTrkMbVEeasRKsBOCfOGQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9LQoQMbVEeasRKsBOCfOGQ" source="org.eclipse.papyrus">
@@ -49,6 +64,11 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="__S1WUMdlEea29-bQWKStRA" name="PropesedPlan">
     <generalization xmi:type="uml:Generalization" xmi:id="_BDy9oMdmEea29-bQWKStRA" general="_i4mMwMbVEeasRKsBOCfOGQ"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_4o2C8MzpEeaiINyVGHRfeA" name="save">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_7iYb4MzpEeaiINyVGHRfeA" name="options">
+        <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_n-C_sMPMEeaCPewWEdcdGQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_n-C_scPMEeaCPewWEdcdGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">

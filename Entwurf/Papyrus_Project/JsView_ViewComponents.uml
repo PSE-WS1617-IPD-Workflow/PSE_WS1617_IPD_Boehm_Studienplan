@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Jm9Y4MdjEea29-bQWKStRA" name="ViewComponents">
-  <packagedElement xmi:type="uml:Class" xmi:id="_3a5e0MdnEea29-bQWKStRA" name="PlanListElement"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_3a5e0MdnEea29-bQWKStRA" name="PlanListElement">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_H5YmEMzwEeaiINyVGHRfeA" name="plan" visibility="private">
+      <type xmi:type="uml:Class" href="JsModel_Plans.uml#_i4mMwMbVEeasRKsBOCfOGQ"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_8X6uAMzvEeaiINyVGHRfeA" name="show"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_9DKDYMzvEeaiINyVGHRfeA" name="export"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_-PprsMzvEeaiINyVGHRfeA" name="duplicate"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="__iiP4MzvEeaiINyVGHRfeA" name="delete"/>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_oxZCUMdoEea29-bQWKStRA" name="PlanList">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_p_nwAMdoEea29-bQWKStRA" name="planlistelement" type="_3a5e0MdnEea29-bQWKStRA" association="_p_kssMdoEea29-bQWKStRA">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_riZxYMdoEea29-bQWKStRA"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ribmkMdoEea29-bQWKStRA" value="*"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_OqiJwMzwEeaiINyVGHRfeA" name="planCollection" visibility="private">
+      <type xmi:type="uml:Class" href="JsModel_Plans.uml#_kX2ZAMbVEeasRKsBOCfOGQ"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_tFgT4MzvEeaiINyVGHRfeA" name="onActionSelection"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_p_kssMdoEea29-bQWKStRA" memberEnd="_p_nwAMdoEea29-bQWKStRA _p_raYMdoEea29-bQWKStRA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_p_mh4MdoEea29-bQWKStRA" source="org.eclipse.papyrus">
@@ -25,6 +37,26 @@
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_x-4socdoEea29-bQWKStRA" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_x-4so8doEea29-bQWKStRA" name="plan" type="_uOEGYMdoEea29-bQWKStRA" association="_x-3egMdoEea29-bQWKStRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_QeUi8MztEeaiINyVGHRfeA" name="WizardComponent" isAbstract="true">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_S-3NEMztEeaiINyVGHRfeA" name="next" isAbstract="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VcSRwMztEeaiINyVGHRfeA" type="_QeUi8MztEeaiINyVGHRfeA" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_lVJycMzuEeaiINyVGHRfeA" name="SignUpWizardComponent1">
+    <generalization xmi:type="uml:Generalization" xmi:id="__eU6wMzuEeaiINyVGHRfeA" general="_QeUi8MztEeaiINyVGHRfeA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_qpNGAMzuEeaiINyVGHRfeA" name="SignUpWizardComponent2">
+    <generalization xmi:type="uml:Generalization" xmi:id="_-X9voMzuEeaiINyVGHRfeA" general="_QeUi8MztEeaiINyVGHRfeA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_u3ENkMzuEeaiINyVGHRfeA" name="GenerationWizardComponent1">
+    <generalization xmi:type="uml:Generalization" xmi:id="__z47EMzuEeaiINyVGHRfeA" general="_QeUi8MztEeaiINyVGHRfeA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_whXzQMzuEeaiINyVGHRfeA" name="GenerationWizardComponent2">
+    <generalization xmi:type="uml:Generalization" xmi:id="_AQpIgMzvEeaiINyVGHRfeA" general="_QeUi8MztEeaiINyVGHRfeA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_yjQLcMzuEeaiINyVGHRfeA" name="GenerationWizardComponent3">
+    <generalization xmi:type="uml:Generalization" xmi:id="_ApS5EMzvEeaiINyVGHRfeA" general="_QeUi8MztEeaiINyVGHRfeA"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_UjibMMdjEea29-bQWKStRA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UjibMcdjEea29-bQWKStRA" source="http://www.eclipse.org/uml2/2.0.0/UML">

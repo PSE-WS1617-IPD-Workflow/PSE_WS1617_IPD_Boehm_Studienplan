@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_u9pQcLfWEea2RYsZ51fiPw" name="JSView">
+  <ownedComment xmi:type="uml:Comment" xmi:id="_vx0JIMzvEeaiINyVGHRfeA">
+    <body>Alle Views implementieren eine Renderfunktion,&#xD;
+welche wiederum die Render-Funktionen &quot;unterliegender&quot; Views aufruft.&#xD;
+</body>
+  </ownedComment>
   <packageImport xmi:type="uml:PackageImport" xmi:id="_2_qWsMK5EeafkJA2mXH8uA">
     <importedPackage xmi:type="uml:Package" href="JSModel.uml#_wOsBkLfWEea2RYsZ51fiPw"/>
   </packageImport>
   <packagedElement xmi:type="uml:Class" xmi:id="_IEUhcMdjEea29-bQWKStRA" name="MainView">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Gh-SwMzmEeaiINyVGHRfeA" name="sessionInformation">
+      <type xmi:type="uml:Class" href="JsModel_User.uml#_OddvIMPREeaCPewWEdcdGQ"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_dgl1wMdjEea29-bQWKStRA" name="setHeader">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_mHO-oMdnEea29-bQWKStRA" name="header">
         <type xmi:type="uml:DataType" href="BackboneJs.uml#_S55R8MdlEea29-bQWKStRA"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_n-lh0MdnEea29-bQWKStRA" name="options"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_n-lh0MdnEea29-bQWKStRA" name="options">
+        <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
+      </ownedParameter>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_o-wiMMdjEea29-bQWKStRA" name="setContent">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_g1fYMMdnEea29-bQWKStRA" name="content">
         <type xmi:type="uml:DataType" href="BackboneJs.uml#_S55R8MdlEea29-bQWKStRA"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_0ek0cMdjEea29-bQWKStRA" name="options" isUnique="false"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_0ek0cMdjEea29-bQWKStRA" name="options" isUnique="false">
+        <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
+      </ownedParameter>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" href="JsView_ViewComponents.uml#_Jm9Y4MdjEea29-bQWKStRA"/>

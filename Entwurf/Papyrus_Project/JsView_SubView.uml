@@ -1,8 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_OsRF0MdjEea29-bQWKStRA" name="SubView">
+  <ownedComment xmi:type="uml:Comment" xmi:id="_jfqs8MztEeaiINyVGHRfeA" annotatedElement="_hOD2sMztEeaiINyVGHRfeA _OBD2UMztEeaiINyVGHRfeA">
+    <body>var next = curView.next();&#xD;
+if(next==null) {&#xD;
+this.trigger(&quot;wizardComplete&quot;);&#xD;
+} else {&#xD;
+curView = next;&#xD;
+this.render();&#xD;
+}</body>
+  </ownedComment>
   <packagedElement xmi:type="uml:Class" xmi:id="_xsDssMdnEea29-bQWKStRA" name="LoginPage"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_yYxBsMdnEea29-bQWKStRA" name="MainPage"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_yYxBsMdnEea29-bQWKStRA" name="MainPage">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_baaVsMzwEeaiINyVGHRfeA" name="planCollection">
+      <type xmi:type="uml:Class" href="JsModel_Plans.uml#_kX2ZAMbVEeasRKsBOCfOGQ"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_WrxcUMzwEeaiINyVGHRfeA" name="addPlan"/>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_zLHrsMdnEea29-bQWKStRA" name="PlanEditPage"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6ALmIMzlEeaiINyVGHRfeA" name="Header">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_LaT6sMzmEeaiINyVGHRfeA" name="sessionInformation">
+      <type xmi:type="uml:Class" href="JsModel_User.uml#_OddvIMPREeaCPewWEdcdGQ"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DxbZkMztEeaiINyVGHRfeA" name="ComparisonPage"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JuE-MMztEeaiINyVGHRfeA" name="ProfilePage"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_OBD2UMztEeaiINyVGHRfeA" name="WizardPage">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_hD-4MMzuEeaiINyVGHRfeA" annotatedElement="_OBD2UMztEeaiINyVGHRfeA">
+      <body>curView wird bei der Initialisierung gesetzt. WizardPage kann deshalb sowohl für die Registrierung als auch für die Generierung verwendet werden.</body>
+    </ownedComment>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_fL81AMztEeaiINyVGHRfeA" name="curView">
+      <type xmi:type="uml:Class" href="JsView_ViewComponents.uml#_QeUi8MztEeaiINyVGHRfeA"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_hOD2sMztEeaiINyVGHRfeA" name="next"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_Y7Pr8MztEeaiINyVGHRfeA" client="_OsRF0MdjEea29-bQWKStRA">
+    <supplier xmi:type="uml:Package" href="JsView_ViewComponents.uml#_Jm9Y4MdjEea29-bQWKStRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_B-iNsMzvEeaiINyVGHRfeA" name="ProposedPlanPage"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_WkzvYMdjEea29-bQWKStRA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WkzvYcdjEea29-bQWKStRA" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
