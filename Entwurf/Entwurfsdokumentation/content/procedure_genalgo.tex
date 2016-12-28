@@ -85,7 +85,7 @@ Weiter sei $ p: V \times \NN \to \{\KwTrue, \KwFalse\} $ eine Funktion, die angi
 				$\Var{bucketAllocation}[i] := j $ \RCommentNoBreak{setze v in Bucket j} \;
 				$\Var{bucketSum}[j] \pluseq c(v)$ \;
 				\ForEach{$(v,u) \in E$}{
-					$ \Var{minPos}[i] := \max \{j + 1, \Var{minPos}[i]\} $ \;
+					$ \Var{minPos}[s^{-1} (u)] := \max \{j + 1, \Var{minPos}[i]\} $ \;
 				}
 				$\Var{set} := \KwTrue$ \;
 				\KwBreak \;
