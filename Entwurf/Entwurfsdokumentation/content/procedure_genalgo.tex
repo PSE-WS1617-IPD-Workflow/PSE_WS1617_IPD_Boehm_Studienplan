@@ -64,7 +64,7 @@ Zunächst wird der Graph mittels Tiefensuche topologisch sortiert und
 anschließend  mit unten beschriebenen Algorithmus parallelisiert.
 Hierbei werden die bereits gesetzen Module zunächst in die vom Nutzer vorgegebenen Semester gesetzt.
 
-Sei also $G = (V,E)$ ein DAG und $s: \{1,..,|V|\} \to V$ seine topologische Sortierung, $c: V \to [0,1]$ die Gewichtungsfunktion. Sei weiter $P = V \times V$ eine symmetrische, transitive Relation von Knoten, welche nicht parallel gesetzt werden dürfen.
+Sei also $G = (V,E)$ ein DAG und $s: \{1,..,|V|\} \to V$ seine topologische Sortierung, $c: V \to \mathbb{Q}$ die Gewichtungsfunktion. Sei weiter $P = V \times V$ eine symmetrische, transitive Relation von Knoten, welche nicht parallel gesetzt werden dürfen.
 Sei weiter $ k \in \NN $ das Maximum pro parallelem Schritt.
 Weiter sei $ p: V \times \NN \to \{\KwTrue, \KwFalse\} $ eine Funktion, die angibt, ob ein gegebener Knoten in ein gegebenes Semester gesetzt werden darf (Winter- und Sommersemester-Regelung sowie (Anti-)Symmetrie-Constraints).
 
