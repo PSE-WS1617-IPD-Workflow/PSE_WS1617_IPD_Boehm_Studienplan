@@ -10,11 +10,11 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ygAzob_cEearRKVJonHAjg" value="*"/>
       <association xmi:type="uml:Association" href="MainModel.uml#_Q7pXAL_aEea9O5XOZdMjrw"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_1J7psL4PEeaoO4fCpQc-Qw" name="moduledescription" type="_1pGj4L4NEeaoO4fCpQc-Qw" association="_1J6bkL4PEeaoO4fCpQc-Qw">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_1J7psL4PEeaoO4fCpQc-Qw" name="moduledescription" visibility="private" type="_1pGj4L4NEeaoO4fCpQc-Qw" association="_1J6bkL4PEeaoO4fCpQc-Qw">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w5PDEL_cEearRKVJonHAjg" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_w5Y0EL_cEearRKVJonHAjg" value="1"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_T39PMMbBEeatB58sIl8nCg" name="discipline" type="_BPEogMbBEeatB58sIl8nCg" association="_T33IkMbBEeatB58sIl8nCg">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_T39PMMbBEeatB58sIl8nCg" name="discipline" visibility="private" type="_BPEogMbBEeatB58sIl8nCg" association="_T33IkMbBEeatB58sIl8nCg">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ySj5MMb9EeapWM4q1-_jpA" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ySluYMb9EeapWM4q1-_jpA" value="1"/>
     </ownedAttribute>
@@ -31,6 +31,35 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_ijKhgMx2Eea7FKVRIQ7ugA" name="compulsory" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
     </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_1za3sM0aEeasNbhLG8gf5A" name="getModuleId">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_5c3DkM0aEeasNbhLG8gf5A" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_h5ts4M0bEeasNbhLG8gf5A" name="getName">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_h5ts4c0bEeasNbhLG8gf5A" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_l_jg4M0bEeasNbhLG8gf5A" name="getCreditPoints">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_l_jg4c0bEeasNbhLG8gf5A" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_5KBKoM0bEeasNbhLG8gf5A" name="getCycleType">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_5KBxsM0bEeasNbhLG8gf5A" type="_VdHvIL4OEeaoO4fCpQc-Qw" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_7YE9oM0bEeasNbhLG8gf5A" name="isCompulsory">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_7YE9oc0bEeasNbhLG8gf5A" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MyC6IM0cEeasNbhLG8gf5A" name="getDiscipline">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MyC6Ic0cEeasNbhLG8gf5A" type="_BPEogMbBEeatB58sIl8nCg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_f-NNAM0cEeasNbhLG8gf5A" name="getModuleDescription">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_f-NNAc0cEeasNbhLG8gf5A" type="_1pGj4L4NEeaoO4fCpQc-Qw" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_1pGj4L4NEeaoO4fCpQc-Qw" name="ModuleDescription">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_R8G7oMbDEeatB58sIl8nCg" name="descriptionId" visibility="private">
@@ -55,9 +84,6 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_xCO0gL4PEeaoO4fCpQc-Qw" name="moduleconstrainttype" type="_gmxusL4PEeaoO4fCpQc-Qw" association="_xCFDgL4PEeaoO4fCpQc-Qw">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zz8oEL_ZEear27jMIUi8Fw" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_z0FK8L_ZEear27jMIUi8Fw" value="1"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_q84wQMBnEeafN5EhaYGTYw" name="description" visibility="protected">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Enumeration" xmi:id="_VdHvIL4OEeaoO4fCpQc-Qw" name="CycleType">
@@ -102,6 +128,12 @@
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_gmxusL4PEeaoO4fCpQc-Qw" name="ModuleConstraintType" isAbstract="true">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_q84wQMBnEeafN5EhaYGTYw" name="description" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BB1tYM0aEeasNbhLG8gf5A" name="formalDescription" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_VB30QL_UEeacgfGrT4PzPg" name="isValid" isAbstract="true">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_bGdz8L_UEeacgfGrT4PzPg" name="first" effect="read">
         <type xmi:type="uml:Class" href="PlanModel.uml#_5yGmIMBpEeafN5EhaYGTYw"/>
