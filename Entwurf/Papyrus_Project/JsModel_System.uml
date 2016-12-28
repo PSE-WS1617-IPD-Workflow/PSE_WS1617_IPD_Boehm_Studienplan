@@ -151,6 +151,67 @@
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_6OsAkM0DEeameZvbSNUikg" name="notificationcollection" type="_u5Bv4M0DEeameZvbSNUikg" association="_6OfMQM0DEeameZvbSNUikg"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_sNgA8M0HEeavo6is7kUH4g" name="TemplateManager">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_EEnAAM0IEeavo6is7kUH4g">
+      <body>Singleton, welches die Templates für die Views verwaltet. Jedes Template lässt sich über einen key abrufen. Die Templates werden zur Compile-Zeit in den Initialisierungscode hineingeladen und sind somit bereits beim Start der Applikation im Template Manager vorhanden. Der Vorteil dieses Vorgehens ist, dass man beim Laden der einzelnen Views nicht auf eine Antwort vom Server (welche das Template enthält) warten muss.</body>
+    </ownedComment>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JmmB4M0IEeavo6is7kUH4g" name="templates" visibility="private">
+      <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ojIykM0IEeavo6is7kUH4g" name="instance" visibility="private" isStatic="true" type="_sNgA8M0HEeavo6is7kUH4g"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MsAToM0IEeavo6is7kUH4g" name="getTemplate">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q0kEcM0IEeavo6is7kUH4g" name="key">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TDRXsM0IEeavo6is7kUH4g" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_pnGJ8M0IEeavo6is7kUH4g" name="getInstance">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_sRIuUM0IEeavo6is7kUH4g" type="_sNgA8M0HEeavo6is7kUH4g" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hb0xoM0IEeavo6is7kUH4g" name="LanguageManager">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_cakBwM0JEeavo6is7kUH4g">
+      <body>Singleton, welches die sprachlichen Ausgaben des Programms verwaltet. Hierbei lässt sich diei Sprache in welcher die Nachrichten ausgegeben werden mittels setLanguage statisch einstellen. Die Nachrichten werden bereits zur Compile-Zeit in den Initialisierungscode des Programms geladen und sind deshalb von Beginn an verfügbar.</body>
+    </ownedComment>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_0cSK0M0IEeavo6is7kUH4g" name="messages" visibility="private">
+      <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_4zHoMM0IEeavo6is7kUH4g" name="instance" visibility="private" isStatic="true" type="_hb0xoM0IEeavo6is7kUH4g"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_-ilFYM0IEeavo6is7kUH4g" name="language" visibility="private" isStatic="true">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_lVFswM0JEeavo6is7kUH4g" name="FALLBACK_LANGUAGE" visibility="private" isStatic="true" isReadOnly="true">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_lVFswc0JEeavo6is7kUH4g" value="de"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_AFxWcM0JEeavo6is7kUH4g" name="getInstance" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CQkaEM0JEeavo6is7kUH4g" type="_hb0xoM0IEeavo6is7kUH4g" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_EIBq8M0JEeavo6is7kUH4g" name="setLanguage" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IhJAQM0JEeavo6is7kUH4g" name="langCode">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Jw2UoM0JEeavo6is7kUH4g" name="getMessage">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_L_ZP0M0JEeavo6is7kUH4g" name="key">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ngf2MM0JEeavo6is7kUH4g" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_oPHtkM0MEeavo6is7kUH4g" name="ProposalInformation">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_4IKp4M0MEeavo6is7kUH4g" name="objectiveFunction" visibility="private" type="_wZfQ0MbTEeaDo5Q3a9GKqw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_-57RkM0MEeavo6is7kUH4g" name="maxEctsPerSemester" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JbdWoM0NEeavo6is7kUH4g" name="mainDiscipline" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_qiLJUMPMEeaCPewWEdcdGQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qiLJUcPMEeaCPewWEdcdGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
