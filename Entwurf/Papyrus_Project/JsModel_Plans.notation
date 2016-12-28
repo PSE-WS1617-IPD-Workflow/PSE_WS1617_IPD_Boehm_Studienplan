@@ -46,6 +46,14 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i4xL5MbVEeasRKsBOCfOGQ"/>
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_i4xL5cbVEeasRKsBOCfOGQ" type="Class_OperationCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_PxFiUM0VEeavo6is7kUH4g" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="JsModel_Plans.uml#_Pw8_cM0VEeavo6is7kUH4g"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PxFiUc0VEeavo6is7kUH4g"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_8zv5IM0VEeavo6is7kUH4g" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="JsModel_Plans.uml#_8znWQM0VEeavo6is7kUH4g"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_8zv5Ic0VEeavo6is7kUH4g"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_i4xL5sbVEeasRKsBOCfOGQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_i4xL58bVEeasRKsBOCfOGQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_i4xL6MbVEeasRKsBOCfOGQ"/>
@@ -59,7 +67,7 @@
     </children>
     <styles xmi:type="notation:CanonicalStyle" xmi:id="_pJ_kwMzoEeaiINyVGHRfeA"/>
     <element xmi:type="uml:Class" href="JsModel_Plans.uml#_i4mMwMbVEeasRKsBOCfOGQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i4v9wcbVEeasRKsBOCfOGQ" x="244" y="73"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i4v9wcbVEeasRKsBOCfOGQ" x="242" y="41"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_kX4OMMbVEeasRKsBOCfOGQ" type="Class_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_kX4OMsbVEeasRKsBOCfOGQ" type="Class_NameLabel"/>
@@ -204,7 +212,7 @@
     <element xmi:type="uml:Association" href="JsModel_Plans.uml#_9LOMAMbVEeasRKsBOCfOGQ"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_9LobssbVEeasRKsBOCfOGQ" points="[723, 120, -643984, -643984]$[300, 117, -643984, -643984]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9MNDcMbVEeasRKsBOCfOGQ" id="(0.0,0.38)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9MNqgMbVEeasRKsBOCfOGQ" id="(1.0,0.46)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9MNqgMbVEeasRKsBOCfOGQ" id="(1.0,0.45714285714285713)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_97bg8MbVEeasRKsBOCfOGQ" type="Association_Edge" source="_i4v9wMbVEeasRKsBOCfOGQ" target="_lwwFoMbVEeasRKsBOCfOGQ">
     <children xmi:type="notation:DecorationNode" xmi:id="_97bg88bVEeasRKsBOCfOGQ" type="Association_StereotypeLabel">
@@ -234,7 +242,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_97bg8cbVEeasRKsBOCfOGQ"/>
     <element xmi:type="uml:Association" href="JsModel_Plans.uml#_97DtgMbVEeasRKsBOCfOGQ"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_97bg8sbVEeasRKsBOCfOGQ" points="[300, 149, -643984, -643984]$[531, 274, -643984, -643984]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_976pIMbVEeasRKsBOCfOGQ" id="(1.0,0.78)"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_976pIMbVEeasRKsBOCfOGQ" id="(0.9770491803278688,1.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_976pIcbVEeasRKsBOCfOGQ" id="(0.0,0.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_-nc5cMbVEeasRKsBOCfOGQ" type="Association_Edge" source="_lwwFoMbVEeasRKsBOCfOGQ" target="_p_8p8MbVEeasRKsBOCfOGQ">
@@ -271,6 +279,6 @@
     <element xmi:type="uml:Generalization" href="JsModel_Plans.uml#_BDy9oMdmEea29-bQWKStRA"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_BD5rUsdmEea29-bQWKStRA" points="[135, 124, -643984, -643984]$[244, 116, -643984, -643984]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BEN0YMdmEea29-bQWKStRA" id="(1.0,0.625)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BEN0YcdmEea29-bQWKStRA" id="(0.0,0.4268292682926829)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BEN0YcdmEea29-bQWKStRA" id="(0.0,0.4228571428571429)"/>
   </edges>
 </notation:Diagram>

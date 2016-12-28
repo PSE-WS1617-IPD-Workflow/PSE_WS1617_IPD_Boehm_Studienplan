@@ -11,6 +11,14 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_Zw0JYczqEeaiINyVGHRfeA" name="student" type="_UHYTEMPTEeaCPewWEdcdGQ" association="_Zwv38MzqEeaiINyVGHRfeA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Km5jIM0aEeavo6is7kUH4g" name="instance" visibility="private" isStatic="true" type="_OddvIMPREeaCPewWEdcdGQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_lF2uMM0aEeavo6is7kUH4g" name="state" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Pdp2sM0aEeavo6is7kUH4g" name="getInstance" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_bXzUgM0aEeavo6is7kUH4g" type="_OddvIMPREeaCPewWEdcdGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_sCo6IM0aEeavo6is7kUH4g" name="generateState"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_UHYTEMPTEeaCPewWEdcdGQ" name="Student">
     <generalization xmi:type="uml:Generalization" xmi:id="_bZKeoMPTEeaCPewWEdcdGQ">

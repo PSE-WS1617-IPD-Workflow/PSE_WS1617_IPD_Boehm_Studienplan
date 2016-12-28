@@ -5,11 +5,25 @@
   </packageImport>
   <packagedElement xmi:type="uml:Class" xmi:id="_si-OoMwrEeaUspSTNf28yQ" name="MainRouter">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_0yoXsMwrEeaUspSTNf28yQ" name="mainPage"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_19vf8MwrEeaUspSTNf28yQ" name="editPage"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_34KlQMwrEeaUspSTNf28yQ" name="comparisonPage"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_19vf8MwrEeaUspSTNf28yQ" name="editPage">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_KDQOEM0bEeavo6is7kUH4g" name="planId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_34KlQMwrEeaUspSTNf28yQ" name="comparisonPage">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_MPA7AM0bEeavo6is7kUH4g" name="plan1Id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_NfAjQM0bEeavo6is7kUH4g" name="plans2Id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_CXttUMwsEeaUspSTNf28yQ" name="loginPage"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_X_zBcM0bEeavo6is7kUH4g" name="showProfile"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_dOrhIM0bEeavo6is7kUH4g" name="signUpWizard"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_egUvMM0bEeavo6is7kUH4g" name="generationWizard"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_gT2iUM0bEeavo6is7kUH4g" name="handleLogin"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_oX7VEMwsEeaUspSTNf28yQ" name="RegistrationWizard"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_xlO6MMFMEea4cKsDHzskZQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xlO6McFMEea4cKsDHzskZQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

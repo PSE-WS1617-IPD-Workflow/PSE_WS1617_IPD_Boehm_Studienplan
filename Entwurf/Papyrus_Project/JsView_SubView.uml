@@ -32,14 +32,31 @@ this.render();&#xD;
         <type xmi:type="uml:Class" href="JsModel_Modules.uml#_9TRbYMPNEeaCPewWEdcdGQ"/>
       </ownedParameter>
     </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_tbHs0M0WEeavo6is7kUH4g" name="onChange"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_6ALmIMzlEeaiINyVGHRfeA" name="Header">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_LaT6sMzmEeaiINyVGHRfeA" name="sessionInformation">
       <type xmi:type="uml:Class" href="JsModel_User.uml#_OddvIMPREeaCPewWEdcdGQ"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_DxbZkMztEeaiINyVGHRfeA" name="ComparisonPage"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_JuE-MMztEeaiINyVGHRfeA" name="ProfilePage"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DxbZkMztEeaiINyVGHRfeA" name="ComparisonPage">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FFiloM0VEeavo6is7kUH4g" name="comparisonView" visibility="private">
+      <type xmi:type="uml:Class" href="JsView_ViewComponents.uml#_nM7-MM0UEeavo6is7kUH4g"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JuE-MMztEeaiINyVGHRfeA" name="ProfilePage">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_pgCwoM0REeavo6is7kUH4g" name="passedModules" visibility="private">
+      <type xmi:type="uml:Class" href="JsView_ViewComponents.uml#_yDxwcM0KEeavo6is7kUH4g"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_9wHXkM0REeavo6is7kUH4g" name="sidebar" visibility="private">
+      <type xmi:type="uml:Class" href="JsView_ViewComponents.uml#_NfZ4wM0DEeameZvbSNUikg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="__YJFUM0REeavo6is7kUH4g" name="close">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D11YoM0SEeavo6is7kUH4g">
+        <body>Leitet zurück zur Hauptseite (MainPage) und speichert die Änderungen.</body>
+      </ownedComment>
+    </ownedOperation>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_OBD2UMztEeaiINyVGHRfeA" name="WizardPage">
     <ownedComment xmi:type="uml:Comment" xmi:id="_hD-4MMzuEeaiINyVGHRfeA" annotatedElement="_OBD2UMztEeaiINyVGHRfeA">
       <body>curView wird bei der Initialisierung gesetzt. WizardPage kann deshalb sowohl für die Registrierung als auch für die Generierung verwendet werden.</body>
