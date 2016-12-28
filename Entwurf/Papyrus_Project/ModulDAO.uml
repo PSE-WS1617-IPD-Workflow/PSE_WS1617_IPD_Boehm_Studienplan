@@ -46,6 +46,20 @@
         <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
       </ownedParameter>
     </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_RZgQoM0gEeasNbhLG8gf5A" name="getCategories">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_RZgQoc0gEeasNbhLG8gf5A" direction="return">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_6zsZcL4NEeaoO4fCpQc-Qw"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RZgQos0gEeasNbhLG8gf5A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RZgQo80gEeasNbhLG8gf5A" value="*"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_RZiF0M0gEeasNbhLG8gf5A" name="getDisciplines">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_RZiF0c0gEeasNbhLG8gf5A" direction="return">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_BPEogMbBEeatB58sIl8nCg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RZiF0s0gEeasNbhLG8gf5A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RZiF080gEeasNbhLG8gf5A" value="*"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_jV_JUMC0EeaPXJNH_43Mqw" name="ModuleColumnNames" isLeaf="true">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_jV_JUcC0EeaPXJNH_43Mqw" name="CREDIT_POINTS" isStatic="true" isReadOnly="true">
@@ -111,6 +125,20 @@
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_zVSzMMx8EeahEeG7zvbxmg" direction="return">
         <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_4d2EUM0fEeasNbhLG8gf5A" name="getDisciplines">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_DGKG0M0gEeasNbhLG8gf5A" direction="return">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_BPEogMbBEeatB58sIl8nCg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HE2xAM0gEeasNbhLG8gf5A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HE50UM0gEeasNbhLG8gf5A" value="*"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_74518M0fEeasNbhLG8gf5A" name="getCategories">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_NLdi4M0gEeasNbhLG8gf5A" direction="return">
+        <type xmi:type="uml:Class" href="ModulModel.uml#_6zsZcL4NEeaoO4fCpQc-Qw"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QCidsM0gEeasNbhLG8gf5A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QCk58M0gEeasNbhLG8gf5A" value="*"/>
       </ownedParameter>
     </ownedOperation>
   </packagedElement>
