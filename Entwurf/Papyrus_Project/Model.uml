@@ -4,6 +4,15 @@
   <packagedElement xmi:type="uml:Package" href="ModulModel.uml#_PVXQkLfVEea2RYsZ51fiPw"/>
   <packagedElement xmi:type="uml:Package" href="PlanDAO.uml#_d_LK0LifEeavH9sFQSsLvg"/>
   <packagedElement xmi:type="uml:Package" href="PlanModel.uml#_haZUgLifEeavH9sFQSsLvg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_AeausM0DEeaeur3W-lAVrQ" name="HibernateUtil">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_E0QtkM0DEeaeur3W-lAVrQ" name="getModuleDataSessionFactory" visibility="package" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_k4lTwM0FEeaeur3W-lAVrQ" type="_fkJlsM0FEeaeur3W-lAVrQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_tXbvYM0FEeaeur3W-lAVrQ" name="getUserDataSessionFactory" visibility="package" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_tXbvYc0FEeaeur3W-lAVrQ" type="_fkJlsM0FEeaeur3W-lAVrQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_fkJlsM0FEeaeur3W-lAVrQ" name="SessionFactory"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="__G7-MLlVEeavH9sFQSsLvg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__G7-MblVEeavH9sFQSsLvg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

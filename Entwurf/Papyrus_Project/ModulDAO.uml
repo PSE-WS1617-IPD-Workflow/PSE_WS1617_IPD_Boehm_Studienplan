@@ -115,6 +115,11 @@
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_YrGd8Mx7EeadS8RmcnY8pA" client="_ZZGnMLyHEealiq5a5SolQQ" supplier="_EmKwAMx7EeadS8RmcnY8pA"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_98e2EM0FEeaeur3W-lAVrQ" name="ModuleDaoFactory">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="__CO9MM0FEeaeur3W-lAVrQ" name="getModuleDao" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_HxvD8M0GEeaeur3W-lAVrQ" type="_EmKwAMx7EeadS8RmcnY8pA" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Rcy38LyHEealiq5a5SolQQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Rcy38byHEealiq5a5SolQQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
