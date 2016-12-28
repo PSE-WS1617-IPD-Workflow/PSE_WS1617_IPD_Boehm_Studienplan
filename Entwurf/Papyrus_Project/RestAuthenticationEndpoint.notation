@@ -87,7 +87,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sSVdgsweEea1QL77delSmA"/>
     </children>
     <element xmi:type="uml:Interface" href="RestAuthenticationEndpoint.uml#_sSNhsMweEea1QL77delSmA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sSOv0cweEea1QL77delSmA" x="633" y="73" width="427"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sSOv0cweEea1QL77delSmA" x="633" y="73" width="516"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_gObfYMwhEea1QL77delSmA" type="Class_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_gOcGcMwhEea1QL77delSmA" type="Class_NameLabel"/>
@@ -104,6 +104,14 @@
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JdO4IMwkEea1QL77delSmA" source="PapyrusCSSForceValue">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JdO4IcwkEea1QL77delSmA" key="collapsed" value="true"/>
       </eAnnotations>
+      <children xmi:type="notation:Shape" xmi:id="_vT1m8MzfEeaiINyVGHRfeA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_lJItgMzfEeaiINyVGHRfeA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vT1m8czfEeaiINyVGHRfeA"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_vT2OAMzfEeaiINyVGHRfeA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_lJKisMzfEeaiINyVGHRfeA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vT2OAczfEeaiINyVGHRfeA"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_gOcGecwhEea1QL77delSmA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_gOcGeswhEea1QL77delSmA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_gOcGe8whEea1QL77delSmA"/>
@@ -120,7 +128,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gOgX4swhEea1QL77delSmA"/>
     </children>
     <element xmi:type="uml:Class" href="RestAuthenticationEndpoint.uml#_gOZqMMwhEea1QL77delSmA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gObfYcwhEea1QL77delSmA" x="470" y="334"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gObfYcwhEea1QL77delSmA" x="471" y="309"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_jT1KEMwhEea1QL77delSmA" type="Class_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_jT1KEswhEea1QL77delSmA" type="Class_NameLabel"/>
@@ -134,6 +142,14 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jT1KGcwhEea1QL77delSmA"/>
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_jT1KGswhEea1QL77delSmA" type="Class_OperationCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_vT21EMzfEeaiINyVGHRfeA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_jy8WoMzfEeaiINyVGHRfeA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vT21EczfEeaiINyVGHRfeA"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_vT4qQMzfEeaiINyVGHRfeA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_jzMOQMzfEeaiINyVGHRfeA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vT4qQczfEeaiINyVGHRfeA"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_jT1KG8whEea1QL77delSmA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_jT1KHMwhEea1QL77delSmA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_jT1KHcwhEea1QL77delSmA"/>
@@ -146,7 +162,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jT1KI8whEea1QL77delSmA"/>
     </children>
     <element xmi:type="uml:Class" href="RestAuthenticationEndpoint.uml#_jTz78MwhEea1QL77delSmA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jT1KEcwhEea1QL77delSmA" x="297" y="332"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jT1KEcwhEea1QL77delSmA" x="-47" y="309"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_kgFh0MwhEea1QL77delSmA" type="Class_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_kgFh0swhEea1QL77delSmA" type="Class_NameLabel"/>
@@ -160,6 +176,14 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgFh2cwhEea1QL77delSmA"/>
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_kgFh2swhEea1QL77delSmA" type="Class_OperationCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_vTwucMzfEeaiINyVGHRfeA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_kXZukMzfEeaiINyVGHRfeA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vTwucczfEeaiINyVGHRfeA"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_vTzxwMzfEeaiINyVGHRfeA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_kXcx4MzfEeaiINyVGHRfeA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vTzxwczfEeaiINyVGHRfeA"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_kgFh28whEea1QL77delSmA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_kgFh3MwhEea1QL77delSmA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_kgFh3cwhEea1QL77delSmA"/>
@@ -172,7 +196,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgFh48whEea1QL77delSmA"/>
     </children>
     <element xmi:type="uml:Class" href="RestAuthenticationEndpoint.uml#_kgDsoMwhEea1QL77delSmA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgFh0cwhEea1QL77delSmA" x="660" y="334"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kgFh0cwhEea1QL77delSmA" x="933" y="311"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_7cAZEMwjEea1QL77delSmA" type="Class_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_7cAZEswjEea1QL77delSmA" type="Class_NameLabel"/>
@@ -186,6 +210,14 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7cAZGcwjEea1QL77delSmA"/>
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_7cBAIMwjEea1QL77delSmA" type="Class_OperationCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_vT5RUMzfEeaiINyVGHRfeA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_nLuQUMzfEeaiINyVGHRfeA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vT5RUczfEeaiINyVGHRfeA"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_vT54YMzfEeaiINyVGHRfeA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_nLwskMzfEeaiINyVGHRfeA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vT54YczfEeaiINyVGHRfeA"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_7cBAIcwjEea1QL77delSmA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_7cBAIswjEea1QL77delSmA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_7cBAI8wjEea1QL77delSmA"/>
@@ -198,7 +230,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7cBAKcwjEea1QL77delSmA"/>
     </children>
     <element xmi:type="uml:Class" href="RestAuthenticationEndpoint.uml#_7b8usMwjEea1QL77delSmA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7cAZEcwjEea1QL77delSmA" x="861" y="335"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7cAZEcwjEea1QL77delSmA" x="1402" y="312"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_0zI8wMwlEea1QL77delSmA" type="Class_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_0zJj0MwlEea1QL77delSmA" type="Class_NameLabel"/>
@@ -212,6 +244,14 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0zJj18wlEea1QL77delSmA"/>
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_0zJj2MwlEea1QL77delSmA" type="Class_OperationCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_vT0Y0MzfEeaiINyVGHRfeA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_nqFnUMzfEeaiINyVGHRfeA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vT0Y0czfEeaiINyVGHRfeA"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_vT0_4MzfEeaiINyVGHRfeA" type="Operation_ClassOperationLabel">
+        <element xmi:type="uml:Operation" href="RestAuthenticationEndpoint.uml#_nqHcgMzfEeaiINyVGHRfeA"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vT0_4czfEeaiINyVGHRfeA"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_0zJj2cwlEea1QL77delSmA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_0zJj2swlEea1QL77delSmA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_0zJj28wlEea1QL77delSmA"/>
@@ -224,7 +264,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0zJj4cwlEea1QL77delSmA"/>
     </children>
     <element xmi:type="uml:Class" href="RestAuthenticationEndpoint.uml#_0zHHkMwlEea1QL77delSmA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0zI8wcwlEea1QL77delSmA" x="1009" y="333"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0zI8wcwlEea1QL77delSmA" x="2025" y="313"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_u_VVoMwmEea1QL77delSmA" type="Class_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_u_VVoswmEea1QL77delSmA" type="Class_NameLabel"/>
@@ -250,7 +290,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u_V8ucwmEea1QL77delSmA"/>
     </children>
     <element xmi:type="uml:Class" href="RestAuthenticationEndpoint.uml#_u_LkoMwmEea1QL77delSmA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u_VVocwmEea1QL77delSmA" x="1139" y="220"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u_VVocwmEea1QL77delSmA" x="1658" y="19"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_d88WMMwnEea1QL77delSmA" type="Comment_Shape">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lXQLoMwnEea1QL77delSmA" source="PapyrusCSSForceValue">
@@ -264,7 +304,7 @@
   <children xmi:type="notation:Shape" xmi:id="_tRT4IMwnEea1QL77delSmA" type="Comment_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_tRUfMMwnEea1QL77delSmA" type="Comment_BodyLabel"/>
     <element xmi:type="uml:Comment" href="RestAuthenticationEndpoint.uml#_tRSqAMwnEea1QL77delSmA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tRT4IcwnEea1QL77delSmA" x="1010" y="442"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tRT4IcwnEea1QL77delSmA" x="2116" y="439"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_AUZukMwoEea1QL77delSmA" type="Comment_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_AUZukswoEea1QL77delSmA" type="Comment_BodyLabel"/>
@@ -290,7 +330,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_zZatkcwhEea1QL77delSmA"/>
     <element xmi:type="uml:Realization" href="RestAuthenticationEndpoint.uml#_zZXDMMwhEea1QL77delSmA"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_zZatkswhEea1QL77delSmA" points="[903, 368, -643984, -643984]$[739, 237, -643984, -643984]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zaC_sMwhEea1QL77delSmA" id="(0.35233160621761656,0.0)"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zaC_sMwhEea1QL77delSmA" id="(0.3521739130434783,0.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zaC_scwhEea1QL77delSmA" id="(0.8594847775175644,1.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_z1vdMMwhEea1QL77delSmA" type="Realization_Edge" source="_jT1KEMwhEea1QL77delSmA" target="_sSOv0MweEea1QL77delSmA">
@@ -305,7 +345,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_z1vdMcwhEea1QL77delSmA"/>
     <element xmi:type="uml:Realization" href="RestAuthenticationEndpoint.uml#_z1ry0MwhEea1QL77delSmA"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z1vdMswhEea1QL77delSmA" points="[751, 369, -643984, -643984]$[711, 237, -643984, -643984]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z2JF0MwhEea1QL77delSmA" id="(0.6014492753623188,0.0)"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z2JF0MwhEea1QL77delSmA" id="(0.6,0.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z2JF0cwhEea1QL77delSmA" id="(0.6323185011709602,1.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_0R6b0MwhEea1QL77delSmA" type="Realization_Edge" source="_gObfYMwhEea1QL77delSmA" target="_sSOv0MweEea1QL77delSmA">
@@ -320,8 +360,8 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_0R6b0cwhEea1QL77delSmA"/>
     <element xmi:type="uml:Realization" href="RestAuthenticationEndpoint.uml#_0R2xcMwhEea1QL77delSmA"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0R6b0swhEea1QL77delSmA" points="[600, 368, -643984, -643984]$[684, 237, -643984, -643984]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0SUrgMwhEea1QL77delSmA" id="(0.7595628415300546,0.0)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0SVSkMwhEea1QL77delSmA" id="(0.41451990632318503,1.0)"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0SUrgMwhEea1QL77delSmA" id="(0.758695652173913,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0SVSkMwhEea1QL77delSmA" id="(0.6533957845433255,1.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_-Ze20MwjEea1QL77delSmA" type="Realization_Edge" source="_7cAZEMwjEea1QL77delSmA" target="_sSOv0MweEea1QL77delSmA">
     <children xmi:type="notation:DecorationNode" xmi:id="_-Zfd4MwjEea1QL77delSmA" type="Realization_StereotypeLabel">
@@ -335,7 +375,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_-Ze20cwjEea1QL77delSmA"/>
     <element xmi:type="uml:Realization" href="RestAuthenticationEndpoint.uml#_-ZYwMMwjEea1QL77delSmA"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-Ze20swjEea1QL77delSmA" points="[1053, 387, -643984, -643984]$[756, 216, -643984, -643984]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-Z5tkMwjEea1QL77delSmA" id="(0.037383177570093455,0.0)"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-Z5tkMwjEea1QL77delSmA" id="(0.03695652173913044,0.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-Z6UoMwjEea1QL77delSmA" id="(0.9414519906323185,1.0)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_9dEnAMwlEea1QL77delSmA" type="Realization_Edge" source="_0zI8wMwlEea1QL77delSmA" target="_sSOv0MweEea1QL77delSmA">
@@ -350,7 +390,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_9dEnAcwlEea1QL77delSmA"/>
     <element xmi:type="uml:Realization" href="RestAuthenticationEndpoint.uml#_9c_HcMwlEea1QL77delSmA"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_9dEnAswlEea1QL77delSmA" points="[902, 336, -643984, -643984]$[871, 217, -643984, -643984]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9dnZkMwlEea1QL77delSmA" id="(0.5714285714285714,0.0)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9dnZkcwlEea1QL77delSmA" id="(0.9695550351288056,1.0)"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9dnZkMwlEea1QL77delSmA" id="(0.5695652173913044,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9dnZkcwlEea1QL77delSmA" id="(1.0,0.7291666666666666)"/>
   </edges>
 </notation:Diagram>

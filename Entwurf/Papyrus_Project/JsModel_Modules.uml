@@ -4,10 +4,6 @@
     <generalization xmi:type="uml:Generalization" xmi:id="_1-Q5QMbZEeayQsYlrW195g">
       <general xmi:type="uml:Class" href="JsModel_System.uml#_j8UosMbXEeasRKsBOCfOGQ"/>
     </generalization>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_nz-y0MPOEeaCPewWEdcdGQ" name="module" type="_9TRbYMPNEeaCPewWEdcdGQ" association="_nz8WkMPOEeaCPewWEdcdGQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_q1GacMPOEeaCPewWEdcdGQ"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_q1IPoMPOEeaCPewWEdcdGQ" value="*"/>
-    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_9TRbYMPNEeaCPewWEdcdGQ" name="Module">
     <generalization xmi:type="uml:Generalization" xmi:id="_2NhrQMPOEeaCPewWEdcdGQ">
@@ -20,6 +16,10 @@
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nz-LwcPOEeaCPewWEdcdGQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_nz_Z4MPOEeaCPewWEdcdGQ" name="collection" type="_zWYJ4MPMEeaCPewWEdcdGQ" association="_nz8WkMPOEeaCPewWEdcdGQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_nz-y0MPOEeaCPewWEdcdGQ" name="module" type="_9TRbYMPNEeaCPewWEdcdGQ" association="_nz8WkMPOEeaCPewWEdcdGQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_q1GacMPOEeaCPewWEdcdGQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_q1IPoMPOEeaCPewWEdcdGQ" value="*"/>
+    </ownedEnd>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_DE9QsMPPEeaCPewWEdcdGQ" name="Preference">
     <generalization xmi:type="uml:Generalization" xmi:id="_fynvAMPPEeaCPewWEdcdGQ">
