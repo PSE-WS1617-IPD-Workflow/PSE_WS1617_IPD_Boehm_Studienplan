@@ -97,26 +97,16 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_ortSIMt7EeaIBcC0jCetUA" name="module_id">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_rlTVcMt7EeaIBcC0jCetUA" name="jsonModule" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_eZT48LubEea-uPszIhxKkQ" name="changeModuleSemester">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_EuiqwMt8EeaIBcC0jCetUA" name="plan_id">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_G5UgQMt8EeaIBcC0jCetUA" name="module_id">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_WZtE8Mt8EeaIBcC0jCetUA" name="jsonSavedModule" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_gd6U0Mt8EeaIBcC0jCetUA" name="jsonChangeModule" type="_qFookMtyEeaIBcC0jCetUA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_rlTVcMt7EeaIBcC0jCetUA" name="jsonModule" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_f8uMcLubEea-uPszIhxKkQ" name="putModuleSemester">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_k0Zz8Mt8EeaIBcC0jCetUA" name="plan_id">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_nJ_LQMt8EeaIBcC0jCetUA" name="module_id">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_sOhcIMt8EeaIBcC0jCetUA" name="jsonPutModule" type="_qFookMtyEeaIBcC0jCetUA"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_v02poMt8EeaIBcC0jCetUA" name="jsonSavedModule" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
@@ -126,7 +116,7 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_8KkCEMt8EeaIBcC0jCetUA" name="module_id">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_KcG1EMt9EeaIBcC0jCetUA" name="jsonStatus" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
     </ownedOperation>
@@ -135,7 +125,7 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_TV3rEMt9EeaIBcC0jCetUA" name="module_id">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_XP20YMt9EeaIBcC0jCetUA" name="jsonModulePreference" type="_qFookMtyEeaIBcC0jCetUA"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_cQF0EMt9EeaIBcC0jCetUA" name="jsonSavedModulePreference" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
@@ -218,7 +208,7 @@
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_wIrLAMwgEeaTDYobh6xdEw" name="getModule">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_3EYY4MwgEeaTDYobh6xdEw" name="module_id">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_8gHBwMwgEeaTDYobh6xdEw" name="jsonModule" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
     </ownedOperation>
