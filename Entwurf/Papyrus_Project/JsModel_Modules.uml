@@ -46,6 +46,9 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_mxoe4szrEeaiINyVGHRfeA" name="moduleconstraint" type="_kUbcoMzrEeaiINyVGHRfeA" association="_mxnQwMzrEeaiINyVGHRfeA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_qK0d4M0PEeavo6is7kUH4g" name="passed" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_nz8WkMPOEeaCPewWEdcdGQ" name="contains" memberEnd="_nz-y0MPOEeaCPewWEdcdGQ _nz_Z4MPOEeaCPewWEdcdGQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nz-LwMPOEeaCPewWEdcdGQ" source="org.eclipse.papyrus">

@@ -62,30 +62,56 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_lVJycMzuEeaiINyVGHRfeA" name="SignUpWizardComponent1">
     <generalization xmi:type="uml:Generalization" xmi:id="__eU6wMzuEeaiINyVGHRfeA" general="_QeUi8MztEeaiINyVGHRfeA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FpK7UM0OEeavo6is7kUH4g" name="student">
+      <type xmi:type="uml:Class" href="JsModel_User.uml#_UHYTEMPTEeaCPewWEdcdGQ"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_WbabYM0MEeavo6is7kUH4g" name="next">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_WbabYc0MEeavo6is7kUH4g" type="_QeUi8MztEeaiINyVGHRfeA" direction="return"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_qpNGAMzuEeaiINyVGHRfeA" name="SignUpWizardComponent2">
     <generalization xmi:type="uml:Generalization" xmi:id="_-X9voMzuEeaiINyVGHRfeA" general="_QeUi8MztEeaiINyVGHRfeA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_H6O_AM0OEeavo6is7kUH4g" name="student">
+      <type xmi:type="uml:Class" href="JsModel_User.uml#_UHYTEMPTEeaCPewWEdcdGQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_s-tXQc0OEeavo6is7kUH4g" name="modulefinder" type="_NfZ4wM0DEeameZvbSNUikg" association="_s-qT8M0OEeavo6is7kUH4g"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_YE0CIM0MEeavo6is7kUH4g" name="next">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_YE0CIc0MEeavo6is7kUH4g" type="_QeUi8MztEeaiINyVGHRfeA" direction="return"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_u3ENkMzuEeaiINyVGHRfeA" name="GenerationWizardComponent1">
     <generalization xmi:type="uml:Generalization" xmi:id="__z47EMzuEeaiINyVGHRfeA" general="_QeUi8MztEeaiINyVGHRfeA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_L6ERoM0OEeavo6is7kUH4g" name="plan">
+      <type xmi:type="uml:Class" href="JsModel_Plans.uml#_i4mMwMbVEeasRKsBOCfOGQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_PlZ68M0OEeavo6is7kUH4g" name="information">
+      <type xmi:type="uml:Class" href="JsModel_System.uml#_oPHtkM0MEeavo6is7kUH4g"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_YeBzYM0MEeavo6is7kUH4g" name="next">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_YeBzYc0MEeavo6is7kUH4g" type="_QeUi8MztEeaiINyVGHRfeA" direction="return"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_whXzQMzuEeaiINyVGHRfeA" name="GenerationWizardComponent2">
     <generalization xmi:type="uml:Generalization" xmi:id="_AQpIgMzvEeaiINyVGHRfeA" general="_QeUi8MztEeaiINyVGHRfeA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_RQXA4M0OEeavo6is7kUH4g" name="plan">
+      <type xmi:type="uml:Class" href="JsModel_Plans.uml#_i4mMwMbVEeasRKsBOCfOGQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_RQZdIM0OEeavo6is7kUH4g" name="information">
+      <type xmi:type="uml:Class" href="JsModel_System.uml#_oPHtkM0MEeavo6is7kUH4g"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ncx_ws0OEeavo6is7kUH4g" name="modulefinder" type="_NfZ4wM0DEeameZvbSNUikg" association="_ncuVYM0OEeavo6is7kUH4g"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_YrjSAM0MEeavo6is7kUH4g" name="next">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_YrjSAc0MEeavo6is7kUH4g" type="_QeUi8MztEeaiINyVGHRfeA" direction="return"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_yjQLcMzuEeaiINyVGHRfeA" name="GenerationWizardComponent3">
     <generalization xmi:type="uml:Generalization" xmi:id="_ApS5EMzvEeaiINyVGHRfeA" general="_QeUi8MztEeaiINyVGHRfeA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_RcG94M0OEeavo6is7kUH4g" name="plan">
+      <type xmi:type="uml:Class" href="JsModel_Plans.uml#_i4mMwMbVEeasRKsBOCfOGQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_RcIzEM0OEeavo6is7kUH4g" name="information">
+      <type xmi:type="uml:Class" href="JsModel_System.uml#_oPHtkM0MEeavo6is7kUH4g"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_Y2rj8M0MEeavo6is7kUH4g" name="next">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_Y2rj8c0MEeavo6is7kUH4g" type="_QeUi8MztEeaiINyVGHRfeA" direction="return"/>
     </ownedOperation>
@@ -94,6 +120,13 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="__v9tQM0CEeameZvbSNUikg" name="module" visibility="private">
       <type xmi:type="uml:Class" href="JsModel_Modules.uml#_9TRbYMPNEeaCPewWEdcdGQ"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_evu6oM0PEeavo6is7kUH4g" name="isDeletable" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_iGKD4M0PEeavo6is7kUH4g" name="passed" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_-AWTUM0OEeavo6is7kUH4g" name="setRedBorder"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_GSYRYM0DEeameZvbSNUikg" memberEnd="_GShbUM0DEeameZvbSNUikg _GSkeoM0DEeameZvbSNUikg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GSfmIM0DEeameZvbSNUikg" source="org.eclipse.papyrus">
@@ -105,21 +138,27 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_Tis38M0DEeameZvbSNUikg" name="lazyLoadingModuleCollection" visibility="private">
       <type xmi:type="uml:Class" href="JsModel_System.uml#_gUJ-wMzjEeaiINyVGHRfeA"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_p0YKQM0DEeameZvbSNUikg" name="isSidebar">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_p0YKQM0DEeameZvbSNUikg" name="isSidebar" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_VpTtMs0FEeameZvbSNUikg" name="modulefilter" type="_qSK5gM0DEeameZvbSNUikg" association="_VpSfEM0FEeameZvbSNUikg"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_W_zmEc0FEeameZvbSNUikg" name="modulelist" type="_jN928M0DEeameZvbSNUikg" association="_W_yX8M0FEeameZvbSNUikg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_eYi_IM0OEeavo6is7kUH4g" name="isPreferencable" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_adDa8M0DEeameZvbSNUikg" name="onScroll"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_fZ0P4M0DEeameZvbSNUikg" name="onSearch"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_jN928M0DEeameZvbSNUikg" name="ModuleList">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_hHnjkM0FEeameZvbSNUikg" name="modules">
+  <packagedElement xmi:type="uml:Class" xmi:id="_jN928M0DEeameZvbSNUikg" name="ModuleList" visibility="private">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_hHnjkM0FEeameZvbSNUikg" name="modules" visibility="private">
       <type xmi:type="uml:Class" href="JsModel_System.uml#_jlv14MzkEeaiINyVGHRfeA"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_kx9uYs0FEeameZvbSNUikg" name="modulebox" type="_9CVCUM0CEeameZvbSNUikg" association="_kx8gQM0FEeameZvbSNUikg">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lpU0MM0FEeameZvbSNUikg"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lpXQcM0FEeameZvbSNUikg" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_iHumoM0OEeavo6is7kUH4g" name="isPreferencable" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_qSK5gM0DEeameZvbSNUikg" name="ModuleFilter">
@@ -255,6 +294,18 @@ MainView ist ein Observer der NotificationCollection und zeigt neue Notification
     <ownedOperation xmi:type="uml:Operation" xmi:id="_P8J48M0MEeavo6is7kUH4g" name="delete"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_ReZHwM0MEeavo6is7kUH4g" name="save"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_S3khMM0MEeavo6is7kUH4g" name="saveAs"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ncuVYM0OEeavo6is7kUH4g" memberEnd="_ncx_ws0OEeavo6is7kUH4g _nc0cAM0OEeavo6is7kUH4g">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ncx_wM0OEeavo6is7kUH4g" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ncx_wc0OEeavo6is7kUH4g" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_nc0cAM0OEeavo6is7kUH4g" name="generationwizardcomponent2" type="_whXzQMzuEeaiINyVGHRfeA" association="_ncuVYM0OEeavo6is7kUH4g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_s-qT8M0OEeavo6is7kUH4g" memberEnd="_s-tXQc0OEeavo6is7kUH4g _s-t-UM0OEeavo6is7kUH4g">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_s-swMM0OEeavo6is7kUH4g" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_s-tXQM0OEeavo6is7kUH4g" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_s-t-UM0OEeavo6is7kUH4g" name="signupwizardcomponent2" type="_qpNGAMzuEeaiINyVGHRfeA" association="_s-qT8M0OEeavo6is7kUH4g"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_UjibMMdjEea29-bQWKStRA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UjibMcdjEea29-bQWKStRA" source="http://www.eclipse.org/uml2/2.0.0/UML">

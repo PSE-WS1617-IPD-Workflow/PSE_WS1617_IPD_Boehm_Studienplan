@@ -125,6 +125,13 @@
         <element xmi:type="uml:Property" href="JsModel_Modules.uml#_2_XOkMznEeaiINyVGHRfeA"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_2_fxccznEeaiINyVGHRfeA"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_qK-O4M0PEeavo6is7kUH4g" type="Property_ClassAttributeLabel">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qLd-IM0PEeavo6is7kUH4g" source="PapyrusCSSForceValue">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qLd-Ic0PEeavo6is7kUH4g" key="mutable" value="true"/>
+        </eAnnotations>
+        <element xmi:type="uml:Property" href="JsModel_Modules.uml#_qK0d4M0PEeavo6is7kUH4g"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_qK-O4c0PEeavo6is7kUH4g"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_9TTQlMPNEeaCPewWEdcdGQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_9TTQlcPNEeaCPewWEdcdGQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_9TTQlsPNEeaCPewWEdcdGQ"/>
@@ -144,7 +151,7 @@
     </children>
     <styles xmi:type="notation:CanonicalStyle" xmi:id="_c9zmoMzmEeaiINyVGHRfeA"/>
     <element xmi:type="uml:Class" href="JsModel_Modules.uml#_9TRbYMPNEeaCPewWEdcdGQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9TSpgcPNEeaCPewWEdcdGQ" x="449" y="46" width="276"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9TSpgcPNEeaCPewWEdcdGQ" x="449" y="17" width="276" height="313"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_DFAUAMPPEeaCPewWEdcdGQ" type="Class_Shape">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Ixfo4MznEeaiINyVGHRfeA" source="PapyrusCSSForceValue">
@@ -365,7 +372,7 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_mxzeBczrEeaiINyVGHRfeA" y="-20"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_mxzeBszrEeaiINyVGHRfeA" type="Association_SourceRoleLabel">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_mxzeB8zrEeaiINyVGHRfeA" y="20"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_mxzeB8zrEeaiINyVGHRfeA" x="-94" y="72"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_mxzeCMzrEeaiINyVGHRfeA" type="Association_SourceMultiplicityLabel">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_mxzeCczrEeaiINyVGHRfeA" y="20"/>
