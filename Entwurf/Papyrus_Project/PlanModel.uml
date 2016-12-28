@@ -40,6 +40,12 @@
       <ownedOperation xmi:type="uml:Operation" xmi:id="_F5SZoL_WEeaCWKyYbzcIZw" name="getPlanEntries">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_fFlC8L_WEeaCWKyYbzcIZw" direction="return" effect="read"/>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_DjfagM0JEeaCG5zN-8zr3A" name="getPreferenceForModule">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_MZLo0M0JEeaCG5zN-8zr3A" type="_r4SPEMK4EeavfrO5hlCymA" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_QcVVMM0JEeaCG5zN-8zr3A" name="module">
+          <type xmi:type="uml:Class" href="ModulModel.uml#_0RnMgL4NEeaoO4fCpQc-Qw"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_Nij24LueEeaCStjenx_8kw" name="VerificationState">
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Rw-_ILueEeaCStjenx_8kw" name="NOT_VERIFIED"/>
