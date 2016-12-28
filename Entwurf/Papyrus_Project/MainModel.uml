@@ -70,6 +70,29 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Package" href="BackboneJs.uml#_RZCYoMdkEea29-bQWKStRA"/>
   <packagedElement xmi:type="uml:Package" href="RestAuthenticationEndpoint.uml#_4JzXkMwaEea1QL77delSmA"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_QZBEMM1FEeaTycnTayAwOw" visibility="private" memberEnd="_QZHK0c1FEeaTycnTayAwOw _QZHK0s1FEeaTycnTayAwOw" navigableOwnedEnd="_QZHK0c1FEeaTycnTayAwOw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QZBEMc1FEeaTycnTayAwOw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_QZHK0M1FEeaTycnTayAwOw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QZHK0s1FEeaTycnTayAwOw" name="moduledescription" association="_QZBEMM1FEeaTycnTayAwOw">
+      <type xmi:type="uml:Class" href="ModulModel.uml#_1pGj4L4NEeaoO4fCpQc-Qw"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cjBi8M1FEeaTycnTayAwOw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cjNwMM1FEeaTycnTayAwOw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QZHK0c1FEeaTycnTayAwOw" name="kind" association="_QZBEMM1FEeaTycnTayAwOw">
+      <type xmi:type="uml:Class" href="ModulModel.uml#_iAPPAM1EEeaTycnTayAwOw"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_XO4SUM1REeaTycnTayAwOw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XO8jwM1REeaTycnTayAwOw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_XO9K0M1REeaTycnTayAwOw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <memberEnd xmi:type="uml:Property" href="Filter.uml#_XO9x4M1REeaTycnTayAwOw"/>
+    <memberEnd xmi:type="uml:Property" href="#_XPG70M1REeaTycnTayAwOw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_XPG70M1REeaTycnTayAwOw" name="filterdescriptor" association="_XO4SUM1REeaTycnTayAwOw">
+      <type xmi:type="uml:Class" href="Filter.uml#_eO6zUMOdEeaiRIvYnaUryA"/>
+    </ownedEnd>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vtuncLcDEeag2fAimjvU5Q">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vt3xYLcDEeag2fAimjvU5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

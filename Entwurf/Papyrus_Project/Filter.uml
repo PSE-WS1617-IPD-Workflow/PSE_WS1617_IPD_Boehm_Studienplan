@@ -5,9 +5,11 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_qtj4AMCtEeaPXJNH_43Mqw" type="_wio-kMC5EearftWngfiKFw" direction="return"/>
     </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_26GSsLuREea-uPszIhxKkQ" name="ECTSFilter" isLeaf="true">
+  <packagedElement xmi:type="uml:Class" xmi:id="_26GSsLuREea-uPszIhxKkQ" name="CreditPointsFilter" isLeaf="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_n-wfoMGCEea0yOFvxPpmvQ" general="_4zyO8MF1EeaM6M-4jd6ZbA"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_UBAlgMGHEea0yOFvxPpmvQ" name="getDescriptor"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_UBAlgMGHEea0yOFvxPpmvQ" name="getDescriptor">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Wj3qoM1KEeaTycnTayAwOw" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_wio-kMC5EearftWngfiKFw" name="Condition">
     <ownedComment xmi:type="uml:Comment" xmi:id="_1aCyYMC5EearftWngfiKFw" annotatedElement="_wio-kMC5EearftWngfiKFw">
@@ -23,16 +25,36 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_mJuNgMC6EearftWngfiKFw" name="selection" visibility="private" isReadOnly="true">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_nzHNMMC6EearftWngfiKFw" name="getSelection"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_4vRqYM1SEeaTycnTayAwOw" name="items" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_50SxsM1SEeaTycnTayAwOw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_50WcEM1SEeaTycnTayAwOw" value="*"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_nzHNMMC6EearftWngfiKFw" name="getSelection">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_pYbLQM1JEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_AcBcoMC7EearftWngfiKFw" name="getCondition">
       <ownedComment xmi:type="uml:Comment" xmi:id="_-RbE4MGMEeaDGu-4-Q8w1w" annotatedElement="_AcBcoMC7EearftWngfiKFw">
         <body>/*&#xD;
-  return descriptor.equals(selection);&#xD;
+  return descriptor.toField().equals(selection);&#xD;
 */</body>
       </ownedComment>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_r8A-0M1IEeaTycnTayAwOw" type="_wio-kMC5EearftWngfiKFw" direction="return"/>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_bVuIwMyJEeaplOwEKWQXaA" name="getDescriptor" isAbstract="true">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_bVuIwcyJEeaplOwEKWQXaA" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_F33GsM1SEeaTycnTayAwOw" name="getFilterType">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_F33Gsc1SEeaTycnTayAwOw" type="_ABS0kM1VEeaTycnTayAwOw" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_FO2wgM1TEeaTycnTayAwOw" name="getItems">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_FO2wgc1TEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A5ANwM1XEea_0s4wF38UhQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A5UW0M1XEea_0s4wF38UhQ" value="*"/>
+      </ownedParameter>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_uSW0YMFxEeawXJ3PDM1dRw" client="_hjMaIMFxEeawXJ3PDM1dRw" supplier="_vd38kMGCEea0yOFvxPpmvQ"/>
@@ -43,23 +65,39 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_TaaOsMC6EearftWngfiKFw" name="max" visibility="private" isReadOnly="true">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_VsC6IMC6EearftWngfiKFw" name="getMin"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_dCMoUMC6EearftWngfiKFw" name="getMax"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VsC6IMC6EearftWngfiKFw" name="getMin">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_RhUosM1IEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_dCMoUMC6EearftWngfiKFw" name="getMax">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_T0qkUM1IEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_vHQJMMC6EearftWngfiKFw" name="getCondition">
       <ownedComment xmi:type="uml:Comment" xmi:id="__I2kkMC6EearftWngfiKFw" annotatedElement="_vHQJMMC6EearftWngfiKFw">
         <body>/*&#xD;
-       return descriptor.between(min).and(max) //or similar&#xD;
+       return descriptor.toField().&#xD;
+between(min).and(max) //or similar&#xD;
      */</body>
       </ownedComment>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_pzJN0M1IEeaTycnTayAwOw" type="_wio-kMC5EearftWngfiKFw" direction="return"/>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_W8rE4MyJEeaplOwEKWQXaA" name="getDescriptor" isAbstract="true">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_W8rE4cyJEeaplOwEKWQXaA" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_EOulsM1SEeaTycnTayAwOw" name="getFilterType">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_EOulsc1SEeaTycnTayAwOw" type="_ABS0kM1VEeaTycnTayAwOw" direction="return"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_vd38kMGCEea0yOFvxPpmvQ" name="AttributeFilter">
     <generalization xmi:type="uml:Generalization" xmi:id="_L_bRgMGDEea0yOFvxPpmvQ" general="_p8pFILuOEea-uPszIhxKkQ"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_DHBGYMGDEea0yOFvxPpmvQ" name="getDescriptor">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_HeUd0MGDEea0yOFvxPpmvQ" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_nw-LoM1REeaTycnTayAwOw" name="getFilterType">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_uagEYM1REeaTycnTayAwOw" type="_ABS0kM1VEeaTycnTayAwOw" direction="return"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_BrPr8MGDEea0yOFvxPpmvQ" client="_4zyO8MF1EeaM6M-4jd6ZbA" supplier="_vd38kMGCEea0yOFvxPpmvQ"/>
@@ -78,47 +116,62 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_FpHrMMGNEeaDGu-4-Q8w1w" name="substring" visibility="private" isReadOnly="true">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_U5NKEMGNEeaDGu-4-Q8w1w" name="getSubstring"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_U5NKEMGNEeaDGu-4-Q8w1w" name="getSubstring">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_5A-NcM1JEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_W8IEEMGNEeaDGu-4-Q8w1w" name="getCondition">
       <ownedComment xmi:type="uml:Comment" xmi:id="_bYL_sMGNEeaDGu-4-Q8w1w" annotatedElement="_W8IEEMGNEeaDGu-4-Q8w1w">
         <body>/*&#xD;
-  return descriptor.contains(substring); //? or similar&#xD;
+  return descriptor.toField().contains(substring); //? or similar&#xD;
 */</body>
       </ownedComment>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_1WuJQM1JEeaTycnTayAwOw" type="_wio-kMC5EearftWngfiKFw" direction="return"/>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_dm_AwMyJEeaplOwEKWQXaA" name="getDescriptor" isAbstract="true">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_dm_AwcyJEeaplOwEKWQXaA" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
     </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_HAAagM1SEeaTycnTayAwOw" name="getFilterType">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_HAAagc1SEeaTycnTayAwOw" type="_ABS0kM1VEeaTycnTayAwOw" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_dLUxQMGNEeaDGu-4-Q8w1w" client="_qmRI4MGMEeaDGu-4-Q8w1w" supplier="_vd38kMGCEea0yOFvxPpmvQ"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_jOChoMGNEeaDGu-4-Q8w1w" name="TitleFilter" isLeaf="true">
+  <packagedElement xmi:type="uml:Class" xmi:id="_jOChoMGNEeaDGu-4-Q8w1w" name="NameFilter" isLeaf="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_IkooMMHcEeaMG_BKqLGAKw" general="_qmRI4MGMEeaDGu-4-Q8w1w"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_6AipEMGNEeaDGu-4-Q8w1w" name="getDescriptor"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Enumeration" xmi:id="_JM1JQMHfEeaMG_BKqLGAKw" name="FilterType">
-    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_U-cWIMHfEeaMG_BKqLGAKw" name="RANGE"/>
-    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_XXssgMHfEeaMG_BKqLGAKw" name="LIST"/>
-    <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_awAFEMHfEeaMG_BKqLGAKw" name="CONTAINS"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_6AipEMGNEeaDGu-4-Q8w1w" name="getDescriptor">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_wHEYEM1KEeaTycnTayAwOw" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_TCDkIMHuEeafqK_E3KwnEw" name="CategoryFilter">
     <generalization xmi:type="uml:Generalization" xmi:id="_y6yQQMHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_7HB48MHuEeafqK_E3KwnEw" name="getDescriptor"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_7HB48MHuEeafqK_E3KwnEw" name="getDescriptor">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_e-P18M1KEeaTycnTayAwOw" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_XgO_oMHuEeafqK_E3KwnEw" name="CycleFilter">
+  <packagedElement xmi:type="uml:Class" xmi:id="_XgO_oMHuEeafqK_E3KwnEw" name="CycleTypeFilter">
     <generalization xmi:type="uml:Generalization" xmi:id="_z51ScMHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_8UejgMHuEeafqK_E3KwnEw" name="getDescriptor"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_8UejgMHuEeafqK_E3KwnEw" name="getDescriptor">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_gtRjkM1KEeaTycnTayAwOw" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_kdoDIMHuEeafqK_E3KwnEw" name="KindFilter">
     <generalization xmi:type="uml:Generalization" xmi:id="_0YaE0MHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_9cX_sMHuEeafqK_E3KwnEw" name="getDescriptor"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_9cX_sMHuEeafqK_E3KwnEw" name="getDescriptor">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_kIH50M1KEeaTycnTayAwOw" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_jvoUsMHuEeafqK_E3KwnEw" name="DisciplineFilter">
     <generalization xmi:type="uml:Generalization" xmi:id="_05upMMHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="__vi8MMHuEeafqK_E3KwnEw" name="getDescriptor"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="__vi8MMHuEeafqK_E3KwnEw" name="getDescriptor">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mSxzgM1KEeaTycnTayAwOw" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_iySisMHuEeafqK_E3KwnEw" name="ObligatoryFilter">
+  <packagedElement xmi:type="uml:Class" xmi:id="_iySisMHuEeafqK_E3KwnEw" name="CompulsoryFilter">
     <generalization xmi:type="uml:Generalization" xmi:id="_1puiwMHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_AtOscMHvEeafqK_E3KwnEw" name="getDescriptor"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_AtOscMHvEeafqK_E3KwnEw" name="getDescriptor">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qnhmMM1KEeaTycnTayAwOw" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_3xeH4MOaEeaiRIvYnaUryA" name="MultivaluedMap&lt;String, String>">
     <ownedComment xmi:type="uml:Comment" xmi:id="_3xeH4cOaEeaiRIvYnaUryA" annotatedElement="_3xeH4MOaEeaiRIvYnaUryA">
@@ -126,12 +179,23 @@
     </ownedComment>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_eO6zUMOdEeaiRIvYnaUryA" name="FilterDescriptor">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_zce9QMOdEeaiRIvYnaUryA" name="id" isReadOnly="true">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_zce9QMOdEeaiRIvYnaUryA" name="id" visibility="private" isReadOnly="true">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_odToAMOfEeaE5o1HSz0A6w" name="filterType" type="_JM1JQMHfEeaMG_BKqLGAKw"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_LYwMOeEeaiRIvYnaUryA" name="columnName" isReadOnly="true">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_LYwMOeEeaiRIvYnaUryA" name="attributeName" visibility="private" isReadOnly="true">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ad5I0M1NEeaTycnTayAwOw" name="name" visibility="private" isReadOnly="true">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_72z_4M1OEeaTycnTayAwOw" name="defaultJsonValue" visibility="private" isReadOnly="true">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_EXY50M1PEeaTycnTayAwOw" name="tooltip" visibility="private" isReadOnly="true">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_XO9x4M1REeaTycnTayAwOw" name="attributefilter" type="_vd38kMGCEea0yOFvxPpmvQ">
+      <association xmi:type="uml:Association" href="MainModel.uml#_XO4SUM1REeaTycnTayAwOw"/>
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_zXI4UMOfEeaE5o1HSz0A6w" name="toField">
       <ownedComment xmi:type="uml:Comment" xmi:id="_TWB20MOgEeaE5o1HSz0A6w" annotatedElement="_zXI4UMOfEeaE5o1HSz0A6w">
@@ -139,19 +203,44 @@
       </ownedComment>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_zXI4UcOfEeaE5o1HSz0A6w" type="_1rg84MC5EearftWngfiKFw" direction="return"/>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_Msy5AMOgEeaE5o1HSz0A6w" name="toJSON">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Msy5AMOgEeaE5o1HSz0A6w" name="toJson">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_Msy5AcOgEeaE5o1HSz0A6w" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
     </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_PxGHkM1QEeaTycnTayAwOw" name="id">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_PxGHkc1QEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_gq6kYM1QEeaTycnTayAwOw" name="attributeName">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_gq6kYc1QEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_j5Iz4M1QEeaTycnTayAwOw" name="name">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_j5Iz4c1QEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_7i56gM1QEeaTycnTayAwOw" name="defaultJsonValue">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_7i56gc1QEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_4RaUkM1QEeaTycnTayAwOw" name="tooltip">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_4RaUkc1QEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
     <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_2onQIMOfEeaE5o1HSz0A6w" name="FilterDescriptor">
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_5fQtIMOfEeaE5o1HSz0A6w" name="ECTS"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_5fQtIMOfEeaE5o1HSz0A6w" name="CREDIT_POINTS"/>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_6b3fUMOfEeaE5o1HSz0A6w" name="CATEGORY"/>
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__KPS8MOfEeaE5o1HSz0A6w" name="CYCLE"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__KPS8MOfEeaE5o1HSz0A6w" name="CYCLE_TYPE"/>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_ANwlcMOgEeaE5o1HSz0A6w" name="KIND"/>
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BN2wgMOgEeaE5o1HSz0A6w" name="DISCIPLINE"/>
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CO6k4MOgEeaE5o1HSz0A6w" name="OBLIGATORY"/>
-      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_DWq3IMOgEeaE5o1HSz0A6w" name="TITLE"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_CO6k4MOgEeaE5o1HSz0A6w" name="COMPULSORY"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_DWq3IMOgEeaE5o1HSz0A6w" name="NAME"/>
     </nestedClassifier>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_3J_L0MyHEeaplOwEKWQXaA" name="TrueFilter">
@@ -160,6 +249,19 @@
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_69OM4MyHEeaplOwEKWQXaA" client="_3J_L0MyHEeaplOwEKWQXaA" supplier="_p8pFILuOEea-uPszIhxKkQ"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ABS0kM1VEeaTycnTayAwOw" name="FilterType">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_jJcqEM1VEeaTycnTayAwOw" name="toJsonSpecification">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jJcqEc1VEeaTycnTayAwOw" name="filter" type="_vd38kMGCEea0yOFvxPpmvQ"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jJcqEs1VEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_JM1JQMHfEeaMG_BKqLGAKw" name="FilterType">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_U-cWIMHfEeaMG_BKqLGAKw" name="RANGE"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_XXssgMHfEeaMG_BKqLGAKw" name="LIST"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_awAFEMHfEeaMG_BKqLGAKw" name="CONTAINS"/>
+    </nestedClassifier>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Gn_AcL7KEeaRCti-wkqR-A">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Gn_Acb7KEeaRCti-wkqR-A" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

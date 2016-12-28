@@ -98,6 +98,9 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedParameter>
     </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_uAv-EM1FEeaTycnTayAwOw" name="getKind">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_uAv-Ec1FEeaTycnTayAwOw" type="_iAPPAM1EEeaTycnTayAwOw" direction="return"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_6zsZcL4NEeaoO4fCpQc-Qw" name="Category">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_qmtNIMbDEeatB58sIl8nCg" name="categoryId" visibility="private">
@@ -277,6 +280,24 @@
         <type xmi:type="uml:Class" href="PlanModel.uml#_5yGmIMBpEeafN5EhaYGTYw"/>
       </ownedParameter>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34A80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_iAPPAM1EEeaTycnTayAwOw" name="Kind">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_uRGjsM1EEeaTycnTayAwOw" name="kindId" visibility="private" isReadOnly="true">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_4PlmEM1EEeaTycnTayAwOw" name="name" visibility="private" isReadOnly="true">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CEoYkM1FEeaTycnTayAwOw" name="getKindId">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CEufMM1FEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_EjavMM1FEeaTycnTayAwOw" name="getName">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_EjavMc1FEeaTycnTayAwOw" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
     </ownedOperation>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_WIyXALsIEea-uPszIhxKkQ">
