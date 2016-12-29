@@ -39,7 +39,7 @@
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tbvQQMGDEea0yOFvxPpmvQ" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tbv3UMGDEea0yOFvxPpmvQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_tb0v0MGDEea0yOFvxPpmvQ" aggregation="shared" association="_tbs0AMGDEea0yOFvxPpmvQ">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_tb0v0MGDEea0yOFvxPpmvQ" name="multi" aggregation="shared" association="_tbs0AMGDEea0yOFvxPpmvQ">
       <type xmi:type="uml:Class" href="Filter.uml#_b6x68MGDEea0yOFvxPpmvQ"/>
     </ownedEnd>
     <ownedEnd xmi:type="uml:Property" xmi:id="_tbxsgMGDEea0yOFvxPpmvQ" name="filters" association="_tbs0AMGDEea0yOFvxPpmvQ">
@@ -68,7 +68,6 @@
       <type xmi:type="uml:Class" href="REST.uml#_To0dwLuOEea-uPszIhxKkQ"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" href="BackboneJs.uml#_RZCYoMdkEea29-bQWKStRA"/>
   <packagedElement xmi:type="uml:Package" href="RestAuthenticationEndpoint.uml#_4JzXkMwaEea1QL77delSmA"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_QZBEMM1FEeaTycnTayAwOw" visibility="private" memberEnd="_QZHK0c1FEeaTycnTayAwOw _QZHK0s1FEeaTycnTayAwOw" navigableOwnedEnd="_QZHK0c1FEeaTycnTayAwOw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QZBEMc1FEeaTycnTayAwOw" source="org.eclipse.papyrus">
@@ -93,6 +92,7 @@
       <type xmi:type="uml:Class" href="Filter.uml#_eO6zUMOdEeaiRIvYnaUryA"/>
     </ownedEnd>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="__YUNYMOuEearScbIBXJIIw" name="StandardVerifier"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vtuncLcDEeag2fAimjvU5Q">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vt3xYLcDEeag2fAimjvU5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

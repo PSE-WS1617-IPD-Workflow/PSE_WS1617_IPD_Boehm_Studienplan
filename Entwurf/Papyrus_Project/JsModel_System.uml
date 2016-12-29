@@ -34,13 +34,6 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_y7hIsMbTEeaDo5Q3a9GKqw" name="ObjectiveFunctionCollection">
-    <generalization xmi:type="uml:Generalization" xmi:id="_Cz6WAMbaEeayQsYlrW195g" general="_j8UosMbXEeasRKsBOCfOGQ"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_04PUEMbTEeaDo5Q3a9GKqw" name="objectivefunction" type="_wZfQ0MbTEeaDo5Q3a9GKqw" aggregation="composite" association="_04MQwMbTEeaDo5Q3a9GKqw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FSQPcMbUEeaVr7AotRm3tQ"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FSXkMMbUEeaVr7AotRm3tQ" value="*"/>
-    </ownedAttribute>
-  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_04MQwMbTEeaDo5Q3a9GKqw" memberEnd="_04PUEMbTEeaDo5Q3a9GKqw _04TlgMbTEeaDo5Q3a9GKqw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_04OF8MbTEeaDo5Q3a9GKqw" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_04OF8cbTEeaDo5Q3a9GKqw" key="nature" value="UML_Nature"/>
@@ -223,6 +216,13 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_EW8FIM0TEeavo6is7kUH4g" name="getInstance">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_Hni6QM0TEeavo6is7kUH4g" type="_vBTkUM0SEeavo6is7kUH4g" direction="return"/>
     </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_y7hIsMbTEeaDo5Q3a9GKqw" name="ObjectiveFunctionCollection">
+    <generalization xmi:type="uml:Generalization" xmi:id="_Cz6WAMbaEeayQsYlrW195g" general="_j8UosMbXEeasRKsBOCfOGQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_04PUEMbTEeaDo5Q3a9GKqw" name="objectivefunction" type="_wZfQ0MbTEeaDo5Q3a9GKqw" aggregation="composite" association="_04MQwMbTEeaDo5Q3a9GKqw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FSQPcMbUEeaVr7AotRm3tQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FSXkMMbUEeaVr7AotRm3tQ" value="*"/>
+    </ownedAttribute>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_qiLJUMPMEeaCPewWEdcdGQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qiLJUcPMEeaCPewWEdcdGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
