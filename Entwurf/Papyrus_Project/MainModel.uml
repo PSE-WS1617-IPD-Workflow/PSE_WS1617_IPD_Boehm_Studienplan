@@ -4,83 +4,12 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_gCfr8L7KEeaRCti-wkqR-A" importedPackage="_isR5AL7HEeaRCti-wkqR-A"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_O8AK0LfUEea2RYsZ51fiPw" name="java.generation">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_3GiqILiaEeavH9sFQSsLvg" importedPackage="_lM5vELiaEeavH9sFQSsLvg"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_d98A4L-TEeaWJullGOJpaQ" name="PartialObjectiveFunction">
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_lcSBwL-TEeaWJullGOJpaQ" name="evaluate">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_uB3-kL-TEeaWJullGOJpaQ" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_-IDX8L-TEeaWJullGOJpaQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
-      </ownedOperation>
-    </packagedElement>
     <packagedElement xmi:type="uml:Interface" xmi:id="_sCNXcL-UEeaWJullGOJpaQ" name="Generator">
       <ownedOperation xmi:type="uml:Operation" xmi:id="_uqzxYL-UEeaWJullGOJpaQ" name="generate">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_1FNB8L-UEeaWJullGOJpaQ" type="_0j0zULubEeaCStjenx_8kw" direction="return"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_BO2UUL-VEeaWJullGOJpaQ" name="objectiveFunction" type="_d98A4L-TEeaWJullGOJpaQ"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_IlZEEL-VEeaWJullGOJpaQ" name="currentPlan" type="_0j0zULubEeaCStjenx_8kw"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_dsvRQL-VEeaWJullGOJpaQ" name="moduleDAO" type="_ZZGnMLyHEealiq5a5SolQQ"/>
-      </ownedOperation>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_2BAncL_XEeaxStBhqAYAig" name="ObjectiveFunction" isAbstract="true">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_iQmikL_YEeakRZ7oH0A0uA" name="partialobjectivefunction" type="_d98A4L-TEeaWJullGOJpaQ" aggregation="shared" association="_iQktYL_YEeakRZ7oH0A0uA">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_miHbEL_YEeakRZ7oH0A0uA"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_miKeYL_YEeakRZ7oH0A0uA" value="*"/>
-      </ownedAttribute>
-      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_gX4tcL_YEeakRZ7oH0A0uA" client="_2BAncL_XEeaxStBhqAYAig" supplier="_d98A4L-TEeaWJullGOJpaQ" contract="_d98A4L-TEeaWJullGOJpaQ"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_NKVTcL_YEeakRZ7oH0A0uA" name="AtomObjectiveFunction" isAbstract="true">
-      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_hQABML_YEeakRZ7oH0A0uA" client="_NKVTcL_YEeakRZ7oH0A0uA" supplier="_d98A4L-TEeaWJullGOJpaQ" contract="_d98A4L-TEeaWJullGOJpaQ"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_t8TUsL_YEeakRZ7oH0A0uA" name="PercentageAggregationObjectiveFunction">
-      <generalization xmi:type="uml:Generalization" xmi:id="_OktxUL_ZEeakRZ7oH0A0uA" general="_2BAncL_XEeaxStBhqAYAig"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_6cSDcL_YEeakRZ7oH0A0uA" name="MinimalECTSAtomObjectiveFunction">
-      <generalization xmi:type="uml:Generalization" xmi:id="_N5eb8L_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_Aw0joL_ZEeakRZ7oH0A0uA" name="minimalStandardAverageDeviationECTSAtomObjectiveFunction">
-      <generalization xmi:type="uml:Generalization" xmi:id="_NPwwkL_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_EVyXsMPVEeac84FPKfy0yg" name="MinimalSemestersAtomObjectiveFunction">
-      <generalization xmi:type="uml:Generalization" xmi:id="_DREV4MPWEeac84FPKfy0yg" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_LWidoMPVEeac84FPKfy0yg" name="ModulePreferencesAtomObjectiveFunction">
-      <generalization xmi:type="uml:Generalization" xmi:id="_CX7HYMPWEeac84FPKfy0yg" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_8QIpwMPVEeac84FPKfy0yg" name="ThresholdObjectiveFunction">
-      <generalization xmi:type="uml:Generalization" xmi:id="__HwXIMPVEeac84FPKfy0yg" general="_2BAncL_XEeaxStBhqAYAig"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_z_iOUM0REeaisOV8k7oI3w" name="Node">
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_y5a40M0nEea6EKMAE6ELEw" name="getParents">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_QKOpMM1kEeaYEN8WSzbF9A" name="parent-moduls" direction="return"/>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_tygM4M0oEea6EKMAE6ELEw" name="getModule">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YkZZIM1kEeaYEN8WSzbF9A" name="knote-module" direction="return"/>
-      </ownedOperation>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_ANQvcM0SEeaisOV8k7oI3w" name="NodeWithoutOutput">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_I9Fu4M0pEea6EKMAE6ELEw" name="module" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_KKadoM0pEea6EKMAE6ELEw" name="parents" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T6lXMM0pEea6EKMAE6ELEw"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T6pooM0pEea6EKMAE6ELEw" value="*"/>
-      </ownedAttribute>
-      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_o6WNIM0SEeaisOV8k7oI3w" client="_ANQvcM0SEeaisOV8k7oI3w" supplier="_z_iOUM0REeaisOV8k7oI3w" contract="_z_iOUM0REeaisOV8k7oI3w"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_T-L8QM0SEeaisOV8k7oI3w" name="NodeWithOutput">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ybr-gM0oEea6EKMAE6ELEw" name="module" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_6rdcUM0oEea6EKMAE6ELEw" name="parents" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BvKvoM0pEea6EKMAE6ELEw"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BvSrcM0pEea6EKMAE6ELEw" value="*"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_9FRzYM0oEea6EKMAE6ELEw" name="children" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D9XskM0pEea6EKMAE6ELEw"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D9clEM0pEea6EKMAE6ELEw" value="*"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_eeK1Qc0qEea6EKMAE6ELEw" name="node" type="_z_iOUM0REeaisOV8k7oI3w" aggregation="shared" association="_eeJnIM0qEea6EKMAE6ELEw">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pR6rsM0qEea6EKMAE6ELEw" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pR-WEM0qEea6EKMAE6ELEw" value="*"/>
-      </ownedAttribute>
-      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_qgXIsM0SEeaisOV8k7oI3w" client="_T-L8QM0SEeaisOV8k7oI3w" supplier="_z_iOUM0REeaisOV8k7oI3w" contract="_z_iOUM0REeaisOV8k7oI3w"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_WdoiwM0pEea6EKMAE6ELEw" name="getChildren">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_dNDmUM1kEeaYEN8WSzbF9A" name="children-nodes" direction="return"/>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:AssociationClass" xmi:id="_id5PoM0pEea6EKMAE6ELEw"/>
@@ -91,12 +20,87 @@
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_eeMDYM0qEea6EKMAE6ELEw" name="nodewithoutput" type="_T-L8QM0SEeaisOV8k7oI3w" association="_eeJnIM0qEea6EKMAE6ELEw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_5FoPsM1kEeaYEN8WSzbF9A" name="WeightFunction"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_IK0GIM1lEeaYEN8WSzbF9A" name="SimpleGenerator">
-      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_gRX2cM1lEeaYEN8WSzbF9A" client="_IK0GIM1lEeaYEN8WSzbF9A" supplier="_sCNXcL-UEeaWJullGOJpaQ" contract="_sCNXcL-UEeaWJullGOJpaQ"/>
-    </packagedElement>
     <packagedElement xmi:type="uml:Usage" xmi:id="_bkuk4M3YEeauva050p_GIQ" client="_IK0GIM1lEeaYEN8WSzbF9A" supplier="_z_iOUM0REeaisOV8k7oI3w"/>
     <packagedElement xmi:type="uml:Usage" xmi:id="_cTz4cM3YEeauva050p_GIQ" client="_IK0GIM1lEeaYEN8WSzbF9A" supplier="_5FoPsM1kEeaYEN8WSzbF9A"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_nhWmwM4LEeaL_qPPNxIJhQ" name="objective">
+      <packagedElement xmi:type="uml:Interface" xmi:id="_d98A4L-TEeaWJullGOJpaQ" name="PartialObjectiveFunction">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_lcSBwL-TEeaWJullGOJpaQ" name="evaluate">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_uB3-kL-TEeaWJullGOJpaQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-IDX8L-TEeaWJullGOJpaQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_2BAncL_XEeaxStBhqAYAig" name="ObjectiveFunction" isAbstract="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_iQmikL_YEeakRZ7oH0A0uA" name="partialobjectivefunction" type="_d98A4L-TEeaWJullGOJpaQ" aggregation="shared" association="_iQktYL_YEeakRZ7oH0A0uA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_miHbEL_YEeakRZ7oH0A0uA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_miKeYL_YEeakRZ7oH0A0uA" value="*"/>
+        </ownedAttribute>
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_gX4tcL_YEeakRZ7oH0A0uA" client="_2BAncL_XEeaxStBhqAYAig" supplier="_d98A4L-TEeaWJullGOJpaQ" contract="_d98A4L-TEeaWJullGOJpaQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_t8TUsL_YEeakRZ7oH0A0uA" name="PercentageAggregationObjectiveFunction">
+        <generalization xmi:type="uml:Generalization" xmi:id="_OktxUL_ZEeakRZ7oH0A0uA" general="_2BAncL_XEeaxStBhqAYAig"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_8QIpwMPVEeac84FPKfy0yg" name="ThresholdObjectiveFunction">
+        <generalization xmi:type="uml:Generalization" xmi:id="__HwXIMPVEeac84FPKfy0yg" general="_2BAncL_XEeaxStBhqAYAig"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_NKVTcL_YEeakRZ7oH0A0uA" name="AtomObjectiveFunction" isAbstract="true">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_hQABML_YEeakRZ7oH0A0uA" client="_NKVTcL_YEeakRZ7oH0A0uA" supplier="_d98A4L-TEeaWJullGOJpaQ" contract="_d98A4L-TEeaWJullGOJpaQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_6cSDcL_YEeakRZ7oH0A0uA" name="MinimalECTSAtomObjectiveFunction">
+        <generalization xmi:type="uml:Generalization" xmi:id="_N5eb8L_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_Aw0joL_ZEeakRZ7oH0A0uA" name="minimalStandardAverageDeviationECTSAtomObjectiveFunction">
+        <generalization xmi:type="uml:Generalization" xmi:id="_NPwwkL_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_LWidoMPVEeac84FPKfy0yg" name="ModulePreferencesAtomObjectiveFunction">
+        <generalization xmi:type="uml:Generalization" xmi:id="_CX7HYMPWEeac84FPKfy0yg" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_EVyXsMPVEeac84FPKfy0yg" name="MinimalSemestersAtomObjectiveFunction">
+        <generalization xmi:type="uml:Generalization" xmi:id="_DREV4MPWEeac84FPKfy0yg" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="__m64kM4LEeaL_qPPNxIJhQ" name="simple">
+      <packagedElement xmi:type="uml:Interface" xmi:id="_z_iOUM0REeaisOV8k7oI3w" name="Node">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_y5a40M0nEea6EKMAE6ELEw" name="getParents">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_QKOpMM1kEeaYEN8WSzbF9A" name="parent-moduls" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tygM4M0oEea6EKMAE6ELEw" name="getModule">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_YkZZIM1kEeaYEN8WSzbF9A" name="knote-module" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_5FoPsM1kEeaYEN8WSzbF9A" name="WeightFunction"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_T-L8QM0SEeaisOV8k7oI3w" name="NodeWithOutput">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ybr-gM0oEea6EKMAE6ELEw" name="module" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_6rdcUM0oEea6EKMAE6ELEw" name="parents" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BvKvoM0pEea6EKMAE6ELEw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BvSrcM0pEea6EKMAE6ELEw" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_9FRzYM0oEea6EKMAE6ELEw" name="children" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D9XskM0pEea6EKMAE6ELEw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D9clEM0pEea6EKMAE6ELEw" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_eeK1Qc0qEea6EKMAE6ELEw" name="node" type="_z_iOUM0REeaisOV8k7oI3w" aggregation="shared" association="_eeJnIM0qEea6EKMAE6ELEw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pR6rsM0qEea6EKMAE6ELEw" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pR-WEM0qEea6EKMAE6ELEw" value="*"/>
+        </ownedAttribute>
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_qgXIsM0SEeaisOV8k7oI3w" client="_T-L8QM0SEeaisOV8k7oI3w" supplier="_z_iOUM0REeaisOV8k7oI3w" contract="_z_iOUM0REeaisOV8k7oI3w"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_WdoiwM0pEea6EKMAE6ELEw" name="getChildren">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_dNDmUM1kEeaYEN8WSzbF9A" name="children-nodes" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ANQvcM0SEeaisOV8k7oI3w" name="NodeWithoutOutput">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_I9Fu4M0pEea6EKMAE6ELEw" name="module" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_KKadoM0pEea6EKMAE6ELEw" name="parents" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T6lXMM0pEea6EKMAE6ELEw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T6pooM0pEea6EKMAE6ELEw" value="*"/>
+        </ownedAttribute>
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_o6WNIM0SEeaisOV8k7oI3w" client="_ANQvcM0SEeaisOV8k7oI3w" supplier="_z_iOUM0REeaisOV8k7oI3w" contract="_z_iOUM0REeaisOV8k7oI3w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_IK0GIM1lEeaYEN8WSzbF9A" name="SimpleGenerator">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_gRX2cM1lEeaYEN8WSzbF9A" client="_IK0GIM1lEeaYEN8WSzbF9A" supplier="_sCNXcL-UEeaWJullGOJpaQ" contract="_sCNXcL-UEeaWJullGOJpaQ"/>
+      </packagedElement>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_SxHbMLfUEea2RYsZ51fiPw" name="java.verification">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_4GYWgLiaEeavH9sFQSsLvg" importedPackage="_lM5vELiaEeavH9sFQSsLvg"/>
@@ -1504,72 +1508,10 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_CqvOML4OEeaoO4fCpQc-Qw" name="ModuleConstraint">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_xCO0gL4PEeaoO4fCpQc-Qw" name="constraintType" visibility="private" type="_gmxusL4PEeaoO4fCpQc-Qw" association="_xCFDgL4PEeaoO4fCpQc-Qw">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zz8oEL_ZEear27jMIUi8Fw" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_z0FK8L_ZEear27jMIUi8Fw" value="1"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_xDx78M0eEeasNbhLG8gf5A" name="getFirstModule">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_xDx78c0eEeasNbhLG8gf5A" type="_0RnMgL4NEeaoO4fCpQc-Qw" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_xDzxIM0eEeasNbhLG8gf5A" name="getSecondModule">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_xDzxIc0eEeasNbhLG8gf5A" type="_0RnMgL4NEeaoO4fCpQc-Qw" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_1XMR4M0eEeasNbhLG8gf5A" name="getConstraintType">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_1XMR4c0eEeasNbhLG8gf5A" type="_gmxusL4PEeaoO4fCpQc-Qw" direction="return"/>
-        </ownedOperation>
-      </packagedElement>
       <packagedElement xmi:type="uml:Enumeration" xmi:id="_VdHvIL4OEeaoO4fCpQc-Qw" name="CycleType">
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_b0NNAL4OEeaoO4fCpQc-Qw" name="WINTER_TERM"/>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_gSYBcL4OEeaoO4fCpQc-Qw" name="SUMMER_TERM"/>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_hKgjUL4OEeaoO4fCpQc-Qw" name="BOTH"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_9HiO4L4OEeaoO4fCpQc-Qw" name="PrerequisiteModuleConstraintType">
-        <generalization xmi:type="uml:Generalization" xmi:id="_XhLcIL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_eyLRAM0XEeasNbhLG8gf5A" name="isValid">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_eyLRAc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_eyLRAs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_eyLRA80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
-        </ownedOperation>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_IO3IoL4PEeaoO4fCpQc-Qw" name="OverlappingModuleConstraintType">
-        <generalization xmi:type="uml:Generalization" xmi:id="_YNyqgL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_fB7kQM0XEeasNbhLG8gf5A" name="isValid">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fB7kQc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fB7kQs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fB7kQ80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
-        </ownedOperation>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_S2aWIL4PEeaoO4fCpQc-Qw" name="LinkModuleConstraintType">
-        <generalization xmi:type="uml:Generalization" xmi:id="_ZDh_sL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_fRNWYM0XEeasNbhLG8gf5A" name="isValid" isAbstract="true">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRNWYc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRNWYs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRNWY80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
-        </ownedOperation>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_gmxusL4PEeaoO4fCpQc-Qw" name="ModuleConstraintType" isAbstract="true">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_q84wQMBnEeafN5EhaYGTYw" name="description" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_BB1tYM0aEeasNbhLG8gf5A" name="formalDescription" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_VB30QL_UEeacgfGrT4PzPg" name="isValid" isAbstract="true">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_bGdz8L_UEeacgfGrT4PzPg" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_eMBPoL_UEeacgfGrT4PzPg" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_L8GH8MO4EearScbIBXJIIw" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_O-T2AM0fEeasNbhLG8gf5A" name="getDescription">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_O-T2Ac0fEeasNbhLG8gf5A" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_PwjyUM0fEeasNbhLG8gf5A" name="getFormalDescription">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_PwjyUc0fEeasNbhLG8gf5A" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_xCFDgL4PEeaoO4fCpQc-Qw" memberEnd="_xCO0gL4PEeaoO4fCpQc-Qw _xCPbkL4PEeaoO4fCpQc-Qw">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xCM_UL4PEeaoO4fCpQc-Qw" source="org.eclipse.papyrus">
@@ -1626,22 +1568,6 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0IHFkMb9EeapWM4q1-_jpA" value="*"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_r67qkMbCEeatB58sIl8nCg" name="SemesterLinkModuleConstraintType">
-        <generalization xmi:type="uml:Generalization" xmi:id="_0CmVQMbCEeatB58sIl8nCg" general="_S2aWIL4PEeaoO4fCpQc-Qw"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_qNmLcM0XEeasNbhLG8gf5A" name="isValid">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qNmLcc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qNmLcs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qNmLc80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
-        </ownedOperation>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_wmUboMbCEeatB58sIl8nCg" name="PlanLinkModuleConstraintType">
-        <generalization xmi:type="uml:Generalization" xmi:id="_0hl-YMbCEeatB58sIl8nCg" general="_S2aWIL4PEeaoO4fCpQc-Qw"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_qb34AM0XEeasNbhLG8gf5A" name="isValid">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34Ac0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34As0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34A80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
-        </ownedOperation>
-      </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_iAPPAM1EEeaTycnTayAwOw" name="Kind">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_uRGjsM1EEeaTycnTayAwOw" name="kindId" visibility="private" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
@@ -1659,6 +1585,86 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
         </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_aJNrgM4MEeaL_qPPNxIJhQ" name="constraint">
+        <packagedElement xmi:type="uml:Class" xmi:id="_gmxusL4PEeaoO4fCpQc-Qw" name="ModuleConstraintType" isAbstract="true">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_q84wQMBnEeafN5EhaYGTYw" name="description" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_BB1tYM0aEeasNbhLG8gf5A" name="formalDescription" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_VB30QL_UEeacgfGrT4PzPg" name="isValid" isAbstract="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_bGdz8L_UEeacgfGrT4PzPg" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_eMBPoL_UEeacgfGrT4PzPg" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_L8GH8MO4EearScbIBXJIIw" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_O-T2AM0fEeasNbhLG8gf5A" name="getDescription">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_O-T2Ac0fEeasNbhLG8gf5A" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_PwjyUM0fEeasNbhLG8gf5A" name="getFormalDescription">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_PwjyUc0fEeasNbhLG8gf5A" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_CqvOML4OEeaoO4fCpQc-Qw" name="ModuleConstraint">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_xCO0gL4PEeaoO4fCpQc-Qw" name="constraintType" visibility="private" type="_gmxusL4PEeaoO4fCpQc-Qw" association="_xCFDgL4PEeaoO4fCpQc-Qw">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zz8oEL_ZEear27jMIUi8Fw" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_z0FK8L_ZEear27jMIUi8Fw" value="1"/>
+          </ownedAttribute>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_xDx78M0eEeasNbhLG8gf5A" name="getFirstModule">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_xDx78c0eEeasNbhLG8gf5A" type="_0RnMgL4NEeaoO4fCpQc-Qw" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_xDzxIM0eEeasNbhLG8gf5A" name="getSecondModule">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_xDzxIc0eEeasNbhLG8gf5A" type="_0RnMgL4NEeaoO4fCpQc-Qw" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1XMR4M0eEeasNbhLG8gf5A" name="getConstraintType">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_1XMR4c0eEeasNbhLG8gf5A" type="_gmxusL4PEeaoO4fCpQc-Qw" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_9HiO4L4OEeaoO4fCpQc-Qw" name="PrerequisiteModuleConstraintType">
+          <generalization xmi:type="uml:Generalization" xmi:id="_XhLcIL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_eyLRAM0XEeasNbhLG8gf5A" name="isValid">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_eyLRAc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_eyLRAs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_eyLRA80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_IO3IoL4PEeaoO4fCpQc-Qw" name="OverlappingModuleConstraintType">
+          <generalization xmi:type="uml:Generalization" xmi:id="_YNyqgL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_fB7kQM0XEeasNbhLG8gf5A" name="isValid">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_fB7kQc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_fB7kQs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_fB7kQ80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_r67qkMbCEeatB58sIl8nCg" name="SemesterLinkModuleConstraintType">
+          <generalization xmi:type="uml:Generalization" xmi:id="_0CmVQMbCEeatB58sIl8nCg" general="_S2aWIL4PEeaoO4fCpQc-Qw"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_qNmLcM0XEeasNbhLG8gf5A" name="isValid">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_qNmLcc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_qNmLcs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_qNmLc80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_wmUboMbCEeatB58sIl8nCg" name="PlanLinkModuleConstraintType">
+          <generalization xmi:type="uml:Generalization" xmi:id="_0hl-YMbCEeatB58sIl8nCg" general="_S2aWIL4PEeaoO4fCpQc-Qw"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_qb34AM0XEeasNbhLG8gf5A" name="isValid">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34Ac0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34As0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34A80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_S2aWIL4PEeaoO4fCpQc-Qw" name="LinkModuleConstraintType">
+          <generalization xmi:type="uml:Generalization" xmi:id="_ZDh_sL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_fRNWYM0XEeasNbhLG8gf5A" name="isValid" isAbstract="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRNWYc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRNWYs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRNWY80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+          </ownedOperation>
+        </packagedElement>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_d_LK0LifEeavH9sFQSsLvg" name="dao.plan">
