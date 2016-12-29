@@ -48,16 +48,6 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_41FHEMGDEea0yOFvxPpmvQ" value="*"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_7zg2MMQ4EeauQtLZObTczA">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7ziEUMQ4EeauQtLZObTczA" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7ziEUcQ4EeauQtLZObTczA" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <memberEnd xmi:type="uml:Property" href="REST.uml#_7zirYMQ4EeauQtLZObTczA"/>
-    <memberEnd xmi:type="uml:Property" href="#_7zirYcQ4EeauQtLZObTczA"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_7zirYcQ4EeauQtLZObTczA" name="restplanverificator" association="_7zg2MMQ4EeauQtLZObTczA">
-      <type xmi:type="uml:Class" href="REST.uml#_oh-2QLuUEea-uPszIhxKkQ"/>
-    </ownedEnd>
-  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_8-BsEMQ5EeauQtLZObTczA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8-CTIMQ5EeauQtLZObTczA" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_8-CTIcQ5EeauQtLZObTczA" key="nature" value="UML_Nature"/>
@@ -93,6 +83,56 @@
     </ownedEnd>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="__YUNYMOuEearScbIBXJIIw" name="StandardVerifier"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_iKFaYM37Eea6VOVLcwrXFg" name="PluginManager">
+    <packagedElement xmi:type="uml:Class" xmi:id="_wE6WgM37Eea6VOVLcwrXFg" name="VerificationManager">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_9l1k4M37Eea6VOVLcwrXFg" name="verifier" association="_9lrz4M37Eea6VOVLcwrXFg">
+        <type xmi:type="uml:Interface" href="Verification.uml#_YDqTcL-WEeaWJullGOJpaQ"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_1uw68M37Eea6VOVLcwrXFg" name="GenerationManager">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_PMvUs839Eea6VOVLcwrXFg" name="generator" aggregation="shared" association="_PMvUsM39Eea6VOVLcwrXFg">
+        <type xmi:type="uml:Interface" href="Generation.uml#_sCNXcL-UEeaWJullGOJpaQ"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_U3x7g7ufEea-uPszIhxKkQ" name="objectivefunction" aggregation="shared">
+        <type xmi:type="uml:Interface" href="Generation.uml#_d98A4L-TEeaWJullGOJpaQ"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WePjALufEea-uPszIhxKkQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WeR_QLufEea-uPszIhxKkQ" value="*"/>
+        <association xmi:type="uml:Association" href="REST.uml#_U3x7gLufEea-uPszIhxKkQ"/>
+      </ownedAttribute>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_9lrz4M37Eea6VOVLcwrXFg" memberEnd="_9l1k4M37Eea6VOVLcwrXFg _9l1k4c37Eea6VOVLcwrXFg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9lrz4c37Eea6VOVLcwrXFg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9lrz4s37Eea6VOVLcwrXFg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_9l1k4c37Eea6VOVLcwrXFg" name="verificationmanager" type="_wE6WgM37Eea6VOVLcwrXFg" association="_9lrz4M37Eea6VOVLcwrXFg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_A1f-0M38Eea6VOVLcwrXFg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_A1f-0c38Eea6VOVLcwrXFg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_A1f-0s38Eea6VOVLcwrXFg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <memberEnd xmi:type="uml:Property" href="REST.uml#_A1f-0838Eea6VOVLcwrXFg"/>
+    <memberEnd xmi:type="uml:Property" href="#_A1f-1M38Eea6VOVLcwrXFg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_A1f-1M38Eea6VOVLcwrXFg" name="restplanverificator" association="_A1f-0M38Eea6VOVLcwrXFg">
+      <type xmi:type="uml:Class" href="REST.uml#_oh-2QLuUEea-uPszIhxKkQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_PMvUsM39Eea6VOVLcwrXFg" memberEnd="_PMvUs839Eea6VOVLcwrXFg _PMvUtM39Eea6VOVLcwrXFg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_PMvUsc39Eea6VOVLcwrXFg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_PMvUss39Eea6VOVLcwrXFg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_PMvUtM39Eea6VOVLcwrXFg" name="generationmanager" type="_1uw68M37Eea6VOVLcwrXFg" association="_PMvUsM39Eea6VOVLcwrXFg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_6l260M39Eea6VOVLcwrXFg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6l260c39Eea6VOVLcwrXFg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6l260s39Eea6VOVLcwrXFg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <memberEnd xmi:type="uml:Property" href="REST.uml#_6mAr0M39Eea6VOVLcwrXFg"/>
+    <memberEnd xmi:type="uml:Property" href="#_6mAr0c39Eea6VOVLcwrXFg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_6mAr0c39Eea6VOVLcwrXFg" name="restplangenerator" association="_6l260M39Eea6VOVLcwrXFg">
+      <type xmi:type="uml:Class" href="REST.uml#_aPqnMLuUEea-uPszIhxKkQ"/>
+    </ownedEnd>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vtuncLcDEeag2fAimjvU5Q">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vt3xYLcDEeag2fAimjvU5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>

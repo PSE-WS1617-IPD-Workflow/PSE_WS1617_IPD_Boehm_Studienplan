@@ -65,7 +65,7 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_VDBx8LuOEea-uPszIhxKkQ" name="RESTObjectiveFunction">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_aK00Y7udEea-uPszIhxKkQ" name="objectivefunction" aggregation="shared" association="_aK00YLudEea-uPszIhxKkQ">
-      <type xmi:type="uml:Interface" href="Generation.uml#_d98A4L-TEeaWJullGOJpaQ"/>
+      <type xmi:type="uml:Class" href="MainModel.uml#_1uw68M37Eea6VOVLcwrXFg"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b38dgLudEea-uPszIhxKkQ" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b3-5wLudEea-uPszIhxKkQ" value="*"/>
     </ownedAttribute>
@@ -140,10 +140,9 @@
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_aPqnMLuUEea-uPszIhxKkQ" name="RESTPlanGenerator">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_U3x7g7ufEea-uPszIhxKkQ" name="objectivefunction" aggregation="shared" association="_U3x7gLufEea-uPszIhxKkQ">
-      <type xmi:type="uml:Interface" href="Generation.uml#_d98A4L-TEeaWJullGOJpaQ"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WePjALufEea-uPszIhxKkQ"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WeR_QLufEea-uPszIhxKkQ" value="*"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_6mAr0M39Eea6VOVLcwrXFg" name="generationmanager" aggregation="shared">
+      <type xmi:type="uml:Class" href="MainModel.uml#_1uw68M37Eea6VOVLcwrXFg"/>
+      <association xmi:type="uml:Association" href="MainModel.uml#_6l260M39Eea6VOVLcwrXFg"/>
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_7QEo4LubEea-uPszIhxKkQ" name="generatePlan">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_2lSekMwfEeaTDYobh6xdEw" name="plan_id">
@@ -154,9 +153,9 @@
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_oh-2QLuUEea-uPszIhxKkQ" name="RESTPlanVerificator">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_7zirYMQ4EeauQtLZObTczA" name="verifier">
-      <type xmi:type="uml:Interface" href="Verification.uml#_YDqTcL-WEeaWJullGOJpaQ"/>
-      <association xmi:type="uml:Association" href="MainModel.uml#_7zg2MMQ4EeauQtLZObTczA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_A1f-0838Eea6VOVLcwrXFg" name="verificationmanager" aggregation="shared">
+      <type xmi:type="uml:Class" href="MainModel.uml#_wE6WgM37Eea6VOVLcwrXFg"/>
+      <association xmi:type="uml:Association" href="MainModel.uml#_A1f-0M38Eea6VOVLcwrXFg"/>
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_qbVkkLuUEea-uPszIhxKkQ" name="verifyPlan">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_82FcUMwhEeaTLsJqt_fnxw" name="plan_id">
@@ -179,11 +178,15 @@
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_aK00ZLudEea-uPszIhxKkQ" name="restobjectivefunction" type="_VDBx8LuOEea-uPszIhxKkQ" association="_aK00YLudEea-uPszIhxKkQ"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_U3x7gLufEea-uPszIhxKkQ" visibility="private" memberEnd="_U3x7g7ufEea-uPszIhxKkQ _U3x7hLufEea-uPszIhxKkQ">
+  <packagedElement xmi:type="uml:Association" xmi:id="_U3x7gLufEea-uPszIhxKkQ" visibility="private">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_U3x7gbufEea-uPszIhxKkQ" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_U3x7grufEea-uPszIhxKkQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_U3x7hLufEea-uPszIhxKkQ" name="restplangenerator" type="_aPqnMLuUEea-uPszIhxKkQ" association="_U3x7gLufEea-uPszIhxKkQ"/>
+    <memberEnd xmi:type="uml:Property" href="MainModel.uml#_U3x7g7ufEea-uPszIhxKkQ"/>
+    <memberEnd xmi:type="uml:Property" href="#_U3x7hLufEea-uPszIhxKkQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_U3x7hLufEea-uPszIhxKkQ" name="restplangenerator" association="_U3x7gLufEea-uPszIhxKkQ">
+      <type xmi:type="uml:Class" href="MainModel.uml#_1uw68M37Eea6VOVLcwrXFg"/>
+    </ownedEnd>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_Ot1ggMOcEeaiRIvYnaUryA" client="_uEiVULuTEea-uPszIhxKkQ">
     <supplier xmi:type="uml:Class" href="Filter.uml#_eO6zUMOdEeaiRIvYnaUryA"/>
