@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_cobT8LiXEeavH9sFQSsLvg" name="REST">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_8rncQLiaEeavH9sFQSsLvg">
+    <importedPackage xmi:type="uml:Model" href="MainModel.uml#_vqV8QLcDEeag2fAimjvU5Q"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_OApAoLsHEea-uPszIhxKkQ">
+    <importedPackage xmi:type="uml:Model" href="MainModel.uml#_vqV8QLcDEeag2fAimjvU5Q"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_oUi8EMQ4EeauQtLZObTczA">
+    <importedPackage xmi:type="uml:Package" href="Filter.uml#_isR5AL7HEeaRCti-wkqR-A"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_SnqiwLuOEea-uPszIhxKkQ" name="RESTPlans">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_otX40LuSEea-uPszIhxKkQ" name="createPlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_0n10UMt4EeaIBcC0jCetUA" name="jsonPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_rjbf8LuSEea-uPszIhxKkQ" name="getPlans">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_-yEMoMt4EeaIBcC0jCetUA" name="jsonPlanList" type="_qFookMtyEeaIBcC0jCetUA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__lWqwMt4EeaIBcC0jCetUA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__lgbwMt4EeaIBcC0jCetUA" value="*"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_xjVM4LuSEea-uPszIhxKkQ" name="replacePlan" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_W06-IMt4EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_c5hk4Mt4EeaIBcC0jCetUA" name="jsonPlan" type="_qFookMtyEeaIBcC0jCetUA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_nvBHwMt4EeaIBcC0jCetUA" name="jsonNewPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_2tGpcLuaEea-uPszIhxKkQ" name="getPlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_K3mNUMt0EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_mY60UMt0EeaIBcC0jCetUA" name="jsonPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_9Z__QLuaEea-uPszIhxKkQ" name="editPlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TXwo0Mt6EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_dRMzIMt6EeaIBcC0jCetUA" name="jsonPlan" type="_qFookMtyEeaIBcC0jCetUA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qBywwMt6EeaIBcC0jCetUA" name="jsonChangedPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_AbYsoLubEea-uPszIhxKkQ" name="deletePlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CK1CwMt6EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_DhUNMMt9EeaIBcC0jCetUA" name="jsonStatus" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_FmEBwLubEea-uPszIhxKkQ" name="duplicatePlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jmSiYMt5EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_77bhQMt5EeaIBcC0jCetUA" name="jsonPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_To0dwLuOEea-uPszIhxKkQ" name="RESTFilter">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_8-CTIsQ5EeauQtLZObTczA" name="filterdescriptor">
+      <type xmi:type="uml:Class" href="Filter.uml#_eO6zUMOdEeaiRIvYnaUryA"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DhYEUMQ6EeauQtLZObTczA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Dh4aoMQ6EeauQtLZObTczA" value="*"/>
+      <association xmi:type="uml:Association" href="MainModel.uml#_8-BsEMQ5EeauQtLZObTczA"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_4h0XELuUEea-uPszIhxKkQ" name="getAllFilters">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_J03cYMwhEeaTDYobh6xdEw" name="jsonFilter" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VDBx8LuOEea-uPszIhxKkQ" name="RESTObjectiveFunction">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_aK00Y7udEea-uPszIhxKkQ" name="objectivefunction" aggregation="shared" association="_aK00YLudEea-uPszIhxKkQ">
+      <type xmi:type="uml:Class" href="MainModel.uml#_1uw68M37Eea6VOVLcwrXFg"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b38dgLudEea-uPszIhxKkQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b3-5wLudEea-uPszIhxKkQ" value="*"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_O1vFELuVEea-uPszIhxKkQ" name="getAllObjectiveFunctions">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_E2rrIMwhEeaTDYobh6xdEw" name="jsonObjectiveFunctions" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_c5jCQLuOEea-uPszIhxKkQ" name="RESTStudent">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_QQNmYLuSEea-uPszIhxKkQ" name="replaceInformation">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_74tH8Mt6EeaIBcC0jCetUA" name="jsonStudentInformation" type="_qFookMtyEeaIBcC0jCetUA"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_U6-FULuSEea-uPszIhxKkQ" name="getInformation">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_3gjb8Mt6EeaIBcC0jCetUA" name="jsonStudentInformation" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_eRvAYLuSEea-uPszIhxKkQ" name="deleteStudent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_-rJTAMt9EeaIBcC0jCetUA" name="jsonStatus" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_uEiVULuTEea-uPszIhxKkQ" name="RESTPlanModules">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_1wBaULuTEea-uPszIhxKkQ" name="getModules">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_90OkAMt7EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_e1pzAMt7EeaIBcC0jCetUA" name="jsonFilter" type="_qFookMtyEeaIBcC0jCetUA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_kdvc4Mt7EeaIBcC0jCetUA" name="jsonModules" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Y99qkLubEea-uPszIhxKkQ" name="getModule">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_640i0Mt7EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ortSIMt7EeaIBcC0jCetUA" name="module_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_rlTVcMt7EeaIBcC0jCetUA" name="jsonModule" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_f8uMcLubEea-uPszIhxKkQ" name="putModuleSemester">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_k0Zz8Mt8EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_nJ_LQMt8EeaIBcC0jCetUA" name="module_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_sOhcIMt8EeaIBcC0jCetUA" name="jsonPutModule" type="_qFookMtyEeaIBcC0jCetUA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_v02poMt8EeaIBcC0jCetUA" name="jsonSavedModule" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_lPr64LubEea-uPszIhxKkQ" name="removeModuleSemester">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_4SgycMt8EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8KkCEMt8EeaIBcC0jCetUA" name="module_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_KcG1EMt9EeaIBcC0jCetUA" name="jsonStatus" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_pQEnILubEea-uPszIhxKkQ" name="setModulePreference">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q6bjYMt9EeaIBcC0jCetUA" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TV3rEMt9EeaIBcC0jCetUA" name="module_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_XP20YMt9EeaIBcC0jCetUA" name="jsonModulePreference" type="_qFookMtyEeaIBcC0jCetUA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_cQF0EMt9EeaIBcC0jCetUA" name="jsonSavedModulePreference" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_GWq2sMObEeaiRIvYnaUryA" name="getFilterFromRequest" visibility="private">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_GWq2scObEeaiRIvYnaUryA" name="params">
+        <type xmi:type="uml:Class" href="Filter.uml#_3xeH4MOaEeaiRIvYnaUryA"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_GWq2ssObEeaiRIvYnaUryA" direction="return">
+        <type xmi:type="uml:Interface" href="Filter.uml#_p8pFILuOEea-uPszIhxKkQ"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_aPqnMLuUEea-uPszIhxKkQ" name="RESTPlanGenerator">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_6mAr0M39Eea6VOVLcwrXFg" name="generationmanager" aggregation="shared">
+      <type xmi:type="uml:Class" href="MainModel.uml#_1uw68M37Eea6VOVLcwrXFg"/>
+      <association xmi:type="uml:Association" href="MainModel.uml#_6l260M39Eea6VOVLcwrXFg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_7QEo4LubEea-uPszIhxKkQ" name="generatePlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_2lSekMwfEeaTDYobh6xdEw" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_DF11EMwgEeaTDYobh6xdEw" name="jsonGeneratedPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_IccGUMwgEeaTDYobh6xdEw" name="jsonSettings" type="_qFookMtyEeaIBcC0jCetUA"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_oh-2QLuUEea-uPszIhxKkQ" name="RESTPlanVerificator">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_A1f-0838Eea6VOVLcwrXFg" name="verificationmanager" aggregation="shared">
+      <type xmi:type="uml:Class" href="MainModel.uml#_wE6WgM37Eea6VOVLcwrXFg"/>
+      <association xmi:type="uml:Association" href="MainModel.uml#_A1f-0M38Eea6VOVLcwrXFg"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_qbVkkLuUEea-uPszIhxKkQ" name="verifyPlan">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_82FcUMwhEeaTLsJqt_fnxw" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_EaJDoMwiEeaTLsJqt_fnxw" name="jsonVerification" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9TtUkLubEea-uPszIhxKkQ" name="RESTPlanConverter">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Qxe74LucEea-uPszIhxKkQ" name="convertPlanToPDF">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_yIR10MwhEeaTLsJqt_fnxw" name="plan_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_46PR0MwhEeaTLsJqt_fnxw" name="pdfPlan" type="_p_AooMwhEeaTLsJqt_fnxw" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_aK00YLudEea-uPszIhxKkQ" memberEnd="_aK00Y7udEea-uPszIhxKkQ _aK00ZLudEea-uPszIhxKkQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aK00YbudEea-uPszIhxKkQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aK00YrudEea-uPszIhxKkQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_aK00ZLudEea-uPszIhxKkQ" name="restobjectivefunction" type="_VDBx8LuOEea-uPszIhxKkQ" association="_aK00YLudEea-uPszIhxKkQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_U3x7gLufEea-uPszIhxKkQ" visibility="private">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_U3x7gbufEea-uPszIhxKkQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_U3x7grufEea-uPszIhxKkQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <memberEnd xmi:type="uml:Property" href="MainModel.uml#_U3x7g7ufEea-uPszIhxKkQ"/>
+    <memberEnd xmi:type="uml:Property" href="#_U3x7hLufEea-uPszIhxKkQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_U3x7hLufEea-uPszIhxKkQ" name="restplangenerator" association="_U3x7gLufEea-uPszIhxKkQ">
+      <type xmi:type="uml:Class" href="MainModel.uml#_1uw68M37Eea6VOVLcwrXFg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_Ot1ggMOcEeaiRIvYnaUryA" client="_uEiVULuTEea-uPszIhxKkQ">
+    <supplier xmi:type="uml:Class" href="Filter.uml#_eO6zUMOdEeaiRIvYnaUryA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_XOw_wMOcEeaiRIvYnaUryA" client="_uEiVULuTEea-uPszIhxKkQ">
+    <supplier xmi:type="uml:Interface" href="Filter.uml#_p8pFILuOEea-uPszIhxKkQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_P5z_0MbbEeapWM4q1-_jpA" name="AuthorizationRequestFilter">
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_i5yQ0MbbEeapWM4q1-_jpA" client="_P5z_0MbbEeapWM4q1-_jpA" supplier="_ewI64MbbEeapWM4q1-_jpA" contract="_ewI64MbbEeapWM4q1-_jpA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_ewI64MbbEeapWM4q1-_jpA" name="ContainerRequestFilter">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_lQGn8MbbEeapWM4q1-_jpA" name="filter"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_32LLMMbbEeapWM4q1-_jpA" name="MainApplication">
+    <generalization xmi:type="uml:Generalization" xmi:id="_9r8EsMbbEeapWM4q1-_jpA" general="_6DohQMbbEeapWM4q1-_jpA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6DohQMbbEeapWM4q1-_jpA" name="ResourceConfig"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_byt7gMdfEeacSbfY4AKGzA" name="RESTModules">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_e0d1QMdfEeacSbfY4AKGzA" name="getModules">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_kY2t4MwgEeaTDYobh6xdEw" name="jsonFilter" type="_qFookMtyEeaIBcC0jCetUA"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qtcRYMwgEeaTDYobh6xdEw" name="jsonModules" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_wIrLAMwgEeaTDYobh6xdEw" name="getModule">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_3EYY4MwgEeaTDYobh6xdEw" name="module_id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8gHBwMwgEeaTDYobh6xdEw" name="jsonModule" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_qFookMtyEeaIBcC0jCetUA" name="JSONObject"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_F3J4YMwbEea1QL77delSmA" client="_cobT8LiXEeavH9sFQSsLvg">
+    <supplier xmi:type="uml:Package" href="RestAuthenticationEndpoint.uml#_4JzXkMwaEea1QL77delSmA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_p_AooMwhEeaTLsJqt_fnxw" name="PDF"/>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="__4xDwLlVEeavH9sFQSsLvg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__4xDwblVEeavH9sFQSsLvg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__4xDwrlVEeavH9sFQSsLvg" source="duplicatedProfile"/>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+  </profileApplication>
+</uml:Package>
