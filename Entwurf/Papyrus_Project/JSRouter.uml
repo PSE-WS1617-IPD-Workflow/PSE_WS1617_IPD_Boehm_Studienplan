@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_FgRI0LfXEea2RYsZ51fiPw" name="JSRouter">
   <packageImport xmi:type="uml:PackageImport" xmi:id="_zLhWsMK5EeafkJA2mXH8uA">
-    <importedPackage xmi:type="uml:Package" href="JSView.uml#_u9pQcLfWEea2RYsZ51fiPw"/>
+    <importedPackage xmi:type="uml:Model" href="MainModel.uml#_vqV8QLcDEeag2fAimjvU5Q"/>
   </packageImport>
   <packagedElement xmi:type="uml:Class" xmi:id="_si-OoMwrEeaUspSTNf28yQ" name="MainRouter">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_0yoXsMwrEeaUspSTNf28yQ" name="mainPage"/>

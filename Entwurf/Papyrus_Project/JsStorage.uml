@@ -5,7 +5,7 @@
 Die Methodensignatur ist hierbei vom Framework Backbone vorgegeben. In den einzelnen Methoden (also OAuthSync und CookieSync) werden Subroutinen definiert, welche sich dann jeweils um das Verhalten der einzelnen Methoden kümmern,</body>
   </ownedComment>
   <packagedElement xmi:type="uml:Usage" xmi:id="_QceIQMK6EeafkJA2mXH8uA" name="HTTP" client="_nnmP8LfWEea2RYsZ51fiPw">
-    <supplier xmi:type="uml:Package" href="REST.uml#_cobT8LiXEeavH9sFQSsLvg"/>
+    <supplier xmi:type="uml:Model" href="MainModel.uml#_vqV8QLcDEeag2fAimjvU5Q"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_y5q84MwpEeaUspSTNf28yQ" name="Sync">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_5MdJkMwpEeaUspSTNf28yQ" name="OAuthSync">
