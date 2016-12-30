@@ -50,7 +50,7 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_6cSDcL_YEeakRZ7oH0A0uA" name="MinimalECTSAtomObjectiveFunction">
         <generalization xmi:type="uml:Generalization" xmi:id="_N5eb8L_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_Aw0joL_ZEeakRZ7oH0A0uA" name="minimalStandardAverageDeviationECTSAtomObjectiveFunction">
+      <packagedElement xmi:type="uml:Class" xmi:id="_Aw0joL_ZEeakRZ7oH0A0uA" name="MinimalStandardAverageDeviationECTSAtomObjectiveFunction">
         <generalization xmi:type="uml:Generalization" xmi:id="_NPwwkL_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_LWidoMPVEeac84FPKfy0yg" name="ModulePreferencesAtomObjectiveFunction">
@@ -2650,6 +2650,9 @@ between(min).and(max) //or similar&#xD;
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6l260s39Eea6VOVLcwrXFg" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_6mAr0c39Eea6VOVLcwrXFg" name="restplangenerator" type="_aPqnMLuUEea-uPszIhxKkQ" association="_6l260M39Eea6VOVLcwrXFg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Constraint" xmi:id="_VXT98M5oEeabfttKlkGWhw" name="Constraint1">
+    <specification xmi:type="uml:LiteralString" xmi:id="_VXT98c5oEeabfttKlkGWhw" name="constraintSpec"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vtuncLcDEeag2fAimjvU5Q">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vt3xYLcDEeag2fAimjvU5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
