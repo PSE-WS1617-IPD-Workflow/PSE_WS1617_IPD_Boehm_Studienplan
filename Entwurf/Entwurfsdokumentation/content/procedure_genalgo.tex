@@ -8,11 +8,13 @@
 }{\endtabbing}
 
 \subsubsection{Einstieg}
-Wir nehmen zunächst an, dass eine Menge an Modulen $M$ in der Form $(\id{\textit{modul}}, \textit{ects}, \textit{constraints})$ gegeben ist.
+Wir nehmen zunächst an, dass eine Menge an Modulen $M$ gegeben ist, welche von der Form $(\id{\textit{modul}}, \textit{ects}, \textit{constraints})$ sind.
 Hierbei besteht \textit{constraints} aus einer Menge an Constraints der Form $(\id{\textit{modul1}}, \id{\textit{modul2}}, \textit{typ})$ mit $\textit{typ} \in \{\textit{prerequisite}, \textit{both}, \textit{symmetry}, \textit{antisymmetry}\}$. \\
-Constraints der Form $(\id{\textit{modul1}}, \id{\textit{modul2}}, \textit{both})$ und $(\id{\textit{modul2}}, \id{\textit{modul1}}, \textit{both})$ gelten im Folgenden als äquivalent.\\
+Constraints der Form $(\id{\textit{modul1}}, \id{\textit{modul2}}, \textit{both})$ und $(\id{\textit{modul2}}, \id{\textit{modul1}}, \textit{both})$ gelten im Folgenden als äquivalent.
+
 Wir sehen $ \mathcal{M} $ als die Menge aller vorhandenen Module an.
-Wir beschreiben einen \textit{Studienplan} als eine Menge $P$ von Tupeln der Form $(\textit{num}_{\textit{semester}}, \textit{modul})$, wobei $\textit{num}_{\textit{semester}} \in \NN \cup \{\infty\}$\footnote{$\infty$ steht hierbei für ewige Studenten, welche Module schieben wollen.} und \textit{modul} wie oben beschrieben. Eine \textit{Familie} beschreibt eine Menge von \textit{Studienplänen}. \\
+Wir beschreiben einen \textit{Studienplan} als eine Menge $P$ von Tupeln der Form $(\textit{num}_{\textit{semester}}, \textit{modul})$, wobei $\textit{num}_{\textit{semester}} \in \NN \cup \{\infty\}$\footnote{$\infty$ steht hierbei für ewige Studenten, welche Module schieben wollen.} und \textit{modul} wie oben beschrieben. Eine \textit{Familie} beschreibt eine Menge von \textit{Studienplänen}. 
+
 Weiter existiert über der Menge aller Studienpläne $\Psi$ eine Zielfunktion  $\sigma : \Psi \to [0,1]$.
 
 \subsubsection{Evolutionärer Algorithmus}
