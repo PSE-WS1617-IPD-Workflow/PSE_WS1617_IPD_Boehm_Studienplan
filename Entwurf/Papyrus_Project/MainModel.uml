@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_vqV8QLcDEeag2fAimjvU5Q" name="edu.kit.informatik">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_vqV8QLcDEeag2fAimjvU5Q" name="edu.kit.informatik.studyplan">
   <packageImport xmi:type="uml:PackageImport" xmi:id="_cbpU0LiaEeavH9sFQSsLvg" importedPackage="_vqV8QLcDEeag2fAimjvU5Q"/>
   <packageImport xmi:type="uml:PackageImport" xmi:id="_gCfr8L7KEeaRCti-wkqR-A" importedPackage="_isR5AL7HEeaRCti-wkqR-A"/>
-  <packagedElement xmi:type="uml:Package" xmi:id="_O8AK0LfUEea2RYsZ51fiPw" name="java.generation">
+  <packagedElement xmi:type="uml:Package" xmi:id="_O8AK0LfUEea2RYsZ51fiPw" name="server.generation">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_3GiqILiaEeavH9sFQSsLvg" importedPackage="_lM5vELiaEeavH9sFQSsLvg"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_sCNXcL-UEeaWJullGOJpaQ" name="Generator">
       <ownedOperation xmi:type="uml:Operation" xmi:id="_uqzxYL-UEeaWJullGOJpaQ" name="generate">
@@ -102,7 +102,7 @@
       </packagedElement>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_SxHbMLfUEea2RYsZ51fiPw" name="java.verification">
+  <packagedElement xmi:type="uml:Package" xmi:id="_SxHbMLfUEea2RYsZ51fiPw" name="server.verification">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_4GYWgLiaEeavH9sFQSsLvg" importedPackage="_lM5vELiaEeavH9sFQSsLvg"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_YDqTcL-WEeaWJullGOJpaQ" name="Verifier">
       <ownedOperation xmi:type="uml:Operation" xmi:id="_ZyIncL-WEeaWJullGOJpaQ" name="verify">
@@ -126,7 +126,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Realization" xmi:id="_aH7qoMOvEearScbIBXJIIw" client="__YUNYMOuEearScbIBXJIIw" supplier="_YDqTcL-WEeaWJullGOJpaQ"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_nnmP8LfWEea2RYsZ51fiPw" name="js.storage">
+  <packagedElement xmi:type="uml:Package" xmi:id="_nnmP8LfWEea2RYsZ51fiPw" name="client.storage">
     <ownedComment xmi:type="uml:Comment" xmi:id="_nSiFMMwqEeaUspSTNf28yQ">
       <body>Die hier definierten Methoden realisieren die Speicherung und das Laden von Ressourcen, welche auf dem Server oder in Cookies gespeichert sind.&#xD;
 Die Methodensignatur ist hierbei vom Framework Backbone vorgegeben. In den einzelnen Methoden (also OAuthSync und CookieSync) werden Subroutinen definiert, welche sich dann jeweils um das Verhalten der einzelnen Methoden kümmern,</body>
@@ -157,7 +157,7 @@ Die Methodensignatur ist hierbei vom Framework Backbone vorgegeben. In den einze
       </ownedOperation>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_u9pQcLfWEea2RYsZ51fiPw" name="js.view">
+  <packagedElement xmi:type="uml:Package" xmi:id="_u9pQcLfWEea2RYsZ51fiPw" name="client.view">
     <ownedComment xmi:type="uml:Comment" xmi:id="_vx0JIMzvEeaiINyVGHRfeA">
       <body>Alle Views implementieren eine Renderfunktion,&#xD;
 welche wiederum die Render-Funktionen &quot;unterliegender&quot; Views aufruft.&#xD;
@@ -569,7 +569,7 @@ this.render();&#xD;
       <packagedElement xmi:type="uml:Dependency" xmi:id="_Y7Pr8MztEeaiINyVGHRfeA" client="_OsRF0MdjEea29-bQWKStRA" supplier="_Jm9Y4MdjEea29-bQWKStRA"/>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_wOsBkLfWEea2RYsZ51fiPw" name="js.model">
+  <packagedElement xmi:type="uml:Package" xmi:id="_wOsBkLfWEea2RYsZ51fiPw" name="client.model">
     <ownedComment xmi:type="uml:Comment" xmi:id="_mgLNYMzpEeaiINyVGHRfeA">
       <body>Alle Modellklassen erben von Backbone.Model, alle Collections von Backbone.Collection.&#xD;
 Der Zugriff auf die Attribute der Objekte, das setzen selbiger, das speichern, abrufen sowie weitere grundlegende Funktionen werden über die vorhandenen Methoden in den Modellklassen modelliert.&#xD;
@@ -1044,7 +1044,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
       <packagedElement xmi:type="uml:DataType" xmi:id="_WmKIUMdlEea29-bQWKStRA" name="Backbone.Router"/>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_FgRI0LfXEea2RYsZ51fiPw" name="js.router">
+  <packagedElement xmi:type="uml:Package" xmi:id="_FgRI0LfXEea2RYsZ51fiPw" name="client.router">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_zLhWsMK5EeafkJA2mXH8uA" importedPackage="_vqV8QLcDEeag2fAimjvU5Q"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_si-OoMwrEeaUspSTNf28yQ" name="MainRouter">
       <ownedOperation xmi:type="uml:Operation" xmi:id="_0yoXsMwrEeaUspSTNf28yQ" name="mainPage"/>
@@ -1068,7 +1068,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
       <ownedOperation xmi:type="uml:Operation" xmi:id="_gT2iUM0bEeavo6is7kUH4g" name="handleLogin"/>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_cobT8LiXEeavH9sFQSsLvg" name="java.rest">
+  <packagedElement xmi:type="uml:Package" xmi:id="_cobT8LiXEeavH9sFQSsLvg" name="server.rest">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_8rncQLiaEeavH9sFQSsLvg" importedPackage="_vqV8QLcDEeag2fAimjvU5Q"/>
     <packageImport xmi:type="uml:PackageImport" xmi:id="_OApAoLsHEea-uPszIhxKkQ" importedPackage="_vqV8QLcDEeag2fAimjvU5Q"/>
     <packageImport xmi:type="uml:PackageImport" xmi:id="_oUi8EMQ4EeauQtLZObTczA" importedPackage="_isR5AL7HEeaRCti-wkqR-A"/>
@@ -1262,10 +1262,10 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
     <packagedElement xmi:type="uml:Dependency" xmi:id="_F3J4YMwbEea1QL77delSmA" client="_cobT8LiXEeavH9sFQSsLvg" supplier="_4JzXkMwaEea1QL77delSmA"/>
     <packagedElement xmi:type="uml:DataType" xmi:id="_p_AooMwhEeaTLsJqt_fnxw" name="PDF"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_lM5vELiaEeavH9sFQSsLvg" name="java.model">
-    <packagedElement xmi:type="uml:Package" xmi:id="_hjPysLiYEeavH9sFQSsLvg" name="dao.modul">
+  <packagedElement xmi:type="uml:Package" xmi:id="_lM5vELiaEeavH9sFQSsLvg" name="server.model">
+    <packagedElement xmi:type="uml:Package" xmi:id="_hjPysLiYEeavH9sFQSsLvg" name="moduledata.dao">
       <packageImport xmi:type="uml:PackageImport" xmi:id="_tp3UULiaEeavH9sFQSsLvg" importedPackage="_PVXQkLfVEea2RYsZ51fiPw"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_ZZGnMLyHEealiq5a5SolQQ" name="HibernateModuleDao">
+      <packagedElement xmi:type="uml:Class" xmi:id="_ZZGnMLyHEealiq5a5SolQQ" name="HibernateModuleDao" visibility="package">
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ZRX-UMx8EeahEeG7zvbxmg" name="getModulesByFilter">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZRX-Ucx8EeahEeG7zvbxmg" type="_0RnMgL4NEeaoO4fCpQc-Qw" direction="return">
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZRX-Usx8EeahEeG7zvbxmg"/>
@@ -1321,7 +1321,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
         <ownedAttribute xmi:type="uml:Property" xmi:id="_jV_JUsC0EeaPXJNH_43Mqw" name="CATEGORY" isStatic="true" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_jV_JU8C0EeaPXJNH_43Mqw" name="KIND" isStatic="true" isReadOnly="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_jV_JU8C0EeaPXJNH_43Mqw" name="MODULE_TYPE" isStatic="true" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_jV_JVMC0EeaPXJNH_43Mqw" name="CYCLE_TYPE" isStatic="true" isReadOnly="true">
@@ -1388,7 +1388,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
         </ownedOperation>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_PVXQkLfVEea2RYsZ51fiPw" name="modul">
+    <packagedElement xmi:type="uml:Package" xmi:id="_PVXQkLfVEea2RYsZ51fiPw" name="moduledata">
       <packagedElement xmi:type="uml:Class" xmi:id="_0RnMgL4NEeaoO4fCpQc-Qw" name="Module" visibility="public">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_yaFYQr4PEeaoO4fCpQc-Qw" name="moduleConstraints" visibility="private" type="_CqvOML4OEeaoO4fCpQc-Qw" association="_yaExML4PEeaoO4fCpQc-Qw">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_a-jrUMBnEeafN5EhaYGTYw"/>
@@ -1486,7 +1486,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_uAv-EM1FEeaTycnTayAwOw" name="getKind">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_uAv-EM1FEeaTycnTayAwOw" name="getModuleType">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_uAv-Ec1FEeaTycnTayAwOw" type="_iAPPAM1EEeaTycnTayAwOw" direction="return"/>
         </ownedOperation>
       </packagedElement>
@@ -1568,14 +1568,14 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0IHFkMb9EeapWM4q1-_jpA" value="*"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_iAPPAM1EEeaTycnTayAwOw" name="Kind">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_uRGjsM1EEeaTycnTayAwOw" name="kindId" visibility="private" isReadOnly="true">
+      <packagedElement xmi:type="uml:Class" xmi:id="_iAPPAM1EEeaTycnTayAwOw" name="ModuleType">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_uRGjsM1EEeaTycnTayAwOw" name="typeId" visibility="private" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_4PlmEM1EEeaTycnTayAwOw" name="name" visibility="private" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_CEoYkM1FEeaTycnTayAwOw" name="getKindId">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_CEoYkM1FEeaTycnTayAwOw" name="getTypeId">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_CEufMM1FEeaTycnTayAwOw" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
@@ -1667,9 +1667,9 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
         </packagedElement>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_d_LK0LifEeavH9sFQSsLvg" name="dao.plan">
+    <packagedElement xmi:type="uml:Package" xmi:id="_d_LK0LifEeavH9sFQSsLvg" name="userdata.dao">
       <packageImport xmi:type="uml:PackageImport" xmi:id="_nIA-oLifEeavH9sFQSsLvg" importedPackage="_haZUgLifEeavH9sFQSsLvg"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_UZ6l0LyGEealiq5a5SolQQ" name="HibernateUserDao">
+      <packagedElement xmi:type="uml:Class" xmi:id="_UZ6l0LyGEealiq5a5SolQQ" name="HibernateUserDao" visibility="package">
         <ownedOperation xmi:type="uml:Operation" xmi:id="_U7TZIMyAEeahEeG7zvbxmg" name="updateUser" concurrency="concurrent">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_U7TZIcyAEeahEeG7zvbxmg" name="user" type="_wfe0ILubEeaCStjenx_8kw"/>
         </ownedOperation>
@@ -1686,7 +1686,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_U7XqksyAEeahEeG7zvbxmg" type="_wfe0ILubEeaCStjenx_8kw" direction="return"/>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_HDMm4LyHEealiq5a5SolQQ" name="HibneratePlanDao">
+      <packagedElement xmi:type="uml:Class" xmi:id="_HDMm4LyHEealiq5a5SolQQ" name="HibernatePlanDao" visibility="package">
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ZPDGQMyAEeahEeG7zvbxmg" name="updatePlan">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZPDGQcyAEeahEeG7zvbxmg" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
         </ownedOperation>
@@ -1711,8 +1711,11 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_vSwP0MdjEeaKAuw-lER4lw" type="_hulyIMdhEeaKAuw-lER4lw" direction="return"/>
         </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_965B0M9OEea8AYYPw-o0NQ" name="getSecurityProviderImpl">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_CpQOYM9PEea8AYYPw-o0NQ" type="_D7lKcMdjEeaKAuw-lER4lw" direction="return"/>
+        </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_LkxJYMdjEeaKAuw-lER4lw" name="SecurityProvider">
+      <packagedElement xmi:type="uml:Class" xmi:id="_LkxJYMdjEeaKAuw-lER4lw" name="SecurityProvider" visibility="package">
         <generalization xmi:type="uml:Generalization" xmi:id="_NqFQEMdjEeaKAuw-lER4lw" general="_D7lKcMdjEeaKAuw-lER4lw"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Interface" xmi:id="_lOX0cMx_EeahEeG7zvbxmg" name="UserDao">
@@ -1759,7 +1762,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
         </ownedOperation>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_haZUgLifEeavH9sFQSsLvg" name="plan">
+    <packagedElement xmi:type="uml:Package" xmi:id="_haZUgLifEeavH9sFQSsLvg" name="userdata">
       <packagedElement xmi:type="uml:Class" xmi:id="_wfe0ILubEeaCStjenx_8kw" name="User">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_9uyhIMK5EeavfrO5hlCymA" name="userId" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1838,9 +1841,6 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Bv9tAMK5EeavfrO5hlCymA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BwMWgMK5EeavfrO5hlCymA" value="*"/>
         </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_F5SZoL_WEeaCWKyYbzcIZw" name="getPlanEntries">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fFlC8L_WEeaCWKyYbzcIZw" direction="return" effect="read"/>
-        </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_DjfagM0JEeaCG5zN-8zr3A" name="getPreferenceForModule">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_MZLo0M0JEeaCG5zN-8zr3A" type="_r4SPEMK4EeavfrO5hlCymA" direction="return"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_QcVVMM0JEeaCG5zN-8zr3A" name="module" type="_0RnMgL4NEeaoO4fCpQc-Qw"/>
@@ -2009,7 +2009,6 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
         <ownedEnd xmi:type="uml:Property" xmi:id="_nG4ZAsb_EeapWM4q1-_jpA" name="user" visibility="private" type="_wfe0ILubEeaCStjenx_8kw" association="_nG3x8Mb_EeapWM4q1-_jpA"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_hulyIMdhEeaKAuw-lER4lw" name="AuthorizationContext">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mDnRoMdhEeaKAuw-lER4lw" name="user" visibility="private" type="_wfe0ILubEeaCStjenx_8kw" association="_mDjAMMdhEeaKAuw-lER4lw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_m7OPEMdhEeaKAuw-lER4lw" name="accessToken" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -2021,6 +2020,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_SHuSgMeDEeaB85R6YEOTVA" name="restclient" visibility="private" type="_kj2sEMeCEeaB85R6YEOTVA" association="_SHqBEMeDEeaB85R6YEOTVA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_mDnRoMdhEeaKAuw-lER4lw" name="user" visibility="private" type="_wfe0ILubEeaCStjenx_8kw" association="_mDjAMMdhEeaKAuw-lER4lw"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Iqa-cM0REeaw-qL0p0oQ-w" name="getUser">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_Iqa-cc0REeaw-qL0p0oQ-w" type="_wfe0ILubEeaCStjenx_8kw" direction="return"/>
         </ownedOperation>
@@ -2156,7 +2156,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
         </ownedEnd>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_AeausM0DEeaeur3W-lAVrQ" name="HibernateUtil">
+    <packagedElement xmi:type="uml:Class" xmi:id="_AeausM0DEeaeur3W-lAVrQ" name="HibernateUtil" visibility="package">
       <ownedOperation xmi:type="uml:Operation" xmi:id="_E0QtkM0DEeaeur3W-lAVrQ" name="getModuleDataSessionFactory" visibility="package" isStatic="true">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_k4lTwM0FEeaeur3W-lAVrQ" type="_fkJlsM0FEeaeur3W-lAVrQ" direction="return"/>
       </ownedOperation>
@@ -2166,7 +2166,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_fkJlsM0FEeaeur3W-lAVrQ" name="SessionFactory"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_isR5AL7HEeaRCti-wkqR-A" name="java.filter">
+  <packagedElement xmi:type="uml:Package" xmi:id="_isR5AL7HEeaRCti-wkqR-A" name="server.filter">
     <packagedElement xmi:type="uml:Interface" xmi:id="_p8pFILuOEea-uPszIhxKkQ" name="Filter">
       <ownedOperation xmi:type="uml:Operation" xmi:id="_mOd2gMCtEeaPXJNH_43Mqw" name="getCondition">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_qtj4AMCtEeaPXJNH_43Mqw" type="_wio-kMC5EearftWngfiKFw" direction="return"/>
@@ -2459,7 +2459,7 @@ between(min).and(max) //or similar&#xD;
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_8-CTI8Q5EeauQtLZObTczA" name="restfilter" type="_To0dwLuOEea-uPszIhxKkQ" association="_8-BsEMQ5EeauQtLZObTczA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_4JzXkMwaEea1QL77delSmA" name="java.rest.authorization.endpoint">
+  <packagedElement xmi:type="uml:Package" xmi:id="_4JzXkMwaEea1QL77delSmA" name="server.rest.authorization.endpoint">
     <ownedComment xmi:type="uml:Comment" xmi:id="_tRSqAMwnEea1QL77delSmA" annotatedElement="_0zHHkMwlEea1QL77delSmA">
       <body>Gibt Fehler zurück, da der GrantType unbekannt ist.</body>
     </ownedComment>
@@ -2602,7 +2602,7 @@ between(min).and(max) //or similar&#xD;
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cjBi8M1FEeaTycnTayAwOw" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cjNwMM1FEeaTycnTayAwOw" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_QZHK0c1FEeaTycnTayAwOw" name="kind" type="_iAPPAM1EEeaTycnTayAwOw" association="_QZBEMM1FEeaTycnTayAwOw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QZHK0c1FEeaTycnTayAwOw" name="moduleType" visibility="private" type="_iAPPAM1EEeaTycnTayAwOw" association="_QZBEMM1FEeaTycnTayAwOw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_XO4SUM1REeaTycnTayAwOw" memberEnd="_XO9x4M1REeaTycnTayAwOw _XPG70M1REeaTycnTayAwOw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XO8jwM1REeaTycnTayAwOw" source="org.eclipse.papyrus">
@@ -2611,7 +2611,7 @@ between(min).and(max) //or similar&#xD;
     <ownedEnd xmi:type="uml:Property" xmi:id="_XPG70M1REeaTycnTayAwOw" name="filterdescriptor" type="_eO6zUMOdEeaiRIvYnaUryA" association="_XO4SUM1REeaTycnTayAwOw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="__YUNYMOuEearScbIBXJIIw" name="StandardVerifier"/>
-  <packagedElement xmi:type="uml:Package" xmi:id="_iKFaYM37Eea6VOVLcwrXFg" name="java.pluginmanager">
+  <packagedElement xmi:type="uml:Package" xmi:id="_iKFaYM37Eea6VOVLcwrXFg" name="server.pluginmanager">
     <packagedElement xmi:type="uml:Class" xmi:id="_wE6WgM37Eea6VOVLcwrXFg" name="VerificationManager">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_9l1k4M37Eea6VOVLcwrXFg" name="verifier" type="_YDqTcL-WEeaWJullGOJpaQ" association="_9lrz4M37Eea6VOVLcwrXFg"/>
     </packagedElement>
