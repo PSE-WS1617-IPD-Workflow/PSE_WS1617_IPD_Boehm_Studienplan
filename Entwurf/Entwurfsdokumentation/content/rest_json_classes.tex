@@ -46,7 +46,7 @@
 	"first": (*\jsonpart{Modul}{id}*),
 	"second": (*\jsonpart{Modul}{id}*),
 	"type": (*\jsonatom{Constraint-Typ}*),
-	"description-first": (*\jsonatom{Constraint-Beschreibung}*)
+	"description-first": (*\jsonatom{Constraint-Beschreibung}*),
 	"description-second": (*\jsonatom{Constraint-Beschreibung}*)	
 }
 \end{lstlisting}
@@ -55,7 +55,7 @@
 (*\lbljsonobj{Filter}*) = {
 	"id": (*\jsonatom{Filter-ID}*),
 	"name": (*\jsonatom{Filter-Name}*),
-	"value": (*\jsonatom{Filter-Wert}*),
+	"default-value": (*\jsonatom{Filter-Default}*),
 	"tooltip": (*\jsonatom{Filter-Tooltip}*),
 	"specification": (*\jsonobj{Filter-Eigenschaften}*)
 }
@@ -65,8 +65,8 @@
 (*\lbljsonobj{Filter-Eigenschaften}*) = {
 	"type": (*\jsonatom{Filter-Typ}*),
 	case type == "range": {
-		"max": (*\jsonatom{Filter-Maximum}*),
 		"min": (*\jsonatom{Filter-Minimum}*),
+		"max": (*\jsonatom{Filter-Maximum}*)
 	},
 	case type == "list": {
 		"items": (*\jsonlist{\jsonatom{Filter-Wahlitem}}*)
@@ -89,7 +89,7 @@
     "status": (*\jsonatom{Studienplan-Status}*),
     "creditpoints-sum": (*\jsonatom{Studienplan-Gesamt-Creditpoints}*),
     "name": (*\jsonatom{Studienplan-Name}*),
-    "modules": (*\jsonlist{\jsonpart{Modul}{id, name, semester, creditpoints, lecturer}}*)
+    "modules": (*\jsonlist{\jsonpart{Modul}{id, name, semester, creditpoints, lecturer}}*),
     "violations": (*\jsonpart{Modul}{id, constraints}*)	
 }
 \end{lstlisting}

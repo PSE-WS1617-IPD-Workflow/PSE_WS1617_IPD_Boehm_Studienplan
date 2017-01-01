@@ -1,8 +1,61 @@
+% getparamdef environment
+% #1: URI of the GET method
+% #2: title used for refering (also used as label)
+\newenvironment{getparamdef}[2]{
+	\begin{longtable}{|p{.23\linewidth}|p{.77\linewidth}|}
+		\multicolumn{2}{@{}l}{\label{GETP-#2}\textsf{\textbf{GET #1 \; (#2)}}} \vspace{2pt} \\
+		\hhline{|=|=|}
+		\textbf{Parametername} & \textbf{Wert} \\
+		\hline 
+		\endfirsthead
+		
+		\hline
+		\textbf{Parametername} & \textbf{Wert} \\
+		\endhead
+		
+		\hhline{|=|=|}
+		\endlastfoot 
+}{
+	\end{longtable} \vspace{-12pt}
+}
+
+% getparamdef* environment
+% #1: URI of the GET method
+% #2: title used for refering (also used as label)
+% #3: Additional description text
+\newenvironment{getparamdef*}[3]{
+	\begin{longtable}{|p{.23\linewidth}|p{.77\linewidth}|}
+		\multicolumn{2}{@{}l}{\label{GETP-#2}\textsf{\textbf{GET #1 \; (#2)}}} \vspace{2pt} \\
+		\multicolumn{2}{@{}p{\linewidth}}{#3} \vspace{2pt} \\
+		\hhline{|=|=|}
+		\textbf{Parametername} & \textbf{Wert} \\
+		\hline 
+		\endfirsthead
+		
+		\hline
+		\textbf{Parametername} & \textbf{Wert} \\
+		\endhead
+		
+		\hhline{|=|=|}
+		\endlastfoot 
+}{
+	\end{longtable} \vspace{-12pt}
+}
+
+% refgetparams command
+% #1: title used for refering
+\newcommand{\refgetparams}[1]{\textit{\hyperref[GETP-#1]{#1*}}}
+
+% optpar command
+% #1: GET parameter name of the optional parameter
+\newcommand{\optpar}[1]{\textit{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \FloatBarrier
 \subsection{Zugriffsstruktur}
 
-TODO: GET-Anfrageparameter! 
-Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Methoden und URIs beschrieben. 
+Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Methoden und URIs beschrieben. GET-Parameter-Definitionen (*) sind weiter unten separat aufgeführt.
 \begin{longtable}{| >{\hspace{0pt}} p{.11\textwidth} | >{\hspace{0pt}} p{.24\textwidth} | >{\hspace{0pt}} p{.26\textwidth} | >{\hspace{0pt}} p{.34\textwidth} |}
 	\hline
 	\textbf{Methode} & \textbf{URI} & \textbf{Beschreibung} & \textbf{Anfrage-Parameter\+/Rückgabewerte} \\ 
@@ -17,7 +70,7 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 	\hhline{|=|=|=|=|}   
 	\endlastfoot
 	%===============================================================================================
-	GET & /modules &  Lese planunabhängige Modul-Liste (gefiltert) (Name, ECTS und Dozent) & Anfrage: ??? \newline Rückgabe: \jsonobj{ModulesResult} \\
+	GET & /modules &  Lese planunabhängige Modul-Liste (gefiltert) (Name, ECTS und Dozent) & Anfrage: \refgetparams{Modules-Parameter} \newline Rückgabe: \jsonobj{ModulesResult} \\
 	% Module Zugriff wie bei /plans bloß unabhängig (ohne Präferenzen) für  Profilansicht
 	\hline
 	GET & /modules/\jsonatom{Modul-ID} & Lese Modul (planunabhängig) & Anfrage: --- \newline Rückgabe: \jsonobj{ModuleResult} \\
@@ -42,7 +95,7 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 	\hline
 	POST & /plans/\jsonatom{Plan-ID} & Dupliziere Plan & Anfrage: \jsonobj{PlanPatchPostRequest} \newline Rückgabe: \jsonobj{PlanPatchPostResult} \\ 
 	\hhline{|=|=|=|=|} 
-	GET & /plans/\+\jsonatom{Plan-ID}/\+modules & Lese Modul-Liste (gefiltert) (Name, ECTS, Dozent und Präferenz) & Anfrage: ??? \newline Rückgabe: \jsonobj{PlanModulesResult} \\ 
+	GET & /plans/\+\jsonatom{Plan-ID}/\+modules & Lese Modul-Liste (gefiltert) (Name, ECTS, Dozent und Präferenz) & Anfrage: \newline \refgetparams{PlanModules-Parameter} \newline Rückgabe: \jsonobj{PlanModulesResult} \\ 
 	\hhline{|=|=|=|=|} 
 	GET & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID} & Lese Modul mit \jsonatom{Modul-ID} & Anfrage: --- \newline Rückgabe: \jsonobj{PlanModuleResult} \\ 
 	\hline
@@ -52,11 +105,11 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 	\hline
 	PUT & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID}/\+preference & Setze Bewertung für Modul & Anfrage: \jsonobj{ModulePreferencePutRequest} \newline Rückgabe: \jsonobj{ModulePreferencePutResult} \\ 
 	\hhline{|=|=|=|=|} 
-	GET & /plans/\+\jsonatom{Plan-ID}/\+verification & Verifiziere den Plan, gebe das Ergebnis zurück und speichere es in der Datenbank  &  Anfrage: ??? \newline Rückgabe: \jsonobj{PlanVerificationResult} \\ 
+	GET & /plans/\+\jsonatom{Plan-ID}/\+verification & Verifiziere den Plan, gebe das Ergebnis zurück und speichere es in der Datenbank  &  Anfrage: --- \newline Rückgabe: \jsonobj{PlanVerificationResult} \\ 
 	\hhline{|=|=|=|=|} 
-	GET & /plans/\+\jsonatom{Plan-ID}/\+proposal/\+\jsonatom{Zielfunktion-ID} & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & Anfrage: ??? \newline Rückgabe: \jsonobj{PlanProposalResult} \\ 
+	GET & /plans/\+\jsonatom{Plan-ID}/\+proposal/\+\jsonatom{Zielfunktion-ID} & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & Anfrage: \refgetparams{Proposal-Parameter} \newline Rückgabe: \jsonobj{PlanProposalResult} \\ 
 	\hhline{|=|=|=|=|} 
-	GET & /plans/\+\jsonatom{Plan-ID}/\+pdf & Lese PDF-Version des Plans & Anfrage: ??? \newline Rückgabe: (Weiterleitung auf PDF) \\  
+	GET & /plans/\+\jsonatom{Plan-ID}/\+pdf & Lese PDF-Version des Plans & Anfrage: \refgetparams{PDF-Parameter} \newline Rückgabe: (Weiterleitung auf PDF) \\  
 	\hhline{|=|=|=|=|} 
 	GET  & /filters & Lade Filtertypen und Beschränkungen & Anfrage: --- \newline Rückgabe: \jsonobj{FiltersResult} \\ 
 	\hline %\hhline{|=|=|=|=|} 
@@ -64,3 +117,49 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 	\hhline{|=|=|=|=|} 
 	GET & /subjects & Lese Liste mit allen angebotenen Studienfächern & Anfrage: --- \newline Rückgabe: \jsonobj{SubjectsResult} \\ 
 \end{longtable}
+
+\subsubsection*{GET-Anfrageparameter}
+
+Die Parameter der GET-Anfragen werden im Folgenden tabellarisch beschrieben. Parameter mit \optpar{kursivem Namen} sind optional und werden nur falls nötig angegeben.
+
+\begin{getparamdef*}{/modules}{Modules-Parameter}
+	{$\textit{filter}_k \in \{\texttt{ects}, \texttt{category}, \texttt{type}, \texttt{discipline}, \texttt{compulsory}, \texttt{cycletype}, \texttt{name}\}$: Liste der aktivierten Filter}
+	filters & $\textit{filter}_1,...,\textit{filter}_n$ \\
+	\hline
+	\optpar{ects-min} & \jsonatom{Untere-ECTS-Schranke} \\
+	\hline
+	\optpar{ects-max} & \jsonatom{Obere-ECTS-Schranke} \\
+	\hline
+	\optpar{category} & \multirow{5}{*}{(Nummer des ausgewählten Elements)} \\
+	\cline{1-1}
+	\optpar{type} & \\
+	\cline{1-1}
+	\optpar{discipline} & \\
+	\cline{1-1}
+	\optpar{compulsory} & \\
+	\cline{1-1}
+	\optpar{cycletype} & \\
+	\hline
+	\optpar{name} & (Suchstring)
+\end{getparamdef*}
+
+\begin{getparamdef}{/plans/\jsonatom{Plan-ID}/modules}{PlanModules-Parameter}
+	\multicolumn{2}{|c|}{(siehe \refgetparams{Modules-Parameter})}
+\end{getparamdef}
+
+\begin{getparamdef}{/plans/\jsonatom{Plan-ID}/proposal/\jsonatom{Zielfunktion-ID}}{Proposal-Parameter}
+	min-semesters & \jsonatom{Semester-Minimum}\\
+	\hline
+	max-semesters & \jsonatom{Semester-Maximum}\\
+	\hline
+	min-semester-ects & \jsonatom{Semester-ECTS-Minimum} \\
+	\hline
+	max-semester-ects & \jsonatom{Semester-ECTS-Maximum} \\
+	\hline
+	preferred-category & (Nummer der ausgewählten Kategorie) \\
+\end{getparamdef}
+
+\begin{getparamdef}{/plans/\jsonatom{Plan-ID}/pdf}{PDF-Parameter}
+	access-token & \jsonatom{Access-Token}
+\end{getparamdef}
+
