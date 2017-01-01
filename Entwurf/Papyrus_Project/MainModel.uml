@@ -56,7 +56,7 @@
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_VDBx8LuOEea-uPszIhxKkQ" name="ObjectiveFunctionResource">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_aK00Y7udEea-uPszIhxKkQ" name="objectiveFunction" type="_1uw68M37Eea6VOVLcwrXFg" aggregation="shared" association="_aK00YLudEea-uPszIhxKkQ">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_aK00Y7udEea-uPszIhxKkQ" name="objectiveFunction" visibility="private" type="_1uw68M37Eea6VOVLcwrXFg" aggregation="shared" association="_aK00YLudEea-uPszIhxKkQ">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b38dgLudEea-uPszIhxKkQ" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b3-5wLudEea-uPszIhxKkQ" value="*"/>
         </ownedAttribute>
@@ -121,13 +121,13 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_XP20YMt9EeaIBcC0jCetUA" name="jsonModulePreference" type="_qFookMtyEeaIBcC0jCetUA"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_cQF0EMt9EeaIBcC0jCetUA" name="jsonSavedModulePreference" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_GWq2sMObEeaiRIvYnaUryA" name="getFilterFromRequest" visibility="private">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_GWq2sMObEeaiRIvYnaUryA" name="getFilterFromRequest" visibility="public">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_GWq2scObEeaiRIvYnaUryA" name="params" type="_3xeH4MOaEeaiRIvYnaUryA"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_GWq2ssObEeaiRIvYnaUryA" type="_p8pFILuOEea-uPszIhxKkQ" direction="return"/>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_aPqnMLuUEea-uPszIhxKkQ" name="PlanGeneratorResource">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_6mAr0M39Eea6VOVLcwrXFg" name="generationManager" type="_1uw68M37Eea6VOVLcwrXFg" aggregation="shared" association="_6l260M39Eea6VOVLcwrXFg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_6mAr0M39Eea6VOVLcwrXFg" name="generationManager" visibility="private" type="_1uw68M37Eea6VOVLcwrXFg" aggregation="shared" association="_6l260M39Eea6VOVLcwrXFg"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_7QEo4LubEea-uPszIhxKkQ" name="generatePlan">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_2lSekMwfEeaTDYobh6xdEw" name="plan_id">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
@@ -137,7 +137,7 @@
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_oh-2QLuUEea-uPszIhxKkQ" name="PlanVerificatorResource">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_A1f-0838Eea6VOVLcwrXFg" name="verificationManager" type="_wE6WgM37Eea6VOVLcwrXFg" aggregation="shared" association="_A1f-0M38Eea6VOVLcwrXFg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_A1f-0838Eea6VOVLcwrXFg" name="verificationManager" visibility="private" type="_wE6WgM37Eea6VOVLcwrXFg" aggregation="shared" association="_A1f-0M38Eea6VOVLcwrXFg"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_qbVkkLuUEea-uPszIhxKkQ" name="verifyPlan">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_82FcUMwhEeaTLsJqt_fnxw" name="plan_id">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
@@ -623,8 +623,8 @@ between(min).and(max) //or similar&#xD;
         <ownedAttribute xmi:type="uml:Property" xmi:id="_9l1k4M37Eea6VOVLcwrXFg" name="verifier" type="_YDqTcL-WEeaWJullGOJpaQ" association="_9lrz4M37Eea6VOVLcwrXFg"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_1uw68M37Eea6VOVLcwrXFg" name="GenerationManager">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_PMvUs839Eea6VOVLcwrXFg" name="generator" type="_sCNXcL-UEeaWJullGOJpaQ" aggregation="shared" association="_PMvUsM39Eea6VOVLcwrXFg"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_U3x7g7ufEea-uPszIhxKkQ" name="objectiveFunction" type="_d98A4L-TEeaWJullGOJpaQ" aggregation="shared" association="_U3x7gLufEea-uPszIhxKkQ">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_PMvUs839Eea6VOVLcwrXFg" name="generator" visibility="private" type="_sCNXcL-UEeaWJullGOJpaQ" aggregation="shared" association="_PMvUsM39Eea6VOVLcwrXFg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_U3x7g7ufEea-uPszIhxKkQ" name="objectiveFunction" visibility="private" type="_d98A4L-TEeaWJullGOJpaQ" aggregation="shared" association="_U3x7gLufEea-uPszIhxKkQ">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WePjALufEea-uPszIhxKkQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WeR_QLufEea-uPszIhxKkQ" value="*"/>
         </ownedAttribute>
@@ -640,13 +640,14 @@ between(min).and(max) //or similar&#xD;
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_dsvRQL-VEeaWJullGOJpaQ" name="moduleDAO" type="_ZZGnMLyHEealiq5a5SolQQ"/>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:AssociationClass" xmi:id="_id5PoM0pEea6EKMAE6ELEw"/>
-      <packagedElement xmi:type="uml:AssociationClass" xmi:id="_EkBAYM0qEea6EKMAE6ELEw"/>
       <packagedElement xmi:type="uml:Association" xmi:id="_eeJnIM0qEea6EKMAE6ELEw" memberEnd="_eeK1Qc0qEea6EKMAE6ELEw _eeMDYM0qEea6EKMAE6ELEw">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_eeKOMM0qEea6EKMAE6ELEw" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eeK1QM0qEea6EKMAE6ELEw" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_eeMDYM0qEea6EKMAE6ELEw" name="nodewithoutput" type="_T-L8QM0SEeaisOV8k7oI3w" association="_eeJnIM0qEea6EKMAE6ELEw"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_eeMDYM0qEea6EKMAE6ELEw" name="nodewithoutput" visibility="private" type="_T-L8QM0SEeaisOV8k7oI3w" association="_eeJnIM0qEea6EKMAE6ELEw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_thH60NAOEeac8Y9Bm9mGsQ"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tjiVoNAOEeac8Y9Bm9mGsQ" value="*"/>
+        </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_bkuk4M3YEeauva050p_GIQ" client="_IK0GIM1lEeaYEN8WSzbF9A" supplier="_z_iOUM0REeaisOV8k7oI3w"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_cTz4cM3YEeauva050p_GIQ" client="_IK0GIM1lEeaYEN8WSzbF9A" supplier="_5FoPsM1kEeaYEN8WSzbF9A"/>
@@ -660,7 +661,7 @@ between(min).and(max) //or similar&#xD;
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_2BAncL_XEeaxStBhqAYAig" name="ObjectiveFunction" isAbstract="true">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_iQmikL_YEeakRZ7oH0A0uA" name="partialobjectivefunction" type="_d98A4L-TEeaWJullGOJpaQ" aggregation="shared" association="_iQktYL_YEeakRZ7oH0A0uA">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_iQmikL_YEeakRZ7oH0A0uA" name="partialobjectivefunction" visibility="private" type="_d98A4L-TEeaWJullGOJpaQ" aggregation="shared" association="_iQktYL_YEeakRZ7oH0A0uA">
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_miHbEL_YEeakRZ7oH0A0uA"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_miKeYL_YEeakRZ7oH0A0uA" value="*"/>
           </ownedAttribute>
@@ -691,10 +692,10 @@ between(min).and(max) //or similar&#xD;
       <packagedElement xmi:type="uml:Package" xmi:id="__m64kM4LEeaL_qPPNxIJhQ" name="simple">
         <packagedElement xmi:type="uml:Interface" xmi:id="_z_iOUM0REeaisOV8k7oI3w" name="Node">
           <ownedOperation xmi:type="uml:Operation" xmi:id="_y5a40M0nEea6EKMAE6ELEw" name="getParents">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_QKOpMM1kEeaYEN8WSzbF9A" name="parent-moduls" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_QKOpMM1kEeaYEN8WSzbF9A" name="parent-moduls" type="_0RnMgL4NEeaoO4fCpQc-Qw" direction="return"/>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_tygM4M0oEea6EKMAE6ELEw" name="getModule">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_YkZZIM1kEeaYEN8WSzbF9A" name="knote-module" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_YkZZIM1kEeaYEN8WSzbF9A" name="knote-module" type="_0RnMgL4NEeaoO4fCpQc-Qw" direction="return"/>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_5FoPsM1kEeaYEN8WSzbF9A" name="WeightFunction"/>
@@ -708,13 +709,13 @@ between(min).and(max) //or similar&#xD;
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D9XskM0pEea6EKMAE6ELEw"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D9clEM0pEea6EKMAE6ELEw" value="*"/>
           </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_eeK1Qc0qEea6EKMAE6ELEw" name="node" type="_z_iOUM0REeaisOV8k7oI3w" aggregation="shared" association="_eeJnIM0qEea6EKMAE6ELEw">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pR6rsM0qEea6EKMAE6ELEw" value="1"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_eeK1Qc0qEea6EKMAE6ELEw" name="node" visibility="private" type="_z_iOUM0REeaisOV8k7oI3w" aggregation="shared" association="_eeJnIM0qEea6EKMAE6ELEw">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pR6rsM0qEea6EKMAE6ELEw"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pR-WEM0qEea6EKMAE6ELEw" value="*"/>
           </ownedAttribute>
           <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_qgXIsM0SEeaisOV8k7oI3w" client="_T-L8QM0SEeaisOV8k7oI3w" supplier="_z_iOUM0REeaisOV8k7oI3w" contract="_z_iOUM0REeaisOV8k7oI3w"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_WdoiwM0pEea6EKMAE6ELEw" name="getChildren">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_dNDmUM1kEeaYEN8WSzbF9A" name="children-nodes" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_dNDmUM1kEeaYEN8WSzbF9A" name="children-nodes" type="_0RnMgL4NEeaoO4fCpQc-Qw" direction="return"/>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_ANQvcM0SEeaisOV8k7oI3w" name="NodeWithoutOutput">
