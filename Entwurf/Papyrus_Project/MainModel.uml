@@ -2166,9 +2166,6 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_9TRbYMPNEeaCPewWEdcdGQ" name="Module">
-          <generalization xmi:type="uml:Generalization" xmi:id="_2NhrQMPOEeaCPewWEdcdGQ">
-            <general xmi:type="uml:Class" href="JSModel.uml#_IGXccMPMEeaCPewWEdcdGQ"/>
-          </generalization>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_FUN9ksPPEeaCPewWEdcdGQ" name="preference" visibility="private" type="_DE9QsMPPEeaCPewWEdcdGQ" association="_FUNWgMPPEeaCPewWEdcdGQ"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_blqvAMzmEeaiINyVGHRfeA" name="moduleId" visibility="private">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -2216,9 +2213,6 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           </ownedEnd>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_DE9QsMPPEeaCPewWEdcdGQ" name="Preference">
-          <generalization xmi:type="uml:Generalization" xmi:id="_fynvAMPPEeaCPewWEdcdGQ">
-            <general xmi:type="uml:Class" href="JSModel.uml#_IGXccMPMEeaCPewWEdcdGQ"/>
-          </generalization>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_NzgKMMznEeaiINyVGHRfeA" name="value" visibility="private">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
           </ownedAttribute>
@@ -2238,7 +2232,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FUN9kMPPEeaCPewWEdcdGQ" source="org.eclipse.papyrus">
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FUN9kcPPEeaCPewWEdcdGQ" key="nature" value="UML_Nature"/>
           </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_FUN9k8PPEeaCPewWEdcdGQ" visibility="private" type="_9TRbYMPNEeaCPewWEdcdGQ" association="_FUNWgMPPEeaCPewWEdcdGQ"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_FUN9k8PPEeaCPewWEdcdGQ" name="module" visibility="private" type="_9TRbYMPNEeaCPewWEdcdGQ" association="_FUNWgMPPEeaCPewWEdcdGQ"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_kUbcoMzrEeaiINyVGHRfeA" name="ModuleConstraint">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_r8pyQMzrEeaiINyVGHRfeA" name="name" visibility="private">
@@ -2559,9 +2553,6 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_GR3Y8MPMEeaCPewWEdcdGQ" name="user">
         <packagedElement xmi:type="uml:Class" xmi:id="_OddvIMPREeaCPewWEdcdGQ" name="SessionInformation">
-          <generalization xmi:type="uml:Generalization" xmi:id="_ZElz8MPTEeaCPewWEdcdGQ">
-            <general xmi:type="uml:Class" href="JSModel.uml#_Jr_9gMPMEeaCPewWEdcdGQ"/>
-          </generalization>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_QOvLoMzpEeaiINyVGHRfeA" name="access_token" visibility="private">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedAttribute>
@@ -2579,9 +2570,6 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <ownedOperation xmi:type="uml:Operation" xmi:id="_sCo6IM0aEeavo6is7kUH4g" name="generateState"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_UHYTEMPTEeaCPewWEdcdGQ" name="Student">
-          <generalization xmi:type="uml:Generalization" xmi:id="_bZKeoMPTEeaCPewWEdcdGQ">
-            <general xmi:type="uml:Class" href="JSModel.uml#_IGXccMPMEeaCPewWEdcdGQ"/>
-          </generalization>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_sWgwkcPTEeaCPewWEdcdGQ" name="passedModules" visibility="private" type="_p0e4sMPTEeaCPewWEdcdGQ" association="_sWficMPTEeaCPewWEdcdGQ"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_MdfSIMzqEeaiINyVGHRfeA" name="userId" visibility="private">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -2603,7 +2591,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sWgJgMPTEeaCPewWEdcdGQ" source="org.eclipse.papyrus">
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sWgwkMPTEeaCPewWEdcdGQ" key="nature" value="UML_Nature"/>
           </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_sWgwksPTEeaCPewWEdcdGQ" visibility="private" type="_UHYTEMPTEeaCPewWEdcdGQ" association="_sWficMPTEeaCPewWEdcdGQ"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_sWgwksPTEeaCPewWEdcdGQ" name="Student" visibility="private" type="_UHYTEMPTEeaCPewWEdcdGQ" association="_sWficMPTEeaCPewWEdcdGQ"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_p0e4sMPTEeaCPewWEdcdGQ" name="PassedModuleCollection">
           <generalization xmi:type="uml:Generalization" xmi:id="_9vkuIMPTEeaCPewWEdcdGQ" general="_zWYJ4MPMEeaCPewWEdcdGQ"/>
@@ -2612,7 +2600,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZwziUMzqEeaiINyVGHRfeA" source="org.eclipse.papyrus">
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Zw0JYMzqEeaiINyVGHRfeA" key="nature" value="UML_Nature"/>
           </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_Zw0JYszqEeaiINyVGHRfeA" visibility="private" type="_OddvIMPREeaCPewWEdcdGQ" association="_Zwv38MzqEeaiINyVGHRfeA"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_Zw0JYszqEeaiINyVGHRfeA" name="sessionInformation" visibility="private" type="_OddvIMPREeaCPewWEdcdGQ" association="_Zwv38MzqEeaiINyVGHRfeA"/>
         </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_RZCYoMdkEea29-bQWKStRA" name="backbone">
