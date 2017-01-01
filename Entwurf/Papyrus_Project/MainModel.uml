@@ -1005,6 +1005,9 @@ between(min).and(max) //or similar&#xD;
         </packagedElement>
         <packagedElement xmi:type="uml:Package" xmi:id="_aJNrgM4MEeaL_qPPNxIJhQ" name="constraint">
           <packagedElement xmi:type="uml:Class" xmi:id="_gmxusL4PEeaoO4fCpQc-Qw" name="ModuleConstraintType" isAbstract="true">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_zjACcNB2Eeai8dL1RYYT4g" name="id" visibility="private">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+            </ownedAttribute>
             <ownedAttribute xmi:type="uml:Property" xmi:id="_q84wQMBnEeafN5EhaYGTYw" name="description" visibility="private">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedAttribute>
@@ -1015,6 +1018,11 @@ between(min).and(max) //or similar&#xD;
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_bGdz8L_UEeacgfGrT4PzPg" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_eMBPoL_UEeacgfGrT4PzPg" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_L8GH8MO4EearScbIBXJIIw" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_5SMZ4NB2Eeai8dL1RYYT4g" name="getId">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_5SMZ4dB2Eeai8dL1RYYT4g" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+              </ownedParameter>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_O-T2AM0fEeasNbhLG8gf5A" name="getDescription">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_O-T2Ac0fEeasNbhLG8gf5A" direction="return">

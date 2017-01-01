@@ -13,6 +13,10 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
  */
 public abstract class ModuleConstraintType {
 	/**
+	 *
+	 */
+	private int id;
+	/**
 	 * 
 	 */
 	private String description;
@@ -29,6 +33,13 @@ public abstract class ModuleConstraintType {
 	 */
 	public abstract void isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation);
 
+	/**
+	 *
+	 * @return
+	 */
+	public int getId() {
+		return id;
+	}
 	/**
 	 * 
 	 * @return  
