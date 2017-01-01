@@ -388,7 +388,7 @@
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Realization" xmi:id="_uSW0YMFxEeawXJ3PDM1dRw" client="_hjMaIMFxEeawXJ3PDM1dRw" supplier="_vd38kMGCEea0yOFvxPpmvQ"/>
+      <packagedElement xmi:type="uml:Realization" xmi:id="_uSW0YMFxEeawXJ3PDM1dRw" client="_hjMaIMFxEeawXJ3PDM1dRw" supplier="_h4o18NAoEeaBHYka3B2JWQ"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_4zyO8MF1EeaM6M-4jd6ZbA" name="RangeFilter" isAbstract="true">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QvJiUMC6EearftWngfiKFw" name="lower" visibility="private" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
@@ -438,17 +438,7 @@ between(min).and(max) //or similar&#xD;
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_EOulsc1SEeaTycnTayAwOw" type="_ABS0kM1VEeaTycnTayAwOw" direction="return"/>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Interface" xmi:id="_vd38kMGCEea0yOFvxPpmvQ" name="AttributeFilter">
-        <generalization xmi:type="uml:Generalization" xmi:id="_L_bRgMGDEea0yOFvxPpmvQ" general="_p8pFILuOEea-uPszIhxKkQ"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_38umA89pEeaWbKwKnQo1og" name="filterDescriptor" visibility="private" type="_eO6zUMOdEeaiRIvYnaUryA" association="_38umAM9pEeaWbKwKnQo1og"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_DHBGYMGDEea0yOFvxPpmvQ" name="getDescriptor">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_HeUd0MGDEea0yOFvxPpmvQ" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_nw-LoM1REeaTycnTayAwOw" name="getFilterType">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_uagEYM1REeaTycnTayAwOw" type="_ABS0kM1VEeaTycnTayAwOw" direction="return"/>
-        </ownedOperation>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Realization" xmi:id="_BrPr8MGDEea0yOFvxPpmvQ" client="_4zyO8MF1EeaM6M-4jd6ZbA" supplier="_vd38kMGCEea0yOFvxPpmvQ"/>
+      <packagedElement xmi:type="uml:Realization" xmi:id="_BrPr8MGDEea0yOFvxPpmvQ" client="_4zyO8MF1EeaM6M-4jd6ZbA" supplier="_h4o18NAoEeaBHYka3B2JWQ"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_b6x68MGDEea0yOFvxPpmvQ" name="MultiFilter">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Zr5lc89hEeaWbKwKnQo1og" name="filters" visibility="private" type="_p8pFILuOEea-uPszIhxKkQ" aggregation="shared" association="_Zr5lcM9hEeaWbKwKnQo1og">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hcMR8M9hEeaWbKwKnQo1og" value="1"/>
@@ -494,7 +484,7 @@ between(min).and(max) //or similar&#xD;
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_HAAagc1SEeaTycnTayAwOw" type="_ABS0kM1VEeaTycnTayAwOw" direction="return"/>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Realization" xmi:id="_dLUxQMGNEeaDGu-4-Q8w1w" client="_qmRI4MGMEeaDGu-4-Q8w1w" supplier="_vd38kMGCEea0yOFvxPpmvQ"/>
+      <packagedElement xmi:type="uml:Realization" xmi:id="_dLUxQMGNEeaDGu-4-Q8w1w" client="_qmRI4MGMEeaDGu-4-Q8w1w" supplier="_h4o18NAoEeaBHYka3B2JWQ"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_jOChoMGNEeaDGu-4-Q8w1w" name="NameFilter" isLeaf="true">
         <generalization xmi:type="uml:Generalization" xmi:id="_IkooMMHcEeaMG_BKqLGAKw" general="_qmRI4MGMEeaDGu-4-Q8w1w"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_6AipEMGNEeaDGu-4-Q8w1w" name="getDescriptor">
@@ -552,7 +542,7 @@ between(min).and(max) //or similar&#xD;
         <ownedAttribute xmi:type="uml:Property" xmi:id="_EXY50M1PEeaTycnTayAwOw" name="tooltip" visibility="private" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_38umBM9pEeaWbKwKnQo1og" name="attributeFilter" visibility="private" type="_vd38kMGCEea0yOFvxPpmvQ" association="_38umAM9pEeaWbKwKnQo1og"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_38umBM9pEeaWbKwKnQo1og" name="attributeFilter" visibility="private" type="_h4o18NAoEeaBHYka3B2JWQ" association="_38umAM9pEeaWbKwKnQo1og"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_zXI4UMOfEeaE5o1HSz0A6w" name="toField">
           <ownedComment xmi:type="uml:Comment" xmi:id="_TWB20MOgEeaE5o1HSz0A6w" annotatedElement="_zXI4UMOfEeaE5o1HSz0A6w">
             <body>//jOOQ</body>
@@ -568,7 +558,7 @@ between(min).and(max) //or similar&#xD;
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_pXTi0M9rEeaWbKwKnQo1og" name="attributeFilter">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_pXTi0c9rEeaWbKwKnQo1og" type="_vd38kMGCEea0yOFvxPpmvQ" direction="return"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_pXTi0c9rEeaWbKwKnQo1og" direction="return"/>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_gq6kYM1QEeaTycnTayAwOw" name="attributeName">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_gq6kYc1QEeaTycnTayAwOw" direction="return">
@@ -606,7 +596,7 @@ between(min).and(max) //or similar&#xD;
       <packagedElement xmi:type="uml:Realization" xmi:id="_69OM4MyHEeaplOwEKWQXaA" client="_3J_L0MyHEeaplOwEKWQXaA" supplier="_p8pFILuOEea-uPszIhxKkQ"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_ABS0kM1VEeaTycnTayAwOw" name="FilterType">
         <ownedOperation xmi:type="uml:Operation" xmi:id="_jJcqEM1VEeaTycnTayAwOw" name="toJsonSpecification">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_jJcqEc1VEeaTycnTayAwOw" name="filter" type="_vd38kMGCEea0yOFvxPpmvQ"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_jJcqEc1VEeaTycnTayAwOw" name="filter"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_jJcqEs1VEeaTycnTayAwOw" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
@@ -616,6 +606,16 @@ between(min).and(max) //or similar&#xD;
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_XXssgMHfEeaMG_BKqLGAKw" name="LIST"/>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_awAFEMHfEeaMG_BKqLGAKw" name="CONTAINS"/>
         </nestedClassifier>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_h4o18NAoEeaBHYka3B2JWQ" name="AttributeFilter">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_38umA89pEeaWbKwKnQo1og" name="filterDescriptor" visibility="private" type="_eO6zUMOdEeaiRIvYnaUryA" association="_38umAM9pEeaWbKwKnQo1og"/>
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_1YHGYNAoEeaBHYka3B2JWQ" client="_h4o18NAoEeaBHYka3B2JWQ" supplier="_p8pFILuOEea-uPszIhxKkQ" contract="_p8pFILuOEea-uPszIhxKkQ"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_xWttgNAoEeaBHYka3B2JWQ" name="getDescriptor">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_xWttgdAoEeaBHYka3B2JWQ" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_xWttgtAoEeaBHYka3B2JWQ" name="getFilterType">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_xWttg9AoEeaBHYka3B2JWQ" type="_ABS0kM1VEeaTycnTayAwOw" direction="return"/>
+        </ownedOperation>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_iKFaYM37Eea6VOVLcwrXFg" name="pluginmanager">
@@ -637,7 +637,7 @@ between(min).and(max) //or similar&#xD;
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_1FNB8L-UEeaWJullGOJpaQ" type="_0j0zULubEeaCStjenx_8kw" direction="return"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_BO2UUL-VEeaWJullGOJpaQ" name="objectiveFunction" type="_d98A4L-TEeaWJullGOJpaQ"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_IlZEEL-VEeaWJullGOJpaQ" name="currentPlan" type="_0j0zULubEeaCStjenx_8kw"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_dsvRQL-VEeaWJullGOJpaQ" name="moduleDAO" type="_ZZGnMLyHEealiq5a5SolQQ"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_dsvRQL-VEeaWJullGOJpaQ" name="moduleDAO" type="_EmKwAMx7EeadS8RmcnY8pA"/>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_bkuk4M3YEeauva050p_GIQ" client="_IK0GIM1lEeaYEN8WSzbF9A" supplier="_oCI2sNAbEea_kdZlFX7tiQ"/>
@@ -657,27 +657,75 @@ between(min).and(max) //or similar&#xD;
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_miKeYL_YEeakRZ7oH0A0uA" value="*"/>
           </ownedAttribute>
           <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_gX4tcL_YEeakRZ7oH0A0uA" client="_2BAncL_XEeaxStBhqAYAig" supplier="_d98A4L-TEeaWJullGOJpaQ" contract="_d98A4L-TEeaWJullGOJpaQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_RvzKINAoEeaBHYka3B2JWQ" name="evaluate">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_RvzKIdAoEeaBHYka3B2JWQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_RvzKItAoEeaBHYka3B2JWQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_t8TUsL_YEeakRZ7oH0A0uA" name="PercentageAggregationObjectiveFunction">
           <generalization xmi:type="uml:Generalization" xmi:id="_OktxUL_ZEeakRZ7oH0A0uA" general="_2BAncL_XEeaxStBhqAYAig"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_XK7WENAoEeaBHYka3B2JWQ" name="evaluate">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_XK7WEdAoEeaBHYka3B2JWQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_XK7WEtAoEeaBHYka3B2JWQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_8QIpwMPVEeac84FPKfy0yg" name="ThresholdObjectiveFunction">
           <generalization xmi:type="uml:Generalization" xmi:id="__HwXIMPVEeac84FPKfy0yg" general="_2BAncL_XEeaxStBhqAYAig"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_X1FtYNAoEeaBHYka3B2JWQ" name="evaluate">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_X1FtYdAoEeaBHYka3B2JWQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_X1FtYtAoEeaBHYka3B2JWQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_NKVTcL_YEeakRZ7oH0A0uA" name="AtomObjectiveFunction" isAbstract="true">
           <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_hQABML_YEeakRZ7oH0A0uA" client="_NKVTcL_YEeakRZ7oH0A0uA" supplier="_d98A4L-TEeaWJullGOJpaQ" contract="_d98A4L-TEeaWJullGOJpaQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_YHbakNAoEeaBHYka3B2JWQ" name="evaluate">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_YHbakdAoEeaBHYka3B2JWQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_YHbaktAoEeaBHYka3B2JWQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_6cSDcL_YEeakRZ7oH0A0uA" name="MinimalECTSAtomObjectiveFunction">
           <generalization xmi:type="uml:Generalization" xmi:id="_N5eb8L_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_YWB3QNAoEeaBHYka3B2JWQ" name="evaluate">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_YWB3QdAoEeaBHYka3B2JWQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_YWB3QtAoEeaBHYka3B2JWQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_Aw0joL_ZEeakRZ7oH0A0uA" name="MinimalStandardAverageDeviationECTSAtomObjectiveFunction">
           <generalization xmi:type="uml:Generalization" xmi:id="_NPwwkL_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_YldaYNAoEeaBHYka3B2JWQ" name="evaluate">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_YldaYdAoEeaBHYka3B2JWQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_YldaYtAoEeaBHYka3B2JWQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_LWidoMPVEeac84FPKfy0yg" name="ModulePreferencesAtomObjectiveFunction">
           <generalization xmi:type="uml:Generalization" xmi:id="_CX7HYMPWEeac84FPKfy0yg" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Y1KqUNAoEeaBHYka3B2JWQ" name="evaluate">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Y1KqUdAoEeaBHYka3B2JWQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Y1KqUtAoEeaBHYka3B2JWQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_EVyXsMPVEeac84FPKfy0yg" name="MinimalSemestersAtomObjectiveFunction">
           <generalization xmi:type="uml:Generalization" xmi:id="_DREV4MPWEeac84FPKfy0yg" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_ZDezINAoEeaBHYka3B2JWQ" name="evaluate">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZDezIdAoEeaBHYka3B2JWQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZDezItAoEeaBHYka3B2JWQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
+          </ownedOperation>
         </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="__m64kM4LEeaL_qPPNxIJhQ" name="standard">
