@@ -640,16 +640,7 @@ between(min).and(max) //or similar&#xD;
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_dsvRQL-VEeaWJullGOJpaQ" name="moduleDAO" type="_ZZGnMLyHEealiq5a5SolQQ"/>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_eeJnIM0qEea6EKMAE6ELEw" memberEnd="_eeK1Qc0qEea6EKMAE6ELEw _eeMDYM0qEea6EKMAE6ELEw">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_eeKOMM0qEea6EKMAE6ELEw" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eeK1QM0qEea6EKMAE6ELEw" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_eeMDYM0qEea6EKMAE6ELEw" name="nodewithoutput" visibility="private" type="_T-L8QM0SEeaisOV8k7oI3w" association="_eeJnIM0qEea6EKMAE6ELEw">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_thH60NAOEeac8Y9Bm9mGsQ"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tjiVoNAOEeac8Y9Bm9mGsQ" value="*"/>
-        </ownedEnd>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_bkuk4M3YEeauva050p_GIQ" client="_IK0GIM1lEeaYEN8WSzbF9A" supplier="_z_iOUM0REeaisOV8k7oI3w"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_bkuk4M3YEeauva050p_GIQ" client="_IK0GIM1lEeaYEN8WSzbF9A" supplier="_oCI2sNAbEea_kdZlFX7tiQ"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_cTz4cM3YEeauva050p_GIQ" client="_IK0GIM1lEeaYEN8WSzbF9A" supplier="_5FoPsM1kEeaYEN8WSzbF9A"/>
       <packagedElement xmi:type="uml:Package" xmi:id="_nhWmwM4LEeaL_qPPNxIJhQ" name="objectivefunction">
         <packagedElement xmi:type="uml:Interface" xmi:id="_d98A4L-TEeaWJullGOJpaQ" name="PartialObjectiveFunction">
@@ -689,45 +680,43 @@ between(min).and(max) //or similar&#xD;
           <generalization xmi:type="uml:Generalization" xmi:id="_DREV4MPWEeac84FPKfy0yg" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
         </packagedElement>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="__m64kM4LEeaL_qPPNxIJhQ" name="simple">
-        <packagedElement xmi:type="uml:Interface" xmi:id="_z_iOUM0REeaisOV8k7oI3w" name="Node">
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_y5a40M0nEea6EKMAE6ELEw" name="getParents">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_QKOpMM1kEeaYEN8WSzbF9A" name="parent-moduls" type="_0RnMgL4NEeaoO4fCpQc-Qw" direction="return"/>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_tygM4M0oEea6EKMAE6ELEw" name="getModule">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_YkZZIM1kEeaYEN8WSzbF9A" name="knote-module" type="_0RnMgL4NEeaoO4fCpQc-Qw" direction="return"/>
-          </ownedOperation>
-        </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="__m64kM4LEeaL_qPPNxIJhQ" name="standard">
         <packagedElement xmi:type="uml:Class" xmi:id="_5FoPsM1kEeaYEN8WSzbF9A" name="WeightFunction"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_T-L8QM0SEeaisOV8k7oI3w" name="NodeWithOutput">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_ybr-gM0oEea6EKMAE6ELEw" name="module" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw"/>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_6rdcUM0oEea6EKMAE6ELEw" name="parents" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BvKvoM0pEea6EKMAE6ELEw"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BvSrcM0pEea6EKMAE6ELEw" value="*"/>
+          <generalization xmi:type="uml:Generalization" xmi:id="_6irZsNAbEea_kdZlFX7tiQ" general="_oCI2sNAbEea_kdZlFX7tiQ"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_ia9WU9AcEea_kdZlFX7tiQ" name="subnodes" visibility="private" type="_oCI2sNAbEea_kdZlFX7tiQ" aggregation="shared" association="_ia9WUNAcEea_kdZlFX7tiQ">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_l4zWMNAcEea_kdZlFX7tiQ"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_l4zWMdAcEea_kdZlFX7tiQ" value="*"/>
           </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_9FRzYM0oEea6EKMAE6ELEw" name="children" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D9XskM0pEea6EKMAE6ELEw"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D9clEM0pEea6EKMAE6ELEw" value="*"/>
-          </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_eeK1Qc0qEea6EKMAE6ELEw" name="node" visibility="private" type="_z_iOUM0REeaisOV8k7oI3w" aggregation="shared" association="_eeJnIM0qEea6EKMAE6ELEw">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pR6rsM0qEea6EKMAE6ELEw"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pR-WEM0qEea6EKMAE6ELEw" value="*"/>
-          </ownedAttribute>
-          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_qgXIsM0SEeaisOV8k7oI3w" client="_T-L8QM0SEeaisOV8k7oI3w" supplier="_z_iOUM0REeaisOV8k7oI3w" contract="_z_iOUM0REeaisOV8k7oI3w"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_WdoiwM0pEea6EKMAE6ELEw" name="getChildren">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_dNDmUM1kEeaYEN8WSzbF9A" name="children-nodes" type="_0RnMgL4NEeaoO4fCpQc-Qw" direction="return"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_WdoiwM0pEea6EKMAE6ELEw" name="getSubNodes">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_dNDmUM1kEeaYEN8WSzbF9A" name="children-nodes" type="_oCI2sNAbEea_kdZlFX7tiQ" direction="return"/>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_ANQvcM0SEeaisOV8k7oI3w" name="NodeWithoutOutput">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_I9Fu4M0pEea6EKMAE6ELEw" name="module" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw"/>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_KKadoM0pEea6EKMAE6ELEw" name="parents" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T6lXMM0pEea6EKMAE6ELEw"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T6pooM0pEea6EKMAE6ELEw" value="*"/>
-          </ownedAttribute>
-          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_o6WNIM0SEeaisOV8k7oI3w" client="_ANQvcM0SEeaisOV8k7oI3w" supplier="_z_iOUM0REeaisOV8k7oI3w" contract="_z_iOUM0REeaisOV8k7oI3w"/>
+          <generalization xmi:type="uml:Generalization" xmi:id="_7cMboNAbEea_kdZlFX7tiQ" general="_oCI2sNAbEea_kdZlFX7tiQ"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_IK0GIM1lEeaYEN8WSzbF9A" name="SimpleGenerator">
           <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_gRX2cM1lEeaYEN8WSzbF9A" client="_IK0GIM1lEeaYEN8WSzbF9A" supplier="_sCNXcL-UEeaWJullGOJpaQ" contract="_sCNXcL-UEeaWJullGOJpaQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_oCI2sNAbEea_kdZlFX7tiQ" name="Node" isAbstract="true">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_9JToQNAcEea_kdZlFX7tiQ" name="module" visibility="private" type="_0RnMgL4NEeaoO4fCpQc-Qw"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_A8Ncs9AeEea_kdZlFX7tiQ" name="children" visibility="private" type="_oCI2sNAbEea_kdZlFX7tiQ" association="_A8NcsNAeEea_kdZlFX7tiQ">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Oxtz8NAeEea_kdZlFX7tiQ"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ox3k8NAeEea_kdZlFX7tiQ" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_A8NctNAeEea_kdZlFX7tiQ" name="parents" visibility="private" type="_oCI2sNAbEea_kdZlFX7tiQ" association="_A8NcsNAeEea_kdZlFX7tiQ">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PTu74NAeEea_kdZlFX7tiQ"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PTu74dAeEea_kdZlFX7tiQ" value="*"/>
+          </ownedAttribute>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UtbPUNAcEea_kdZlFX7tiQ" name="getParents">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UtbPUdAcEea_kdZlFX7tiQ" name="parent-moduls" type="_oCI2sNAbEea_kdZlFX7tiQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UtbPUtAcEea_kdZlFX7tiQ" name="getModule">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_UtbPU9AcEea_kdZlFX7tiQ" name="knote-module" type="_0RnMgL4NEeaoO4fCpQc-Qw" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_fSW7wNAeEea_kdZlFX7tiQ" name="getChildren">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_fSW7wdAeEea_kdZlFX7tiQ" name="parent-moduls" type="_oCI2sNAbEea_kdZlFX7tiQ" direction="return"/>
+          </ownedOperation>
         </packagedElement>
       </packagedElement>
     </packagedElement>
@@ -753,16 +742,19 @@ between(min).and(max) //or similar&#xD;
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="__YUNYMOuEearScbIBXJIIw" name="StandardVerifier">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_H1Ea4M9uEeaWbKwKnQo1og" name="verify">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_H1Ea4c9uEeaWbKwKnQo1og" name="invalid" type="_lC-GwMOtEearScbIBXJIIw" direction="return">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_H1Ea4s9uEeaWbKwKnQo1og" value="1"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_H1Ea489uEeaWbKwKnQo1og" value="1"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_H1Ea5M9uEeaWbKwKnQo1og" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
-        </ownedOperation>
-      </packagedElement>
       <packagedElement xmi:type="uml:Realization" xmi:id="_nq-HYM9sEeaWbKwKnQo1og" client="__YUNYMOuEearScbIBXJIIw" supplier="_YDqTcL-WEeaWJullGOJpaQ"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_baiLENAdEea_kdZlFX7tiQ" name="standard">
+        <packagedElement xmi:type="uml:Class" xmi:id="__YUNYMOuEearScbIBXJIIw" name="StandardVerifier">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H1Ea4M9uEeaWbKwKnQo1og" name="verify">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_H1Ea4c9uEeaWbKwKnQo1og" name="invalid" type="_lC-GwMOtEearScbIBXJIIw" direction="return">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_H1Ea4s9uEeaWbKwKnQo1og" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_H1Ea489uEeaWbKwKnQo1og" value="1"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_H1Ea5M9uEeaWbKwKnQo1og" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_jzQwkNAdEea_kdZlFX7tiQ" client="__YUNYMOuEearScbIBXJIIw" supplier="_lC-GwMOtEearScbIBXJIIw"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_lM5vELiaEeavH9sFQSsLvg" name="model" URI="">
       <packagedElement xmi:type="uml:Package" xmi:id="_PVXQkLfVEea2RYsZ51fiPw" name="moduledata">
@@ -2671,6 +2663,17 @@ Die Methodensignatur ist hierbei vom Framework Backbone vorgegeben. In den einze
   <packagedElement xmi:type="uml:Association" xmi:id="_38umAM9pEeaWbKwKnQo1og" visibility="private" memberEnd="_38umA89pEeaWbKwKnQo1og _38umBM9pEeaWbKwKnQo1og">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_38umAc9pEeaWbKwKnQo1og" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_38umAs9pEeaWbKwKnQo1og" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ia9WUNAcEea_kdZlFX7tiQ" memberEnd="_ia9WU9AcEea_kdZlFX7tiQ _ibHHUNAcEea_kdZlFX7tiQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ia9WUdAcEea_kdZlFX7tiQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ia9WUtAcEea_kdZlFX7tiQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ibHHUNAcEea_kdZlFX7tiQ" name="nodewithoutoutput" type="_T-L8QM0SEeaisOV8k7oI3w" association="_ia9WUNAcEea_kdZlFX7tiQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_A8NcsNAeEea_kdZlFX7tiQ" memberEnd="_A8Ncs9AeEea_kdZlFX7tiQ _A8NctNAeEea_kdZlFX7tiQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_A8NcsdAeEea_kdZlFX7tiQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_A8NcstAeEea_kdZlFX7tiQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vtuncLcDEeag2fAimjvU5Q">
