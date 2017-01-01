@@ -356,7 +356,7 @@
 <path d="M828 395 L929 395 L929 413 L828 413 L828 395 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath93">
-<path d="M862 395 L915 395 L915 412 L862 412 L862 395 Z"/>
+<path d="M861 395 L915 395 L915 412 L861 412 L861 395 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath94">
 <path d="M828 412 L929 412 L929 440 L828 440 L828 412 Z"/>
@@ -515,22 +515,25 @@
 <path d="M260 68 L279 68 L279 80 L260 80 L260 68 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath146">
-<path d="M891 286 L935 286 L935 303 L891 303 L891 286 Z"/>
+<path d="M260 107 L278 107 L278 122 L260 122 L260 107 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath147">
-<path d="M379 75 L425 75 L425 92 L379 92 L379 75 Z"/>
+<path d="M891 286 L908 286 L908 303 L891 303 L891 286 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath148">
-<path d="M905 250 L917 250 L917 267 L905 267 L905 250 Z"/>
+<path d="M379 75 L422 75 L422 92 L379 92 L379 75 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath149">
-<path d="M369 113 L392 113 L392 130 L369 130 L369 113 Z"/>
+<path d="M905 250 L917 250 L917 267 L905 267 L905 250 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath150">
-<path d="M260 66 L278 66 L278 77 L260 77 L260 66 Z"/>
+<path d="M369 113 L392 113 L392 130 L369 130 L369 113 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath151">
-<path d="M260 107 L278 107 L278 122 L260 122 L260 107 Z"/>
+<path d="M994 310 L1012 310 L1012 321 L994 321 L994 310 Z"/>
+</clipPath>
+<clipPath clipPathUnits="userSpaceOnUse" id="clipPath152">
+<path d="M260 66 L282 66 L282 82 L260 82 L260 66 Z"/>
 </clipPath>
 </defs>
 <g fill="url(#linearGradient1)" font-family="'Segoe UI'" stroke-linejoin="round" stroke="url(#linearGradient1)" stroke-width="0" stroke-miterlimit="0">
@@ -627,8 +630,8 @@
 <line clip-path="url(#clipPath89)" fill="none" x1="1136" x2="1238" y1="485" y2="485"/>
 <rect x="1136" y="411" clip-path="url(#clipPath90)" fill="none" width="101" rx="0" ry="0" height="99"/>
 <rect x="828" y="393" clip-path="url(#clipPath91)" fill="url(#linearGradient13)" width="100" height="100" stroke="none"/>
-<image x="844" y="396" clip-path="url(#clipPath92)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAr0lEQVR42mNkgIKC&#13;&#10;BUf+P3jyCchiBOL/QMgIYTFCREDg/38GOFCU4WWYkGDDyAITuP/4E8OkNDsGYkHu&#13;&#10;rINgGm7Av7//GNjZmIk2gOHff1QDwBxmJgZSAZoBjJQZwEqRC4BBzEqCC/6hh8H/&#13;&#10;//8YmJmIN+D/fyyB6NewCZwO/qORMIBIIUA2IyOmAUsrvIh2QUzndjBNeqjhiwWY&#13;&#10;qWQbsKTccwC9oKIkTJIXQOqpAgBzFjJ6SnHW0gAAAABJRU5ErkJggg==" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
-<text xml:space="preserve" x="863" y="409" clip-path="url(#clipPath93)" stroke="none">KindFilter</text>
+<image x="843" y="396" clip-path="url(#clipPath92)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAr0lEQVR42mNkgIKC&#13;&#10;BUf+P3jyCchiBOL/QMgIYTFCREDg/38GOFCU4WWYkGDDyAITuP/4E8OkNDsGYkHu&#13;&#10;rINgGm7Av7//GNjZmIk2gOHff1QDwBxmJgZSAZoBjJQZwEqRC4BBzEqCC/6hh8H/&#13;&#10;//8YmJmIN+D/fyyB6NewCZwO/qORMIBIIUA2IyOmAUsrvIh2QUzndjBNeqjhiwWY&#13;&#10;qWQbsKTccwC9oKIkTJIXQOqpAgBzFjJ6SnHW0gAAAABJRU5ErkJggg==" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
+<text xml:space="preserve" x="862" y="409" clip-path="url(#clipPath93)" stroke="none">TypeFilter</text>
 <line clip-path="url(#clipPath94)" fill="none" x1="828" x2="928" y1="413" y2="413"/>
 <line clip-path="url(#clipPath95)" fill="none" x1="828" x2="928" y1="440" y2="440"/>
 <line clip-path="url(#clipPath96)" fill="none" x1="828" x2="928" y1="467" y2="467"/>
@@ -688,17 +691,19 @@
 <g stroke-linecap="butt" fill="white" text-rendering="optimizeLegibility" font-family="'Segoe UI'" stroke-dasharray="5,5,5,5,5,5,5,5,5,5" stroke="white" stroke-width="1.1">
 <polygon clip-path="url(#clipPath145)" points=" 261 69 277 69 274 78" stroke="none"/>
 <polygon fill="none" stroke-dasharray="none" clip-path="url(#clipPath145)" points=" 261 69 277 69 274 78" stroke="black"/>
+<line clip-path="url(#clipPath142)" fill="none" x1="472" x2="261" y1="235" y2="108" stroke="black"/>
+<polygon clip-path="url(#clipPath146)" points=" 261 108 276 111 271 120" stroke="none"/>
+<polygon fill="none" stroke-dasharray="none" clip-path="url(#clipPath146)" points=" 261 108 276 111 271 120" stroke="black"/>
 <line clip-path="url(#clipPath142)" fill="none" x1="1010" x2="639" y1="318" y2="178" stroke-dasharray="none" stroke="black"/>
 <line clip-path="url(#clipPath142)" fill="none" x1="639" x2="261" y1="178" y2="69" stroke-dasharray="none" stroke="black"/>
-<text x="892" y="300" clip-path="url(#clipPath146)" fill="black" stroke-dasharray="none" stroke="none" xml:space="preserve"> + multi</text>
-<text x="380" y="89" clip-path="url(#clipPath147)" fill="black" stroke-dasharray="none" stroke="none" xml:space="preserve"> + filters</text>
-<text x="906" y="264" clip-path="url(#clipPath148)" fill="black" stroke-dasharray="none" stroke="none" xml:space="preserve"> 1</text>
-<text x="370" y="127" clip-path="url(#clipPath149)" fill="black" stroke-dasharray="none" stroke="none" xml:space="preserve"> 1..*</text>
-<polygon stroke-dasharray="none" clip-path="url(#clipPath150)" points=" 261 69 270 67 276 73 268 75" stroke="none"/>
-<polygon fill="none" stroke-dasharray="none" clip-path="url(#clipPath150)" points=" 261 69 270 67 276 73 268 75" stroke="black"/>
-<line clip-path="url(#clipPath142)" fill="none" x1="472" x2="261" y1="235" y2="108" stroke="black"/>
-<polygon clip-path="url(#clipPath151)" points=" 261 108 276 111 271 120" stroke="none"/>
-<polygon fill="none" stroke-dasharray="none" clip-path="url(#clipPath151)" points=" 261 108 276 111 271 120" stroke="black"/>
+<text x="892" y="300" clip-path="url(#clipPath147)" fill="black" stroke-dasharray="none" stroke="none" xml:space="preserve"> + </text>
+<text x="380" y="89" clip-path="url(#clipPath148)" fill="black" stroke-dasharray="none" stroke="none" xml:space="preserve"> - filters</text>
+<text x="906" y="264" clip-path="url(#clipPath149)" fill="black" stroke-dasharray="none" stroke="none" xml:space="preserve"> 1</text>
+<text x="370" y="127" clip-path="url(#clipPath150)" fill="black" stroke-dasharray="none" stroke="none" xml:space="preserve"> 1..*</text>
+<polygon stroke-dasharray="none" clip-path="url(#clipPath151)" points=" 1010 318 1001 319 995 312 1004 311" stroke="none"/>
+<polygon fill="none" stroke-dasharray="none" clip-path="url(#clipPath151)" points=" 1010 318 1001 319 995 312 1004 311" stroke="black"/>
+<polygon fill="black" stroke-dasharray="none" clip-path="url(#clipPath152)" points=" 261 68 264 67 266 67 267 70 267 71 280 68 267 71 277 80 267 71 266 72 264 73 262 72 261 70" stroke="none"/>
+<polygon fill="none" stroke-dasharray="none" clip-path="url(#clipPath152)" points=" 261 68 264 67 266 67 267 70 267 71 280 68 267 71 277 80 267 71 266 72 264 73 262 72 261 70" stroke="black"/>
 </g>
 </g>
 </svg>

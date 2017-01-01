@@ -46,7 +46,7 @@
 <path d="M35 74 L995 74 L995 239 L35 239 L35 74 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath11">
-<path d="M10 10 L10 110 L210 110 L210 32 L88 32 L88 10 Z"/>
+<path d="M10 10 L10 110 L210 110 L210 32 L132 32 L132 10 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath12">
 <path d="M7 7 L213 7 L213 113 L7 113 L7 7 Z"/>
@@ -55,13 +55,13 @@
 <path d="M10 12 L211 12 L211 32 L10 32 L10 12 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath14">
-<path d="M34 12 L85 12 L85 29 L34 29 L34 12 Z"/>
+<path d="M34 12 L129 12 L129 29 L34 29 L34 12 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath15">
 <path d="M10 31 L211 31 L211 111 L10 111 L10 31 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath16">
-<path d="M270 10 L270 110 L470 110 L470 32 L335 32 L335 10 Z"/>
+<path d="M270 10 L270 110 L470 110 L470 32 L346 32 L346 10 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath17">
 <path d="M267 7 L473 7 L473 113 L267 113 L267 7 Z"/>
@@ -70,7 +70,7 @@
 <path d="M270 12 L471 12 L471 32 L270 32 L270 12 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath19">
-<path d="M294 12 L332 12 L332 29 L294 29 L294 12 Z"/>
+<path d="M294 12 L343 12 L343 29 L294 29 L294 12 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath20">
 <path d="M270 31 L471 31 L471 111 L270 111 L270 31 Z"/>
@@ -90,24 +90,24 @@
 <line clip-path="url(#clipPath9)" fill="none" x1="36" x2="994" y1="200" y2="200"/>
 <rect x="36" y="75" clip-path="url(#clipPath10)" fill="none" width="957" rx="0" ry="0" height="162"/>
 <rect x="10" y="10" clip-path="url(#clipPath11)" fill="url(#linearGradient2)" width="200" height="100" stroke="none"/>
-<line clip-path="url(#clipPath12)" fill="none" x1="10" x2="88" y1="10" y2="10"/>
-<line clip-path="url(#clipPath12)" fill="none" x1="88" x2="88" y1="10" y2="32"/>
-<line clip-path="url(#clipPath12)" fill="none" x1="88" x2="210" y1="32" y2="32"/>
+<line clip-path="url(#clipPath12)" fill="none" x1="10" x2="132" y1="10" y2="10"/>
+<line clip-path="url(#clipPath12)" fill="none" x1="132" x2="132" y1="10" y2="32"/>
+<line clip-path="url(#clipPath12)" fill="none" x1="132" x2="210" y1="32" y2="32"/>
 <line clip-path="url(#clipPath12)" fill="none" x1="210" x2="210" y1="32" y2="110"/>
 <line clip-path="url(#clipPath12)" fill="none" x1="210" x2="10" y1="110" y2="110"/>
 <line clip-path="url(#clipPath12)" fill="none" x1="10" x2="10" y1="110" y2="10"/>
 <image x="16" y="13" clip-path="url(#clipPath13)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAWUlEQVR42mNgGPKA&#13;&#10;EUQoZCz4j0vBgxkJjPgMYIEx7k+Px5BUzFxIuQvwAZDr4C7YUBdAkuaApg2oXgAB&#13;&#10;MV5+kl3BRGksoLiAnZlCA5gZKTWAiQIDYKE6AgEAAu0P6M4KKrgAAAAASUVORK5C&#13;&#10;YII=" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
-<text xml:space="preserve" x="35" y="26" clip-path="url(#clipPath14)" stroke="none">objective</text>
+<text xml:space="preserve" x="35" y="26" clip-path="url(#clipPath14)" stroke="none">objectivefunction</text>
 <line clip-path="url(#clipPath15)" fill="none" x1="10" x2="210" y1="32" y2="32"/>
 <rect x="270" y="10" clip-path="url(#clipPath16)" fill="url(#linearGradient3)" width="200" height="100" stroke="none"/>
-<line clip-path="url(#clipPath17)" fill="none" x1="270" x2="335" y1="10" y2="10"/>
-<line clip-path="url(#clipPath17)" fill="none" x1="335" x2="335" y1="10" y2="32"/>
-<line clip-path="url(#clipPath17)" fill="none" x1="335" x2="470" y1="32" y2="32"/>
+<line clip-path="url(#clipPath17)" fill="none" x1="270" x2="346" y1="10" y2="10"/>
+<line clip-path="url(#clipPath17)" fill="none" x1="346" x2="346" y1="10" y2="32"/>
+<line clip-path="url(#clipPath17)" fill="none" x1="346" x2="470" y1="32" y2="32"/>
 <line clip-path="url(#clipPath17)" fill="none" x1="470" x2="470" y1="32" y2="110"/>
 <line clip-path="url(#clipPath17)" fill="none" x1="470" x2="270" y1="110" y2="110"/>
 <line clip-path="url(#clipPath17)" fill="none" x1="270" x2="270" y1="110" y2="10"/>
 <image x="276" y="13" clip-path="url(#clipPath18)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAWUlEQVR42mNgGPKA&#13;&#10;EUQoZCz4j0vBgxkJjPgMYIEx7k+Px5BUzFxIuQvwAZDr4C7YUBdAkuaApg2oXgAB&#13;&#10;MV5+kl3BRGksoLiAnZlCA5gZKTWAiQIDYKE6AgEAAu0P6M4KKrgAAAAASUVORK5C&#13;&#10;YII=" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
-<text xml:space="preserve" x="295" y="26" clip-path="url(#clipPath19)" stroke="none">simple</text>
+<text xml:space="preserve" x="295" y="26" clip-path="url(#clipPath19)" stroke="none">standard</text>
 <line clip-path="url(#clipPath20)" fill="none" x1="270" x2="470" y1="32" y2="32"/>
 </g>
 </g>
