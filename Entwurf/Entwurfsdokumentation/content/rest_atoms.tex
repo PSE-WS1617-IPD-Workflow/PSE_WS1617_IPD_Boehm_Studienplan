@@ -16,13 +16,77 @@
 	\endlastfoot
 	
 	\lbljsonatom{Turnus} 
-	& $ \in \{0, 1\}$ mit $0 \equiv \textnormal{SS}$ und $1 \equiv \textnormal{WS}$. \\
+	& $ \in \{0, 1\}$ mit 0 für Sommersemester und 1 für Wintersemester. \\
 	\lbljsonatom{Jahr}
 	& Jahreszahl (Ganzzahl). \\
 	\lbljsonatom{Studienfach-ID}
 	& ID, welche ein eindeutiges Studienfach repräsentiert. \\
 	\lbljsonatom{Studienfach-Name}
-	& Name des zu \jsonatom{Studienfach-ID} gehörenden Studienfachs. \\
-	\lbljsonatom{Studienplan-ID}\declatomlbl{Plan-ID}
-	& ID, welche einen eindeutigen Studienplan repräsentiert.
+	& Name eines Studienfachs. \\
+	\lbljsonatom{Modul-ID}
+	& ID, welche ein eindeutiges Modul repräsentiert. \\
+	\lbljsonatom{Modul-Name}
+	& Name eines Moduls. \\
+	\lbljsonatom{Modul-Kategorie}
+	& Name der Kategorie eines Moduls. \\
+	\lbljsonatom{Modul-Semester}
+	& siehe \jsonatom{Turnus} ?? \\
+	\lbljsonatom{Modul-Creditpoints}
+	& ECTS-Zahl eines Moduls. \\
+	\lbljsonatom{Modul-Dozent}
+	& Name des Dozenten des Moduls. \\
+	\lbljsonatom{Modul-Präferenz}
+	& $ \in \{\verb|"positive"|, \verb|"negative"|, \verb|""|\} $. \\
+	\lbljsonatom{Modul-Beschreibung}
+	& Beschreibungstext eines Moduls. \\
+	\lbljsonatom{Constraint-Name}
+	& Bezeichner eines Constraints. \\
+	Constraint-Typ
+	&  \\
+	\lbljsonatom{Filter-ID}
+	& ID, welche einen eindeutigen Filter repräsentiert. \\
+	\lbljsonatom{Filter-Name}
+	& Name des Filters (Titel für UI). \\
+	\lbljsonatom{Filter-Default}
+	& Für List-Filter: Nummer des standardmäßig ausgewählten Elements. \newline
+	Für Contains-Filter: Standardmäßiger \jsonatom{Suchstring}. \newline
+	Für Range-Filter: \newline
+	{\begin{tbljson}
+{
+	"min": (*\jsonatom{Filter-Minimum}*),
+	"max": (*\jsonatom{Filter-Maximum}*)	
+} 	
+	\end{tbljson}} \\
+	\lbljsonatom{Filter-Tooltip}
+	& Kurzer Beschreibungstext des Filters für ein UI-Tooltip. \\
+	\lbljsonatom{Filter-Typ}
+	& $ \in \{\verb|"range"|, \verb|"list"|, \verb|"contains"|\} $. \\
+	\lbljsonatom{Filter-Minimum}
+	& Ganze Zahl, die eine untere Schranke eines Range-Filters beschreibt. \\
+	\lbljsonatom{Filter-Maximum}
+	& Ganze Zahl, die eine obere Schranke eines Range-Filters beschreibt. \\
+	\lbljsonatom{Filter-Wahlitem}
+	& Wahlmöglichkeit eines UI-Filter-Auswahlfeldes (String). \\
+	\lbljsonatom{Zielfunktion-ID}
+	& ID, welche eine eindeutige Zielfunktion repräsentiert. \\
+	\lbljsonatom{Zielfunktion-Name}
+	& Name einer Zielfunktion. \\
+	\lbljsonatom{Zielfunktion-Beschreibung}
+	& Beschreibungstext einer Zielfunktion für die UI. \\
+	\lbljsonatom{Studienplan-ID}, \lbljsonatom{Plan-ID}
+	& ID, welche einen eindeutigen Studienplan repräsentiert. \\
+	\lbljsonatom{Studienplan-Status}
+	& $ \in \{\verb|"valid"|, \verb|"invalid"|, \verb|"not-verified"|\} $. \\
+	\lbljsonatom{Studienplan-Name}
+	& Name eines Studienplans. \\
+	\lbljsonatom{Studienplan-Gesamt-Creditpoints}
+	& Gesamtzahl aller ECTS eines Studienplans. \\
+	\lbljsonatom{Untere-ECTS-Schranke}/\lbljsonatom{Obere-ECTS-Schranke}
+	& \jsonatom{Filter-Minimum}/\jsonatom{Filter-Maximum} für ECTS-Filter. \\
+	\lbljsonatom{Semester-Minimum}/\lbljsonatom{Semester-Maximum}
+	& Minimale/Maximale Anzahl an Semestern, die der Generierungsvorschlag haben soll. \\
+	\lbljsonatom{Semester-ECTS-Minimum}/\lbljsonatom{Semester-ECTS-Maximum}
+	& Minimale/Maximale Anzahl von ECTS pro Semester, die der Generierungsvorschlag haben soll. \\
+	\lbljsonatom{Access-Token}
+	& Das in Kapitel \ref{subsec:api-auth}, Tabelle \ref{tab:api-auth-login-res-success} spezifizierte Access-Token. \\
 \end{longtable}
