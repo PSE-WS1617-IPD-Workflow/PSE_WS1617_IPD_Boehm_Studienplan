@@ -4,11 +4,13 @@
 
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
-import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
+import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
- * 
+ * AtomObjectiveFunction ist eine Teilzielfunktion, die auf nur eine Eigenschaft
+ * berücksichtigt.
  */
 public abstract class AtomObjectiveFunction implements PartialObjectiveFunction {
+	public abstract double evaluate(Plan plan);
 };

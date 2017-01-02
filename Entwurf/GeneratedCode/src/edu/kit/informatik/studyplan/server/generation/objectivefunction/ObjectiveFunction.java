@@ -4,11 +4,9 @@
 
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
-import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
-
 /************************************************************/
 /**
- * 
+ * Eine Zielfunktion dient zur be
  */
 public abstract class ObjectiveFunction implements PartialObjectiveFunction {
 	/**
