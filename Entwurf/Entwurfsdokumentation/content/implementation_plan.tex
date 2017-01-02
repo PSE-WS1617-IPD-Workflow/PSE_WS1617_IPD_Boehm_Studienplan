@@ -1,0 +1,26 @@
+\section{Implementierungsplan}
+
+%German abbreviations  
+\def\pgfcalendarweekdayletter#1{%  
+	\ifcase#1M\or D\or M\or D\or F\or S\or S\fi%  
+}  
+%German abbreviations; Use S. instead of September  
+\def\pgfcalendarmonthname#1{%  
+	\ifcase#1 Dezember \or Januar\or Februar\or März\or April\or Mai\or Juni\or Juli \or August \or S. \or Oktober \or November \or Dezember\fi%  
+}  
+
+% This line is added
+\ganttset{calendar week text={KW~\currentweek}}
+
+	
+	\begin{ganttchart}[  
+		hgrid,%  
+		vgrid,%  
+		time slot format=little-endian,% 
+		]{11-01-2017}{07-02-2017}  
+		\gantttitlecalendar{year, month=name,week=2 day, day} \\
+		\ganttbar{Model und DAO}{11-01-2017}{19-01-2017} \\
+		\ganttbar{REST-Schnittstellen}{11-01-2017}{18-01-2017} \\
+		\ganttmilestone{Datenbankzugriff vollständig möglich} {20-01-2017}
+	\end{ganttchart}  
+	
