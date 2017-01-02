@@ -1,8 +1,27 @@
 \newpage
+\tikzstyle{num}=[fill = green!10]
+\tikzstyle{enum}=[fill = yellow!10]
+\tikzstyle{bool}=[fill = blue!10]
+
 \section{Datenbankbeschreibung}
+Die Produktdaten werden in zwei getrennten Datenbanken gespeichert, eine Datenbank für Moduldaten und eine für Nutzerdaten. Dies ermöglicht es, in Zukunft eine andere Schnittstelle zum Modulhandbuch zu verwenden, wie beispielsweise eine Anbindung an das Vorlesungsverzeichnis. \\
+Im Folgenden wird deshalb der Aufbau beider Datenbanken getrennt beschrieben. Zusätzliche Informationen, die nicht aus den Entity-Relationship-Diagrammen hervorgehen, sind in Form von Kommentaren dargestellt. Die Datentypen der Attribute gehen aus folgender Farbkodierung hervor: \\
+\begin{tabular}{ |c | c | c | c |}
+	\hline
+	\tikz{\node[attribute, num]{Integer-Ganzzahl}} &
+	\tikz{\node[attribute]{Zeichenkette}} &
+	\tikz{\node[attribute, bool]{Boolean-Wert}} &
+	\tikz{\node[attribute, enum]{Enum}} \\ \hline
+\end{tabular}
 
 \subsection{Moduldaten}
 \input{content/diagrams/module_data_er}
+\subsubsection{Enumwerte}
+\begin{tabular}{|l|l|}
+	\hline
+	\textbf{Tabellenspalte} & \textbf{mögliche Werte} \\ \hline
+	\texttt{cycle\_type} & winter\_term, summer\_term, both \\ \hline
+\end{tabular}
 \subsection{Benutzerdaten}
 \input{content/diagrams/user_data_er}
 \subsubsection{Enumwerte}
