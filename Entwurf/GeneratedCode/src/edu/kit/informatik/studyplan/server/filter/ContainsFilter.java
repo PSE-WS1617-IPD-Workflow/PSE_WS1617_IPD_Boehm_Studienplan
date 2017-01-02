@@ -4,7 +4,7 @@ package edu.kit.informatik.studyplan.server.filter;
  * Repräsentiert einen Textsuch-Attribut-Filter.
  */
 public abstract class ContainsFilter implements AttributeFilter {
-    private String substring;
+    protected String substring;
 
     /**
      * Liefert eine Filterbedingung, die das Vorkommen des Substrings im Attributswert fordert.

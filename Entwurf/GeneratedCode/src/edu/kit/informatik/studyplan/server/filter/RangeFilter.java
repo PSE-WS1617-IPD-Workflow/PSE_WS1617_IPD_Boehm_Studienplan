@@ -4,10 +4,10 @@ package edu.kit.informatik.studyplan.server.filter;
  * Repräsentiert einen Intervall-Beschränkungs-Filter für ganzzahlige Attribute.
  */
 public abstract class RangeFilter implements AttributeFilter {
-    private int lower;
-    private int upper;
-    private int min;
-    private int max;
+    protected int lower;
+    protected int upper;
+    protected int min;
+    protected int max;
     /**
      * Liefert eine Filterbedingung, die vom Attributswert das Einhalten der festgelegten Intervall-Grenzen fordert.
      * @return die Filterbedingung als jOOQ-Condition-Objekt
@@ -16,6 +16,8 @@ public abstract class RangeFilter implements AttributeFilter {
     public Condition getCondition() {
         return null;
     }
+
+    public abstract FilterDescriptor getDescriptor();
 
     @Override
     public FilterType getFilterType() {

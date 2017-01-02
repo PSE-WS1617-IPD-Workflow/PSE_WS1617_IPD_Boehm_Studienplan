@@ -4,7 +4,7 @@ package edu.kit.informatik.studyplan.server.filter;
  * Repräsentiert einen Listenauswahl-Attribut-Filter.
  */
 public abstract class ListFilter implements AttributeFilter {
-    private int selection;
+    protected int selection;
     /**
      * Liefert eine Filterbedingung, die die Übereinstimmung des untersuchten Attributswertes mit dem festgelegten
      * Wahlelement (selection) fordert.

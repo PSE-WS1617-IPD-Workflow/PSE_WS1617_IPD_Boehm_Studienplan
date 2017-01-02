@@ -10,11 +10,7 @@ import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
  * Repräsentiert einen ECTS-Intervall-Filter.
  */
 public final class CreditPointsFilter extends RangeFilter {
-
-	/**
-	 * Liefert FilterDescriptor.CREDIT_POINTS.
-	 * @return FilterDescriptor.CREDIT_POINTS
-	 */
+	@Override
 	public FilterDescriptor getDescriptor() {
 		return FilterDescriptor.CREDIT_POINTS;
 	}
