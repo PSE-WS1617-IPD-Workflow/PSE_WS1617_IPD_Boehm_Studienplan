@@ -1,37 +1,41 @@
 \resizebox{\textwidth}{!} {
 \begin{tikzpicture}
-	\node[entity] (user) {Nutzer};
+	\node[entity] (user) {user};
 	\node[attribute][left =of user]{\key{user\_id}} edge (user);
 	\node[attribute][below right= of user]{name} edge (user);
-	\node[attribute][below = of user]{subject} edge (user);
-	\node[attribute][below left= of user]{study\_start} edge (user);
+	\node[attribute](disc)[below = of user]{discipline\_id} edge (user);
+	\node[draw][below right= of disc, text width = 3cm, dashed] {Referenz zum Studiengang in Moduldatenbank} edge [dashed] (disc);
+	\node[attribute](start)[below left= of user]{study\_start} edge (user);
+	\node[attribute][left= 0.5cm of start]{year} edge (start);
+	\node[attribute][below= 0.5cm of start]{semester\_type} edge (start);
 
 	\node[relationship](bel) [above = 2cmof user] {belongs to} edge node[auto,swap] {1} (user);
 	
 	\node[entity] (plan) [above = 6cm of user]{plan} edge node[auto,swap] {0..*} (bel);
 	\node[attribute][above left =of plan]{\key{plan\_id}} edge (plan);
-	\node[attribute][above = of plan]{name} edge (plan);
-	\node[attribute][left= of plan]{unique\_id} edge (plan);
-	\node[attribute][below right = of plan]{credit\_points} edge (plan);
+	\node[attribute][left= of plan]{name} edge (plan);
+	%\node[attribute][left= of plan]{unique\_id} edge (plan);
+	%\node[attribute][below right = of plan]{credit\_points} edge (plan);
 	\node[attribute][below left= of plan]{state} edge (plan);
 	
 	\node[relationship](con) [right =2cm of plan] {contains} edge node[auto,swap] {1} (plan);
 	
-	\node[entity] (sem) [right = 6cm of plan]{plan\_semester} edge  node[auto,swap] {0..*}(con);
-	\node[attribute][above left =of sem]{\key{semester\_id}} edge (sem);
-	\node[attribute][above = of sem]{number} edge (sem);
-	\node[attribute][above right= of sem]{credit\_points} edge (sem);
+	\node[relationship](con2) [above = 2cm of plan] {contains} edge node[auto,swap] {1} (plan);
 	
-	\node[relationship](con2) [below =2cm of sem] {contains} edge node[auto,swap] {0..*} (sem);
+	\node[entity] (pref) [above = 6cm of plan] {module\_preference} edge  node[auto,swap] {0..*}(con2);
+	\node[attribute](modId2)[right = of pref]{module\_id} edge (pref);
+	\node[attribute][left = of pref]{preference\_type} edge (pref);
+	\node[attribute][below left = of pref]{\key{preference\_id}} edge (pref);
 	
-	\node[entity] (mod) [below = 6cm of sem]{module} edge node[auto,swap] {0..*} (con2);
-	\node[attribute][above right =of mod]{\key{module\_id}} edge (mod);
-	\node[attribute][right = of mod]{name} edge (mod);
-	\node[attribute][below right= of mod]{credit\_points} edge (mod);
+	\node[entity] (entry) [right = 6cm of plan]{module\_entry} edge  node[auto,swap] {0..*}(con);
+	\node[attribute][below =of entry]{\key{entry\_id}} edge (entry);
+	\node[attribute][above = of entry]{semester} edge (entry);
+	\node[attribute](modId)[above right= of entry]{module\_id} edge (entry);
+	\node[draw][above left = of modId, text width = 3cm, dashed] {Referenz zum ensprechenden Modul in Moduldatenbank} edge [dashed] (modId) edge [dashed] (modId2);
 	
-	\node[relationship](pass) [right = 2cm of user] {passed} edge node[auto,swap] {0..*} (user);
-	\draw (pass) edge node[auto,swap] {0..*} (mod);
-	\node[attribute][above=of pass] {semester\_number} edge (pass);
+	
+	\node[relationship](pass) [above right = 3cm of user] {passed} edge node[auto,swap] {1} (user);
+	\draw (pass) edge node[auto,swap] {0..*} (entry);
 
 
 \end{tikzpicture}
