@@ -1019,11 +1019,6 @@ between(min).and(max) //or similar&#xD;
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_eMBPoL_UEeacgfGrT4PzPg" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_L8GH8MO4EearScbIBXJIIw" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
             </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_5SMZ4NB2Eeai8dL1RYYT4g" name="getId">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_5SMZ4dB2Eeai8dL1RYYT4g" direction="return">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-              </ownedParameter>
-            </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_O-T2AM0fEeasNbhLG8gf5A" name="getDescription">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_O-T2Ac0fEeasNbhLG8gf5A" direction="return">
                 <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>

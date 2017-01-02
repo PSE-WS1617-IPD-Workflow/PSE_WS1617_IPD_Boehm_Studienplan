@@ -34,13 +34,6 @@ public abstract class ModuleConstraintType {
 	public abstract void isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation);
 
 	/**
-	 *
-	 * @return
-	 */
-	public int getId() {
-		return id;
-	}
-	/**
 	 * 
 	 * @return  
 	 */
