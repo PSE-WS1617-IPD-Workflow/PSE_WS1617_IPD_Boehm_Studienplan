@@ -6,16 +6,23 @@
 \section{Datenbankbeschreibung}
 Die Produktdaten werden in zwei getrennten Datenbanken gespeichert, eine Datenbank für Moduldaten und eine für Nutzerdaten. Dies ermöglicht es, in Zukunft eine andere Schnittstelle zum Modulhandbuch zu verwenden, wie beispielsweise eine Anbindung an das Vorlesungsverzeichnis. \\
 Im Folgenden wird deshalb der Aufbau beider Datenbanken getrennt beschrieben. Zusätzliche Informationen, die nicht aus den Entity-Relationship-Diagrammen hervorgehen, sind in Form von Kommentaren dargestellt. Die Datentypen der Attribute gehen aus folgender Farbkodierung hervor: \\
-\begin{tabular}{ |c | c | c | c |}
-	\hline
-	\tikz{\node[attribute, num]{Integer-Ganzzahl}} &
-	\tikz{\node[attribute]{Zeichenkette}} &
-	\tikz{\node[attribute, bool]{Boolean-Wert}} &
-	\tikz{\node[attribute, enum]{Enum}} \\ \hline
-\end{tabular}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ |l | c |}
+		\hline
+		Integer-Ganzzahl &\tikz[baseline=-0.5ex]{\node[attribute, num]{}} \\ \hline
+		Zeichenkette & \tikz[baseline=-0.5ex]{\node[attribute]{}} \\ \hline
+		Boolean-Wert & \tikz[baseline=-0.5ex]{\node[attribute, bool]{}} \\ \hline
+		Enum &\tikz[baseline=-0.5ex]{\node[attribute, enum]{}} \\ \hline
+	\end{tabular}
+	\caption{Farbkodierung der Attribute}
+\end{table}
 
 \subsection{Moduldaten}
-\input{content/diagrams/module_data_er}
+\begin{figure}[H]
+	\input{content/diagrams/module_data_er}
+	\caption{ER-Diagramm Moduldaten}
+\end{figure}
 \subsubsection{Enumwerte}
 \begin{tabular}{|l|l|}
 	\hline
@@ -23,12 +30,25 @@ Im Folgenden wird deshalb der Aufbau beider Datenbanken getrennt beschrieben. Zu
 	\texttt{cycle\_type} & winter\_term, summer\_term, both \\ \hline
 \end{tabular}
 \subsection{Benutzerdaten}
-\input{content/diagrams/user_data_er}
+\begin{figure}[H]
+	\input{content/diagrams/user_data_er}
+	\caption{ER-Diagramm Benutzerdaten}
+	\label{fig:user-er}
+\end{figure}
+\begin{figure}[H]
+	\input{content/diagrams/auth_data_er}
+	\caption{ER-Diagramm Authentifizierungsdaten}
+	\label{fig:auth-er}
+\end{figure}
+
+Eine Beschreibung Attribute aus Abbildung~\ref{fig:auth-er} findet sich in Kapitel~\ref{subsec:api-auth}.
 \subsubsection{Enumwerte}
-\begin{tabular}{|l|l|}
-	\hline
-	\textbf{Tabellenspalte} & \textbf{mögliche Werte} \\ \hline
-	\texttt{preference\_type} & positive, negative \\ \hline
-	\texttt{state} & not\_verified, valid, invalid \\ \hline
-	\texttt{semester\_type} & winter\_term, summer\_term \\ \hline
-\end{tabular}
+\begin{table}[h]
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Tabellenspalte} & \textbf{mögliche Werte} \\ \hline
+		\texttt{preference\_type} & positive, negative \\ \hline
+		\texttt{state} & not\_verified, valid, invalid \\ \hline
+		\texttt{semester\_type} & winter\_term, summer\_term \\ \hline
+	\end{tabular}
+\end{table}
