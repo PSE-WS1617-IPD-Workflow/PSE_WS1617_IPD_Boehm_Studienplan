@@ -7,44 +7,38 @@ package edu.kit.informatik.studyplan.server.filter;
 import edu.kit.informatik.studyplan.server.filter.AttributeFilter;
 import edu.kit.informatik.studyplan.server.rest.JSONObject;
 
-/************************************************************/
 /**
- * 
+ * Beschreibungen der nach außen sichtbaren Filter für den Client.
  */
-public class FilterDescriptor {
+public enum FilterDescriptor {
 	/**
-	 * 
+	 * Beschreibt den ECTS-Intervall-Filter.
 	 */
-	public enum Descriptor {
-		/**
-		 * 
-		 */
-		CREDIT_POINTS,
-		/**
-		 * 
-		 */
-		CATEGORY,
-		/**
-		 * 
-		 */
-		CYCLE_TYPE,
-		/**
-		 * 
-		 */
-		TYPE,
-		/**
-		 * 
-		 */
-		DISCIPLINE,
-		/**
-		 * 
-		 */
-		COMPULSORY,
-		/**
-		 * 
-		 */
-		NAME;
-	};
+	CREDIT_POINTS,
+	/**
+	 * Beschreibt den Kategorie-Wahlfilter.
+	 */
+	CATEGORY,
+	/**
+	 * Beschreibt den Turnus-Wahlfilter.
+	 */
+	CYCLE_TYPE,
+	/**
+	 * Beschreibt den Modultyp-Wahlfilter.
+	 */
+	TYPE,
+	/**
+	 * Beschreibt den Fachrichtungs-Wahlfilter.
+	 */
+	DISCIPLINE,
+	/**
+	 * Beschreibt den Pflicht-/Wahlveranstaltungs-Wahlfilter.
+	 */
+	COMPULSORY,
+	/**
+	 * Beschreibt den Modulnamen-Textfilter.
+	 */
+	NAME;
 
 	/**
 	 * 
@@ -57,7 +51,7 @@ public class FilterDescriptor {
 	/**
 	 * 
 	 */
-	private String name;
+	private String filterName;
 	/**
 	 * 
 	 */
@@ -69,69 +63,59 @@ public class FilterDescriptor {
 	/**
 	 * 
 	 */
-	private AttributeFilter attributeFilter;
+	private AttributeFilter defaultFilter;
 
 	/**
-	 * //jOOQ
-	 * @return  
+	 * Gibt ein jOOQ-Field-Objekt zurück, das des Filters attributeName kapselt.
+	 * @return  das jOOQ-Field-Objekt
 	 */
-	public Object[] toField() {
+	public Field<Object> toField() {
 		return null;
 	}
 
 	/**
-	 * 
-	 * @return  
+	 * Liefert eine JSON-Repräsentation des beschriebenen Filters für den Client.
+	 * @return eine JSON-Repräsentation des beschriebenen Filters
 	 */
-	public JSONObject toJson() {
-		return null;
-	}
+	public JSONObject toJson() { return null; };
 
 	/**
-	 * 
-	 * @return  
+	 * Liefert die ID des Filters.
+	 * @return  die ID des Filters
 	 */
 	public int id() {
 		return id;
 	}
 
 	/**
-	 * 
-	 * @return  
+	 * Liefert ein Default-Objekt des beschriebenen Filtertyps.
+	 * @return  das Default-Objekt
 	 */
-	public AttributeFilter attributeFilter() {
-		return attributeFilter;
+	public AttributeFilter defaultFilter() {
+		return defaultFilter;
 	}
 
 	/**
-	 * 
-	 * @return  
+	 * Liefert den Namen des Module-Attributs, das durch beschriebenen Filter gefiltert werden soll.
+	 * @return  der Attribut-Name
 	 */
 	public String attributeName() {
 		return attributeName;
 	}
 
 	/**
-	 * 
-	 * @return  
+	 * Liefert den Namen des Filters (für die Benutzeroberfläche).
+	 * @return  den Filternamen
 	 */
-	public String name() {
-		return attributeName;
+	public String filterName() {
+		return filterName;
 	}
 
 	/**
-	 * 
-	 * @return  
-	 */
-	public JSONObject defaultJsonValue() {
-		return null;
-	}
-
-	/**
-	 * 
-	 * @return  
+	 * Liefert den zum Filter gehörenden Tooltip (für die Benutzeroberfläche).
+	 * @return  das Tooltip zum Filter
 	 */
 	public String tooltip() {
-		return attributeName;
+		return tooltip;
 	}
 };

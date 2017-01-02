@@ -8,25 +8,19 @@ import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
 import edu.kit.informatik.studyplan.server.filter.FilterType;
 
-/************************************************************/
 /**
- * 
+ * Repräsentiert einen Filter für ein bestimmtes Module-Attribut.
  */
-public abstract class AttributeFilter implements Filter {
+public interface AttributeFilter extends Filter {
 	/**
-	 * 
+	 * Liefert die zum AttributeFilter gehörende Filterbeschreibung.
+	 * @return  die Filterbeschreibung
 	 */
-	public FilterDescriptor filterDescriptor;
+	public FilterDescriptor getDescriptor();
 
 	/**
-	 * 
-	 * @return  
+	 * Liefert den Filter-Typ des AttributeFilters.
+	 * @return  der Filter-Typ
 	 */
-	public abstract FilterDescriptor getDescriptor();
-
-	/**
-	 * 
-	 * @return  
-	 */
-	public abstract FilterType getFilterType();
+	public FilterType getFilterType();
 };

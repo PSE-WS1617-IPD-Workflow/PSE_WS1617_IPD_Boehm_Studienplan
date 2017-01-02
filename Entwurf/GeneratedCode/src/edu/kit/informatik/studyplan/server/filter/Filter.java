@@ -8,13 +8,13 @@ import edu.kit.informatik.studyplan.server.filter.Condition;
 
 /************************************************************/
 /**
- * 
+ * Repräsentiert einen Filter für Module über eine Filterbedingung.
  */
 public interface Filter {
 
 	/**
-	 * 
-	 * @return  
+	 * Gibt die Filterbedingung als jOOQ-Condition-Objekt zurück.
+	 * @return  die Filterbedingung
 	 */
 	public Condition getCondition();
 };

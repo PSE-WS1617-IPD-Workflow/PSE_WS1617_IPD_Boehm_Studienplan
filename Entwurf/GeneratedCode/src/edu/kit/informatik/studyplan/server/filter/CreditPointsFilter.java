@@ -5,19 +5,17 @@
 package edu.kit.informatik.studyplan.server.filter;
 
 import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
-import edu.kit.informatik.studyplan.client.view.components.RangeFilter;
 
-/************************************************************/
 /**
- * 
+ * Repräsentiert einen ECTS-Intervall-Filter.
  */
 public final class CreditPointsFilter extends RangeFilter {
 
 	/**
-	 * 
-	 * @return  
+	 * Liefert FilterDescriptor.CREDIT_POINTS.
+	 * @return FilterDescriptor.CREDIT_POINTS
 	 */
 	public FilterDescriptor getDescriptor() {
-		return null;
+		return FilterDescriptor.CREDIT_POINTS;
 	}
 };
