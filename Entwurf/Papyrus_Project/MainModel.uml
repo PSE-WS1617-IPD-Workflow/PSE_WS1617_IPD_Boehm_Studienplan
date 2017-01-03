@@ -2327,12 +2327,6 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <ownedAttribute xmi:type="uml:Property" xmi:id="_4wQnoMzrEeaiINyVGHRfeA" name="type" visibility="private">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_-tbJoMzrEeaiINyVGHRfeA" name="descriptionModule1" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_AQT4sMzsEeaiINyVGHRfeA" name="descriptionModule2" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_mxnQwMzrEeaiINyVGHRfeA" memberEnd="_mxoe4szrEeaiINyVGHRfeA _mxoe48zrEeaiINyVGHRfeA">
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mxoe4MzrEeaiINyVGHRfeA" source="org.eclipse.papyrus">
@@ -2360,6 +2354,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <ownedAttribute xmi:type="uml:Property" xmi:id="_yhaAEMzoEeaiINyVGHRfeA" name="verificationState" visibility="private">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_yfzbYNG7EeaFnOe30EpXPQ" name="violations" visibility="private" type="_9TRbYMPNEeaCPewWEdcdGQ"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_Pw8_cM0VEeavo6is7kUH4g" name="containsModule">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_ThcOgM0VEeavo6is7kUH4g" name="moduleId">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
