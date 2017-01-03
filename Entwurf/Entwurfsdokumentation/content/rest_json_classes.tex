@@ -46,8 +46,6 @@
 	"first": (*\jsonpart{Modul}{id}*),
 	"second": (*\jsonpart{Modul}{id}*),
 	"type": (*\jsonatom{Constraint-Typ}*),
-	"description-first": (*\jsonatom{Constraint-Beschreibung}*),
-	"description-second": (*\jsonatom{Constraint-Beschreibung}*)	
 }
 \end{lstlisting}
 
@@ -90,7 +88,7 @@
     "creditpoints-sum": (*\jsonatom{Studienplan-Gesamt-Creditpoints}*),
     "name": (*\jsonatom{Studienplan-Name}*),
     "modules": (*\jsonlist{\jsonpart{Modul}{id, name, semester, creditpoints, lecturer}}*),
-    "violations": (*\jsonpart{Modul}{id, constraints}*)	
+    "violations": (*\jsonlist{\jsonobj{Constraint}}*)	
 }
 \end{lstlisting}
 
