@@ -491,11 +491,25 @@ between(min).and(max) //or similar&#xD;
         <ownedOperation xmi:type="uml:Operation" xmi:id="_7HB48MHuEeafqK_E3KwnEw" name="getDescriptor">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_e-P18M1KEeaTycnTayAwOw" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
         </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="__fz2YNGtEeaCUp9XHaaTTA" name="getItems">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="__fz2YdGtEeaCUp9XHaaTTA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__fz2YtGtEeaCUp9XHaaTTA" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__fz2Y9GtEeaCUp9XHaaTTA" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_XgO_oMHuEeafqK_E3KwnEw" name="CycleTypeFilter">
         <generalization xmi:type="uml:Generalization" xmi:id="_z51ScMHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_8UejgMHuEeafqK_E3KwnEw" name="getDescriptor">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_gtRjkM1KEeaTycnTayAwOw" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_95djoNGtEeaCUp9XHaaTTA" name="getItems">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_95djodGtEeaCUp9XHaaTTA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_95djotGtEeaCUp9XHaaTTA" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_95djo9GtEeaCUp9XHaaTTA" value="*"/>
+          </ownedParameter>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_kdoDIMHuEeafqK_E3KwnEw" name="TypeFilter">
@@ -503,17 +517,38 @@ between(min).and(max) //or similar&#xD;
         <ownedOperation xmi:type="uml:Operation" xmi:id="_9cX_sMHuEeafqK_E3KwnEw" name="getDescriptor">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_kIH50M1KEeaTycnTayAwOw" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
         </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="__5loUNGtEeaCUp9XHaaTTA" name="getItems">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="__5loUdGtEeaCUp9XHaaTTA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__5loUtGtEeaCUp9XHaaTTA" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__5loU9GtEeaCUp9XHaaTTA" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_jvoUsMHuEeafqK_E3KwnEw" name="DisciplineFilter">
         <generalization xmi:type="uml:Generalization" xmi:id="_05upMMHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="__vi8MMHuEeafqK_E3KwnEw" name="getDescriptor">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_mSxzgM1KEeaTycnTayAwOw" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
         </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_-vGLINGtEeaCUp9XHaaTTA" name="getItems">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-vGLIdGtEeaCUp9XHaaTTA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-vGLItGtEeaCUp9XHaaTTA" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-vGLI9GtEeaCUp9XHaaTTA" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_iySisMHuEeafqK_E3KwnEw" name="CompulsoryFilter">
         <generalization xmi:type="uml:Generalization" xmi:id="_1puiwMHuEeafqK_E3KwnEw" general="_hjMaIMFxEeawXJ3PDM1dRw"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_AtOscMHvEeafqK_E3KwnEw" name="getDescriptor">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_qnhmMM1KEeaTycnTayAwOw" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_8Fu8MNGtEeaCUp9XHaaTTA" name="getItems">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_8FvjQNGtEeaCUp9XHaaTTA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8FvjQdGtEeaCUp9XHaaTTA" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8FvjQtGtEeaCUp9XHaaTTA" value="*"/>
+          </ownedParameter>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_3xeH4MOaEeaiRIvYnaUryA" name="MultivaluedMap&lt;String, String>">
