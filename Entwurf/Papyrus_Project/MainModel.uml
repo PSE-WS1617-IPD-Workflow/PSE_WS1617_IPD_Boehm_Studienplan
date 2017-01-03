@@ -353,13 +353,8 @@
         </ownedComment>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_hjMaIMFxEeawXJ3PDM1dRw" name="ListFilter" isAbstract="true">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mJuNgMC6EearftWngfiKFw" name="selection" visibility="private" isReadOnly="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_mJuNgMC6EearftWngfiKFw" name="selection" visibility="protected" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_4vRqYM1SEeaTycnTayAwOw" name="items" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_50SxsM1SEeaTycnTayAwOw" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_50WcEM1SEeaTycnTayAwOw" value="*"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_nzHNMMC6EearftWngfiKFw" name="getSelection">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_pYbLQM1JEeaTycnTayAwOw" direction="return">
@@ -380,7 +375,7 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_F33GsM1SEeaTycnTayAwOw" name="getFilterType">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_F33Gsc1SEeaTycnTayAwOw" type="_ABS0kM1VEeaTycnTayAwOw" direction="return"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_FO2wgM1TEeaTycnTayAwOw" name="getItems">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_FO2wgM1TEeaTycnTayAwOw" name="getItems" isAbstract="true">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_FO2wgc1TEeaTycnTayAwOw" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A5ANwM1XEea_0s4wF38UhQ" value="1"/>
@@ -390,16 +385,16 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Realization" xmi:id="_uSW0YMFxEeawXJ3PDM1dRw" client="_hjMaIMFxEeawXJ3PDM1dRw" supplier="_h4o18NAoEeaBHYka3B2JWQ"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_4zyO8MF1EeaM6M-4jd6ZbA" name="RangeFilter" isAbstract="true">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_QvJiUMC6EearftWngfiKFw" name="lower" visibility="private" isReadOnly="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_QvJiUMC6EearftWngfiKFw" name="lower" visibility="protected" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TaaOsMC6EearftWngfiKFw" name="upper" visibility="private" isReadOnly="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_TaaOsMC6EearftWngfiKFw" name="upper" visibility="protected" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_VgepsM9oEeaWbKwKnQo1og" name="min" visibility="private" isReadOnly="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VgepsM9oEeaWbKwKnQo1og" name="min" visibility="protected" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_aEluEM9oEeaWbKwKnQo1og" name="max" visibility="private" isReadOnly="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_aEluEM9oEeaWbKwKnQo1og" name="max" visibility="protected" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_VsC6IMC6EearftWngfiKFw" name="getLower">
@@ -441,7 +436,7 @@ between(min).and(max) //or similar&#xD;
       <packagedElement xmi:type="uml:Realization" xmi:id="_BrPr8MGDEea0yOFvxPpmvQ" client="_4zyO8MF1EeaM6M-4jd6ZbA" supplier="_h4o18NAoEeaBHYka3B2JWQ"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_b6x68MGDEea0yOFvxPpmvQ" name="MultiFilter">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Zr5lc89hEeaWbKwKnQo1og" name="filters" visibility="private" type="_p8pFILuOEea-uPszIhxKkQ" aggregation="shared" association="_Zr5lcM9hEeaWbKwKnQo1og">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hcMR8M9hEeaWbKwKnQo1og" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hcMR8M9hEeaWbKwKnQo1og"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hcSYkM9hEeaWbKwKnQo1og" value="*"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_KrmcsMGEEea0yOFvxPpmvQ" name="getCondition">
@@ -454,14 +449,14 @@ between(min).and(max) //or similar&#xD;
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_7CevoM9hEeaWbKwKnQo1og" name="getFilters">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_7Cevoc9hEeaWbKwKnQo1og" type="_p8pFILuOEea-uPszIhxKkQ" direction="return">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9kmuIM9hEeaWbKwKnQo1og" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9kmuIM9hEeaWbKwKnQo1og"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9ks0wM9hEeaWbKwKnQo1og" value="*"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Realization" xmi:id="_lGfckMGDEea0yOFvxPpmvQ" client="_b6x68MGDEea0yOFvxPpmvQ" supplier="_p8pFILuOEea-uPszIhxKkQ"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_qmRI4MGMEeaDGu-4-Q8w1w" name="ContainsFilter" isAbstract="true">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_FpHrMMGNEeaDGu-4-Q8w1w" name="substring" visibility="private" isReadOnly="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FpHrMMGNEeaDGu-4-Q8w1w" name="substring" visibility="protected" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_U5NKEMGNEeaDGu-4-Q8w1w" name="getSubstring">
@@ -533,7 +528,7 @@ between(min).and(max) //or similar&#xD;
         <ownedAttribute xmi:type="uml:Property" xmi:id="_5_LYwMOeEeaiRIvYnaUryA" name="attributeName" visibility="private" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_ad5I0M1NEeaTycnTayAwOw" name="name" visibility="private" isReadOnly="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ad5I0M1NEeaTycnTayAwOw" name="filterName" visibility="private" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_72z_4M1OEeaTycnTayAwOw" name="defaultJsonValue" visibility="private" isReadOnly="true">
@@ -542,7 +537,7 @@ between(min).and(max) //or similar&#xD;
         <ownedAttribute xmi:type="uml:Property" xmi:id="_EXY50M1PEeaTycnTayAwOw" name="tooltip" visibility="private" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_38umBM9pEeaWbKwKnQo1og" name="attributeFilter" visibility="private" type="_h4o18NAoEeaBHYka3B2JWQ" association="_38umAM9pEeaWbKwKnQo1og"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_38umBM9pEeaWbKwKnQo1og" name="defaultFilter" visibility="private" type="_h4o18NAoEeaBHYka3B2JWQ" association="_38umAM9pEeaWbKwKnQo1og"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_zXI4UMOfEeaE5o1HSz0A6w" name="toField">
           <ownedComment xmi:type="uml:Comment" xmi:id="_TWB20MOgEeaE5o1HSz0A6w" annotatedElement="_zXI4UMOfEeaE5o1HSz0A6w">
             <body>//jOOQ</body>
@@ -557,21 +552,18 @@ between(min).and(max) //or similar&#xD;
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_pXTi0M9rEeaWbKwKnQo1og" name="attributeFilter">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_pXTi0c9rEeaWbKwKnQo1og" direction="return"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_pXTi0M9rEeaWbKwKnQo1og" name="defaultFilter">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_pXTi0c9rEeaWbKwKnQo1og" type="_h4o18NAoEeaBHYka3B2JWQ" direction="return"/>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_gq6kYM1QEeaTycnTayAwOw" name="attributeName">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_gq6kYc1QEeaTycnTayAwOw" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_j5Iz4M1QEeaTycnTayAwOw" name="name">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_j5Iz4M1QEeaTycnTayAwOw" name="filterName">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_j5Iz4c1QEeaTycnTayAwOw" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_7i56gM1QEeaTycnTayAwOw" name="defaultJsonValue">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_7i56gc1QEeaTycnTayAwOw" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_4RaUkM1QEeaTycnTayAwOw" name="tooltip">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_4RaUkc1QEeaTycnTayAwOw" direction="return">
@@ -596,10 +588,12 @@ between(min).and(max) //or similar&#xD;
       <packagedElement xmi:type="uml:Realization" xmi:id="_69OM4MyHEeaplOwEKWQXaA" client="_3J_L0MyHEeaplOwEKWQXaA" supplier="_p8pFILuOEea-uPszIhxKkQ"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_ABS0kM1VEeaTycnTayAwOw" name="FilterType">
         <ownedOperation xmi:type="uml:Operation" xmi:id="_jJcqEM1VEeaTycnTayAwOw" name="toJsonSpecification">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_jJcqEc1VEeaTycnTayAwOw" name="filter"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_jJcqEs1VEeaTycnTayAwOw" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_jJcqEc1VEeaTycnTayAwOw" name="defaultFilter" type="_h4o18NAoEeaBHYka3B2JWQ"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_jJcqEs1VEeaTycnTayAwOw" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Ws6EkNGtEeaCUp9XHaaTTA" name="defaultJsonValue">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ws6EkdGtEeaCUp9XHaaTTA" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Y6YBsNGtEeaCUp9XHaaTTA" name="defaultFilter" type="_h4o18NAoEeaBHYka3B2JWQ"/>
         </ownedOperation>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_JM1JQMHfEeaMG_BKqLGAKw" name="FilterType">
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_U-cWIMHfEeaMG_BKqLGAKw" name="RANGE"/>
@@ -608,7 +602,7 @@ between(min).and(max) //or similar&#xD;
         </nestedClassifier>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_h4o18NAoEeaBHYka3B2JWQ" name="AttributeFilter">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_38umA89pEeaWbKwKnQo1og" name="filterDescriptor" visibility="private" type="_eO6zUMOdEeaiRIvYnaUryA" association="_38umAM9pEeaWbKwKnQo1og"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_38umA89pEeaWbKwKnQo1og" name="descriptor" visibility="private" type="_eO6zUMOdEeaiRIvYnaUryA" association="_38umAM9pEeaWbKwKnQo1og"/>
         <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_1YHGYNAoEeaBHYka3B2JWQ" client="_h4o18NAoEeaBHYka3B2JWQ" supplier="_p8pFILuOEea-uPszIhxKkQ" contract="_p8pFILuOEea-uPszIhxKkQ"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_xWttgNAoEeaBHYka3B2JWQ" name="getDescriptor">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_xWttgdAoEeaBHYka3B2JWQ" type="_eO6zUMOdEeaiRIvYnaUryA" direction="return"/>
