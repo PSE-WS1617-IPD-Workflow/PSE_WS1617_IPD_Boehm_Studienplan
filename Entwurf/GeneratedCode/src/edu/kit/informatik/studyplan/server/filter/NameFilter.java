@@ -1,19 +1,19 @@
 package edu.kit.informatik.studyplan.server.filter;
 
 /**
- * Repräsentiert einen Modulnamen-Textsfilter.
+ * Repräsentiert einen Modulnamen-Textsuchfilter.
  */
 public class NameFilter extends ContainsFilter {
+    /**
+     * Erzeugt einen neuen Modulnamen-Textsuchfilter mit gegebenem Suchstring.
+     * @param substring der Suchstring
+     */
+    public NameFilter(String substring) {
+        super(substring);
+    }
+
     @Override
     public FilterDescriptor getDescriptor() {
         return FilterDescriptor.NAME;
-    }
-
-    /**
-     * Erzeugt einen neuen NameFilter mit dem Substring, nach welchem gefiltert werden soll.
-     * @param substring der Substring für den Filter
-     */
-    public NameFilter(String substring) {
-        this.substring = substring;
     }
 }

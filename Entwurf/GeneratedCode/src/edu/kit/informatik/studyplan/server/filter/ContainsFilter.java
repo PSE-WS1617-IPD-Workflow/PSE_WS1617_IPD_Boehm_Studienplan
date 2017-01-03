@@ -7,6 +7,14 @@ public abstract class ContainsFilter implements AttributeFilter {
     protected String substring;
 
     /**
+     * Erzeugt einen neuen Textsuch-Filter mit gegebenem Suchstring.
+     * @param substring der Suchstring
+     */
+    protected ContainsFilter(String substring) {
+        this.substring = substring;
+    }
+
+    /**
      * Liefert eine Filterbedingung, die das Vorkommen des Substrings im Attributswert fordert.
      * @return die Filterbedingung als jOOQ-Condition-Objekt
      */

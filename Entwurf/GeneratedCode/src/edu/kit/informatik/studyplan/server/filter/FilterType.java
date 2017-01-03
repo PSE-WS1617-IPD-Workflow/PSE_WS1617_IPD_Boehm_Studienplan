@@ -14,15 +14,45 @@ public enum FilterType {
 	/**
 	 * Repräsentiert den Filtertyp {@link RangeFilter}.
 	 */
-	RANGE,
+	RANGE {
+		@Override
+		public JSONObject toJsonSpecification(AttributeFilter defaultFilter) {
+			return null;
+		}
+
+		@Override
+		public JSONObject defaultJsonValue(AttributeFilter defaultFilter) {
+			return null;
+		}
+	},
 	/**
 	 * Repräsentiert den Filtertyp {@link ListFilter}.
 	 */
-	LIST,
+	LIST {
+		@Override
+		public JSONObject toJsonSpecification(AttributeFilter defaultFilter) {
+			return null;
+		}
+
+		@Override
+		public JSONObject defaultJsonValue(AttributeFilter defaultFilter) {
+			return null;
+		}
+	},
 	/**
 	 * Repräsentiert den Filtertyp {@link ContainsFilter}.
 	 */
-	CONTAINS;
+	CONTAINS {
+		@Override
+		public JSONObject toJsonSpecification(AttributeFilter defaultFilter) {
+			return null;
+		}
+
+		@Override
+		public JSONObject defaultJsonValue(AttributeFilter defaultFilter) {
+			return null;
+		}
+	};
 
 	/**
 	 * Liefert den Spezifikation-Abschnitt der JSON-Repräsentation des übergebenen Default-Filters.

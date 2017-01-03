@@ -8,7 +8,7 @@ import edu.kit.informatik.studyplan.server.filter.AttributeFilter;
 import edu.kit.informatik.studyplan.server.rest.JSONObject;
 
 /**
- * Beschreibungen der nach außen sichtbaren Filter für den Client.
+ * Beschreibungen der nach außen sichtbaren Filterklassen für den Client.
  */
 public enum FilterDescriptor {
 	/**
@@ -52,10 +52,6 @@ public enum FilterDescriptor {
 	 * 
 	 */
 	private String filterName;
-	/**
-	 * 
-	 */
-	private String defaultJsonValue;
 	/**
 	 * 
 	 */

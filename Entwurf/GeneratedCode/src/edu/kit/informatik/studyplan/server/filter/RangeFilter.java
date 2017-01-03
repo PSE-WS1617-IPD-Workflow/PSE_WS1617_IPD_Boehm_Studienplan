@@ -8,6 +8,21 @@ public abstract class RangeFilter implements AttributeFilter {
     protected int upper;
     protected int min;
     protected int max;
+
+    /**
+     * Erzeugt einen neuen Intervall-Filter mit gegebenen Schranken.
+     * @param lower untere Schranke des Filters
+     * @param upper obere Schranke des Filters
+     * @param min minimale untere Schranke des Filters
+     * @param max maximale obere Schranke des Filters
+     */
+    protected RangeFilter(int lower, int upper, int min, int max) {
+        this.lower = lower;
+        this.upper = upper;
+        this.min = min;
+        this.max = max;
+    }
+
     /**
      * Liefert eine Filterbedingung, die vom Attributswert das Einhalten der festgelegten Intervall-Grenzen fordert.
      * @return die Filterbedingung als jOOQ-Condition-Objekt
@@ -55,4 +70,5 @@ public abstract class RangeFilter implements AttributeFilter {
     public int getMax() {
         return max;
     }
+
 }

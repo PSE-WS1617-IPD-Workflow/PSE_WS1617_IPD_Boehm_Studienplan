@@ -6,7 +6,6 @@ package edu.kit.informatik.studyplan.server.filter;
 
 import edu.kit.informatik.studyplan.server.filter.Condition;
 
-/************************************************************/
 /**
  * Repräsentiert einen Filter für Module über eine Filterbedingung.
  */

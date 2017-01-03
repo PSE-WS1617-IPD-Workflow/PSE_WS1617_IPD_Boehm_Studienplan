@@ -5,6 +5,11 @@ package edu.kit.informatik.studyplan.server.filter;
  * daher konstant wahr ist).
  */
 public class TrueFilter implements Filter {
+    /**
+     * Erzeugt einen neuen TrueFilter.
+     */
+    public TrueFilter() {
+    }
 
     /**
      * Gibt eine konstant wahre Filterbedingung zurück.

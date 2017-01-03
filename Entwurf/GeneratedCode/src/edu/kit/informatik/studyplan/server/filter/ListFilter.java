@@ -5,9 +5,18 @@ package edu.kit.informatik.studyplan.server.filter;
  */
 public abstract class ListFilter implements AttributeFilter {
     protected int selection;
+
     /**
-     * Liefert eine Filterbedingung, die die Übereinstimmung des untersuchten Attributswertes mit dem festgelegten
-     * Wahlelement (selection) fordert.
+     * Erzeugt einen neuen Auswahlfilter mit gegebener festgelegter Auswahl.
+     * @param selection die Nummer des ausgewählten Elements
+     */
+    protected ListFilter(int selection) {
+        this.selection = selection;
+    }
+
+    /**
+     * Liefert eine Filterbedingung, die die Übereinstimmung des untersuchten Attributswertes mit der festgelegten
+     * Auswahl (selection) fordert.
      * @return die Filterbedingung als jOOQ-Condition-Objekt
      */
     @Override
