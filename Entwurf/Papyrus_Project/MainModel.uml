@@ -1122,6 +1122,9 @@ between(min).and(max) //or similar&#xD;
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_bGdz8L_UEeacgfGrT4PzPg" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_eMBPoL_UEeacgfGrT4PzPg" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_L8GH8MO4EearScbIBXJIIw" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_7WuigNHsEeaAHvALbQ8BvQ" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+              </ownedParameter>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_O-T2AM0fEeasNbhLG8gf5A" name="getDescription">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_O-T2Ac0fEeasNbhLG8gf5A" direction="return">
@@ -1155,6 +1158,9 @@ between(min).and(max) //or similar&#xD;
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_eyLRAc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_eyLRAs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_eyLRA80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_87NNANHsEeaAHvALbQ8BvQ" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+              </ownedParameter>
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_IO3IoL4PEeaoO4fCpQc-Qw" name="OverlappingModuleConstraintType">
@@ -1163,6 +1169,9 @@ between(min).and(max) //or similar&#xD;
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_fB7kQc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_fB7kQs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_fB7kQ80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_9j0sMNHsEeaAHvALbQ8BvQ" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+              </ownedParameter>
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_r67qkMbCEeatB58sIl8nCg" name="SemesterLinkModuleConstraintType">
@@ -1171,6 +1180,9 @@ between(min).and(max) //or similar&#xD;
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_qNmLcc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_qNmLcs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_qNmLc80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_-GZ00NHsEeaAHvALbQ8BvQ" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+              </ownedParameter>
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_wmUboMbCEeatB58sIl8nCg" name="PlanLinkModuleConstraintType">
@@ -1179,6 +1191,9 @@ between(min).and(max) //or similar&#xD;
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34Ac0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34As0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34A80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_-wiW8NHsEeaAHvALbQ8BvQ" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+              </ownedParameter>
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_S2aWIL4PEeaoO4fCpQc-Qw" name="LinkModuleConstraintType">
@@ -1187,6 +1202,12 @@ between(min).and(max) //or similar&#xD;
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRNWYc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRNWYs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRNWY80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_zP1T4NHsEeaAHvALbQ8BvQ" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+              </ownedParameter>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="__U-gwNHsEeaAHvALbQ8BvQ" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+              </ownedParameter>
             </ownedOperation>
           </packagedElement>
         </packagedElement>
