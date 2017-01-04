@@ -8,11 +8,11 @@ import edu.kit.informatik.studyplan.client.view.components.ComparisonView;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche die Vergleichsseite kapselt
  */
 public class ComparisonPage {
-	/**
-	 * 
-	 */
-	private ComparisonView comparisonView;
+    /**
+     * Das ComparisonView Element, welches angezeigt wird
+     */
+    private ComparisonView comparisonView;
 };

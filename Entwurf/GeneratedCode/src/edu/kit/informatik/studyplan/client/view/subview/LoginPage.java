@@ -6,7 +6,7 @@ package edu.kit.informatik.studyplan.client.view.subview;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche die Login-Seite kapselt
  */
 public class LoginPage {
 };

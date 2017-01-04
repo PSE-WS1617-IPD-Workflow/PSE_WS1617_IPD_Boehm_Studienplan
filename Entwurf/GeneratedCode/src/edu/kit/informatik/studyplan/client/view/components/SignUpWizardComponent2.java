@@ -12,7 +12,7 @@ import edu.kit.informatik.studyplan.client.view.components.WizardComponent;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche die zweite Seite des Registrierungswizards kapselt
  */
 public class SignUpWizardComponent2 extends WizardComponent {
     /**

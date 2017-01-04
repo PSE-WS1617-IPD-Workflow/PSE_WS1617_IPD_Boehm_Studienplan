@@ -8,17 +8,23 @@ import edu.kit.informatik.studyplan.client.view.components.WizardComponent;
 
 /************************************************************/
 /**
- * curView wird bei der Initialisierung gesetzt. WizardPage kann deshalb sowohl für die Registrierung als auch für die Generierung verwendet werden.
+ * Diese Klasse kapselt die Anzeige von Wizards in einem State-Machine-Pattern.
+ * curView wird bei der Initialisierung gesetzt. WizardPage kann deshalb fÃ¼r
+ * jedwede Wizards verwendet werden.<br>
+ * WizardPage implementiert Backbone.Event, sodass man sich als Observer der
+ * WizardPage registrieren kann. Hier kann man auf den "complete"-Event
+ * reagieren, welcher bedeutet, dass der Wizard beendet ist.
  */
 public class WizardPage {
-	/**
-	 * 
-	 */
-	public WizardComponent curView;
+    /**
+     * Der aktuell angezeigte WizardComponent
+     */
+    public WizardComponent curView;
 
-	/**
-	 * 
-	 */
-	public void next() {
-	}
+    /**
+     * Methode, welche die nÃ¤chste Seite des Wizards aufruft oder diesen
+     * beendet.
+     */
+    public void next() {
+    }
 };
