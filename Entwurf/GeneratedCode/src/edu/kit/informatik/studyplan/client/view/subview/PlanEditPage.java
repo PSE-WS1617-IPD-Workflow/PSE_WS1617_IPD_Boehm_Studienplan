@@ -4,10 +4,11 @@
 
 package edu.kit.informatik.studyplan.client.view.subview;
 
-import edu.kit.informatik.studyplan.client.model.backbone.BackboneView;
 import edu.kit.informatik.studyplan.client.model.modules.Module;
 import edu.kit.informatik.studyplan.client.view.components.Plan;
 import edu.kit.informatik.studyplan.client.view.components.PlanHeadBar;
+
+import backbone.BackboneView;
 
 /************************************************************/
 /**

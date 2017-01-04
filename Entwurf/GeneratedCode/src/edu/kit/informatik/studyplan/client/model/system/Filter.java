@@ -41,4 +41,13 @@ public class Filter extends OAuthModel {
      */
     private Object curValue;
 
+    /**
+     * Konvertiert die Filter-Daten in GET-Query-Parameter
+     * 
+     * @return Die GET-Query-Parameter
+     */
+    public String getParams() {
+        return null;
+
+    }
 };

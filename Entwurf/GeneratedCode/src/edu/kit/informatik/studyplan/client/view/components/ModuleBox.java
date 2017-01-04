@@ -8,33 +8,36 @@ import edu.kit.informatik.studyplan.client.model.modules.Module;
 
 /************************************************************/
 /**
- * 
+ * Diese Klasse repräsentiert eine einzelne Box, welche ein Modul darstellt
  */
 public class ModuleBox {
-	/**
-	 * 
-	 */
-	private Module module;
-	/**
-	 * 
-	 */
-	private boolean isRemovable;
+    /**
+     * Das darzustellende Modul
+     */
+    private Module module;
+    /**
+     * Ob das Modul entfernbar ist
+     */
+    private boolean isRemovable;
 
-	/**
-	 * 
-	 */
-	public void setRedBorder() {
-	}
+    /**
+     * Möglichkeit einen roten Rand um das Modul zu setzten
+     * 
+     * @param set
+     *            Ob der Rahmen gesetzt werden soll (true) oder nicht (false)
+     */
+    public void setRedBorder(final boolean set) {
+    }
 
-	/**
-	 * 
-	 */
-	public void removeModule() {
-	}
+    /**
+     * Methode, welche das Modul entfernt
+     */
+    public void removeModule() {
+    }
 
-	/**
-	 * 
-	 */
-	public void click() {
-	}
+    /**
+     * Methode, welche beim Klick auf das Modul ausgeführt wird.
+     */
+    public void click() {
+    }
 };

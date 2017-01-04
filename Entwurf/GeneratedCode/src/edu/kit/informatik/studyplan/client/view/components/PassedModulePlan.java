@@ -9,15 +9,15 @@ import edu.kit.informatik.studyplan.client.view.components.Semester;
 
 /************************************************************/
 /**
- * 
+ * Plan der bestandenen Module
  */
 public class PassedModulePlan {
-	/**
-	 * 
-	 */
-	private Student student;
-	/**
-	 * 
-	 */
-	private Semester[] semester;
+    /**
+     * Der Student, der die Module bestanden hat
+     */
+    private Student student;
+    /**
+     * Die Semster, in welche die bestandenen Module geordnet sind.
+     */
+    private Semester[] semester;
 };

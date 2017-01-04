@@ -4,28 +4,34 @@
 
 package edu.kit.informatik.studyplan.client.storage;
 
-
 /************************************************************/
 /**
- * 
+ * Dieses Objekt kapselt die Methoden zur Synchronisierung mit Server oder
+ * Cookies, welche von den verschiedenen Model-Typen verwendet werden.<br>
+ * Die Methoden sind von Backbone spezifiziert und werden jeweils Submethoden
+ * enthalten, welche die einzelnen Methoden behandeln
  */
 public class Sync {
 
-	/**
-	 * 
-	 * @param method 
-	 * @param model 
-	 * @param options 
-	 */
-	public void OAuthSync(String method, Object model, Object options) {
-	}
+    /**
+     * Methode zur synchronisierung mittels OAuth-REST-API
+     * 
+     * @param method
+     *            Die Methode "create", "read", "update" oder "delete"
+     * @param model
+     *            Das zu speicherende Model
+     * @param options
+     *            Die Optionen, welche bei Backbone.sync verfügbar sind
+     */
+    public void OAuthSync(final String method, final Object model, final Object options) {
+    }
 
-	/**
-	 * 
-	 * @param method 
-	 * @param model 
-	 * @param options 
-	 */
-	public void CookieSync(String method, Object model, Object options) {
-	}
+    /**
+     * 
+     * @param method
+     * @param model
+     * @param options
+     */
+    public void CookieSync(final String method, final Object model, final Object options) {
+    }
 };

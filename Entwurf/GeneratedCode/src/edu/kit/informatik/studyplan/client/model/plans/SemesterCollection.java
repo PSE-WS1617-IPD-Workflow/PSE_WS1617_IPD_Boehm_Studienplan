@@ -6,8 +6,9 @@ package edu.kit.informatik.studyplan.client.model.plans;
 
 import java.util.Collection;
 
-import edu.kit.informatik.studyplan.client.model.backbone.BackboneModel;
 import edu.kit.informatik.studyplan.client.model.plans.Semester;
+
+import backbone.BackboneModel;
 
 /************************************************************/
 /**

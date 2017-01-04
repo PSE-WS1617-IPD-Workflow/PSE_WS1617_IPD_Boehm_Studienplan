@@ -8,23 +8,24 @@ import edu.kit.informatik.studyplan.client.model.system.Notification;
 
 /************************************************************/
 /**
- * 
+ * Klasse welche eine Benachrichtigungsbox kapselt
  */
 public class NotificationBox {
-	/**
-	 * 
-	 */
-	private Notification notification;
+    /**
+     * Die anzuzeigende Benachrichtigung
+     */
+    private Notification notification;
 
-	/**
-	 * 
-	 */
-	public void onClose() {
-	}
+    /**
+     * Die Methode, welche die Benachrichtigungsbox schließt
+     */
+    public void onClose() {
+    }
 
-	/**
-	 * 
-	 */
-	public void blurOut() {
-	}
+    /**
+     * Die Methode, welche nach einem gegebenen Zeitintervall die
+     * Benachrichtigung ausblendet
+     */
+    public void blurOut() {
+    }
 };

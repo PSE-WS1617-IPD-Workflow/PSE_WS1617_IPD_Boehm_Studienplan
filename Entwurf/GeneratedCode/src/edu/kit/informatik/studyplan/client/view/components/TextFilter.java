@@ -8,21 +8,13 @@ import edu.kit.informatik.studyplan.client.view.components.FilterComponent;
 
 /************************************************************/
 /**
- * 
+ * Filter, welcher durch die Eingabe eines Suchtexts aktiviert wird
  */
 public class TextFilter extends FilterComponent {
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public String getParams() {
-		return null;
-	}
-
-	/**
-	 * 
-	 */
-	public void onSelect() {
-	}
+    /**
+     * Methode welche bei der Auswahl eines Filterobjekts ausgeführt wird
+     */
+    public void onSelect() {
+    }
 };

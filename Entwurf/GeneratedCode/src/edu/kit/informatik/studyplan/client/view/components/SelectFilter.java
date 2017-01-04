@@ -8,25 +8,17 @@ import edu.kit.informatik.studyplan.client.view.components.FilterComponent;
 
 /************************************************************/
 /**
- * 
+ * Filter, welcher durch die Auswahl eines Elements aktiviert wird
  */
 public class SelectFilter extends FilterComponent {
-	/**
-	 * 
-	 */
-	private String[] options;
+    /**
+     * Die vorhandenen Optionen des Filters
+     */
+    private String[] options;
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public String getParams() {
-		return null;
-	}
-
-	/**
-	 * 
-	 */
-	public void onSelect() {
-	}
+    /**
+     * Methode welche bei der Auswahl eines Filterobjekts ausgeführt wird
+     */
+    public void onSelect() {
+    }
 };

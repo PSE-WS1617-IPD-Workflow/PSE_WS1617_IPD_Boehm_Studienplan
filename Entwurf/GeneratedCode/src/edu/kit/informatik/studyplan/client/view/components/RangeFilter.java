@@ -8,29 +8,21 @@ import edu.kit.informatik.studyplan.client.view.components.FilterComponent;
 
 /************************************************************/
 /**
- * 
+ * Filter, welcher durch die Auswahl eines Bereichs aktiviert wird
  */
 public class RangeFilter extends FilterComponent {
-	/**
-	 * 
-	 */
-	private int min;
-	/**
-	 * 
-	 */
-	private int max;
+    /**
+     * Das Minimum des auswählbaren Bereichs
+     */
+    private int min;
+    /**
+     * Das Maximum des auswählbaren Bereichs
+     */
+    private int max;
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public String getParams() {
-		return null;
-	}
-
-	/**
-	 * 
-	 */
-	public void onSelect() {
-	}
+    /**
+     * Methode welche bei der Auswahl eines Filterobjekts ausgeführt wird
+     */
+    public void onSelect() {
+    }
 };
