@@ -2032,6 +2032,12 @@ welche wiederum die Render-Funktionen &quot;unterliegender&quot; Views aufruft.&
             </ownedComment>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_FUSjUNKnEeaZ9LiNudsyXQ" name="isRemovable" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_Jg2DUNKnEeaZ9LiNudsyXQ" name="number" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedAttribute>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_KVIbgM0LEeavo6is7kUH4g" name="removeSemester"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_NRPAQM0LEeavo6is7kUH4g" name="onDrop">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_BPvG0M0XEeavo6is7kUH4g" name="event">
@@ -2189,17 +2195,16 @@ MainView ist ein Observer der NotificationCollection und zeigt neue Notification
           <ownedAttribute xmi:type="uml:Property" xmi:id="_9QcaAM0GEeavo6is7kUH4g" name="id" visibility="private">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_20PaQNKmEeaZ9LiNudsyXQ" name="filter" visibility="private" type="_fjBqAMbTEea_vtQ7PzZ20Q"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_ztxJ4M0GEeavo6is7kUH4g" name="getId">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_ztxJ4c0GEeavo6is7kUH4g" direction="return">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_Coe1sM0HEeavo6is7kUH4g" name="getParams" isAbstract="true">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Icc_cM0HEeavo6is7kUH4g" direction="return">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-            </ownedParameter>
-          </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_tVFg0M0XEeavo6is7kUH4g" name="onSelect" isAbstract="true"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_w23c4NKmEeaZ9LiNudsyXQ" name="getFilter">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_w23c4dKmEeaZ9LiNudsyXQ" type="_fjBqAMbTEea_vtQ7PzZ20Q" direction="return"/>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_iZry8M0GEeavo6is7kUH4g" visibility="private" memberEnd="_iZ0V0M0GEeavo6is7kUH4g _iZ084M0GEeavo6is7kUH4g">
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_iZxSgM0GEeavo6is7kUH4g" source="org.eclipse.papyrus">
@@ -2390,7 +2395,11 @@ this.render();&#xD;
         <ownedOperation xmi:type="uml:Operation" xmi:id="_CXttUMwsEeaUspSTNf28yQ" name="loginPage"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_X_zBcM0bEeavo6is7kUH4g" name="showProfile"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_dOrhIM0bEeavo6is7kUH4g" name="signUpWizard"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_egUvMM0bEeavo6is7kUH4g" name="generationWizard"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_egUvMM0bEeavo6is7kUH4g" name="generationWizard">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_jpeOgNKmEeaZ9LiNudsyXQ" name="planId">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_gT2iUM0bEeavo6is7kUH4g" name="handleLogin"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Dependency" xmi:id="_UfdGwNJ3Eeai7-fwKeDyXA" client="_FgRI0LfXEea2RYsZ51fiPw" supplier="_u9pQcLfWEea2RYsZ51fiPw"/>
@@ -2608,6 +2617,11 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <ownedAttribute xmi:type="uml:Property" xmi:id="_6iJv4NJ5Eeai7-fwKeDyXA" name="curValue">
             <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
           </ownedAttribute>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_-1y14NKmEeaZ9LiNudsyXQ" name="getParams">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_-1y14dKmEeaZ9LiNudsyXQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_hHBMUMbTEea_vtQ7PzZ20Q" name="FilterCollection">
           <generalization xmi:type="uml:Generalization" xmi:id="_zqs7MMbZEeayQsYlrW195g" general="_j8UosMbXEeasRKsBOCfOGQ"/>
