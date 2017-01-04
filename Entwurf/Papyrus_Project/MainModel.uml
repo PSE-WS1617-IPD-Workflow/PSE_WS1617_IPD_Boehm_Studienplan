@@ -1218,7 +1218,7 @@ between(min).and(max) //or similar&#xD;
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_r67qkMbCEeatB58sIl8nCg" name="SemesterLinkModuleConstraintType">
-            <generalization xmi:type="uml:Generalization" xmi:id="_0CmVQMbCEeatB58sIl8nCg" general="_S2aWIL4PEeaoO4fCpQc-Qw"/>
+            <generalization xmi:type="uml:Generalization" xmi:id="_0CmVQMbCEeatB58sIl8nCg" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_qNmLcM0XEeasNbhLG8gf5A" name="isValid">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_qNmLcc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_qNmLcs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
@@ -1229,26 +1229,12 @@ between(min).and(max) //or similar&#xD;
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_wmUboMbCEeatB58sIl8nCg" name="PlanLinkModuleConstraintType">
-            <generalization xmi:type="uml:Generalization" xmi:id="_0hl-YMbCEeatB58sIl8nCg" general="_S2aWIL4PEeaoO4fCpQc-Qw"/>
+            <generalization xmi:type="uml:Generalization" xmi:id="_0hl-YMbCEeatB58sIl8nCg" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_qb34AM0XEeasNbhLG8gf5A" name="isValid">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34Ac0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34As0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_qb34A80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_-wiW8NHsEeaAHvALbQ8BvQ" direction="return">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
-              </ownedParameter>
-            </ownedOperation>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Class" xmi:id="_S2aWIL4PEeaoO4fCpQc-Qw" name="LinkModuleConstraintType">
-            <generalization xmi:type="uml:Generalization" xmi:id="_ZDh_sL4PEeaoO4fCpQc-Qw" general="_gmxusL4PEeaoO4fCpQc-Qw"/>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_fRNWYM0XEeasNbhLG8gf5A" name="isValid" isAbstract="true">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRNWYc0XEeasNbhLG8gf5A" name="first" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRNWYs0XEeasNbhLG8gf5A" name="second" type="_5yGmIMBpEeafN5EhaYGTYw" effect="read"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRNWY80XEeasNbhLG8gf5A" name="orientation" type="_gCMI8MO3EearScbIBXJIIw"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_zP1T4NHsEeaAHvALbQ8BvQ" direction="return">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
-              </ownedParameter>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="__U-gwNHsEeaAHvALbQ8BvQ" direction="return">
                 <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
               </ownedParameter>
             </ownedOperation>
