@@ -198,6 +198,12 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_8gHBwMwgEeaTDYobh6xdEw" name="jsonModule" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_X-GqANKaEeapqIGilDc0pg" name="filterSettings" type="_seh2kNKZEeapqIGilDc0pg"/>
         </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_GAqa8NLEEeaOU8VMp7-1uw" name="getAllDisciplines">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_GAqa8dLEEeaOU8VMp7-1uw" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_DLFU8NLEEeaOU8VMp7-1uw" name="getAllSubjects">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_DLFU8dLEEeaOU8VMp7-1uw" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_qFookMtyEeaIBcC0jCetUA" name="JSONObject"/>
       <packagedElement xmi:type="uml:DataType" xmi:id="_p_AooMwhEeaTLsJqt_fnxw" name="PDF"/>
@@ -339,16 +345,6 @@
         </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="__vASsM9tEeaWbKwKnQo1og" client="_To0dwLuOEea-uPszIhxKkQ" supplier="_eO6zUMOdEeaiRIvYnaUryA"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_6PCrANKXEealsoXUUpQYow" name="DisciplinesResource" isLeaf="true">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_QnxnkNKYEealsoXUUpQYow" name="getAllDisciplines">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_QnxnkdKYEealsoXUUpQYow" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
-        </ownedOperation>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_Bw2PkNKYEealsoXUUpQYow" name="SubjectsResource" isLeaf="true">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Y3D9MNKYEealsoXUUpQYow" name="getAllSubjects">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Y3D9MdKYEealsoXUUpQYow" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
-        </ownedOperation>
-      </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_seh2kNKZEeapqIGilDc0pg" name="GetParameters"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_isR5AL7HEeaRCti-wkqR-A" name="filter">
