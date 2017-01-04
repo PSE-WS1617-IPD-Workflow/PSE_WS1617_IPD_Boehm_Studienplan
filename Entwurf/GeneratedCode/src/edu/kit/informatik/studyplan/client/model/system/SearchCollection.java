@@ -7,6 +7,7 @@ package edu.kit.informatik.studyplan.client.model.system;
 import java.util.Collection;
 
 import edu.kit.informatik.studyplan.client.model.modules.Module;
+import edu.kit.informatik.studyplan.client.model.modules.ModuleCollection;
 import edu.kit.informatik.studyplan.client.model.system.FilterCollection;
 
 /************************************************************/
@@ -18,11 +19,7 @@ import edu.kit.informatik.studyplan.client.model.system.FilterCollection;
  * zusammengeführt.
  */
 // TODO: UPDATE Model!
-public class SearchLazyLoadingCollection {
-    /**
-     * Die gesuchten Module
-     */
-    private Collection<Module> searchedModules;
+public class SearchCollection extends ModuleCollection {
     /**
      * Die Filter, welche beim Abruf zu berücksichtigen sind
      */
@@ -42,5 +39,11 @@ public class SearchLazyLoadingCollection {
      *            Die Filter, welche bei der Suche berücksichtigt werden sollen.
      */
     public void setFilters(final FilterCollection filters) {
+    }
+
+    @Override
+    public String url() {
+        // TODO Auto-generated method stub
+        return null;
     }
 };

@@ -2106,7 +2106,7 @@ welche wiederum die Render-Funktionen &quot;unterliegender&quot; Views aufruft.&
           <ownedOperation xmi:type="uml:Operation" xmi:id="_PJcBkM0XEeavo6is7kUH4g" name="onChange"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_jN928M0DEeameZvbSNUikg" name="ModuleList" visibility="public">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_hHnjkM0FEeameZvbSNUikg" name="modules" visibility="private" type="_jlv14MzkEeaiINyVGHRfeA"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_hHnjkM0FEeameZvbSNUikg" name="modules" visibility="private"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_kx9uYs0FEeameZvbSNUikg" name="moduleBox" visibility="private" type="_9CVCUM0CEeameZvbSNUikg" association="_kx8gQM0FEeameZvbSNUikg">
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lpU0MM0FEeameZvbSNUikg"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lpXQcM0FEeameZvbSNUikg" value="*"/>
@@ -2622,69 +2622,12 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
             <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_VlPSQM0VEeavo6is7kUH4g"/>
           </ownedAttribute>
         </packagedElement>
-        <packagedElement xmi:type="uml:Class" xmi:id="_ToricMbUEeaVr7AotRm3tQ" name="SearchModuleCollection" isAbstract="true">
-          <generalization xmi:type="uml:Generalization" xmi:id="_-XwTwMbZEeayQsYlrW195g" general="_zWYJ4MPMEeaCPewWEdcdGQ"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_NBXqAMzkEeaiINyVGHRfeA" name="sync">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_NBXqAczkEeaiINyVGHRfeA" name="method">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-            </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_NBXqAszkEeaiINyVGHRfeA" name="model">
-              <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
-            </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_NBXqA8zkEeaiINyVGHRfeA" name="options">
-              <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
-            </ownedParameter>
-          </ownedOperation>
-        </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_j8UosMbXEeasRKsBOCfOGQ" name="OAuthCollection" visibility="protected" isAbstract="true">
           <generalization xmi:type="uml:Generalization" xmi:id="_ARNNoMdnEea29-bQWKStRA" general="_VkyK4MdlEea29-bQWKStRA"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="__KPAMNJ3Eeai7-fwKeDyXA" name="sync" visibility="private">
             <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_VlPSQM0VEeavo6is7kUH4g"/>
           </ownedAttribute>
         </packagedElement>
-        <packagedElement xmi:type="uml:Class" xmi:id="_-MxCsMziEeaiINyVGHRfeA" name="IndependentSearchModuleCollection">
-          <generalization xmi:type="uml:Generalization" xmi:id="_D0ybIMzjEeaiINyVGHRfeA" general="_ToricMbUEeaVr7AotRm3tQ"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_c_ZpcMzjEeaiINyVGHRfeA" name="url">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_c_ZpcczjEeaiINyVGHRfeA" direction="return">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-            </ownedParameter>
-          </ownedOperation>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Class" xmi:id="_AIJKQMzjEeaiINyVGHRfeA" name="PlanSearchModuleCollection">
-          <generalization xmi:type="uml:Generalization" xmi:id="_ETzSYMzjEeaiINyVGHRfeA" general="_ToricMbUEeaVr7AotRm3tQ"/>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_SY8oIMzjEeaiINyVGHRfeA" name="postId" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedAttribute>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_dVa8wMzjEeaiINyVGHRfeA" name="url">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_dVa8wczjEeaiINyVGHRfeA" direction="return">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-            </ownedParameter>
-          </ownedOperation>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Class" xmi:id="_gUJ-wMzjEeaiINyVGHRfeA" name="SearchLazyLoadingCollection">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_QUGmEMzkEeaiINyVGHRfeA" visibility="private" type="_ToricMbUEeaVr7AotRm3tQ" association="_QUBtkMzkEeaiINyVGHRfeA">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SRpQ0MzkEeaiINyVGHRfeA"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SRuJUMzkEeaiINyVGHRfeA" value="*"/>
-          </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_EytxEMzlEeaiINyVGHRfeA" name="filters" visibility="private" type="_hHBMUMbTEea_vtQ7PzZ20Q"/>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_bBL3AMzoEeaiINyVGHRfeA" name="highestLoaded" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedAttribute>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_XiVHUMzkEeaiINyVGHRfeA" name="getModules">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_6k_Y0MzkEeaiINyVGHRfeA" type="_jlv14MzkEeaiINyVGHRfeA" direction="return"/>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_Awn0oMzlEeaiINyVGHRfeA" name="loadMoreModules()"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_NDwaMMzlEeaiINyVGHRfeA" name="setFilters">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_NDwaMczlEeaiINyVGHRfeA" name="filters" type="_hHBMUMbTEea_vtQ7PzZ20Q"/>
-          </ownedOperation>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_QUBtkMzkEeaiINyVGHRfeA" visibility="private" memberEnd="_QUGmEMzkEeaiINyVGHRfeA _QULekMzkEeaiINyVGHRfeA">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QUEw4MzkEeaiINyVGHRfeA" source="org.eclipse.papyrus">
-            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_QUEw4czkEeaiINyVGHRfeA" key="nature" value="UML_Nature"/>
-          </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_QULekMzkEeaiINyVGHRfeA" visibility="private" type="_gUJ-wMzjEeaiINyVGHRfeA" association="_QUBtkMzkEeaiINyVGHRfeA"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Class" xmi:id="_jlv14MzkEeaiINyVGHRfeA" name="SimpleModuleCollection"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_u5Bv4M0DEeameZvbSNUikg" name="NotificationCollection">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_6Oi2oM0DEeameZvbSNUikg" name="notification" visibility="private" type="_w4JH8M0DEeameZvbSNUikg" association="_6OfMQM0DEeameZvbSNUikg">
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7m04MM0DEeameZvbSNUikg"/>
@@ -2731,7 +2674,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_pnGJ8M0IEeavo6is7kUH4g" name="getInstance">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_pnGJ8M0IEeavo6is7kUH4g" name="getInstance" isStatic="true">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_sRIuUM0IEeavo6is7kUH4g" type="_sNgA8M0HEeavo6is7kUH4g" direction="return"/>
           </ownedOperation>
         </packagedElement>
@@ -2784,7 +2727,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
             <body>Beispiele für Events: Modul soll angezeigt werden</body>
           </ownedComment>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_2AYPQM0SEeavo6is7kUH4g" name="instance" visibility="private" isStatic="true" type="_vBTkUM0SEeavo6is7kUH4g"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_EW8FIM0TEeavo6is7kUH4g" name="getInstance">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EW8FIM0TEeavo6is7kUH4g" name="getInstance" isStatic="true">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_Hni6QM0TEeavo6is7kUH4g" type="_vBTkUM0SEeavo6is7kUH4g" direction="return"/>
           </ownedOperation>
         </packagedElement>
@@ -2795,9 +2738,64 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FSXkMMbUEeaVr7AotRm3tQ" value="*"/>
           </ownedAttribute>
         </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_gUJ-wMzjEeaiINyVGHRfeA" name="SearchLazyLoadingCollection">
+          <generalization xmi:type="uml:Generalization" xmi:id="_a-CMYNJ6Eeai7-fwKeDyXA" general="_zWYJ4MPMEeaCPewWEdcdGQ"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_EytxEMzlEeaiINyVGHRfeA" name="filters" visibility="private" type="_hHBMUMbTEea_vtQ7PzZ20Q"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_f_nP4NJ6Eeai7-fwKeDyXA" name="planId" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_NDwaMMzlEeaiINyVGHRfeA" name="setFilters">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_NDwaMczlEeaiINyVGHRfeA" name="filters" type="_hHBMUMbTEea_vtQ7PzZ20Q"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_12y-kNJ6Eeai7-fwKeDyXA" name="Discipline">
+          <generalization xmi:type="uml:Generalization" xmi:id="_HR5jgNJ7Eeai7-fwKeDyXA" general="_IGXccMPMEeaCPewWEdcdGQ"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_4CeWgNJ7Eeai7-fwKeDyXA" name="id" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_0DTyQNJ7Eeai7-fwKeDyXA" name="name" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_FG32YNJ7Eeai7-fwKeDyXA" memberEnd="_FG6SoNJ7Eeai7-fwKeDyXA _FG6SodJ7Eeai7-fwKeDyXA">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FG5rkNJ7Eeai7-fwKeDyXA" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FG5rkdJ7Eeai7-fwKeDyXA" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_FG6SodJ7Eeai7-fwKeDyXA" visibility="private" type="__j7LMNJ6Eeai7-fwKeDyXA" association="_FG32YNJ7Eeai7-fwKeDyXA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="__j7LMNJ6Eeai7-fwKeDyXA" name="DisciplineCollection">
+          <generalization xmi:type="uml:Generalization" xmi:id="_JYwiUNJ7Eeai7-fwKeDyXA" general="_j8UosMbXEeasRKsBOCfOGQ"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_FG6SoNJ7Eeai7-fwKeDyXA" name="disciplines" visibility="private" type="_12y-kNJ6Eeai7-fwKeDyXA" association="_FG32YNJ7Eeai7-fwKeDyXA">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_W1FIENJ8Eeai7-fwKeDyXA"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_W1R8YNJ8Eeai7-fwKeDyXA" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_81NswNJ7Eeai7-fwKeDyXA" name="SubjectDiscipline">
+          <generalization xmi:type="uml:Generalization" xmi:id="_81NswdJ7Eeai7-fwKeDyXA" general="_IGXccMPMEeaCPewWEdcdGQ"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_81NswtJ7Eeai7-fwKeDyXA" name="id" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_81Nsw9J7Eeai7-fwKeDyXA" name="name" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_81OT0NJ7Eeai7-fwKeDyXA" memberEnd="_81O64tJ7Eeai7-fwKeDyXA _81OT09J7Eeai7-fwKeDyXA">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_81OT0dJ7Eeai7-fwKeDyXA" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_81OT0tJ7Eeai7-fwKeDyXA" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_81OT09J7Eeai7-fwKeDyXA" visibility="private" type="_81O64NJ7Eeai7-fwKeDyXA" association="_81OT0NJ7Eeai7-fwKeDyXA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_81O64NJ7Eeai7-fwKeDyXA" name="SubjectDisciplineCollection">
+          <generalization xmi:type="uml:Generalization" xmi:id="_81O64dJ7Eeai7-fwKeDyXA" general="_j8UosMbXEeasRKsBOCfOGQ"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_81O64tJ7Eeai7-fwKeDyXA" name="subjectDisciplines" visibility="private" type="_81NswNJ7Eeai7-fwKeDyXA" association="_81OT0NJ7Eeai7-fwKeDyXA">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PGOmANJ8Eeai7-fwKeDyXA"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PGRCQNJ8Eeai7-fwKeDyXA" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_GR3Y8MPMEeaCPewWEdcdGQ" name="user">
         <packagedElement xmi:type="uml:Class" xmi:id="_OddvIMPREeaCPewWEdcdGQ" name="SessionInformation">
+          <generalization xmi:type="uml:Generalization" xmi:id="_wpGKoNJ6Eeai7-fwKeDyXA" general="_Jr_9gMPMEeaCPewWEdcdGQ"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_QOvLoMzpEeaiINyVGHRfeA" name="access_token" visibility="private">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedAttribute>
@@ -2815,6 +2813,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <ownedOperation xmi:type="uml:Operation" xmi:id="_sCo6IM0aEeavo6is7kUH4g" name="generateState"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_UHYTEMPTEeaCPewWEdcdGQ" name="Student">
+          <generalization xmi:type="uml:Generalization" xmi:id="_quRyANJ6Eeai7-fwKeDyXA" general="_IGXccMPMEeaCPewWEdcdGQ"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_sWgwkcPTEeaCPewWEdcdGQ" name="passedModules" visibility="private" type="_p0e4sMPTEeaCPewWEdcdGQ" association="_sWficMPTEeaCPewWEdcdGQ"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_MdfSIMzqEeaiINyVGHRfeA" name="userId" visibility="private">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
