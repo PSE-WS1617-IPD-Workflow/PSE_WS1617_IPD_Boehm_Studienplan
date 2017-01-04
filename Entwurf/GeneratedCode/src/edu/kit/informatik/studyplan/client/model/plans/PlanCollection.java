@@ -11,11 +11,11 @@ import edu.kit.informatik.studyplan.client.model.system.OAuthCollection;
 
 /************************************************************/
 /**
- * Klasse, welche eine Collection von Studienpl‰nen beschreibt
+ * Klasse, welche eine Collection von Studienpl√§nen beschreibt
  */
 public class PlanCollection extends OAuthCollection {
     /**
-     * Die Collection der Studienpl‰ne
+     * Die Collection der Studienpl√§ne
      */
     private Collection<Plan> plan;
 };

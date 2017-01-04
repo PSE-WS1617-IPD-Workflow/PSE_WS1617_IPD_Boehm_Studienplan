@@ -8,7 +8,7 @@ import edu.kit.informatik.studyplan.client.model.system.OAuthModel;
 
 /************************************************************/
 /**
- * Diese Klasse beschreibt einen zu einem Modul gehörenden System-Constraint
+ * Diese Klasse beschreibt einen zu einem Modul gehÃ¶renden System-Constraint
  */
 public class ModuleConstraint extends OAuthModel {
     /**
@@ -24,7 +24,7 @@ public class ModuleConstraint extends OAuthModel {
      */
     private int modul2Id;
     /**
-     * Textuelle Beschreibung des ModuleConstraints für den Nutzer
+     * Textuelle Beschreibung des ModuleConstraints fÃ¼r den Nutzer
      */
     private String type;
 };

@@ -6,7 +6,7 @@ package edu.kit.informatik.studyplan.client.model.system;
 
 /************************************************************/
 /**
- * Klasse, welche eine Benachrichtigung repr‰sentiert (erweitert Backbone.Model)
+ * Klasse, welche eine Benachrichtigung repr√§sentiert (erweitert Backbone.Model)
  */
 public class Notification {
     /**

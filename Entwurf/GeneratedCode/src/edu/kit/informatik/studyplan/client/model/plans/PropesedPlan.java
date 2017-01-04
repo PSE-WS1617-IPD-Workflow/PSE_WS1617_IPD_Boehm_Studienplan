@@ -8,7 +8,7 @@ import edu.kit.informatik.studyplan.client.model.plans.Plan;
 
 /************************************************************/
 /**
- * Klasse, welche einen vorgeschlagenen Plan repräsentiert
+ * Klasse, welche einen vorgeschlagenen Plan reprÃ¤sentiert
  */
 public class PropesedPlan extends Plan {
 
@@ -16,10 +16,10 @@ public class PropesedPlan extends Plan {
      * Methode, welche den Plan ggf. speichert
      * 
      * @param options
-     *            Alle Optionen von Backbone.Model.save() zusätzlich:
+     *            Alle Optionen von Backbone.Model.save() zusÃ¤tzlich:
      *            <ul>
      *            <li>Boolean newPlan true falls, der Plan als neuer Plan
-     *            geschrieben werden soll, false falls der Plan überschrieben
+     *            geschrieben werden soll, false falls der Plan ï¿½berschrieben
      *            werden soll. Standard ist false</li>
      *            <li>String planName Name des Plans, falls newPlan = true</li>
      *            </ul>

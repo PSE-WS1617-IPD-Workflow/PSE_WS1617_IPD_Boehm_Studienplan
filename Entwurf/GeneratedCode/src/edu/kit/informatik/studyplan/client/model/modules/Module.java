@@ -11,13 +11,13 @@ import edu.kit.informatik.studyplan.client.model.system.OAuthModel;
 
 /************************************************************/
 /**
- * Diese Klasse repräsentiert ein Modul, welches vom Server geladen wird. Das
- * Modul wird als Element zunächst nur teilweise geladen. Mittels eines Aufrufs
+ * Diese Klasse reprÃ¤sentiert ein Modul, welches vom Server geladen wird. Das
+ * Modul wird als Element zunÃ¤chst nur teilweise geladen. Mittels eines Aufrufs
  * von fetch() werden dann gegebenfalls weitere notwendige Daten nachgeladen.
  */
 public class Module extends OAuthModel {
     /**
-     * Die vom Nutzer für das Modul gesetzte Präferenz
+     * Die vom Nutzer fÃ¼r das Modul gesetzte PrÃ¤ferenz
      */
     private Preference preference;
     /**
@@ -58,21 +58,21 @@ public class Module extends OAuthModel {
      */
     private String discipline;
     /**
-     * Die ID des Plans zu der das Modul gehört (da die Präferenzen
+     * Die ID des Plans zu der das Modul gehÃ¶rt (da die PrÃ¤ferenzen
      * Planspezifisch sind, wind die Module immer an einen Plan gebunden. Die
      * einzige Ausnahme hiervon sind die Module bei der Auswahl der bereits
      * bestandenen Leistungen. In diesem Fall ist postId = null
      */
     private String planId;
     /**
-     * Die zum Modul gehörenden System-Constraints
+     * Die zum Modul gehÃ¶renden System-Constraints
      */
     private ModuleConstraint moduleconstraint;
     /**
      * Ob das Modul bereits vom Nutzer bestanden wurde. Dies wird gespeichert,
      * da die Trennung zwischen Modulen im Studienplan und bestandenen Modulen
-     * für die Anzeige der Module auf der Client-Seite aufgehoben wird. Dies ist
-     * problemlos möglich, da diese Trennung lediglich für Berechnungen
+     * fÃ¼r die Anzeige der Module auf der Client-Seite aufgehoben wird. Dies ist
+     * problemlos mÃ¶glich, da diese Trennung lediglich fÃ¼r Berechnungen
      * interessant sind, welche nicht auf der Client-Seite stattfinden.
      */
     private boolean passed;

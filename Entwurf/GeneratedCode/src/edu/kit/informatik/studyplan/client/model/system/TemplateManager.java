@@ -6,17 +6,17 @@ package edu.kit.informatik.studyplan.client.model.system;
 
 /************************************************************/
 /**
- * Singleton, welches die Templates für die Views verwaltet. Jedes Template
- * lässt sich über einen key abrufen.<br>
+ * Singleton, welches die Templates fï¿½r die Views verwaltet. Jedes Template
+ * lÃ¤sst sich Ã¼ber einen key abrufen.<br>
  * dDie Templates werden zur Compile-Zeit in den Initialisierungscode
  * hineingeladen und sind somit bereits beim Start der Applikation im Template
  * Manager vorhanden. Der Vorteil dieses Vorgehens ist, dass man beim Laden der
  * einzelnen Views nicht auf eine Antwort vom Server (welche das Template
- * enthält) warten muss.
+ * enthÃ¤lt) warten muss.
  */
 public class TemplateManager {
     /**
-     * Das Objekt, welches die templates enthält, auf welche man mittels des
+     * Das Objekt, welches die Templates enthÃ¤lt, auf welche man mittels des
      * Namens zugreifen kann.
      */
     private Object templates;
@@ -31,8 +31,9 @@ public class TemplateManager {
      * 
      * @param key
      *            Der Key zur identifizierung des Templates
-     * @return Gibt eine Funktion zurück, die mit Parametern aufgerufen werden
-     *         kann und deren Rückgabewert ein befülltes Template ist
+     * @return Gibt eine Funktion (ein Underscore Template) zurÃ¼ck, die mit
+     *         Parametern aufgerufen werden kann und deren RÃ¼ckgabewert ein
+     *         befÃ¼lltes Template als String ist
      */
     public Object getTemplate(final String key) {
         return key;
@@ -41,7 +42,7 @@ public class TemplateManager {
     /**
      * Methode zum erhalten der aktuellen Instanz des TemplateManagers
      * 
-     * @return Gibt die aktuelle Instanz des TemplateManagers zurück
+     * @return Gibt die aktuelle Instanz des TemplateManagers zurÃ¼ck
      */
     public static edu.kit.informatik.studyplan.client.model.system.TemplateManager getInstance() {
         return null;

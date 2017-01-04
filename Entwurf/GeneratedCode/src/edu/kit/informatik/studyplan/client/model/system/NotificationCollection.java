@@ -10,7 +10,7 @@ import edu.kit.informatik.studyplan.client.model.system.Notification;
 
 /************************************************************/
 /**
- * Singleton-Collection, welche alle Benachrichtigungen enthält <br>
+ * Singleton-Collection, welche alle Benachrichtigungen enthÃ¤lt <br>
  * (erweitert Backbone.Collection)
  */
 public class NotificationCollection {
@@ -33,10 +33,10 @@ public class NotificationCollection {
     }
 
     /**
-     * Methode zum hinzufügen einer neuen Benachrichtigung
+     * Methode zum hinzufÃ¼gen einer neuen Benachrichtigung
      * 
      * @param notification
-     *            Die Benachrichtigung, welche hinzugefügt werden soll
+     *            Die Benachrichtigung, welche hinzugefÃ¼gt werden soll
      */
     public void add(final Notification notification) {
     }

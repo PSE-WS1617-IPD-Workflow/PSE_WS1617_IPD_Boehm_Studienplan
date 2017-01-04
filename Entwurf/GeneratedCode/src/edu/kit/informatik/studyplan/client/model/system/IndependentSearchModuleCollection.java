@@ -8,13 +8,13 @@ import edu.kit.informatik.studyplan.client.model.system.SearchModuleCollection;
 
 /************************************************************/
 /**
- * Teil eines Suchergebnisses einer Modulsuche, welche Unabhängig von einem Plan
+ * Teil eines Suchergebnisses einer Modulsuche, welche UnabhÃ¤ngig von einem Plan
  * stattgefunden hat
  */
 public class IndependentSearchModuleCollection extends SearchModuleCollection {
 
     /**
-     * Die Methode, welche den URL zum Abruf der Module zurückgibt
+     * Die Methode, welche den URL zum Abruf der Module zurÃ¼ckgibt
      * 
      * @return Den URL zum Abruf der Module
      */

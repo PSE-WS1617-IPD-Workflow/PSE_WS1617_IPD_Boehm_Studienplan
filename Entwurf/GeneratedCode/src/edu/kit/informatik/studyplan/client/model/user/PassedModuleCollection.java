@@ -8,13 +8,13 @@ import edu.kit.informatik.studyplan.client.model.modules.ModuleCollection;
 
 /************************************************************/
 /**
- * 
+ * Die Collection aller bestandenen Module, welche zu einem Nutzer gehört
  */
 public class PassedModuleCollection extends ModuleCollection {
 
-	@Override
-	public String url() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public String url() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 };

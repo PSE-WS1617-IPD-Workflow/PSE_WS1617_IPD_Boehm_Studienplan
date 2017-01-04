@@ -21,7 +21,7 @@ public class ProposalInformation {
      */
     private int maxEctsPerSemester;
     /**
-     * Das gew‰hlte Vertiefungsfach
+     * Das gew√§hlte Vertiefungsfach
      */
     private String mainDiscipline;
 };

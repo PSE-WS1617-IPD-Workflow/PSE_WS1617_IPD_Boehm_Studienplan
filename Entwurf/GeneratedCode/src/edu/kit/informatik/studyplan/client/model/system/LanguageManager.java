@@ -7,14 +7,14 @@ package edu.kit.informatik.studyplan.client.model.system;
 /************************************************************/
 /**
  * Singleton, welches die sprachlichen Ausgaben des Programms verwaltet. Hierbei
- * lässt sich diei Sprache in welcher die Nachrichten ausgegeben werden mittels
+ * lÃ¤sst sich diei Sprache in welcher die Nachrichten ausgegeben werden mittels
  * setLanguage statisch einstellen. Die Nachrichten werden bereits zur
  * Compile-Zeit in den Initialisierungscode des Programms geladen und sind
- * deshalb von Beginn an verfügbar.
+ * deshalb von Beginn an verfÃ¼gbar.
  */
 public class LanguageManager {
     /**
-     * Ein Objekt, welches die Strings, die das Programm ausgibt enthält
+     * Ein Objekt, welches die Strings, die das Programm ausgibt enthÃ¤lt
      */
     private Object messages;
     /**
@@ -26,12 +26,12 @@ public class LanguageManager {
      */
     private static String language;
     /**
-     * Die Rückfall-Sprache des LanguageManagers
+     * Die Rï¿½ckfall-Sprache des LanguageManagers
      */
     private static String FALLBACK_LANGUAGE = "de";
 
     /**
-     * Gibt die aktuelle Instanz des LanguageManagers zurück
+     * Gibt die aktuelle Instanz des LanguageManagers zurÃ¼ck
      * 
      * @return Die aktuelle Instanz des Sprachmanagers
      */

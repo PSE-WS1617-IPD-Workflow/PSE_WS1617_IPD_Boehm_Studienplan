@@ -11,7 +11,7 @@ import edu.kit.informatik.studyplan.client.model.system.ObjectiveFunction;
 
 /************************************************************/
 /**
- * Klasse, welche eine Collection von Objective Functions repr‰sentiert
+ * Klasse, welche eine Collection von Objective Functions repr√§sentiert
  */
 public class ObjectiveFunctionCollection extends OAuthCollection {
     /**

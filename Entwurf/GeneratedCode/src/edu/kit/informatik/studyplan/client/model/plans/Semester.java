@@ -12,7 +12,7 @@ import edu.kit.informatik.studyplan.client.model.modules.ModuleCollection;
  */
 public class Semester extends ModuleCollection {
     /**
-     * Die ID des Plans zu welchem das Semester gehört.
+     * Die ID des Plans zu welchem das Semester gehÃ¶rt.
      */
     private String planId;
 

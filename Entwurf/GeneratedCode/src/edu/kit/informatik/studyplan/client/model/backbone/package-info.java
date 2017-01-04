@@ -1,7 +1,7 @@
 /**
- * Für detaillierte Informationen über Backbone siehe [1]. Dieses Paket enthält
- * alle grundlegenden Klassen des Backbone-Pakets, welche wir für die
- * Implementierung benötigen.
+ * FÃ¼r detaillierte Informationen Ã¼ber Backbone siehe [1]. Dieses Paket enthÃ¤lt
+ * alle grundlegenden Klassen des Backbone-Pakets, welche wir fÃ¼r die
+ * Implementierung benÃ¶tigen.
  * 
  * [1]http://backbonejs.org
  */

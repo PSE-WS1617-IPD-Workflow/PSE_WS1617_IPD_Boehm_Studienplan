@@ -8,9 +8,9 @@ package edu.kit.informatik.studyplan.client.model.system;
 /**
  * Dieses Singleton wird als Event-Bus zwischen verschiedenen Komponenten der
  * Applikation verwendet. Jedes Objekt kann mittels getInstance() auf den
- * EventBus zugreifen und sich als Listener registrieren oder einen Even
- * auslösen.<br>
- * Ein Beispiel für einen solchen Event wäre die Anzeige eines Moduls in der
+ * EventBus zugreifen und sich als Listener registrieren oder einen Event
+ * auslÃ¶sen.<br>
+ * Ein Beispiel fÃ¼r einen solchen Event wï¿½re die Anzeige eines Moduls in der
  * Seitenleiste beim Klick auf das Modul. (Erbt von Backbone.Event)
  */
 public class EventBus {

@@ -41,7 +41,7 @@ public class Plan extends OAuthModel {
     private Collection<ModuleConstraint> violations;
 
     /**
-     * Eine Methode, welche zurück gibt, ob das Modul mit der gegebenen ID im
+     * Eine Methode, welche zurÃ¼ck gibt, ob das Modul mit der gegebenen ID im
      * Plan vorhanden ist.
      * 
      * @param moduleId
@@ -53,7 +53,7 @@ public class Plan extends OAuthModel {
     }
 
     /**
-     * Lädt die Informationen zur Verifizierung und speichert diese im Plan.
+     * LÃ¤dt die Informationen zur Verifizierung und speichert diese im Plan.
      */
     public void loadVerification() {
     }

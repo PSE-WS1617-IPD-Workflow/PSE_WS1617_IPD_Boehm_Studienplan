@@ -13,10 +13,10 @@ import edu.kit.informatik.studyplan.client.model.system.SimpleModuleCollection;
 /************************************************************/
 /**
  * Die Seach-Collection, welche das Lazy-Loading der Module in der Suche
- * übernimmt. Hierbei werden in zehner Schritten nach und nach mehr Module
+ * Ã¼bernimmt. Hierbei werden in zehner Schritten nach und nach mehr Module
  * geladen und in einzelne SearchModuleCollections gespeichert. Beim Abruf
  * mittels getModules() werden diese dann in eine einzige Collection
- * zusammengeführt.
+ * zusammengefÃ¼hrt.
  */
 public class SearchLazyLoadingCollection {
     /**
@@ -24,7 +24,7 @@ public class SearchLazyLoadingCollection {
      */
     private Collection<SearchModuleCollection> searchModules;
     /**
-     * Die Filter, welche beim Abruf zu berücksichtigen sind
+     * Die Filter, welche beim Abruf zu berÃ¼cksichtigen sind
      */
     private FilterCollection filters;
     /**
@@ -32,8 +32,8 @@ public class SearchLazyLoadingCollection {
      */
     private int highestLoaded;
     /**
-     * Die ID des Plans zu welcher die Suche gehört oder null, falls die Suche
-     * Plan-Unabhängig ist
+     * Die ID des Plans zu welcher die Suche gehÃ¶rt oder null, falls die Suche
+     * Plan-UnabhÃ¤ngig ist
      */
     private int planId;
 
@@ -48,18 +48,18 @@ public class SearchLazyLoadingCollection {
     }
 
     /**
-     * Methode welche weitere Module aus der Server-Resource lädt.
+     * Methode welche weitere Module aus der Server-Resource lï¿½dt.
      */
     public void loadMoreModules() {
     }
 
     /**
      * Methode, welche die Filter neu setzt und im Zuge desse, die alten
-     * SearchModuleCollections löscht und highestLoaded zurücksetzt.
-     * Anschließend werden erneut Module geladen.
+     * SearchModuleCollections lï¿½scht und highestLoaded zurÃ¼cksetzt.
+     * AnschlieÃŸend werden erneut Module geladen.
      * 
      * @param filters
-     *            Die Filter, welche bei der Suche berücksichtigt werden sollen.
+     *            Die Filter, welche bei der Suche berÃ¼cksichtigt werden sollen.
      */
     public void setFilters(final FilterCollection filters) {
     }

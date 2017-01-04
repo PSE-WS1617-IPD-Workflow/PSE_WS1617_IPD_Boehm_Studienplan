@@ -8,9 +8,9 @@ import edu.kit.informatik.studyplan.client.model.backbone.BackboneCollection;
 
 /************************************************************/
 /**
- * Diese Klasse repräsentiert eine Collection, welche als Resource in der
+ * Diese Klasse reprÃ¤sentiert eine Collection, welche als Resource in der
  * REST-Schnittstelle gespeichert ist, und bei welcher sich man beim Zugriff
- * über OAUTH authentifizieren muss. (Erweitert Backbone.Collection)
+ * Ã¼ber OAUTH authentifizieren muss. (Erweitert Backbone.Collection)
  */
 public abstract class OAuthCollection {
     /**

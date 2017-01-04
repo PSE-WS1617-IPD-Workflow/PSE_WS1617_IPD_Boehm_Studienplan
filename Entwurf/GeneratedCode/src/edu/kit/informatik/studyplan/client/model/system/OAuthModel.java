@@ -8,9 +8,9 @@ import edu.kit.informatik.studyplan.client.model.backbone.BackboneModel;
 
 /************************************************************/
 /**
- * Diese Klasse repräsentiert ein Model, welches als Resource in der
+ * Diese Klasse reprÃ¤sentiert ein Model, welches als Resource in der
  * REST-Schnittstelle gespeichert ist, und bei welchem man sich beim Zugriff
- * über OAUTH authentifizieren muss. (Erweitert Backbone.Model)
+ * Ã¼ber OAUTH authentifizieren muss. (Erweitert Backbone.Model)
  */
 public abstract class OAuthModel {
     /**
