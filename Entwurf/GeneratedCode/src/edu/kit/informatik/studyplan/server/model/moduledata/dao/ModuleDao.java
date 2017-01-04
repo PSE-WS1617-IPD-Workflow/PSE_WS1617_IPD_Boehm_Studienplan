@@ -4,6 +4,8 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 
+import java.util.List;
+
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
@@ -56,4 +58,10 @@ public interface ModuleDao {
 	 * @return  
 	 */
 	public Category getCategories();
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public List<Category> getSubjects();
 };
