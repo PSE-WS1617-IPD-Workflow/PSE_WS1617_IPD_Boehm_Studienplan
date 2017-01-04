@@ -4,12 +4,15 @@
 
 package edu.kit.informatik.studyplan.client.model.modules;
 
+import edu.kit.informatik.studyplan.client.model.system.OAuthCollection;
+import edu.kit.informatik.studyplan.client.model.system.OAuthModel;
+
 /************************************************************/
 /**
  * Diese Klasse beschreibt eine zu einem Modul gehörende gesetzte Präferenz
  * (positiv/neutral/negativ)
  */
-public class Preference {
+public class Preference extends OAuthModel {
     /**
      * Beschreibt die gesetzte Präferenz Einer der drei Werte {"negativ",
      * "positiv", ""}

@@ -4,15 +4,19 @@
 
 package edu.kit.informatik.studyplan.client.model.plans;
 
+import java.util.Collection;
+
+import edu.kit.informatik.studyplan.client.model.backbone.BackboneModel;
 import edu.kit.informatik.studyplan.client.model.plans.Semester;
 
 /************************************************************/
 /**
- * 
+ * Eine Collection von Semestern, welche von einem Plan genutzt wird. (Erbt von
+ * Backbone.Collection)
  */
 public class SemesterCollection {
-	/**
-	 * 
-	 */
-	private Semester[] semester;
+    /**
+     * Die in der Collection enthaltenen Semester
+     */
+    private Collection<Semester> semester;
 };

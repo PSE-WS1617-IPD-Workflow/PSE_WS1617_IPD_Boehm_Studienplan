@@ -8,19 +8,21 @@ import edu.kit.informatik.studyplan.client.model.system.SearchModuleCollection;
 
 /************************************************************/
 /**
- * 
+ * Teil eines Suchergebnisses einer Modulsuche, welche in Abhängigkeit zu einem
+ * Plan stattgefunden hat
  */
 public class PlanSearchModuleCollection extends SearchModuleCollection {
-	/**
-	 * 
-	 */
-	private String postId;
+    /**
+     * Die ID des Plans
+     */
+    private String postId;
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public String url() {
-		return postId;
-	}
+    /**
+     * Die Methode, welche den URL zum Abruf der Module zurückgibt
+     * 
+     * @return Den URL zum Abruf der Module
+     */
+    public String url() {
+        return postId;
+    }
 };

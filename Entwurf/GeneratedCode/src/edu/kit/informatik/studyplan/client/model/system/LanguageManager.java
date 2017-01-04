@@ -4,50 +4,59 @@
 
 package edu.kit.informatik.studyplan.client.model.system;
 
-
 /************************************************************/
 /**
- * Singleton, welches die sprachlichen Ausgaben des Programms verwaltet. Hierbei lässt sich diei Sprache in welcher die Nachrichten ausgegeben werden mittels setLanguage statisch einstellen. Die Nachrichten werden bereits zur Compile-Zeit in den Initialisierungscode des Programms geladen und sind deshalb von Beginn an verfügbar.
+ * Singleton, welches die sprachlichen Ausgaben des Programms verwaltet. Hierbei
+ * lässt sich diei Sprache in welcher die Nachrichten ausgegeben werden mittels
+ * setLanguage statisch einstellen. Die Nachrichten werden bereits zur
+ * Compile-Zeit in den Initialisierungscode des Programms geladen und sind
+ * deshalb von Beginn an verfügbar.
  */
 public class LanguageManager {
-	/**
-	 * 
-	 */
-	private Object messages;
-	/**
-	 * 
-	 */
-	private static edu.kit.informatik.studyplan.client.model.system.LanguageManager instance;
-	/**
-	 * 
-	 */
-	private static String language;
-	/**
-	 * 
-	 */
-	private static String FALLBACK_LANGUAGE = "de";
+    /**
+     * Ein Objekt, welches die Strings, die das Programm ausgibt enthält
+     */
+    private Object messages;
+    /**
+     * Die Instanz des LanguageManagers
+     */
+    private static edu.kit.informatik.studyplan.client.model.system.LanguageManager instance;
+    /**
+     * Die eingestellte Sprache des LanguageManagers (als Sprachcode)
+     */
+    private static String language;
+    /**
+     * Die Rückfall-Sprache des LanguageManagers
+     */
+    private static String FALLBACK_LANGUAGE = "de";
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public static edu.kit.informatik.studyplan.client.model.system.LanguageManager getInstance() {
-		return null;
-	}
+    /**
+     * Gibt die aktuelle Instanz des LanguageManagers zurück
+     * 
+     * @return Die aktuelle Instanz des Sprachmanagers
+     */
+    public static edu.kit.informatik.studyplan.client.model.system.LanguageManager getInstance() {
+        return null;
+    }
 
-	/**
-	 * 
-	 * @param langCode 
-	 */
-	public static void setLanguage(String langCode) {
-	}
+    /**
+     * Setzt die Sprache des LanguageManagers fest
+     * 
+     * @param langCode
+     *            Der Code der Sprache, welche gesetzt werden soll
+     */
+    public static void setLanguage(final String langCode) {
+    }
 
-	/**
-	 * 
-	 * @param key 
-	 * @return  
-	 */
-	public String getMessage(String key) {
-		return null;
-	}
+    /**
+     * Methode zum erhalten einer Nachricht in der aktuellen Sprach auf Basis
+     * eines keys
+     * 
+     * @param key
+     *            Der key, welcher den auszugebenden String identifiziert
+     * @return Den String, falls dieser vorhanden ist, sonst den key selbst
+     */
+    public String getMessage(final String key) {
+        return null;
+    }
 };

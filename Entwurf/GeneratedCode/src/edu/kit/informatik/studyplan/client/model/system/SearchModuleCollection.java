@@ -10,14 +10,21 @@ import edu.kit.informatik.studyplan.client.model.modules.ModuleCollection;
 /**
  * 
  */
+// TODO: Ist das hier + SearchLazyLoadingCollection + SimpleModuleCollection
+// noch relevant? (Pagination
+// oder keine Pagination - das ist hier die Frage)
 public abstract class SearchModuleCollection extends ModuleCollection {
+    /**
+     * 
+     */
+    private int minPosModule;
 
-	/**
-	 * 
-	 * @param method 
-	 * @param model 
-	 * @param options 
-	 */
-	public void sync(String method, Object model, Object options) {
-	}
+    /**
+     * 
+     * @param method
+     * @param model
+     * @param options
+     */
+    public void sync(final String method, final Object model, final Object options) {
+    }
 };

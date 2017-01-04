@@ -4,16 +4,18 @@
 
 package edu.kit.informatik.studyplan.client.model.system;
 
+import java.util.Collection;
+
 import edu.kit.informatik.studyplan.client.model.system.OAuthCollection;
 import edu.kit.informatik.studyplan.client.model.system.ObjectiveFunction;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche eine Collection von Objective Functions repräsentiert
  */
 public class ObjectiveFunctionCollection extends OAuthCollection {
-	/**
-	 * 
-	 */
-	private ObjectiveFunction[] objectivefunction;
+    /**
+     * Die Collection aller ObjectiveFunctions
+     */
+    private Collection<ObjectiveFunction> objectivefunction;
 };

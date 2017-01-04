@@ -8,17 +8,17 @@ import edu.kit.informatik.studyplan.client.model.modules.ModuleCollection;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welcher ein Semester als Collection von Modulen beschreibt.
  */
 public class Semester extends ModuleCollection {
-	/**
-	 * 
-	 */
-	private String planId;
+    /**
+     * Die ID des Plans zu welchem das Semester gehört.
+     */
+    private String planId;
 
-	@Override
-	public String url() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public String url() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 };

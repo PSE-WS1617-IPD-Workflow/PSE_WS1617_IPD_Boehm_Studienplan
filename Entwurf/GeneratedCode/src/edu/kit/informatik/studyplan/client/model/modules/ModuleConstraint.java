@@ -4,11 +4,13 @@
 
 package edu.kit.informatik.studyplan.client.model.modules;
 
+import edu.kit.informatik.studyplan.client.model.system.OAuthModel;
+
 /************************************************************/
 /**
  * Diese Klasse beschreibt einen zu einem Modul gehörenden System-Constraint
  */
-public class ModuleConstraint {
+public class ModuleConstraint extends OAuthModel {
     /**
      * Der Typ des ModuleConstraint. Dieser wird als String angegeben.
      */

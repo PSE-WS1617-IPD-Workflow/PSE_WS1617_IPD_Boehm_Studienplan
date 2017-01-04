@@ -8,15 +8,17 @@ import edu.kit.informatik.studyplan.client.model.system.SearchModuleCollection;
 
 /************************************************************/
 /**
- * 
+ * Teil eines Suchergebnisses einer Modulsuche, welche Unabhängig von einem Plan
+ * stattgefunden hat
  */
 public class IndependentSearchModuleCollection extends SearchModuleCollection {
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public String url() {
-		return null;
-	}
+    /**
+     * Die Methode, welche den URL zum Abruf der Module zurückgibt
+     * 
+     * @return Den URL zum Abruf der Module
+     */
+    public String url() {
+        return null;
+    }
 };
