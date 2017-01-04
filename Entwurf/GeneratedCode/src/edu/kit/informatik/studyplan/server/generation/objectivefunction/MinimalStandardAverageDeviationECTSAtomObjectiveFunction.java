@@ -4,17 +4,20 @@
 
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
-import edu.kit.informatik.studyplan.server.generation.objectivefunction.AtomObjectiveFunction;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
- * 
+ * Minimiert die durchschnittliche Standardabweichung pro Semestester des Palns. 
+ * Ideal sind deshalb pläne bei denen jedes Semester genau gleich viele ECTS beinhaltet.
  */
 public class MinimalStandardAverageDeviationECTSAtomObjectiveFunction extends AtomObjectiveFunction {
 
+    /*
+     * {@inheritDoc}
+     */
 	@Override
-	public double evaluate(Plan plan) {
+	public double evaluate(final Plan plan) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
