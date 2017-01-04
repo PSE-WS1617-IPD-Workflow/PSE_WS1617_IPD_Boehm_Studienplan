@@ -4,16 +4,18 @@
 
 package edu.kit.informatik.studyplan.client.model.plans;
 
+import java.util.Collection;
+
 import edu.kit.informatik.studyplan.client.model.plans.Plan;
 import edu.kit.informatik.studyplan.client.model.system.OAuthCollection;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche eine Collection von Studienplänen beschreibt
  */
 public class PlanCollection extends OAuthCollection {
-	/**
-	 * 
-	 */
-	private Plan[] plan;
+    /**
+     * Die Collection der Studienpläne
+     */
+    private Collection<Plan> plan;
 };

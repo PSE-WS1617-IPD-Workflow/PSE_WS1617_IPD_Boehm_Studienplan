@@ -4,34 +4,40 @@
 
 package edu.kit.informatik.studyplan.client.model.system;
 
+import java.util.Collection;
+
 import edu.kit.informatik.studyplan.client.model.system.Notification;
 
 /************************************************************/
 /**
- * 
+ * Singleton-Collection, welche alle Benachrichtigungen enthält <br>
+ * (erweitert Backbone.Collection)
  */
 public class NotificationCollection {
-	/**
-	 * 
-	 */
-	private Notification[] notification;
-	/**
-	 * 
-	 */
-	private static NotificationCollection instance;
+    /**
+     * Die Collection aller Notifications
+     */
+    private Collection<Notification> notification;
+    /**
+     * Die aktuelle Instanz der NotificationCollection
+     */
+    private static NotificationCollection instance;
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public static NotificationCollection getInstance() {
-		return instance;
-	}
+    /**
+     * Methode zum erhalten der aktuellen Instanz der NotificationCollection
+     * 
+     * @return Die aktuelle Instanz von NotificationCollection
+     */
+    public static NotificationCollection getInstance() {
+        return instance;
+    }
 
-	/**
-	 * 
-	 * @param notification 
-	 */
-	public void add(Notification notification) {
-	}
+    /**
+     * Methode zum hinzufügen einer neuen Benachrichtigung
+     * 
+     * @param notification
+     *            Die Benachrichtigung, welche hinzugefügt werden soll
+     */
+    public void add(final Notification notification) {
+    }
 };

@@ -4,16 +4,18 @@
 
 package edu.kit.informatik.studyplan.client.model.system;
 
+import java.util.Collection;
+
 import edu.kit.informatik.studyplan.client.model.system.Filter;
 import edu.kit.informatik.studyplan.client.model.system.OAuthCollection;
 
 /************************************************************/
 /**
- * 
+ * Eine Collection von Filtern
  */
 public class FilterCollection extends OAuthCollection {
-	/**
-	 * 
-	 */
-	private Filter[] filter;
+    /**
+     * Die Filter der Collection
+     */
+    private Collection<Filter> filter;
 };

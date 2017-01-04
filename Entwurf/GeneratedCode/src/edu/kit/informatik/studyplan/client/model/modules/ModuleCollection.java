@@ -4,6 +4,8 @@
 
 package edu.kit.informatik.studyplan.client.model.modules;
 
+import java.util.Collection;
+
 import edu.kit.informatik.studyplan.client.model.system.OAuthCollection;
 
 /************************************************************/
@@ -11,9 +13,10 @@ import edu.kit.informatik.studyplan.client.model.system.OAuthCollection;
  * Eine Sammlung von Modulen, welche vom Server abgerufen werden kann
  */
 public abstract class ModuleCollection extends OAuthCollection {
+    private Collection<Module> modules;
 
     /**
-     * Generiert abhängig von der PlanId den URL für den Abruf der Module
+     * Generiert abhÃ¤ngig von der PlanId den URL fï¿½r den Abruf der Module
      * 
      * @return Der generierte URL
      */

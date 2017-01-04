@@ -8,19 +8,20 @@ import edu.kit.informatik.studyplan.client.model.system.ObjectiveFunction;
 
 /************************************************************/
 /**
- * 
+ * Die Methoden welche im Zusammenhang mit der Generierung eines Studienplans
+ * abgespeichert und zum Server geschickt werden.
  */
 public class ProposalInformation {
-	/**
-	 * 
-	 */
-	private ObjectiveFunction objectiveFunction;
-	/**
-	 * 
-	 */
-	private int maxEctsPerSemester;
-	/**
-	 * 
-	 */
-	private String mainDiscipline;
+    /**
+     * Die ObjectiveFunction, welche zum generieren genutzt werden soll
+     */
+    private ObjectiveFunction objectiveFunction;
+    /**
+     * Die maximale Anzahl an ECTS-Punkten pro Semester bei der Generierung
+     */
+    private int maxEctsPerSemester;
+    /**
+     * Das gewählte Vertiefungsfach
+     */
+    private String mainDiscipline;
 };

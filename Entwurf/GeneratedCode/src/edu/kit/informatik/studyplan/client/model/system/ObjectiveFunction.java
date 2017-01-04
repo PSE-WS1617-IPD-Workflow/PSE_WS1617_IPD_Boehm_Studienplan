@@ -8,15 +8,15 @@ import edu.kit.informatik.studyplan.client.model.system.OAuthModel;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche eine Objective Function repräsentiert
  */
 public class ObjectiveFunction extends OAuthModel {
-	/**
-	 * 
-	 */
-	private String name;
-	/**
-	 * 
-	 */
-	private String description;
+    /**
+     * Name der Objective Function
+     */
+    private String name;
+    /**
+     * Beschreibung der Objective Function
+     */
+    private String description;
 };

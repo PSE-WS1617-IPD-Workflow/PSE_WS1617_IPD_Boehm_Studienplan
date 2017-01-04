@@ -4,46 +4,43 @@
 
 package edu.kit.informatik.studyplan.client.model.system;
 
+import java.util.Collection;
+
+import edu.kit.informatik.studyplan.client.model.modules.Module;
 import edu.kit.informatik.studyplan.client.model.system.FilterCollection;
-import edu.kit.informatik.studyplan.client.model.system.SearchModuleCollection;
-import edu.kit.informatik.studyplan.client.model.system.SimpleModuleCollection;
 
 /************************************************************/
 /**
- * 
+ * Die Seach-Collection, welche das Lazy-Loading der Module in der Suche
+ * übernimmt. Hierbei werden in zehner Schritten nach und nach mehr Module
+ * geladen und in einzelne SearchModuleCollections gespeichert. Beim Abruf
+ * mittels getModules() werden diese dann in eine einzige Collection
+ * zusammengeführt.
  */
+// TODO: UPDATE Model!
 public class SearchLazyLoadingCollection {
-	/**
-	 * 
-	 */
-	private SearchModuleCollection[] searchModules;
-	/**
-	 * 
-	 */
-	private FilterCollection filters;
-	/**
-	 * 
-	 */
-	private int highestLoaded;
+    /**
+     * Die gesuchten Module
+     */
+    private Collection<Module> searchedModules;
+    /**
+     * Die Filter, welche beim Abruf zu berücksichtigen sind
+     */
+    private FilterCollection filters;
+    /**
+     * Die ID des Plans zu welcher die Suche gehört oder null, falls die Suche
+     * Plan-Unabhängig ist
+     */
+    private int planId;
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public SimpleModuleCollection getModules() {
-		return null;
-	}
-
-	/**
-	 * 
-	 */
-	public void loadMoreModules(){
-	}
-
-	/**
-	 * 
-	 * @param filters 
-	 */
-	public void setFilters(FilterCollection filters) {
-	}
+    /**
+     * Methode, welche die Filter neu setzt und im Zuge desse, die alten
+     * SearchModuleCollections löscht und highestLoaded zurücksetzt.
+     * Anschließend werden erneut Module geladen.
+     * 
+     * @param filters
+     *            Die Filter, welche bei der Suche berücksichtigt werden sollen.
+     */
+    public void setFilters(final FilterCollection filters) {
+    }
 };

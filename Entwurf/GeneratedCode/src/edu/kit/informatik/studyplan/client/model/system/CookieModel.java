@@ -8,7 +8,13 @@ import edu.kit.informatik.studyplan.client.model.backbone.BackboneModel;
 
 /************************************************************/
 /**
- * 
+ * Ein Model, welches in einem Cookie gespeichert wird (Erweitert von
+ * Backbone.Model)
  */
-public abstract class CookieModel extends BackboneModel {
+public abstract class CookieModel {
+    /**
+     * Die Synchronisierungs-Methode, welche das Model-Objekt in einem Cookie
+     * speichert
+     */
+    private Object sync;
 };

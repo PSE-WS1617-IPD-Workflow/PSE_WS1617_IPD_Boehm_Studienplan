@@ -4,35 +4,47 @@
 
 package edu.kit.informatik.studyplan.client.model.system;
 
-
 /************************************************************/
 /**
- * Singleton, welches die Templates f�r die Views verwaltet. Jedes Template l�sst sich �ber einen key abrufen. Die Templates werden zur Compile-Zeit in den Initialisierungscode hineingeladen und sind somit bereits beim Start der Applikation im Template Manager vorhanden. Der Vorteil dieses Vorgehens ist, dass man beim Laden der einzelnen Views nicht auf eine Antwort vom Server (welche das Template enth�lt) warten muss.
+ * Singleton, welches die Templates f�r die Views verwaltet. Jedes Template
+ * lässt sich über einen key abrufen.<br>
+ * dDie Templates werden zur Compile-Zeit in den Initialisierungscode
+ * hineingeladen und sind somit bereits beim Start der Applikation im Template
+ * Manager vorhanden. Der Vorteil dieses Vorgehens ist, dass man beim Laden der
+ * einzelnen Views nicht auf eine Antwort vom Server (welche das Template
+ * enthält) warten muss.
  */
 public class TemplateManager {
-	/**
-	 * 
-	 */
-	private Object templates;
-	/**
-	 * 
-	 */
-	private static edu.kit.informatik.studyplan.client.model.system.TemplateManager instance;
+    /**
+     * Das Objekt, welches die Templates enthält, auf welche man mittels des
+     * Namens zugreifen kann.
+     */
+    private Object templates;
+    /**
+     * Die aktuelle Instanz des TemplateManagers
+     */
+    private static edu.kit.informatik.studyplan.client.model.system.TemplateManager instance;
 
-	/**
-	 * 
-	 * @param key 
-	 * @return  
-	 */
-	public String getTemplate(String key) {
-		return key;
-	}
+    /**
+     * Methode zum erhalten eines Templates, welches unter dem key gespeichert
+     * ist
+     * 
+     * @param key
+     *            Der Key zur identifizierung des Templates
+     * @return Gibt eine Funktion (ein Underscore Template) zurück, die mit
+     *         Parametern aufgerufen werden kann und deren Rückgabewert ein
+     *         befülltes Template als String ist
+     */
+    public Object getTemplate(final String key) {
+        return key;
+    }
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public edu.kit.informatik.studyplan.client.model.system.TemplateManager getInstance() {
-		return null;
-	}
+    /**
+     * Methode zum erhalten der aktuellen Instanz des TemplateManagers
+     * 
+     * @return Gibt die aktuelle Instanz des TemplateManagers zurück
+     */
+    public static edu.kit.informatik.studyplan.client.model.system.TemplateManager getInstance() {
+        return null;
+    }
 };

@@ -20,35 +20,40 @@ public class Plan extends OAuthModel {
      */
     private SemesterCollection semestercollection;
     /**
-     * 
+     * Die ID des Plans
      */
     private int planId;
     /**
-     * 
+     * Der Name des Plans
      */
     private String name;
     /**
-     * 
+     * Die Credit Points des Plans
      */
     private int creditPoints;
     /**
-     * 
+     * Der Verifikationsstatus des Plans
      */
     private String verificationState;
     /**
-     * 
+     * Die bei der Verifizierung festgestellten Fehler im Plan
      */
     private Collection<ModuleConstraint> violations;
 
     /**
+     * Eine Methode, welche zurück gibt, ob das Modul mit der gegebenen ID im
+     * Plan vorhanden ist.
      * 
      * @param moduleId
+     *            Die ID des Moduls nach welchem gesucht werden soll
+     * @return True, wenn das Modul vorhanden ist, False wenn nicht.
      */
-    public void containsModule(final int moduleId) {
+    public boolean containsModule(final int moduleId) {
+        return false;
     }
 
     /**
-     * 
+     * Lädt die Informationen zur Verifizierung und speichert diese im Plan.
      */
     public void loadVerification() {
     }

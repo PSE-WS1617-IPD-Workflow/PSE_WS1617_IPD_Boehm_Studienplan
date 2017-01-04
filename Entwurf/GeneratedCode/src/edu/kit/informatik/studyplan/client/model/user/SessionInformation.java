@@ -4,45 +4,50 @@
 
 package edu.kit.informatik.studyplan.client.model.user;
 
+import edu.kit.informatik.studyplan.client.model.system.CookieModel;
 import edu.kit.informatik.studyplan.client.model.user.Student;
 
 /************************************************************/
 /**
- * 
+ * Die Informationen zur aktuellen Session der WebApp, welche in einem Cookie
+ * gespeichert werden. Diese Informationen werden in einem Singleton
+ * gespeichert, da es nicht mehr als ein SessionInformation-Objekt geben darf.
  */
-public class SessionInformation {
-	/**
-	 * 
-	 */
-	private String access_token;
-	/**
-	 * 
-	 */
-	private boolean loggedIn;
-	/**
-	 * 
-	 */
-	private Student student;
-	/**
-	 * 
-	 */
-	private static edu.kit.informatik.studyplan.client.model.user.SessionInformation instance;
-	/**
-	 * 
-	 */
-	private String state;
+public class SessionInformation extends CookieModel {
+    /**
+     * Das Access Token welches vom Server generiert wurde
+     */
+    private String access_token;
+    /**
+     * Ob der Nutzer bereits eingeloggt ist
+     */
+    private boolean loggedIn;
+    /**
+     * Das Objekt, das den Student/Nutzer beschreibt
+     */
+    private Student student;
+    /**
+     * Die aktuelle Instanz der SessionInformation
+     */
+    private static edu.kit.informatik.studyplan.client.model.user.SessionInformation instance;
+    /**
+     * Ein String, welcher an den Server mitgesendet wird und anschließend
+     * abgegelichen wird.
+     */
+    private String state;
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public static edu.kit.informatik.studyplan.client.model.user.SessionInformation getInstance() {
-		return instance;
-	}
+    /**
+     * Methode welche die aktuelle Instanz der SessionInformation zurück gibt.
+     * 
+     * @return
+     */
+    public static edu.kit.informatik.studyplan.client.model.user.SessionInformation getInstance() {
+        return instance;
+    }
 
-	/**
-	 * 
-	 */
-	public void generateState() {
-	}
+    /**
+     * Methode, die ein neues StateAttribut generiert
+     */
+    public void generateState() {
+    }
 };

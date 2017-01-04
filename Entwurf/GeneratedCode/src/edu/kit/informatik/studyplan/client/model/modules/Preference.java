@@ -4,28 +4,31 @@
 
 package edu.kit.informatik.studyplan.client.model.modules;
 
+import edu.kit.informatik.studyplan.client.model.system.OAuthCollection;
+import edu.kit.informatik.studyplan.client.model.system.OAuthModel;
+
 /************************************************************/
 /**
- * Diese Klasse beschreibt eine zu einem Modul gehörende gesetzte Präferenz
+ * Diese Klasse beschreibt eine zu einem Modul gehÃ¶rende gesetzte PrÃ¤ferenz
  * (positiv/neutral/negativ)
  */
-public class Preference {
+public class Preference extends OAuthModel {
     /**
-     * Beschreibt die gesetzte Präferenz Einer der drei Werte {"negativ",
+     * Beschreibt die gesetzte PrÃ¤ferenz Einer der drei Werte {"negativ",
      * "positiv", ""}
      */
     private int value;
     /**
-     * Die ID des Moduls, zu welcher die Präferenz gehört
+     * Die ID des Moduls, zu welcher die PrÃ¤ferenz gehÃ¶rt
      */
     private int moduleId;
     /**
-     * Die ID des Plans für welche die Präferenz gesetzt wurde.
+     * Die ID des Plans fï¿½r welche die PrÃ¤ferenz gesetzt wurde.
      */
     private String planId;
 
     /**
-     * Generiert die URL für das speichern/abrufen der Präferenz abhängig von
+     * Generiert die URL fï¿½r das speichern/abrufen der PrÃ¤ferenz abhÃ¤ngig von
      * planId und moduleId
      * 
      * @return Den generierten URL
