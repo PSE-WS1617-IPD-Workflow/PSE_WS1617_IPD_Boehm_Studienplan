@@ -14,29 +14,36 @@ import edu.kit.informatik.studyplan.client.view.components.PlanHeadBar;
  * 
  */
 public class PlanEditPage {
-	/**
-	 * 
-	 */
-	private BackboneView sidebar;
-	/**
-	 * 
-	 */
-	private Plan plan;
-	/**
-	 * 
-	 */
-	private PlanHeadBar headBar;
+    /**
+     * 
+     */
+    private BackboneView sidebar;
+    /**
+     * 
+     */
+    private Plan plan;
+    /**
+     * 
+     */
+    private PlanHeadBar headBar;
 
-	/**
-	 * 
-	 * @param module 
-	 */
-	public void showModuleDetails(Module module) {
-	}
+    /**
+     * 
+     * @param module
+     */
+    public void showModuleDetails(final Module module) {
+    }
 
-	/**
-	 * 
-	 */
-	public void onChange() {
-	}
+    /**
+     * 
+     */
+    public void hideModuleDetails() {
+
+    }
+
+    /**
+     * 
+     */
+    public void onChange() {
+    }
 };

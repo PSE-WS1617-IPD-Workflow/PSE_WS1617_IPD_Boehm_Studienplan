@@ -9,8 +9,9 @@ import edu.kit.informatik.studyplan.client.model.system.OAuthModel;
 /************************************************************/
 /**
  * Diese Klasse beschreibt einen zu einem Modul gehörenden System-Constraint
+ * (erweitert Backbone.Model)
  */
-public class ModuleConstraint extends OAuthModel {
+public class ModuleConstraint {
     /**
      * Der Typ des ModuleConstraint. Dieser wird als String angegeben.
      */
