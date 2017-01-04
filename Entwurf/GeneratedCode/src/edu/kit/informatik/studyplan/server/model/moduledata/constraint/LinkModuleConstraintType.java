@@ -15,4 +15,5 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 public abstract class LinkModuleConstraintType extends ModuleConstraintType {
 
 	public abstract boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation);
+
 };
