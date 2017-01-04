@@ -6,7 +6,7 @@ package edu.kit.informatik.studyplan.server.model.moduledata;
 
 /************************************************************/
 /**
- * 
+ * Modelliert einen Modultyp, wie beispielsweise Vorlesung, Seminar, etc.
  */
 public class ModuleType {
 	/**
@@ -20,7 +20,7 @@ public class ModuleType {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt die eindeutige Typ-ID zurück 
 	 */
 	public int getTypeId() {
 		return typeId;
@@ -28,7 +28,7 @@ public class ModuleType {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt den Namen des Typs zurück
 	 */
 	public String getName() {
 		return name;

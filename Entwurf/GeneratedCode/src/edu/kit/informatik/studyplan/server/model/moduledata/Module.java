@@ -4,6 +4,8 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import java.util.List;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
@@ -12,17 +14,17 @@ import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleCon
 
 /************************************************************/
 /**
- * 
+ * Modelliert ein Modul
  */
 public class Module {
 	/**
 	 * 
 	 */
-	private ModuleConstraint[] moduleConstraints;
+	private List<ModuleConstraint> moduleConstraints;
 	/**
 	 * 
 	 */
-	private Category[] categories;
+	private List<Category> categories;
 	/**
 	 * 
 	 */
@@ -54,7 +56,7 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt die eindeutige Modul-ID zurück
 	 */
 	public String getModuleId() {
 		return moduleId;
@@ -62,7 +64,7 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt die Modulbezeichnung zurück
 	 */
 	public String getName() {
 		return name;
@@ -70,7 +72,7 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt die ECTS-Zahl des Moduls zurück
 	 */
 	public int getCreditPoints() {
 		return 0;
@@ -78,7 +80,7 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  
+	 * @return  gibt den Turnus des Moduls zurück
 	 */
 	public CycleType getCycleType() {
 		return null;
@@ -86,7 +88,7 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  
+	 * @return  gibt zurück, ob es sich um ein Pflichtmodul handelt
 	 */
 	public boolean isCompulsory() {
 		return false;
@@ -94,7 +96,11 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt den Studiengang, dem das Modul angehört, zurück <br>
+	 * Ein Modul ist immer eindeutig einem Studiengang zugeordnet. Wird ein Modul
+	 * in der Realität für mehrere Studiengänge angeboten, so handelt es sich jeweils
+	 * um unterschiedliche Module, denn in einem anderen Studiengang können Modulabhängigkeiten
+	 * ggf. varieren.
 	 */
 	public Discipline getDiscipline() {
 		return null;
@@ -102,7 +108,7 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  
+	 * @return  gibt die Modul-Beschreibung des Moduls zurück
 	 */
 	public ModuleDescription getModuleDescription() {
 		return null;
@@ -110,17 +116,17 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  
+	 * @return  gibt die Abhängigkeiten des Moduls zu anderen Modulen zurück
 	 */
-	public ModuleConstraint getConstraints() {
+	public List<ModuleConstraint> getConstraints() {
 		return null;
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return  gibt die Kategorien, denen das Modul angehört, zurück
 	 */
-	public Category getCategories() {
+	public List<Category> getCategories() {
 		return null;
 	}
 };

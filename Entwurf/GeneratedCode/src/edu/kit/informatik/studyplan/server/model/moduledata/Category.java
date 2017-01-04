@@ -6,7 +6,7 @@ package edu.kit.informatik.studyplan.server.model.moduledata;
 
 /************************************************************/
 /**
- * 
+ * Modelliert eine Modul-Kategorie
  */
 public class Category {
 	/**
@@ -20,7 +20,7 @@ public class Category {
 
 	/**
 	 * 
-	 * @return  
+	 * @return  gibt die eindeutige Kategorie-ID zurück
 	 */
 	public int getCategoryId() {
 		return categoryId;
@@ -28,7 +28,7 @@ public class Category {
 
 	/**
 	 * 
-	 * @return  
+	 * @return  gibt den Namen der Kategorie zurück
 	 */
 	public String getName() {
 		return name;

@@ -31,7 +31,7 @@ public abstract class ModuleConstraintType {
 	 * @param second 
 	 * @param orientation 
 	 */
-	public abstract void isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation);
+	public abstract boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation);
 
 	/**
 	 * 

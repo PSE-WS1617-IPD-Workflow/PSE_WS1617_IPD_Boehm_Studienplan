@@ -5,7 +5,7 @@
 package edu.kit.informatik.studyplan.server.generation;
 
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
-import edu.kit.informatik.studyplan.server.model.moduledata.moduledata.dao.ModuleDao;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
