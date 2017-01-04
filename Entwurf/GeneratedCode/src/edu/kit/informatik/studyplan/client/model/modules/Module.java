@@ -4,64 +4,76 @@
 
 package edu.kit.informatik.studyplan.client.model.modules;
 
+import edu.kit.informatik.studyplan.client.model.backbone.BackboneModel;
 import edu.kit.informatik.studyplan.client.model.modules.ModuleConstraint;
 import edu.kit.informatik.studyplan.client.model.modules.Preference;
+import edu.kit.informatik.studyplan.client.model.system.OAuthModel;
 
 /************************************************************/
 /**
- * 
+ * Diese Klasse repräsentiert ein Modul, welches vom Server geladen wird. Das
+ * Modul wird als Element zunächst nur teilweise geladen. Mittels eines Aufrufs
+ * von fetch() werden dann gegebenfalls weitere notwendige Daten nachgeladen.
  */
-public class Module {
-	/**
-	 * 
-	 */
-	private Preference preference;
-	/**
-	 * 
-	 */
-	private String moduleId;
-	/**
-	 * 
-	 */
-	private String name;
-	/**
-	 * 
-	 */
-	private int creditPoints;
-	/**
-	 * 
-	 */
-	private String cycleType;
-	/**
-	 * 
-	 */
-	private boolean compulsory;
-	/**
-	 * 
-	 */
-	private String description;
-	/**
-	 * 
-	 */
-	private String lecturer;
-	/**
-	 * 
-	 */
-	private String category;
-	/**
-	 * 
-	 */
-	private String discipline;
-	/**
-	 * 
-	 */
-	private String postId;
-	/**
-	 * 
-	 */
-	private ModuleConstraint moduleconstraint;
-	/**
-	 * 
-	 */
-	private boolean passed;
+public class Module extends OAuthModel {
+    /**
+     * Die vom Nutzer für das Modul gesetzte Präferenz
+     */
+    private Preference preference;
+    /**
+     * Die ID des Moduls
+     */
+    private String moduleId;
+    /**
+     * Der Name des Moduls
+     */
+    private String name;
+    /**
+     * Die Anzahl an Credit Points, die das Modul erbringt
+     */
+    private int creditPoints;
+    /**
+     * Ob das Modul im Wintersemester (="WS"), Sommersemester (="SS") oder immer
+     * ("both") stattfindet
+     */
+    private String cycleType;
+    /**
+     * Ob das Modul verpflichtend ist
+     */
+    private boolean compulsory;
+    /**
+     * Die Beschreibung des Moduls.
+     */
+    private String description;
+    /**
+     * Der Dozent des Moduls
+     */
+    private String lecturer;
+    /**
+     * Die Kategorie des Moduls
+     */
+    private String category;
+    /**
+     * Das Fach des Moduls
+     */
+    private String discipline;
+    /**
+     * Die ID des Plans zu der das Modul gehört (da die Präferenzen
+     * Planspezifisch sind, wind die Module immer an einen Plan gebunden. Die
+     * einzige Ausnahme hiervon sind die Module bei der Auswahl der bereits
+     * bestandenen Leistungen. In diesem Fall ist postId = null
+     */
+    private String planId;
+    /**
+     * Die zum Modul gehörenden System-Constraints
+     */
+    private ModuleConstraint moduleconstraint;
+    /**
+     * Ob das Modul bereits vom Nutzer bestanden wurde. Dies wird gespeichert,
+     * da die Trennung zwischen Modulen im Studienplan und bestandenen Modulen
+     * für die Anzeige der Module auf der Client-Seite aufgehoben wird. Dies ist
+     * problemlos möglich, da diese Trennung lediglich für Berechnungen
+     * interessant sind, welche nicht auf der Client-Seite stattfinden.
+     */
+    private boolean passed;
 };

@@ -4,45 +4,52 @@
 
 package edu.kit.informatik.studyplan.client.model.plans;
 
+import java.util.Collection;
+
+import edu.kit.informatik.studyplan.client.model.modules.ModuleConstraint;
 import edu.kit.informatik.studyplan.client.model.plans.SemesterCollection;
 import edu.kit.informatik.studyplan.client.model.system.OAuthModel;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche einen Studienplan beschreibt
  */
 public class Plan extends OAuthModel {
-	/**
-	 * 
-	 */
-	private SemesterCollection semestercollection;
-	/**
-	 * 
-	 */
-	private int planId;
-	/**
-	 * 
-	 */
-	private String name;
-	/**
-	 * 
-	 */
-	private int creditPoints;
-	/**
-	 * 
-	 */
-	private String verificationState;
+    /**
+     * Die Collection, welche die im Studienplan enthaltenen Semester beinhaltet
+     */
+    private SemesterCollection semestercollection;
+    /**
+     * 
+     */
+    private int planId;
+    /**
+     * 
+     */
+    private String name;
+    /**
+     * 
+     */
+    private int creditPoints;
+    /**
+     * 
+     */
+    private String verificationState;
+    /**
+     * 
+     */
+    private Collection<ModuleConstraint> violations;
 
-	/**
-	 * 
-	 * @param moduleId 
-	 */
-	public void containsModule(int moduleId) {
-	}
+    /**
+     * 
+     * @param moduleId
+     */
+    public void containsModule(final int moduleId) {
+    }
 
-	/**
-	 * 
-	 */
-	public void loadVerification() {
-	}
+    /**
+     * 
+     */
+    public void loadVerification() {
+    }
 };

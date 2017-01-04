@@ -6,31 +6,23 @@ package edu.kit.informatik.studyplan.client.model.modules;
 
 /************************************************************/
 /**
- * 
+ * Diese Klasse beschreibt einen zu einem Modul gehörenden System-Constraint
  */
 public class ModuleConstraint {
-	/**
-	 * 
-	 */
-	private String name;
-	/**
-	 * 
-	 */
-	private int modul1Id;
-	/**
-	 * 
-	 */
-	private int modul2Id;
-	/**
-	 * 
-	 */
-	private String type;
-	/**
-	 * 
-	 */
-	private String descriptionModule1;
-	/**
-	 * 
-	 */
-	private String descriptionModule2;
+    /**
+     * Der Typ des ModuleConstraint. Dieser wird als String angegeben.
+     */
+    private String name;
+    /**
+     * Die ID des ersten Moduls
+     */
+    private int modul1Id;
+    /**
+     * Die ID des zweiten Moduls
+     */
+    private int modul2Id;
+    /**
+     * Textuelle Beschreibung des ModuleConstraints für den Nutzer
+     */
+    private String type;
 };

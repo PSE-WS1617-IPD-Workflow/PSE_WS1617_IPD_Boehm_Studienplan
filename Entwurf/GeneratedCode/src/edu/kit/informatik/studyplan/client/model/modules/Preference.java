@@ -6,27 +6,31 @@ package edu.kit.informatik.studyplan.client.model.modules;
 
 /************************************************************/
 /**
- * 
+ * Diese Klasse beschreibt eine zu einem Modul gehörende gesetzte Präferenz
+ * (positiv/neutral/negativ)
  */
 public class Preference {
-	/**
-	 * 
-	 */
-	private int value;
-	/**
-	 * 
-	 */
-	private int moduleId;
-	/**
-	 * 
-	 */
-	private String postId;
+    /**
+     * Beschreibt die gesetzte Präferenz Einer der drei Werte {"negativ",
+     * "positiv", ""}
+     */
+    private int value;
+    /**
+     * Die ID des Moduls, zu welcher die Präferenz gehört
+     */
+    private int moduleId;
+    /**
+     * Die ID des Plans für welche die Präferenz gesetzt wurde.
+     */
+    private String planId;
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public String url() {
-		return postId;
-	}
+    /**
+     * Generiert die URL für das speichern/abrufen der Präferenz abhängig von
+     * planId und moduleId
+     * 
+     * @return Den generierten URL
+     */
+    public String url() {
+        return null;
+    }
 };

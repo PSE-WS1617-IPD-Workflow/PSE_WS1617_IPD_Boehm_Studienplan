@@ -8,13 +8,14 @@ import edu.kit.informatik.studyplan.client.model.system.OAuthCollection;
 
 /************************************************************/
 /**
- * 
+ * Eine Sammlung von Modulen, welche vom Server abgerufen werden kann
  */
 public abstract class ModuleCollection extends OAuthCollection {
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public abstract String url();
+    /**
+     * Generiert abhängig von der PlanId den URL für den Abruf der Module
+     * 
+     * @return Der generierte URL
+     */
+    public abstract String url();
 };
