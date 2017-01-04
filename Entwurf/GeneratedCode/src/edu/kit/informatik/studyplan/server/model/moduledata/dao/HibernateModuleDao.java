@@ -4,6 +4,8 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 
+import java.util.List;
+
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
@@ -12,68 +14,60 @@ import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 
 /************************************************************/
 /**
- * 
+ * Ein konkretes ModulDao, welches die Datenbankverbindung über Hibernate herstellt.
+ * Es kann nur auf Module, Kategorien und Vertiefungsfächer 
+ * des im Konstruktur angebenen Studiengangs zugreifen
  */
-class HibernateModuleDao {
+class HibernateModuleDao implements ModuleDao {
 	
 	/**
-	 * 
-	 * @param discipline
+	 * initialisiert ein neues DAO für den angebenen Studiengang
+	 * @param discipline der Studiengang
 	 */
 	public HibernateModuleDao(Discipline discipline) {
 		
 	}
-	/**
-	 * 
-	 * @return  
-	 * @param filter 
-	 * @param start 
-	 * @param end 
-	 */
-	public Module getModulesByFilter(Filter filter, int start, int end) {
-		return null;
-	}
 
-	/**
-	 * 
-	 * @param id 
-	 * @return  
-	 */
+	@Override
 	public Module getModuleById(String id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * 
-	 * @return  
-	 * @param filter 
-	 */
-	public Module getModulesByFilter(Filter filter) {
+	@Override
+	public List<Module> getModulesByFilter(Filter filter) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * 
-	 * @param filter 
-	 * @return  
-	 */
+	@Override
+	public List<Module> getModulesByFilter(Filter filter, int start, int end) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public Module getRandomModuleByFilter(Filter filter) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public Category getCategories() {
+	@Override
+	public List<Discipline> getDisciplines() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public Discipline getDisciplines() {
+	@Override
+	public List<Category> getCategories() {
+		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Category> getSubjects() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 };

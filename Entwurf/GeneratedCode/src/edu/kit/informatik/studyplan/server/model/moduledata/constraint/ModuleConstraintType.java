@@ -42,6 +42,14 @@ public abstract class ModuleConstraintType {
 	public String getDescription() {
 		return description;
 	}
+	
+	/**
+	 * 
+	 * @param description die textuelle Beschreibung
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	/**
 	 * 
@@ -49,5 +57,13 @@ public abstract class ModuleConstraintType {
 	 */
 	public String getFormalDescription() {
 		return description;
+	}
+	
+	/**
+	 * 
+	 * @param formalDescription der logische Ausdruck
+	 */
+	public void setFormalDescription(String formalDescription) {
+		this.formalDescription = formalDescription;
 	}
 };

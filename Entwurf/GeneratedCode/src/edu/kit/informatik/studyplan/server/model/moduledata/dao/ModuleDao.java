@@ -13,55 +13,56 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 
 /************************************************************/
 /**
- * 
+ * DataAccessObject zum Zugriff auf die Modul-Datenbank
  */
 public interface ModuleDao {
 
 	/**
 	 * 
-	 * @param id 
-	 * @return  
+	 * @param id die ID des zu suchenden Moduls
+	 * @return das Modul mit der entsprechenden ID, <code>null</code> wenn kein Modul gefunden
 	 */
 	public Module getModuleById(String id);
 
 	/**
-	 * 
-	 * @return  
-	 * @param filter 
+	 * Sucht alle Module die den angegebenen Filterkritierien entsprechen und gibt diese zurück
+	 * @return die Modulliste
+	 * @param filter der Modulfilter
 	 */
-	public Module getModulesByFilter(Filter filter);
+	public List<Module> getModulesByFilter(Filter filter);
 
 	/**
-	 * 
-	 * @return  
-	 * @param filter 
-	 * @param start 
-	 * @param end 
+	 * Sucht alle Module die den angegebenen Filterkritierien entsprechen und gibt die Einträge Nr.
+	 * <code>start</code> bis <code>end</code> zurück.
+	 * @return die Modulliste
+	 * @param filter der Modulfilter
+	 * @param start Start-Index
+	 * @param end End-Index
 	 */
-	public Module getModulesByFilter(Filter filter, int start, int end);
+	public List<Module> getModulesByFilter(Filter filter, int start, int end);
 
 	/**
-	 * 
-	 * @param filter 
-	 * @return  
+	 * Gibt ein zufälliges Modul, welches den angebenen Filterkriterien entspricht, zurück
+	 * @param filter der Modulfilter
+	 * @return das Modul
 	 */
 	public Module getRandomModuleByFilter(Filter filter);
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt eine Liste der verfügbaren Studiengänge zurück
 	 */
-	public Discipline getDisciplines();
+	public List<Discipline> getDisciplines();
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt eine Liste der verfügbaren Kategorien zurück
 	 */
-	public Category getCategories();
+	public List<Category> getCategories();
 	
 	/**
 	 * 
-	 * @return
+	 * @return gibt eine Liste der verfügbaren Vertiefungsfächer zurück
 	 */
 	public List<Category> getSubjects();
 };

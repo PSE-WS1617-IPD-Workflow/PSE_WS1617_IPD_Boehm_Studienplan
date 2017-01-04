@@ -36,7 +36,11 @@ public class Module {
 	/**
 	 * 
 	 */
-	private String moduleId;
+	private int moduleId;
+	/**
+	 * 
+	 */
+	private String identifier;
 	/**
 	 * 
 	 */
@@ -58,8 +62,16 @@ public class Module {
 	 * 
 	 * @return gibt die eindeutige Modul-ID zurück
 	 */
-	public String getModuleId() {
+	public int getModuleId() {
 		return moduleId;
+	}
+	
+	/**
+	 * 
+	 * @return gibt den eindeutigen Identifier-String zurück
+	 */
+	public String getIdentifier() {
+		return identifier;
 	}
 
 	/**
