@@ -2073,6 +2073,7 @@ welche wiederum die Render-Funktionen &quot;unterliegender&quot; Views aufruft.&
           <generalization xmi:type="uml:Generalization" xmi:id="_-X9voMzuEeaiINyVGHRfeA" general="_QeUi8MztEeaiINyVGHRfeA"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_H6O_AM0OEeavo6is7kUH4g" name="student" visibility="private" type="_UHYTEMPTEeaCPewWEdcdGQ"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_s-tXQc0OEeavo6is7kUH4g" name="moduleFinder" visibility="private" type="_NfZ4wM0DEeameZvbSNUikg" association="_s-qT8M0OEeavo6is7kUH4g"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_TiP20NKnEeaZ9LiNudsyXQ" name="passedModulePlan" type="_yDxwcM0KEeavo6is7kUH4g" association="_TiLlYNKnEeaZ9LiNudsyXQ"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_YE0CIM0MEeavo6is7kUH4g" name="next">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_YE0CIc0MEeavo6is7kUH4g" type="_QeUi8MztEeaiINyVGHRfeA" direction="return"/>
           </ownedOperation>
@@ -2111,7 +2112,11 @@ welche wiederum die Render-Funktionen &quot;unterliegender&quot; Views aufruft.&
           <ownedAttribute xmi:type="uml:Property" xmi:id="_evu6oM0PEeavo6is7kUH4g" name="isRemovable" visibility="private">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
           </ownedAttribute>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_-AWTUM0OEeavo6is7kUH4g" name="setRedBorder"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_-AWTUM0OEeavo6is7kUH4g" name="setRedBorder">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_hc0UQNKnEeaZ9LiNudsyXQ" name="setBorder">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+            </ownedParameter>
+          </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_NUQQUM0REeavo6is7kUH4g" name="removeModule"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_exixIM0SEeavo6is7kUH4g" name="click"/>
         </packagedElement>
@@ -2948,6 +2953,12 @@ Die Methodensignatur ist hierbei vom Framework Backbone vorgegeben. In den einze
     <packagedElement xmi:type="uml:DataType" xmi:id="_UjZmYMdlEea29-bQWKStRA" name="Backbone.Model"/>
     <packagedElement xmi:type="uml:DataType" xmi:id="_VkyK4MdlEea29-bQWKStRA" name="Backbone.Collection"/>
     <packagedElement xmi:type="uml:DataType" xmi:id="_WmKIUMdlEea29-bQWKStRA" name="Backbone.Router"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_TiLlYNKnEeaZ9LiNudsyXQ" memberEnd="_TiP20NKnEeaZ9LiNudsyXQ _TiRE8NKnEeaZ9LiNudsyXQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TiPPwNKnEeaZ9LiNudsyXQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TiPPwdKnEeaZ9LiNudsyXQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_TiRE8NKnEeaZ9LiNudsyXQ" type="_qpNGAMzuEeaiINyVGHRfeA" association="_TiLlYNKnEeaZ9LiNudsyXQ"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vtuncLcDEeag2fAimjvU5Q">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vt3xYLcDEeag2fAimjvU5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
