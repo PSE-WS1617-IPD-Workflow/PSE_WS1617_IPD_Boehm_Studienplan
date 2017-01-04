@@ -1,3 +1,4 @@
+\FloatBarrier
 \subsection{Authentifizierung}
 \label{subsec:api-auth}
 \paragraph{Zugrundeliegende Spezifikation} Die Authentifizierung am REST-Webservice erfolgt über eine OAuth-2.0-Schnittstelle nach RFC 6749 (siehe \cite{rfc6749}).
@@ -5,7 +6,7 @@ Für das momentane System ist hierbei nur die Authentifizierung über \textit{Im
 Die zugrundeliegende Spezifikation verteilt klare Rollen an die verschiedenen Akteure, welche an der Interaktion der Systeme beteiligt sind. In Tabelle \ref{tab:api-auth-roles} ist angegeben, welches Subsystem die jeweiligen Rollen bei der OAuth-Authentifizierung in unserem System übernimmt.
 
 \begin{table}
-	\begin{tabular}{@{} | p{.3\textwidth} | p{.7\textwidth} | @{}} 
+	\begin{tabular}{@{} | p{.25\textwidth} | p{.7\textwidth} | @{}} 
 		\hline
 		\textbf{Rolle} & \textbf{Subsystem}\\ \hhline{|=|=|}
 		\textit{resouce owner} & Benutzer \\ \hline
@@ -27,7 +28,7 @@ Wir unterscheiden zwischen zwei Typen von Klienten: \textit{Vertrauenswürdige} 
 \subparagraph{Vertrauenswürdiger Klient}
 Für einen vertrauenswürdigen Klienten werden die Informationen aus Tabelle \ref{tab:api-auth-confidential-client-data} gespeichert.\\
 \begin{table}
-	\begin{tabular}{@{} | p{.16\textwidth} | p{.84\textwidth} | @{}} 
+	\begin{tabular}{@{} | p{.15\textwidth} | p{.80\textwidth} | @{}} 
 		\hline
 		\textbf{Name} & \textbf{Beschreibung}\\ \hhline{|=|=|}
 		\textit{api\_key} & Eindeutige, öffentliche ID des Klienten. Beginnt mit dem Präfix \enquote{key-} \\ \hline
@@ -44,7 +45,7 @@ Für einen vertrauenswürdigen Klienten werden die Informationen aus Tabelle \re
 \subparagraph{Öffentlicher Klient}
 Für einen öffentlichen Klienten werden die Informationen aus Tabelle  \ref{tab:api-auth-public-client-data} gespeichert. \\
 \begin{table}
-	\begin{tabular}{@{} | p{.3\textwidth} | p{.7\textwidth} | @{}} 
+	\begin{tabular}{@{} | p{.25\textwidth} | p{.7\textwidth} | @{}} 
 		\hline
 		\textbf{Name} & \textbf{Beschreibung}\\ \hhline{|=|=|}
 		api\_key & Eindeutige, öffentliche ID des Klienten. Beginnt mit dem Präfix \enquote{key-} \\ \hline
@@ -88,7 +89,7 @@ Die Authentifizierung schlägt in folgenden Fällen mit den Parametern aus Tabel
 
 Ist die Authentifizierung erfolgreich, so werden bei der Weiterleitung die Parameter aus Tabelle \ref{tab:api-auth-login-res-success} im \textit{Fragment} übergeben.
 \begin{table}
-	\begin{tabular}{@{} | p{.2\linewidth} | p{.8\linewidth} | @{}}
+	\begin{tabular}{@{} | p{.2\linewidth} | p{.75\linewidth} | @{}}
 		\hline
 		\textbf{Parameter} & \textbf{Beschreibung}\\ \hhline{|=|=|}
 		\textit{response\_type} & Für die Authentifizierung mittels \textit{Implicit-Grant} der Wert \enquote{token}. Für Authentifizierung mittels \textit{Authorization-Code-Grant} der Wert \enquote{code}. Für Authentifizierung mittels \textit{Resource-Owner-Password-Credentials-Grant} der Wert \enquote{password}. \\ \hline
@@ -102,7 +103,7 @@ Ist die Authentifizierung erfolgreich, so werden bei der Weiterleitung die Param
 \end{table}
 
 \begin{table}
-	\begin{tabular}{@{} | p{.2\linewidth} | p{.8\linewidth} | @{}}
+	\begin{tabular}{@{} | p{.2\linewidth} | p{.75\linewidth} | @{}}
 		\hline
 		\textbf{Parameter} & \textbf{Beschreibung}\\ \hhline{|=|=|}
 		\textit{error} & Ein den Fehler identifizierenden Schlüssel (siehe hierfür auch \cite[Kap. 4.2.2.1]{rfc6749})\\ \hline
@@ -114,7 +115,7 @@ Ist die Authentifizierung erfolgreich, so werden bei der Weiterleitung die Param
 \end{table}
 
 \begin{table}
-	\begin{tabular}{@{} | p{.2\linewidth} | p{.8\linewidth} | @{}}
+	\begin{tabular}{@{} | p{.2\linewidth} | p{.75\linewidth} | @{}}
 		\hline
 		\textbf{Parameter} & \textbf{Beschreibung}\\ \hhline{|=|=|}
 		\textit{access\_token} & Ein Token, mit welchem der Klient im Namen des Nutzers auf den REST-Webservice zugreifen kann\\ \hline
