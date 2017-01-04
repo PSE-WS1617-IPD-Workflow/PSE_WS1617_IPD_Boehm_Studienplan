@@ -9,7 +9,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
 /************************************************************/
 /**
- * 
+ * Modelliert eine Abhängkeitstyp einer Modulabhängigkeit
  */
 public abstract class ModuleConstraintType {
 	/**
@@ -26,16 +26,18 @@ public abstract class ModuleConstraintType {
 	private String formalDescription;
 
 	/**
-	 * 
-	 * @param first 
-	 * @param second 
-	 * @param orientation 
+	 * Überprüft, ob für zwei gegebene Moduleinträge die Abhängigkeit dieses Typs erfüllt ist.
+	 * @param first der erste Moduleintrag
+	 * @param second der zweite Moduleintrag
+	 * @param orientation Richtung in die die Relation überprüft werden soll. <br>
+	 *TODO: näher beschreiben
+	 * @return Ergebnis der Überprüfung
 	 */
-	public abstract void isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation);
+	public abstract boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation);
 
 	/**
 	 * 
-	 * @return  
+	 * @return  gibt die textuelle Beschreibung der Abhängigkeit zurück
 	 */
 	public String getDescription() {
 		return description;
@@ -43,7 +45,7 @@ public abstract class ModuleConstraintType {
 
 	/**
 	 * 
-	 * @return  
+	 * @return  gibt die Abhängigkeitsbeschreibung in Form eines logischen Ausdrucks zurück
 	 */
 	public String getFormalDescription() {
 		return description;

@@ -8,7 +8,8 @@ import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
 
 /************************************************************/
 /**
- * 
+ * Modelliert eine Modulbeschreibung <br>
+ * Eine Modulbeschreibung kann mehreren Modulen zugeordnet sein
  */
 public class ModuleDescription {
 	/**
@@ -26,7 +27,7 @@ public class ModuleDescription {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt die eindeutige Beschreibungs-ID zurück
 	 */
 	public int getDescriptionId() {
 		return descriptionId;
@@ -34,7 +35,7 @@ public class ModuleDescription {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt den Beschreibungstext zurück
 	 */
 	public String getDescriptionText() {
 		return descriptionText;
@@ -42,7 +43,7 @@ public class ModuleDescription {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gbit den Dozenten zurück
 	 */
 	public String getLecturer() {
 		return descriptionText;
@@ -50,7 +51,7 @@ public class ModuleDescription {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt den Modul-Typ zurück
 	 */
 	public ModuleType getModuleType() {
 		return null;

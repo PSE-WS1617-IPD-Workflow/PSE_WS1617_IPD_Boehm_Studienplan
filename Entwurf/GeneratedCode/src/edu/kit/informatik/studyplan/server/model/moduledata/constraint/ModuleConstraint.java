@@ -9,7 +9,7 @@ import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleCon
 
 /************************************************************/
 /**
- * 
+ * Diese Klasse modelliert eine Abhängigkeit zwischen zwei Modulen.
  */
 public class ModuleConstraint {
 	/**
@@ -19,7 +19,7 @@ public class ModuleConstraint {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt das erste Modul der Abhängigkeitsrelation zurück
 	 */
 	public Module getFirstModule() {
 		return null;
@@ -27,7 +27,7 @@ public class ModuleConstraint {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt das zweite Modul der Abhängigkeitsrelation zurück
 	 */
 	public Module getSecondModule() {
 		return null;
@@ -35,7 +35,8 @@ public class ModuleConstraint {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt den Typ der Abhängigkeit zurück
+	 * @see ModuleConstraintType
 	 */
 	public ModuleConstraintType getConstraintType() {
 		return constraintType;
