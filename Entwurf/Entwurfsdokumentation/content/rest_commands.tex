@@ -50,6 +50,14 @@
 % #1: GET parameter name of the optional parameter
 \newcommand{\optpar}[1]{\textit{#1}}
 
+% refstatus command
+% #1: status code number
+\newcommand{\refstatus}[1]{
+	%\hyperref[STATUS-#1]{
+		#1
+	%}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \FloatBarrier
@@ -58,21 +66,21 @@
 Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Methoden und URIs beschrieben. GET-Parameter-Definitionen (*) sind weiter unten separat aufgeführt.
 \begin{longtable}{| >{\hspace{0pt}} p{.11\textwidth} | >{\hspace{0pt}} p{.24\textwidth} | >{\hspace{0pt}} p{.26\textwidth} | >{\hspace{0pt}} p{.34\textwidth} |}
 	\hline
-	\textbf{Methode} & \textbf{URI} & \textbf{Beschreibung} & \textbf{Anfrage-Parameter\+/Rückgabewerte} \\ 
+	\textbf{Methode} & \textbf{URI} & \textbf{Beschreibung} & \textbf{Anfrage-Parameter\+/Rückgabewerte \+(Statuscodes)} \\ 
 	\hhline{|=|=|=|=|}  
 	\endfirsthead
 	
 	\hline
-	\textbf{Methode} & \textbf{URI} & \textbf{Beschreibung} & \textbf{Anfrage-Parameter\+/Rückgabewerte} \\ 
-	\hhline{|=|=|=|=|}  
+	\textbf{Methode} & \textbf{URI} & \textbf{Beschreibung} & \textbf{Anfrage-Parameter\+/Rückgabewerte \+(Statuscodes)} \\ 
+	\hline  
 	\endhead
 	
 	\hhline{|=|=|=|=|}   
 	\endlastfoot
 	%===============================================================================================
-	GET & /modules &  Lese planunabhängige Modul-Liste (gefiltert) (Name, ECTS und Dozent) & Anfrage: \refgetparams{Modules-Parameter} \newline Rückgabe: \jsonobj{ModulesResult} \\
+	GET & /modules &  Lese planunabhängige Modul-Liste (gefiltert) (Name, ECTS und Dozent) & Anfrage: \refgetparams{Modules-Parameter} \newline Rückgabe:  \jsonobj{ModulesResult} \\
 	\hline
-	GET & /modules/\jsonatom{Modul-ID} & Lese Modul (planunabhängig) & Anfrage: --- \newline Rückgabe: \jsonobj{ModuleResult} \\
+	GET & /modules/\jsonatom{Modul-ID} & Lese Modul (planunabhängig) & Anfrage: --- \newline Rückgabe: \jsonobj{ModuleResult} \\ 
 	\hhline{|=|=|=|=|} 
 	GET & /student & Lese Informationen über Student & Anfrage: --- \newline Rückgabe: \jsonobj{StudentResult} \\ 
 	\hline
@@ -92,7 +100,7 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 	\hline
 	DELETE & /plans/\jsonatom{Plan-ID} & Lösche Plan & --- \\ 
 	\hline
-	POST & /plans/\jsonatom{Plan-ID} & Dupliziere Plan & Anfrage: \jsonobj{PlanPatchPostRequest} \newline Rückgabe: \jsonobj{PlanPatchPostResult} \\ 
+	POST & /plans/\jsonatom{Plan-ID} & Dupliziere Plan & Anfrage: \jsonobj{PlanPatchPostRequest} \newline Rückgabe: \jsonobj{PlanPatchPostResult} \\* 
 	\hhline{|=|=|=|=|} 
 	GET & /plans/\+\jsonatom{Plan-ID}/\+modules & Lese Modul-Liste (gefiltert) (Name, ECTS, Dozent und Präferenz) & Anfrage: \newline \refgetparams{PlanModules-Parameter} \newline Rückgabe: \jsonobj{PlanModulesResult} \\ 
 	\hhline{|=|=|=|=|} 
@@ -114,7 +122,7 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 	\hhline{|=|=|=|=|} 
 	GET & /objective-functions & Lese Liste mit allen vorhandenen Zielfunktionen & Anfrage: --- \newline Rückgabe: \jsonobj{ObjectiveFunctionsResult} \\ 
 	\hhline{|=|=|=|=|} 
-	GET & /disciplines & Lese Liste mit allen angebotenen Studienfächern & Anfrage: --- \newline Rückgabe: \jsonobj{DisciplinesResult} \\ 
+	GET & /disciplines & Lese Liste mit allen angebotenen Studienfächern & Anfrage: --- \newline Rückgabe: \jsonobj{DisciplinesResult} \\*
 	\hhline{|=|=|=|=|}
 	GET & /subjects & Lese Liste mit allen angebotenen Vertiefungsfächern & Anfrage: --- \newline Rückgabe: \jsonobj{SubjectsResult} \\
 \end{longtable}
