@@ -23,13 +23,13 @@ public class Filter extends OAuthModel {
      * Die den Filter spezifizierenden Eigenschaften
      */
     private Object parameters;
-    // TODO: In UML übertragen
+    // TODO: In UML Ã¼bertragen
     /**
      * Die ID des Filters
      */
     private String id;
     /**
-     * Der Standardwert des Filters (Struktur abhängig vom Filter)
+     * Der Standardwert des Filters (Struktur abhÃ¤ngig vom Filter)
      */
     private Object defaultValue;
     /**

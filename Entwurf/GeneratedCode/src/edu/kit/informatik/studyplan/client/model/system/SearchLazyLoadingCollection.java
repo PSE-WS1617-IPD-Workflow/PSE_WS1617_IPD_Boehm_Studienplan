@@ -6,9 +6,8 @@ package edu.kit.informatik.studyplan.client.model.system;
 
 import java.util.Collection;
 
+import edu.kit.informatik.studyplan.client.model.modules.Module;
 import edu.kit.informatik.studyplan.client.model.system.FilterCollection;
-import edu.kit.informatik.studyplan.client.model.system.SearchModuleCollection;
-import edu.kit.informatik.studyplan.client.model.system.SimpleModuleCollection;
 
 /************************************************************/
 /**
@@ -18,19 +17,16 @@ import edu.kit.informatik.studyplan.client.model.system.SimpleModuleCollection;
  * mittels getModules() werden diese dann in eine einzige Collection
  * zusammengeführt.
  */
+// TODO: UPDATE Model!
 public class SearchLazyLoadingCollection {
     /**
-     * Die SearchModuleCollections
+     * Die gesuchten Module
      */
-    private Collection<SearchModuleCollection> searchModules;
+    private Collection<Module> searchedModules;
     /**
      * Die Filter, welche beim Abruf zu berücksichtigen sind
      */
     private FilterCollection filters;
-    /**
-     * Die Anzahl der geladenen Module
-     */
-    private int highestLoaded;
     /**
      * Die ID des Plans zu welcher die Suche gehört oder null, falls die Suche
      * Plan-Unabhängig ist
@@ -38,24 +34,8 @@ public class SearchLazyLoadingCollection {
     private int planId;
 
     /**
-     * Methode zum erhalten aller geladenen Module in einer
-     * SimpleModuleCollection
-     * 
-     * @return Eine SimpleModuleCollection mit allen Modulen aus searchModules
-     */
-    public SimpleModuleCollection getModules() {
-        return null;
-    }
-
-    /**
-     * Methode welche weitere Module aus der Server-Resource l�dt.
-     */
-    public void loadMoreModules() {
-    }
-
-    /**
      * Methode, welche die Filter neu setzt und im Zuge desse, die alten
-     * SearchModuleCollections l�scht und highestLoaded zurücksetzt.
+     * SearchModuleCollections löscht und highestLoaded zurücksetzt.
      * Anschließend werden erneut Module geladen.
      * 
      * @param filters
