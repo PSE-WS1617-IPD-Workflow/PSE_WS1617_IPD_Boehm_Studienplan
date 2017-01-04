@@ -67,9 +67,16 @@
 		"max": (*\jsonatom{Filter-Maximum}*)
 	},
 	case type == "list": {
-		"items": (*\jsonlist{\jsonatom{Filter-Wahlitem}}*)
+		"items": (*\jsonlist{\jsonobj{Filter-Wahlitem}}*)
 	},
 	case type == "contains": {}
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=json]
+(*\lbljsonobj{Filter-Wahlitem}*) = {
+	"id": (*\jsonatom{Item-ID}*),
+	"text": (*\jsonatom{Item-Text}*)
 }
 \end{lstlisting}
 
