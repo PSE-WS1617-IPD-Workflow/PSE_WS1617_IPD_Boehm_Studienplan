@@ -28,6 +28,14 @@ public class ModuleInfoSidebar {
      */
     public void onClose() {
     }
+
+    /**
+     * Methode, die bei Veränderungen des Moduls aufgerufen wird (notwendig
+     * wegen dynamischem Laden des Moduls).
+     */
+    public void onChange() {
+
+    }
     /**
      * Methode, die bei einer Veränderung der Daten aus dem Modell aufgerufen
      * wird. Dies kann insbesondere dann wichtig sein, wenn das laden der Daten

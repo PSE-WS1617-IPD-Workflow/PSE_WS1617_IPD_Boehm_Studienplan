@@ -2139,9 +2139,7 @@ welche wiederum die Render-Funktionen &quot;unterliegender&quot; Views aufruft.&
           <ownedAttribute xmi:type="uml:Property" xmi:id="_ptPiUM0VEeavo6is7kUH4g" name="isPlaced" visibility="private">
             <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_VlPSQM0VEeavo6is7kUH4g"/>
           </ownedAttribute>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_adDa8M0DEeameZvbSNUikg" name="onScroll"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_fZ0P4M0DEeameZvbSNUikg" name="onSearch"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_PJcBkM0XEeavo6is7kUH4g" name="onChange"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_jN928M0DEeameZvbSNUikg" name="ModuleList" visibility="public">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_hHnjkM0FEeameZvbSNUikg" name="modules" visibility="private"/>
@@ -2154,8 +2152,14 @@ welche wiederum die Render-Funktionen &quot;unterliegender&quot; Views aufruft.&
           </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_qSK5gM0DEeameZvbSNUikg" name="ModuleFilter">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_iZ0V0M0GEeavo6is7kUH4g" name="filterComponent" visibility="private" type="_gnHCEM0GEeavo6is7kUH4g" association="_iZry8M0GEeavo6is7kUH4g"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_iZ0V0M0GEeavo6is7kUH4g" name="filterComponent" visibility="private" type="_gnHCEM0GEeavo6is7kUH4g" association="_iZry8M0GEeavo6is7kUH4g">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_si0YUNKnEeaZ9LiNudsyXQ"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_si4pwNKnEeaZ9LiNudsyXQ" value="*"/>
+          </ownedAttribute>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_m-0VkM0HEeavo6is7kUH4g" name="onSearch"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4NHcQNKnEeaZ9LiNudsyXQ" name="getFilters">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4NHcQdKnEeaZ9LiNudsyXQ" type="_hHBMUMbTEea_vtQ7PzZ20Q" direction="return"/>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_2VJtwM0EEeameZvbSNUikg" name="NotificationCentre">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_9_pUQM0EEeameZvbSNUikg" name="notificationCollection" visibility="private" type="_u5Bv4M0DEeameZvbSNUikg">
@@ -2321,6 +2325,7 @@ MainView ist ein Observer der NotificationCollection und zeigt neue Notification
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XIUZIM0WEeavo6is7kUH4g" value="*"/>
           </ownedAttribute>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_gt4vwM0XEeavo6is7kUH4g" name="onChange"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_O1SjANKoEeaZ9LiNudsyXQ" name="onClose"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_WaBvwM0WEeavo6is7kUH4g" name="constraints" visibility="private" memberEnd="_WaCW0c0WEeavo6is7kUH4g _WaFaIM0WEeavo6is7kUH4g">
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WaBvwc0WEeavo6is7kUH4g" source="org.eclipse.papyrus">

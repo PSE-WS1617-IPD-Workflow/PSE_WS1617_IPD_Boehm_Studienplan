@@ -23,10 +23,10 @@ public class ModuleBox {
     /**
      * Möglichkeit einen roten Rand um das Modul zu setzten
      * 
-     * @param set
+     * @param setBorder
      *            Ob der Rahmen gesetzt werden soll (true) oder nicht (false)
      */
-    public void setRedBorder(final boolean set) {
+    public void setRedBorder(final boolean setBorder) {
     }
 
     /**
