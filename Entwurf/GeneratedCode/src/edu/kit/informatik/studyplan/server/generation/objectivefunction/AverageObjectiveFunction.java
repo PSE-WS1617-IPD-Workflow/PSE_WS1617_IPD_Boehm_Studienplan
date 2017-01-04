@@ -8,14 +8,16 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
- * AtomObjectiveFunction ist eine Teilzielfunktion, die nur eine Eigenschaft
- * berücksichtigt.
+ * Es wird bei der Auswertung der Teilzielfunktionen immer der durchschnitt genomen.
  */
-public abstract class AtomObjectiveFunction implements PartialObjectiveFunction {
-
-  /*
-   * {@inheritDoc}
-   */
-  @Override
-  public abstract double evaluate(Plan plan);
+public class AverageObjectiveFunction extends ObjectiveFunction {
+ 
+    /*
+     * Nimmt die durchschnittliche Bewertungen der Teilzielfunktionen.
+     */
+	@Override
+	public double evaluate(final Plan plan) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 };
