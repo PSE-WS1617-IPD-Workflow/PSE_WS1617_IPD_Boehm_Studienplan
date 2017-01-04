@@ -1,5 +1,7 @@
 # PSE_IPD_Boehm_Studienplan
 
+*Fileencoding in UTF-8*
+
 Please have Telegram open while making changes. Sometimes there are conflicts and to resolve them it is necessary that everyone except one person stops working on a file.
 
 
@@ -26,3 +28,6 @@ Help -> Install Papyrus Additional Comonents -> Designer-JAVA (Incubation)
 * Copy generated jar to source foulde of JavaProject
 * run javadoc -docletpath texdoclet.jar -doclet org.wonderly.doclets.TexDoclet *my.cool.package* (whereby *my.cool.package* is the package that java doc should be generated for)
 * also see: https://docs.oracle.com/javase/7/docs/technotes/tools/windows/javadoc.html#runningjavadoc
+
+###Set Eclipse to UTF-8
+* Go to Window -> Prefernces -> General -> Workspace -> Text file encoding
