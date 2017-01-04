@@ -1,6 +1,8 @@
 \FloatBarrier
 \subsection{Spezifikation der JSON-Datenklassen}
 
+Im Folgenden werden die zur REST-Kommunikation nötigen JSON-Datenklassen mithilfe der in Kapitel \ref{subsec:rest-notation} Notation spezifiziert. 
+
 \subsubsection*{Modellklassen}
 
 \begin{lstlisting}[language=json]
@@ -72,6 +74,9 @@
 	case type == "contains": {}
 }
 \end{lstlisting}
+\vspace{-\baselineskip}
+Anmerkung: Die case-Notation beschreibt eine Fallunterscheidung; die in den einzelnen Fällen in geschweifte Klammern gekapselten Attribute liegen hierbei in derselben Ebene wie die Fallunterscheidungen. Es versteht sich von selbst, dass stets genau einer der Fälle zutrifft.
+\vspace{\baselineskip}
 
 \begin{lstlisting}[language=json]
 (*\lbljsonobj{Filter-Wahlitem}*) = {

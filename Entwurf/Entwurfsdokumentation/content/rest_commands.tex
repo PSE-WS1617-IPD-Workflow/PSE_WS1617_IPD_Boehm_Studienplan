@@ -2,7 +2,7 @@
 % #1: URI of the GET method
 % #2: title used for refering (also used as label)
 \newenvironment{getparamdef}[2]{
-	\begin{longtable}{|p{.23\linewidth}|p{.77\linewidth}|}
+	\begin{longtable}{|p{.23\linewidth}|p{.72\linewidth}|}
 		\multicolumn{2}{@{}l}{\label{GETP-#2}\textsf{\textbf{GET #1 \; (#2)}}} \vspace{2pt} \\
 		\hhline{|=|=|}
 		\textbf{Parametername} & \textbf{Wert} \\
@@ -24,9 +24,9 @@
 % #2: title used for refering (also used as label)
 % #3: Additional description text
 \newenvironment{getparamdef*}[3]{
-	\begin{longtable}{|p{.23\linewidth}|p{.77\linewidth}|}
+	\begin{longtable}{|p{.23\linewidth}|p{.72\linewidth}|}
 		\multicolumn{2}{@{}l}{\label{GETP-#2}\textsf{\textbf{GET #1 \; (#2)}}} \vspace{2pt} \\
-		\multicolumn{2}{@{}p{\linewidth}}{#3} \vspace{2pt} \\
+		\multicolumn{2}{@{}p{.95\linewidth}}{#3} \vspace{2pt} \\
 		\hhline{|=|=|}
 		\textbf{Parametername} & \textbf{Wert} \\
 		\hline 
@@ -112,7 +112,7 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 	GET & /plans/\+\jsonatom{Plan-ID}/\+pdf & Lese PDF-Version des Plans & Anfrage: \refgetparams{PDF-Parameter} \newline Rückgabe: (Weiterleitung auf PDF) \\  
 	\hhline{|=|=|=|=|} 
 	GET  & /filters & Lade Filtertypen und Beschränkungen & Anfrage: --- \newline Rückgabe: \jsonobj{FiltersResult} \\ 
-	\hline %\hhline{|=|=|=|=|} 
+	\hhline{|=|=|=|=|} 
 	GET & /objective-functions & Lese Liste mit allen vorhandenen Zielfunktionen & Anfrage: --- \newline Rückgabe: \jsonobj{ObjectiveFunctionsResult} \\ 
 	\hhline{|=|=|=|=|} 
 	GET & /subjects & Lese Liste mit allen angebotenen Studienfächern & Anfrage: --- \newline Rückgabe: \jsonobj{SubjectsResult} \\ 
@@ -123,14 +123,14 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 Die Parameter der GET-Anfragen werden im Folgenden tabellarisch beschrieben. Parameter mit \optpar{kursivem Namen} sind optional und werden nur falls nötig angegeben.
 
 \begin{getparamdef*}{/modules}{Modules-Parameter}
-	{$\textit{filter}_k \in \{\texttt{ects}, \texttt{category}, \texttt{type}, \texttt{discipline}, \texttt{compulsory}, \texttt{cycletype}, \texttt{name}\}$: Liste der aktivierten Filter}
+	{$\textit{filter}_k \in \{\texttt{ects}, \texttt{category}, \texttt{type}, \texttt{discipline}, \texttt{compulsory}, \texttt{cycletype}, \texttt{name}\}$, bildet die Liste der aktivierten Filter}
 	filters & $\textit{filter}_1,...,\textit{filter}_n$ \\
 	\hline
 	\optpar{ects-min} & \jsonatom{Untere-ECTS-Schranke} \\
 	\hline
 	\optpar{ects-max} & \jsonatom{Obere-ECTS-Schranke} \\
 	\hline
-	\optpar{category} & \multirow{5}{*}{(Nummer des ausgewählten Elements)} \\
+	\optpar{category} & \multirow{5}{*}{\jsonatom{Item-ID}} \\*
 	\cline{1-1}
 	\optpar{type} & \\
 	\cline{1-1}

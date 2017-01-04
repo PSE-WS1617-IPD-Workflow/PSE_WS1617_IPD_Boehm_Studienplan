@@ -6,7 +6,7 @@ package edu.kit.informatik.studyplan.server.model.moduledata;
 
 /************************************************************/
 /**
- * 
+ * Modelliert ein Studienfach
  */
 public class Discipline {
 	/**
@@ -20,7 +20,7 @@ public class Discipline {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt die eindeutige Studienfach-ID zurück
 	 */
 	public int getDisciplineId() {
 		return disciplineId;
@@ -28,7 +28,7 @@ public class Discipline {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt die Kategoriebeschreibung zurück
 	 */
 	public String getDescription() {
 		return description;
