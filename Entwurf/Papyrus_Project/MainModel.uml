@@ -775,7 +775,7 @@ between(min).and(max) //or similar&#xD;
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_4rm4QNJpEeaWvImi3cfMUA" name="removedObjective" type="_d98A4L-TEeaWJullGOJpaQ" direction="return"/>
           </ownedOperation>
         </packagedElement>
-        <packagedElement xmi:type="uml:Class" xmi:id="_t8TUsL_YEeakRZ7oH0A0uA" name="PercentageAggregationObjectiveFunction">
+        <packagedElement xmi:type="uml:Class" xmi:id="_t8TUsL_YEeakRZ7oH0A0uA" name="AverageObjectiveFunction">
           <generalization xmi:type="uml:Generalization" xmi:id="_OktxUL_ZEeakRZ7oH0A0uA" general="_2BAncL_XEeaxStBhqAYAig"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_XK7WENAoEeaBHYka3B2JWQ" name="evaluate">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_XK7WEdAoEeaBHYka3B2JWQ" direction="return">
@@ -786,6 +786,16 @@ between(min).and(max) //or similar&#xD;
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_8QIpwMPVEeac84FPKfy0yg" name="ThresholdObjectiveFunction">
           <generalization xmi:type="uml:Generalization" xmi:id="__HwXIMPVEeac84FPKfy0yg" general="_2BAncL_XEeaxStBhqAYAig"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_PknI8NJtEeaWvImi3cfMUA" name="threshold">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_PknI8dJtEeaWvImi3cfMUA" value="0.5d"/>
+          </ownedAttribute>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_SPdloNJtEeaWvImi3cfMUA" name="ThresholdObjectiveFuntion"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_T_sNINJtEeaWvImi3cfMUA" name="ThresholdObjectiveFunction">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_WnjnQNJtEeaWvImi3cfMUA" name="threshold">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+          </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_X1FtYNAoEeaBHYka3B2JWQ" name="evaluate">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_X1FtYdAoEeaBHYka3B2JWQ" direction="return">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
@@ -846,6 +856,15 @@ between(min).and(max) //or similar&#xD;
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZDezItAoEeaBHYka3B2JWQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_0LCIsNJsEeaWvImi3cfMUA" name="MultiplicationObjectiveFunction">
+          <generalization xmi:type="uml:Generalization" xmi:id="_CBjMkNJtEeaWvImi3cfMUA" general="_2BAncL_XEeaxStBhqAYAig"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_5Lys0NJsEeaWvImi3cfMUA" name="evaluate">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_81xrQNJsEeaWvImi3cfMUA" name="score" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="__aylsNJsEeaWvImi3cfMUA" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
           </ownedOperation>
         </packagedElement>
       </packagedElement>
