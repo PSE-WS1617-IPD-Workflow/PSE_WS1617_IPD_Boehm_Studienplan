@@ -6,7 +6,7 @@ package edu.kit.informatik.studyplan.server.model.moduledata;
 
 /************************************************************/
 /**
- * Modelliert eine Modul-Kategorie
+ * Modelliert eine Modul-Kategorie.
  */
 public class Category {
 	/**
@@ -17,6 +17,8 @@ public class Category {
 	 * 
 	 */
 	private String name;
+	
+	private boolean isSubject;
 
 	/**
 	 * 
@@ -32,5 +34,13 @@ public class Category {
 	 */
 	public String getName() {
 		return name;
+	}
+	
+	/**
+	 * 
+	 * @return gibt zurück ob es sich bei der Kategorie um ein Vertiefungsfach handelt
+	 */
+	public boolean isSubject() {
+		return isSubject;
 	}
 };

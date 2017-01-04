@@ -5,7 +5,6 @@
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.ModuleOrientation;
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.LinkModuleConstraintType;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
 /************************************************************/
@@ -13,7 +12,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
  * Modelliert eine Zusammenhangsbeziehung zwischen zwei Modulen:<br>
  * Beide Module müssen im gleichen Semester belegt werden.
  */
-public class SemesterLinkModuleConstraintType extends LinkModuleConstraintType {
+public class SemesterLinkModuleConstraintType extends ModuleConstraintType {
 
 	public boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation) {
 		return false;
