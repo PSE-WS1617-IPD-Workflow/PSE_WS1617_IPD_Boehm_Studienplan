@@ -767,6 +767,13 @@ between(min).and(max) //or similar&#xD;
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_RvzKItAoEeaBHYka3B2JWQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
           </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_ajl70NJpEeaWvImi3cfMUA" name="add">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_nTZ2UNJpEeaWvImi3cfMUA" name="objective" type="_d98A4L-TEeaWJullGOJpaQ"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_raiq0NJpEeaWvImi3cfMUA" name="remove">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_yH8-ANJpEeaWvImi3cfMUA" name="objective" type="_d98A4L-TEeaWJullGOJpaQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4rm4QNJpEeaWvImi3cfMUA" name="removedObjective" type="_d98A4L-TEeaWJullGOJpaQ" direction="return"/>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_t8TUsL_YEeakRZ7oH0A0uA" name="PercentageAggregationObjectiveFunction">
           <generalization xmi:type="uml:Generalization" xmi:id="_OktxUL_ZEeakRZ7oH0A0uA" general="_2BAncL_XEeaxStBhqAYAig"/>
@@ -795,8 +802,18 @@ between(min).and(max) //or similar&#xD;
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_YHbaktAoEeaBHYka3B2JWQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
           </ownedOperation>
         </packagedElement>
-        <packagedElement xmi:type="uml:Class" xmi:id="_6cSDcL_YEeakRZ7oH0A0uA" name="MinimalECTSAtomObjectiveFunction">
+        <packagedElement xmi:type="uml:Class" xmi:id="_6cSDcL_YEeakRZ7oH0A0uA" name="MinimalECTSAtomObjectiveFunction" visibility="protected">
           <generalization xmi:type="uml:Generalization" xmi:id="_N5eb8L_ZEeakRZ7oH0A0uA" general="_NKVTcL_YEeakRZ7oH0A0uA"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_3jB8ENJoEeaWvImi3cfMUA" name="threshold">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_3jB8EdJoEeaWvImi3cfMUA"/>
+          </ownedAttribute>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_E6g6kNJpEeaWvImi3cfMUA" name="MinimalECTSAtom"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_8LswUNJoEeaWvImi3cfMUA" name="MinimalECTSAtom">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_VIYQUNJpEeaWvImi3cfMUA" name="threshold">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_YWB3QNAoEeaBHYka3B2JWQ" name="evaluate">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_YWB3QdAoEeaBHYka3B2JWQ" direction="return">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
@@ -842,6 +859,13 @@ between(min).and(max) //or similar&#xD;
           </ownedAttribute>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_WdoiwM0pEea6EKMAE6ELEw" name="getSubNodes">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_dNDmUM1kEeaYEN8WSzbF9A" name="children-nodes" type="_oCI2sNAbEea_kdZlFX7tiQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_fFgyYNJqEeaWvImi3cfMUA" name="add">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_pL5zkNJqEeaWvImi3cfMUA" name="node" type="_oCI2sNAbEea_kdZlFX7tiQ"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_fvZc4NJqEeaWvImi3cfMUA" name="remove">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_tpeyINJqEeaWvImi3cfMUA" name="node" type="_oCI2sNAbEea_kdZlFX7tiQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_wiqlwNJqEeaWvImi3cfMUA" name="removedNode" type="_oCI2sNAbEea_kdZlFX7tiQ" direction="return"/>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_ANQvcM0SEeaisOV8k7oI3w" name="NodeWithoutOutput">
