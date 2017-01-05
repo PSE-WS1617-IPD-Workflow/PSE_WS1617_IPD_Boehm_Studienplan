@@ -4,6 +4,8 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import java.util.List;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
@@ -11,13 +13,13 @@ import edu.kit.informatik.studyplan.server.model.userdata.Semester;
 
 /************************************************************/
 /**
- * 
+ * Modelliert einen Nutzer.
  */
 public class User {
 	/**
 	 * 
 	 */
-	private String userId;
+	private int userId;
 	/**
 	 * 
 	 */
@@ -33,41 +35,41 @@ public class User {
 	/**
 	 * 
 	 */
-	private ModuleEntry[] passedModules;
+	private List<ModuleEntry> passedModules;
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt die eindeutige ID des Nutzers zurück 
 	 */
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
 	/**
 	 * 
-	 * @param userId 
+	 * @param userId Wert, auf den die ID gesetzt wird
 	 */
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return  gibt den eindeutigen Nutzernamen zurück
 	 */
 	public String getUserName() {
-		return userId;
+		return userName;
 	}
 
 	/**
 	 * 
-	 * @param userName 
+	 * @param userName der Nutzername
 	 */
 	public void setUserName(String userName) {
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return  gibt den Studiengang zurück
 	 */
 	public Discipline getDiscipline() {
 		return discipline;
@@ -75,14 +77,14 @@ public class User {
 
 	/**
 	 * 
-	 * @param discipline 
+	 * @param discipline der Studiengang
 	 */
 	public void setDiscipline(Discipline discipline) {
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt das Semester des Studienstarts zurück
 	 */
 	public Semester getStudyStart() {
 		return studyStart;
@@ -90,24 +92,24 @@ public class User {
 
 	/**
 	 * 
-	 * @param semester 
+	 * @param semester das Semester des Studienstarts
 	 */
 	public void setStudyStart(Semester semester) {
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt eine Liste von Modul-Einträgen der bestandenen Module zurück
 	 */
-	public ModuleEntry getPassedModules() {
+	public List<ModuleEntry> getPassedModules() {
 		return null;
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt eine Liste der Studienpläne des Nutzers zurück
 	 */
-	public Plan getPlans() {
+	public List<Plan> getPlans() {
 		return null;
 	}
 };

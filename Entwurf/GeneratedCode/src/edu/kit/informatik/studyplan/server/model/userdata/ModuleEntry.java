@@ -8,7 +8,7 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 
 /************************************************************/
 /**
- * 
+ * Modelliert einen Moduleintrag in einem Studienplan
  */
 public class ModuleEntry {
 	/**
@@ -22,7 +22,7 @@ public class ModuleEntry {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt das Modul zurück
 	 */
 	public Module getModule() {
 		return module;
@@ -30,14 +30,14 @@ public class ModuleEntry {
 
 	/**
 	 * 
-	 * @param module 
+	 * @param module das Modul
 	 */
 	public void setModule(Module module) {
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt die Nummer des Semesters zurück, dem der Eintrag zugeordnet wurde
 	 */
 	public int getSemester() {
 		return semester;
@@ -45,7 +45,7 @@ public class ModuleEntry {
 
 	/**
 	 * 
-	 * @param semester 
+	 * @param semester die Semesternummer
 	 */
 	public void setSemester(int semester) {
 	}

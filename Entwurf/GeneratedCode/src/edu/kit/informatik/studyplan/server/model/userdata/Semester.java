@@ -9,7 +9,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
 
 /************************************************************/
 /**
- * 
+ * Modelliert ein Semester
  */
 public class Semester {
 	/**
@@ -22,8 +22,8 @@ public class Semester {
 	private int year;
 
 	/**
-	 * 
-	 * @return  
+	 * Berechnet die Anzahl an Semester, die seit diesem Semester vergangen sind (inkl. aktuelles)
+	 * @return  die Semesterzahl
 	 */
 	public int getDistanceToCurrentSemester() {
 		return year;
@@ -31,7 +31,8 @@ public class Semester {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt den Typ des Semester zurück
+	 * @see edu.kit.informatik.studyplan.server.model.userdata.SemesterType
 	 */
 	public SemesterType getSemesterType() {
 		return null;
@@ -39,14 +40,14 @@ public class Semester {
 
 	/**
 	 * 
-	 * @param semesterType 
+	 * @param semesterType der Semestertyp
 	 */
 	public void setSemesterType(SemesterType semesterType) {
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt das Jahr zurück in dem das Semester begonnen hat
 	 */
 	public int getYear() {
 		return year;
@@ -54,7 +55,7 @@ public class Semester {
 
 	/**
 	 * 
-	 * @param year 
+	 * @param year das Jahr in dem das Semester begonnen hat
 	 */
 	public void setYear(int year) {
 	}

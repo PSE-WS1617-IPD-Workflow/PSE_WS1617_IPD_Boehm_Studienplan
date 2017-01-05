@@ -4,6 +4,8 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import java.util.List;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
@@ -13,13 +15,17 @@ import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 
 /************************************************************/
 /**
- * 
+ * Modelliert einen Studienplan
  */
 public class Plan {
 	/**
 	 * 
 	 */
-	private String planId;
+	private int planId;
+	/**
+	 * 
+	 */
+	private String identifier;
 	/**
 	 * 
 	 */
@@ -39,16 +45,17 @@ public class Plan {
 	/**
 	 * 
 	 */
-	private ModuleEntry[] moduleentry;
+	private List<ModuleEntry> moduleEntries;
 	/**
 	 * 
 	 */
-	private ModulePreference[] modulePreferences;
+	private List<ModulePreference> modulePreferences;
 
 	/**
-	 * 
-	 * @return  
-	 * @param module 
+	 * Gibt für ein übergebenes Modul die Präferenz zurück. <br>
+	 * <code>null</code>, falls keine Präferenz vorhanden
+	 * @return  die Präferenz
+	 * @param module das Modul
 	 */
 	public PreferenceType getPreferenceForModule(Module module) {
 		return null;
@@ -56,22 +63,38 @@ public class Plan {
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt die eindeutige Plan-ID zurück
 	 */
-	public String getPlanId() {
-		return name;
+	public int getPlanId() {
+		return 0;
 	}
 
 	/**
 	 * 
-	 * @param planId 
+	 * @param planId die Plan-ID
 	 */
 	public void setPlanId(String planId) {
 	}
+	
+	/**
+	 * 
+	 * @return gibt den eindeutigen Plan-Identifier zurück
+	 */
+	public String getIdentifier() {
+		return identifier;
+	}
+	
+	/**
+	 * 
+	 * @param identifier der Plan-Identifier
+	 */
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
+	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt den Namen des Plans zurück
 	 */
 	public String getName() {
 		return name;
@@ -79,14 +102,14 @@ public class Plan {
 
 	/**
 	 * 
-	 * @param name 
+	 * @param name der Name
 	 */
 	public void setName(String name) {
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return  gibt den Verifizierungsstatus des Plans zurück
 	 */
 	public VerificationState getVerificationState() {
 		return state;
@@ -94,14 +117,14 @@ public class Plan {
 
 	/**
 	 * 
-	 * @param verificationState 
+	 * @param verificationState der Verifizierungsstatus 
 	 */
 	public void setVerificationState(VerificationState verificationState) {
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt die ECTS-Summe des Plans zurück
 	 */
 	public int getCreditPoints() {
 		return creditPoints;
@@ -109,14 +132,15 @@ public class Plan {
 
 	/**
 	 * 
-	 * @param creditPoints 
+	 * @param creditPoints die ECTS-Summe
 	 */
 	public void setCreditPoints(int creditPoints) {
+		
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt den Eigentümer des Plans zurück
 	 */
 	public User getUser() {
 		return user;
@@ -124,22 +148,22 @@ public class Plan {
 
 	/**
 	 * 
-	 * @param user 
+	 * @param user der Eigentümer
 	 */
 	public void setUser(User user) {
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt alle Moduleinträge des Plans zurück
 	 */
-	public ModuleEntry getModuleEntries() {
+	public List<ModuleEntry> getModuleEntries() {
 		return null;
 	}
 
 	/**
 	 * 
-	 * @return  
+	 * @return gibt eine List der Modulpräferenzen zurück
 	 */
 	public ModulePreference getPreferences() {
 		return null;
