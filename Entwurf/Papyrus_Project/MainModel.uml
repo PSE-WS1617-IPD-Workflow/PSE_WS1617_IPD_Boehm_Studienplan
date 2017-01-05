@@ -889,11 +889,7 @@ between(min).and(max) //or similar&#xD;
         <packagedElement xmi:type="uml:Class" xmi:id="_5FoPsM1kEeaYEN8WSzbF9A" name="WeightFunction"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_T-L8QM0SEeaisOV8k7oI3w" name="NodeWithOutput">
           <generalization xmi:type="uml:Generalization" xmi:id="_6irZsNAbEea_kdZlFX7tiQ" general="_oCI2sNAbEea_kdZlFX7tiQ"/>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_ia9WU9AcEea_kdZlFX7tiQ" name="subnodes" visibility="private" type="_oCI2sNAbEea_kdZlFX7tiQ" aggregation="shared" association="_ia9WUNAcEea_kdZlFX7tiQ">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_l4zWMNAcEea_kdZlFX7tiQ"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_l4zWMdAcEea_kdZlFX7tiQ" value="*"/>
-          </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_DqFEM9NrEea8auDEWIDnxA" name="children" type="_oCI2sNAbEea_kdZlFX7tiQ" association="_DqEdINNrEea8auDEWIDnxA">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_DqFEM9NrEea8auDEWIDnxA" name="children" type="_oCI2sNAbEea_kdZlFX7tiQ" aggregation="shared" association="_DqEdINNrEea8auDEWIDnxA">
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LVIEUNNrEea8auDEWIDnxA"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LVJ5gNNrEea8auDEWIDnxA" value="*"/>
           </ownedAttribute>
@@ -2996,11 +2992,18 @@ Die Methodensignatur ist hierbei vom Framework Backbone vorgegeben. In den einze
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_38umAs9pEeaWbKwKnQo1og" key="nature" value="UML_Nature"/>
     </eAnnotations>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_ia9WUNAcEea_kdZlFX7tiQ" memberEnd="_ia9WU9AcEea_kdZlFX7tiQ _ibHHUNAcEea_kdZlFX7tiQ">
+  <packagedElement xmi:type="uml:Association" xmi:id="_ia9WUNAcEea_kdZlFX7tiQ" memberEnd="_ia9WU9AcEea_kdZlFX7tiQ _ibHHUNAcEea_kdZlFX7tiQ" navigableOwnedEnd="_ibHHUNAcEea_kdZlFX7tiQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ia9WUdAcEea_kdZlFX7tiQ" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ia9WUtAcEea_kdZlFX7tiQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_ibHHUNAcEea_kdZlFX7tiQ" name="nodewithoutoutput" type="_T-L8QM0SEeaisOV8k7oI3w" association="_ia9WUNAcEea_kdZlFX7tiQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ibHHUNAcEea_kdZlFX7tiQ" name="subnodes" type="_oCI2sNAbEea_kdZlFX7tiQ" association="_ia9WUNAcEea_kdZlFX7tiQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1rRqMNNuEeaKxIZkCozF3Q"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1rTfYNNuEeaKxIZkCozF3Q" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ia9WU9AcEea_kdZlFX7tiQ" visibility="private" type="_oCI2sNAbEea_kdZlFX7tiQ" association="_ia9WUNAcEea_kdZlFX7tiQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_l4zWMNAcEea_kdZlFX7tiQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_l4zWMdAcEea_kdZlFX7tiQ" value="1"/>
+    </ownedEnd>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_TiLlYNKnEeaZ9LiNudsyXQ" memberEnd="_TiP20NKnEeaZ9LiNudsyXQ _TiRE8NKnEeaZ9LiNudsyXQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TiPPwNKnEeaZ9LiNudsyXQ" source="org.eclipse.papyrus">
