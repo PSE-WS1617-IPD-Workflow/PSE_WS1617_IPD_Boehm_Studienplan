@@ -19,8 +19,8 @@ public interface ModuleDao {
 
 	/**
 	 * 
-	 * @param id die ID des zu suchenden Moduls
-	 * @return das Modul mit der entsprechenden ID, <code>null</code> wenn kein Modul gefunden
+	 * @param id der String-Identifier des zu suchenden Moduls
+	 * @return das Modul mit dem entsprechenden Identifier, <code>null</code> wenn kein Modul gefunden
 	 */
 	public Module getModuleById(String id);
 
