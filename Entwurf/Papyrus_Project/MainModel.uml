@@ -893,18 +893,8 @@ between(min).and(max) //or similar&#xD;
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LVIEUNNrEea8auDEWIDnxA"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LVJ5gNNrEea8auDEWIDnxA" value="*"/>
           </ownedAttribute>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_WdoiwM0pEea6EKMAE6ELEw" name="getSubNodes">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_dNDmUM1kEeaYEN8WSzbF9A" name="children-nodes" type="_oCI2sNAbEea_kdZlFX7tiQ" direction="return"/>
-          </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_TBQpkNNrEea8auDEWIDnxA" name="getChildren">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_TBQpkdNrEea8auDEWIDnxA" name="parent-moduls" type="_oCI2sNAbEea_kdZlFX7tiQ" direction="return"/>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_fFgyYNJqEeaWvImi3cfMUA" name="addSubNode">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_pL5zkNJqEeaWvImi3cfMUA" name="node" type="_oCI2sNAbEea_kdZlFX7tiQ"/>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_fvZc4NJqEeaWvImi3cfMUA" name="removeSubNode">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_tpeyINJqEeaWvImi3cfMUA" name="node" type="_oCI2sNAbEea_kdZlFX7tiQ"/>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_wiqlwNJqEeaWvImi3cfMUA" name="removedNode" type="_oCI2sNAbEea_kdZlFX7tiQ" direction="return"/>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_YtE84NNrEea8auDEWIDnxA" name="addChild">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_YtE84dNrEea8auDEWIDnxA" name="node" type="_oCI2sNAbEea_kdZlFX7tiQ"/>
@@ -938,6 +928,16 @@ between(min).and(max) //or similar&#xD;
           <ownedOperation xmi:type="uml:Operation" xmi:id="_cK-nINNrEea8auDEWIDnxA" name="removeParent">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_cK-nIdNrEea8auDEWIDnxA" name="node" type="_oCI2sNAbEea_kdZlFX7tiQ"/>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_cK-nItNrEea8auDEWIDnxA" name="removedNode" type="_oCI2sNAbEea_kdZlFX7tiQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Da6qANNvEeaKxIZkCozF3Q" name="getSubNodes">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Da6qAdNvEeaKxIZkCozF3Q" name="children-nodes" type="_oCI2sNAbEea_kdZlFX7tiQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Da9GQNNvEeaKxIZkCozF3Q" name="addSubNode">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Da9GQdNvEeaKxIZkCozF3Q" name="node" type="_oCI2sNAbEea_kdZlFX7tiQ"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Da-7cNNvEeaKxIZkCozF3Q" name="removeSubNode">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Da-7cdNvEeaKxIZkCozF3Q" name="node" type="_oCI2sNAbEea_kdZlFX7tiQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Da-7ctNvEeaKxIZkCozF3Q" name="removedNode" type="_oCI2sNAbEea_kdZlFX7tiQ" direction="return"/>
           </ownedOperation>
         </packagedElement>
       </packagedElement>
