@@ -750,6 +750,7 @@ between(min).and(max) //or similar&#xD;
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WeR_QLufEea-uPszIhxKkQ" value="*"/>
         </ownedAttribute>
       </packagedElement>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_9epN8NNwEeaKxIZkCozF3Q" client="_1uw68M37Eea6VOVLcwrXFg" supplier="_wE6WgM37Eea6VOVLcwrXFg"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_O8AK0LfUEea2RYsZ51fiPw" name="generation">
       <packageImport xmi:type="uml:PackageImport" xmi:id="_3GiqILiaEeavH9sFQSsLvg" importedPackage="_lM5vELiaEeavH9sFQSsLvg"/>
@@ -962,6 +963,9 @@ between(min).and(max) //or similar&#xD;
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_YWmFUMOuEearScbIBXJIIw" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
           </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_FDjJ0NNxEeaKxIZkCozF3Q" name="getViolations">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TpJhQNNxEeaKxIZkCozF3Q" name="violations" type="_CqvOML4OEeaoO4fCpQc-Qw" direction="return"/>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Realization" xmi:id="_nq-HYM9sEeaWbKwKnQo1og" client="__YUNYMOuEearScbIBXJIIw" supplier="_YDqTcL-WEeaWJullGOJpaQ"/>
