@@ -14,30 +14,32 @@ import edu.kit.informatik.studyplan.client.view.components.WizardComponent;
  * 
  */
 public class GenerationWizardComponent2 extends WizardComponent {
-	/**
-	 * 
-	 */
-	private Plan plan;
-	/**
-	 * 
-	 */
-	private ProposalInformation information;
-	/**
-	 * 
-	 */
-	private ModuleFinder moduleFinder;
+    /**
+     * Plan für welchen generiert werden soll
+     */
+    private Plan plan;
+    /**
+     * Die notwendigen Informationen für die Generierung
+     */
+    private ProposalInformation information;
+    /**
+     * Der Modul-Finder mit welchem die Module bewertet werden können.
+     */
+    private ModuleFinder moduleFinder;
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public WizardComponent next() {
-		return null;
-	}
+    /**
+     * Gibt Objekt vom Typ GenerationWizardComponent3 zurück
+     * 
+     * @return Objekt vom Typ GenerationWizardComponent3 (dritte Seite des
+     *         Wizards)
+     */
+    public WizardComponent next() {
+        return null;
+    }
 
-	/**
-	 * 
-	 */
-	public void onChange() {
-	}
+    /**
+     * Methode, welche bei Veränderungen des Seiteninhalts aufgerufen wird.
+     */
+    public void onChange() {
+    }
 };

@@ -4,21 +4,34 @@
 
 package edu.kit.informatik.studyplan.client.view.components;
 
+import java.util.Collection;
+
+import edu.kit.informatik.studyplan.client.model.system.Filter;
+import edu.kit.informatik.studyplan.client.model.system.FilterCollection;
 import edu.kit.informatik.studyplan.client.view.components.FilterComponent;
 
 /************************************************************/
 /**
- * 
+ * Ein Filter, welcher die Menge der angezeigten Module auf Basis von Filtern
+ * einschränkt
  */
 public class ModuleFilter {
-	/**
-	 * 
-	 */
-	private FilterComponent filterComponent;
+    /**
+     * Die Filterkomponenten, welche auswählbar sind
+     */
+    private Collection<FilterComponent> filterComponents;
 
-	/**
-	 * 
-	 */
-	public void onSearch() {
-	}
+    /**
+     * Methode, die bei der Suche ausgeführt wird. Diese kann über den
+     * Konstruktor als Callback gesetzt werden
+     */
+    public void onSearch() {
+    }
+
+    /**
+     * Methode, die die ausgewählten Filter zurückgibt
+     */
+    public FilterCollection getFilters() {
+        return null;
+    }
 };

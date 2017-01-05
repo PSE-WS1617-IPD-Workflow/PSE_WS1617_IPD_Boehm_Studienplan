@@ -8,17 +8,17 @@ import edu.kit.informatik.studyplan.client.model.plans.Plan;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche die Kopfzeile des Plans kapselt
  */
 public abstract class PlanHeadBar {
-	/**
-	 * 
-	 */
-	private Plan plan;
+    /**
+     * Der Plan, welcher angezeigt wird.
+     */
+    private Plan plan;
 
-	/**
-	 * 
-	 */
-	public void onChange() {
-	}
+    /**
+     * Die Methode, welche bei einer Änderung des Plans aufgerufen wird.
+     */
+    public void onChange() {
+    }
 };

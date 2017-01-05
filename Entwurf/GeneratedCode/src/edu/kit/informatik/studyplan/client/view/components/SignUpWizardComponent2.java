@@ -4,35 +4,43 @@
 
 package edu.kit.informatik.studyplan.client.view.components;
 
+import java.util.Collection;
+
 import edu.kit.informatik.studyplan.client.model.user.Student;
 import edu.kit.informatik.studyplan.client.view.components.ModuleFinder;
 import edu.kit.informatik.studyplan.client.view.components.WizardComponent;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche die zweite Seite des Registrierungswizards kapselt
  */
 public class SignUpWizardComponent2 extends WizardComponent {
-	/**
-	 * 
-	 */
-	private Student student;
-	/**
-	 * 
-	 */
-	private ModuleFinder moduleFinder;
+    /**
+     * Der Student
+     */
+    private Student student;
+    /**
+     * Der ModulFinder, welcher genutzt wird, um die Module als bestanden zu
+     * markieren.
+     */
+    private ModuleFinder moduleFinder;
+    /**
+     * Der Plan der vergangenen Semester mit bestandenen Modulen.
+     */
+    private PassedModulePlan passedModules;
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public WizardComponent next() {
-		return null;
-	}
+    /**
+     * Gibt null zurück, da dies die letzte Seite des SignUpWizards ist
+     * 
+     * @return null
+     */
+    public WizardComponent next() {
+        return null;
+    }
 
-	/**
-	 * 
-	 */
-	public void onChange() {
-	}
+    /**
+     * Methode, welche bei Veränderungen des Seiteninhalts aufgerufen wird.
+     */
+    public void onChange() {
+    }
 };

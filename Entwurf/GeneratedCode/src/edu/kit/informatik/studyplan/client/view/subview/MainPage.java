@@ -5,26 +5,21 @@
 package edu.kit.informatik.studyplan.client.view.subview;
 
 import edu.kit.informatik.studyplan.client.model.plans.PlanCollection;
+import edu.kit.informatik.studyplan.client.view.components.PlanList;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche die Hauptseite kapselt
  */
 public class MainPage {
-	/**
-	 * 
-	 */
-	private PlanCollection planCollection;
+    /**
+     * Die anzuzeigende Plan Liste
+     */
+    private PlanList planList;
 
-	/**
-	 * 
-	 */
-	public void addPlan() {
-	}
-
-	/**
-	 * 
-	 */
-	public void compare() {
-	}
+    /**
+     * Methode zum hinzufügen eines Plans
+     */
+    public void addPlan() {
+    }
 };

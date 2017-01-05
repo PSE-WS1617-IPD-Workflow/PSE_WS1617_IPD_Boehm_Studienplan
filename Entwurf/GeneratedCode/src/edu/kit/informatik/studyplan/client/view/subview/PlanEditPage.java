@@ -4,30 +4,32 @@
 
 package edu.kit.informatik.studyplan.client.view.subview;
 
-import edu.kit.informatik.studyplan.client.model.backbone.BackboneView;
 import edu.kit.informatik.studyplan.client.model.modules.Module;
 import edu.kit.informatik.studyplan.client.view.components.Plan;
 import edu.kit.informatik.studyplan.client.view.components.PlanHeadBar;
 
+import backbone.BackboneView;
+
 /************************************************************/
 /**
- * 
+ * Klasse, welche die Plan-Bearbeitungsansicht kapselt
  */
 public class PlanEditPage {
     /**
-     * 
+     * Sidebar, welche angezeigt wird (in der Hauptansicht der ModuleFinder)
      */
     private BackboneView sidebar;
     /**
-     * 
+     * Plan, der angezeigt wird
      */
     private Plan plan;
     /**
-     * 
+     * Kopfzeile die angezeigt wird
      */
     private PlanHeadBar headBar;
 
     /**
+     * Methode zum aufrufen einer ModuleInfoSidebar
      * 
      * @param module
      */
@@ -35,15 +37,10 @@ public class PlanEditPage {
     }
 
     /**
-     * 
+     * Methode zum schließen einer ModuleInfoSidebar
      */
     public void hideModuleDetails() {
 
     }
 
-    /**
-     * 
-     */
-    public void onChange() {
-    }
 };

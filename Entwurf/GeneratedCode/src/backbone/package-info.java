@@ -5,4 +5,4 @@
  * 
  * [1]http://backbonejs.org
  */
-package edu.kit.informatik.studyplan.client.model.backbone;
+package backbone;

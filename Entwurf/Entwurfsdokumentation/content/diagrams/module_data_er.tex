@@ -40,9 +40,9 @@
 	\node[relationship][right =  of constr]{is of} edge  node[auto,swap] {0..*} (constr) edge (ctype);
 	
 	\node[entity] (category) [right = 5cm of module] {category};
-	\node[attribute, num] [below right = of category] {\key{category\_id}} edge (category);
+	\node[attribute, num] [right = of category] {\key{category\_id}} edge (category);
 	\node[attribute] [above right = of category] {name} edge (category);
-	
+	\node[attribute, bool] [below right = of category] {subject} edge (category);
 	\node[relationship][right = 2cm of module]{is of} edge node[auto,swap] {0..*} (module) edge node[auto,swap] {0..*} (category);
 \end{tikzpicture}
 }

@@ -4,7 +4,9 @@
 
 package edu.kit.informatik.studyplan.client.view.components;
 
-import edu.kit.informatik.studyplan.client.model.system.SimpleModuleCollection;
+import java.util.Collection;
+
+import edu.kit.informatik.studyplan.client.model.system.SearchCollection;
 import edu.kit.informatik.studyplan.client.view.components.ModuleBox;
 
 /************************************************************/
@@ -12,16 +14,17 @@ import edu.kit.informatik.studyplan.client.view.components.ModuleBox;
  * 
  */
 public class ModuleList {
-	/**
-	 * 
-	 */
-	private SimpleModuleCollection modules;
-	/**
-	 * 
-	 */
-	private ModuleBox[] moduleBox;
-	/**
-	 * 
-	 */
-	private boolean isPreferencable;
+    /**
+     * Die Liste der Module, welche angezeigt werden sollen
+     */
+    private SearchCollection modules;
+    /**
+     * Die Modulboxen in welchen die Module angezeigt werden.
+     */
+    private Collection<ModuleBox> moduleBox;
+    /**
+     * Ob die Module in den Boxen präferenzierbar sind (nur im Zusammenhang mit
+     * einem Plan)
+     */
+    private boolean isPreferencable;
 };

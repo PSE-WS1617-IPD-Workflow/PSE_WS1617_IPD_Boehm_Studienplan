@@ -6,13 +6,16 @@ package edu.kit.informatik.studyplan.client.view.components;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche eine Komponente eines Wizards kapselt. Die Wizards sind nach
+ * dem Konzept des State-Machine-Patterns aufgebaut
  */
 public abstract class WizardComponent {
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public abstract edu.kit.informatik.studyplan.client.view.components.WizardComponent next();
+    /**
+     * Methode, welche den View-Component der nächsten Seite des Wizard zurück
+     * gibt
+     * 
+     * @return Den View-Component der nächsten Siete des Wizard
+     */
+    public abstract edu.kit.informatik.studyplan.client.view.components.WizardComponent next();
 };

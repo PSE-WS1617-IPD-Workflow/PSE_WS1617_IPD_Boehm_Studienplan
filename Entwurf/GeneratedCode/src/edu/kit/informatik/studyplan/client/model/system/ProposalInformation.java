@@ -9,7 +9,7 @@ import edu.kit.informatik.studyplan.client.model.system.ObjectiveFunction;
 /************************************************************/
 /**
  * Die Methoden welche im Zusammenhang mit der Generierung eines Studienplans
- * abgespeichert und zum Server geschickt werden.
+ * abgespeichert und zum Server geschickt werden. (Erweitert Backbone.Model)
  */
 public class ProposalInformation {
     /**

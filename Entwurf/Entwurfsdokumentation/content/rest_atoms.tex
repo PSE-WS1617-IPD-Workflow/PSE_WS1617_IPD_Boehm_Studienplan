@@ -1,7 +1,7 @@
 \FloatBarrier
 \subsection{Atomare Werte}
 
-Es folgt die Beschreibung der für die REST-Kommunikation atomaren Werte.
+Es folgt die Beschreibung der für die REST-Kommunikation notwendigen atomaren Werte.
 
 \begin{longtable}{p{.22\linewidth} p{.73\linewidth}}
 	Bezeichner
@@ -17,8 +17,10 @@ Es folgt die Beschreibung der für die REST-Kommunikation atomaren Werte.
 	\hline
 	\endlastfoot
 	
-	\lbljsonatom{Turnus} 
-	& $ \in \{0, 1\}$ mit 0 für Sommersemester und 1 für Wintersemester. \\
+	\lbljsonatom{Modul-Turnus} 
+	& $ \in \{\verb|"WS"|, \verb|"SS"|, \verb|"both"|\}$. \\
+	\lbljsonatom{Semester-Typ} 
+	& $ \in \{\verb|"WS"|, \verb|"SS"|\}$. \\
 	\lbljsonatom{Jahr}
 	& Jahreszahl (Ganzzahl). \\
 	\lbljsonatom{Studienfach-ID}
@@ -32,7 +34,7 @@ Es folgt die Beschreibung der für die REST-Kommunikation atomaren Werte.
 	\lbljsonatom{Modul-Kategorie}
 	& Name der Kategorie eines Moduls. \\
 	\lbljsonatom{Modul-Semester}
-	& siehe \jsonatom{Turnus} ?? \\
+	& Das Semester, in welchem sich ein Modul befindet (Ganzzahl). \\
 	\lbljsonatom{Modul-Creditpoints}
 	& ECTS-Zahl eines Moduls. \\
 	\lbljsonatom{Modul-Dozent}

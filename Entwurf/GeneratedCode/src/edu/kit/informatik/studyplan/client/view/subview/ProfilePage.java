@@ -4,26 +4,42 @@
 
 package edu.kit.informatik.studyplan.client.view.subview;
 
+import edu.kit.informatik.studyplan.client.model.modules.Module;
 import edu.kit.informatik.studyplan.client.view.components.ModuleFinder;
 import edu.kit.informatik.studyplan.client.view.components.PassedModulePlan;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche die Profil-Seite kapselt
  */
 public class ProfilePage {
-	/**
-	 * 
-	 */
-	private PassedModulePlan passedModules;
-	/**
-	 * 
-	 */
-	private ModuleFinder sidebar;
+    /**
+     * Ein Plan mit bestandenen Modulen
+     */
+    private PassedModulePlan passedModules;
+    /**
+     * Die ModuleFinder sidebar
+     */
+    private ModuleFinder sidebar;
 
-	/**
-	 * Leitet zurück zur Hauptseite (MainPage) und speichert die Änderungen.
-	 */
-	public void close() {
-	}
+    /**
+     * Methode zum aufrufen einer ModuleInfoSidebar
+     * 
+     * @param module
+     */
+    public void showModuleDetails(final Module module) {
+    }
+
+    /**
+     * Methode zum schlieÃŸen einer ModuleInfoSidebar
+     */
+    public void hideModuleDetails() {
+
+    }
+
+    /**
+     * Leitet zurÃ¼ck zur Hauptseite (MainPage) und speichert die Ã„nderungen.
+     */
+    public void close() {
+    }
 };

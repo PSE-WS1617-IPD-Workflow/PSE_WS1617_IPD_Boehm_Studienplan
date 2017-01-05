@@ -4,27 +4,34 @@
 
 package edu.kit.informatik.studyplan.client.view.components;
 
+import java.util.Collection;
+
 import edu.kit.informatik.studyplan.client.model.plans.PlanCollection;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche eine Liste von Plänen kapselt
  */
 public class PlanList {
-	/**
-	 * 
-	 */
-	private PlanCollection planCollection;
+    /**
+     * Die Pläne, welche angezeigt werden sollen
+     */
+    private PlanCollection planCollection;
+    /**
+     * Die Elemente, welche in der Liste angezeigt werden
+     */
+    private Collection<PlanListElement> planListElements;
 
-	/**
-	 * 
-	 */
-	public void onActionSelection() {
-	}
+    /**
+     * Listener, der aufgerufen wird, wenn eine Aktion für einen/mehrere Pläne
+     * aufgerufen wird.
+     */
+    public void onActionSelection() {
+    }
 
-	/**
-	 * 
-	 */
-	public void onChange() {
-	}
+    /**
+     * Methode, welche bei einer Veränderung der Pläne aufgerufen wird
+     */
+    public void onChange() {
+    }
 };

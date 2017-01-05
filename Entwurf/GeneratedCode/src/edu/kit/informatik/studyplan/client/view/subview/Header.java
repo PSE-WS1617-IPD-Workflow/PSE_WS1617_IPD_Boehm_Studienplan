@@ -8,11 +8,12 @@ import edu.kit.informatik.studyplan.client.model.user.SessionInformation;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche den Header der Seite kapselt
  */
 public class Header {
-	/**
-	 * 
-	 */
-	private SessionInformation sessionInformation;
+    /**
+     * Das SessionInformation Objekt, welches zur Anzeige des Headers benötigt
+     * wird
+     */
+    private SessionInformation sessionInformation;
 };

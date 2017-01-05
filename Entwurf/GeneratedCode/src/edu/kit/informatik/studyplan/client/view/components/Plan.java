@@ -8,31 +8,33 @@ import edu.kit.informatik.studyplan.client.view.components.Semester;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche die Ansicht des Studienplans kapselt
  */
 public class Plan {
-	/**
-	 * 
-	 */
-	private Semester[] semester;
-	/**
-	 * 
-	 */
-	private Plan plan;
-	/**
-	 * Die Ausrichtung des Studienplans: Normalerweise links, im Fall des Vergleichs aber auch rechts.
-	 */
-	private String align;
+    /**
+     * Die Semster des Plans
+     */
+    private Semester[] semester;
+    /**
+     * Das Modell-Objekt des Plans
+     */
+    private edu.kit.informatik.studyplan.client.model.plans.Plan plan;
+    /**
+     * Die Ausrichtung des Studienplans: Normalerweise links, im Fall des
+     * Vergleichs aber auch rechts.
+     */
+    private String align;
 
-	/**
-	 * 
-	 */
-	public void addSemester() {
-	}
+    /**
+     * Methode zum hinzufügen neuer Semester
+     */
+    public void addSemester() {
+    }
 
-	/**
-	 * 
-	 */
-	public void onChange() {
-	}
+    /**
+     * Methode, welche bei Änderungen des Plans aufgerufen wird, und welche auch
+     * die onChange() Methoden der Semester aufruft.
+     */
+    public void onChange() {
+    }
 };

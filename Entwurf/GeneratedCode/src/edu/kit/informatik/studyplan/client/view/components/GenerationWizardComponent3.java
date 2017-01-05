@@ -13,26 +13,27 @@ import edu.kit.informatik.studyplan.client.view.components.WizardComponent;
  * 
  */
 public class GenerationWizardComponent3 extends WizardComponent {
-	/**
-	 * 
-	 */
-	private Plan plan;
-	/**
-	 * 
-	 */
-	private ProposalInformation information;
+    /**
+     * Plan für welchen generiert werden soll
+     */
+    private Plan plan;
+    /**
+     * Die notwendigen Informationen für die Generierung
+     */
+    private ProposalInformation information;
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public WizardComponent next() {
-		return null;
-	}
+    /**
+     * Gibt null zurück, da dies die letzte Seite des Wizards ist.
+     * 
+     * @return null
+     */
+    public WizardComponent next() {
+        return null;
+    }
 
-	/**
-	 * 
-	 */
-	public void onChange() {
-	}
+    /**
+     * Methode, welche bei Veränderungen des Seiteninhalts aufgerufen wird.
+     */
+    public void onChange() {
+    }
 };

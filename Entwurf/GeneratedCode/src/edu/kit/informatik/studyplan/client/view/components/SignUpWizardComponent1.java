@@ -9,25 +9,26 @@ import edu.kit.informatik.studyplan.client.view.components.WizardComponent;
 
 /************************************************************/
 /**
- * 
+ * Klasse, welche die erste Seite des Registrierungs-Wizards kapselt
  */
 public class SignUpWizardComponent1 extends WizardComponent {
-	/**
-	 * 
-	 */
-	private Student student;
+    /**
+     * Der Student, der sich registriert
+     */
+    private Student student;
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public WizardComponent next() {
-		return null;
-	}
+    /**
+     * Gibt ein Objekt vom Typ SignUpWizardComponent2 zurück
+     * 
+     * @return Objekt vom Typ SignUpWizardComponent2 (zweite Seite des Wizards)
+     */
+    public WizardComponent next() {
+        return null;
+    }
 
-	/**
-	 * 
-	 */
-	public void onChange() {
-	}
+    /**
+     * Methode, welche bei Veränderungen des Seiteninhalts aufgerufen wird.
+     */
+    public void onChange() {
+    }
 };

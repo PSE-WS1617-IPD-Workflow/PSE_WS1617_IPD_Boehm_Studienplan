@@ -8,35 +8,35 @@ import edu.kit.informatik.studyplan.client.model.plans.Plan;
 
 /************************************************************/
 /**
- * 
+ * Klasse welche ein Element einer PlanList kapselt
  */
 public class PlanListElement {
-	/**
-	 * 
-	 */
-	private Plan plan;
+    /**
+     * Der Plan, welcher angezeigt werden soll
+     */
+    private Plan plan;
 
-	/**
-	 * 
-	 */
-	public void show() {
-	}
+    /**
+     * Methode, welche beim Klick auf "anzeigen" aufgerufen wird
+     */
+    public void show() {
+    }
 
-	/**
-	 * 
-	 */
-	public void export() {
-	}
+    /**
+     * Methode, welche beim Klick auf "exportieren" aufgerufen wird
+     */
+    public void export() {
+    }
 
-	/**
-	 * 
-	 */
-	public void duplicate() {
-	}
+    /**
+     * Methode, welche beim Klick auf "duplizieren" aufgerufen wird
+     */
+    public void duplicate() {
+    }
 
-	/**
-	 * 
-	 */
-	public void delete() {
-	}
+    /**
+     * Methode, welche beim Klick auf "löschen" aufgerufen wird
+     */
+    public void delete() {
+    }
 };

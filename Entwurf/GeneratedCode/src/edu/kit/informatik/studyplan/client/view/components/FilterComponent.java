@@ -4,32 +4,43 @@
 
 package edu.kit.informatik.studyplan.client.view.components;
 
+import edu.kit.informatik.studyplan.client.model.system.Filter;
+
 /************************************************************/
 /**
- * 
+ * Klasse, welche die Anzeige eine eines Filters kapselt.
  */
 public abstract class FilterComponent {
-	/**
-	 * 
-	 */
-	private String id;
+    /**
+     * Die ID des Filters
+     */
+    private String id;
+    /**
+     * Der Filter, welcher visualisiert wird
+     */
+    private Filter filter;
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public String getId() {
-		return id;
-	}
+    /**
+     * Methode zum erhalten der ID des Filters
+     * 
+     * @return Die ID des Filters
+     */
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 * 
-	 * @return  
-	 */
-	public abstract String getParams();
+    /**
+     * Methode zum erhalten des Filter-Modells
+     * 
+     * @return
+     */
+    public Filter getFilter() {
+        return filter;
 
-	/**
-	 * 
-	 */
-	public abstract void onSelect();
+    }
+
+    /**
+     * Methode welche bei der Auswahl eines Filterobjekts ausgeführt wird
+     */
+    public abstract void onSelect();
 };

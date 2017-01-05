@@ -4,45 +4,55 @@
 
 package edu.kit.informatik.studyplan.client.view;
 
-import edu.kit.informatik.studyplan.client.model.backbone.BackboneView;
 import edu.kit.informatik.studyplan.client.model.user.SessionInformation;
 import edu.kit.informatik.studyplan.client.view.components.NotificationCentre;
 
+import backbone.BackboneView;
+
 /************************************************************/
 /**
- * 
+ * Der MainView kapselt die Benutzeroberfläche, er kann mittels gegebener
+ * Funktionen mit beliebigem Inhalt in Form von Objekten des Typs Backbone.View
+ * befüllt werden.
  */
 public class MainView {
-	/**
-	 * 
-	 */
-	private SessionInformation sessionInformation;
-	/**
-	 * 
-	 */
-	private BackboneView header;
-	/**
-	 * 
-	 */
-	private BackboneView content;
-	/**
-	 * 
-	 */
-	private NotificationCentre notificationCentre;
+    /**
+     * Die Informationen zur Session
+     */
+    private SessionInformation sessionInformation;
+    /**
+     * Die View, welcher im Header angezeigt wird.
+     */
+    private BackboneView header;
+    /**
+     * Die View, welche im Content-Bereich angezeigt wird.
+     */
+    private BackboneView content;
+    /**
+     * Der NotificationCentre, welcher die Anzeige von Benachrichtigungen
+     * übernimmt.
+     */
+    private NotificationCentre notificationCentre;
 
-	/**
-	 * 
-	 * @param header 
-	 * @param options 
-	 */
-	public void setHeader(BackboneView header, Object options) {
-	}
+    /**
+     * Mit dieser Methode kann man den Header des MainViews setzen
+     * 
+     * @param header
+     *            Der zu setzende Header
+     * @param options
+     *            Objekt mit welchem der Header initialisiert werden soll
+     */
+    public void setHeader(final BackboneView header, final Object options) {
+    }
 
-	/**
-	 * 
-	 * @param content 
-	 * @param options 
-	 */
-	public void setContent(BackboneView content, Object options) {
-	}
+    /**
+     * Mit dieser Funktion kann man den Content-Bereich des MainViews setzen.
+     * 
+     * @param content
+     *            Der zu setztende Content-Bereich
+     * @param options
+     *            Objekt mit welchem der Header initialisiert werden soll
+     */
+    public void setContent(final BackboneView content, final Object options) {
+    }
 };

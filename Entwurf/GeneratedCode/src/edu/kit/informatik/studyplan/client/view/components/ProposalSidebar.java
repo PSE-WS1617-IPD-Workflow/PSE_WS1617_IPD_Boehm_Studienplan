@@ -6,25 +6,26 @@ package edu.kit.informatik.studyplan.client.view.components;
 
 /************************************************************/
 /**
- * 
+ * Sidebar, welche angezeigt wird, wenn ein generierter Plan angezeigt wird.
  */
 public class ProposalSidebar {
 
-	/**
-	 * 
-	 */
-	public void delete() {
-	}
+    /**
+     * Methode, welche aufgerufen wird, wenn der Plan gelöscht werden soll
+     */
+    public void delete() {
+    }
 
-	/**
-	 * 
-	 */
-	public void save() {
-	}
+    /**
+     * Methode, welche aufgerufen wird, wenn der Plan gespeichert werden soll
+     */
+    public void save() {
+    }
 
-	/**
-	 * 
-	 */
-	public void saveAs() {
-	}
+    /**
+     * Methode, welche aufgerufen wird, wenn der Plan unter anderem Namen
+     * gespeichert werden soll
+     */
+    public void saveAs() {
+    }
 };
