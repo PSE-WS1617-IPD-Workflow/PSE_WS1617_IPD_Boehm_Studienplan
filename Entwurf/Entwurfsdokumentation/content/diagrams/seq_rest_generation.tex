@@ -63,7 +63,7 @@
 					PUT /plans/\jsonatom{Plan-ID} \\ 
 					\jsonobj{PlanPutRequest}
 				}
-			}, return=\jsonobj{PlanPutResult}, dt=\umltwolinestddt]{Client}{Server}  
+			}, return=\jsonobj{PlanResult}, dt=\umltwolinestddt]{Client}{Server}  
 			\end{umlcall}
 		\umlfpart[Übernehmen]
 			% Write result into plan
@@ -72,7 +72,7 @@
 					PUT /plans/\jsonatom{Plan-ID} \\ 
 					\jsonobj{PlanPutRequest}
 				}
-			}, return=\jsonobj{PlanPutResult}, dt=\umltwolinestddt]{Client}{Server}  
+			}, return=\jsonobj{PlanResult}, dt=\umltwolinestddt]{Client}{Server}  
 			\end{umlcall}
 		\end{umlfragment}
 	\end{umlseqdiag}

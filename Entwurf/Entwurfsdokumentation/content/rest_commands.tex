@@ -2,7 +2,7 @@
 % #1: URI of the GET method
 % #2: title used for refering (also used as label)
 \newenvironment{getparamdef}[2]{
-	\begin{longtable}{|p{.23\linewidth}|p{.72\linewidth}|}
+	\begin{longtable}{|p{.23\linewidth}|p{.65\linewidth}|}
 		\multicolumn{2}{@{}l}{\label{GETP-#2}\textsf{\textbf{GET #1 \; (#2)}}} \vspace{2pt} \\
 		\hhline{|=|=|}
 		\textbf{Parametername} & \textbf{Wert} \\
@@ -24,7 +24,7 @@
 % #2: title used for refering (also used as label)
 % #3: Additional description text
 \newenvironment{getparamdef*}[3]{
-	\begin{longtable}{|p{.23\linewidth}|p{.72\linewidth}|}
+	\begin{longtable}{|p{.23\linewidth}|p{.65\linewidth}|}
 		\multicolumn{2}{@{}l}{\label{GETP-#2}\textsf{\textbf{GET #1 \; (#2)}}} \vspace{2pt} \\
 		\multicolumn{2}{@{}p{.95\linewidth}}{#3} \vspace{2pt} \\
 		\hhline{|=|=|}
@@ -65,7 +65,7 @@
 \label{subsec:rest_commands}
 
 Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Methoden und URIs beschrieben. GET-Parameter-Definitionen (*) sind weiter unten separat aufgeführt.
-\begin{longtable}{| >{\hspace{0pt}} p{.11\textwidth} | >{\hspace{0pt}} p{.24\textwidth} | >{\hspace{0pt}} p{.26\textwidth} | >{\hspace{0pt}} p{.34\textwidth} |}
+\begin{longtable}{| >{\hspace{0pt}} p{.11\textwidth} | >{\hspace{0pt}} p{.24\textwidth} | >{\hspace{0pt}} p{.21\textwidth} | >{\hspace{0pt}} p{.34\textwidth} |}
 	\hline
 	\textbf{Methode} & \textbf{URI} & \textbf{Beschreibung} & \textbf{Anfrage-Parameter\+/Rückgabewerte \+(Statuscodes)} \\ 
 	\hhline{|=|=|=|=|}  
@@ -134,8 +134,9 @@ Die Parameter der GET-Anfragen werden im Folgenden tabellarisch beschrieben. Par
 \vspace{-1pt} % To prevent the bottom line of the following table to be broken across pages. #LatexIsCrap
 
 \begin{getparamdef*}{/modules}{Modules-Parameter}
-	{$\textit{filter}_k \in \{\texttt{ects}, \texttt{category}, \texttt{type}, \texttt{discipline}, \texttt{compulsory}, \texttt{cycletype}, \texttt{name}\}$, bildet die Liste der aktivierten Filter}
-	filters & $\textit{filter}_1,...,\textit{filter}_n$ \\
+	{$\textit{filter}_k \in \{\texttt{ects}, \texttt{category}, \texttt{type}, \texttt{discipline}, \texttt{compulsory}, \texttt{cycletype}, \texttt{name}\}$, bildet die Liste der aktivierten Filter; \newline
+	Sofern \textit{filters} leer oder nicht vorhanden ist, werden die Module ohne Filterung zurückgegeben.}
+	\optpar{filters} & $\textit{filter}_1,...,\textit{filter}_n$ \\
 	\hline
 	\optpar{ects-min} & \jsonatom{Untere-ECTS-Schranke} \\
 	\hline
@@ -149,7 +150,7 @@ Die Parameter der GET-Anfragen werden im Folgenden tabellarisch beschrieben. Par
 	\cline{1-1}
 	\optpar{compulsory} & \\
 	\cline{1-1}
-	\optpar{cycletype} & \\
+	\optpar{cycletype} & \\*
 	\hline
 	\optpar{name} & (Suchstring)
 \end{getparamdef*}
