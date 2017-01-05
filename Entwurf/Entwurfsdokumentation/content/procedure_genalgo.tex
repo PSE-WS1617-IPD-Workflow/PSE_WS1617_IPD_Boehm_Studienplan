@@ -70,7 +70,10 @@ Sei also $G = (V,E)$ ein DAG und $s: \{1,..,|V|\} \to V$ seine topologische Sort
 Sei weiter $ k \in \NN $ das Maximum pro parallelem Schritt.
 Weiter sei $ p: V \times \NN \to \{\KwTrue, \KwFalse\} $ eine Funktion, die angibt, ob ein gegebener Knoten in ein gegebenes Semester gesetzt werden darf (Winter- und Sommersemester-Regelung sowie (Anti-)Symmetrie-Constraints).
 
-\begin{algorithm}
+Das Verfahren wird in Algorithmus \ref{code:proc-toposort} mittels Pseudocode beschrieben.
+
+\begin{algorithm}[H]
+	\label{code:proc-toposort}
 	\LComment{Initialisiere:}
 	$\Var{bucketAllocation} : \KwArray [1...|V|] \KwOf \NN $ \;
 	$\Var{bucketSum} : \KwArray [1...|V|] \KwOf \NN $ \;
@@ -97,6 +100,9 @@ Weiter sei $ p: V \times \NN \to \{\KwTrue, \KwFalse\} $ eine Funktion, die angi
 			\KwThrow Exception  \RCommentNoBreak{Knoten zu groß} \;
 		} 
 	} 
+	\caption{Kontraktion der topologischen Sortierung}
 \end{algorithm}
+	
+
 
 % https://docs.google.com/document/d/1GjRJpvLLVv-inBgDgmrVt-f3btAeqErk6v5kuAnb7Yk/edit?usp=sharing
