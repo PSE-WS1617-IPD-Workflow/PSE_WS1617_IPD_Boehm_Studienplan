@@ -7,7 +7,7 @@ Im Folgenden werden die zur REST-Kommunikation nötigen JSON-Datenklassen mithil
 
 \begin{lstlisting}[language=json]
 (*\lbljsonobj{Student}*) = {
-	"subject": (*\jsonpart{Studienfach}{id}*),
+	"discipline": (*\jsonpart{Studienfach}{id}*),
 	"study-start": (*\jsonobj{Studienbeginn}*),
 	"passed-modules": (*\jsonlist{\jsonpart{Modul}{id, semester}}*)
 }
@@ -27,12 +27,11 @@ Im Folgenden werden die zur REST-Kommunikation nötigen JSON-Datenklassen mithil
 }
 \end{lstlisting}
 
-
 \begin{lstlisting}[language=json]
 (*\lbljsonobj{Modul}*) = {
 	"id": (*\jsonatom{Modul-ID}*),
 	"name": (*\jsonatom{Modul-Name}*),
-	"category" : (*\jsonatom{Modul-Kategorie}*),
+	"categories" : (*\jsonlist{\jsonobj{Kategorie}}*),
 	"semester": (*\jsonatom{Modul-Semester}*),
 	"cycle-type": (*\jsonatom{Modul-Turnus}*),
 	"creditpoints": (*\jsonatom{Modul-Creditpoints}*),
@@ -49,6 +48,13 @@ Im Folgenden werden die zur REST-Kommunikation nötigen JSON-Datenklassen mithil
 	"first": (*\jsonpart{Modul}{id}*),
 	"second": (*\jsonpart{Modul}{id}*),
 	"type": (*\jsonatom{Constraint-Typ}*),
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=json]
+(*\lbljsonobj{Kategorie}*) = {
+	"id": (*\jsonatom{Kategorie-ID}*),
+	"name": (*\jsonatom{Kategorie-Name}*)
 }
 \end{lstlisting}
 
@@ -115,7 +121,7 @@ Anmerkung: Die case-Notation beschreibt eine Fallunterscheidung; die in den einz
 
 \begin{json}
 (*\lbljsonobj{ModuleResult}*) = {
-	"module": (*\jsonpart{Modul}{id, name, category, creditpoints, lecturer, description, constraints}*)
+	"module": (*\jsonpart{Modul}{id, name, categories, creditpoints, lecturer, description, constraints}*)
 }	
 \end{json}
 
@@ -243,10 +249,10 @@ Anmerkung: Die case-Notation beschreibt eine Fallunterscheidung; die in den einz
 (*\lbljsonobj{DisciplinesResult}*) = {
 	"disciplines": (*\jsonlist{\jsonobj{Studienfach}}*)
 }
-\end{json
+\end{json}
 
 \begin{json}
 (*\lbljsonobj{SubjectsResult}*) = {
-	"subjects": (*\jsonlist{TODO}*)
+	"subjects": (*\jsonlist{\jsonobj{Kategorie}}*)
 }
 \end{json}
