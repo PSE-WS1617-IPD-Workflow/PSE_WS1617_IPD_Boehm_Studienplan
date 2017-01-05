@@ -1,7 +1,7 @@
 \resizebox{\textwidth}{!} {
 \begin{tikzpicture}
 	\node[entity] (user) {user};
-	\node[attribute][left =of user]{\key{user\_id}} edge (user);
+	\node[attribute, num][left =of user]{\key{user\_id}} edge (user);
 	\node[attribute][below= of user]{name} edge (user);
 	\node[attribute, num](disc)[below right= of user]{discipline\_id} edge (user);
 	\node[draw][below right= of disc, text width = 3cm, dashed] {Referenz zum Studiengang in Moduldatenbank} edge [dashed] (disc);
@@ -12,11 +12,12 @@
 	\node[relationship](bel) [above = 2cmof user] {belongs to} edge node[auto,swap] {1} (user);
 	
 	\node[entity] (plan) [above = 6cm of user]{plan} edge node[auto,swap] {0..*} (bel);
-	\node[attribute][above left =of plan]{\key{plan\_id}} edge (plan);
+	\node[attribute, num][above left =of plan]{\key{plan\_id}} edge (plan);
 	\node[attribute][left= of plan]{name} edge (plan);
 	%\node[attribute][left= of plan]{unique\_id} edge (plan);
 	%\node[attribute][below right = of plan]{credit\_points} edge (plan);
 	\node[attribute, enum][below left= of plan]{state} edge (plan);
+	\node[attribute][above right = of plan]{identifier} edge (plan);
 	
 	\node[relationship](con) [right =2cm of plan] {contains} edge node[auto,swap] {1} (plan);
 	

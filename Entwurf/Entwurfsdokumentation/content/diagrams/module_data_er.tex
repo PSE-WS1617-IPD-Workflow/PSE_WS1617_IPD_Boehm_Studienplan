@@ -1,7 +1,8 @@
 \resizebox{\textwidth}{!} {
 \begin{tikzpicture}
 	\node[entity] (module) {module};
-	\node[attribute](moduleId)[above left = of module]{\key{module\_id}} edge (module);
+	\node[attribute, num](moduleId)[above left = of module]{\key{module\_id}} edge (module);
+	\node[attribute](identifier)[above left = 3cm of module]{identifier} edge (module);
 	\node[attribute][below  = of module]{name} edge (module);
 	\node[attribute, bool](compulsory)[above right = of module]{compulsory} edge (module);
 	\node[attribute, num](creditpoints)[below left = of module]{credit\_points} edge (module);	

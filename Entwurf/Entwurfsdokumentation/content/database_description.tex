@@ -19,6 +19,7 @@ Im Folgenden wird deshalb der Aufbau beider Datenbanken getrennt beschrieben. Zu
 \end{table}
 
 \subsection{Moduldaten}
+Ein Modul besitzt zwei eindeutige Schlüssel. Als Primärschlüssel besitzt es eine fortlaufend nummerierte numerische ID. Zusätzlich wird ein \texttt{varchar} \texttt{identifier} gespeichert, der nicht fortlaufend nummeriert ist und den die REST-Schnittstellen für den Modulzugriff verwenden. Hierdurch wird sichergestellt, dass ein Nutzer nicht einfach durch \enquote{probieren} auf beliebige Module zugreifen kann.
 \begin{figure}[H]
 	\input{content/diagrams/module_data_er}
 	\caption{ER-Diagramm Moduldaten}
