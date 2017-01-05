@@ -34,7 +34,7 @@
 <path d="M41 150 L991 150 L991 168 L41 168 L41 150 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath7">
-<path d="M60 150 L735 150 L735 167 L60 167 L60 150 Z"/>
+<path d="M60 150 L683 150 L683 167 L60 167 L60 150 Z"/>
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath8">
 <path d="M36 148 L995 148 L995 200 L36 200 L36 148 Z"/>
@@ -85,7 +85,7 @@
 <g stroke-width="1.1" font-family="'Segoe UI'" stroke-linecap="butt">
 <line clip-path="url(#clipPath5)" fill="none" x1="36" x2="994" y1="111" y2="111"/>
 <image x="42" y="151" clip-path="url(#clipPath6)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACM0lEQVR42sVTX0hT&#13;&#10;URz+7p3OCIqkaMLq0R6CCIRMaCMyr9ushkT17Fq9RNk/iJBk5z5s+BAhBQYh6Hyp&#13;&#10;B5W0NufcbCuNFcToIQrxz5g0IsVE5u52d+89HScMYw56CPo9nHN+/L7z8fGd7wD/&#13;&#10;u3TlBgIJ0nmlmljb3GQ2OiCWw/FbmyYxQGG+SzfOE+HXePfkNgLhwc3hiZvUSsK0&#13;&#10;rAKLK0gnwq8w+fA6vF950v/gCnZWVaGxoQ4jC3oy+agdnU/7IVzuIvNRb1ERV5Ri&#13;&#10;aqejXTcASsFxKjRaCbaggtfYtAIKVIbWcO5+DzD1mCtRQJMfxBczHGk1NSCfB3yx&#13;&#10;OGYWF/ElkcLBmhrICnCxswd0y+UigcUVonPqHuK+5kClTofI5zhjVNDr/4RjtUbM&#13;&#10;/kjhQLUBx48cRWhpB2l2uslcZNPYgonjzDDP1TZsqFxeyUHTFPSNxRH1nMez8Rh4&#13;&#10;lcP31RwUlcLjdCAYfPnnK9iEs+joHUBiOYOVjASOee04U4dTHUNw2uqh8TqsrctI&#13;&#10;/FpnuD4IFjtKTCwUM9JxoRW8wnjlFGOn0BiE0xug6vTwDg5Bm+7mtg+S+Ra1t7RA&#13;&#10;zgGSKiNHdyPNVbJ9FyRNRUZWcfhQLb7l9xEkY2JJkMwnGzHq92E1l8XImA8/M2ms&#13;&#10;ScCSlMWwP4h0VsJwwI/TTbbtg5R8+1ysv3SPTE9FCk+VpPvJXqMRHyOsf9/NLagG&#13;&#10;Igh2hFwC91efxOp6Q2G6Q5vF0vj+0/oNRdDxkTDUjqQAAAAASUVORK5CYII=" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
-<text xml:space="preserve" x="61" y="164" clip-path="url(#clipPath7)" stroke="none"> + generate(  in objectiveFunction: PartialObjectiveFunction,   in currentPlan: Plan,   in moduleDAO: HibernateModuleDao): Plan</text>
+<text xml:space="preserve" x="61" y="164" clip-path="url(#clipPath7)" stroke="none"> + generate(  in objectiveFunction: PartialObjectiveFunction,   in currentPlan: Plan,   in moduleDAO: ModuleDao): Plan</text>
 <line clip-path="url(#clipPath8)" fill="none" x1="36" x2="994" y1="149" y2="149"/>
 <line clip-path="url(#clipPath9)" fill="none" x1="36" x2="994" y1="200" y2="200"/>
 <rect x="36" y="75" clip-path="url(#clipPath10)" fill="none" width="957" rx="0" ry="0" height="162"/>

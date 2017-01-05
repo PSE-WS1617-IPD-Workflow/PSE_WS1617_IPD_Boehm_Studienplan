@@ -8,33 +8,34 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 
 /************************************************************/
 /**
- * 
+ * Die abstrakte Klasse Node stellt Knoten des Graphen da.
  */
 public abstract class Node {
 	/**
-	 * 
+	 * Ein Knoten beinhaltet ein Module module, welches er darstellt.
 	 */
 	private Module module;
+	
 	/**
-	 * 
-	 */
-	private Node[] children;
-	/**
-	 * 
+	 * Ein Knoten beinhaltet eine Liste parents vom Typ Node, die 
+	 * alle Knoten enthält, die Kanten zu diesem Knoten haben.
 	 */
 	private Node[] parents;
 
 	/**
-	 * 
+	 * Die Methode getPartens gibt die Liste parents zurück.
 	 * @return parent-moduls 
 	 */
-	public Node getParents() {
+	public Node[] getParents() {
 		return null;
 	}
 
+
 	/**
+	 * @return
 	 */
-	public void getModule() {
+	public Module getModule() {
+	  return null;
 	}
 
 	/**

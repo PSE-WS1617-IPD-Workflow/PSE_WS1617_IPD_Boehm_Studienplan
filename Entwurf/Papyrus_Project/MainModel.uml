@@ -58,8 +58,8 @@
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_VDBx8LuOEea-uPszIhxKkQ" name="ObjectiveFunctionResource">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_aK00Y7udEea-uPszIhxKkQ" name="objectiveFunction" visibility="private" type="_1uw68M37Eea6VOVLcwrXFg" aggregation="shared" association="_aK00YLudEea-uPszIhxKkQ">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b38dgLudEea-uPszIhxKkQ" value="1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_aK00Y7udEea-uPszIhxKkQ" name="generationManager" visibility="private" type="_1uw68M37Eea6VOVLcwrXFg" aggregation="shared" association="_aK00YLudEea-uPszIhxKkQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b38dgLudEea-uPszIhxKkQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b3-5wLudEea-uPszIhxKkQ" value="*"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_O1vFELuVEea-uPszIhxKkQ" name="getAllObjectiveFunctions">
@@ -142,7 +142,7 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_DF11EMwgEeaTDYobh6xdEw" name="jsonGeneratedPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_oh-2QLuUEea-uPszIhxKkQ" name="PlanVerificatorResource">
+      <packagedElement xmi:type="uml:Class" xmi:id="_oh-2QLuUEea-uPszIhxKkQ" name="PlanVerifierResource">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_A1f-0838Eea6VOVLcwrXFg" name="verificationManager" visibility="private" type="_wE6WgM37Eea6VOVLcwrXFg" aggregation="shared" association="_A1f-0M38Eea6VOVLcwrXFg"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_qbVkkLuUEea-uPszIhxKkQ" name="verifyPlan">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_82FcUMwhEeaTLsJqt_fnxw" name="plan_id">
@@ -2666,7 +2666,7 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_IGXccMPMEeaCPewWEdcdGQ" name="OAuthModel" isAbstract="true">
-          <generalization xmi:type="uml:Generalization" xmi:id="_8xb7IMdmEea29-bQWKStRA" general="_UjZmYMdlEea29-bQWKStRA"/>
+          <generalization xmi:type="uml:Generalization" xmi:id="_YcGKINM1EeaAAY--SaIwVw" general="_UjZmYMdlEea29-bQWKStRA"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_A6bLcNJ4Eeai7-fwKeDyXA" name="sync" visibility="private">
             <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_VlPSQM0VEeavo6is7kUH4g"/>
           </ownedAttribute>
@@ -2896,6 +2896,12 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <ownedEnd xmi:type="uml:Property" xmi:id="_Zw0JYszqEeaiINyVGHRfeA" name="sessionInformation" visibility="private" type="_OddvIMPREeaCPewWEdcdGQ" association="_Zwv38MzqEeaiINyVGHRfeA"/>
         </packagedElement>
       </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_RZCYoMdkEea29-bQWKStRA" name="backbone">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_S55R8MdlEea29-bQWKStRA" name="Backbone.View"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_UjZmYMdlEea29-bQWKStRA" name="Backbone.Model"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_VkyK4MdlEea29-bQWKStRA" name="Backbone.Collection"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_WmKIUMdlEea29-bQWKStRA" name="Backbone.Router"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_nnmP8LfWEea2RYsZ51fiPw" name="storage">
       <ownedComment xmi:type="uml:Comment" xmi:id="_nSiFMMwqEeaUspSTNf28yQ">
@@ -2950,12 +2956,6 @@ Die Methodensignatur ist hierbei vom Framework Backbone vorgegeben. In den einze
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_A8NcsdAeEea_kdZlFX7tiQ" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_A8NcstAeEea_kdZlFX7tiQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_RZCYoMdkEea29-bQWKStRA" name="backbone">
-    <packagedElement xmi:type="uml:DataType" xmi:id="_S55R8MdlEea29-bQWKStRA" name="Backbone.View"/>
-    <packagedElement xmi:type="uml:DataType" xmi:id="_UjZmYMdlEea29-bQWKStRA" name="Backbone.Model"/>
-    <packagedElement xmi:type="uml:DataType" xmi:id="_VkyK4MdlEea29-bQWKStRA" name="Backbone.Collection"/>
-    <packagedElement xmi:type="uml:DataType" xmi:id="_WmKIUMdlEea29-bQWKStRA" name="Backbone.Router"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_TiLlYNKnEeaZ9LiNudsyXQ" memberEnd="_TiP20NKnEeaZ9LiNudsyXQ _TiRE8NKnEeaZ9LiNudsyXQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TiPPwNKnEeaZ9LiNudsyXQ" source="org.eclipse.papyrus">

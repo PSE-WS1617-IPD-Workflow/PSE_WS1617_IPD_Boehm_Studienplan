@@ -1,0 +1,189 @@
+% This is an example preamble for texdoclet generated output.
+% Used like this it produces a standalone document. However it should be easy
+% to copy these definitions into your own document and use \input{docs.tex}
+% where you want your texdoc documentation.
+
+% The following is an example to put packagename and class into the page
+% headings.
+\documentclass[a4paper,11pt,parskip=half]{scrbook}
+
+% Make sure you use at least the following packages
+\usepackage{color}
+% The texdoclet output is in UTF-8. I strongly recommend writing the latex
+% source in UTF-8 encoding anyway...
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% The following packages are not striclty necessary to get texdoclet working
+\usepackage{hyperref}
+
+\pagestyle{myheadings}
+% Initially we're not in a package or class
+\def\packagename{}
+\def\classname{}
+% Custom page heading which displays packagename and class
+\markboth{\protect\packagename{} -- \protect\classname{}}{\protect\packagename{} -- \protect\classname{}}
+
+% ---------------------------------------------------------------------------
+% TexDoc macros start - everything below this point should be copied to your
+% own document and adapted to your style/language if needed
+% ---------------------------------------------------------------------------
+
+% Environment used to simulate html <p> </p>
+\newenvironment{texdocp}{}{
+
+}
+% Environment for packages
+\newenvironment{texdocpackage}[1]{%
+	\newpage{}\gdef\packagename{#1}\chapter{Package \texttt{#1}}
+	\rule{\hsize}{.7mm}
+}{}
+
+% Environment for classes, interfaces
+% Argument 1: "class" or "interface"
+% Argument 2: the name of the class/interface
+\newenvironment{texdocclass}[2]{%
+	\gdef\classname{#2}
+	\section{\texttt{#1 \textbf{#2}}}
+}{\newpage{}}
+
+% Environment for class description
+\newenvironment{texdocclassintro}{
+	\subsection*{Description}
+}{
+}
+
+% Environment around class fields
+\newenvironment{texdocclassfields}{%
+	\subsection*{Attributes}
+	\begin{itemize}
+}{%
+	\end{itemize}
+}
+
+% Environment around class methods
+\newenvironment{texdocclassmethods}{%
+	\subsection*{Methods}
+	\begin{itemize}
+}{%
+	\end{itemize}
+}
+
+% Environment around class Constructors
+\newenvironment{texdocclassconstructors}{%
+	\subsection*{Constructors}
+	\begin{itemize}
+}{%
+	\end{itemize}
+}
+
+% Environment around enum constants
+\newenvironment{texdocenums}{%
+	\subsection*{Enum Constants}
+	\begin{itemize}
+}{%
+	\end{itemize}
+}
+
+% Environment around "See also"-Blocks (\texdocsee invocations)
+%  Argument 1: Text preceding the references
+\newenvironment{texdocsees}[1]{
+	
+	\textbf{#1:}
+	\begin{itemize}
+}{%
+	\end{itemize}
+}
+% Formats a single field
+%  Argument 1: modifiers
+%  Argument 2: type
+%  Argument 3: name
+%  Argument 4: Documentation text
+\newcommand{\texdocfield}[4]{\item \texttt{#1 #2 \textbf{#3}} \\ #4}
+
+% Formats an enum element
+%  Argument 1: name
+%  Argument 2: documentation text
+\newcommand{\texdocenum}[2]{\item \texttt{\textbf{#1}} \\ #2}
+
+% Formats a single method
+%  Argument 1: modifiers
+%  Argument 2: return type
+%  Argument 3: name
+%  Argument 4: part after name (parameters)
+%  Argument 5: Documentation text
+%  Argument 6: Documentation of parameters/exceptions/return values
+\newcommand{\texdocmethod}[6]{\item \texttt{#1 #2 \textbf{#3}#4} \\ #5#6}
+
+% Formats a single constructor
+%  Argument 1: modifiers
+%  Argument 2: name
+%  Argument 3: part after name (parameters)
+%  Argument 4: Documentation text
+%  Argument 5: Documentation of parameters/exceptions/return values
+\newcommand{\texdocconstructor}[5]{\item \texttt{#1 \textbf{#2}#3} \\ #4#5}
+
+% Inserted when @inheritdoc is used
+%  Argument 1: Class where the documentation was inherited from
+%  Argument 2: Documentation
+\newcommand{\texdocinheritdoc}[2]{#2 (\textit{documentation inherited from \texttt{#1})}}
+
+% Formats a single see-BlockTag
+%  Argument 1: text
+%  Argument 2: reference label
+\newcommand{\texdocsee}[2]{\item \texttt{#1 (\ref{#2})}}
+
+% Environment around \texdocparameter invocations
+\newenvironment{texdocparameters}{%
+	\minisec{Parameters}
+	\begin{tabular}{ll}
+}{%
+	\end{tabular}
+}
+
+% Environment around \texdocthrow invocations
+\newenvironment{texdocthrows}{%
+        \minisec{Throws}
+        \begin{tabular}{ll}
+}{%
+        \end{tabular}
+}
+
+\newcommand{\texdocreturn}[1]{\minisec{Returns} #1}
+
+% Formats a parameter (this gets put inside the input of a \texdocmethod or 
+% \texdocconstructor macro)
+%  Argument 1: name
+%  Argument 2: description text
+\newcommand{\texdocparameter}[2]{\texttt{\textbf{#1}} & \begin{minipage}[t]{0.8\textwidth}#2\end{minipage} \\}
+
+% Formats a throws tag
+%  Argument 1: exception name
+%  Argument 2: description text
+\newcommand{\texdocthrow}[2]{\texttt{\textbf{#1}} & \begin{minipage}[t]{0.6\textwidth}#2\end{minipage} \\}
+
+% Used to simulate html <br/>
+\newcommand{\texdocbr}{\mbox{}\newline{}}
+
+% Used to simulate html <h[1-9]> - </h[1-9]>
+% Argument 1: number of heading (5 for a <h5>)
+% Argument 2: heading text
+\newcommand{\headref}[2]{\minisec{#2}}
+
+\newcommand{\refdefined}[1]{
+\expandafter\ifx\csname r@#1\endcsname\relax
+\relax\else
+{$($ in \ref{#1}, page \pageref{#1}$)$}
+\fi}
+
+% ---------------------------------------------------------------------------
+% TexDoc macros end
+% ---------------------------------------------------------------------------
+
+\begin{document}
+
+	\tableofcontents
+	\input{docs.tex}
+
+\end{document}

@@ -18,9 +18,20 @@ public class NodeWithOutput extends Node {
 
 	/**
 	 * 
+	 */
+	private Node[] children;
+	/**
+	 * 
 	 * @return children-nodes 
 	 */
 	public Node getSubNodes() {
 		return null;
 	}
+	/**
+   * 
+   * @return parent-moduls 
+   */
+  public Node getChildren() {
+    return null;
+  }
 };
