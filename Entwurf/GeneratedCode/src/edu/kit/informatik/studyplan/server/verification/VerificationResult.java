@@ -17,9 +17,18 @@ public class VerificationResult {
 	 */
 	private ModuleConstraint[] violations;
 
+
+	/**
+	 * Gibt die verletzten Modul-Constraints zurück.
+	 * @return die verletzten Modul-Constraints
+	 */
+	public ModuleConstraint[] getViolations() {
+		return violations;
+	}
+
 	/**
 	 * is correct prüft anhand von violations, ob der Studienplan erfolgreich verifiziert wurde.
-	 * @return  zurückgegeben wird false, falls der Studienplan fehlerhaft ist und true, 
+	 * @return  zurückgegeben wird false, falls der Studienplan fehlerhaft ist und true,
 	 * wenn er zu einem erfolreichen Studienabschluss führt.
 	 */
 	public boolean isCorrect() {
