@@ -9,7 +9,7 @@
 
 Abschließend folgt die Spezifikation der für die REST-Kommunikation verwendeten HTTP-Statuscodes. Außer bei den Statuscodes \refstatus{200} und \refstatus{201} werden -- abgesehen vom Header -- keine weiteren Daten als Antwort gesendet.
 
-\begin{longtable}{| >{\hspace{0pt}} p{.25\textwidth} | >{\hspace{0pt}} p{.70\textwidth} |}
+\begin{longtable}{| >{\hspace{0pt}} p{.25\textwidth} | >{\hspace{0pt}} p{.69\textwidth} |}
 	\hline
 	\textbf{Statuscode} & \textbf{Beschreibung}  \\ 
 	\hhline{|=|=|}  
@@ -35,7 +35,7 @@ Abschließend folgt die Spezifikation der für die REST-Kommunikation verwendete
 	\hline
 	\lblstatus 405 Method Not Allowed & Die Zugriff auf die URI mittels dieser HTTP-Methode ist nicht zulässig. \\
 	\hline
-	\lblstatus 422 Unprocessable Entity & Die Anfrage-Parameter sind syntaktisch korrekt, allerdings ist die Anfrage aufgrund semantischer Konflikte nicht ausführbar. \\*
+	\lblstatus 422 Unprocessable Entity & Die Anfrage-Parameter sind syntaktisch korrekt, allerdings ist die Anfrage aufgrund semantischer Konflikte nicht ausführbar. (Kurz: Die Anfrage wird vom Server verstanden, ergibt aber keinen Sinn.) Beispiele: Entfernen einer nicht vorhandenen Ressource, Einfügen einer bereits vorhandenen Ressource, Name bereits vergeben etc. \\*
 	\hhline{|=|=|} 
 	\lblstatus 500 Internal Server Error & Es wurde versucht, die Anfrage auszuführen. Dabei ist serverseitig ein interner Fehler aufgetreten. \\
 \end{longtable}
