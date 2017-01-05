@@ -58,8 +58,8 @@
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_VDBx8LuOEea-uPszIhxKkQ" name="ObjectiveFunctionResource">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_aK00Y7udEea-uPszIhxKkQ" name="objectiveFunction" visibility="private" type="_1uw68M37Eea6VOVLcwrXFg" aggregation="shared" association="_aK00YLudEea-uPszIhxKkQ">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b38dgLudEea-uPszIhxKkQ" value="1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_aK00Y7udEea-uPszIhxKkQ" name="generationManager" visibility="private" type="_1uw68M37Eea6VOVLcwrXFg" aggregation="shared" association="_aK00YLudEea-uPszIhxKkQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b38dgLudEea-uPszIhxKkQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b3-5wLudEea-uPszIhxKkQ" value="*"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_O1vFELuVEea-uPszIhxKkQ" name="getAllObjectiveFunctions">
@@ -142,7 +142,7 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_DF11EMwgEeaTDYobh6xdEw" name="jsonGeneratedPlan" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_oh-2QLuUEea-uPszIhxKkQ" name="PlanVerificatorResource">
+      <packagedElement xmi:type="uml:Class" xmi:id="_oh-2QLuUEea-uPszIhxKkQ" name="PlanVerifierResource">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_A1f-0838Eea6VOVLcwrXFg" name="verificationManager" visibility="private" type="_wE6WgM37Eea6VOVLcwrXFg" aggregation="shared" association="_A1f-0M38Eea6VOVLcwrXFg"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_qbVkkLuUEea-uPszIhxKkQ" name="verifyPlan">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_82FcUMwhEeaTLsJqt_fnxw" name="plan_id">
