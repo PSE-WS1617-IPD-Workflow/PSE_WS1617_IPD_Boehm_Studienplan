@@ -10,15 +10,12 @@ import edu.kit.informatik.studyplan.server.verification.Verifier;
 
 /************************************************************/
 /**
- * 
+ * Der StandardVerifier importiert den Verifier. 
+ * Er ist eine konkret verifizierende Klasse.
  */
-public class StandardVerifier {
+public class StandardVerifier implements Verifier {
 
-	/**
-	 * 
-	 * @return invalid 
-	 * @param plan 
-	 */
+	
 	public VerificationResult verify(Plan plan) {
 		return null;
 	}
