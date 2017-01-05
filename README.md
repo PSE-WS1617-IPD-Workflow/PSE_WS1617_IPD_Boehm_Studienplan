@@ -26,7 +26,7 @@ Help -> Install Papyrus Additional Comonents -> Designer-JAVA (Incubation)
 * Change path of java tools in build.xml
 * Use ant jar
 * Copy generated jar to source foulde of JavaProject
-* run ```javadoc -docletpath texdoclet.jar -doclet org.wonderly.doclets.TexDoclet "my.cool.package"``` ("my.cool.package" is the package that java doc should be generated for)
+* run ```javadoc -docletpath texdoclet.jar -doclet org.wonderly.doclets.TexDoclet -sourcepath ./src -subpackages .``` (has to be run directly in project directory)
 * also see: https://docs.oracle.com/javase/7/docs/technotes/tools/windows/javadoc.html#runningjavadoc
 
 ###Set Eclipse to UTF-8
