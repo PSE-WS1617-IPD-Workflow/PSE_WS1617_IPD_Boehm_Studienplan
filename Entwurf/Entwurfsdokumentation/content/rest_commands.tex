@@ -62,6 +62,7 @@
 
 \FloatBarrier
 \subsection{Zugriffsstruktur}
+\label{subsec:rest_commands}
 
 Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Methoden und URIs beschrieben. GET-Parameter-Definitionen (*) sind weiter unten separat aufgeführt.
 \begin{longtable}{| >{\hspace{0pt}} p{.11\textwidth} | >{\hspace{0pt}} p{.24\textwidth} | >{\hspace{0pt}} p{.26\textwidth} | >{\hspace{0pt}} p{.34\textwidth} |}
@@ -80,17 +81,17 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 	%===============================================================================================
 	GET & /modules &  Lese planunabhängige Modul-Liste (gefiltert) (Name, ECTS und Dozent) & Anfrage: \refgetparams{Modules-Parameter} \newline Rückgabe:  \jsonobj{ModulesResult} \\
 	\hline
-	GET & /modules/\jsonatom{Modul-ID} & Lese Modul (planunabhängig) & Anfrage: --- \newline Rückgabe: \jsonobj{ModuleResult} \\ 
+	GET & /modules/\jsonatom{Modul-ID} & Lese Modul (planunabhängig) & Anfrage: --- \newline Rückgabe: \jsonobj{ModuleResult} \\* 
 	\hhline{|=|=|=|=|} 
 	GET & /student & Lese Informationen über Student & Anfrage: --- \newline Rückgabe: \jsonobj{StudentResult} \\ 
 	\hline
 	PUT & /student & Ersetze Informationen über Student, lösche Verifikationsinformationen & Anfrage: \jsonobj{StudentPutRequest} \newline Rückgabe: \jsonobj{StudentResult} \\ 
 	\hline
-	DELETE & /student & Löscht Student & Anfrage: \jsonobj{StudentDeleteRequest} \newline Rückgabe: --- \\ 
+	DELETE & /student & Löscht Student & Anfrage: \jsonobj{StudentDeleteRequest} \newline Rückgabe: --- \\* 
 	\hhline{|=|=|=|=|} 
 	GET & /plans & Lese Planliste & Anfrage: --- \newline Rückgabe: \jsonobj{PlansGetResult} \\ 
 	\hline
-	POST & /plans & Erstellt neuen Studienplan & Anfrage: \jsonobj{PlansPostRequest} \newline Rückgabe: \jsonobj{PlansPostResult} \\ 
+	POST & /plans & Erstellt neuen Studienplan & Anfrage: \jsonobj{PlansPostRequest} \newline Rückgabe: \jsonobj{PlansPostResult} \\* 
 	\hhline{|=|=|=|=|} 
 	GET & /plans/\jsonatom{Plan-ID} & Lese Plan & Anfrage: --- \newline Rückgabe: \jsonobj{PlanResult} \\ 
 	\hline
@@ -102,7 +103,7 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 	\hline
 	POST & /plans/\jsonatom{Plan-ID} & Dupliziere Plan & Anfrage: \jsonobj{PlanPatchPostRequest} \newline Rückgabe: \jsonobj{PlanPatchPostResult} \\* 
 	\hhline{|=|=|=|=|} 
-	GET & /plans/\+\jsonatom{Plan-ID}/\+modules & Lese Modul-Liste (gefiltert) (Name, ECTS, Dozent und Präferenz) & Anfrage: \newline \refgetparams{PlanModules-Parameter} \newline Rückgabe: \jsonobj{PlanModulesResult} \\ 
+	GET & /plans/\+\jsonatom{Plan-ID}/\+modules & Lese Modul-Liste (gefiltert) (Name, ECTS, Dozent und Präferenz) & Anfrage: \newline \refgetparams{PlanModules-Parameter} \newline Rückgabe: \jsonobj{PlanModulesResult} \\* 
 	\hhline{|=|=|=|=|} 
 	GET & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID} & Lese Modul mit \jsonatom{Modul-ID} & Anfrage: --- \newline Rückgabe: \jsonobj{PlanModuleResult} \\ 
 	\hline
@@ -110,26 +111,27 @@ Im Folgenden wird die Zugriffsstruktur der REST-Schnittstelle anhand HTTP-Method
 	\hline
 	DELETE & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID} & Lösche Modul aus Plan, setzte Verifizierung zurück & Anfrage: --- \newline Rückgabe: --- \\ 
 	\hline
-	PUT & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID}/\+preference & Setze Bewertung für Modul & Anfrage: \jsonobj{ModulePreferencePutRequest} \newline Rückgabe: \jsonobj{ModulePreferencePutResult} \\ 
+	PUT & /plans/\+\jsonatom{Plan-ID}/\+modules/\+\jsonatom{Modul-ID}/\+preference & Setze Bewertung für Modul & Anfrage: \jsonobj{ModulePreferencePutRequest} \newline Rückgabe: \jsonobj{ModulePreferencePutResult} \\* 
 	\hhline{|=|=|=|=|} 
-	GET & /plans/\+\jsonatom{Plan-ID}/\+verification & Verifiziere den Plan, gebe das Ergebnis zurück und speichere es in der Datenbank  &  Anfrage: --- \newline Rückgabe: \jsonobj{PlanVerificationResult} \\ 
+	GET & /plans/\+\jsonatom{Plan-ID}/\+verification & Verifiziere den Plan, gebe das Ergebnis zurück und speichere es in der Datenbank  &  Anfrage: --- \newline Rückgabe: \jsonobj{PlanVerificationResult} \\* 
 	\hhline{|=|=|=|=|} 
-	GET & /plans/\+\jsonatom{Plan-ID}/\+proposal/\+\jsonatom{Zielfunktion-ID} & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & Anfrage: \refgetparams{Proposal-Parameter} \newline Rückgabe: \jsonobj{PlanProposalResult} \\ 
+	GET & /plans/\+\jsonatom{Plan-ID}/\+proposal/\+\jsonatom{Zielfunktion-ID} & Erstelle und Erhalte einen auf Basis des Plans generierten (neuen) Plan & Anfrage: \refgetparams{Proposal-Parameter} \newline Rückgabe: \jsonobj{PlanProposalResult} \\* 
 	\hhline{|=|=|=|=|} 
-	GET & /plans/\+\jsonatom{Plan-ID}/\+pdf & Lese PDF-Version des Plans & Anfrage: \refgetparams{PDF-Parameter} \newline Rückgabe: (Weiterleitung auf PDF) \\  
+	GET & /plans/\+\jsonatom{Plan-ID}/\+pdf & Lese PDF-Version des Plans & Anfrage: \refgetparams{PDF-Parameter} \newline Rückgabe: (Weiterleitung auf PDF) \\*  
 	\hhline{|=|=|=|=|} 
-	GET  & /filters & Lade Filtertypen und Beschränkungen & Anfrage: --- \newline Rückgabe: \jsonobj{FiltersResult} \\ 
+	GET  & /filters & Lade Filtertypen und Beschränkungen & Anfrage: --- \newline Rückgabe: \jsonobj{FiltersResult} \\* 
 	\hhline{|=|=|=|=|} 
-	GET & /objective-functions & Lese Liste mit allen vorhandenen Zielfunktionen & Anfrage: --- \newline Rückgabe: \jsonobj{ObjectiveFunctionsResult} \\ 
+	GET & /objective-functions & Lese Liste mit allen vorhandenen Zielfunktionen & Anfrage: --- \newline Rückgabe: \jsonobj{ObjectiveFunctionsResult} \\* 
 	\hhline{|=|=|=|=|} 
 	GET & /disciplines & Lese Liste mit allen angebotenen Studienfächern & Anfrage: --- \newline Rückgabe: \jsonobj{DisciplinesResult} \\*
 	\hhline{|=|=|=|=|}
-	GET & /subjects & Lese Liste mit allen angebotenen Vertiefungsfächern & Anfrage: --- \newline Rückgabe: \jsonobj{SubjectsResult} \\
+	GET & /subjects & Lese Liste mit allen angebotenen Vertiefungsfächern & Anfrage: --- \newline Rückgabe: \jsonobj{SubjectsResult} 
 \end{longtable}
 
 \subsubsection*{GET-Anfrageparameter}
 
 Die Parameter der GET-Anfragen werden im Folgenden tabellarisch beschrieben. Parameter mit \optpar{kursivem Namen} sind optional und werden nur falls nötig angegeben.
+\vspace{-1pt} % To prevent the bottom line of the following table to be broken across pages. #LatexIsCrap
 
 \begin{getparamdef*}{/modules}{Modules-Parameter}
 	{$\textit{filter}_k \in \{\texttt{ects}, \texttt{category}, \texttt{type}, \texttt{discipline}, \texttt{compulsory}, \texttt{cycletype}, \texttt{name}\}$, bildet die Liste der aktivierten Filter}
@@ -157,15 +159,15 @@ Die Parameter der GET-Anfragen werden im Folgenden tabellarisch beschrieben. Par
 \end{getparamdef}
 
 \begin{getparamdef}{/plans/\jsonatom{Plan-ID}/proposal/\jsonatom{Zielfunktion-ID}}{Proposal-Parameter}
-	min-semesters & \jsonatom{Semester-Minimum}\\
+	\optpar{min-semesters} & \jsonatom{Semester-Minimum}\\
 	\hline
-	max-semesters & \jsonatom{Semester-Maximum}\\
+	\optpar{max-semesters} & \jsonatom{Semester-Maximum}\\
 	\hline
-	min-semester-ects & \jsonatom{Semester-ECTS-Minimum} \\
+	\optpar{min-semester-ects} & \jsonatom{Semester-ECTS-Minimum} \\
 	\hline
-	max-semester-ects & \jsonatom{Semester-ECTS-Maximum} \\
+	\optpar{max-semester-ects} & \jsonatom{Semester-ECTS-Maximum} \\
 	\hline
-	preferred-category & (Nummer der ausgewählten Kategorie) \\
+	\optpar{preferred-subject} & (Nummer des ausgewählten Vertiefungsfaches) \\
 \end{getparamdef}
 
 \begin{getparamdef}{/plans/\jsonatom{Plan-ID}/pdf}{PDF-Parameter}
