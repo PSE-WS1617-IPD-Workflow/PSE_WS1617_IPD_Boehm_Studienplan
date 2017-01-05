@@ -56,20 +56,35 @@ public abstract class ModuleConstraintType {
      */
     public abstract boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation);
 
-    /**
-     * 
-     * @return gibt die textuelle Beschreibung der Abhängigkeit zurück
-     */
-    public String getDescription() {
-        return description;
-    }
+	/**
+	 * 
+	 * @return  gibt die textuelle Beschreibung der Abhängigkeit zurück
+	 */
+	public String getDescription() {
+		return description;
+	}
+	
+	/**
+	 * 
+	 * @param description die textuelle Beschreibung
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    /**
-     * 
-     * @return gibt die Abhängigkeitsbeschreibung in Form eines logischen
-     *         Ausdrucks zurück
-     */
-    public String getFormalDescription() {
-        return description;
-    }
+	/**
+	 * 
+	 * @return  gibt die Abhängigkeitsbeschreibung in Form eines logischen Ausdrucks zurück
+	 */
+	public String getFormalDescription() {
+		return description;
+	}
+	
+	/**
+	 * 
+	 * @param formalDescription der logische Ausdruck
+	 */
+	public void setFormalDescription(String formalDescription) {
+		this.formalDescription = formalDescription;
+	}
 };

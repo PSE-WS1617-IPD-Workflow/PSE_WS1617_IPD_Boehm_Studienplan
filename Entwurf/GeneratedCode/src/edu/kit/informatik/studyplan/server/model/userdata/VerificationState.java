@@ -6,19 +6,19 @@ package edu.kit.informatik.studyplan.server.model.userdata;
 
 /************************************************************/
 /**
- * 
+ * Modelliert den Verifikationsstatus eines Studienplans
  */
 public enum VerificationState {
 	/**
-	 * 
+	 * der Plan wurde noch nicht verifiziert
 	 */
 	NOT_VERIFIED,
 	/**
-	 * 
+	 * der Plan ist gültig
 	 */
 	VALID,
 	/**
-	 * 
+	 * der Plan enhält Fehler, d.h. Constraints sind verletzt
 	 */
 	INVALID;
 };

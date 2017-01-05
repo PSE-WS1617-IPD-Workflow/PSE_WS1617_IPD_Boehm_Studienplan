@@ -11,6 +11,10 @@
 <stop stop-opacity="1" stop-color="white" offset="0%"/>
 <stop stop-opacity="1" stop-color="white" offset="100%"/>
 </linearGradient>
+<linearGradient x1="10" x2="10" y1="10" gradientUnits="userSpaceOnUse" y2="110" xlink:type="simple" xlink:actuate="onLoad" id="linearGradient3" xlink:show="other" spreadMethod="pad">
+<stop stop-opacity="1" stop-color="white" offset="0%"/>
+<stop stop-opacity="1" stop-color="white" offset="100%"/>
+</linearGradient>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath1">
 <path d="M10 10 L10 110 L210 110 L210 32 L71 32 L71 10 Z"/>
 </clipPath>
@@ -41,6 +45,12 @@
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath10">
 <path d="M270 31 L471 31 L471 111 L270 111 L270 31 Z"/>
 </clipPath>
+<clipPath clipPathUnits="userSpaceOnUse" id="clipPath11">
+<path d="M10 10 L10 110 L210 110 L210 32 L92 32 L92 10 Z"/>
+</clipPath>
+<clipPath clipPathUnits="userSpaceOnUse" id="clipPath12">
+<path d="M34 12 L89 12 L89 29 L34 29 L34 12 Z"/>
+</clipPath>
 </defs>
 <g fill="url(#linearGradient1)" font-family="'Segoe UI'" stroke-linejoin="round" stroke="url(#linearGradient1)" stroke-width="0" stroke-miterlimit="0">
 <rect x="10" y="10" clip-path="url(#clipPath1)" width="200" height="100" stroke="none"/>
@@ -65,6 +75,16 @@
 <image x="276" y="13" clip-path="url(#clipPath8)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAWUlEQVR42mNgGPKA&#13;&#10;EUQoZCz4j0vBgxkJjPgMYIEx7k+Px5BUzFxIuQvwAZDr4C7YUBdAkuaApg2oXgAB&#13;&#10;MV5+kl3BRGksoLiAnZlCA5gZKTWAiQIDYKE6AgEAAu0P6M4KKrgAAAAASUVORK5C&#13;&#10;YII=" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
 <text xml:space="preserve" x="295" y="26" clip-path="url(#clipPath9)" stroke="none">client</text>
 <line clip-path="url(#clipPath10)" fill="none" x1="270" x2="470" y1="32" y2="32"/>
+<rect x="10" y="10" clip-path="url(#clipPath11)" fill="url(#linearGradient3)" width="200" height="100" stroke="none"/>
+<line clip-path="url(#clipPath2)" fill="none" x1="10" x2="92" y1="10" y2="10"/>
+<line clip-path="url(#clipPath2)" fill="none" x1="92" x2="92" y1="10" y2="32"/>
+<line clip-path="url(#clipPath2)" fill="none" x1="92" x2="210" y1="32" y2="32"/>
+<line clip-path="url(#clipPath2)" fill="none" x1="210" x2="210" y1="32" y2="110"/>
+<line clip-path="url(#clipPath2)" fill="none" x1="210" x2="10" y1="110" y2="110"/>
+<line clip-path="url(#clipPath2)" fill="none" x1="10" x2="10" y1="110" y2="10"/>
+<image x="16" y="13" clip-path="url(#clipPath3)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAWUlEQVR42mNgGPKA&#13;&#10;EUQoZCz4j0vBgxkJjPgMYIEx7k+Px5BUzFxIuQvwAZDr4C7YUBdAkuaApg2oXgAB&#13;&#10;MV5+kl3BRGksoLiAnZlCA5gZKTWAiQIDYKE6AgEAAu0P6M4KKrgAAAAASUVORK5C&#13;&#10;YII=" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
+<text xml:space="preserve" x="35" y="26" clip-path="url(#clipPath12)" stroke="none">backbone</text>
+<line clip-path="url(#clipPath5)" fill="none" x1="10" x2="210" y1="32" y2="32"/>
 </g>
 </g>
 </svg>
