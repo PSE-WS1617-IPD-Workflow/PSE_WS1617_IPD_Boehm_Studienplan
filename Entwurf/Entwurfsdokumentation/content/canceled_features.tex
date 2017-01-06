@@ -1,0 +1,15 @@
+- Teilen von Studiengängen (zu viel Aufwand, verursacht großen Datenmüll oder ist aus Datenschutztechnischen Gründen fraglich)
+	- 1. Geteilter Studienplan wird als Snapshot gespeichert -> Datenmüll + Zusätzlicher verwaltungsaufwand
+	- 2. Es wird Lesezugriff auf den Studienplan gestattet -> Zugriffsmanager müsste implementiert werden, da sonst möglicherweise jemand nach Jahren den Studienplan einer Person ließt, die dass zu diesem Zeitpunkt gar nicht mehr will.
+	- 3. Studienplan kopieren -> was wenn anderes Studienfach? -> andere Abgeschlossene Module
+	- weitere Lösungen haben ähnliche Probleme und sind mit viel Aufwand verbunden
+- Login über Shibboleth Identity Provider (kann durch Umkonfigurieren des Servers erreicht werden, wäre jedoch zu viel Bürokratischer Aufwand)
+- Modulübersicht
+	- Filter 
+		- Veranstaltungsart (nicht in den Daten vorgesehen, kann später ergänzt werden)
+		- Angebotenes Semester wurde ersetzt durch (Semesterzyklus -> Sommer-, Wintersemester oder beides)
+		- Fachrichtung und Kategorie wurden Kombiniert
+	- Detailansicht:
+		- Veranstaltungsart (nicht in den Daten vorgesehen, kann später ergänzt werden)
+- Rückgängigbutton -> zu viel Entwurfs- und Implementierungsaufwand
+- ausgeschlossene Module wurde entfernt, da Bewertung ähnliche Funktion bietet
