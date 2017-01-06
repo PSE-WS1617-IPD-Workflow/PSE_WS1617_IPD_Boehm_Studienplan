@@ -4,9 +4,8 @@
 
 package edu.kit.informatik.studyplan.server.rest;
 
-/************************************************************/
 /**
- * 
+ * Die Ressourcenkonfiguration um eine Web-basierte Anwendung zu konfigurieren.
  */
 public class ResourceConfig {
 };
