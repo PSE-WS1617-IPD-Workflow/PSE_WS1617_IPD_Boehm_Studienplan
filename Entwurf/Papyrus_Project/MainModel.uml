@@ -2012,17 +2012,17 @@ welche wiederum die Render-Funktionen &quot;unterliegender&quot; Views aufruft.&
       <packageImport xmi:type="uml:PackageImport" xmi:id="_2_qWsMK5EeafkJA2mXH8uA" importedPackage="_wOsBkLfWEea2RYsZ51fiPw"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_IEUhcMdjEea29-bQWKStRA" name="MainView">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Gh-SwMzmEeaiINyVGHRfeA" name="sessionInformation" visibility="private" type="_OddvIMPREeaCPewWEdcdGQ"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_ESt_YM0GEeavo6is7kUH4g" name="header" visibility="private" type="_S55R8MdlEea29-bQWKStRA"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_F0RRsM0GEeavo6is7kUH4g" name="content" visibility="private" type="_S55R8MdlEea29-bQWKStRA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ESt_YM0GEeavo6is7kUH4g" name="header" visibility="private"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_F0RRsM0GEeavo6is7kUH4g" name="content" visibility="private"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_KBdD0M0GEeavo6is7kUH4g" name="notificationCentre" visibility="private" type="_2VJtwM0EEeameZvbSNUikg"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_dgl1wMdjEea29-bQWKStRA" name="setHeader">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_mHO-oMdnEea29-bQWKStRA" name="header" type="_S55R8MdlEea29-bQWKStRA"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_mHO-oMdnEea29-bQWKStRA" name="header"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_n-lh0MdnEea29-bQWKStRA" name="options">
             <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_o-wiMMdjEea29-bQWKStRA" name="setContent">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_g1fYMMdnEea29-bQWKStRA" name="content" type="_S55R8MdlEea29-bQWKStRA"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_g1fYMMdnEea29-bQWKStRA" name="content"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_0ek0cMdjEea29-bQWKStRA" name="options" isUnique="false">
             <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_S42PQMwqEeaUspSTNf28yQ"/>
           </ownedParameter>
@@ -2396,7 +2396,7 @@ this.render();&#xD;
           <ownedOperation xmi:type="uml:Operation" xmi:id="_WrxcUMzwEeaiINyVGHRfeA" name="addPlan"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_zLHrsMdnEea29-bQWKStRA" name="PlanEditPage">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_D9WJIM0CEeak492nI_BnEQ" name="sidebar" visibility="private" type="_S55R8MdlEea29-bQWKStRA"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_D9WJIM0CEeak492nI_BnEQ" name="sidebar" visibility="private"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_IoYU4M0CEeak492nI_BnEQ" name="plan" visibility="private" type="_uOEGYMdoEea29-bQWKStRA"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_MjLWgM0CEeak492nI_BnEQ" name="headBar" visibility="private" type="_JwJ7oM0KEeavo6is7kUH4g"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_z5gtkM0LEeavo6is7kUH4g" name="showModuleDetails">
@@ -2710,19 +2710,16 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           <ownedEnd xmi:type="uml:Property" xmi:id="_04TlgMbTEeaDo5Q3a9GKqw" visibility="private" type="_y7hIsMbTEeaDo5Q3a9GKqw" association="_04MQwMbTEeaDo5Q3a9GKqw"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_Jr_9gMPMEeaCPewWEdcdGQ" name="CookieModel" isAbstract="true">
-          <generalization xmi:type="uml:Generalization" xmi:id="_5rHqcMdmEea29-bQWKStRA" general="_UjZmYMdlEea29-bQWKStRA"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_77WpYNJ3Eeai7-fwKeDyXA" name="sync" visibility="private">
             <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_VlPSQM0VEeavo6is7kUH4g"/>
           </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_IGXccMPMEeaCPewWEdcdGQ" name="OAuthModel" isAbstract="true">
-          <generalization xmi:type="uml:Generalization" xmi:id="_YcGKINM1EeaAAY--SaIwVw" general="_UjZmYMdlEea29-bQWKStRA"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_A6bLcNJ4Eeai7-fwKeDyXA" name="sync" visibility="private">
             <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_VlPSQM0VEeavo6is7kUH4g"/>
           </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_j8UosMbXEeasRKsBOCfOGQ" name="OAuthCollection" visibility="protected" isAbstract="true">
-          <generalization xmi:type="uml:Generalization" xmi:id="_ARNNoMdnEea29-bQWKStRA" general="_VkyK4MdlEea29-bQWKStRA"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="__KPAMNJ3Eeai7-fwKeDyXA" name="sync" visibility="private">
             <type xmi:type="uml:DataType" href="JavascriptBasics.uml#_VlPSQM0VEeavo6is7kUH4g"/>
           </ownedAttribute>
@@ -2945,12 +2942,6 @@ Zum anderen würde eine zu detaillierte Klassen-Aufteilung sich negativ auf das 
           </eAnnotations>
           <ownedEnd xmi:type="uml:Property" xmi:id="_Zw0JYszqEeaiINyVGHRfeA" name="sessionInformation" visibility="private" type="_OddvIMPREeaCPewWEdcdGQ" association="_Zwv38MzqEeaiINyVGHRfeA"/>
         </packagedElement>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_RZCYoMdkEea29-bQWKStRA" name="backbone">
-        <packagedElement xmi:type="uml:DataType" xmi:id="_S55R8MdlEea29-bQWKStRA" name="Backbone.View"/>
-        <packagedElement xmi:type="uml:DataType" xmi:id="_UjZmYMdlEea29-bQWKStRA" name="Backbone.Model"/>
-        <packagedElement xmi:type="uml:DataType" xmi:id="_VkyK4MdlEea29-bQWKStRA" name="Backbone.Collection"/>
-        <packagedElement xmi:type="uml:DataType" xmi:id="_WmKIUMdlEea29-bQWKStRA" name="Backbone.Router"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_nnmP8LfWEea2RYsZ51fiPw" name="storage">
