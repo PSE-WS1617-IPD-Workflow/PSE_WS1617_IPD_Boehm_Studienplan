@@ -21,6 +21,11 @@ public abstract class Node {
 	 * alle Knoten enthält, die Kanten zu diesem Knoten haben.
 	 */
 	private Node[] parents;
+	
+	/**
+	 * ein innerer Knoten zur Darstellung von parallelen Modulen (Knoten). 
+	 */
+	private Node subNodes;
 
 	/**
 	 * Die Methode getPartens gibt die Liste parents zurück.
@@ -32,17 +37,38 @@ public abstract class Node {
 
 
 	/**
-	 * @return
+	 * Die Methode gibt das Modul zurück, welches der Knoten darstellt.
+	 * @return Das Modul (Typ Module), welches der Knoten repräsentiert.
 	 */
 	public Module getModule() {
 	  return null;
 	}
 
+	
 	/**
-	 * 
-	 * @return parent-moduls 
+	 * Die Methode addParent fügt der Liste parents vom Typ node 
+	 * den übergebenen node hinzu. 
+	 * @param node
 	 */
-	public Node getChildren() {
-		return null;
+	public void addParent(Node node){
+	  
 	}
+	
+	/**
+	 * die Methode getSubNodes gibt eventuell enthaltene weitere Knoten zurück.
+	 * @return enthaltene Knoten
+	 */
+	public Node getSubNodes(){
+	  return null;
+	}
+	
+	/**
+	 * Die Methode addSubNode fügt dem innersten Knoten 
+	 * den übergebenen Knoten als inneren Knoten hinzu.
+	 * @param node der neue innerste Knoten.
+	 */
+	public void addSubNode(Node node){
+	  
+	}
+	
 };

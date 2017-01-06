@@ -11,7 +11,9 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
- * 
+ *Die Klasse SimpleGenerator, welche Generator implementiert,
+ * stellt einen konkreten Generator da. Dieser nutzt die Graphenstruktur, 
+ * die Zielfunktion und die WeightFunction.
  */
 public class SimpleGenerator implements Generator {
 
