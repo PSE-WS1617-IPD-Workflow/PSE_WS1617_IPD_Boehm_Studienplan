@@ -42,7 +42,6 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_CK1CwMt6EeaIBcC0jCetUA" name="plan_id">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
           </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_DhUNMMt9EeaIBcC0jCetUA" name="jsonStatus" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_FmEBwLubEea-uPszIhxKkQ" name="duplicatePlan">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_jmSiYMt5EeaIBcC0jCetUA" name="plan_id">
@@ -74,9 +73,7 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_U6-FULuSEea-uPszIhxKkQ" name="getInformation">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_3gjb8Mt6EeaIBcC0jCetUA" name="jsonStudentInformation" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_eRvAYLuSEea-uPszIhxKkQ" name="deleteStudent">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-rJTAMt9EeaIBcC0jCetUA" name="jsonStatus" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
-        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_eRvAYLuSEea-uPszIhxKkQ" name="deleteStudent"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_uEiVULuTEea-uPszIhxKkQ" name="PlanModulesResource">
         <ownedOperation xmi:type="uml:Operation" xmi:id="_1wBaULuTEea-uPszIhxKkQ" name="getModules">
@@ -112,7 +109,6 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_8KkCEMt8EeaIBcC0jCetUA" name="module_id">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
           </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_KcG1EMt9EeaIBcC0jCetUA" name="jsonStatus" type="_qFookMtyEeaIBcC0jCetUA" direction="return"/>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_pQEnILubEea-uPszIhxKkQ" name="setModulePreference">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q6bjYMt9EeaIBcC0jCetUA" name="plan_id">
