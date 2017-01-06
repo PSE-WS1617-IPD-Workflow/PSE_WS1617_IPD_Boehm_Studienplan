@@ -7,9 +7,10 @@ package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 
 /**
  * Kapselt die für die Filterarchitektur nötigen Module-Attribut-Namen als Stringkonstanten.
- * Diese werden bei der Anwendung der Filter in den {@link ModuleDao}-Methoden für die eindeutige
+ * Diese werden bei der Anwendung der Filter in den ModuleDao-Methoden für die eindeutige
  * Identifzierung von Module-Eigenschaften benutzt.
  * @see edu.kit.informatik.studyplan.server.filter
+ * @see ModuleDao
  */
 public final class ModuleAttributeNames {
 	/**
