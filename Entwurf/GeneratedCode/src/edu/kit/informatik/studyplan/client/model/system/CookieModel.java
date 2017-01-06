@@ -4,7 +4,7 @@
 
 package edu.kit.informatik.studyplan.client.model.system;
 
-import backbone.BackboneModel;
+import org.backbone.BackboneModel;
 
 /************************************************************/
 /**

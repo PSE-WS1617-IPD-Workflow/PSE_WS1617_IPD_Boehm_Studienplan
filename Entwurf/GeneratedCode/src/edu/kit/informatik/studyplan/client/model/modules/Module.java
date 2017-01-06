@@ -8,7 +8,7 @@ import edu.kit.informatik.studyplan.client.model.modules.ModuleConstraint;
 import edu.kit.informatik.studyplan.client.model.modules.Preference;
 import edu.kit.informatik.studyplan.client.model.system.OAuthModel;
 
-import backbone.BackboneModel;
+import org.backbone.BackboneModel;
 
 /************************************************************/
 /**

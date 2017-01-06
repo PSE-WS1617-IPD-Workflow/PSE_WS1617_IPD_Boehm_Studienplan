@@ -8,7 +8,7 @@ import edu.kit.informatik.studyplan.client.model.modules.Module;
 import edu.kit.informatik.studyplan.client.view.components.Plan;
 import edu.kit.informatik.studyplan.client.view.components.PlanHeadBar;
 
-import backbone.BackboneView;
+import org.backbone.BackboneView;
 
 /************************************************************/
 /**

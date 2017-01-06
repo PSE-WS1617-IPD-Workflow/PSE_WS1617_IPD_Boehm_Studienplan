@@ -8,7 +8,7 @@ import java.util.Collection;
 
 import edu.kit.informatik.studyplan.client.model.plans.Semester;
 
-import backbone.BackboneModel;
+import org.backbone.BackboneModel;
 
 /************************************************************/
 /**
