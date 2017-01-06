@@ -4,9 +4,21 @@ package edu.kit.informatik.studyplan.server.filter;
  * Repräsentiert einen Intervall-Beschränkungs-Filter für ganzzahlige Attribute.
  */
 public abstract class RangeFilter implements AttributeFilter {
+    /**
+     * Die untere Schranke des Filters.
+     */
     protected int lower;
+    /**
+     * Die obere Schranke des Filters.
+     */
     protected int upper;
+    /**
+     * Die minimale untere Schranke des Filters.
+     */
     protected int min;
+    /**
+     * Die maximale untere Schranke des Filters.
+     */
     protected int max;
 
     /**
