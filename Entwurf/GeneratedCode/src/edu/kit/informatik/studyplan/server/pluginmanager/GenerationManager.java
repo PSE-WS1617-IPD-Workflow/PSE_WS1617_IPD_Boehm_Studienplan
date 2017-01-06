@@ -7,17 +7,34 @@ package edu.kit.informatik.studyplan.server.pluginmanager;
 import edu.kit.informatik.studyplan.server.generation.Generator;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
 
-/************************************************************/
 /**
- * 
+ * Verwaltet den Zugriff auf das Generierungsplug-in.
  */
 public class GenerationManager {
 	/**
-	 * 
+	 * Der Generierer.
+	 * @see edu.kit.informatik.studyplan.server.generation.Generator
 	 */
 	private Generator generator;
 	/**
-	 * 
+	 * Gibt den Generator zurück.
+	 * @return generator : der Generator
+	 */
+	public Generator getGenerator() {
+		return generator;
+	}
+	
+	/**
+	 * Liste der Zielfunktionen.
+	 * @see edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction
 	 */
 	private PartialObjectiveFunction[] objectiveFunction;
-};
+	/**
+	 * Gibt die Liste der Zielfunktionen zurück.
+	 * @return objectiveFunction : die Liste der Zielfunktionen
+	 */
+	public PartialObjectiveFunction[] getObjectiveFunction() {
+		return objectiveFunction;
+	}
+
+}
