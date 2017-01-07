@@ -1,11 +1,18 @@
-Kompositum:
-	server.generation.objectivefunction (gesamtes Paket)
-	server.generation.standard (Node, NodeWithOutput, NodeWithoutOutput)
-	server.filter (Filter und Multifilter)
-
-Builder:
-	server.pluginmanager.GenerationManager (baut die Zielfunktion zusammen)
+\section{Verwendete Entwurfsmuster}
+\begin{itemize}
+	\item Kompositum
+		\begin{itemize}
+			\item server.generation.objectivefunction (gesamtes Paket)
+			\item server.generation.standard (Node, NodeWithOutput, NodeWithoutOutput)
+			\item server.filter (Filter und Multifilter)
+		\end{itemize}
+	\item Builder
+		\begin{itemize}
+			\item server.pluginmanager.GenerationManager (baut die Zielfunktion zusammen)
+		\end{itemize}
 	
-
-Strategie:
-	server.pluginmanager (jeweils GenerationManager und Verification Manager)
+	\item Strategie
+		\begin{itemize}
+			\item server.pluginmanager (jeweils GenerationManager und Verification Manager)
+		\end{itemize}
+\end{itemize}
