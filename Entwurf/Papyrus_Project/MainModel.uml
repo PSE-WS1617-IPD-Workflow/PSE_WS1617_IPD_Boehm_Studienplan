@@ -737,14 +737,27 @@ between(min).and(max) //or similar&#xD;
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_iKFaYM37Eea6VOVLcwrXFg" name="pluginmanager">
       <packagedElement xmi:type="uml:Class" xmi:id="_wE6WgM37Eea6VOVLcwrXFg" name="VerificationManager">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_9l1k4M37Eea6VOVLcwrXFg" name="verifier" type="_YDqTcL-WEeaWJullGOJpaQ" association="_9lrz4M37Eea6VOVLcwrXFg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_9l1k4M37Eea6VOVLcwrXFg" name="verifier" type="_YDqTcL-WEeaWJullGOJpaQ" aggregation="shared" association="_9lrz4M37Eea6VOVLcwrXFg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nGOzcNTOEeaZc_6at3oRHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nG0CQNTOEeaZc_6at3oRHQ" value="1"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_zWLI0NTTEeaZc_6at3oRHQ" name="verify">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_DRk1kNTUEeaZc_6at3oRHQ" name="plan" type="_0j0zULubEeaCStjenx_8kw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_PVFqwNTUEeaZc_6at3oRHQ" type="_lC-GwMOtEearScbIBXJIIw" direction="return"/>
+        </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_1uw68M37Eea6VOVLcwrXFg" name="GenerationManager">
+      <packagedElement xmi:type="uml:Class" xmi:id="_1uw68M37Eea6VOVLcwrXFg" name="GenerationManager" visibility="package">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_PMvUs839Eea6VOVLcwrXFg" name="generator" visibility="private" type="_sCNXcL-UEeaWJullGOJpaQ" aggregation="shared" association="_PMvUsM39Eea6VOVLcwrXFg"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_U3x7g7ufEea-uPszIhxKkQ" name="objectiveFunction" visibility="private" type="_d98A4L-TEeaWJullGOJpaQ" aggregation="shared" association="_U3x7gLufEea-uPszIhxKkQ">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WePjALufEea-uPszIhxKkQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WeR_QLufEea-uPszIhxKkQ" value="*"/>
         </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_WTJwcNTREeaZc_6at3oRHQ" name="generate">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_sEJ-oNTREeaZc_6at3oRHQ" name="objectiveFunction" type="_d98A4L-TEeaWJullGOJpaQ"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_GMHmANTSEeaZc_6at3oRHQ" name="currentPlan" type="_0j0zULubEeaCStjenx_8kw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VxCscNTSEeaZc_6at3oRHQ" name="moduleDAO" type="_EmKwAMx7EeadS8RmcnY8pA"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_oq0ZYNTTEeaZc_6at3oRHQ" type="_0j0zULubEeaCStjenx_8kw" direction="return"/>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_9epN8NNwEeaKxIZkCozF3Q" client="_1uw68M37Eea6VOVLcwrXFg" supplier="_wE6WgM37Eea6VOVLcwrXFg"/>
     </packagedElement>
@@ -1973,7 +1986,7 @@ between(min).and(max) //or similar&#xD;
       </ownedEnd>
       <ownedEnd xmi:type="uml:Property" xmi:id="_QZHK0c1FEeaTycnTayAwOw" name="moduleType" visibility="private" type="_iAPPAM1EEeaTycnTayAwOw" association="_QZBEMM1FEeaTycnTayAwOw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_9lrz4M37Eea6VOVLcwrXFg" memberEnd="_9l1k4M37Eea6VOVLcwrXFg _9l1k4c37Eea6VOVLcwrXFg">
+    <packagedElement xmi:type="uml:Association" xmi:id="_9lrz4M37Eea6VOVLcwrXFg" visibility="private" memberEnd="_9l1k4M37Eea6VOVLcwrXFg _9l1k4c37Eea6VOVLcwrXFg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9lrz4c37Eea6VOVLcwrXFg" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9lrz4s37Eea6VOVLcwrXFg" key="nature" value="UML_Nature"/>
       </eAnnotations>
@@ -1985,7 +1998,7 @@ between(min).and(max) //or similar&#xD;
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_A1f-1M38Eea6VOVLcwrXFg" name="restPlanVerificator" type="_oh-2QLuUEea-uPszIhxKkQ" association="_A1f-0M38Eea6VOVLcwrXFg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_PMvUsM39Eea6VOVLcwrXFg" memberEnd="_PMvUs839Eea6VOVLcwrXFg _PMvUtM39Eea6VOVLcwrXFg">
+    <packagedElement xmi:type="uml:Association" xmi:id="_PMvUsM39Eea6VOVLcwrXFg" visibility="private" memberEnd="_PMvUs839Eea6VOVLcwrXFg _PMvUtM39Eea6VOVLcwrXFg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_PMvUsc39Eea6VOVLcwrXFg" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_PMvUss39Eea6VOVLcwrXFg" key="nature" value="UML_Nature"/>
       </eAnnotations>
