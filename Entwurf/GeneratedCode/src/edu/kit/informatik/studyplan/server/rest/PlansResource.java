@@ -68,10 +68,9 @@ public class PlansResource {
 	 * DELETE-Anfrage:
 	 * Löscht den Plan mit dem gegebenen ID.
 	 * @param planID ID des zu löschenden Plans.
-	 * @return jsonStatus 
 	 */
-	public JSONObject deletePlan(String planID) {
-		return null;
+	public void deletePlan(String planID) {
+
 	}
 
 	/**

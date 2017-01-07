@@ -55,10 +55,9 @@ public class PlanModulesResource {
 	 * entfernt das Modul von dem Plan mit den gegebenen ModulID bzw. PlanID.
 	 * @param planID ID des zu bearbeitenden Plans. 
 	 * @param moduleID ID des zu entfernenden Modul.
-	 * @return JSON-Representation des vom Plan entfernten Modul als JSON Objekt.
 	 */
-	public JSONObject removeModuleSemester(String planID, String moduleID){
-		return null;
+	public void removeModuleSemester(String planID, String moduleID){
+
 	}
 
 	/**
@@ -79,7 +78,7 @@ public class PlanModulesResource {
 	 * @param params Anfrage als eine mehrwertige Zuordnung von Strings.
 	 * @return den angefragten Filter.
 	 */
-	private Filter getFilterFromRequest(MultivaluedMap<String, String> params){
+	public Filter getFilterFromRequest(MultivaluedMap<String, String> params){
 		return null;
 	
 	}
