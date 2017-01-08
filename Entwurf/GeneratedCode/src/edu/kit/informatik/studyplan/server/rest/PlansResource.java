@@ -1,5 +1,6 @@
 package edu.kit.informatik.studyplan.server.rest;
 
+import java.util.Collection;
 import java.util.List;
 
 import edu.kit.informatik.studyplan.server.rest.JSONObject;
@@ -28,7 +29,7 @@ public class PlansResource {
 	 * @param jsonPlanList einen Array aller vorhandenen StudienPläne als JSON Objekte.
 	 * @return jsonPlanList eine Liste aller vorhandenen StudienPläne als JSON Objekte.
 	 */
-	public List<JSONObject> getPlans(JSONObject[] jsonPlanList) {
+	public List<JSONObject> getPlans(Collection<JSONObject> jsonPlanList) {
 		return null;
 	}
 
