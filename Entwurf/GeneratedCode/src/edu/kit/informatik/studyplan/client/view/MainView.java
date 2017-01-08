@@ -5,7 +5,7 @@
 package edu.kit.informatik.studyplan.client.view;
 
 import edu.kit.informatik.studyplan.client.model.user.SessionInformation;
-import edu.kit.informatik.studyplan.client.view.components.NotificationCentre;
+import edu.kit.informatik.studyplan.client.view.components.uipanel.NotificationCentre;
 
 import org.backbone.BackboneView;
 

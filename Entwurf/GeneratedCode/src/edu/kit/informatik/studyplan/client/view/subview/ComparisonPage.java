@@ -4,7 +4,7 @@
 
 package edu.kit.informatik.studyplan.client.view.subview;
 
-import edu.kit.informatik.studyplan.client.view.components.ComparisonView;
+import edu.kit.informatik.studyplan.client.view.components.uipanel.ComparisonView;
 
 /************************************************************/
 /**

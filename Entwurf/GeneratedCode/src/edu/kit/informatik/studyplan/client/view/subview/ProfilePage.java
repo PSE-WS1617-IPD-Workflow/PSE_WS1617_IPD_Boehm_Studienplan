@@ -5,8 +5,8 @@
 package edu.kit.informatik.studyplan.client.view.subview;
 
 import edu.kit.informatik.studyplan.client.model.modules.Module;
-import edu.kit.informatik.studyplan.client.view.components.ModuleFinder;
-import edu.kit.informatik.studyplan.client.view.components.PassedModulePlan;
+import edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder;
+import edu.kit.informatik.studyplan.client.view.components.uielement.PassedModulePlan;
 
 /************************************************************/
 /**

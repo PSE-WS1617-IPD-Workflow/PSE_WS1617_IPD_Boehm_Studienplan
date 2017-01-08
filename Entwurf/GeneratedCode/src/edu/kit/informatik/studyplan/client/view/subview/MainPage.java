@@ -5,7 +5,7 @@
 package edu.kit.informatik.studyplan.client.view.subview;
 
 import edu.kit.informatik.studyplan.client.model.plans.PlanCollection;
-import edu.kit.informatik.studyplan.client.view.components.PlanList;
+import edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList;
 
 /************************************************************/
 /**
