@@ -9,7 +9,7 @@
 	\node[attribute, enum](cycle)[below right = of module]{cycle\_type} edge (module);
 	
 	\node[entity] (disc) [left = 4cm of module]{discipline} ;
-	\node[attribute] [above left = of disc] {\key{disclipline\_id}} edge (disc);
+	\node[attribute, num] [above left = of disc] {\key{disclipline\_id}} edge (disc);
 	\node[attribute] [left = of disc] {description} edge (disc);
 	
 	\node[entity] (description) [above = 4cm of module]{module\_description} ;
