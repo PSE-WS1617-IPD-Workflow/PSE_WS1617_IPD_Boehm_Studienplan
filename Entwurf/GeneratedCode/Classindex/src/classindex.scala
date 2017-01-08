@@ -34,7 +34,7 @@ object ClassIndex extends App {
   val LaTeX = true
   def formatDuplicateEntry(fullName: String) =
     if (LaTeX)
-      s"\\hyperref[texdoclet:$fullName]{${lastIdent(fullName)}} (${getShortPackage(fullName)}) \\newline"
+      s"\\hyperref[texdoclet:$fullName]{${lastIdent(fullName)}} \\textit{(${getShortPackage(fullName)})} \\newline"
     else
       s"${lastIdent(fullName)} (${getShortPackage(fullName)})"
   def formatSingleEntry(fullName: String) =
@@ -55,7 +55,7 @@ object ClassIndex extends App {
     ).toList
 
   val clientDisambig = (
-    duplicates(clientClasses, lastIdent).map(s => (s, formatDuplicateEntry(s))) ++
+      duplicates(clientClasses, lastIdent).map(s => (s, formatDuplicateEntry(s))) ++
       singles(clientClasses, lastIdent).map(s => (s, formatSingleEntry(s)))
     ).toList
 
