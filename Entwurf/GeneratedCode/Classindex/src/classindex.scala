@@ -46,18 +46,25 @@ object ClassIndex extends App {
   val serverPacks = packages.filter { _ contains "studyplan.server" } :+ "org.hibernate"
   val clientPacks = packages.filter { _ contains "studyplan.client" } :+ "org.backbone"
 
+  val serverClasses = classes filter {serverPacks contains getPackage(_)}
+  val clientClasses = classes filter {clientPacks contains getPackage(_)}
 
-  val classesDisambig = (
-      duplicates(classes, lastIdent).map(s => (s, formatDuplicateEntry(s))) ++
-        singles(classes, lastIdent).map(s => (s, formatSingleEntry(s)))
+  val serverDisambig = (
+      duplicates(serverClasses, lastIdent).map(s => (s, formatDuplicateEntry(s))) ++
+      singles(serverClasses, lastIdent).map(s => (s, formatSingleEntry(s)))
     ).toList
 
-  val serverClassesOutput = classesDisambig.
-    filter { case (s, o) => serverPacks contains getPackage(s)}.
+  val clientDisambig = (
+    duplicates(clientClasses, lastIdent).map(s => (s, formatDuplicateEntry(s))) ++
+      singles(clientClasses, lastIdent).map(s => (s, formatSingleEntry(s)))
+    ).toList
+
+
+
+  val serverClassesOutput = serverDisambig.
     sortBy{case (s, _) => lastIdent(s)}.
     map{_._2}
-  val clientClassesOutput = classesDisambig.
-    filter { case (s, o) => clientPacks contains getPackage(s)}.
+  val clientClassesOutput = clientDisambig.
     sortBy{case (s, _) => lastIdent(s)}.
     map{_._2}
 
