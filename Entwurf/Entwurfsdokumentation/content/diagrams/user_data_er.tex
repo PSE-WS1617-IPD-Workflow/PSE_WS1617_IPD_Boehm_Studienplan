@@ -24,14 +24,14 @@
 	\node[relationship](con2) [above = 2cm of plan] {contains} edge node[auto,swap] {1} (plan);
 	
 	\node[entity] (pref) [above = 6cm of plan] {module\_preference} edge  node[auto,swap] {0..*}(con2);
-	\node[attribute](modId2)[right = of pref]{module\_id} edge (pref);
+	\node[attribute, num](modId2)[right = of pref]{module\_id} edge (pref);
 	\node[attribute, enum][left = of pref]{preference\_type} edge (pref);
 	\node[attribute, num][below left = of pref]{\key{preference\_id}} edge (pref);
 	
 	\node[entity] (entry) [right = 6cm of plan]{module\_entry} edge  node[auto,swap] {0..*}(con);
 	\node[attribute, num][below =of entry]{\key{entry\_id}} edge (entry);
 	\node[attribute, num][above = of entry]{semester} edge (entry);
-	\node[attribute](modId)[above right= of entry]{module\_id} edge (entry);
+	\node[attribute, num](modId)[above right= of entry]{module\_id} edge (entry);
 	\node[draw][above left = of modId, text width = 3cm, dashed] {Referenz zum ensprechenden Modul in Moduldatenbank} edge [dashed] (modId) edge [dashed] (modId2);
 	
 	

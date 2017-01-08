@@ -31,6 +31,8 @@ Ein Modul besitzt zwei eindeutige Schlüssel. Als Primärschlüssel besitzt es e
 	\texttt{cycle\_type} & winter\_term, summer\_term, both \\ \hline
 \end{tabular}
 \subsection{Benutzerdaten}
+Die Entität \texttt{user} besitzt zwei eindeutige Schlüssel. Als Primärschlüssel besitzt ein \texttt{user} eine \texttt{user\_id}. Des Weiteren ist auch das Attribut \texttt{name} eindeutig.
+Ein Plan ist eindeutig über seine \texttt{plan\_id}, sowie über seinen \texttt{identifier} ansprechbar. Da die REST-Schnittstelle zum Zugriff den \texttt{identifier} verwendet, wird sichergestellt, dass nicht durch \enquote{probieren} auf einen beliebigen Plan zugegriffen werden kann.
 \begin{figure}[H]
 	\input{content/diagrams/user_data_er}
 	\caption{ER-Diagramm Benutzerdaten}
