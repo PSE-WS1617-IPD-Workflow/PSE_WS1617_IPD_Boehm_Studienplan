@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import java.util.List;
+
 /**
  * Repräsentiert einen Pflicht-/Wahlmodul-Auswahlfilter mit Filterung nach
  * Pflicht-, Wahlmodulen oder beidem als Wahlmöglichkeiten.
@@ -20,7 +22,7 @@ public class CompulsoryFilter extends ListFilter {
     }
 
     @Override
-    public String[] getItems() {
+    public List<String> getItems() {
         return null;
     }
 }

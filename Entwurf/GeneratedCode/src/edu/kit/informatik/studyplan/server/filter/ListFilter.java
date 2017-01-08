@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import java.util.List;
+
 /**
  * Repräsentiert einen Listenauswahl-Attribut-Filter.
  */
@@ -46,5 +48,5 @@ public abstract class ListFilter implements AttributeFilter {
      * Liefert alle Wahlmöglichkeiten dieses Auswahl-Filters als Strings.
      * @return die Wahlmöglichkeiten des Auswahl-Filters
      */
-    public abstract String[] getItems();
+    public abstract List<String> getItems();
 }

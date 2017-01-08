@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import java.util.List;
+
 /**
  * Repräsentiert einen Fachrichtungs-Wahlfilter mit den Fachrichtungen als Wahlmöglichkeiten.
  */
@@ -19,7 +21,7 @@ public class DisciplineFilter extends ListFilter {
     }
 
     @Override
-    public String[] getItems() {
+    public List<String> getItems() {
         return null;
     }
 }
