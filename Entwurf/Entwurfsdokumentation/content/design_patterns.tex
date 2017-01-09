@@ -41,11 +41,12 @@
 			\item client.model.system.LanguageManager
 			\item client.model.system.EventBus
 			\item client.model.user.SessionInformation
+			\item studyplan.server.model.HibernateUtil (Methoden zur Bereitstellung der SessionFactories)
 		\end{itemize}
 	
 	\item StateMachine
 		\begin{itemize}
-			\item client.view.components.uipanel.WizzardComponent
+			\item client.view.components.uipanel.WizardComponent
 		\end{itemize}
 	
 	\item Strategy
@@ -53,11 +54,17 @@
 			\item server.pluginmanager (jeweils GenerationManager und Verification Manager)
 			\item server.rest.authorization.endpoint
 			\item client.model.system.OAuthCollection
+			\item server.model.moduledata.constraint.ModuleConstraintType\#isValid()
+			\item server.model: Die Schnittstellen UserDao, PlanDao und ModuleDao abstrahieren den Datenbankzugriff. Die HibernateDaos stellen die konkrete Zugriffsstrategie dar.
 		\end{itemize}
 	
 	\item Template Method
 		\begin{itemize}
 			\item server.filter.Filter (getCondition())
 			\item server.filter.AttributeFilter (getDescriptor() und getFilterType())
+		\end{itemize}
+	\item Visitor
+		\begin{itemize}
+			\item server.model.moduledata.dao.ModuleDao\#getModulesByFilter(): Der übergebene Filter stellt den Besucher dar, der zum Filtern verwendet wird
 		\end{itemize}
 \end{itemize}
