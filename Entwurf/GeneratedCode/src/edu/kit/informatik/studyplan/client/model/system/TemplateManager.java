@@ -6,9 +6,9 @@ package edu.kit.informatik.studyplan.client.model.system;
 
 /************************************************************/
 /**
- * Singleton, welches die Templates f�r die Views verwaltet. Jedes Template
+ * Singleton, welches die Templates für die Views verwaltet. Jedes Template
  * lässt sich über einen key abrufen.<br>
- * dDie Templates werden zur Compile-Zeit in den Initialisierungscode
+ * Die Templates werden zur Compile-Zeit in den Initialisierungscode
  * hineingeladen und sind somit bereits beim Start der Applikation im Template
  * Manager vorhanden. Der Vorteil dieses Vorgehens ist, dass man beim Laden der
  * einzelnen Views nicht auf eine Antwort vom Server (welche das Template

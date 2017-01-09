@@ -1,6 +1,6 @@
 package edu.kit.informatik.studyplan.server.rest;
 
-import edu.kit.informatik.studyplan.server.rest.ResourceConfig;
+import org.stuff.ResourceConfig;
 
 /**
  * Hilfsklasse um Ressource Klassen festzulegen.

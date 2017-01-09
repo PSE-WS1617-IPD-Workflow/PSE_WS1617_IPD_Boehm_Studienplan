@@ -19,7 +19,7 @@ public class ProposedPlan extends Plan {
      *            Alle Optionen von Backbone.Model.save() zusätzlich:
      *            <ul>
      *            <li>Boolean newPlan true falls, der Plan als neuer Plan
-     *            geschrieben werden soll, false falls der Plan �berschrieben
+     *            geschrieben werden soll, false falls der Plan überschrieben
      *            werden soll. Standard ist false</li>
      *            <li>String planName Name des Plans, falls newPlan = true</li>
      *            </ul>

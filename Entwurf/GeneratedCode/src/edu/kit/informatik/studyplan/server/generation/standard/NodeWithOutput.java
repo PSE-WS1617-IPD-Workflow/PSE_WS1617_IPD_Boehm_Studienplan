@@ -6,6 +6,8 @@ package edu.kit.informatik.studyplan.server.generation.standard;
 
 import edu.kit.informatik.studyplan.server.generation.standard.Node;
 
+import java.util.Collection;
+
 /************************************************************/
 /**
  * Die Klasse NodeWithOutput erbt von Node und stellt einen 
@@ -19,14 +21,14 @@ public class NodeWithOutput extends Node {
 	 * Die Liste children vom Typ Node enthält alle Knoten, zu denen der 
 	 * Knoten eine Ausgangskante hat.
 	 */
-	private Node[] children;
+	private Collection<Node> children;
 	
 	/**
    * Die Methode getChildren gibt eine Liste mit allen Knoten zurück, 
    * zu denen der Knoten Ausgangskanten hat.
    * @return children-moduls 
    */
-  public Node[] getChildren() {
+  public Collection<Node> getChildren() {
     return null;
   }
   /**
@@ -44,7 +46,7 @@ public class NodeWithOutput extends Node {
    * @param node der zu löschende Knoten
    * @return die jetzt aktuelle Liste children.
    */
-  public Node[] removeChild(Node node){
+  public Collection<Node> removeChild(Node node){
     return null;
   }
 };

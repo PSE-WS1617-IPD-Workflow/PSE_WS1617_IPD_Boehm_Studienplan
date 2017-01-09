@@ -1,4 +1,4 @@
-package edu.kit.informatik.studyplan.server.rest;
+package org.stuff;
 /**
  * Diese Klasse repräsentiert den PDF Datentyp.
  */

@@ -6,6 +6,8 @@ package edu.kit.informatik.studyplan.client.view.components.uielement;
 
 import edu.kit.informatik.studyplan.client.view.components.uielement.Semester;
 
+import java.util.Collection;
+
 /************************************************************/
 /**
  * Klasse, welche die Ansicht des Studienplans kapselt
@@ -14,7 +16,7 @@ public class Plan {
     /**
      * Die Semster des Plans
      */
-    private Semester[] semester;
+    private Collection<Semester> semester;
     /**
      * Das Modell-Objekt des Plans
      */

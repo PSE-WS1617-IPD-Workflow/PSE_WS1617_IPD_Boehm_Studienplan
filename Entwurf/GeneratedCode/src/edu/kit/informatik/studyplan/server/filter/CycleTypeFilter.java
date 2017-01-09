@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import java.util.List;
+
 /**
  * Repräsentiert einen Turnus-Auswahlfilter mit Filterung nach Winter-,
  * Sommersemester oder beidem als Wahlmöglichkeiten.
@@ -20,7 +22,7 @@ public class CycleTypeFilter extends ListFilter {
     }
 
     @Override
-    public String[] getItems() {
+    public List<String> getItems() {
         return null;
     }
 

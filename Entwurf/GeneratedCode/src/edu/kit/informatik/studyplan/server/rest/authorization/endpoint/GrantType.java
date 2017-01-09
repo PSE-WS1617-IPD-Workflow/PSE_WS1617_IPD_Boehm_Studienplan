@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.rest.authorization.endpoint;
 
+import org.stuff.MultivaluedMap;
+
 import javax.ws.rs.core.MultivaluedMap;
 /**
  * Diese Schnittstelle repräsentiert eine Fabrik zur erstellung von Typen von Authorisation Grant

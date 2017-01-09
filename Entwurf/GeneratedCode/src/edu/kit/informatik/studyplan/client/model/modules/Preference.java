@@ -23,12 +23,12 @@ public class Preference extends OAuthModel {
      */
     private int moduleId;
     /**
-     * Die ID des Plans f�r welche die Präferenz gesetzt wurde.
+     * Die ID des Plans für welche die Präferenz gesetzt wurde.
      */
     private String planId;
 
     /**
-     * Generiert die URL f�r das speichern/abrufen der Präferenz abhängig von
+     * Generiert die URL für das speichern/abrufen der Präferenz abhängig von
      * planId und moduleId
      * 
      * @return Den generierten URL

@@ -5,6 +5,7 @@
 package edu.kit.informatik.studyplan.server.model.userdata.authorization;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.List;
 
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationScope;
@@ -34,7 +35,7 @@ public class RESTClient {
 	/**
 	 * 
 	 */
-	private AuthorizationScope[] scopes;
+	private Collection<AuthorizationScope> scopes;
 
 	/**
 	 * 

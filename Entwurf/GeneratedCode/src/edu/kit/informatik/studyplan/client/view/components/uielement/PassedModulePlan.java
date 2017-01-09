@@ -7,6 +7,8 @@ package edu.kit.informatik.studyplan.client.view.components.uielement;
 import edu.kit.informatik.studyplan.client.model.user.Student;
 import edu.kit.informatik.studyplan.client.view.components.uielement.Semester;
 
+import java.util.Collection;
+
 /************************************************************/
 /**
  * Plan der bestandenen Module
@@ -19,5 +21,5 @@ public class PassedModulePlan {
     /**
      * Die Semster, in welche die bestandenen Module geordnet sind.
      */
-    private Semester[] semester;
+    private Collection<Semester> semester;
 };

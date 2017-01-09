@@ -6,6 +6,8 @@ package edu.kit.informatik.studyplan.server.verification;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 
+import java.util.Collection;
+
 /************************************************************/
 /**
  * Die Klasse VerificationResult ist das Ergebins einer Verifizierung. 
@@ -15,14 +17,14 @@ public class VerificationResult {
 	 * VerificationResult enthält ein Array violations vom Typ ModuleConstraint. 
 	 * In diesem werden verletzte Modulconstraints gespeichert.
 	 */
-	private ModuleConstraint[] violations;
+	private Collection<ModuleConstraint> violations;
 
 
 	/**
 	 * Gibt die verletzten Modul-Constraints zurück.
 	 * @return die verletzten Modul-Constraints
 	 */
-	public ModuleConstraint[] getViolations() {
+	public Collection<ModuleConstraint> getViolations() {
 		return violations;
 	}
 

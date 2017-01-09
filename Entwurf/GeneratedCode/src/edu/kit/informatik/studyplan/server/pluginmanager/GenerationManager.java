@@ -5,6 +5,8 @@ import edu.kit.informatik.studyplan.server.generation.Generator;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 
+import java.util.Collection;
+
 /**
  * Verwaltet den Zugriff auf das Generierungsplug-in.  
  * Das Generierungsplug-in umfasst sowohl die Generierer-Schnittstelle als auch 
@@ -44,12 +46,12 @@ public class GenerationManager {
 	 * Liste der Zielfunktionen.
 	 * @see edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction
 	 */
-	private PartialObjectiveFunction[] objectiveFunction;
+	private Collection<PartialObjectiveFunction> objectiveFunction;
 	/**
 	 * Gibt die Liste der Zielfunktionen zurück.
 	 * @return objectiveFunction : die Liste der Zielfunktionen
 	 */
-	public PartialObjectiveFunction[] getObjectiveFunction() {
+	public Collection<PartialObjectiveFunction> getObjectiveFunction() {
 		return objectiveFunction;
 	}
 	  /**

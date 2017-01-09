@@ -1,4 +1,4 @@
-package edu.kit.informatik.studyplan.server.rest;
+package org.stuff;
 
 /**
  * Eine Erweiterungsschnittstelle, die von serverseitigen Anfrage-Filtern implementiert wird. 

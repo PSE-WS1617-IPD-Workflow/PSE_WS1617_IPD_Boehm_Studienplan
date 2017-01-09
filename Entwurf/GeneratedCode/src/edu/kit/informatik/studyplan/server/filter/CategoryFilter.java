@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import java.util.List;
+
 /**
  * Repräsentiert einen Kategorie-Wahlfilter mit den Modulkategorien als Wahlmöglichkeiten.
  */
@@ -19,7 +21,7 @@ public class CategoryFilter extends ListFilter {
     }
 
     @Override
-    public String[] getItems() {
+    public List<String> getItems() {
         return null;
     }
 }
