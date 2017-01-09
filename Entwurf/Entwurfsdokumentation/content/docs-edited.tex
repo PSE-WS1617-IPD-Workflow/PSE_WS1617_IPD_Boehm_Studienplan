@@ -2112,7 +2112,7 @@ Kapselt die für die Filterarchitektur nötigen Module-Attribut-Namen als String
  Diese werden bei der Anwendung der Filter in den ModuleDao-Methoden für die eindeutige
  Identifzierung von Module-Eigenschaften benutzt.\end{texdocclassintro}
 \begin{texdocsees}{See also}
-\texdocsee{edu.kit.informatik.studyplan.server.filter}{texdoclet:edu.kit.informatik.studyplan.server.filter}
+\texdocsee{Filter}{texdoclet:edu.kit.informatik.studyplan.server.filter.Filter}
 \texdocsee{ModuleDao}{texdoclet:edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao}
 \end{texdocsees}
 \begin{texdocclassfields}
@@ -2199,8 +2199,7 @@ Factory zur ModuleDao-Erzeugung\end{texdocclassintro}
 \begin{texdocclassintro}
 Modelliert einen Authorisierungskontext.\texdocbr{}
 
- Er enthält die benötigten Informationen für einen authorisierten Benutzer
- siehe Kapitel ???\end{texdocclassintro}
+ Er enthält die benötigten Informationen für einen autorisierten Benutzer, wie in Kapitel~\ref{subsec:api-auth} beschrieben\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{AuthorizationContext}{()}{}{}
 \end{texdocclassconstructors}
@@ -2262,8 +2261,7 @@ Berechtigungen die ein Nutzer anfragen kann\end{texdocclassintro}
 \begin{texdocclass}{class}{RESTClient}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClient}
 \begin{texdocclassintro}
-Modelliert einen Klienten, der auf die REST-Schnittstelle zugreifen kann
- siehe Kapitel ????\end{texdocclassintro}
+Modelliert einen Klienten, der auf die REST-Schnittstelle zugreifen kann, wie in Kapitel~\ref{subsec:api-auth} beschrieben.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{RESTClient}{()}{}{}
 \end{texdocclassconstructors}
@@ -2598,7 +2596,7 @@ Modelliert ein Semester\end{texdocclassintro}
 }
 \texdocmethod{public}{SemesterType}{getSemesterType}{()}{}{\texdocreturn{gibt den Typ des Semester zurück}
 }\begin{texdocsees}{See also}
-\texdocsee{edu.kit.informatik.studyplan.server.model.userdata.SemesterType}{texdoclet:edu.kit.informatik.studyplan.server.model.userdata.SemesterType}
+\texdocsee{SemesterType}{texdoclet:edu.kit.informatik.studyplan.server.model.userdata.SemesterType}
 \end{texdocsees}
 
 \texdocmethod{public}{int}{getYear}{()}{}{\texdocreturn{gibt das Jahr zurück in dem das Semester begonnen hat}
