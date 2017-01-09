@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage{tikz, tikz-er2}
+\usetikzlibrary{positioning, calc}
+\tikzstyle{num}=[fill = green!10]
+\tikzstyle{enum}=[fill = yellow!10]
+\tikzstyle{bool}=[fill = blue!10]
+\begin{document}
+\begin{tikzpicture}
+	\node[entity](user) {user};
+	
+	\node[draw, dashed, above = of user] {Siehe Abbildung} edge [dashed] (user);
+	
+	\node[entity](context) [below left = 5cm of user]{authorization\_context};
+	\node[attribute, num] [above = of context] {\key{context\_id}} edge (context);
+	\node[attribute] [above left = of context] {access\_token} edge (context);
+	\node[attribute] [left = of context] {expiry\_date} edge (context);
+	\node[attribute, enum] [below left = of context] {scope} edge (context);
+	\node[attribute] [below = of context] {refresh\_token} edge (context);
+	
+	\node[relationship] [below left = of user] {belongs to} edge (context) edge (user);
+	
+	\node[entity](client) [below right = 5cm of user]{rest\_client};
+	\node[attribute][above = of client] {\key{client\_id}} edge (client);
+	\node[attribute][above right = of client] {api\_key} edge (client);
+	\node[attribute][right = of client] {api\_secret} edge (client);
+	\node[attribute][below right = of client] {origin} edge (client);
+	\node[attribute][below left = of client] {redirect\_url} edge (client);
+	
+	\node[relationship]  at ($(client)!0.5!(context)$) {belongs to} edge (context) edge (client);
+	
+	\node[weak entity] (scope) [below = 5cm of client] {client\_scope\_assignment};
+	\node[attribute, num] [below left = of scope] {\key{id}} edge (scope);
+	\node[attribute, enum] [below = of scope] {scope} edge (scope);
+	
+	\node[relationship]  at ($(scope)!0.5!(client)$) {may aquire} edge (scope) edge (client);
+		
+\end{tikzpicture}
+\end{document}
