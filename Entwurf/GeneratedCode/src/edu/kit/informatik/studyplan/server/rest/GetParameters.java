@@ -1,13 +1,7 @@
 package edu.kit.informatik.studyplan.server.rest;
 /**
- * Parameter für die GET-Anfragen.
+ * Platzhalter für mehrere GET-Anfrage-Parameter.
  */
 public class GetParameters {
 
-	/**
-	 * Erstellt einen GETParameters-Objekt.
-	 */
-	public GetParameters(){
-		
-	}
 }

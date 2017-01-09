@@ -1,9 +1,11 @@
 package edu.kit.informatik.studyplan.server.rest;
 
+import org.stuff.ContainerRequestFilter;
+
 /**
  * Klasse für das Filtern von Authentifizierungs-Anfragen.
  */
-public class AuthorizationRequestFilter implements ContainerRequestFilter{
+public class AuthorizationRequestFilter implements ContainerRequestFilter {
 
 	/**
 	 * Erstellt einen Filter für die Authentifizierung-Anfragen.

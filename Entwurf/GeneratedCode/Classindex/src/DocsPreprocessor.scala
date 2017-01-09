@@ -14,13 +14,13 @@ object DocsPreprocessor extends App {
   val result = src.
     replace("(see ", "(siehe ").
     replace("docpackage}{edu.kit.informatik.studyplan.", "docpackage}{").
-    replace("Ã¤", "ä").
-    replace("ï¿½", "ü").
-    replace("Ã¶", "ö").
-    replace("Ã„", "Ä").
-    replace("ÃŸ", "ß").
-    replace("Ã¼", "ü").
-    replace("Ãœ", "Ü").
+//    replace("Ã¤", "ä").
+//    replace("ï¿½", "ü").
+//    replace("Ã¶", "ö").
+//    replace("Ã„", "Ä").
+//    replace("ÃŸ", "ß").
+//    replace("Ã¼", "ü").
+//    replace("Ãœ", "Ü").
     replace("", "")
 
   Files.write(Paths.get(System.getProperty("user.dir") + "\\..\\docs-edited.tex"),

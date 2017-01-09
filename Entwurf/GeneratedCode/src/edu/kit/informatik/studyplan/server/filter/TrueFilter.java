@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import org.stuff.Condition;
+
 /**
  * Stellt einen Filter dar, der alle Module zulässt (und dessen Filterbedingung
  * daher konstant wahr ist).

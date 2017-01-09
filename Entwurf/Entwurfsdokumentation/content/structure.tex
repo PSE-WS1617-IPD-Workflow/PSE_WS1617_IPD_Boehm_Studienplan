@@ -2,4 +2,14 @@
 
 \subsection{Architektur}
 
+\subsubsection{Server}
+
+\subsubsection{Client}
+Der Client besteht aus einer leicht abgewandelten Model-View-Controller-Architektur (MVC-Architektur), die auf Backbone.js \cite{backbone} basiert.
+Das System besteht aus 4 Haupt-Paketen: Storage, Model, View und Router.\\
+Storage übernimmt die Kommunikation mit dem REST-Webservice sowie die Speicherung in Cookies. Somit bildet Storage die Zugriffsschicht für das Model-Paket. \\
+Model bildet die Daten aus den Cookies und dem REST-Webservice auf Klassen ab und stellt Möglichkeiten zum Abruf sowie zur Speicherung zur Verfügung, die auf Storage basieren.\\
+View zeigt die Daten aus dem Model an und aktualisiert im Fall einer Änderung des Models die Anzeige. Auch fängt das View-Paket Interaktionen mit der Benutzeroberfläche (wie Klicks oder Drag and Drop) ab und verarbeitet diese entsprechend.\\
+Router übernimmt schließlich die Aufgaben des Controllers in klassischen MVC-Architekturen. Der Router wird bei Änderungen des URI Fragments aufgerufen und kann so beim Wechsel auf eine andere Seite der WebApp die neuen View-Klassen initialisieren und die zugehörigen Inhalte anzeigen.
+
 \subsection{Klassendiagramm}  % necessary?
