@@ -1,4 +1,4 @@
-package edu.kit.informatik.studyplan.server.rest.authorization.endpoint;
+package org.stuff;
 /**
  * Eine Zuordnung von Schlüssel-Werte Paare. Jeder Schlüssel kann einen oder mehrere Werte haben.
  * @param <T1> Typ des Schlüssels

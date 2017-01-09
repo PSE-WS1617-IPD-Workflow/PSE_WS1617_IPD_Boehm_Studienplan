@@ -1,4 +1,4 @@
-package edu.kit.informatik.studyplan.server.filter;
+package org.stuff;
 
 /**
  * Die aus den jOOQ-Bibliotheken importierte Field-Klasse. Repräsentiert ein (Datenbank-)Feld und wird

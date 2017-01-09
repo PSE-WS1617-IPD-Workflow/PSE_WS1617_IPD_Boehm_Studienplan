@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import org.stuff.Condition;
+
 import java.util.List;
 
 /**

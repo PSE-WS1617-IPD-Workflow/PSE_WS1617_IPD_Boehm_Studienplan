@@ -4,7 +4,7 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.filter.Condition;
+import org.stuff.Condition;
 
 /**
  * Repräsentiert einen Filter für Module über eine Filterbedingung.

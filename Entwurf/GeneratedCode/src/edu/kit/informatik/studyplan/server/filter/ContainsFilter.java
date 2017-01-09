@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import org.stuff.Condition;
+
 /**
  * Repräsentiert einen Textsuch-Attribut-Filter.
  */

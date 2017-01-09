@@ -1,4 +1,7 @@
 package edu.kit.informatik.studyplan.server.rest;
+
+import org.stuff.PDF;
+
 /**
  * Diese Klasse repräsentiert die Plankonverter-Ressource.
  */

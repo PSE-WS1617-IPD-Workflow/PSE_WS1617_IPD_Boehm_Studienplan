@@ -4,8 +4,8 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.filter.AttributeFilter;
 import edu.kit.informatik.studyplan.server.rest.JSONObject;
+import org.stuff.Field;
 
 /**
  * Beschreibungen der nach außen sichtbaren Filterklassen für den Client.
