@@ -1,0 +1,20 @@
+\begin{figure}[h]
+\begin{sideways}
+\resizebox{\textheight}{!} {
+	\begin{ganttchart}[  
+		hgrid,%  
+		vgrid,%  
+		time slot format=little-endian,% 
+		]{11-01-2017}{07-02-2017}  
+		\gantttitlecalendar{year, month=name,week=2 day, day} \\
+		\ganttbar{Entwicklungsumgebung einrichten}{11-01-2017} {12-01-2017} \\
+		\ganttmilestone{IDE eingerichtet} {12-01-2017} \\
+		\ganttbar{Datenbankzugriff: Model und DAO} {13-01-2017} {27-01-2017} \\
+		\ganttbar{REST-Schnittstellen}{13-01-2017}{20-01-2017} \\
+		\ganttmilestone{Datenbankzugriff über REST möglich} {27-01-2017} \\
+		\ganttbar{Filterarchitektur} {21-01-2017} {27-01-2017}
+	\end{ganttchart}
+}
+\end{sideways}
+\caption{Implementierungsplan Client}
+\end{figure}

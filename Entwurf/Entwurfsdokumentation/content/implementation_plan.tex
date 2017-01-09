@@ -1,19 +1,19 @@
-\section{Implementierungsplan}
-
-%German abbreviations  
+%ganttchar-setup for german
 \def\pgfcalendarweekdayletter#1{%  
 	\ifcase#1M\or D\or M\or D\or F\or S\or S\fi%  
-}  
-%German abbreviations; Use S. instead of September  
+} 
 \def\pgfcalendarmonthname#1{%  
 	\ifcase#1 Dezember \or Januar\or Februar\or März\or April\or Mai\or Juni\or Juli \or August \or S. \or Oktober \or November \or Dezember\fi%  
 }  
-
-% This line is added
 \ganttset{calendar week text={KW~\currentweek}}
+
+
+\section{Implementierungsplan}
 
 \subsection{Server-Implementierung}
 
 \include{content/diagrams/server_gantt}
+
+\include{content/diagrams/client_gantt}
 
 	
