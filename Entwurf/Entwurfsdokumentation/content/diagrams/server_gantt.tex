@@ -1,19 +1,22 @@
 \begin{figure}[h]
-	%\begin{sideways}
+		\centering
 		\resizebox{\textwidth}{!} {
 			\begin{ganttchart}[  
 				hgrid,%  
-				vgrid,%  
-				time slot format=little-endian,% 
+				vgrid,%
+				newline shortcut=true,
+				bar label node/.append style=%
+				{align=right},   
+				time slot format=little-endian 
 				]{11-01-2017}{07-02-2017}  
-				\gantttitlecalendar{year, month=name,week=2 day, day} \\
+				\gantttitlecalendar{year, month=name, day} \\
 				\ganttbar{Entwicklungsumgebung einrichten}{11-01-2017} {12-01-2017} \\
 				\ganttmilestone{IDE eingerichtet} {12-01-2017} \\
 				\ganttbar{Datenbankzugriff: Model und DAO} {13-01-2017} {27-01-2017} \\
 				\ganttbar{REST-Schnittstellen}{13-01-2017}{20-01-2017} \\
 				\ganttbar{JSON-Generierung}{21-01-2017} {27-01-2017}\\
 				\ganttbar{Filterarchitektur} {21-01-2017} {27-01-2017} \\
-				\ganttmilestone{Datenbankzugriff über REST möglich} {27-01-2017} \\
+				\ganttmilestone{Datenbankzugriff  über REST möglich} {27-01-2017} \\
 				\ganttbar{Verifizierung}{27-01-2017} {01-02-2017} \\
 				\ganttbar{Generierung} {13-01-2017}{01-02-2017}\\
 				\ganttbar{Plugin-Manager} {27-01-2017}{01-02-2017} \\
@@ -21,8 +24,7 @@
 				\ganttbar{AuthorizationEndpoint}{02-02-2017} {07-02-2017} \\
 				\ganttbar{Report-Generierung}{02-02-2017} {07-02-2017} \\
 				\ganttmilestone{Fertigstellung}{07-02-2017}
-			\end{ganttchart}
+			\end{ganttchart}%
 		}
-	%\end{sideways}
 	\caption{Implementierungsplan Server}
 \end{figure}

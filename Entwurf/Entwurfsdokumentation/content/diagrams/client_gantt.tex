@@ -1,20 +1,35 @@
 \begin{figure}[h]
-\begin{sideways}
-\resizebox{\textheight}{!} {
-	\begin{ganttchart}[  
-		hgrid,%  
-		vgrid,%  
-		time slot format=little-endian,% 
-		]{11-01-2017}{07-02-2017}  
-		\gantttitlecalendar{year, month=name,week=2 day, day} \\
-		\ganttbar{Entwicklungsumgebung einrichten}{11-01-2017} {12-01-2017} \\
-		\ganttmilestone{IDE eingerichtet} {12-01-2017} \\
-		\ganttbar{Datenbankzugriff: Model und DAO} {13-01-2017} {27-01-2017} \\
-		\ganttbar{REST-Schnittstellen}{13-01-2017}{20-01-2017} \\
-		\ganttmilestone{Datenbankzugriff über REST möglich} {27-01-2017} \\
-		\ganttbar{Filterarchitektur} {21-01-2017} {27-01-2017}
-	\end{ganttchart}
-}
-\end{sideways}
-\caption{Implementierungsplan Client}
+	\centering
+	\resizebox{\textwidth}{!} {
+		\begin{ganttchart}[  
+			hgrid,%  
+			vgrid,% 
+			newline shortcut=true,
+			bar label node/.append style=%
+			{align=right}, 
+			time slot format=little-endian
+			]{11-01-2017}{07-02-2017}  
+			\gantttitlecalendar{year, month=name, day} \\
+			\ganttbar{Entwicklungsumgebung einrichten}{11-01-2017} {12-01-2017} \\
+			\ganttmilestone{IDE eingerichtet} {12-01-2017} \\
+			\ganttbar{Klassenstrukturen übertragen} {13-01-2017} {16-01-2017} \\
+			\ganttbar{Language- und TemplateManager, MainView}{13-01-2017}{15-01-2017} \\
+			\ganttbar{Storage Package}{16-01-2017} {17-01-2017}\\
+			\ganttbar{Model} {16-01-2017} {21-01-2017} \\
+			\ganttmilestone{Client Zugriff auf REST-Webservice möglich}{21-01-2017}
+			\ganttbar{SignUpWizard}{20-01-2017}{24-01-2017} \\
+			\ganttbar{ModuleFilter} {20-01-2017} {24-01-2017} \\
+			\ganttbar{Benachrichtigungen} {21-01-2017} {24-01-2017} \\
+			\ganttbar{GenerationWizard} {25-01-2017} {30-01-2017} \\
+			\ganttbar{Moduldarstellung} {25-01-2017} {27-01-2017} \\
+			\ganttbar{Plandarstellung} {25-01-2017} {02-02-2017} \\
+			\ganttbar{Modulsuche} {26-01-2017} {30-01-2017} \\
+			\ganttbar{subview} {28-01-2017} {01-02-2017} \\
+			\ganttbar{CSS} {30-01-2017} {06-02-2017} \\
+			\ganttbar{MainRouter} {3-02-2017} {07-02-2017} \\
+			\ganttbar{PlanList} {02-02-2017} {03-02-2017} \\
+			\ganttmilestone{Fertigstellung}{07-02-2017}
+		\end{ganttchart}
+	}
+	\caption{Implementierungsplan Client}
 \end{figure}
