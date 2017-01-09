@@ -58,6 +58,11 @@ Diese Klasse beschreibt eine zu einem Modul gehörende gesetzte Präferenz
 
 
 
+\begin{texdocpackage}{client.model}
+\label{texdoclet:edu.kit.informatik.studyplan.client.model}
+
+\end{texdocpackage}
+
 
 
 \begin{texdocpackage}{client.model.plans}
@@ -185,7 +190,7 @@ Dieses Singleton wird als Event-Bus zwischen verschiedenen Komponenten der
  EventBus zugreifen und sich als Listener registrieren oder einen Event
  auslösen.\texdocbr{}
 
- Ein Beispiel für einen solchen Event würe die Anzeige eines Moduls in der
+ Ein Beispiel für einen solchen Event wäre die Anzeige eines Moduls in der
  Seitenleiste beim Klick auf das Modul. (Erbt von Backbone.Event)\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{EventBus}{()}{}{}
@@ -383,7 +388,7 @@ Klasse, welche eine Collection von Vertiefungsfächern repräsentiert\end{texdoc
 Singleton, welches die Templates für die Views verwaltet. Jedes Template
  lässt sich über einen key abrufen.\texdocbr{}
 
- dDie Templates werden zur Compile-Zeit in den Initialisierungscode
+ Die Templates werden zur Compile-Zeit in den Initialisierungscode
  hineingeladen und sind somit bereits beim Start der Applikation im Template
  Manager vorhanden. Der Vorteil dieses Vorgehens ist, dass man beim Laden der
  einzelnen Views nicht auf eine Antwort vom Server (welche das Template
@@ -1227,7 +1232,6 @@ Repräsentiert einen Fachrichtungs-Wahlfilter mit den Fachrichtungen als Wahlmö
 \end{texdocclass}
 
 
-
 \begin{texdocclass}{interface}{Filter}
 \label{texdoclet:edu.kit.informatik.studyplan.server.filter.Filter}
 \begin{texdocclassintro}
@@ -1750,6 +1754,27 @@ Die Klasse Weightfunction enthält eine Methode, welche die Anzahl an Creditpoin
 
 
 
+\begin{texdocpackage}{server.model}
+\label{texdoclet:edu.kit.informatik.studyplan.server.model}
+
+\begin{texdocclass}{class}{HibernateUtil}
+\label{texdoclet:edu.kit.informatik.studyplan.server.model.HibernateUtil}
+\begin{texdocclassintro}
+Fabrik zur Erzeugung von SessionFactories. Diese sind das Hibernate-Äquivalent zu Datenbankverbindungen.\end{texdocclassintro}
+\begin{texdocclassconstructors}
+\texdocconstructor{}{HibernateUtil}{()}{}{}
+\end{texdocclassconstructors}
+\begin{texdocclassmethods}
+\texdocmethod{static}{SessionFactory}{getModuleDataSessionFactory}{()}{Erzeugt die SessionFactory zum Zugriff auf die Modul-Datenbank aus der entsprechenden Konfigurationsdatei}{\texdocreturn{die SessionFactory}
+}
+\texdocmethod{static}{SessionFactory}{getUserDataSessionFactory}{()}{Erzeugt die SessionFactory zum Zugriff auf die Nutzer-Datenbank aus der entsprechenden Konfigurationsdatei}{\texdocreturn{die SessionFactory}
+}
+\end{texdocclassmethods}
+\end{texdocclass}
+
+
+\end{texdocpackage}
+
 
 
 \begin{texdocpackage}{server.model.moduledata}
@@ -2056,6 +2081,30 @@ Modelliert eine Zusammenhangsbeziehung zwischen zwei Modulen:\texdocbr{}
 \begin{texdocpackage}{server.model.moduledata.dao}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.moduledata.dao}
 
+\begin{texdocclass}{class}{HibernateModuleDao}
+\label{texdoclet:edu.kit.informatik.studyplan.server.model.moduledata.dao.HibernateModuleDao}
+\begin{texdocclassintro}
+Ein konkretes ModulDao, welches die Datenbankverbindung über Hibernate herstellt.
+ Es kann nur auf Module, Kategorien und Vertiefungsfächer 
+ des im Konstruktur angebenen Studiengangs zugreifen\end{texdocclassintro}
+\begin{texdocclassconstructors}
+\texdocconstructor{public}{HibernateModuleDao}{(Discipline discipline)}{initialisiert ein neues DAO für den angebenen Studiengang}{\begin{texdocparameters}
+\texdocparameter{discipline}{der Studiengang}
+\end{texdocparameters}
+}
+\end{texdocclassconstructors}
+\begin{texdocclassmethods}
+\texdocmethod{public}{List\textless{}Category\textgreater{}}{getCategories}{()}{}{}
+\texdocmethod{public}{List\textless{}Discipline\textgreater{}}{getDisciplines}{()}{}{}
+\texdocmethod{public}{Module}{getModuleById}{(String id)}{}{}
+\texdocmethod{public}{List\textless{}Module\textgreater{}}{getModulesByFilter}{(Filter filter)}{}{}
+\texdocmethod{public}{List\textless{}Module\textgreater{}}{getModulesByFilter}{(Filter filter, int start, int end)}{}{}
+\texdocmethod{public}{Module}{getRandomModuleByFilter}{(Filter filter)}{}{}
+\texdocmethod{public}{List\textless{}Category\textgreater{}}{getSubjects}{()}{}{}
+\end{texdocclassmethods}
+\end{texdocclass}
+
+
 \begin{texdocclass}{class}{ModuleAttributeNames}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleAttributeNames}
 \begin{texdocclassintro}
@@ -2284,6 +2333,36 @@ Diese Klasse ermöglicht die Authentifizierung, indem sie Methoden zur Access-To
 \end{texdocclass}
 
 
+\begin{texdocclass}{class}{HibernatePlanDao}
+\label{texdoclet:edu.kit.informatik.studyplan.server.model.userdata.dao.HibernatePlanDao}
+\begin{texdocclassintro}
+Ein konkretes PlanDao, welches die Datenbankverbindung über Hibernate herstellt.\end{texdocclassintro}
+\begin{texdocclassconstructors}
+\texdocconstructor{}{HibernatePlanDao}{()}{}{}
+\end{texdocclassconstructors}
+\begin{texdocclassmethods}
+\texdocmethod{public}{void}{deletePlan}{(Plan plan)}{}{}
+\texdocmethod{public}{Plan}{getPlanById}{(String id)}{}{}
+\texdocmethod{public}{void}{updatePlan}{(Plan plan)}{}{}
+\end{texdocclassmethods}
+\end{texdocclass}
+
+
+\begin{texdocclass}{class}{HibernateUserDao}
+\label{texdoclet:edu.kit.informatik.studyplan.server.model.userdata.dao.HibernateUserDao}
+\begin{texdocclassintro}
+Ein konkretes UserDao, welches die Datenbankverbindung über Hibernate herstellt.\end{texdocclassintro}
+\begin{texdocclassconstructors}
+\texdocconstructor{}{HibernateUserDao}{()}{}{}
+\end{texdocclassconstructors}
+\begin{texdocclassmethods}
+\texdocmethod{public}{void}{deleteUser}{(User user)}{}{}
+\texdocmethod{public}{User}{findUser}{(User user)}{}{}
+\texdocmethod{public}{void}{updateUser}{(User user)}{}{}
+\end{texdocclassmethods}
+\end{texdocclass}
+
+
 \begin{texdocclass}{interface}{PlanDao}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDao}
 \begin{texdocclassintro}
@@ -2316,6 +2395,20 @@ Factory zur UserDao-Erzeugung\end{texdocclassintro}
 \begin{texdocclassmethods}
 \texdocmethod{public static}{PlanDao}{getPlanDao}{()}{}{\texdocreturn{liefert das für die verwendete Datenbankschnittstelle benötigte DAO zurück}
 }
+\end{texdocclassmethods}
+\end{texdocclass}
+
+
+\begin{texdocclass}{class}{SecurityProvider}
+\label{texdoclet:edu.kit.informatik.studyplan.server.model.userdata.dao.SecurityProvider}
+\begin{texdocclassintro}
+Konkrete Implementierung eines Security-Providers, der Hibernate verwendet.\end{texdocclassintro}
+\begin{texdocclassconstructors}
+\texdocconstructor{}{SecurityProvider}{()}{}{}
+\end{texdocclassconstructors}
+\begin{texdocclassmethods}
+\texdocmethod{public}{AuthorizationContext}{generateAuthorizationContext}{(User user)}{}{}
+\texdocmethod{public}{AuthorizationContext}{getAuthorizationContext}{(String accessToken)}{}{}
 \end{texdocclassmethods}
 \end{texdocclass}
 
@@ -2699,7 +2792,7 @@ Diese Klasse repräsentiert die Authentifizierung-Ressource.
 \texdocmethod{public}{void}{getLogin}{(String clientID, String scope, String state)}{GET-Anfrage:
  Gibt den Authorization Endpoint RFC 6749 Kapitel 3.1 (siehe \ref{texdoclet:RFC}) zurück.}{\begin{texdocparameters}
 \texdocparameter{clientID}{den api\_key des Klienten.}
-\texdocparameter{scope}{in den ersten Versionen des Systems immer â€žstudentâ€œ.}
+\texdocparameter{scope}{in den ersten Versionen des Systems immer „student“.}
 \texdocparameter{state}{ein Schlüssel, der vom REST-Webservice in der Antwort mitgesendet wird.}
 \end{texdocparameters}
 }\begin{texdocsees}{See also}
@@ -2724,7 +2817,7 @@ Diese Schnittstelle repräsentiert eine Fabrik zur erstellung von Typen von Auth
 \texdocmethod{public}{void}{getLogin}{(String clientId, String scope, String state)}{GET-Anfrage:
  Gibt den Authorization Endpoint $\{$ @see RFC 6749 Kapitel 3.1$\}$ zurück.}{\begin{texdocparameters}
 \texdocparameter{clientID}{den api\_key des Klienten.}
-\texdocparameter{scope}{in den ersten Versionen des Systems immer â€žstudentâ€œ.}
+\texdocparameter{scope}{in den ersten Versionen des Systems immer „student“.}
 \texdocparameter{state}{ein Schlüssel, der vom REST-Webservice in der Antwort mitgesendet wird.}
 \end{texdocparameters}
 }\begin{texdocsees}{See also}
@@ -2752,7 +2845,6 @@ Diese Klasse repräsentiert einen ImplicitGrantType $\{$ @see RFC 6749 Kapitel 1
 \texdocmethod{public}{void}{postToken}{(MultivaluedMap\textless{}StringString\textgreater{} params)}{}{}
 \end{texdocclassmethods}
 \end{texdocclass}
-
 
 
 \begin{texdocclass}{class}{PasswordCredentialsGrant}
@@ -2823,16 +2915,6 @@ Klasse für das Filtern von Authentifizierungs-Anfragen.\end{texdocclassintro}
 \end{texdocclass}
 
 
-\begin{texdocclass}{interface}{ContainerRequestFilter}
-\label{texdoclet:edu.kit.informatik.studyplan.server.rest.ContainerRequestFilter}
-\begin{texdocclassintro}
-Eine Erweiterungsschnittstelle, die von serverseitigen Anfrage-Filtern implementiert wird.\end{texdocclassintro}
-\begin{texdocclassmethods}
-\texdocmethod{public}{void}{filter}{()}{Filter-Methode wird aufgerufen, bevor eine Anfrage an eine Ressource versandt wird.}{}
-\end{texdocclassmethods}
-\end{texdocclass}
-
-
 \begin{texdocclass}{class}{FilterResource}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.FilterResource}
 \begin{texdocclassintro}
@@ -2851,9 +2933,9 @@ Diese Klasse repräsentiert die Filter-Ressource.\end{texdocclassintro}
 \begin{texdocclass}{class}{GetParameters}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.GetParameters}
 \begin{texdocclassintro}
-Parameter für die GET-Anfragen.\end{texdocclassintro}
+Platzhalter für mehrere GET-Anfrage-Parameter.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{GetParameters}{()}{Erstellt einen GETParameters-Objekt.}{}
+\texdocconstructor{public}{GetParameters}{()}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -2923,7 +3005,6 @@ Diese Klasse repräsentiert die Zielfunktion-Ressource.\end{texdocclassintro}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
-
 
 
 \begin{texdocclass}{class}{PlanConverterResource}
@@ -3094,7 +3175,6 @@ Diese Klasse repräsentiert die Planverifizierer-Ressource.\end{texdocclassintro
 }
 \end{texdocclassmethods}
 \end{texdocclass}
-
 
 
 \begin{texdocclass}{class}{StudentResource}
