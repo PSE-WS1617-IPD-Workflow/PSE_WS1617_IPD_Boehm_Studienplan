@@ -8,7 +8,7 @@ Diese Klasse repräsentiert ein Modul, welches vom Server geladen wird. Das
  Modul wird als Element zunächst nur teilweise geladen. Mittels eines Aufrufs
  von fetch() werden dann gegebenfalls weitere notwendige Daten nachgeladen.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{Module}{()}{}{}
+\texdocconstructor{public}{Module}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -18,7 +18,7 @@ Diese Klasse repräsentiert ein Modul, welches vom Server geladen wird. Das
 \begin{texdocclassintro}
 Eine Sammlung von Modulen, welche vom Server abgerufen werden kann\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ModuleCollection}{()}{}{}
+\texdocconstructor{public}{ModuleCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public abstract}{String}{url}{()}{Generiert abhängig von der PlanId den URL für den Abruf der Module}{\texdocreturn{Der generierte URL}
@@ -33,7 +33,7 @@ Eine Sammlung von Modulen, welche vom Server abgerufen werden kann\end{texdoccla
 Diese Klasse beschreibt einen zu einem Modul gehörenden System-Constraint
  (erweitert Backbone.Model)\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ModuleConstraint}{()}{}{}
+\texdocconstructor{public}{ModuleConstraint}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -44,7 +44,7 @@ Diese Klasse beschreibt einen zu einem Modul gehörenden System-Constraint
 Diese Klasse beschreibt eine zu einem Modul gehörende gesetzte Präferenz
  (positiv$/$neutral$/$negativ)\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{Preference}{()}{}{}
+\texdocconstructor{public}{Preference}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{String}{url}{()}{Generiert die URL für das speichern$/$abrufen der Präferenz abhängig von
@@ -73,7 +73,7 @@ Diese Klasse beschreibt eine zu einem Modul gehörende gesetzte Präferenz
 \begin{texdocclassintro}
 Klasse, welche einen Studienplan beschreibt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{Plan}{()}{}{}
+\texdocconstructor{public}{Plan}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{boolean}{containsModule}{(int moduleId)}{Eine Methode, welche zurück gibt, ob das Modul mit der gegebenen ID im
@@ -92,7 +92,7 @@ Klasse, welche einen Studienplan beschreibt\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche eine Collection von Studienplänen beschreibt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{PlanCollection}{()}{}{}
+\texdocconstructor{public}{PlanCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -102,7 +102,7 @@ Klasse, welche eine Collection von Studienplänen beschreibt\end{texdocclassintr
 \begin{texdocclassintro}
 Klasse, welche einen vorgeschlagenen Plan repräsentiert\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ProposedPlan}{()}{}{}
+\texdocconstructor{public}{ProposedPlan}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{save}{(Object options)}{Methode, welche den Plan ggf. speichert}{\begin{texdocparameters}
@@ -125,7 +125,7 @@ Klasse, welche einen vorgeschlagenen Plan repräsentiert\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welcher ein Semester als Collection von Modulen beschreibt.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{Semester}{()}{}{}
+\texdocconstructor{public}{Semester}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{String}{url}{()}{}{}
@@ -139,7 +139,7 @@ Klasse, welcher ein Semester als Collection von Modulen beschreibt.\end{texdoccl
 Eine Collection von Semestern, welche von einem Plan genutzt wird. (Erbt von
  Backbone.Collection)\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{SemesterCollection}{()}{}{}
+\texdocconstructor{public}{SemesterCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -157,7 +157,7 @@ Eine Collection von Semestern, welche von einem Plan genutzt wird. (Erbt von
 Ein Model, welches in einem Cookie gespeichert wird (Erweitert von
  Backbone.Model)\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{CookieModel}{()}{}{}
+\texdocconstructor{public}{CookieModel}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -167,7 +167,7 @@ Ein Model, welches in einem Cookie gespeichert wird (Erweitert von
 \begin{texdocclassintro}
 Klasse, welche ein Fach repräsentiert\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{Discipline}{()}{}{}
+\texdocconstructor{public}{Discipline}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -177,7 +177,7 @@ Klasse, welche ein Fach repräsentiert\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche eine Collection von Fächern repräsentiert\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{DisciplineCollection}{()}{}{}
+\texdocconstructor{public}{DisciplineCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -193,7 +193,7 @@ Dieses Singleton wird als Event-Bus zwischen verschiedenen Komponenten der
  Ein Beispiel für einen solchen Event wäre die Anzeige eines Moduls in der
  Seitenleiste beim Klick auf das Modul. (Erbt von Backbone.Event)\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{EventBus}{()}{}{}
+\texdocconstructor{private}{EventBus}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public static}{EventBus}{getInstance}{()}{Methode zum erhalten einer Instanz des Event Busses}{\texdocreturn{Die Event-Bus Instanz}
@@ -207,7 +207,7 @@ Dieses Singleton wird als Event-Bus zwischen verschiedenen Komponenten der
 \begin{texdocclassintro}
 Klasse welcher die Daten zu einem Filter speichert\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{Filter}{()}{}{}
+\texdocconstructor{public}{Filter}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{String}{getParams}{()}{Konvertiert die Filter-Daten in GET-Query-Parameter}{\texdocreturn{Die GET-Query-Parameter}
@@ -221,7 +221,7 @@ Klasse welcher die Daten zu einem Filter speichert\end{texdocclassintro}
 \begin{texdocclassintro}
 Eine Collection von Filtern\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{FilterCollection}{()}{}{}
+\texdocconstructor{public}{FilterCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -235,7 +235,7 @@ Singleton, welches die sprachlichen Ausgaben des Programms verwaltet. Hierbei
  Compile-Zeit in den Initialisierungscode des Programms geladen und sind
  deshalb von Beginn an verfügbar.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{LanguageManager}{()}{}{}
+\texdocconstructor{private}{LanguageManager}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public static}{LanguageManager}{getInstance}{()}{Gibt die aktuelle Instanz des LanguageManagers zurück}{\texdocreturn{Die aktuelle Instanz des Sprachmanagers}
@@ -259,7 +259,7 @@ Singleton, welches die sprachlichen Ausgaben des Programms verwaltet. Hierbei
 \begin{texdocclassintro}
 Klasse, welche eine Benachrichtigung repräsentiert (erweitert Backbone.Model)\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{Notification}{()}{}{}
+\texdocconstructor{public}{Notification}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -271,7 +271,7 @@ Singleton-Collection, welche alle Benachrichtigungen enthält \texdocbr{}
 
  (erweitert Backbone.Collection)\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{NotificationCollection}{()}{}{}
+\texdocconstructor{private}{NotificationCollection}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{add}{(Notification notification)}{Methode zum hinzufügen einer neuen Benachrichtigung}{\begin{texdocparameters}
@@ -291,7 +291,7 @@ Diese Klasse repräsentiert eine Collection, welche als Resource in der
  REST-Schnittstelle gespeichert ist, und bei welcher sich man beim Zugriff
  über OAUTH authentifizieren muss. (Erweitert Backbone.Collection)\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{OAuthCollection}{()}{}{}
+\texdocconstructor{public}{OAuthCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -303,7 +303,7 @@ Diese Klasse repräsentiert ein Model, welches als Resource in der
  REST-Schnittstelle gespeichert ist, und bei welchem man sich beim Zugriff
  über OAUTH authentifizieren muss. (Erweitert Backbone.Model)\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{OAuthModel}{()}{}{}
+\texdocconstructor{public}{OAuthModel}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -313,7 +313,7 @@ Diese Klasse repräsentiert ein Model, welches als Resource in der
 \begin{texdocclassintro}
 Klasse, welche eine Objective Function repräsentiert\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ObjectiveFunction}{()}{}{}
+\texdocconstructor{public}{ObjectiveFunction}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -323,7 +323,7 @@ Klasse, welche eine Objective Function repräsentiert\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche eine Collection von Objective Functions repräsentiert\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ObjectiveFunctionCollection}{()}{}{}
+\texdocconstructor{public}{ObjectiveFunctionCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -334,7 +334,7 @@ Klasse, welche eine Collection von Objective Functions repräsentiert\end{texdoc
 Die Methoden welche im Zusammenhang mit der Generierung eines Studienplans
  abgespeichert und zum Server geschickt werden. (Erweitert Backbone.Model)\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ProposalInformation}{()}{}{}
+\texdocconstructor{public}{ProposalInformation}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -348,7 +348,7 @@ Die Seach-Collection, welche das Lazy-Loading der Module in der Suche
  mittels getModules() werden diese dann in eine einzige Collection
  zusammengeführt.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{SearchCollection}{()}{}{}
+\texdocconstructor{public}{SearchCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{setFilters}{(FilterCollection filters)}{Methode, welche die Filter neu setzt und im Zuge desse, die alten
@@ -367,7 +367,7 @@ Die Seach-Collection, welche das Lazy-Loading der Module in der Suche
 \begin{texdocclassintro}
 Klasse, welche ein Vertiefungsfach repräsentiert\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{SubjectDiscipline}{()}{}{}
+\texdocconstructor{public}{SubjectDiscipline}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -377,7 +377,7 @@ Klasse, welche ein Vertiefungsfach repräsentiert\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche eine Collection von Vertiefungsfächern repräsentiert\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{SubjectDisciplineCollection}{()}{}{}
+\texdocconstructor{public}{SubjectDisciplineCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -394,7 +394,7 @@ Singleton, welches die Templates für die Views verwaltet. Jedes Template
  einzelnen Views nicht auf eine Antwort vom Server (welche das Template
  enthält) warten muss.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{TemplateManager}{()}{}{}
+\texdocconstructor{private}{TemplateManager}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public static}{TemplateManager}{getInstance}{()}{Methode zum erhalten der aktuellen Instanz des TemplateManagers}{\texdocreturn{Gibt die aktuelle Instanz des TemplateManagers zurück}
@@ -423,7 +423,7 @@ Singleton, welches die Templates für die Views verwaltet. Jedes Template
 \begin{texdocclassintro}
 Die Collection aller bestandenen Module, welche zu einem Nutzer gehört\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{PassedModuleCollection}{()}{}{}
+\texdocconstructor{public}{PassedModuleCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{String}{url}{()}{}{}
@@ -438,7 +438,7 @@ Die Informationen zur aktuellen Session der WebApp, welche in einem Cookie
  gespeichert werden. Diese Informationen werden in einem Singleton
  gespeichert, da es nicht mehr als ein SessionInformation-Objekt geben darf.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{SessionInformation}{()}{}{}
+\texdocconstructor{private}{SessionInformation}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{generateState}{()}{Methode, die ein neues StateAttribut generiert}{}
@@ -453,7 +453,7 @@ Die Informationen zur aktuellen Session der WebApp, welche in einem Cookie
 \begin{texdocclassintro}
 Klasse, welche den Studenten beschreibt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{Student}{()}{}{}
+\texdocconstructor{public}{Student}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -558,7 +558,7 @@ Dieses Objekt kapselt die Methoden zur Synchronisierung mit Server oder
 \begin{texdocclassintro}
 Klasse, welche die Anzeige eine eines Filters kapselt.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{FilterComponent}{()}{}{}
+\texdocconstructor{public}{FilterComponent}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{Filter}{getFilter}{()}{Methode zum erhalten des Filter-Modells}{\texdocreturn{}
@@ -576,7 +576,7 @@ Klasse, welche die Anzeige eine eines Filters kapselt.\end{texdocclassintro}
 Ein Filter, welcher die Menge der angezeigten Module auf Basis von Filtern
  einschränkt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ModuleFilter}{()}{}{}
+\texdocconstructor{public}{ModuleFilter}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{FilterCollection}{getFilters}{()}{Methode, die die ausgewählten Filter zurückgibt}{}
@@ -591,7 +591,7 @@ Ein Filter, welcher die Menge der angezeigten Module auf Basis von Filtern
 \begin{texdocclassintro}
 Filter, welcher durch die Auswahl eines Bereichs aktiviert wird\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{RangeFilter}{()}{}{}
+\texdocconstructor{public}{RangeFilter}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{onSelect}{()}{Methode welche bei der Auswahl eines Filterobjekts ausgeführt wird}{}
@@ -604,7 +604,7 @@ Filter, welcher durch die Auswahl eines Bereichs aktiviert wird\end{texdocclassi
 \begin{texdocclassintro}
 Filter, welcher durch die Auswahl eines Elements aktiviert wird\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{SelectFilter}{()}{}{}
+\texdocconstructor{public}{SelectFilter}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{onSelect}{()}{Methode welche bei der Auswahl eines Filterobjekts ausgeführt wird}{}
@@ -617,7 +617,7 @@ Filter, welcher durch die Auswahl eines Elements aktiviert wird\end{texdocclassi
 \begin{texdocclassintro}
 Filter, welcher durch die Eingabe eines Suchtexts aktiviert wird\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{TextFilter}{()}{}{}
+\texdocconstructor{public}{TextFilter}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{onSelect}{()}{Methode welche bei der Auswahl eines Filterobjekts ausgeführt wird}{}
@@ -637,7 +637,7 @@ Filter, welcher durch die Eingabe eines Suchtexts aktiviert wird\end{texdocclass
 \begin{texdocclassintro}
 Diese Klasse repräsentiert eine einzelne Box, welche ein Modul darstellt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ModuleBox}{()}{}{}
+\texdocconstructor{public}{ModuleBox}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{click}{()}{Methode, welche beim Klick auf das Modul ausgeführt wird.}{}
@@ -657,7 +657,7 @@ Klasse, welche den Modul Finder repräsentiert. Dieser erlaubt es nach Modulen
  zu suchen und diese (wenn es sich um eine Sidebar handelt) in einen Plan zu
  ziehen.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ModuleFinder}{()}{}{}
+\texdocconstructor{public}{ModuleFinder}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{onSearch}{()}{Methode die bei der Suche nach Modulen aufgerufen wird.}{}
@@ -670,7 +670,7 @@ Klasse, welche den Modul Finder repräsentiert. Dieser erlaubt es nach Modulen
 \begin{texdocclassintro}
 Klasse, welche die Modul-Informations-Sidebar kapselt.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ModuleInfoSidebar}{()}{}{}
+\texdocconstructor{public}{ModuleInfoSidebar}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{onChange}{()}{Methode, die bei Veränderungen des Moduls aufgerufen wird (notwendig
@@ -685,7 +685,7 @@ Klasse, welche die Modul-Informations-Sidebar kapselt.\end{texdocclassintro}
 \begin{texdocclassintro}
 \end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ModuleList}{()}{}{}
+\texdocconstructor{public}{ModuleList}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -695,7 +695,7 @@ Klasse, welche die Modul-Informations-Sidebar kapselt.\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse welche eine Benachrichtigungsbox kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{NotificationBox}{()}{}{}
+\texdocconstructor{public}{NotificationBox}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{blurOut}{()}{Die Methode, welche nach einem gegebenen Zeitintervall die
@@ -710,7 +710,7 @@ Klasse welche eine Benachrichtigungsbox kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Plan der bestandenen Module\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{PassedModulePlan}{()}{}{}
+\texdocconstructor{public}{PassedModulePlan}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -720,7 +720,7 @@ Plan der bestandenen Module\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche die Ansicht des Studienplans kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{Plan}{()}{}{}
+\texdocconstructor{public}{Plan}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{addSemester}{()}{Methode zum hinzufügen neuer Semester}{}
@@ -735,7 +735,7 @@ Klasse, welche die Ansicht des Studienplans kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche die Kopfzeile des Plans kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{PlanHeadBar}{()}{}{}
+\texdocconstructor{public}{PlanHeadBar}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{onChange}{()}{Die Methode, welche bei einer Änderung des Plans aufgerufen wird.}{}
@@ -748,7 +748,7 @@ Klasse, welche die Kopfzeile des Plans kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse welche ein Element einer PlanList kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{PlanListElement}{()}{}{}
+\texdocconstructor{public}{PlanListElement}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{delete}{()}{Methode, welche beim Klick auf "löschen" aufgerufen wird}{}
@@ -765,7 +765,7 @@ Klasse welche ein Element einer PlanList kapselt\end{texdocclassintro}
 Kopfzeile, welche angezeigt wird, wenn ein vorgeschlagener Plan angezeigt
  wird\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ProposedHeadBar}{()}{}{}
+\texdocconstructor{public}{ProposedHeadBar}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -775,7 +775,7 @@ Kopfzeile, welche angezeigt wird, wenn ein vorgeschlagener Plan angezeigt
 \begin{texdocclassintro}
 Kopfzeile welche angezeigt wird, wenn ein regulärer Plan angezeigt wird\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{RegularHeadBar}{()}{}{}
+\texdocconstructor{public}{RegularHeadBar}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{generate}{()}{Methode, welche die Generierung eines neuen Plans anstößt}{}
@@ -790,7 +790,7 @@ Kopfzeile welche angezeigt wird, wenn ein regulärer Plan angezeigt wird\end{tex
 \begin{texdocclassintro}
 Klasse, welche ein Semester innerhalb eines Studienplans kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{Semester}{()}{}{}
+\texdocconstructor{public}{Semester}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{onDrop}{(Event event, Object ui)}{Methode, welche beim Drop eines Moduls auf das Semester das hinzufügen
@@ -818,7 +818,7 @@ Klasse, welche ein Semester innerhalb eines Studienplans kapselt\end{texdocclass
 \begin{texdocclassintro}
 Anzeige, welche 2 Pläne vergleicht\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ComparisonView}{()}{}{}
+\texdocconstructor{public}{ComparisonView}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -828,7 +828,7 @@ Anzeige, welche 2 Pläne vergleicht\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche die erste Seite des Generierungs-Wizards kapselt.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{GenerationWizardComponent1}{()}{}{}
+\texdocconstructor{public}{GenerationWizardComponent1}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{WizardComponent}{next}{()}{Gibt Objekt vom Typ GenerationWizardComponent2 zurück}{\texdocreturn{Objekt vom Typ GenerationWizardComponent2 (zweite Seite des
@@ -844,7 +844,7 @@ Klasse, welche die erste Seite des Generierungs-Wizards kapselt.\end{texdocclass
 \begin{texdocclassintro}
 \end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{GenerationWizardComponent2}{()}{}{}
+\texdocconstructor{public}{GenerationWizardComponent2}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{WizardComponent}{next}{()}{Gibt Objekt vom Typ GenerationWizardComponent3 zurück}{\texdocreturn{Objekt vom Typ GenerationWizardComponent3 (dritte Seite des
@@ -860,7 +860,7 @@ Klasse, welche die erste Seite des Generierungs-Wizards kapselt.\end{texdocclass
 \begin{texdocclassintro}
 \end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{GenerationWizardComponent3}{()}{}{}
+\texdocconstructor{public}{GenerationWizardComponent3}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{WizardComponent}{next}{()}{Gibt null zurück, da dies die letzte Seite des Wizards ist.}{\texdocreturn{null}
@@ -875,7 +875,7 @@ Klasse, welche die erste Seite des Generierungs-Wizards kapselt.\end{texdocclass
 \begin{texdocclassintro}
 Klasse, welche die Anzeige von Benachrichtigungen kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{NotificationCentre}{()}{}{}
+\texdocconstructor{public}{NotificationCentre}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{onChange}{()}{Methode, welche aufgerufen wird, wenn sich die notificationCollection
@@ -889,7 +889,7 @@ Klasse, welche die Anzeige von Benachrichtigungen kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche eine Liste von Plänen kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{PlanList}{()}{}{}
+\texdocconstructor{public}{PlanList}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{onActionSelection}{()}{Listener, der aufgerufen wird, wenn eine Aktion für einen$/$mehrere Pläne
@@ -904,7 +904,7 @@ Klasse, welche eine Liste von Plänen kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Sidebar, welche angezeigt wird, wenn ein generierter Plan angezeigt wird.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ProposalSidebar}{()}{}{}
+\texdocconstructor{public}{ProposalSidebar}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{delete}{()}{Methode, welche aufgerufen wird, wenn der Plan gelöscht werden soll}{}
@@ -920,7 +920,7 @@ Sidebar, welche angezeigt wird, wenn ein generierter Plan angezeigt wird.\end{te
 \begin{texdocclassintro}
 Klasse, welche die erste Seite des Registrierungs-Wizards kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{SignUpWizardComponent1}{()}{}{}
+\texdocconstructor{public}{SignUpWizardComponent1}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{WizardComponent}{next}{()}{Gibt ein Objekt vom Typ SignUpWizardComponent2 zurück}{\texdocreturn{Objekt vom Typ SignUpWizardComponent2 (zweite Seite des Wizards)}
@@ -935,7 +935,7 @@ Klasse, welche die erste Seite des Registrierungs-Wizards kapselt\end{texdocclas
 \begin{texdocclassintro}
 Klasse, welche die zweite Seite des Registrierungswizards kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{SignUpWizardComponent2}{()}{}{}
+\texdocconstructor{public}{SignUpWizardComponent2}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{WizardComponent}{next}{()}{Gibt null zurück, da dies die letzte Seite des SignUpWizards ist}{\texdocreturn{null}
@@ -951,7 +951,7 @@ Klasse, welche die zweite Seite des Registrierungswizards kapselt\end{texdocclas
 Klasse, welche eine Komponente eines Wizards kapselt. Die Wizards sind nach
  dem Konzept des State-Machine-Patterns aufgebaut\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{WizardComponent}{()}{}{}
+\texdocconstructor{public}{WizardComponent}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public abstract}{WizardComponent}{next}{()}{Methode, welche den View-Component der nächsten Seite des Wizard zurück
@@ -1004,7 +1004,7 @@ Der MainView kapselt die Benutzeroberfläche, er kann mittels gegebener
 \begin{texdocclassintro}
 Klasse, welche die Vergleichsseite kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ComparisonPage}{()}{}{}
+\texdocconstructor{public}{ComparisonPage}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -1014,7 +1014,7 @@ Klasse, welche die Vergleichsseite kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche den Header der Seite kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{Header}{()}{}{}
+\texdocconstructor{public}{Header}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -1024,7 +1024,7 @@ Klasse, welche den Header der Seite kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche die Login-Seite kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{LoginPage}{()}{}{}
+\texdocconstructor{public}{LoginPage}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \end{texdocclass}
 
@@ -1034,7 +1034,7 @@ Klasse, welche die Login-Seite kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche die Hauptseite kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{MainPage}{()}{}{}
+\texdocconstructor{public}{MainPage}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{addPlan}{()}{Methode zum hinzufügen eines Plans}{}
@@ -1047,7 +1047,7 @@ Klasse, welche die Hauptseite kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche die Plan-Bearbeitungsansicht kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{PlanEditPage}{()}{}{}
+\texdocconstructor{public}{PlanEditPage}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{hideModuleDetails}{()}{Methode zum schließen einer ModuleInfoSidebar}{}
@@ -1064,7 +1064,7 @@ Klasse, welche die Plan-Bearbeitungsansicht kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche die Profil-Seite kapselt\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{ProfilePage}{()}{}{}
+\texdocconstructor{public}{ProfilePage}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{close}{()}{Leitet zurück zur Hauptseite (MainPage) und speichert die Änderungen.}{}
@@ -1091,7 +1091,7 @@ Diese Klasse kapselt die Anzeige von Wizards in einem State-Machine-Pattern.
 \texdocfield{public}{WizardComponent}{curView}{Der aktuell angezeigte WizardComponent}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{WizardPage}{()}{}{}
+\texdocconstructor{public}{WizardPage}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{next}{()}{Methode, welche die nächste Seite des Wizards aufruft oder diesen beendet.}{}
