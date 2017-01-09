@@ -10,7 +10,7 @@ package edu.kit.informatik.studyplan.client.model.system;
  * Applikation verwendet. Jedes Objekt kann mittels getInstance() auf den
  * EventBus zugreifen und sich als Listener registrieren oder einen Event
  * auslösen.<br>
- * Ein Beispiel für einen solchen Event w�re die Anzeige eines Moduls in der
+ * Ein Beispiel für einen solchen Event wäre die Anzeige eines Moduls in der
  * Seitenleiste beim Klick auf das Modul. (Erbt von Backbone.Event)
  */
 public class EventBus {

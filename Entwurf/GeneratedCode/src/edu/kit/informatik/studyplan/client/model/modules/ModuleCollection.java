@@ -16,7 +16,7 @@ public abstract class ModuleCollection extends OAuthCollection {
     private Collection<Module> modules;
 
     /**
-     * Generiert abhängig von der PlanId den URL f�r den Abruf der Module
+     * Generiert abhängig von der PlanId den URL für den Abruf der Module
      * 
      * @return Der generierte URL
      */
