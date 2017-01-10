@@ -1,19 +1,23 @@
-\section{Implementierungsplan}
-
-%German abbreviations  
+%ganttchar-setup for german
 \def\pgfcalendarweekdayletter#1{%  
 	\ifcase#1M\or D\or M\or D\or F\or S\or S\fi%  
-}  
-%German abbreviations; Use S. instead of September  
+} 
 \def\pgfcalendarmonthname#1{%  
 	\ifcase#1 Dezember \or Januar\or Februar\or März\or April\or Mai\or Juni\or Juli \or August \or S. \or Oktober \or November \or Dezember\fi%  
 }  
-
-% This line is added
 \ganttset{calendar week text={KW~\currentweek}}
 
+
+\section{Implementierungsplan}
+Für die Implementierung planen wir, das Team in zwei Gruppen einzuteilen. Eine Gruppe wird sich mit der Server-Entwicklung und eine mit der Client-Entwicklung beschäftigen. Dies fördert die Produktivität, da sich nur die Hälfte des Teams in Javascript einarbeiten muss. Zudem müssen so Entwickler nicht zwischen mehreren Programmiersprachen wechseln.\\
+Falls es bei der Server-Entwicklung zu zeitlichen Engpässen kommt, so können Personen aus dem Client-Team am Server mitarbeiten, weil hier nur eine geringe Einarbeitungszeit nötig ist. \\
+Im Folgenden sind vorläufige Implementierungspläne für beide Entwicklungsteams dargestellt.
 \subsection{Server-Implementierung}
 
 \include{content/diagrams/server_gantt}
+
+\subsection{Client-Implementierung}
+
+\include{content/diagrams/client_gantt}
 
 	

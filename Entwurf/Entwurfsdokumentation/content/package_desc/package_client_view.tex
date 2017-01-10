@@ -1,4 +1,11 @@
 \FloatBarrier
 \subsection[Package client.view]{Package \texttt{client.view}}
-
-       
+Dieses Paket enthält die in Klassen gekapselte grafische Oberfläche des Systems. Es handelt sich bei allen Klassen um Erweiterungen der Basisklasse Backbone.View. Hierbei implementiert jede der Klassen die Funktion render() welche beim Aufruf die eigenen Inhalte als grafische Oberfläche zusammenbaut und an dem, dem Konstruktor übergebenen Ort auf der Seite anzeigt.
+Die render()-Funktion - welche von Backbone vorgegeben wird - ruft insbesondere auch die render()-Funktionen von im Objekt enthaltenen Views auf.
+\begin{figure}[H]
+	\resizebox{\linewidth}{!}{
+		\includegraphics[width=\linewidth]{../UML-Diagramm/{client.view}.png}
+	}
+	\caption{UML-Diagramm des client.view-Pakets.}
+	\label{fig:package_client_view}
+\end{figure}           
