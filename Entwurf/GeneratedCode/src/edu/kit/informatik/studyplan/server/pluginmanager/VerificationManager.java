@@ -19,7 +19,7 @@ public class VerificationManager {
 	 * Der Verifizierer.
 	 * @see edu.kit.informatik.studyplan.server.verification.Verifier
 	 */
-	public Verifier verifier;
+	private Verifier verifier;
 
 	/**
 	 * Gibt den Verifizierer zurück.
