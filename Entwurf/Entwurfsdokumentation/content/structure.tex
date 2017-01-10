@@ -23,4 +23,23 @@ Model bildet die Daten aus den Cookies und dem REST-Webservice auf Klassen ab un
 View zeigt die Daten aus dem Model an und aktualisiert im Fall einer Änderung des Models die Anzeige. Auch fängt das View-Paket Interaktionen mit der Benutzeroberfläche (wie Klicks oder Drag and Drop) ab und verarbeitet diese entsprechend.\\
 Router übernimmt schließlich die Aufgaben des Controllers in klassischen MVC"=Architekturen. Der Router wird bei Änderungen des URI Fragments aufgerufen und kann so beim Wechsel auf eine andere Seite der WebApp die neuen View"=Klassen initialisieren und die zugehörigen Inhalte anzeigen.
 
-\subsection{Klassendiagramm}  % necessary?
+\subsubsection{Hinweis}  % necessary?
+\paragraph{Hinweis auf blauen Klassen}Im Klassendiagramm werden externe Klassen, die aus verschiedenen Paketen importiert werden sollen, in blau gefärbt, um sie von den zum System gehörigen Klassen zu unterscheiden. Dazu gehören die Klassen die in Tabelle \ref{tab:extern_classes} erwähnt wurden.
+\begin{table}
+	\begin{tabular}{@{} | p{.25\textwidth} | p{.7\textwidth} | @{}} 
+		\hline
+		\textbf{Klasse} & \textbf{Paket}\\ \hhline{|=|=|}
+		\textit{MultivaluedMap<T1,T2>} & javax.ws.rs.core \\ \hline
+		\textit{ResourceConfig} & org.glassfish.jersey.server \\ \hline
+		\textit{JSONObject} & javax.json \\ \hline
+		\textit{ContainerRequestFilter} & javax.ws.rs.container \\ \hline
+		\textit{GetParameters} & siehe Kap. 3.5 Zugriffsstruktur \\
+		\hline
+		\textit{Condition} & java.util.concurrent.locks \\
+		\hline
+		\textit{Field<Object>} & java.lang.reflect \\
+		\hline
+	\end{tabular}
+	\caption{Externe Klassen}
+	\label{tab:extern_classes}
+\end{table}
