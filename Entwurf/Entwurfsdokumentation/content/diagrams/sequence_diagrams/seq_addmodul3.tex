@@ -1,0 +1,25 @@
+\resizebox{\textwidth}{!} {
+	\begin{tikzpicture}  
+	\begin{umlseqdiag}
+		\umlobject[no ddots]{Sync} 
+ 		\umlobject[class=planResource, x=2.5]{planRes}
+		\umlobject[class=SessionInformation, x=6.8]{sesInfo} 
+		\umlobject[class=AuthorizationContext, x=11.5]{auth}
+		\umlobject[class=User, x=14.9]{user}
+		\umlobject[class=Plan, x=16.8]{plan}
+		\umlobject[class=List<ModulEntry>, x=20.6]{modules}
+		\begin{umlcall}[op={editPlan()}, dt=5]{Sync}{planRes}
+			\begin{umlcall}[op={getAccessToken()}, return={AccessToken}]{planRes}{sesInfo}   
+			\end{umlcall} 
+			\begin{umlcall}[op={getUser()}, return={user}, dt=5]{planRes}{auth}   
+			\end{umlcall}
+			\begin{umlcall}[op={getPlans().get()},  return={plan}, dt=5]{planRes}{user}   
+			\end{umlcall} 
+			\begin{umlcall}[op={getModulEntries()},  return={modules}, dt=5]{planRes}{plan}   
+			\end{umlcall} 
+			\begin{umlcall}[op={add()}]{planRes}{modules}   
+			\end{umlcall} 
+		\end{umlcall}
+	\end{umlseqdiag}
+	\end{tikzpicture}
+}
