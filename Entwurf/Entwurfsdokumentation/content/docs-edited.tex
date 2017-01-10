@@ -2984,13 +2984,13 @@ Verwaltet den Zugriff auf das Generierungsplug-in.
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{double}{evaluate}{(Plan plan)}{Diese Methode ruft die evaluate Methode der 
- edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction (siehe \ref{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction}).}{\begin{texdocparameters}
+server.generation.objectivefunction.PartialObjectiveFunction (siehe \ref{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction}).}{\begin{texdocparameters}
 \texdocparameter{plan}{der zu bewertende Plan.}
 \end{texdocparameters}
 \texdocreturn{Wert zwischen 0 und 1 der den Plan evaluiert.}
 }
 \texdocmethod{public}{Plan}{generate}{(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO)}{Diese Methode ruft die generate Methode des
- edu.kit.informatik.studyplan.server.generation.Generator  (siehe \ref{texdoclet:edu.kit.informatik.studyplan.server.generation.Generator}).}{\begin{texdocparameters}
+server.generation.Generator  (siehe \ref{texdoclet:edu.kit.informatik.studyplan.server.generation.Generator}).}{\begin{texdocparameters}
 \texdocparameter{objectiveFunction}{Die Zielfunktion, anhand der optimiert werden soll}
 \texdocparameter{currentPlan}{der bereits bestehende Plan}
 \texdocparameter{moduleDAO}{die Module}
@@ -3012,7 +3012,7 @@ Verwaltet den Zugriff auf das Verifizierungsplug-in, das die Verifizierer-Schnit
  Diese Schnittstelle wird von dem VerificationManager adaptiert.\end{texdocclassintro}
 \begin{texdocclassfields}
 \texdocfield{public}{Verifier}{verifier}{Der Verifizierer.}\begin{texdocsees}{See also}
-\texdocsee{edu.kit.informatik.studyplan.server.verification.Verifier}{texdoclet:edu.kit.informatik.studyplan.server.verification.Verifier}
+\texdocsee{server.verification.Verifier}{texdoclet:edu.kit.informatik.studyplan.server.verification.Verifier}
 \end{texdocsees}
 
 \end{texdocclassfields}
@@ -3023,7 +3023,7 @@ Verwaltet den Zugriff auf das Verifizierungsplug-in, das die Verifizierer-Schnit
 \texdocmethod{public}{Verifier}{getVerifier}{()}{Gibt den Verifizierer zurück.}{\texdocreturn{verifier : der Verifizierer}
 }
 \texdocmethod{public}{VerificationResult}{verify}{(Plan plan)}{Diese Methode ruft die verify Methode des
- edu.kit.informatik.studyplan.server.verification.Verifier  (siehe \ref{texdoclet:edu.kit.informatik.studyplan.server.verification.Verifier}).}{\begin{texdocparameters}
+server.verification.Verifier  (siehe \ref{texdoclet:edu.kit.informatik.studyplan.server.verification.Verifier}).}{\begin{texdocparameters}
 \texdocparameter{plan}{Ein zu verifizierender Studienplan wird übergeben.}
 \end{texdocparameters}
 \texdocreturn{invalid Ein VerificationResult wird als Ergebnis der Verifizierung zurückgegeben.}
@@ -3042,7 +3042,7 @@ Verwaltet den Zugriff auf das Verifizierungsplug-in, das die Verifizierer-Schnit
 \begin{texdocclass}{class}{AuthorizationCodeGrant}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.AuthorizationCodeGrant}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert einen AuthorizationCodeGrant  $\{$ @see RFC 6749 Kapitel 1.3.1$\}$.
+Diese Klasse repräsentiert einen AuthorizationCodeGrant   (Siehe \cite[Kap. 1.3.1]{rfc6749}).
  AuthorizationCodeGrant wird in der ersten Version des Systems nicht benötigt aber zur möglichen 
  Erweiterungen vorgesehen.
   * Bei dem Versuch, eine Authentifizierung mittels diese Klasse durchzuführen wird eine Fehlermeldung
