@@ -2,7 +2,7 @@
 \subsection{Authentifizierung}
 \label{subsec:api-auth}
 \paragraph{Zugrundeliegende Spezifikation} Die Authentifizierung am REST-Webservice erfolgt über eine OAuth-2.0-Schnittstelle nach RFC 6749 (siehe \cite{rfc6749}).
-Für das momentane System ist hierbei nur die Authentifizierung über \textit{Implicit-Grant} \cite[Kap. 4.2]{rfc6749} notwendig, jedoch sollte das System mindestens um \textit{Authorization-Code-Grant} \cite[Kap. 4.1]{rfc6749} und \textit{Resource-Owner-Password-Credentials-Grant} \cite[Kap. 4.3]{rfc6749} erweitert werden können, weshalb die Basis für diesen Authentifizierungstyp ebenfalls implementiert wird. Bei dem Versuch, eine Authentifizierung mittels \textit{Authorization-Code-Grant} oder \textit{Resource-Owner-Password-Credentials-Grant} durchzuführen, wird dann eine Fehlermeldung zurück gegeben.\\
+Für das momentane System ist hierbei nur die Authentifizierung über \textit{Implicit-Grant} \cite[Kap. 4.2]{rfc6749} notwendig, jedoch sollte das System mindestens um \textit{Authorization-Code-Grant} \cite[Kap. 4.1]{rfc6749} und \textit{Resource-Owner-Password-Credentials-Grant} \cite[Kap. 4.3]{rfc6749} erweitert werden können, weshalb die Basis für diesen Authentifizierungstyp ebenfalls implementiert wird. Bei dem Versuch, eine Authentifizierung mittels \textit{Authorization-Code-Grant} oder \textit{Resource-Owner-Password-Credentials-Grant} durchzuführen, wird dann eine Fehlermeldung zurückgegeben.\\
 Die zugrundeliegende Spezifikation verteilt klare Rollen an die verschiedenen Akteure, welche an der Interaktion der Systeme beteiligt sind. In Tabelle \ref{tab:api-auth-roles} ist angegeben, welches Subsystem die jeweiligen Rollen bei der OAuth-Authentifizierung in unserem System übernimmt.
 
 \begin{table}
@@ -21,7 +21,7 @@ Die zugrundeliegende Spezifikation verteilt klare Rollen an die verschiedenen Ak
 \end{table}
 
 \paragraph{Registrierung der Klienten}
-Klienten sind bei der Authentifizierung alle auf den REST-Webservice zugreifenden Systeme, welche sich dafür im Namen eines Nutzers beim REST-Webservice authentifizieren.\\
+Klienten sind bei der Authentifizierung alle auf den REST-Webservice zugreifende Systeme, welche sich dafür im Namen eines Nutzers beim REST-Webservice authentifizieren.\\
 Ein Beispiel für einen solchen Klienten ist die WebApp.\\
 Alle Klienten werden in der Datenbank gespeichert.\\
 Wir unterscheiden zwischen zwei Typen von Klienten: \textit{Vertrauenswürdige} sowie \textit{öffentliche} Klienten. Die Definitionen hierzu finden sich auch in \cite[Kap. 2.1]{rfc6749}. Bei der WebApp handelt es sich auf Grund der Zugänglichkeit des Codes und der Daten um einen öffentlichen Klienten.
@@ -33,8 +33,8 @@ Für einen vertrauenswürdigen Klienten werden die Informationen aus Tabelle \re
 		\textbf{Name} & \textbf{Beschreibung}\\ \hhline{|=|=|}
 		\textit{api\_key} & Eindeutige, öffentliche ID des Klienten. Beginnt mit dem Präfix \enquote{key-} \\ \hline
 		\textit{api\_secret} & Nur dem Klienten bekannte Kennung. Beginnt mit dem Präfix \enquote{secret-} \\ \hline
-		\textit{scope} & Berechtigungen (auch mehrere) die der Klient anfordern darf. Vorerst immer nur \enquote{student} \\ \hline
-		\textit{redirect\_url} & URL an welche beim \textit{Implicit-Grant} bzw. \textit{Authorization-Code-Grant} weitergeleitet wird. \\ \hline
+		\textit{scope} & Berechtigungen (auch mehrere), die der Klient anfordern darf. Vorerst immer nur \enquote{student} \\ \hline
+		\textit{redirect\_url} & URL, an welche beim \textit{Implicit-Grant} bzw. \textit{Authorization-Code-Grant} weitergeleitet wird. \\ \hline
 		\textit{origin} & Domains, von welchen aus der Klient auf die Ressourcen zugreifen darf. Wird als Regulärer Ausdruck angegeben. Dieser Wert wird bei Anfragen mit Hilfe des \textit{Referer-Header} überprüft. \\
 		\hline
 	\end{tabular}
@@ -60,7 +60,7 @@ Für einen öffentlichen Klienten werden die Informationen aus Tabelle  \ref{tab
 \end{table}
 \paragraph{Schnittstellen}
 Für die Authentifizierung werden die Schnittstellen aus Tabelle \ref{tab:api-auth-endpoints} verwendet.
-Beim Login wird hierbei der Web-Browser des Benutzers, welcher die Web-App geöffnet, und auf den Button \enquote{Login} geklickt hat, an den URI /auth/login des REST-Webservice weitergeleitet. Auf dieser Seite kann sich der Nutzer authentifizieren. Anschließend wird er auf die Hauptseite der Web-App weitergeleitet. Die Kommunikation der Authentifizierungsdaten zwischen Klient und REST-Webservice verläuft über den \textit{Query} \cite[Kap 3.4]{rfc3986} bzw. das \textit{Fragment} \cite[Kap. 3.5]{rfc3986} des URI.
+Beim Login wird hierbei der Web-Browser des Benutzers, welcher die Web-App geöffnet und auf den Button \enquote{Login} geklickt hat, an den URI /auth/login des REST-Webservice weitergeleitet. Auf dieser Seite kann sich der Nutzer authentifizieren. Anschließend wird er auf die Hauptseite der Web-App weitergeleitet. Die Kommunikation der Authentifizierungsdaten zwischen Klient und REST-Webservice verläuft über den \textit{Query} \cite[Kap 3.4]{rfc3986} bzw. das \textit{Fragment} \cite[Kap. 3.5]{rfc3986} des URI.
 
 \begin{table}
 	\begin{tabulary}{\textwidth}{|l|l|p{.6\textwidth}|} 
@@ -93,7 +93,7 @@ Ist die Authentifizierung erfolgreich, so werden bei der Weiterleitung die Param
 		\hline
 		\textbf{Parameter} & \textbf{Beschreibung}\\ \hhline{|=|=|}
 		\textit{response\_type} & Für die Authentifizierung mittels \textit{Implicit-Grant} der Wert \enquote{token}. Für Authentifizierung mittels \textit{Authorization-Code-Grant} der Wert \enquote{code}. Für Authentifizierung mittels \textit{Resource-Owner-Password-Credentials-Grant} der Wert \enquote{password}. \\ \hline
-		\textit{client\_id} & Den \textit{api\_key} des Klienten \\ \hline
+		\textit{client\_id} & Der \textit{api\_key} des Klienten \\ \hline
 		\textit{scope} & In den ersten Versionen des Systems immer \enquote{student}. Später möglicherweise auch andere Werte. \\ \hline
 		\textit{state} & Ein im Web-Browser gespeicherter, nicht von dritten veränderbarer Schlüssel, der vom REST-Webservice in der Antwort mitgesendet wird.\\
 		\hline

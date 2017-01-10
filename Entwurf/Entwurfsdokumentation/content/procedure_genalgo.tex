@@ -58,13 +58,13 @@ Anschließend wird erneut Ungleichung (\ref{equ:genalg-enough-ects}) überprüft
 
 \subsubsection{Zufällige Modifizierung}
 \label{subsec:genalg-random-modification}
-Für einen beliebigen wie in \ref{subsec:genalg-random-generation} als Graph dargestellten Plan, wähle man zufällig ein Modul $m \in Z$ und lösche diese samt seiner nur für dieses Modul $m$ benötigten Abhängigkeiten. Diesen Schritt führe man $l \in \mathbb{N}$ mal aus.\\
+Für einen beliebigen wie in \ref{subsec:genalg-random-generation} als Graph dargestellten Plan, wähle man zufällig ein Modul $m \in Z$ und lösche dieses samt seiner nur für dieses Modul $m$ benötigten Abhängigkeiten. Diesen Schritt führe man $l \in \mathbb{N}$ mal aus.\\
 Anschließend füge man -- wie in \ref{subsec:genalg-random-generation} beschrieben -- erneut Module hinzu, bis Ungleichung (\ref{equ:genalg-enough-ects}) wieder erfüllt wird.
 
 \subsubsection{Kontraktion der topologischen Sortierung}
 \label{subsec:genalg-contract-topolog-sort}
 Zunächst wird der Graph mittels Tiefensuche topologisch sortiert und
-anschließend  mit unten beschriebenen Algorithmus parallelisiert.
+anschließend  mit unten beschriebenem Algorithmus parallelisiert.
 Hierbei werden die bereits gesetzen Module zunächst in die vom Nutzer vorgegebenen Semester gesetzt.
 
 Sei also $G = (V,E)$ ein DAG und $s: \{1,..,|V|\} \to V$ seine topologische Sortierung, $c: V \to \mathbb{Q}$ die Gewichtungsfunktion. Sei weiter $P = V \times V$ eine symmetrische, transitive Relation von Knoten, welche nicht parallel gesetzt werden dürfen.
