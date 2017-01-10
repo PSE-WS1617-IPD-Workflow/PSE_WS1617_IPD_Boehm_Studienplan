@@ -1,0 +1,22 @@
+\resizebox{\textwidth}{!} {
+	\begin{tikzpicture}  
+	\begin{umlseqdiag}
+		\umlobject[no ddots]{Backbone} 
+		\umlobject[class=Semester, x=3.2]{semester} 
+		\umlobject[class=Plan, x=6.2]{plan} 
+		\umlobject[class=Sync, x=8.8]{sync} 
+		\umlobject[class=SessionInformation, x=12.5]{sesInfo} 
+		\umlobject[class=PlanResource, x=17]{planRes}
+		\begin{umlcall}[op={onDrop()}, dt=5]{Backbone}{semester}
+			\begin{umlcall}[op={onChange()}]{semester}{plan}	
+				\begin{umlcall}[op={OAuthSync()}]{plan}{sync}   
+					\begin{umlcall}[op={getAccessToken()}, return={AccessToken}]{sync}{sesInfo}   
+					\end{umlcall} 
+					\begin{umlcall}[op={editPlan()}, dt=5]{sync}{planRes}
+					\end{umlcall} 					 
+				\end{umlcall}
+			\end{umlcall}
+		\end{umlcall}	
+	\end{umlseqdiag}
+	\end{tikzpicture}
+}

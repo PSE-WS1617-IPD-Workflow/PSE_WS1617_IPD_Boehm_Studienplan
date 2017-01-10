@@ -1,0 +1,19 @@
+\resizebox{\textwidth}{!} {
+	\begin{tikzpicture}  
+	\begin{umlseqdiag}
+		\umlobject[class=Sync]{sync} 
+ 		\umlobject[class=StudentResource]{studentRes}
+		\umlobject[class=SessionInformation, x=9]{sesInfo} 
+		\umlobject[class=AuthorizationContext, x=13.8]{auth}
+		\umlobject[class=User, x=17.1]{user}
+		\begin{umlcall}[op={replaceInformation()}, dt=5]{sync}{studentRes}
+			\begin{umlcall}[op={getAccessToken()}, return={AccessToken}]{studentRes}{sesInfo}   
+			\end{umlcall} 
+			\begin{umlcall}[op={getUser()}, return={user}, dt=5]{studentRes}{auth}   
+			\end{umlcall}
+			\begin{umlcall}[op={setStudyStartCycle()}, dt=5]{studentRes}{user}   
+			\end{umlcall} 
+		\end{umlcall}
+	\end{umlseqdiag}
+	\end{tikzpicture}
+}
