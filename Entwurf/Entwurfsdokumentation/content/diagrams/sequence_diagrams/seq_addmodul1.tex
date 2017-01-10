@@ -1,0 +1,23 @@
+\resizebox{\textwidth}{!} {
+	\begin{tikzpicture}  
+	\begin{umlseqdiag}
+	  	\umlobject[no ddots]{BackboneHistory}
+		\umlobject[class=MainRouter]{router} 
+		\umlobject[class=PlanEditPage]{editPage} 
+		\begin{umlcall}[op={editPage()}, dt=5]{BackboneHistory}{router}
+			\umlcreatecall[class=PlanHeadBar]{router}{headBar} 		
+			\umlcreatecall[class=BackboneView]{router}{sideBar} 		
+			\umlcreatecall[class=Plan]{router}{plan} 		
+			\begin{umlcall}[op={render()}]{router}{editPage} 
+				\begin{umlcall}[op={render()}]{editPage}{headBar}		
+				\end{umlcall}
+				\begin{umlcall}[op={render()}]{editPage}{sideBar}	
+				\end{umlcall}
+				\begin{umlcall}[op={render()}]{editPage}{plan}			
+				
+				\end{umlcall}
+ 			\end{umlcall}
+		\end{umlcall}
+	\end{umlseqdiag}
+\end{tikzpicture}
+}
