@@ -1754,7 +1754,7 @@ Das Interface Generator bietet die allgemeine Struktur eines Generierers.\end{te
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction}
 
 \begin{texdocsees}{See also}
-\texdocsee{edu.kit.informatik.studyplan.server.generation.objectivefunction.ObjectiveFunction}{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.ObjectiveFunction}
+\texdocsee{ObjectiveFunction}{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.ObjectiveFunction}
 \end{texdocsees}
 \begin{texdocclass}{class}{AtomObjectiveFunction}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.AtomObjectiveFunction}
@@ -3043,9 +3043,9 @@ server.verification.Verifier  (siehe \ref{texdoclet:edu.kit.informatik.studyplan
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.AuthorizationCodeGrant}
 \begin{texdocclassintro}
 Diese Klasse repräsentiert einen AuthorizationCodeGrant   (Siehe \cite[Kap. 1.3.1]{rfc6749}).
- AuthorizationCodeGrant wird in der ersten Version des Systems nicht benötigt aber zur möglichen 
+ AuthorizationCodeGrant wird in der ersten Version des Systems nicht benötigt aber zur möglichen
  Erweiterungen vorgesehen.
-  * Bei dem Versuch, eine Authentifizierung mittels diese Klasse durchzuführen wird eine Fehlermeldung
+ Bei dem Versuch, eine Authentifizierung mittels diese Klasse durchzuführen wird eine Fehlermeldung
  zurückgegeben.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{AuthorizationCodeGrant}{()}{Erstellt einen AuthorizationCodeGrant.}{}
@@ -3070,17 +3070,17 @@ Diese Klasse repräsentiert die Authentifizierung-Ressource.
 \texdocmethod{public}{GrantType}{getGrantType}{()}{Gibt den GrantType zurück.}{\texdocreturn{den grantType}
 }
 \texdocmethod{public}{void}{getLogin}{(String clientID, String scope, String state)}{GET-Anfrage:
- Gibt den Authorization Endpoint RFC 6749 Kapitel 3.1 (siehe \ref{texdoclet:RFC}) zurück.}{\begin{texdocparameters}
+ Gibt den Authorization Endpoint (\cite{rfc6749}, Kapitel 3.1) zurück.}{\begin{texdocparameters}
 \texdocparameter{clientID}{den api\_key des Klienten.}
 \texdocparameter{scope}{in den ersten Versionen des Systems immer „student“.}
 \texdocparameter{state}{ein Schlüssel, der vom REST-Webservice in der Antwort mitgesendet wird.}
 \end{texdocparameters}
 }\begin{texdocsees}{See also}
-\texdocsee{Kapitel 3.2 Tabelle 5.}{texdoclet:Kapitel}
+\texdocsee{Kapitel \ref{subsec:api-auth} Tabelle \ref{tab:api-auth-public-client-data}.}{texdoclet:Kapitel}
 \end{texdocsees}
 
 \texdocmethod{public}{void}{postToken}{(MultivaluedMap\textless{}StringString\textgreater{} params)}{POST-Anfrage:
- Setzt den Token Endpoint RFC 6749 Kapitel 3.1 (siehe \ref{texdoclet:RFC}).}{\begin{texdocparameters}
+ Setzt den Token Endpoint (\cite{rfc6749}, Kapitel 3.1).}{\begin{texdocparameters}
 \texdocparameter{params}{eine mehrwertige Zuordnung}
 \end{texdocparameters}
 }
@@ -3091,21 +3091,21 @@ Diese Klasse repräsentiert die Authentifizierung-Ressource.
 \begin{texdocclass}{interface}{GrantType}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.GrantType}
 \begin{texdocclassintro}
-Diese Schnittstelle repräsentiert eine Fabrik zur erstellung von Typen von Authorisation Grant
- $\{$ @see RFC 6749 Kapitel 1.3$\}$\end{texdocclassintro}
+Diese Schnittstelle repräsentiert eine Fabrik zur Erstellung von Typen von Authorisation Grant
+ (\cite{rfc6749}, Kapitel 1.3)\end{texdocclassintro}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{getLogin}{(String clientId, String scope, String state)}{GET-Anfrage:
- Gibt den Authorization Endpoint $\{$ @see RFC 6749 Kapitel 3.1$\}$ zurück.}{\begin{texdocparameters}
+ Gibt den Authorization Endpoint (siehe \cite{rfc6749}, Kapitel 1.3) zurück.}{\begin{texdocparameters}
 \texdocparameter{clientID}{den api\_key des Klienten.}
 \texdocparameter{scope}{in den ersten Versionen des Systems immer „student“.}
 \texdocparameter{state}{ein Schlüssel, der vom REST-Webservice in der Antwort mitgesendet wird.}
 \end{texdocparameters}
 }\begin{texdocsees}{See also}
-\texdocsee{Kapitel 3.2 Tabelle 5.}{texdoclet:Kapitel}
+\texdocsee{Kapitel \ref{subsec:api-auth} Tabelle \ref{tab:api-auth-public-client-data}.}{texdoclet:Kapitel}
 \end{texdocsees}
 
 \texdocmethod{public}{void}{postToken}{(MultivaluedMap\textless{}StringString\textgreater{} params)}{POST-Anfrage:
- Setzt den Token Endpoint $\{$ @see RFC 6749 Kapitel 3.1$\}$.}{\begin{texdocparameters}
+ Setzt den Token Endpoint (siehe \cite{rfc6749}, Kapitel 3.1).}{\begin{texdocparameters}
 \texdocparameter{params}{eine mehrwertige Zuordnung}
 \end{texdocparameters}
 }
@@ -3116,7 +3116,7 @@ Diese Schnittstelle repräsentiert eine Fabrik zur erstellung von Typen von Auth
 \begin{texdocclass}{class}{ImplicitGrantType}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.ImplicitGrantType}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert einen ImplicitGrantType $\{$ @see RFC 6749 Kapitel 1.3.2$\}$.\end{texdocclassintro}
+Diese Klasse repräsentiert einen ImplicitGrantType (\cite{rfc6749}, Kapitel 1.3.2).\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ImplicitGrantType}{()}{Erstellt einen ImplicitGrantType.}{}
 \end{texdocclassconstructors}
@@ -3130,10 +3130,10 @@ Diese Klasse repräsentiert einen ImplicitGrantType $\{$ @see RFC 6749 Kapitel 1
 \begin{texdocclass}{class}{PasswordCredentialsGrant}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.PasswordCredentialsGrant}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert einen PasswordCredentialsGrant  $\{$ @see RFC 6749 Kapitel 1.3.3$\}$.
+Diese Klasse repräsentiert einen PasswordCredentialsGrant  (siehe \cite{rfc6749},  Kapitel 1.3.3).
  PasswordCredentialsGrant wird in der ersten Version des Systems nicht benötigt aber zur möglichen 
  Erweiterungen vorgesehen.
-  * Bei dem Versuch, eine Authentifizierung mittels diese Klasse durchzuführen wird eine Fehlermeldung
+  Bei dem Versuch, eine Authentifizierung mittels diese Klasse durchzuführen wird eine Fehlermeldung
  zurückgegeben.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{PasswordCredentialsGrant}{()}{Erstellt einen PasswordCredentialsGrant.}{}
@@ -3149,7 +3149,7 @@ Diese Klasse repräsentiert einen PasswordCredentialsGrant  $\{$ @see RFC 6749 K
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.RefreshGrant}
 \begin{texdocclassintro}
 Diese Klasse repräsentiert einen RefreshGrant: beim Ablaufen der Access-Token, schickt dieser Granttype
- eine Refresh-Token $\{$ @see RFC 6749 Kapitel 1.5$\}$ an den Klient als Antwort .\end{texdocclassintro}
+ eine Refresh-Token (siehe \cite{rfc6749}, Kapitel 1.5) an den Klient als Antwort .\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{RefreshGrant}{()}{Erstellt einen RefreshGrant.}{}
 \end{texdocclassconstructors}
@@ -3530,7 +3530,7 @@ Das Interface Verifier bietet die allgemeine Sturktur eines Verifizierers.\end{t
 \begin{texdocclass}{class}{StandardVerifier}
 \label{texdoclet:edu.kit.informatik.studyplan.server.verification.standard.StandardVerifier}
 \begin{texdocclassintro}
-Der StandardVerifier implementiert den Verifier. 
+Der StandardVerifier implementiert den Verifier.
  Er ist eine konkret verifizierende Klasse.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{StandardVerifier}{()}{}{}
