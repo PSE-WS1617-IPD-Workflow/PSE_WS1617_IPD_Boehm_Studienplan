@@ -1,3 +1,5 @@
+\newcommand{\qq}{\textquotedbl}  % for proper "
+
 \begin{texdocpackage}{client.model.modules}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.modules}
 
@@ -10,9 +12,9 @@ Diese Klasse repräsentiert ein Modul, welches vom Server geladen wird. Das
 \begin{texdocclassfields}
 	\texdocfield{private}{String}{category}{Die Kategorie des Moduls}
 	\texdocfield{private}{boolean}{compulsory}{Ob das Modul verpflichtend ist}
-	\texdocfield{private}{int}{creditPoints}{Die Anzahl an Credit Points, die das Modul erbringt}
-	\texdocfield{private}{String}{cycleType}{Ob das Modul im Wintersemester (="WS"), Sommersemester (="SS") oder immer
-		("both") stattfindet}
+	\texdocfield{private}{int}{creditPoints}{Die Anzahl an Credit-Points, die das Modul erbringt}
+	\texdocfield{private}{String}{cycleType}{Ob das Modul im Wintersemester (= \qq{}WS\qq{}), Sommersemester (=\qq{}SS\qq{}) oder immer
+		(\qq{}both\qq{}) stattfindet}
 	\texdocfield{private}{String}{description}{Die Beschreibung des Moduls.}
 	\texdocfield{private}{String}{discipline}{Das Fach des Moduls}
 	\texdocfield{private}{String}{lecturer}{Der Dozent des Moduls}
@@ -25,9 +27,9 @@ Diese Klasse repräsentiert ein Modul, welches vom Server geladen wird. Das
 		problemlos möglich, da diese Trennung lediglich für Berechnungen
 		interessant sind, welche nicht auf der Client-Seite stattfinden.}
 	\texdocfield{private}{String}{planId}{Die ID des Plans zu der das Modul gehört (da die Präferenzen
-		Planspezifisch sind, wind die Module immer an einen Plan gebunden. Die
+		planspezifisch sind, sind die Module immer an einen Plan gebunden. Die
 		einzige Ausnahme hiervon sind die Module bei der Auswahl der bereits
-		bestandenen Leistungen. In diesem Fall ist postId = null}
+		bestandenen Leistungen. In diesem Fall ist postId = null.}
 	\texdocfield{private}{Preference}{preference}{Die vom Nutzer für das Modul gesetzte Präferenz}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
@@ -78,14 +80,14 @@ Diese Klasse beschreibt eine zu einem Modul gehörende gesetzte Präferenz
 \begin{texdocclassfields}
 	\texdocfield{private}{int}{moduleId}{Die ID des Moduls, zu welcher die Präferenz gehört}
 	\texdocfield{private}{String}{planId}{Die ID des Plans für welche die Präferenz gesetzt wurde.}
-	\texdocfield{private}{int}{value}{Beschreibt die gesetzte Präferenz Einer der drei Werte $\{$"negativ",
-		"positiv", ""$\}$}
+	\texdocfield{private}{int}{value}{Beschreibt die gesetzte Präferenz (einer der drei Werte $\{$\qq{}negativ\qq{},
+		\qq{}positiv\qq{}, \qq{}\qq{}$\}$)}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Preference}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{String}{url}{()}{Generiert die URL für das speichern$/$abrufen der Präferenz abhängig von
+\texdocmethod{public}{String}{url}{()}{Generiert die URL für das Speichern$/$Abrufen der Präferenz abhängig von
  planId und moduleId}{\texdocreturn{Den generierten URL}
 }
 \end{texdocclassmethods}
@@ -111,7 +113,7 @@ Diese Klasse beschreibt eine zu einem Modul gehörende gesetzte Präferenz
 \begin{texdocclassintro}
 Klasse, welche einen Studienplan beschreibt\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private}{int}{creditPoints}{Die Credit Points des Plans}
+	\texdocfield{private}{int}{creditPoints}{Die Credit-Points des Plans}
 	\texdocfield{private}{String}{name}{Der Name des Plans}
 	\texdocfield{private}{int}{planId}{Die ID des Plans}
 	\texdocfield{private}{SemesterCollection}{semestercollection}{Die Collection, welche die im Studienplan enthaltenen Semester beinhaltet}
@@ -122,9 +124,9 @@ Klasse, welche einen Studienplan beschreibt\end{texdocclassintro}
 \texdocconstructor{public}{Plan}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{boolean}{containsModule}{(int moduleId)}{Eine Methode, welche zurück gibt, ob das Modul mit der gegebenen ID im
+\texdocmethod{public}{boolean}{containsModule}{(int moduleId)}{Eine Methode, welche zurückgibt, ob das Modul mit der gegebenen ID im
  Plan vorhanden ist.}{\begin{texdocparameters}
-\texdocparameter{moduleId}{Die ID des Moduls nach welchem gesucht werden soll}
+\texdocparameter{moduleId}{Die ID des Moduls, nach welchem gesucht werden soll}
 \end{texdocparameters}
 \texdocreturn{True, wenn das Modul vorhanden ist, False wenn nicht.}
 }
@@ -155,12 +157,12 @@ Klasse, welche einen vorgeschlagenen Plan repräsentiert\end{texdocclassintro}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{save}{(Object options)}{Methode, welche den Plan ggf. speichert}{\begin{texdocparameters}
-\texdocparameter{options}{Alle Optionen von Backbone.Model.save() zusätzlich:
+\texdocparameter{options}{Alle Optionen von Backbone.Model.save(); zusätzlich:
             \begin{itemize}
-            \item Boolean newPlan true falls, der Plan als neuer Plan
-            geschrieben werden soll, false falls der Plan überschrieben
+            \item Boolean newPlan: true, falls der Plan als neuer Plan
+            geschrieben werden soll; false, falls der Plan überschrieben
             werden soll. Standard ist false
-            \item String planName Name des Plans, falls newPlan = true
+            \item String planName: Name des Plans, falls newPlan = true
             \end{itemize}
 }
 \end{texdocparameters}
@@ -174,7 +176,7 @@ Klasse, welche einen vorgeschlagenen Plan repräsentiert\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welcher ein Semester als Collection von Modulen beschreibt.\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private}{String}{planId}{Die ID des Plans zu welchem das Semester gehört.}
+	\texdocfield{private}{String}{planId}{Die ID des Plans, zu welchem das Semester gehört.}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Semester}{(Object params)}{}{}
@@ -240,7 +242,7 @@ Klasse, welche ein Fach repräsentiert\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche eine Collection von Fächern repräsentiert\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private}{Collection\textless{}Discipline\textgreater{}}{disciplines}{Die Collection der Fächern}
+	\texdocfield{private}{Collection\textless{}Discipline\textgreater{}}{disciplines}{Die Collection der Fächer}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{DisciplineCollection}{(Object params)}{}{}
@@ -253,10 +255,10 @@ Klasse, welche eine Collection von Fächern repräsentiert\end{texdocclassintro}
 \begin{texdocclassintro}
 Dieses Singleton wird als Event-Bus zwischen verschiedenen Komponenten der
  Applikation verwendet. Jedes Objekt kann mittels getInstance() auf den
- EventBus zugreifen und sich als Listener registrieren oder einen Event
+ EventBus zugreifen und sich als Listener registrieren oder ein Event
  auslösen.\texdocbr{}
 
- Ein Beispiel für einen solchen Event wäre die Anzeige eines Moduls in der
+ Ein Beispiel für ein solches Event wäre die Anzeige eines Moduls in der
  Seitenleiste beim Klick auf das Modul. (Erbt von Backbone.Event)\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private static}{EventBus}{instance}{Die Instanz des Event-Busses}
@@ -265,7 +267,7 @@ Dieses Singleton wird als Event-Bus zwischen verschiedenen Komponenten der
 \texdocconstructor{private}{EventBus}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public static}{EventBus}{getInstance}{()}{Methode zum erhalten einer Instanz des Event Busses}{\texdocreturn{Die Event-Bus Instanz}
+\texdocmethod{public static}{EventBus}{getInstance}{()}{Methode zum Erhalten einer Instanz des Event Busses}{\texdocreturn{Die Event-Bus Instanz}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -274,7 +276,7 @@ Dieses Singleton wird als Event-Bus zwischen verschiedenen Komponenten der
 \begin{texdocclass}{class}{Filter}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.Filter}
 \begin{texdocclassintro}
-Klasse welcher die Daten zu einem Filter speichert\end{texdocclassintro}
+Klasse, welche die Daten zu einem Filter speichert\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{Object}{curValue}{Der aktuelle Wert des Filters}
 	\texdocfield{private}{Object}{defaultValue}{Der Standardwert des Filters (Struktur abhängig vom Filter)}
@@ -282,7 +284,7 @@ Klasse welcher die Daten zu einem Filter speichert\end{texdocclassintro}
 	\texdocfield{private}{String}{name}{Name des Filters}
 	\texdocfield{private}{Object}{parameters}{Die den Filter spezifizierenden Eigenschaften}
 	\texdocfield{private}{String}{tooltip}{Ein Tooltip, der den Filter textuell beschreibt}
-	\texdocfield{private}{String}{type}{Typ des Filters ("range", "list", "contains")}
+	\texdocfield{private}{String}{type}{Typ des Filters (\qq{}range\qq{}, \qq{}list\qq{}, \qq{}contains\qq{})}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Filter}{(Object params)}{}{}
@@ -311,15 +313,15 @@ Eine Collection von Filtern\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.LanguageManager}
 \begin{texdocclassintro}
 Singleton, welches die sprachlichen Ausgaben des Programms verwaltet. Hierbei
- lässt sich diei Sprache in welcher die Nachrichten ausgegeben werden mittels
+ lässt sich die Sprache, in welcher die Nachrichten ausgegeben werden, mittels
  setLanguage statisch einstellen. Die Nachrichten werden bereits zur
  Compile-Zeit in den Initialisierungscode des Programms geladen und sind
  deshalb von Beginn an verfügbar.\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private static}{String}{FALLBACK\_LANGUAGE}{Die Rückfall-Sprache des LanguageManagers}
+	\texdocfield{private static}{String}{FALLBACK\_LANGUAGE}{Die Ausweich-Sprache des LanguageManagers}
 	\texdocfield{private static}{LanguageManager}{instance}{Die Instanz des LanguageManagers}
 	\texdocfield{private static}{String}{language}{Die eingestellte Sprache des LanguageManagers (als Sprachcode)}
-	\texdocfield{private}{Object}{messages}{Ein Objekt, welches die Strings, die das Programm ausgibt enthält}
+	\texdocfield{private}{Object}{messages}{Ein Objekt, welches die Strings, die das Programm ausgibt, enthält}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{private}{LanguageManager}{()}{}{}
@@ -327,11 +329,11 @@ Singleton, welches die sprachlichen Ausgaben des Programms verwaltet. Hierbei
 \begin{texdocclassmethods}
 \texdocmethod{public static}{LanguageManager}{getInstance}{()}{Gibt die aktuelle Instanz des LanguageManagers zurück}{\texdocreturn{Die aktuelle Instanz des Sprachmanagers}
 }
-\texdocmethod{public}{String}{getMessage}{(String key)}{Methode zum erhalten einer Nachricht in der aktuellen Sprach auf Basis
- eines keys}{\begin{texdocparameters}
-\texdocparameter{key}{Der key, welcher den auszugebenden String identifiziert}
+\texdocmethod{public}{String}{getMessage}{(String key)}{Methode zum Erhalten einer Nachricht in der aktuellen Sprache auf Basis
+ eines Keys}{\begin{texdocparameters}
+\texdocparameter{key}{Der Key, welcher den auszugebenden String identifiziert}
 \end{texdocparameters}
-\texdocreturn{Den String, falls dieser vorhanden ist, sonst den key selbst}
+\texdocreturn{Den String, falls dieser vorhanden ist, sonst den Key selbst}
 }
 \texdocmethod{public static}{void}{setLanguage}{(String langCode)}{Setzt die Sprache des LanguageManagers fest}{\begin{texdocparameters}
 \texdocparameter{langCode}{Der Code der Sprache, welche gesetzt werden soll}
@@ -370,11 +372,11 @@ Singleton-Collection, welche alle Benachrichtigungen enthält \texdocbr{}
 \texdocconstructor{private}{NotificationCollection}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{add}{(Notification notification)}{Methode zum hinzufügen einer neuen Benachrichtigung}{\begin{texdocparameters}
+\texdocmethod{public}{void}{add}{(Notification notification)}{Methode zum Hinzufügen einer neuen Benachrichtigung}{\begin{texdocparameters}
 \texdocparameter{notification}{Die Benachrichtigung, welche hinzugefügt werden soll}
 \end{texdocparameters}
 }
-\texdocmethod{public static}{NotificationCollection}{getInstance}{()}{Methode zum erhalten der aktuellen Instanz der NotificationCollection}{\texdocreturn{Die aktuelle Instanz von NotificationCollection}
+\texdocmethod{public static}{NotificationCollection}{getInstance}{()}{Methode zum Erhalten der aktuellen Instanz der NotificationCollection}{\texdocreturn{Die aktuelle Instanz von NotificationCollection}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -383,9 +385,9 @@ Singleton-Collection, welche alle Benachrichtigungen enthält \texdocbr{}
 \begin{texdocclass}{class}{OAuthCollection}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.OAuthCollection}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert eine Collection, welche als Resource in der
+Diese Klasse repräsentiert eine Collection, welche als Ressource in der
  REST-Schnittstelle gespeichert ist, und bei welcher sich man beim Zugriff
- über OAUTH authentifizieren muss. (Erweitert Backbone.Collection)\end{texdocclassintro}
+ über OAuth authentifizieren muss. (Erweitert Backbone.Collection)\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{Object}{sync}{Die Synchronisierungs-Methode, welche das Model-Objekt in einem Cookie
 		speichert}
@@ -399,9 +401,9 @@ Diese Klasse repräsentiert eine Collection, welche als Resource in der
 \begin{texdocclass}{class}{OAuthModel}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.OAuthModel}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert ein Model, welches als Resource in der
+Diese Klasse repräsentiert ein Model, welches als Ressource in der
  REST-Schnittstelle gespeichert ist, und bei welchem man sich beim Zugriff
- über OAUTH authentifizieren muss. (Erweitert Backbone.Model)\end{texdocclassintro}
+ über OAuth authentifizieren muss. (Erweitert Backbone.Model)\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{Object}{sync}{Die Synchronisierungs-Methode, welche das Model-Objekt in einem Cookie
 		speichert}
@@ -415,10 +417,10 @@ Diese Klasse repräsentiert ein Model, welches als Resource in der
 \begin{texdocclass}{class}{ObjectiveFunction}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.ObjectiveFunction}
 \begin{texdocclassintro}
-Klasse, welche eine Objective Function repräsentiert\end{texdocclassintro}
+Klasse, welche eine Zielfunktion repräsentiert\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private}{String}{description}{Beschreibung der Objective Function}
-	\texdocfield{private}{String}{name}{Name der Objective Function}
+	\texdocfield{private}{String}{description}{Beschreibung der ObjectiveFunction}
+	\texdocfield{private}{String}{name}{Name der ObjectiveFunction}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ObjectiveFunction}{(Object params)}{}{}
@@ -429,9 +431,9 @@ Klasse, welche eine Objective Function repräsentiert\end{texdocclassintro}
 \begin{texdocclass}{class}{ObjectiveFunctionCollection}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.ObjectiveFunctionCollection}
 \begin{texdocclassintro}
-Klasse, welche eine Collection von Objective Functions repräsentiert\end{texdocclassintro}
+Klasse, welche eine Collection von Zielfunktionen repräsentiert\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private}{Collection\textless{}ObjectiveFunction\textgreater{}}{objectivefunction}{Die Collection aller ObjectiveFunctions}
+	\texdocfield{private}{Collection\textless{}ObjectiveFunction\textgreater{}}{objectivefunction}{Die Collection aller Zielfunktionen}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ObjectiveFunctionCollection}{(Object params)}{}{}
@@ -442,12 +444,12 @@ Klasse, welche eine Collection von Objective Functions repräsentiert\end{texdoc
 \begin{texdocclass}{class}{ProposalInformation}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.ProposalInformation}
 \begin{texdocclassintro}
-Die Methoden welche im Zusammenhang mit der Generierung eines Studienplans
+Die Methoden, welche im Zusammenhang mit der Generierung eines Studienplans
  abgespeichert und zum Server geschickt werden. (Erweitert Backbone.Model)\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{String}{mainDiscipline}{Das gewählte Vertiefungsfach}
 	\texdocfield{private}{int}{maxEctsPerSemester}{Die maximale Anzahl an ECTS-Punkten pro Semester bei der Generierung}
-	\texdocfield{private}{ObjectiveFunction}{objectiveFunction}{Die ObjectiveFunction, welche zum generieren genutzt werden soll}
+	\texdocfield{private}{ObjectiveFunction}{objectiveFunction}{Die ObjectiveFunction, welche zum Generieren genutzt werden soll}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ProposalInformation}{(Object params)}{}{}
@@ -458,21 +460,21 @@ Die Methoden welche im Zusammenhang mit der Generierung eines Studienplans
 \begin{texdocclass}{class}{SearchCollection}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.SearchCollection}
 \begin{texdocclassintro}
-Die Seach-Collection, welche das Lazy-Loading der Module in der Suche
- übernimmt. Hierbei werden in zehner Schritten nach und nach mehr Module
+Die Search-Collection, welche das Lazy-Loading der Module in der Suche
+ übernimmt. Hierbei werden in Zehnerschritten nach und nach mehr Module
  geladen und in einzelne SearchModuleCollections gespeichert. Beim Abruf
  mittels getModules() werden diese dann in eine einzige Collection
  zusammengeführt.\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{FilterCollection}{filters}{Die Filter, welche beim Abruf zu berücksichtigen sind}
-	\texdocfield{private}{int}{planId}{Die ID des Plans zu welcher die Suche gehört oder null, falls die Suche
-		Plan-Unabhängig ist}
+	\texdocfield{private}{int}{planId}{Die ID des Plans, zu welcher die Suche gehört; oder null, falls die Suche
+		planunabhängig ist}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{SearchCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{setFilters}{(FilterCollection filters)}{Methode, welche die Filter neu setzt und im Zuge desse, die alten
+\texdocmethod{public}{void}{setFilters}{(FilterCollection filters)}{Methode, welche die Filter neu setzt und im Zuge dessen die alten
  SearchModuleCollections löscht und highestLoaded zurücksetzt.
  Anschließend werden erneut Module geladen.}{\begin{texdocparameters}
 \texdocparameter{filters}{Die Filter, welche bei der Suche berücksichtigt werden sollen.}
@@ -514,11 +516,10 @@ Klasse, welche eine Collection von Vertiefungsfächern repräsentiert\end{texdoc
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.TemplateManager}
 \begin{texdocclassintro}
 Singleton, welches die Templates für die Views verwaltet. Jedes Template
- lässt sich über einen key abrufen.\texdocbr{}
+ lässt sich über einen Key abrufen.\texdocbr{}
 
  Die Templates werden zur Compile-Zeit in den Initialisierungscode
- hineingeladen und sind somit bereits beim Start der Applikation im Template
- Manager vorhanden. Der Vorteil dieses Vorgehens ist, dass man beim Laden der
+ hineingeladen und sind somit bereits beim Start der Applikation im Template-Manager vorhanden. Der Vorteil dieses Vorgehens ist, dass man beim Laden der
  einzelnen Views nicht auf eine Antwort vom Server (welche das Template
  enthält) warten muss.\end{texdocclassintro}
 \begin{texdocclassfields}
@@ -530,13 +531,13 @@ Singleton, welches die Templates für die Views verwaltet. Jedes Template
 \texdocconstructor{private}{TemplateManager}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public static}{TemplateManager}{getInstance}{()}{Methode zum erhalten der aktuellen Instanz des TemplateManagers}{\texdocreturn{Gibt die aktuelle Instanz des TemplateManagers zurück}
+\texdocmethod{public static}{TemplateManager}{getInstance}{()}{Methode zum Erhalten der aktuellen Instanz des TemplateManagers}{\texdocreturn{Gibt die aktuelle Instanz des TemplateManagers zurück}
 }
-\texdocmethod{public}{Object}{getTemplate}{(String key)}{Methode zum erhalten eines Templates, welches unter dem key gespeichert
+\texdocmethod{public}{Object}{getTemplate}{(String key)}{Methode zum Erhalten eines Templates, welches unter dem Key gespeichert
  ist}{\begin{texdocparameters}
 \texdocparameter{key}{Der Key zur identifizierung des Templates}
 \end{texdocparameters}
-\texdocreturn{Gibt eine Funktion (ein Underscore Template) zurück, die mit
+\texdocreturn{Gibt eine Funktion (ein Underscore-Template) zurück, die mit
          Parametern aufgerufen werden kann und deren Rückgabewert ein
          befülltes Template als String ist}
 }
@@ -571,7 +572,7 @@ Die Informationen zur aktuellen Session der WebApp, welche in einem Cookie
  gespeichert werden. Diese Informationen werden in einem Singleton
  gespeichert, da es nicht mehr als ein SessionInformation-Objekt geben darf.\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private}{String}{access\_token}{Das Access Token welches vom Server generiert wurde}
+	\texdocfield{private}{String}{access\_token}{Das Access-Token, welches vom Server generiert wurde}
 	\texdocfield{private static}{SessionInformation}{instance}{Die aktuelle Instanz der SessionInformation}
 	\texdocfield{private}{boolean}{loggedIn}{Ob der Nutzer bereits eingeloggt ist}
 	\texdocfield{private}{String}{state}{Ein String, welcher an den Server mitgesendet wird und anschließend
@@ -583,7 +584,7 @@ Die Informationen zur aktuellen Session der WebApp, welche in einem Cookie
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{generateState}{()}{Methode, die ein neues StateAttribut generiert}{}
-\texdocmethod{public static}{SessionInformation}{getInstance}{()}{Methode welche die aktuelle Instanz der SessionInformation zurück gibt.}{\texdocreturn{}
+\texdocmethod{public static}{SessionInformation}{getInstance}{()}{Methode, welche die aktuelle Instanz der SessionInformation zurück gibt.}{\texdocreturn{}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -596,9 +597,8 @@ Klasse, welche den Studenten beschreibt\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{String}{discipline}{Das Fach des Nutzers}
 	\texdocfield{private}{PassedModuleCollection}{passedModules}{Die Collection der bestandenen Module des Studenten}
-	\texdocfield{private}{String}{studystartCycle}{Ob der Student im Sommer- (SS) oder Wintersemester (WS) angefangen hat zu
-		studieren}
-	\texdocfield{private}{int}{studyStartYear}{Das Jahr in dem der Student angefangen hat zu studieren}
+	\texdocfield{private}{String}{studystartCycle}{Ob der Student im Sommer- (SS) oder Wintersemester (WS) sein Studium begonnen hat.}
+	\texdocfield{private}{int}{studyStartYear}{Das Jahr, in dem der Student das Studium begonnen hat}
 	\texdocfield{private}{String}{userId}{Die ID des Nutzers}
 	\texdocfield{private}{String}{username}{Der Nutzername}
 \end{texdocclassfields}
@@ -624,38 +624,30 @@ Klasse, welche das Routing zu den verschiedenen Seiten hin übernimmt. Die
 \texdocconstructor{public}{MainRouter}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{comparisonPage}{(String plan1Id, String plans2Id)}{Methode zum anzeigen der Pläne-Vergleichen-Seite\texdocbr{}
-
+\texdocmethod{public}{void}{comparisonPage}{(String plan1Id, String plans2Id)}{Methode zum Anzeigen der Pläne-Vergleichen-Seite\texdocbr{}
  \textit{$/$compare$/$$\{$plan1Id$\}$$/$$\{$plan2Id$\}$}}{\begin{texdocparameters}
 \texdocparameter{plan1Id}{Die ID des ersten Plans}
 \texdocparameter{plans2Id}{Die ID des zweiten Plans}
 \end{texdocparameters}
 }
-\texdocmethod{public}{void}{editPage}{(String planId)}{Methode zum anzeigen der Plan-Bearbeiten-Seite\texdocbr{}
-
+\texdocmethod{public}{void}{editPage}{(String planId)}{Methode zum Anzeigen der Plan-Bearbeiten-Seite\texdocbr{}
  \textit{$/$plan$/$$\{$planId$\}$}}{\begin{texdocparameters}
 \texdocparameter{planId}{Die ID des Plans}
 \end{texdocparameters}
 }
-\texdocmethod{public}{void}{generationWizard}{(int planId)}{Methode zum anzeigen des Generierungs-Wizards\texdocbr{}
-
+\texdocmethod{public}{void}{generationWizard}{(int planId)}{Methode zum Anzeigen des Generierungs-Wizards\texdocbr{}
  \textit{$/$plan$/$$\{$planId$\}$$/$generate}}{}
-\texdocmethod{public}{void}{handleLogin}{()}{Methode zum verarbeiten der OAuth Antwort vom Server. Diese Methode
+\texdocmethod{public}{void}{handleLogin}{()}{Methode zum Verarbeiten der OAuth-Antwort vom Server. Diese Methode
  leitet dann an die entsprechende Seite (Hauptseite oder Login) weiter.
  \texdocbr{}
-
  \textit{$/$processLogin}}{}
-\texdocmethod{public}{void}{loginPage}{()}{Methode zum anzeigen der Login-Seite\texdocbr{}
-
+\texdocmethod{public}{void}{loginPage}{()}{Methode zum Anzeigen der Login-Seite\texdocbr{}
  \textit{$/$login}}{}
 \texdocmethod{public}{void}{mainPage}{()}{Methode zur Anzeige der Hauptseite\texdocbr{}
-
  \textit{$/$}}{}
-\texdocmethod{public}{void}{showProfile}{()}{Methode zum anzeigen des Profils\texdocbr{}
-
+\texdocmethod{public}{void}{showProfile}{()}{Methode zum Anzeigen des Profils\texdocbr{}
  \textit{$/$profile}}{}
-\texdocmethod{public}{void}{signUpWizard}{()}{Methode zum anzeigen des Registrierungs-Wizards\texdocbr{}
-
+\texdocmethod{public}{void}{signUpWizard}{()}{Methode zum Anzeigen des Registrierungs-Wizards\texdocbr{}
  \textit{$/$signup}}{}
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -680,14 +672,14 @@ Dieses Objekt kapselt die Methoden zur Synchronisierung mit Server oder
 \texdocconstructor{public}{Sync}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{CookieSync}{(String method, Object model, Object options)}{Methode zur Speicherung/zum Abruf von Model Daten aus Cookies}{\begin{texdocparameters}
-\texdocparameter{method}{Die Methode "create", "read", "update" oder "delete"}
+\texdocmethod{public}{void}{CookieSync}{(String method, Object model, Object options)}{Methode zur Speicherung/zum Abruf von Model-Daten aus Cookies}{\begin{texdocparameters}
+\texdocparameter{method}{Die Methode \qq{}create\qq{}, \qq{}read\qq{}, \qq{}update\qq{} oder \qq{}delet\qq{}}
 \texdocparameter{model}{Das zu speicherende Model}
 \texdocparameter{options}{Die Optionen, welche bei Backbone.sync verfügbar sind}
 \end{texdocparameters}
 }
-\texdocmethod{public}{void}{OAuthSync}{(String method, Object model, Object options)}{Methode zur synchronisierung mittels OAuth-REST-API}{\begin{texdocparameters}
-\texdocparameter{method}{Die Methode "create", "read", "update" oder "delete"}
+\texdocmethod{public}{void}{OAuthSync}{(String method, Object model, Object options)}{Methode zur Synchronisierung mittels OAuth-REST-API}{\begin{texdocparameters}
+\texdocparameter{method}{Die Methode \qq{}create\qq{}, \qq{}read\qq{}, \qq{}update\qq{} oder \qq{}delete\qq{}}
 \texdocparameter{model}{Das zu speicherende Model}
 \texdocparameter{options}{Die Optionen, welche bei Backbone.sync verfügbar sind}
 \end{texdocparameters}
@@ -706,7 +698,7 @@ Dieses Objekt kapselt die Methoden zur Synchronisierung mit Server oder
 \begin{texdocclass}{class}{FilterComponent}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent}
 \begin{texdocclassintro}
-Klasse, welche die Anzeige eine eines Filters kapselt.\end{texdocclassintro}
+Klasse, welche die Anzeige eines Filters kapselt.\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{Filter}{filter}{Der Filter, welcher visualisiert wird}
 	\texdocfield{private}{String}{id}{Die ID des Filters}
@@ -715,11 +707,11 @@ Klasse, welche die Anzeige eine eines Filters kapselt.\end{texdocclassintro}
 \texdocconstructor{public}{FilterComponent}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{Filter}{getFilter}{()}{Methode zum erhalten des Filter-Modells}{\texdocreturn{}
+\texdocmethod{public}{Filter}{getFilter}{()}{Methode zum Erhalten des Filter-Modells}{\texdocreturn{}
 }
-\texdocmethod{public}{String}{getId}{()}{Methode zum erhalten der ID des Filters}{\texdocreturn{Die ID des Filters}
+\texdocmethod{public}{String}{getId}{()}{Methode zum Erhalten der ID des Filters}{\texdocreturn{Die ID des Filters}
 }
-\texdocmethod{public abstract}{void}{onSelect}{()}{Methode welche bei der Auswahl eines Filterobjekts ausgeführt wird}{}
+\texdocmethod{public abstract}{void}{onSelect}{()}{Methode, welche bei der Auswahl eines Filterobjekts ausgeführt wird}{}
 \end{texdocclassmethods}
 \end{texdocclass}
 
@@ -755,7 +747,7 @@ Filter, welcher durch die Auswahl eines Bereichs aktiviert wird\end{texdocclassi
 \texdocconstructor{public}{RangeFilter}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{onSelect}{()}{Methode welche bei der Auswahl eines Filterobjekts ausgeführt wird}{}
+\texdocmethod{public}{void}{onSelect}{()}{Methode, welche  bei der Auswahl eines Filterobjekts ausgeführt wird}{}
 \end{texdocclassmethods}
 \end{texdocclass}
 
@@ -771,7 +763,7 @@ Filter, welcher durch die Auswahl eines Elements aktiviert wird\end{texdocclassi
 \texdocconstructor{public}{SelectFilter}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{onSelect}{()}{Methode welche bei der Auswahl eines Filterobjekts ausgeführt wird}{}
+\texdocmethod{public}{void}{onSelect}{()}{Methode, welche bei der Auswahl eines Filterobjekts ausgeführt wird}{}
 \end{texdocclassmethods}
 \end{texdocclass}
 
@@ -784,7 +776,7 @@ Filter, welcher durch die Eingabe eines Suchtexts aktiviert wird\end{texdocclass
 \texdocconstructor{public}{TextFilter}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{onSelect}{()}{Methode welche bei der Auswahl eines Filterobjekts ausgeführt wird}{}
+\texdocmethod{public}{void}{onSelect}{()}{Methode, welche bei der Auswahl eines Filterobjekts ausgeführt wird}{}
 \end{texdocclassmethods}
 \end{texdocclass}
 
@@ -810,7 +802,7 @@ Diese Klasse repräsentiert eine einzelne Box, welche ein Modul darstellt\end{te
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{click}{()}{Methode, welche beim Klick auf das Modul ausgeführt wird.}{}
 \texdocmethod{public}{void}{removeModule}{()}{Methode, welche das Modul entfernt}{}
-\texdocmethod{public}{void}{setRedBorder}{(boolean setBorder)}{Möglichkeit einen roten Rand um das Modul zu setzten}{\begin{texdocparameters}
+\texdocmethod{public}{void}{setRedBorder}{(boolean setBorder)}{Möglichkeit, einen roten Rand um das Modul zu setzen}{\begin{texdocparameters}
 \texdocparameter{setBorder}{Ob der Rahmen gesetzt werden soll (true) oder nicht (false)}
 \end{texdocparameters}
 }
@@ -821,16 +813,16 @@ Diese Klasse repräsentiert eine einzelne Box, welche ein Modul darstellt\end{te
 \begin{texdocclass}{class}{ModuleFinder}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder}
 \begin{texdocclassintro}
-Klasse, welche den Modul Finder repräsentiert. Dieser erlaubt es nach Modulen
+Klasse, welche den Modul-Finder repräsentiert. Dieser erlaubt es, nach Modulen
  zu suchen und diese (wenn es sich um eine Sidebar handelt) in einen Plan zu
  ziehen.\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{Method}{isPlaced}{Methode, die prüfen kann, ob Module bereits in den Plan gesetzt sind.
 		Diese wird im Konstruktor übergeben.}
-	\texdocfield{private}{boolean}{isPreferencable}{Ob Module präferenzierbar sind (dies ist nur möglich, wenn sie im Kontext
+	\texdocfield{private}{boolean}{isPreferencable}{Ob Module präferierbar sind (dies ist nur möglich, wenn sie im Kontext
 		eines Plans geladen sind)}
-	\texdocfield{private}{boolean}{isSidebar}{Ob es sich bei dem Modul Finder um eine Sidebar handelt. In diesem Fall
-		können Module aus dem ModulFilter in den Plan per Drag and Drop gezogen
+	\texdocfield{private}{boolean}{isSidebar}{Ob es sich bei dem Modul-Finder um eine Sidebar handelt. In diesem Fall
+		können Module aus dem Modul-Finder in den Plan per Drag and Drop gezogen
 		werden.}
 	\texdocfield{private}{SearchCollection}{moduleCollection}{Die Collection der Module, welche geladen sind}
 	\texdocfield{private}{ModuleFilter}{moduleFilter}{Die Filteransicht}
@@ -840,7 +832,7 @@ Klasse, welche den Modul Finder repräsentiert. Dieser erlaubt es nach Modulen
 \texdocconstructor{public}{ModuleFinder}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{onSearch}{()}{Methode die bei der Suche nach Modulen aufgerufen wird.}{}
+\texdocmethod{public}{void}{onSearch}{()}{Methode, die bei der Suche nach Modulen aufgerufen wird.}{}
 \end{texdocclassmethods}
 \end{texdocclass}
 
@@ -867,11 +859,12 @@ Klasse, welche die Modul-Informations-Sidebar kapselt.\end{texdocclassintro}
 \begin{texdocclass}{class}{ModuleList}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList}
 \begin{texdocclassintro}
+	Klasse, die die Anzeige einer Liste von Modulen kapselt.
 \end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private}{boolean}{isPreferencable}{Ob die Module in den Boxen präferenzierbar sind (nur im Zusammenhang mit
+	\texdocfield{private}{boolean}{isPreferencable}{Ob die Module in den Boxen präferierbar sind (nur im Zusammenhang mit
 		einem Plan)}
-	\texdocfield{private}{Collection\textless{}ModuleBox\textgreater{}}{moduleBox}{Die Modulboxen in welchen die Module angezeigt werden.}
+	\texdocfield{private}{Collection\textless{}ModuleBox\textgreater{}}{moduleBox}{Die Modulboxen, in welchen die Module angezeigt werden.}
 	\texdocfield{private}{SearchCollection}{modules}{Die Liste der Module, welche angezeigt werden sollen}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
@@ -883,7 +876,7 @@ Klasse, welche die Modul-Informations-Sidebar kapselt.\end{texdocclassintro}
 \begin{texdocclass}{class}{NotificationBox}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.NotificationBox}
 \begin{texdocclassintro}
-Klasse welche eine Benachrichtigungsbox kapselt\end{texdocclassintro}
+Klasse, welche  eine Benachrichtigungsbox kapselt\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{Notification}{notification}{Die anzuzeigende Benachrichtigung}
 \end{texdocclassfields}
@@ -926,9 +919,9 @@ Klasse, welche die Ansicht des Studienplans kapselt\end{texdocclassintro}
 \texdocconstructor{public}{Plan}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{addSemester}{()}{Methode zum hinzufügen neuer Semester}{}
+\texdocmethod{public}{void}{addSemester}{()}{Methode zum Hinzufügen neuer Semester}{}
 \texdocmethod{public}{void}{onChange}{()}{Methode, welche bei Änderungen des Plans aufgerufen wird, und welche auch
- die onChange() Methoden der Semester aufruft.}{}
+ die onChange()-Methoden der Semester aufruft.}{}
 \end{texdocclassmethods}
 \end{texdocclass}
 
@@ -938,7 +931,7 @@ Klasse, welche die Ansicht des Studienplans kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche die Kopfzeile des Plans kapselt\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private}{Plan}{plan}{Der Plan, welcher angezeigt wird.}
+	\texdocfield{private}{Plan}{plan}{Der Plan, der angezeigt wird.}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{PlanHeadBar}{(Object params)}{}{}
@@ -952,18 +945,18 @@ Klasse, welche die Kopfzeile des Plans kapselt\end{texdocclassintro}
 \begin{texdocclass}{class}{PlanListElement}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement}
 \begin{texdocclassintro}
-Klasse welche ein Element einer PlanList kapselt\end{texdocclassintro}
+Klasse, welche ein Element einer PlanList kapselt\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private}{Plan}{plan}{Der Plan, welcher angezeigt werden soll}
+	\texdocfield{private}{Plan}{plan}{Der Plan, der angezeigt werden soll}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{PlanListElement}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{delete}{()}{Methode, welche beim Klick auf "löschen" aufgerufen wird}{}
-\texdocmethod{public}{void}{duplicate}{()}{Methode, welche beim Klick auf "duplizieren" aufgerufen wird}{}
-\texdocmethod{public}{void}{export}{()}{Methode, welche beim Klick auf "exportieren" aufgerufen wird}{}
-\texdocmethod{public}{void}{show}{()}{Methode, welche beim Klick auf "anzeigen" aufgerufen wird}{}
+\texdocmethod{public}{void}{delete}{()}{Methode, welche beim Klick auf „Löschen“ aufgerufen wird}{}
+\texdocmethod{public}{void}{duplicate}{()}{Methode, welche beim Klick auf „Duplizieren“ aufgerufen wird}{}
+\texdocmethod{public}{void}{export}{()}{Methode, welche beim Klick auf „Exportieren“ aufgerufen wird}{}
+\texdocmethod{public}{void}{show}{()}{Methode, welche beim Klick auf „Anzeigen“ aufgerufen wird}{}
 \end{texdocclassmethods}
 \end{texdocclass}
 
@@ -982,7 +975,7 @@ Kopfzeile, welche angezeigt wird, wenn ein vorgeschlagener Plan angezeigt
 \begin{texdocclass}{class}{RegularHeadBar}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar}
 \begin{texdocclassintro}
-Kopfzeile welche angezeigt wird, wenn ein regulärer Plan angezeigt wird\end{texdocclassintro}
+Kopfzeile, welche angezeigt wird, wenn ein regulärer Plan angezeigt wird\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{RegularHeadBar}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -1002,23 +995,23 @@ Klasse, welche ein Semester innerhalb eines Studienplans kapselt\end{texdocclass
 	\texdocfield{private}{String}{align}{Die Ausrichtung des Studienplans: Normalerweise links, im Fall des
 		Vergleichs aber auch rechts.}
 	\texdocfield{private}{boolean}{isRemovable}{Variable, die festsetzt, ob das Semester entfernbar ist}
-	\texdocfield{private}{Collection\textless{}ModuleBox\textgreater{}}{moduleBox}{Die ModulBoxen, welche die Module des Semesters anzeigen}
+	\texdocfield{private}{Collection\textless{}ModuleBox\textgreater{}}{moduleBox}{Die Modul-Boxen, welche die Module des Semesters anzeigen}
 	\texdocfield{private}{Semester}{moduleCollection}{Die Module, welche in dem Semester liegen}
-	\texdocfield{private}{int}{number}{Variable, die angibt, das wie vielte Semester dieses ist (von 1 zählend)}
+	\texdocfield{private}{int}{number}{Variable, die angibt, das wievielte Semester dieses ist (ab eins gezählt)}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Semester}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{onDrop}{(Event event, Object ui)}{Methode, welche beim Drop eines Moduls auf das Semester das hinzufügen
+\texdocmethod{public}{void}{onDrop}{(Event event, Object ui)}{Methode, welche beim Drop eines Moduls auf das Semester das Hinzufügen
  ausführt}{\begin{texdocparameters}
-\texdocparameter{event}{Der JQuery Event}
-\texdocparameter{ui}{Das JQuery UI Objekt}
+\texdocparameter{event}{Das JQuery-Event}
+\texdocparameter{ui}{Das JQuery-UI-Objekt}
 \end{texdocparameters}
 }
-\texdocmethod{public}{void}{removeSemester}{()}{Methode zum löschen des aktuellen Semesters}{}
-\texdocmethod{public}{void}{scrollLeft}{()}{Methode zum Links-Scrollen der Semester Leiste}{}
-\texdocmethod{public}{void}{scrollRight}{()}{Methode zum Rechts-Scrollen der Semester Leiste}{}
+\texdocmethod{public}{void}{removeSemester}{()}{Methode zum Löschen des aktuellen Semesters}{}
+\texdocmethod{public}{void}{scrollLeft}{()}{Methode zum Links-Scrollen der Semesterleiste}{}
+\texdocmethod{public}{void}{scrollRight}{()}{Methode zum Rechts-Scrollen der Semesterleiste}{}
 \end{texdocclassmethods}
 \end{texdocclass}
 
@@ -1033,7 +1026,7 @@ Klasse, welche ein Semester innerhalb eines Studienplans kapselt\end{texdocclass
 \begin{texdocclass}{class}{ComparisonView}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uipanel.ComparisonView}
 \begin{texdocclassintro}
-Anzeige, welche 2 Pläne vergleicht\end{texdocclassintro}
+Anzeige, welche zwei Pläne vergleicht\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{Plan}{plan1}{Der linke Plan des Vergleichs}
 	\texdocfield{private}{Plan}{plan2}{Der rechte Plan des Vergleichs}
@@ -1050,13 +1043,13 @@ Anzeige, welche 2 Pläne vergleicht\end{texdocclassintro}
 Klasse, welche die erste Seite des Generierungs-Wizards kapselt.\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{ProposalInformation}{information}{Die notwendigen Informationen für die Generierung}
-	\texdocfield{private}{Plan}{plan}{Plan für welchen generiert werden soll}
+	\texdocfield{private}{Plan}{plan}{Plan, für welchen ein Vorschlag generiert werden soll}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{GenerationWizardComponent1}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{WizardComponent}{next}{()}{Gibt Objekt vom Typ GenerationWizardComponent2 zurück}{\texdocreturn{Objekt vom Typ GenerationWizardComponent2 (zweite Seite des
+\texdocmethod{public}{WizardComponent}{next}{()}{Gibt Instanz vom Typ GenerationWizardComponent2 zurück}{\texdocreturn{Instanz vom Typ GenerationWizardComponent2 (zweite Seite des
          Wizards)}
 }
 \texdocmethod{public}{void}{onChange}{()}{Methode, welche bei Veränderungen des Seiteninhalts aufgerufen wird.}{}
@@ -1067,17 +1060,18 @@ Klasse, welche die erste Seite des Generierungs-Wizards kapselt.\end{texdocclass
 \begin{texdocclass}{class}{GenerationWizardComponent2}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent2}
 \begin{texdocclassintro}
+	Klasse, welche die zweite Seite des Generierungs-Wizards kapselt.
 \end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{ProposalInformation}{information}{Die notwendigen Informationen für die Generierung}
-	\texdocfield{private}{ModuleFinder}{moduleFinder}{Der Modul-Finder mit welchem die Module bewertet werden können.}
-	\texdocfield{private}{Plan}{plan}{Plan für welchen generiert werden soll}
+	\texdocfield{private}{ModuleFinder}{moduleFinder}{Der Modul-Finder, mit welchem die Module bewertet werden können.}
+	\texdocfield{private}{Plan}{plan}{Plan, für welchen ein Vorschlag generiert werden soll}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{GenerationWizardComponent2}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{WizardComponent}{next}{()}{Gibt Objekt vom Typ GenerationWizardComponent3 zurück}{\texdocreturn{Objekt vom Typ GenerationWizardComponent3 (dritte Seite des
+\texdocmethod{public}{WizardComponent}{next}{()}{Gibt Instanz vom Typ GenerationWizardComponent3 zurück}{\texdocreturn{Instanz vom Typ GenerationWizardComponent3 (dritte Seite des
          Wizards)}
 }
 \texdocmethod{public}{void}{onChange}{()}{Methode, welche bei Veränderungen des Seiteninhalts aufgerufen wird.}{}
@@ -1088,10 +1082,11 @@ Klasse, welche die erste Seite des Generierungs-Wizards kapselt.\end{texdocclass
 \begin{texdocclass}{class}{GenerationWizardComponent3}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent3}
 \begin{texdocclassintro}
+	Klasse, welche die dritte Seite des Generierungs-Wizards kapselt.
 \end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{ProposalInformation}{information}{Die notwendigen Informationen für die Generierung}
-	\texdocfield{private}{Plan}{plan}{Plan für welchen generiert werden soll}
+	\texdocfield{private}{Plan}{plan}{Plan, für welchen ein Vorschlag generiert werden soll}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{GenerationWizardComponent3}{(Object params)}{}{}
@@ -1111,8 +1106,8 @@ Klasse, welche die Anzeige von Benachrichtigungen kapselt\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{Collection\textless{}NotificationBox\textgreater{}}{notificationBox}{Die NotificationBoxes, welche die Benachrichtigungen anzeigen}
 	\texdocfield{private}{NotificationCollection}{notificationCollection}{Wird mittels NotificationCollection.getInstance() geladen.
-		NotificationCentre ist ein Observer der NotificationCollection und zeigt
-		neue Notifications ggf. an.}
+		NotificationCentre ist ein Observer der NotificationCollection und zeigt ggf.
+		neue Notifications an.}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{NotificationCentre}{(Object params)}{}{}
@@ -1207,8 +1202,7 @@ Klasse, welche eine Komponente eines Wizards kapselt. Die Wizards sind nach
 \texdocconstructor{public}{WizardComponent}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public abstract}{WizardComponent}{next}{()}{Methode, welche den View-Component der nächsten Seite des Wizard zurück
- gibt}{\texdocreturn{Den View-Component der nächsten Siete des Wizard}
+\texdocmethod{public abstract}{WizardComponent}{next}{()}{Methode, welche die View-Component der nächsten Seite des Wizards zurückgibt}{\texdocreturn{Die View-Component der nächsten Seite des Wizards}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -1224,13 +1218,13 @@ Klasse, welche eine Komponente eines Wizards kapselt. Die Wizards sind nach
 \begin{texdocclass}{class}{MainView}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.MainView}
 \begin{texdocclassintro}
-Der MainView kapselt die Benutzeroberfläche, er kann mittels gegebener
+Die MainView kapselt die Benutzeroberfläche, sie kann mittels gegebener
  Funktionen mit beliebigem Inhalt in Form von Objekten des Typs Backbone.View
  befüllt werden.\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{BackboneView}{content}{Die View, welche im Content-Bereich angezeigt wird.}
 	\texdocfield{private}{BackboneView}{header}{Die View, welcher im Header angezeigt wird.}
-	\texdocfield{private}{NotificationCentre}{notificationCentre}{Der NotificationCentre, welcher die Anzeige von Benachrichtigungen
+	\texdocfield{private}{NotificationCentre}{notificationCentre}{Das NotificationCentre, welches die Anzeige von Benachrichtigungen
 		übernimmt.}
 	\texdocfield{private}{SessionInformation}{sessionInformation}{Die Informationen zur Session}
 \end{texdocclassfields}
@@ -1239,13 +1233,13 @@ Der MainView kapselt die Benutzeroberfläche, er kann mittels gegebener
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{setContent}{(BackboneView content, Object options)}{Mit dieser Funktion kann man den Content-Bereich des MainViews setzen.}{\begin{texdocparameters}
-\texdocparameter{content}{Der zu setztende Content-Bereich}
-\texdocparameter{options}{Objekt mit welchem der Header initialisiert werden soll}
+\texdocparameter{content}{Der zu setzende Content-Bereich}
+\texdocparameter{options}{Objekt, mit welchem der Header initialisiert werden soll}
 \end{texdocparameters}
 }
-\texdocmethod{public}{void}{setHeader}{(BackboneView header, Object options)}{Mit dieser Methode kann man den Header des MainViews setzen}{\begin{texdocparameters}
+\texdocmethod{public}{void}{setHeader}{(BackboneView header, Object options)}{Mit dieser Methode kann man den Header der MainView setzen}{\begin{texdocparameters}
 \texdocparameter{header}{Der zu setzende Header}
-\texdocparameter{options}{Objekt mit welchem der Header initialisiert werden soll}
+\texdocparameter{options}{Objekt, mit welchem der Header initialisiert werden soll}
 \end{texdocparameters}
 }
 \end{texdocclassmethods}
@@ -1264,7 +1258,7 @@ Der MainView kapselt die Benutzeroberfläche, er kann mittels gegebener
 \begin{texdocclassintro}
 Klasse, welche die Vergleichsseite kapselt\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private}{ComparisonView}{comparisonView}{Das ComparisonView Element, welches angezeigt wird}
+	\texdocfield{private}{ComparisonView}{comparisonView}{Das ComparisonView-Element, welches angezeigt wird}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ComparisonPage}{(Object params)}{}{}
@@ -1277,7 +1271,7 @@ Klasse, welche die Vergleichsseite kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche den Header der Seite kapselt\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private}{SessionInformation}{sessionInformation}{Das SessionInformation Objekt, welches zur Anzeige des Headers benötigt
+	\texdocfield{private}{SessionInformation}{sessionInformation}{Das SessionInformation-Objekt, welches zur Anzeige des Headers benötigt
 		wird}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
@@ -1307,7 +1301,7 @@ Klasse, welche die Hauptseite kapselt\end{texdocclassintro}
 \texdocconstructor{public}{MainPage}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{addPlan}{()}{Methode zum hinzufügen eines Plans}{}
+\texdocmethod{public}{void}{addPlan}{()}{Methode zum Hinzufügen eines Plans}{}
 \end{texdocclassmethods}
 \end{texdocclass}
 
@@ -1317,7 +1311,7 @@ Klasse, welche die Hauptseite kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Klasse, welche die Plan-Bearbeitungsansicht kapselt\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{private}{PlanHeadBar}{headBar}{Kopfzeile die angezeigt wird}
+	\texdocfield{private}{PlanHeadBar}{headBar}{Kopfzeile, die angezeigt wird}
 	\texdocfield{private}{Plan}{plan}{Plan, der angezeigt wird}
 	\texdocfield{private}{BackboneView}{sidebar}{Sidebar, welche angezeigt wird (in der Hauptansicht der ModuleFinder)}
 \end{texdocclassfields}
@@ -1325,9 +1319,9 @@ Klasse, welche die Plan-Bearbeitungsansicht kapselt\end{texdocclassintro}
 \texdocconstructor{public}{PlanEditPage}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{hideModuleDetails}{()}{Methode zum schließen einer ModuleInfoSidebar}{}
-\texdocmethod{public}{void}{showModuleDetails}{(Module module)}{Methode zum aufrufen einer ModuleInfoSidebar}{\begin{texdocparameters}
-\texdocparameter{module}{}
+\texdocmethod{public}{void}{hideModuleDetails}{()}{Methode zum Schließen einer ModuleInfoSidebar}{}
+\texdocmethod{public}{void}{showModuleDetails}{(Module module)}{Methode zum Aufrufen einer ModuleInfoSidebar}{\begin{texdocparameters}
+\texdocparameter{module}{Modul, zu welchem die Info-Sidebar angezeigt werden soll}
 \end{texdocparameters}
 }
 \end{texdocclassmethods}
@@ -1340,16 +1334,16 @@ Klasse, welche die Plan-Bearbeitungsansicht kapselt\end{texdocclassintro}
 Klasse, welche die Profil-Seite kapselt\end{texdocclassintro}
 \begin{texdocclassfields}
 	\texdocfield{private}{PassedModulePlan}{passedModules}{Ein Plan mit bestandenen Modulen}
-	\texdocfield{private}{ModuleFinder}{sidebar}{Die ModuleFinder sidebar}
+	\texdocfield{private}{ModuleFinder}{sidebar}{Die ModuleFinder-Sidebar}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ProfilePage}{(Object params)}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{close}{()}{Leitet zurück zur Hauptseite (MainPage) und speichert die Änderungen.}{}
-\texdocmethod{public}{void}{hideModuleDetails}{()}{Methode zum schließen einer ModuleInfoSidebar}{}
-\texdocmethod{public}{void}{showModuleDetails}{(Module module)}{Methode zum aufrufen einer ModuleInfoSidebar}{\begin{texdocparameters}
-\texdocparameter{module}{}
+\texdocmethod{public}{void}{hideModuleDetails}{()}{Methode zum Schließen einer ModuleInfoSidebar}{}
+\texdocmethod{public}{void}{showModuleDetails}{(Module module)}{Methode zum Aufrufen einer ModuleInfoSidebar}{\begin{texdocparameters}
+\texdocparameter{module}{Modul, zu welchem die Info-Sidebar angezeigt werden soll}
 \end{texdocparameters}
 }
 \end{texdocclassmethods}
@@ -1361,16 +1355,16 @@ Klasse, welche die Profil-Seite kapselt\end{texdocclassintro}
 \begin{texdocclassintro}
 Diese Klasse kapselt die Anzeige von Wizards in einem State-Machine-Pattern.
  curView wird bei der Initialisierung gesetzt. WizardPage kann deshalb für
- jedwede Wizards verwendet werden.\texdocbr{}
+ jedwede Art von Wizards verwendet werden.\texdocbr{}
 
  WizardPage implementiert Backbone.Event, sodass man sich als Observer der
- WizardPage registrieren kann. Hier kann man auf den "wizardComplete"-Event
- reagieren, welcher bedeutet, dass der Wizard beendet ist.\end{texdocclassintro}
+ WizardPage registrieren kann. Hier kann man auf das wizardComplete-Event
+ reagieren, welches signalisiert, dass der Wizard beendet ist.\end{texdocclassintro}
 \begin{texdocclassfields}
-	\texdocfield{public}{WizardComponent}{curView}{Der aktuell angezeigte WizardComponent}
+	\texdocfield{public}{WizardComponent}{curView}{Die aktuell angezeigte WizardComponent}
 \end{texdocclassfields}
 \begin{texdocclassfields}
-\texdocfield{public}{WizardComponent}{curView}{Der aktuell angezeigte WizardComponent}
+\texdocfield{public}{WizardComponent}{curView}{Die aktuell angezeigte WizardComponent}
 \end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{WizardPage}{(Object params)}{}{}
@@ -1539,7 +1533,7 @@ Beschreibungen der nach außen sichtbaren Filterklassen für den Client.\end{tex
 \texdocenum{TYPE}{Beschreibt den Modultyp-Wahlfilter.}
 \end{texdocenums}
 \begin{texdocclassmethods}
-\texdocmethod{public}{String}{attributeName}{()}{Liefert den Namen des Module-Attributs, das durch beschriebenen Filter gefiltert werden soll.}{\texdocreturn{der Attribut-Name}
+\texdocmethod{public}{String}{attributeName}{()}{Liefert den Namen des Module-Attributs, nach welchem durch beschriebenen Filter gefiltert werden soll.}{\texdocreturn{der Attribut-Name}
 }
 \texdocmethod{public}{AttributeFilter}{defaultFilter}{()}{Liefert ein Default-Objekt des beschriebenen Filtertyps.}{\texdocreturn{das Default-Objekt}
 }
@@ -1564,20 +1558,17 @@ Beschreibungen der nach außen sichtbaren Filterklassen für den Client.\end{tex
 \begin{texdocclassintro}
 Aufzählung der verschiedenen AttributeFilter-Typen.\end{texdocclassintro}
 \begin{texdocenums}
-\texdocenum{CONTAINS}{Repräsentiert den Filtertyp ContainsFilter (siehe \ref{texdoclet:edu.kit.informatik.studyplan.server.filter.ContainsFilter}).}
-\texdocenum{LIST}{Repräsentiert den Filtertyp ListFilter (siehe \ref{texdoclet:edu.kit.informatik.studyplan.server.filter.ListFilter}).}
-\texdocenum{RANGE}{Repräsentiert den Filtertyp RangeFilter (siehe \ref{texdoclet:edu.kit.informatik.studyplan.server.filter.RangeFilter}).}
+\texdocenum{CONTAINS}{Repräsentiert den Filtertyp ContainsFilter (siehe \hyperref[texdoclet:edu.kit.informatik.studyplan.server.filter.ContainsFilter]{ContainsFilter}).}
+\texdocenum{LIST}{Repräsentiert den Filtertyp ListFilter (siehe \hyperref[texdoclet:edu.kit.informatik.studyplan.server.filter.ListFilter]{ListFilter}).}
+\texdocenum{RANGE}{Repräsentiert den Filtertyp RangeFilter (siehe \hyperref[texdoclet:edu.kit.informatik.studyplan.server.filter.RangeFilter]{RangeFilter}).}
 \end{texdocenums}
 \begin{texdocclassmethods}
-\texdocmethod{public abstract}{JSONObject}{defaultJsonValue}{(AttributeFilter defaultFilter)}{Liefert eine JSON-Repräsentation der Werte des übergebenen Default-Filters.}{\begin{texdocparameters}
+\texdocmethod{public abstract}{JSONObject}{defaultJsonValue}{(AttributeFilter \newline defaultFilter)}{Liefert eine JSON-Repräsentation der Werte des übergebenen Default-Filters.}{\begin{texdocparameters}
 \texdocparameter{defaultFilter}{das Filter-Objekt mit Default-Werten}
-\end{texdocparameters}
-\texdocreturn{die Werte des Default-Filters}
+\end{texdocparameters}\texdocreturn{die Werte des Default-Filters}
 }
-\texdocmethod{public abstract}{JSONObject}{toJsonSpecification}{(AttributeFilter defaultFilter)}{Liefert den Spezifikation-Abschnitt der JSON-Repräsentation des übergebenen Default-Filters.}{\begin{texdocparameters}
-\texdocparameter{defaultFilter}{der Default-Filter}
-\end{texdocparameters}
-\texdocreturn{die Spezifikation des Filters als JSON-Objekt}
+\texdocmethod{public abstract}{JSONObject}{toJsonSpecification}{(AttributeFilter \newline defaultFilter)}{Liefert den Spezifikations-Abschnitt der JSON-Repräsentation des übergebenen Default-Filters.}{\begin{texdocparameters}
+\texdocparameter{defaultFilter}{der Default-Filter}\end{texdocparameters}\texdocreturn{die Spezifikation des Filters als JSON-Objekt}
 }
 \texdocmethod{public static}{FilterType}{valueOf}{(String name)}{}{}
 \texdocmethod{public static}{FilterType}{values}{()}{}{}
@@ -1615,7 +1606,7 @@ Repräsentiert einen Listenauswahl-Attribut-Filter.\end{texdocclassintro}
 \begin{texdocclass}{class}{MultiFilter}
 \label{texdoclet:edu.kit.informatik.studyplan.server.filter.MultiFilter}
 \begin{texdocclassintro}
-Bündelt mehrere Filter zu einem einzigen mittels UND-Verknüpfung der Filterbedingungen.\end{texdocclassintro}
+Bündelt mehrere Filter zu einem Einzigen mittels UND-Verknüpfung der Filterbedingungen.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{MultiFilter}{(List\textless{}Filter\textgreater{} filters)}{Erzeugt einen neuen MultiFilter aus gegebenen Unterfiltern.}{\begin{texdocparameters}
 \texdocparameter{filters}{die Unterfilter, die gebündelt werden sollen}
@@ -1729,13 +1720,13 @@ Repräsentiert einen Modultyp-Wahlfilter mit den Modultypen als Wahlmöglichkeit
 \begin{texdocclassintro}
 Das Interface Generator bietet die allgemeine Struktur eines Generierers.\end{texdocclassintro}
 \begin{texdocclassmethods}
-\texdocmethod{public}{Plan}{generate}{(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO)}{Die Methode generate generiert einen vollständigen, 
+\texdocmethod{public}{Plan}{generate}{(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO)}{Die Methode generate() generiert einen vollständigen, 
  optimierten und korrekten Studienplan. Hierzu nimmt sie 
  einen angefangenen Studienplan entgegen, vervollständigt diesen zunächst nach
  System-Constraints und Zufall und optimiert ihn dann mit 
- Hilfe der übergebenen Zielfunktion objectiveFunktion. Die benötigten Module
- werden über übergebenen ModuleDao erreicht.}{\begin{texdocparameters}
-\texdocparameter{objectiveFunction}{Die Zielfunktion, anhand der optimiert werden soll}
+ Hilfe der übergebenen Zielfunktion objectiveFunction. Die benötigten Module
+ werden über den übergebenen ModuleDao erreicht.}{\begin{texdocparameters}
+\texdocparameter{objectiveFunction}{Die Zielfunktion, anhand welcher optimiert werden soll}
 \texdocparameter{currentPlan}{der bereits bestehende Plan}
 \texdocparameter{moduleDAO}{die Module}
 \end{texdocparameters}
@@ -1759,7 +1750,7 @@ Das Interface Generator bietet die allgemeine Struktur eines Generierers.\end{te
 \begin{texdocclass}{class}{AtomObjectiveFunction}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.AtomObjectiveFunction}
 \begin{texdocclassintro}
-AtomObjectiveFunction ist eine Teilzielfunktion, die nur eine Eigenschaft
+AtomObjectiveFunction ist eine Teilzielfunktion, die nur eine bestimmte Eigenschaft
  berücksichtigt.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{AtomObjectiveFunction}{()}{}{}
@@ -1773,7 +1764,7 @@ AtomObjectiveFunction ist eine Teilzielfunktion, die nur eine Eigenschaft
 \begin{texdocclass}{class}{AverageObjectiveFunction}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.AverageObjectiveFunction}
 \begin{texdocclassintro}
-Es wird bei der Auswertung der Teilzielfunktionen immer der durchschnitt genomen.\end{texdocclassintro}
+Es wird bei der Auswertung der Teilzielfunktionen immer der Durchschnitt genommen.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{AverageObjectiveFunction}{()}{}{}
 \end{texdocclassconstructors}
@@ -1788,14 +1779,14 @@ Es wird bei der Auswertung der Teilzielfunktionen immer der durchschnitt genomen
 \begin{texdocclassintro}
 Je geringer die Gesamtanzahl der ECTS in einem Studienplan, desto besser ist
  die Bewertung von MinimalECTSAtomObjectiveFunction. Zu beachten ist jedoch,
- dass sobald ein gewisser Schwellwert unterschritten wird alle Studienpläne
+ dass sobald ein gewisser Schwellwert unterschritten wird, alle Studienpläne
  die Bestnote erhalten.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{MinimalECTSAtomObjectiveFunction}{()}{Setzt den Schwellwert auf 0, der Studienplan mit den
  wenigsten ECTS wird somit immer am besten bewertet.}{}
 \texdocconstructor{public}{MinimalECTSAtomObjectiveFunction}{(int threshold)}{}{\begin{texdocparameters}
-\texdocparameter{minimalECTS}{ist die Menge an ECTS ab der diese Funktion den Bestwert
-          zurückgibt - niedrieger bringt also in diesem Fall dann nichts.}
+\texdocparameter{threshold}{ist die Menge an ECTS, ab der diese Funktion den Bestwert
+          zurückgibt – eine niedrigere ECTS-Zahl verbessert die Bewertung also nicht.}
 \end{texdocparameters}
 }
 \end{texdocclassconstructors}
@@ -1819,11 +1810,11 @@ Minimiert nach der Semesteranzahl. Ein Studienplan mit einem Semester erhält
 \end{texdocclass}
 
 
-\begin{texdocclass}{class}{MinimalStandardAverageDeviationECTSAtomObjectiveFunction}
+\begin{texdocclass}{class}{MinimalStandardAverageDeviation\newline$\hookrightarrow$ECTSAtomObjectiveFunction}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.MinimalStandardAverageDeviationECTSAtomObjectiveFunction}
 \begin{texdocclassintro}
-Minimiert die durchschnittliche Standardabweichung pro Semestester des Palns. 
- Ideal sind deshalb pläne bei denen jedes Semester genau gleich viele ECTS beinhaltet.\end{texdocclassintro}
+Minimiert die durchschnittliche Standardabweichung pro Semester des Plans. 
+ Ideal sind deshalb Pläne, bei denen jedes Semester genau gleich viele ECTS beinhaltet.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{MinimalStandardAverageDeviationECTSAtomObjectiveFunction}{()}{}{}
 \end{texdocclassconstructors}
@@ -1836,7 +1827,7 @@ Minimiert die durchschnittliche Standardabweichung pro Semestester des Palns.
 \begin{texdocclass}{class}{ModulePreferencesAtomObjectiveFunction}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.ModulePreferencesAtomObjectiveFunction}
 \begin{texdocclassintro}
-Optimiert nach den Nutzerbewertungen. Ideal ist, wenn alle Nutzerbewertungen berücksichtigt wurden, 
+Optimiert nach den Nutzerbewertungen. Ein Plan ist ideal, wenn alle Nutzerbewertungen berücksichtigt wurden, 
  also alle positiv bewerteten Module im Studienplan zu finden sind und kein negativ bewertetes.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ModulePreferencesAtomObjectiveFunction}{()}{}{}
@@ -1850,7 +1841,7 @@ Optimiert nach den Nutzerbewertungen. Ideal ist, wenn alle Nutzerbewertungen ber
 \begin{texdocclass}{class}{MultiplicationObjectiveFunction}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.MultiplicationObjectiveFunction}
 \begin{texdocclassintro}
-Multipliziert die Ergebnise der Auswertung Teilzielfunktionen aufeinander auf.\end{texdocclassintro}
+Multipliziert die Ergebnisse der Auswertung der Teilzielfunktionen auf.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{MultiplicationObjectiveFunction}{()}{}{}
 \end{texdocclassconstructors}
@@ -1863,7 +1854,7 @@ Multipliziert die Ergebnise der Auswertung Teilzielfunktionen aufeinander auf.\e
 \begin{texdocclass}{class}{ObjectiveFunction}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.ObjectiveFunction}
 \begin{texdocclassintro}
-Eine Zielfunktion dient zur Sammlung von Teilzielfunktionen, die dann alle ausgewertet werden.\end{texdocclassintro}
+Eine Zielfunktion dient zur Bündelung von Teilzielfunktionen, die alle gemeinsam ausgewertet werden.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ObjectiveFunction}{()}{}{}
 \end{texdocclassconstructors}
@@ -1873,10 +1864,10 @@ Eine Zielfunktion dient zur Sammlung von Teilzielfunktionen, die dann alle ausge
 \end{texdocparameters}
 }
 \texdocmethod{public abstract}{double}{evaluate}{(Plan plan)}{}{}
-\texdocmethod{public}{Collection\textless{}PartialObjectiveFunction\textgreater{}}{getSubFunctions}{()}{Getter für subFunctions.}{\texdocreturn{die Collection subFunctions, bestehend aus
+\texdocmethod{public}{Collection\textless{}PartialObjectiveFunction\textgreater{}}{getSubFunctions}{()}{Gibt subFunctions zurück.}{\texdocreturn{die Collection subFunctions, bestehend aus
          PartialObjectiveFunctions}
 }
-\texdocmethod{public}{PartialObjectiveFunction}{remove}{(PartialObjectiveFunction objective)}{Entfernt eine TeilZielfunktion von dieser Zielfunktion}{\begin{texdocparameters}
+\texdocmethod{public}{PartialObjectiveFunction}{remove}{(PartialObjectiveFunction objective)}{Entfernt eine Teilzielfunktion von dieser Zielfunktion}{\begin{texdocparameters}
 \texdocparameter{objective}{die zu entfernende Zielfunktion}
 \end{texdocparameters}
 \texdocreturn{die entfernte Zielfunktion}
@@ -1888,15 +1879,15 @@ Eine Zielfunktion dient zur Sammlung von Teilzielfunktionen, die dann alle ausge
 \begin{texdocclass}{interface}{PartialObjectiveFunction}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction}
 \begin{texdocclassintro}
-"PartialObjectiveFunction" ist eine Teilzielfunktion. Da jede Zielfunktion
- teil einer anderen Zielfunktion sein kann, ist jede Zielfunktion auch eine
+PartialObjectiveFunction beschreibt eine Teilzielfunktion. Da jede Zielfunktion
+ Teil einer anderen Zielfunktion sein kann, ist jede Zielfunktion auch eine
  Teilzielfunktion.\end{texdocclassintro}
 \begin{texdocclassmethods}
-\texdocmethod{public}{double}{evaluate}{(Plan plan)}{Evaluate wertet einen Studienplan aus und gibt dementsprechend eine Zahl
+\texdocmethod{public}{double}{evaluate}{(Plan plan)}{Bewertet einen Studienplan und gibt dementsprechend eine Fließkommazahl
  zwischen 0 und 1 zurück.}{\begin{texdocparameters}
 \texdocparameter{plan}{der zu bewertende Plan}
 \end{texdocparameters}
-\texdocreturn{Wert zwischen 0 und 1 der den Plan evaluiert, wobei ein Plan mit
+\texdocreturn{Wert zwischen 0 und 1 als Bewertung für den Plan, wobei ein Plan mit
          der Bewertung 1 ein idealer Plan ist.}
 }
 \end{texdocclassmethods}
@@ -1906,13 +1897,13 @@ Eine Zielfunktion dient zur Sammlung von Teilzielfunktionen, die dann alle ausge
 \begin{texdocclass}{class}{ThresholdObjectiveFunction}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.ThresholdObjectiveFunction}
 \begin{texdocclassintro}
-Wertet alle Teilzielfunktionen erst ab der Überschreitung des Schwellwertes.
- Mittelmäßige Studienpläne können so auf sehr schlechte Werte gesetzt werden.
+Wertet alle Teilzielfunktionen erst ab der Überschreitung des Schwellwertes aus.
+ Mittelmäßige Studienpläne können auf diese Weise äußerst schlechte Bewertungen erhalten.
  Bessere Studienpläne heben sich so stärker heraus.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ThresholdObjectiveFunction}{()}{Setzt den Schwellwert auf 0.5}{}
-\texdocconstructor{public}{ThresholdObjectiveFunction}{(int threshold)}{Setzt den Schwellwert auf den Angegebenen Wert}{\begin{texdocparameters}
-\texdocparameter{threshold}{}
+\texdocconstructor{public}{ThresholdObjectiveFunction}{(int threshold)}{Setzt den Schwellwert auf den angegebenen Wert}{\begin{texdocparameters}
+\texdocparameter{threshold}{Der Schwellwert}
 \end{texdocparameters}
 }
 \end{texdocclassconstructors}
@@ -1932,13 +1923,13 @@ Wertet alle Teilzielfunktionen erst ab der Überschreitung des Schwellwertes.
 \begin{texdocclass}{class}{Node}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.standard.Node}
 \begin{texdocclassintro}
-Die abstrakte Klasse Node stellt Knoten des Graphen da.\end{texdocclassintro}
+Die abstrakte Klasse Node stellt einen Knoten eines Graphen dar.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Node}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{addParent}{(Node node)}{Die Methode addParent fügt der Liste parents vom Typ node 
- den übergebenen node hinzu.}{\begin{texdocparameters}
+\texdocmethod{public}{void}{addParent}{(Node node)}{Die Methode addParent fügt der Liste parents
+ den übergebenen Node hinzu.}{\begin{texdocparameters}
 \texdocparameter{node}{}
 \end{texdocparameters}
 }
@@ -1947,11 +1938,11 @@ Die abstrakte Klasse Node stellt Knoten des Graphen da.\end{texdocclassintro}
 \texdocparameter{node}{der neue innerste Knoten.}
 \end{texdocparameters}
 }
-\texdocmethod{public}{Module}{getModule}{()}{Die Methode gibt das Modul zurück, welches der Knoten darstellt.}{\texdocreturn{Das Modul (Typ Module), welches der Knoten repräsentiert.}
+\texdocmethod{public}{Module}{getModule}{()}{Die Methode gibt das Modul zurück, welches der Knoten darstellt.}{\texdocreturn{Das Modul, welches der Knoten repräsentiert.}
 }
-\texdocmethod{public}{Collection\textless{}Node\textgreater{}}{getParents}{()}{Die Methode getPartens gibt die Liste parents zurück.}{\texdocreturn{parent-moduls}
+\texdocmethod{public}{Collection\textless{}Node\textgreater{}}{getParents}{()}{Gibt die Liste parents zurück.}{\texdocreturn{parent-moduls}
 }
-\texdocmethod{public}{Node}{getSubNodes}{()}{die Methode getSubNodes gibt eventuell enthaltene weitere Knoten zurück.}{\texdocreturn{enthaltene Knoten}
+\texdocmethod{public}{Node}{getSubNodes}{()}{Gibt eventuell enthaltene weitere Knoten zurück.}{\texdocreturn{enthaltene Knoten}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -1961,8 +1952,8 @@ Die abstrakte Klasse Node stellt Knoten des Graphen da.\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.standard.NodeWithoutOutput}
 \begin{texdocclassintro}
 Die Klasse NodeWithoutOutput erbt von Node und stellt 
-  Blätter der Graphenstruktur da, das heißt Module, die nicht Voraussetzung 
-  für ein anderes Modul des Studienplans sind.\end{texdocclassintro}
+  Blätter der Graphenstruktur dar (bzw. Module, die nicht Voraussetzung 
+  für ein anderes Modul des Studienplans sind).\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{NodeWithoutOutput}{()}{}{}
 \end{texdocclassconstructors}
@@ -1973,14 +1964,14 @@ Die Klasse NodeWithoutOutput erbt von Node und stellt
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.standard.NodeWithOutput}
 \begin{texdocclassintro}
 Die Klasse NodeWithOutput erbt von Node und stellt einen 
- inneren Knoten der Graphenstruktur, also ein Modul, welches Vorraussetzung
- für andere Module ist, dar.\end{texdocclassintro}
+ inneren Knoten der Graphenstruktur dar, also ein Modul, welches Voraussetzung
+ für andere Module ist.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{NodeWithOutput}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{addChild}{(Node node)}{Die Methode addChild für der Liste children vom Typ Node den übergebenen 
- Knoten hinzu, zu der der Knoten eine Ausgangskante hat.}{\begin{texdocparameters}
+\texdocmethod{public}{void}{addChild}{(Node node)}{Die Methode addChild für der Liste children den übergebenen 
+ Knoten hinzu, zu dem der Knoten eine Ausgangskante hat.}{\begin{texdocparameters}
 \texdocparameter{node}{der hinzuzufügende Knoten}
 \end{texdocparameters}
 }
@@ -2001,9 +1992,9 @@ Die Klasse NodeWithOutput erbt von Node und stellt einen
 \begin{texdocclass}{class}{SimpleGenerator}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.standard.SimpleGenerator}
 \begin{texdocclassintro}
-Die Klasse SimpleGenerator, welche Generator implementiert,
- stellt einen konkreten Generator da. Dieser nutzt die Graphenstruktur, 
- die Zielfunktion und die WeightFunction.\end{texdocclassintro}
+Die Klasse SimpleGenerator, welche das Interface Generator implementiert,
+ stellt einen konkreten Generator dar. Dieser nutzt die Graphenstruktur, 
+ die Zielfunktion und die Credit-Point-Gewichtsfunktion.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{SimpleGenerator}{()}{}{}
 \end{texdocclassconstructors}
@@ -2016,17 +2007,17 @@ Die Klasse SimpleGenerator, welche Generator implementiert,
 \begin{texdocclass}{class}{WeightFunction}
 \label{texdoclet:edu.kit.informatik.studyplan.server.generation.standard.WeightFunction}
 \begin{texdocclassintro}
-Die Klasse Weightfunction enthält eine Methode, welche die Anzahl an Creditpoints
- eines Knotens und aller seiner innerer Knoten bestimmt.\end{texdocclassintro}
+Die Klasse WeightFunction stellt eine Credit-Point-Gewichtsfunktion dar. Sie bestimmt also die Anzahl an Credit-Points
+ eines Knotens und aller seiner innerer Knoten.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{WeightFunction}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{int}{getWeight}{(Node node)}{Die Methode getWeight errechnet die Punktanzahl eines Knoten (Node) und
- aller innerer Knoten dieses Knotens, addiert sie und gibt diese int-Zahl zurück.}{\begin{texdocparameters}
-\texdocparameter{node}{der Knoten, dessen Creditpoint-Anzahl bestimmt werden soll.}
+\texdocmethod{public}{int}{getWeight}{(Node node)}{Die Methode getWeight errechnet die Punktanzahl eines Knoten (node) und
+ aller innerer Knoten dieses Knotens, addiert sie und gibt diese Ganzzahl zurück.}{\begin{texdocparameters}
+\texdocparameter{node}{der Knoten, dessen Credit-Point-Anzahl bestimmt werden soll.}
 \end{texdocparameters}
-\texdocreturn{die Gesamtanzahl an Creditpoints des Knotens.}
+\texdocreturn{die Gesamtanzahl an Credit-Points des Knotens.}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -2074,7 +2065,7 @@ Modelliert eine Modul-Kategorie.\end{texdocclassintro}
 }
 \texdocmethod{public}{String}{getName}{()}{}{\texdocreturn{gibt den Namen der Kategorie zurück}
 }
-\texdocmethod{public}{boolean}{isSubject}{()}{}{\texdocreturn{gibt zurück ob es sich bei der Kategorie um ein Vertiefungsfach handelt}
+\texdocmethod{public}{boolean}{isSubject}{()}{}{\texdocreturn{gibt zurück, ob es sich bei der Kategorie um ein Vertiefungsfach handelt}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -2104,7 +2095,7 @@ Modelliert ein Studienfach\end{texdocclassintro}
 \texdocconstructor{public}{Discipline}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{String}{getDescription}{()}{}{\texdocreturn{gibt die Kategoriebeschreibung zurück}
+\texdocmethod{public}{String}{getDescription}{()}{}{\texdocreturn{gibt die Fachrichtungsbeschreibung zurück}
 }
 \texdocmethod{public}{int}{getDisciplineId}{()}{}{\texdocreturn{gibt die eindeutige Studienfach-ID zurück}
 }
@@ -2115,7 +2106,7 @@ Modelliert ein Studienfach\end{texdocclassintro}
 \begin{texdocclass}{class}{Module}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.moduledata.Module}
 \begin{texdocclassintro}
-Modelliert ein Modul\end{texdocclassintro}
+Modelliert ein Modul.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Module}{()}{}{}
 \end{texdocclassconstructors}
@@ -2128,12 +2119,11 @@ Modelliert ein Modul\end{texdocclassintro}
 }
 \texdocmethod{public}{CycleType}{getCycleType}{()}{}{\texdocreturn{gibt den Turnus des Moduls zurück}
 }
-\texdocmethod{public}{Discipline}{getDiscipline}{()}{}{\texdocreturn{gibt den Studiengang, dem das Modul angehört, zurück \texdocbr{}
-
+\texdocmethod{public}{Discipline}{getDiscipline}{()}{}{\texdocreturn{gibt den Studiengang, dem das Modul angehört, zurück. \texdocbr{}
  Ein Modul ist immer eindeutig einem Studiengang zugeordnet. Wird ein Modul
  in der Realität für mehrere Studiengänge angeboten, so handelt es sich jeweils
  um unterschiedliche Module, denn in einem anderen Studiengang können Modulabhängigkeiten
- ggf. varieren.}
+ ggf. variieren.}
 }
 \texdocmethod{public}{String}{getIdentifier}{()}{}{\texdocreturn{gibt den eindeutigen Identifier-String zurück}
 }
@@ -2152,9 +2142,8 @@ Modelliert ein Modul\end{texdocclassintro}
 \begin{texdocclass}{class}{ModuleDescription}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.moduledata.ModuleDescription}
 \begin{texdocclassintro}
-Modelliert eine Modulbeschreibung \texdocbr{}
-
- Eine Modulbeschreibung kann mehreren Modulen zugeordnet sein\end{texdocclassintro}
+Modelliert eine Modulbeschreibung. \texdocbr{}
+ Eine Modulbeschreibung kann mehreren Modulen zugeordnet sein.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ModuleDescription}{()}{}{}
 \end{texdocclassconstructors}
@@ -2175,22 +2164,18 @@ Modelliert eine Modulbeschreibung \texdocbr{}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.moduledata.ModuleOrientation}
 \begin{texdocclassintro}
 Beschreibt die Richtung eines Moduleconstraints bei der Übergabe an die
- verify(first,second,orientation) Methode von ModuleConstraintType.\end{texdocclassintro}
+ verify(first, second, orientation)-Methode von ModuleConstraintType.\end{texdocclassintro}
 \begin{texdocenums}
-\texdocenum{LEFT\_TO\_RIGHT}{Für ein gegebenes Tupel an Parametern (first,second) für die
+\texdocenum{LEFT\_TO\_RIGHT}{Für ein gegebenes Tupel an Parametern (first, second) für die
  verify-Funktion mit gegebenen Constraint-Modulen modul1 und modul2 gilt:
  \texdocbr{}
-
- first:=modul1\texdocbr{}
-
- second:=modul2}
-\texdocenum{RIGHT\_TO\_LEFT}{Für ein gegebenes Tupel an Parametern (first,second) für die
+ first $:=$ modul1 \texdocbr{}
+ second $:=$ modul2}
+\texdocenum{RIGHT\_TO\_LEFT}{Für ein gegebenes Tupel an Parametern (first, second) für die
  verify-Funktion mit gegebenen Constraint-Modulen modul1 und modul2 gilt:
  \texdocbr{}
-
- second:=modul1\texdocbr{}
-
- first:=modul2}
+ second $:=$ modul1 \texdocbr{}
+ first $:=$ modul2}
 \end{texdocenums}
 \begin{texdocclassmethods}
 \texdocmethod{public static}{ModuleOrientation}{valueOf}{(String name)}{}{}
@@ -2261,26 +2246,21 @@ Modelliert eine Abhängkeitstyp einer Modulabhängigkeit\end{texdocclassintro}
             Verifikationsschritts)}
 \texdocparameter{second}{der zweite Moduleintrag (Zweites zusätzlich geladenes Modul
             des aktuellen Verifikationsschritts)}
-\texdocparameter{orientation}{Richtung in die die Relation überprüft werden soll. \texdocbr{}
-
+\texdocparameter{orientation}{Richtung, in die die Relation überprüft werden soll. \texdocbr{}
             Jedes Constraint besitzt eine Richtung. Diese ist über die
-            Eintragung der Module in Modul1 und Modul2 gegeben. Wenn nun
-            gilt: first:=Modul1 UND second:=Modul2 so ist die orientation
-            LEFT\_TO\_RIGHT; Wenn aber gilt: first:=Modul2 UND
-            second:=Modul1 so ist die orientation RIGHT\_TO\_LEFT\texdocbr{}
-
+            Eintragung der Module in Modul$_1$ und Modul$_2$ gegeben. Wenn nun
+            gilt: first $:=$ Modul$_1$ UND second $:=$ Modul$_2$, so ist die Richtung
+            LEFT\_TO\_RIGHT; wenn aber gilt: first $:=$ Modul$_2$ und
+            second $:=$ Modul$_1$, so ist die Richtung RIGHT\_TO\_LEFT. \texdocbr{}
             Dieses zusätzliche Attribut ist notwendig, da Informationen
             über zwei gerichtete Relationen übergeben werden müssen:
-            \begin{enumerate}
-
-            \item Welches Modul aktuell untersucht wird und welches "nur"
-            das zweite Modul des Constraints ist
-            \item Welches Modul im Constraint Modul1 und welches Modul2 ist
-            
-            
-\end{enumerate}
-            1. wird über die Anordnung der Parameter übergeben, 2. über
-            das Parameter orientation.}
+            \begin{enumerate}[nosep]
+	            \item Welches Modul aktuell untersucht wird und welches „nur“
+	            das zweite Modul des Constraints ist
+	            \item Welches Modul im Constraint Modul$_1$ und welches Modul$_2$ ist
+			\end{enumerate}
+            (1) wird über die Anordnung der Parameter übergeben, (2) über
+            den Parameter orientation.}
 \end{texdocparameters}
 \texdocreturn{Ergebnis der Überprüfung}
 }
@@ -2300,7 +2280,6 @@ Modelliert eine Abhängkeitstyp einer Modulabhängigkeit\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.moduledata.constraint.OverlappingModuleConstraintType}
 \begin{texdocclassintro}
 Modelliert eine zeitliche Abhängigkeit zwischen zwei Modulen:\texdocbr{}
-
  Die beiden Module können nicht im gleichen Semester belegt werden, da die Veranstaltung zur gleichen Zeit stattfindet.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{OverlappingModuleConstraintType}{()}{}{}
@@ -2315,8 +2294,7 @@ Modelliert eine zeitliche Abhängigkeit zwischen zwei Modulen:\texdocbr{}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.moduledata.constraint.PlanLinkModuleConstraintType}
 \begin{texdocclassintro}
 Modelliert eine Zusammenhangsabhängigkeit zwischen Modulen: \texdocbr{}
-
- Es müssen immer beide Module im Plan enthalten sein.\end{texdocclassintro}
+ Es müssen immer beide Module im Plan enthalten sein – oder keines der beiden.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{PlanLinkModuleConstraintType}{()}{}{}
 \end{texdocclassconstructors}
@@ -2330,7 +2308,6 @@ Modelliert eine Zusammenhangsabhängigkeit zwischen Modulen: \texdocbr{}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.moduledata.constraint.PrerequisiteModuleConstraintType}
 \begin{texdocclassintro}
 Modelliert eine Voraussetzungsabhängigkeit zwischen Modulen:\texdocbr{}
-
  Das erste Modul ist Voraussetzung für das zweite Modul.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{PrerequisiteModuleConstraintType}{()}{}{}
@@ -2345,7 +2322,6 @@ Modelliert eine Voraussetzungsabhängigkeit zwischen Modulen:\texdocbr{}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.moduledata.constraint.SemesterLinkModuleConstraintType}
 \begin{texdocclassintro}
 Modelliert eine Zusammenhangsbeziehung zwischen zwei Modulen:\texdocbr{}
-
  Beide Module müssen im gleichen Semester belegt werden.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{SemesterLinkModuleConstraintType}{()}{}{}
@@ -2368,9 +2344,9 @@ Modelliert eine Zusammenhangsbeziehung zwischen zwei Modulen:\texdocbr{}
 \begin{texdocclassintro}
 Ein konkretes ModulDao, welches die Datenbankverbindung über Hibernate herstellt.
  Es kann nur auf Module, Kategorien und Vertiefungsfächer 
- des im Konstruktur angebenen Studiengangs zugreifen\end{texdocclassintro}
+ des im Konstruktur angebenen Studiengangs zugreifen.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{HibernateModuleDao}{(Discipline discipline)}{initialisiert ein neues DAO für den angebenen Studiengang}{\begin{texdocparameters}
+\texdocconstructor{public}{HibernateModuleDao}{(Discipline discipline)}{Initialisiert ein neues DAO für den angegebenen Studiengang}{\begin{texdocparameters}
 \texdocparameter{discipline}{der Studiengang}
 \end{texdocparameters}
 }
@@ -2415,7 +2391,7 @@ Kapselt die für die Filterarchitektur nötigen Module-Attribut-Namen als String
 \begin{texdocclass}{interface}{ModuleDao}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao}
 \begin{texdocclassintro}
-DataAccessObject zum Zugriff auf die Modul-Datenbank\end{texdocclassintro}
+Data-Access-Object zum Zugriff auf die Modul-Datenbank.\end{texdocclassintro}
 \begin{texdocclassmethods}
 \texdocmethod{public}{List\textless{}Category\textgreater{}}{getCategories}{()}{}{\texdocreturn{gibt eine Liste der verfügbaren Kategorien zurück}
 }
@@ -2426,12 +2402,12 @@ DataAccessObject zum Zugriff auf die Modul-Datenbank\end{texdocclassintro}
 \end{texdocparameters}
 \texdocreturn{das Modul mit dem entsprechenden Identifier, \texttt{null} wenn kein Modul gefunden}
 }
-\texdocmethod{public}{List\textless{}Module\textgreater{}}{getModulesByFilter}{(Filter filter)}{Sucht alle Module die den angegebenen Filterkritierien entsprechen und gibt diese zurück}{\begin{texdocparameters}
+\texdocmethod{public}{List\textless{}Module\textgreater{}}{getModulesByFilter}{(Filter filter)}{Sucht alle Module, die den angegebenen Filterkritierien entsprechen, und gibt diese zurück}{\begin{texdocparameters}
 \texdocparameter{filter}{der Modulfilter}
 \end{texdocparameters}
 \texdocreturn{die Modulliste}
 }
-\texdocmethod{public}{List\textless{}Module\textgreater{}}{getModulesByFilter}{(Filter filter, int start, int end)}{Sucht alle Module die den angegebenen Filterkritierien entsprechen und gibt die Einträge Nr.
+\texdocmethod{public}{List\textless{}Module\textgreater{}}{getModulesByFilter}{(Filter filter, int start, int end)}{Sucht alle Module, die den angegebenen Filterkritierien entsprechen, und gibt die Einträge Nr.
  \texttt{start} bis \texttt{end} zurück.}{\begin{texdocparameters}
 \texdocparameter{filter}{der Modulfilter}
 \texdocparameter{start}{Start-Index}
@@ -2439,7 +2415,7 @@ DataAccessObject zum Zugriff auf die Modul-Datenbank\end{texdocclassintro}
 \end{texdocparameters}
 \texdocreturn{die Modulliste}
 }
-\texdocmethod{public}{Module}{getRandomModuleByFilter}{(Filter filter)}{Gibt ein zufälliges Modul, welches den angebenen Filterkriterien entspricht, zurück}{\begin{texdocparameters}
+\texdocmethod{public}{Module}{getRandomModuleByFilter}{(Filter filter)}{Gibt ein zufälliges Modul, welches den angegebenen Filterkriterien entspricht, zurück}{\begin{texdocparameters}
 \texdocparameter{filter}{der Modulfilter}
 \end{texdocparameters}
 \texdocreturn{das Modul}
@@ -2462,7 +2438,6 @@ Factory zur ModuleDao-Erzeugung\end{texdocclassintro}
 \texdocparameter{discipline}{der Studiengang}
 \end{texdocparameters}
 \texdocreturn{liefert das für die verwendete Datenbankschnittstelle benötigte DAO zurück \texdocbr{}
-
  Das DAO wird mit dem übergebenen Studiengang initialisiert.}
 }
 \end{texdocclassmethods}
@@ -2480,17 +2455,16 @@ Factory zur ModuleDao-Erzeugung\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext}
 \begin{texdocclassintro}
 Modelliert einen Authorisierungskontext.\texdocbr{}
-
  Er enthält die benötigten Informationen für einen autorisierten Benutzer, wie in Kapitel~\ref{subsec:api-auth} beschrieben\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{AuthorizationContext}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{String}{getAccessToken}{()}{}{\texdocreturn{gibt den Access-Token zurück}
+\texdocmethod{public}{String}{getAccessToken}{()}{}{\texdocreturn{gibt das Access-Token zurück}
 }
 \texdocmethod{public}{Date}{getExpiryDate}{()}{}{\texdocreturn{gibt das Verfallsdatum des Access-Tokens zurück}
 }
-\texdocmethod{public}{String}{getRefreshToken}{()}{}{\texdocreturn{gibt den Refresh-Token zurück}
+\texdocmethod{public}{String}{getRefreshToken}{()}{}{\texdocreturn{gibt das Refresh-Token zurück}
 }
 \texdocmethod{public}{RESTClient}{getRestClient}{()}{}{\texdocreturn{gibt den zugehörigen REST-Client zurück}
 }
@@ -2499,7 +2473,7 @@ Modelliert einen Authorisierungskontext.\texdocbr{}
 \texdocmethod{public}{User}{getUser}{()}{}{\texdocreturn{gibt den Nutzer zurück}
 }
 \texdocmethod{public}{void}{setAccessToken}{(String accessToken)}{}{\begin{texdocparameters}
-\texdocparameter{accessToken}{der Access-Token}
+\texdocparameter{accessToken}{das Access-Token}
 \end{texdocparameters}
 }
 \texdocmethod{public}{void}{setExpiryDate}{(Date date)}{}{\begin{texdocparameters}
@@ -2507,7 +2481,7 @@ Modelliert einen Authorisierungskontext.\texdocbr{}
 \end{texdocparameters}
 }
 \texdocmethod{public}{void}{setRefreshToken}{(String refreshToken)}{}{\begin{texdocparameters}
-\texdocparameter{refreshToken}{der Refresh-Token}
+\texdocparameter{refreshToken}{das Refresh-Token}
 \end{texdocparameters}
 }
 \texdocmethod{public}{void}{setRestClient}{(RESTClient client)}{}{\begin{texdocparameters}
@@ -2529,7 +2503,7 @@ Modelliert einen Authorisierungskontext.\texdocbr{}
 \begin{texdocclass}{enum}{AuthorizationScope}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationScope}
 \begin{texdocclassintro}
-Berechtigungen die ein Nutzer anfragen kann\end{texdocclassintro}
+Berechtigungen, die ein Nutzer anfragen kann\end{texdocclassintro}
 \begin{texdocenums}
 \texdocenum{STUDENT}{Berechtigung Student. Kann alle Kernfunktionen nutzen.}
 \end{texdocenums}
@@ -2552,7 +2526,7 @@ Modelliert einen Klienten, der auf die REST-Schnittstelle zugreifen kann, wie in
 }
 \texdocmethod{public}{String}{getApiSecret}{()}{}{\texdocreturn{gibt die nur dem Klienten bekannte Kennung zurück}
 }
-\texdocmethod{public}{String}{getOrigin}{()}{}{\texdocreturn{gibt die Domain, von welcher aus der Client auf Ressourcen zugreifen kann als regulären Ausdruck zurück.}
+\texdocmethod{public}{String}{getOrigin}{()}{}{\texdocreturn{gibt die Domain, von welcher aus der Client auf Ressourcen zugreifen kann, als regulären Ausdruck zurück.}
 }
 \texdocmethod{public}{URL}{getRedirectUrl}{()}{}{\texdocreturn{gibt die Weiterleitungs-URL zurück}
 }
@@ -2567,7 +2541,7 @@ Modelliert einen Klienten, der auf die REST-Schnittstelle zugreifen kann, wie in
 \end{texdocparameters}
 }
 \texdocmethod{public}{void}{setOrigin}{(String origin)}{}{\begin{texdocparameters}
-\texdocparameter{der}{reguläre Ausdruck}
+\texdocparameter{origin}{der reguläre Ausdruck}
 \end{texdocparameters}
 }
 \texdocmethod{public}{void}{setRedirectUrl}{(URL redirectUrl)}{}{\begin{texdocparameters}
@@ -2588,20 +2562,18 @@ Modelliert einen Klienten, der auf die REST-Schnittstelle zugreifen kann, wie in
 \begin{texdocclass}{class}{AbstractSecurityProvider}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider}
 \begin{texdocclassintro}
-Diese Klasse ermöglicht die Authentifizierung, indem sie Methoden zur Access-Token-Generierung, sowie zur Abfrage von Authentifizierungs-Kontexten bereitstellt.\end{texdocclassintro}
+Diese Klasse ermöglicht die Authentifizierung, indem sie Methoden zur Access-Token-Generierung sowie zur Abfrage von Authentifizierungs-Kontexten bereitstellt.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{AbstractSecurityProvider}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public abstract}{AuthorizationContext}{generateAuthorizationContext}{(User user)}{Erzeugt zu einem Nutzer einen neuen Authentifizierungs-Kontext inklusive Access-Token und speichert diesen in der Datenbank.\texdocbr{}
-
  Die Gültigkeitsdauer wird auf 4 Stunden gesetzt.}{\begin{texdocparameters}
 \texdocparameter{user}{der User}
 \end{texdocparameters}
 \texdocreturn{den generierten Authentifizierungs-Kontext}
 }
 \texdocmethod{public abstract}{AuthorizationContext}{getAuthorizationContext}{(String accessToken)}{Liefert zu einem Access-Token den enstprechenden Authentifizierungs-Kontext.\texdocbr{}
-
  Ist kein Kontext vorhanden, so wird \texttt{null} zurückgegeben.}{\begin{texdocparameters}
 \texdocparameter{accessToken}{der Access-Token}
 \end{texdocparameters}
@@ -2646,7 +2618,7 @@ Ein konkretes UserDao, welches die Datenbankverbindung über Hibernate herstellt
 \begin{texdocclass}{interface}{PlanDao}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDao}
 \begin{texdocclassintro}
-DataAccessObject zum Zugriff auf Studienpläne aus der Datenbank\end{texdocclassintro}
+Data-Access-Object zum Zugriff auf Studienpläne aus der Datenbank\end{texdocclassintro}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{deletePlan}{(Plan plan)}{Löscht den Plan aus der Datenbank.}{\begin{texdocparameters}
 \texdocparameter{plan}{der Plan}
@@ -2655,9 +2627,9 @@ DataAccessObject zum Zugriff auf Studienpläne aus der Datenbank\end{texdocclass
 \texdocmethod{public}{Plan}{getPlanById}{(String id)}{Sucht einen Plan nach seinem String-Identifier.}{\begin{texdocparameters}
 \texdocparameter{id}{der Identifier-String}
 \end{texdocparameters}
-\texdocreturn{den gefundenen Plan oder \texttt{null} falls nichts gefunden}
+\texdocreturn{den gefundenen Plan oder \texttt{null}, falls nichts gefunden}
 }
-\texdocmethod{public}{void}{updatePlan}{(Plan plan)}{Speichert alle Änderungen am Plan in der Datenbank, legt ihn an, wenn noch nicht vorhanden.}{\begin{texdocparameters}
+\texdocmethod{public}{void}{updatePlan}{(Plan plan)}{Speichert alle Änderungen am Plan in der Datenbank bzw. legt ihn an, wenn noch nicht vorhanden.}{\begin{texdocparameters}
 \texdocparameter{plan}{der Plan}
 \end{texdocparameters}
 }
@@ -2696,21 +2668,19 @@ Konkrete Implementierung eines Security-Providers, der Hibernate verwendet.\end{
 \begin{texdocclass}{interface}{UserDao}
 \label{texdoclet:edu.kit.informatik.studyplan.server.model.userdata.dao.UserDao}
 \begin{texdocclassintro}
-DataAccessObject zum Zugriff auf Nutzer in der Datenbank\end{texdocclassintro}
+Data-Access-Object zum Zugriff auf Nutzer in der Datenbank\end{texdocclassintro}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{deleteUser}{(User user)}{Löscht den übergebenen Nutzer aus der Datenbank}{\begin{texdocparameters}
 \texdocparameter{user}{der Nutzer}
 \end{texdocparameters}
 }
 \texdocmethod{public}{User}{findUser}{(User user)}{Sucht nach dem ensprechenden Nutzer in der Datenbank. \texdocbr{}
-
  So kann ein Nutzer über die ID oder seinen Nutzernamen gefunden werden.}{\begin{texdocparameters}
 \texdocparameter{user}{der zu suchende Nutzer}
 \end{texdocparameters}
 \texdocreturn{der gefundene Nutzer}
 }
 \texdocmethod{public}{void}{updateUser}{(User user)}{Speichert die Änderungen am übergebenen Nutzer in der Datenbank\texdocbr{}
-
  Handelt es sich um einen neuen Nutzer, so wird dieser angelegt.}{\begin{texdocparameters}
 \texdocparameter{user}{der Nutzer}
 \end{texdocparameters}
@@ -2727,7 +2697,7 @@ Factory zur UserDao-Erzeugung\end{texdocclassintro}
 \texdocconstructor{public}{UserDaoFactory}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public static}{UserDao}{getUserDao}{()}{}{\texdocreturn{liefert das für die verwendete Datenbankschnittstelle benötigte DAO zurück}
+\texdocmethod{public static}{UserDao}{getUserDao}{()}{}{\texdocreturn{Liefert das für die verwendete Datenbankschnittstelle benötigte DAO zurück}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -2811,7 +2781,6 @@ Modelliert einen Studienplan\end{texdocclassintro}
 \texdocmethod{public}{int}{getPlanId}{()}{}{\texdocreturn{gibt die eindeutige Plan-ID zurück}
 }
 \texdocmethod{public}{PreferenceType}{getPreferenceForModule}{(Module module)}{Gibt für ein übergebenes Modul die Präferenz zurück. \texdocbr{}
-
  \texttt{null}, falls keine Präferenz vorhanden}{\begin{texdocparameters}
 \texdocparameter{module}{das Modul}
 \end{texdocparameters}
@@ -2874,7 +2843,7 @@ Modelliert ein Semester\end{texdocclassintro}
 \texdocconstructor{public}{Semester}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{int}{getDistanceToCurrentSemester}{()}{Berechnet die Anzahl an Semester, die seit diesem Semester vergangen sind (inkl. aktuelles)}{\texdocreturn{die Semesterzahl}
+\texdocmethod{public}{int}{getDistanceToCurrentSemester}{()}{Berechnet die Anzahl an Semester, die seit diesem Semester vergangen sind (inkl. dem aktuellen)}{\texdocreturn{die Semesterzahl}
 }
 \texdocmethod{public}{SemesterType}{getSemesterType}{()}{}{\texdocreturn{gibt den Typ des Semester zurück}
 }\begin{texdocsees}{See also}
@@ -2976,30 +2945,29 @@ Modelliert den Verifikationsstatus eines Studienplans\end{texdocclassintro}
 \begin{texdocclass}{class}{GenerationManager}
 \label{texdoclet:edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager}
 \begin{texdocclassintro}
-Verwaltet den Zugriff auf das Generierungsplug-in.  
- Das Generierungsplug-in umfasst sowohl die Generierer-Schnittstelle als auch 
+Verwaltet den Zugriff auf das Generierungs-PlugIn.  
+ Das Generierungs-PlugIn umfasst sowohl die Generierer-Schnittstelle als auch 
  die Zielfunktionen-Schnittstelle. Beide Schnittstellen werden mittels diese Klasse adaptiert.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{GenerationManager}{()}{Erstellt einen GenerationManager.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{double}{evaluate}{(Plan plan)}{Diese Methode ruft die evaluate Methode der 
-server.generation.objectivefunction.PartialObjectiveFunction (siehe \ref{texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction}).}{\begin{texdocparameters}
+\texdocmethod{public}{double}{evaluate}{(Plan plan)}{Diese Methode ruft die evaluate-Methode der 
+ \hyperref[texdoclet:edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction]{PartialObjectiveFunction} auf.}{\begin{texdocparameters}
 \texdocparameter{plan}{der zu bewertende Plan.}
 \end{texdocparameters}
-\texdocreturn{Wert zwischen 0 und 1 der den Plan evaluiert.}
+\texdocreturn{Wert zwischen 0 und 1 als Planbewertung.}
 }
-\texdocmethod{public}{Plan}{generate}{(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO)}{Diese Methode ruft die generate Methode des
-server.generation.Generator  (siehe \ref{texdoclet:edu.kit.informatik.studyplan.server.generation.Generator}).}{\begin{texdocparameters}
+\texdocmethod{public}{Plan}{generate}{(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO)}{Diese Methode ruft die generate-Methode des \hyperref[texdoclet:edu.kit.informatik.studyplan.server.generation.Generator]{Generator} auf.}{\begin{texdocparameters}
 \texdocparameter{objectiveFunction}{Die Zielfunktion, anhand der optimiert werden soll}
 \texdocparameter{currentPlan}{der bereits bestehende Plan}
-\texdocparameter{moduleDAO}{die Module}
+\texdocparameter{moduleDAO}{das Modul-DAO}
 \end{texdocparameters}
-\texdocreturn{ein vollständiger, korrekter und optimierter Studienplan vom Typ Plan.}
+\texdocreturn{ein vollständiger, korrekter und optimierter Studienplan.}
 }
-\texdocmethod{public}{Generator}{getGenerator}{()}{Gibt den Generator zurück.}{\texdocreturn{generator : der Generator}
+\texdocmethod{public}{Generator}{getGenerator}{()}{Gibt den Generator zurück.}{\texdocreturn{der Generator}
 }
-\texdocmethod{public}{Collection\textless{}PartialObjectiveFunction\textgreater{}}{getObjectiveFunction}{()}{Gibt die Liste der Zielfunktionen zurück.}{\texdocreturn{objectiveFunction : die Liste der Zielfunktionen}
+\texdocmethod{public}{Collection\textless{}PartialObjectiveFunction\textgreater{}}{getObjectiveFunction}{()}{Gibt die Liste der Zielfunktionen zurück.}{\texdocreturn{die Liste der Zielfunktionen}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -3008,10 +2976,10 @@ server.generation.Generator  (siehe \ref{texdoclet:edu.kit.informatik.studyplan.
 \begin{texdocclass}{class}{VerificationManager}
 \label{texdoclet:edu.kit.informatik.studyplan.server.pluginmanager.VerificationManager}
 \begin{texdocclassintro}
-Verwaltet den Zugriff auf das Verifizierungsplug-in, das die Verifizierer-Schnittstelle enthält.
+Verwaltet den Zugriff auf das Verifizierungs-PlugIn, das die Verifizierer-Schnittstelle enthält.
  Diese Schnittstelle wird von dem VerificationManager adaptiert.\end{texdocclassintro}
 \begin{texdocclassfields}
-\texdocfield{public}{Verifier}{verifier}{Der Verifizierer.}\begin{texdocsees}{See also}
+\texdocfield{private}{Verifier}{verifier}{Der Verifizierer.}\begin{texdocsees}{See also}
 \texdocsee{server.verification.Verifier}{texdoclet:edu.kit.informatik.studyplan.server.verification.Verifier}
 \end{texdocsees}
 
@@ -3020,13 +2988,12 @@ Verwaltet den Zugriff auf das Verifizierungsplug-in, das die Verifizierer-Schnit
 \texdocconstructor{public}{VerificationManager}{()}{Erstellt einen VerificationManager.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{Verifier}{getVerifier}{()}{Gibt den Verifizierer zurück.}{\texdocreturn{verifier : der Verifizierer}
+\texdocmethod{public}{Verifier}{getVerifier}{()}{Gibt den Verifizierer zurück.}{\texdocreturn{der Verifizierer}
 }
-\texdocmethod{public}{VerificationResult}{verify}{(Plan plan)}{Diese Methode ruft die verify Methode des
-server.verification.Verifier  (siehe \ref{texdoclet:edu.kit.informatik.studyplan.server.verification.Verifier}).}{\begin{texdocparameters}
+\texdocmethod{public}{VerificationResult}{verify}{(Plan plan)}{Diese Methode ruft die verify-Methode des \hyperref[texdoclet:edu.kit.informatik.studyplan.server.verification.Verifier]{Verifier} auf.}{\begin{texdocparameters}
 \texdocparameter{plan}{Ein zu verifizierender Studienplan wird übergeben.}
 \end{texdocparameters}
-\texdocreturn{invalid Ein VerificationResult wird als Ergebnis der Verifizierung zurückgegeben.}
+\texdocreturn{Ein VerificationResult wird als Ergebnis der Verifizierung zurückgegeben.}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -3042,13 +3009,13 @@ server.verification.Verifier  (siehe \ref{texdoclet:edu.kit.informatik.studyplan
 \begin{texdocclass}{class}{AuthorizationCodeGrant}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.AuthorizationCodeGrant}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert einen AuthorizationCodeGrant   (Siehe \cite[Kap. 1.3.1]{rfc6749}).
- AuthorizationCodeGrant wird in der ersten Version des Systems nicht benötigt aber zur möglichen
+Diese Klasse repräsentiert einen Authorization-Code-Grant (Siehe \cite[Kap.~1.3.1]{rfc6749}).
+ AuthorizationCodeGrant wird in der ersten Version des Systems nicht benötigt, ist aber für spätere
  Erweiterungen vorgesehen.
- Bei dem Versuch, eine Authentifizierung mittels diese Klasse durchzuführen wird eine Fehlermeldung
+ Bei dem Versuch, eine Authentifizierung mittels Authorization-Code-Grant durchzuführen, wird ein Fehler
  zurückgegeben.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{AuthorizationCodeGrant}{()}{Erstellt einen AuthorizationCodeGrant.}{}
+\texdocconstructor{public}{AuthorizationCodeGrant}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{getLogin}{(String clientId, String scope, String state)}{}{}
@@ -3061,26 +3028,26 @@ Diese Klasse repräsentiert einen AuthorizationCodeGrant   (Siehe \cite[Kap. 1.3
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.AuthResource}
 \begin{texdocclassintro}
 Diese Klasse repräsentiert die Authentifizierung-Ressource.
- Der Resource owner wird zurück zu dieser Ressource weitergeleitet, nachdem er 
- den Zugang zur Anwendung gewährt hat.\end{texdocclassintro}
+ Der Resource-Owner wird zurück zu dieser Ressource weitergeleitet, nachdem er 
+ den Zugriff auf die Anwendung erhalten hat.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{AuthResource}{()}{Erstellt eine Authentifizierungs-Ressource.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{GrantType}{getGrantType}{()}{Gibt den GrantType zurück.}{\texdocreturn{den grantType}
+\texdocmethod{public}{GrantType}{getGrantType}{()}{Gibt den GrantType zurück.}{\texdocreturn{den GrantType}
 }
 \texdocmethod{public}{void}{getLogin}{(String clientID, String scope, String state)}{GET-Anfrage:
- Gibt den Authorization Endpoint (\cite{rfc6749}, Kapitel 3.1) zurück.}{\begin{texdocparameters}
+ Gibt den Authorization Endpoint (\cite{rfc6749}, Kapitel~3.1) zurück.}{\begin{texdocparameters}
 \texdocparameter{clientID}{den api\_key des Klienten.}
 \texdocparameter{scope}{in den ersten Versionen des Systems immer „student“.}
 \texdocparameter{state}{ein Schlüssel, der vom REST-Webservice in der Antwort mitgesendet wird.}
 \end{texdocparameters}
 }\begin{texdocsees}{See also}
-\texdocsee{Kapitel \ref{subsec:api-auth} Tabelle \ref{tab:api-auth-public-client-data}.}{texdoclet:Kapitel}
+\texdocsee{Kapitel~\ref{subsec:api-auth} Tabelle \ref{tab:api-auth-public-client-data}.}{texdoclet:Kapitel}
 \end{texdocsees}
 
 \texdocmethod{public}{void}{postToken}{(MultivaluedMap\textless{}StringString\textgreater{} params)}{POST-Anfrage:
- Setzt den Token Endpoint (\cite{rfc6749}, Kapitel 3.1).}{\begin{texdocparameters}
+ Setzt den Token Endpoint (\cite{rfc6749}, Kapitel~3.1).}{\begin{texdocparameters}
 \texdocparameter{params}{eine mehrwertige Zuordnung}
 \end{texdocparameters}
 }
@@ -3091,21 +3058,21 @@ Diese Klasse repräsentiert die Authentifizierung-Ressource.
 \begin{texdocclass}{interface}{GrantType}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.GrantType}
 \begin{texdocclassintro}
-Diese Schnittstelle repräsentiert eine Fabrik zur Erstellung von Typen von Authorisation Grant
- (\cite{rfc6749}, Kapitel 1.3)\end{texdocclassintro}
+Diese Schnittstelle repräsentiert eine Fabrik zur Erstellung von Typen von Authorization Grant
+ (\cite{rfc6749}, Kapitel~1.3)\end{texdocclassintro}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{getLogin}{(String clientId, String scope, String state)}{GET-Anfrage:
- Gibt den Authorization Endpoint (siehe \cite{rfc6749}, Kapitel 1.3) zurück.}{\begin{texdocparameters}
+ Gibt den Authorization Endpoint (siehe \cite{rfc6749}, Kapitel~1.3) zurück.}{\begin{texdocparameters}
 \texdocparameter{clientID}{den api\_key des Klienten.}
 \texdocparameter{scope}{in den ersten Versionen des Systems immer „student“.}
 \texdocparameter{state}{ein Schlüssel, der vom REST-Webservice in der Antwort mitgesendet wird.}
 \end{texdocparameters}
 }\begin{texdocsees}{See also}
-\texdocsee{Kapitel \ref{subsec:api-auth} Tabelle \ref{tab:api-auth-public-client-data}.}{texdoclet:Kapitel}
+\texdocsee{Kapitel~\ref{subsec:api-auth} Tabelle \ref{tab:api-auth-public-client-data}.}{texdoclet:Kapitel}
 \end{texdocsees}
 
 \texdocmethod{public}{void}{postToken}{(MultivaluedMap\textless{}StringString\textgreater{} params)}{POST-Anfrage:
- Setzt den Token Endpoint (siehe \cite{rfc6749}, Kapitel 3.1).}{\begin{texdocparameters}
+ Setzt den Token Endpoint (siehe \cite{rfc6749}, Kapitel~3.1).}{\begin{texdocparameters}
 \texdocparameter{params}{eine mehrwertige Zuordnung}
 \end{texdocparameters}
 }
@@ -3116,7 +3083,7 @@ Diese Schnittstelle repräsentiert eine Fabrik zur Erstellung von Typen von Auth
 \begin{texdocclass}{class}{ImplicitGrantType}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.ImplicitGrantType}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert einen ImplicitGrantType (\cite{rfc6749}, Kapitel 1.3.2).\end{texdocclassintro}
+Diese Klasse repräsentiert einen Implicit-Grant-Type (\cite{rfc6749}, Kapitel~1.3.2).\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ImplicitGrantType}{()}{Erstellt einen ImplicitGrantType.}{}
 \end{texdocclassconstructors}
@@ -3130,10 +3097,10 @@ Diese Klasse repräsentiert einen ImplicitGrantType (\cite{rfc6749}, Kapitel 1.3
 \begin{texdocclass}{class}{PasswordCredentialsGrant}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.PasswordCredentialsGrant}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert einen PasswordCredentialsGrant  (siehe \cite{rfc6749},  Kapitel 1.3.3).
- PasswordCredentialsGrant wird in der ersten Version des Systems nicht benötigt aber zur möglichen 
+Diese Klasse repräsentiert einen Password-Credentials-Grant  (siehe \cite{rfc6749},  Kapitel~1.3.3).
+ PasswordCredentialsGrant wird in der ersten Version des Systems nicht benötigt, ist aber für spätere 
  Erweiterungen vorgesehen.
-  Bei dem Versuch, eine Authentifizierung mittels diese Klasse durchzuführen wird eine Fehlermeldung
+  Bei dem Versuch, eine Authentifizierung mittels Password-Credentials-Grant durchzuführen, wird eine Fehlermeldung
  zurückgegeben.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{PasswordCredentialsGrant}{()}{Erstellt einen PasswordCredentialsGrant.}{}
@@ -3148,8 +3115,8 @@ Diese Klasse repräsentiert einen PasswordCredentialsGrant  (siehe \cite{rfc6749
 \begin{texdocclass}{class}{RefreshGrant}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.RefreshGrant}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert einen RefreshGrant: beim Ablaufen der Access-Token, schickt dieser Granttype
- eine Refresh-Token (siehe \cite{rfc6749}, Kapitel 1.5) an den Klient als Antwort .\end{texdocclassintro}
+Diese Klasse repräsentiert einen Refresh-Grant: Beim Ablaufen des Access-Tokens schickt dieser GrantType
+ ein Refresh-Token (siehe \cite{rfc6749}, Kapitel~1.5) als Antwort an den Klient.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{RefreshGrant}{()}{Erstellt einen RefreshGrant.}{}
 \end{texdocclassconstructors}
@@ -3163,10 +3130,10 @@ Diese Klasse repräsentiert einen RefreshGrant: beim Ablaufen der Access-Token, 
 \begin{texdocclass}{class}{UnknownGrant}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.authorization.endpoint.UnknownGrant}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert einen unbekannten Granttype. Beim Instanziierung von dieser Klasse wird 
- eine Fehlermeldung zurückgegeben, da der Granttype ungültig ist.\end{texdocclassintro}
+Diese Klasse repräsentiert einen unbekannten GrantType. Bei Instanziierung dieser Klasse wird 
+eine Fehlermeldung zurückgegeben, da der GrantType ungültig ist.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{UnknownGrant}{()}{Gibt fehler zurück.}{}
+\texdocconstructor{public}{UnknownGrant}{()}{Löst eine Ausnahme aus.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{getLogin}{(String clientId, String scope, String state)}{}{}
@@ -3187,7 +3154,7 @@ Diese Klasse repräsentiert einen unbekannten Granttype. Beim Instanziierung von
 \begin{texdocclassintro}
 Klasse für das Filtern von Authentifizierungs-Anfragen.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{AuthorizationRequestFilter}{()}{Erstellt einen Filter für die Authentifizierung-Anfragen.}{}
+\texdocconstructor{public}{AuthorizationRequestFilter}{()}{Erstellt einen Filter für Authentifizierung-Anfragen.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{filter}{()}{}{}
@@ -3203,8 +3170,8 @@ Diese Klasse repräsentiert die Filter-Ressource.\end{texdocclassintro}
 \texdocconstructor{public}{FilterResource}{()}{Erstellt eine Filter-Ressource.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{List\textless{}JSONObject\textgreater{}}{getAllFilters}{()}{GET Anfrage:
- Gibt eine Liste aller vorhandenen Filtern zurück.}{\texdocreturn{eine Liste von Filtern.}
+\texdocmethod{public}{List\textless{}JSONObject\textgreater{}}{getAllFilters}{()}{GET-Anfrage:
+ Gibt eine Liste aller vorhandenen Filter zurück.}{\texdocreturn{eine Liste von Filtern.}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -3214,26 +3181,20 @@ Diese Klasse repräsentiert die Filter-Ressource.\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.GetParameters}
 \begin{texdocclassintro}
 Platzhalter für mehrere GET-Anfrage-Parameter.\end{texdocclassintro}
-\begin{texdocclassconstructors}
-\texdocconstructor{public}{GetParameters}{()}{}{}
-\end{texdocclassconstructors}
 \end{texdocclass}
 
 
 \begin{texdocclass}{class}{JSONObject}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.JSONObject}
 \begin{texdocclassintro}
-Represäntiert einen unmodifizierbaren JSON-Objekt Wert und bietet eine unmodifizierbare Name$/$Werte Zuordnung an.\end{texdocclassintro}
-\begin{texdocclassconstructors}
-\texdocconstructor{public}{JSONObject}{()}{}{}
-\end{texdocclassconstructors}
+Platzhalter für diverse JSON-Objekte.\end{texdocclassintro}
 \end{texdocclass}
 
 
 \begin{texdocclass}{class}{MainApplication}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.MainApplication}
 \begin{texdocclassintro}
-Hilfsklasse um Ressource Klassen festzulegen.\end{texdocclassintro}
+Hilfsklasse, um Ressourcen-Klassen festzulegen.\end{texdocclassintro}  
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{MainApplication}{()}{}{}
 \end{texdocclassconstructors}
@@ -3248,23 +3209,23 @@ Diese Klasse repräsentiert die Modul-Ressource.\end{texdocclassintro}
 \texdocconstructor{public}{ModuleResource}{()}{Erstellt eine Module-Ressource.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{List\textless{}JSONObject\textgreater{}}{getAllDisciplines}{()}{GET Anfrage:
- Gibt eine Liste der JSON-Representationen von allen Fachrichtungen zurück.}{\texdocreturn{eine Liste der JSON-Representationen von allen Fachrichtungen.}
+\texdocmethod{public}{List\textless{}JSONObject\textgreater{}}{getAllDisciplines}{()}{GET-Anfrage:
+ Gibt eine Liste der JSON-Repräsentationen aller Fachrichtungen zurück.}{\texdocreturn{eine Liste der JSON-Repräsentationen aller Fachrichtungen.}
 }
-\texdocmethod{public}{List\textless{}JSONObject\textgreater{}}{getAllSubjects}{()}{GET Anfrage:
- Gibt eine Liste der JSON-Representationen von allen Vertiefungsfächer zurück.}{\texdocreturn{eine Liste der JSON-Representationen von allen Vertiefungsfächer.}
+\texdocmethod{public}{List\textless{}JSONObject\textgreater{}}{getAllSubjects}{()}{GET-Anfrage:
+ Gibt eine Liste der JSON-Repräsentationen aller Vertiefungsfächer zurück.}{\texdocreturn{eine Liste der JSON-Repräsentationen aller Vertiefungsfächer.}
 }
-\texdocmethod{public}{JSONObject}{getModule}{(String moduleID)}{Get Anfrage:
- Gibt eine JSON-Representation von dem Modul mit der gegebenen ID zurück.}{\begin{texdocparameters}
-\texdocparameter{moduleID}{ID des erforderten Modul.}
+\texdocmethod{public}{JSONObject}{getModule}{(String moduleID)}{GET-Anfrage:
+ Gibt eine JSON-Repräsentation des Moduls mit der gegebenen ID zurück.}{\begin{texdocparameters}
+\texdocparameter{moduleID}{ID des gewünschten Moduls.}
 \end{texdocparameters}
-\texdocreturn{eine JSON-Representation von dem Modul.}
+\texdocreturn{eine JSON-Repräsentation des Moduls.}
 }
-\texdocmethod{public}{List\textless{}JSONObject\textgreater{}}{getModules}{(GetParameters jsonFilter)}{GET Anfrage:
- Gibt eine Liste der JSON-Representationen von Modulen, die dem gegebenen Filter entsprechen, zurück.}{\begin{texdocparameters}
-\texdocparameter{jsonFilter}{die benutzeten Filtern als Get-Parameter.}
+\texdocmethod{public}{List\textless{}JSONObject\textgreater{}}{getModules}{(GetParameters jsonFilter)}{GET-Anfrage:
+ Gibt eine Liste der JSON-Repräsentationen von Modulen, die Kriterien gegebener Filter entsprechen, zurück.}{\begin{texdocparameters}
+\texdocparameter{jsonFilter}{die benutzten Filter als GET-Parameter (siehe \hyperref[GETP-Modules-Parameter]{Modules-Parameter} in Kap.~\ref{subsec:rest_commands}).}
 \end{texdocparameters}
-\texdocreturn{eine Liste der JSON-Representationen von Modulen.}
+\texdocreturn{eine Liste der JSON-Repräsentationen der gefilterten Module.}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -3279,9 +3240,9 @@ Diese Klasse repräsentiert die Zielfunktion-Ressource.\end{texdocclassintro}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{List\textless{}JSONObject\textgreater{}}{getAllObjectiveFunctions}{()}{GET-Anfrage:
- Gibt eine Liste mit allen vorhandenen Zielfunktionen als JSON Objekte zurück.}{\texdocreturn{Liste mit allen vorhandenen Zielfunktionen als JSON Objekte.}
+ Gibt eine Liste mit allen vorhandenen Zielfunktionen als JSON-Objekte zurück.}{\texdocreturn{Liste mit allen vorhandenen Zielfunktionen als JSON-Objekte.}
 }
-\texdocmethod{public}{GenerationManager}{getGenerationManager}{()}{Gibt den generierungsmanager zurück.}{\texdocreturn{der generationManager}
+\texdocmethod{public}{GenerationManager}{getGenerationManager}{()}{Gibt den GenerationManager zurück.}{\texdocreturn{der GenerationManager}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -3290,17 +3251,17 @@ Diese Klasse repräsentiert die Zielfunktion-Ressource.\end{texdocclassintro}
 \begin{texdocclass}{class}{PlanConverterResource}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.PlanConverterResource}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert die Plankonverter-Ressource.\end{texdocclassintro}
+Diese Klasse repräsentiert den PDF-Export für Pläne.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{PlanConverterResource}{()}{Erstellt eine PlanKonverter-Ressource.}{}
+\texdocconstructor{public}{PlanConverterResource}{()}{Erstellt eine PlanConverterResource.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{PDF}{convertplanToPDF}{(String planID, String accessToken)}{GET-Anfrage:
- Gibt die PDF-Version des Plans mit den gegebenen ID zurück.}{\begin{texdocparameters}
+ Gibt einen PDF-Druck des Plans mit der gegebenen ID zurück.}{\begin{texdocparameters}
 \texdocparameter{planID}{ID des zu konvertierenden Plans.}
-\texdocparameter{accessToken}{Ein Token, zur Authentifizierung der Klient.}
+\texdocparameter{accessToken}{Das in Kap.~\ref{subsec:api-auth} spezifizierte Access-Token.}
 \end{texdocparameters}
-\texdocreturn{die PDF-Version des Plans.}
+\texdocreturn{der Plan als PDF exportiert.}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -3309,20 +3270,20 @@ Diese Klasse repräsentiert die Plankonverter-Ressource.\end{texdocclassintro}
 \begin{texdocclass}{class}{PlanGeneratorResource}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.PlanGeneratorResource}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert die Plangenerierer-Ressource.\end{texdocclassintro}
+Diese Klasse repräsentiert die Plan-Generierer-Ressource.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{PlanGeneratorResource}{()}{Erstellt eine Plangenerierer-Ressource.}{}
+\texdocconstructor{public}{PlanGeneratorResource}{()}{Erstellt eine PlanGeneratorResource.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{JSONObject}{generatePlan}{(String planID, GetParameters jsonSettings)}{GET-Anfrage:
- Erstellt und gibt einen auf Basis des Plans mit der gegebenen ID generierten Plan 
+ Gibt einen auf Basis des Plans mit der gegebenen ID generierten Plan 
  als JSON-Objekt zurück.}{\begin{texdocparameters}
 \texdocparameter{planID}{ID des Basis-Plans.}
-\texdocparameter{jsonSettings}{die gesetzten Einstellungen des Plans als Get-Parameter.}
+\texdocparameter{jsonSettings}{die gesetzten Einstellungen des Plans als GET-Parameter.}
 \end{texdocparameters}
-\texdocreturn{den generierten Plan als JSON Objekt.}
+\texdocreturn{den generierten Plan als JSON-Objekt.}
 }
-\texdocmethod{public}{GenerationManager}{getGenerationManager}{()}{Gibt den Generierungsmanager zurück.}{\texdocreturn{der generationManager}
+\texdocmethod{public}{GenerationManager}{getGenerationManager}{()}{Gibt den GenerationManager zurück.}{\texdocreturn{der GenerationManager}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -3331,54 +3292,51 @@ Diese Klasse repräsentiert die Plangenerierer-Ressource.\end{texdocclassintro}
 \begin{texdocclass}{class}{PlanModulesResource}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.PlanModulesResource}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert die Planmodule-Ressource.\end{texdocclassintro}
+Diese Klasse repräsentiert die Plan-Modul-Ressource.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{PlanModulesResource}{()}{Erstellt eine Planmodule-Ressource.}{}
+\texdocconstructor{public}{PlanModulesResource}{()}{Erstellt eine PlanModulesResource.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{Filter}{getFilterFromRequest}{( params)}{GET-Anfrage:
- Gibt den angefragten Filter zurück.}{\begin{texdocparameters}
-\texdocparameter{params}{Anfrage als eine mehrwertige Zuordnung von Strings.}
+\texdocmethod{public}{Filter}{getFilterFromRequest}{(MultivaluedMap<String, String> params)}{Erzeugt aus den in params gegebenen GET-Parametern einen Filter, der alle übergebenen Kriterien erfüllt.}{\begin{texdocparameters}
+\texdocparameter{params}{Die Anfrage-Parameter, in welchen mehrere Filter sowie deren Einstellungen gegeben sind.}
 \end{texdocparameters}
-\texdocreturn{den angefragten Filter.}
+\texdocreturn{den erzeugten Filter.}
 }
-\texdocmethod{public}{JSONObject}{getModule}{(String planID, String moduleID)}{GET Anfrage:
- Gibt eine JSON-Representation von dem Modul mit der gegebenen ID, der in dem Plan mit der gegebenen ID ist, zurück.}{\begin{texdocparameters}
-\texdocparameter{planID}{ID des zu bearbeitenden Plans.}
-\texdocparameter{moduleID}{ID des erforderten Modul.}
+\texdocmethod{public}{JSONObject}{getModule}{(String planID, String moduleID)}{GET-Anfrage:
+ Gibt eine JSON-Repräsentation des Moduls moduleID aus Sicht des Plans planID zurück.}{\begin{texdocparameters}
+\texdocparameter{planID}{ID des gerade bearbeiteten Plans.}
+\texdocparameter{moduleID}{ID des geforderten Moduls.}
 \end{texdocparameters}
-\texdocreturn{eine JSON-Representation von dem Modul als JSON Objekt.}
+\texdocreturn{eine JSON-Repräsentation des Moduls als JSON-Objekt.}
 }
-\texdocmethod{public}{JSONObject}{getModules}{(String plan\_id, GetParameters jsonFilter)}{GET Anfrage:
- Gibt die Liste der JSON-Representationen von Modulen, die :
-     -in dem Plan mit der gegebenen ID sind und 
-     -den gegebenen Filtern entsprechen, zurück.}{\begin{texdocparameters}
-\texdocparameter{planID}{ID des zu bearbeitenden Plans.}
-\texdocparameter{jsonFilter}{die benutzeten Filtern als Get-Parameter.}
+\texdocmethod{public}{JSONObject}{getModules}{(String plan\_id, GetParameters jsonFilter)}{GET-Anfrage:
+ Gibt die Liste der JSON-Repräsentationen der Module zurück, die den Kriterien der gegebenen Filter entsprechen. Die Module sind planspezifisch bezüglich des Plans planID.}{\begin{texdocparameters}
+\texdocparameter{planID}{ID des gerade bearbeiteten Plans.}
+\texdocparameter{jsonFilter}{die benutzten Filter als GET-Parameter.}
 \end{texdocparameters}
-\texdocreturn{eine Liste der JSON-Representationen von Modulen.}
+\texdocreturn{eine Liste der JSON-Repräsentationen von Modulen.}
 }
 \texdocmethod{public}{JSONObject}{putModuleSemester}{(String planID, String moduleID, GetParameters jsonPutModule)}{PUT Anfrage: 
- fügt das Modul als JSON Objekt zur Plan mit den gegebenen ModulID bzw. PlanID hinzu.}{\begin{texdocparameters}
+ Fügt das Modul als JSON-Objekt zum Plan mit der gegebenen ModulID bzw. PlanID hinzu.}{\begin{texdocparameters}
 \texdocparameter{planID}{ID des zu bearbeitenden Plans.}
-\texdocparameter{moduleID}{ID des hinzuzufügenden Modul.}
-\texdocparameter{jsonPutModule}{das Modul als Get-Parameter.}
+\texdocparameter{moduleID}{ID des hinzuzufügenden Moduls.}
+\texdocparameter{jsonPutModule}{das Modul als GET-Parameter.}
 \end{texdocparameters}
-\texdocreturn{JSON-Representation des Moduls als JSON Objekt.}
+\texdocreturn{JSON-Repräsentation des Moduls als JSON-Objekt.}
 }
 \texdocmethod{public}{void}{removeModuleSemester}{(String planID, String moduleID)}{DELETE-Anfrage:
  entfernt das Modul von dem Plan mit den gegebenen ModulID bzw. PlanID.}{\begin{texdocparameters}
 \texdocparameter{planID}{ID des zu bearbeitenden Plans.}
-\texdocparameter{moduleID}{ID des zu entfernenden Modul.}
+\texdocparameter{moduleID}{ID des zu entfernenden Moduls.}
 \end{texdocparameters}
 }
-\texdocmethod{public}{JSONObject}{setModulePreference}{(String planID, String moduleID, GetParameters jsonModulePreference)}{PUT-Anfrage:
- setzt eine Bewertung als JSON Objekt für den Modul mit der gegebenen ID, der im Plan mit der gegebenen ID.}{\begin{texdocparameters}
+\texdocmethod{public}{JSONObject}{setModulePreference}{(String planID, String moduleID, JSONObject jsonModulePreference)}{PUT-Anfrage:
+ Setzt eine Bewertung für das Modul mit der gegebenen ID, das zum Plan planID gehört.}{\begin{texdocparameters}
 \texdocparameter{planID}{ID des zu bearbeitenden Plans.}
-\texdocparameter{moduleID}{ID des zu bewertenden Modul.}
-\texdocparameter{jsonModulePreference}{die zu setzenden Bewertung des Moduls als GetParameters.}
+\texdocparameter{moduleID}{ID des zu bewertenden Moduls.}
+\texdocparameter{jsonModulePreference}{die zu setzende Bewertung des Moduls als JSON-Objekt.}
 \end{texdocparameters}
-\texdocreturn{die gesetzten Bewertung des Moduls als JSON Objekt.}
+\texdocreturn{das bewertete Modul als JSON-Objekt.}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -3389,48 +3347,46 @@ Diese Klasse repräsentiert die Planmodule-Ressource.\end{texdocclassintro}
 \begin{texdocclassintro}
 Diese Klasse repräsentiert die Pläne-Ressource.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{PlansResource}{()}{Erstellt eine Module-Ressource.}{}
+\texdocconstructor{public}{PlansResource}{()}{Erstellt eine PlansResource.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{JSONObject}{createPlan}{()}{POST-Anfrage:
- Erstellt einen neuen Studienplan.}{\texdocreturn{jsonPlan der erstellte Plan als JSON Objekt.}
+ Erstellt einen neuen Studienplan.}{\texdocreturn{der erstellte Plan als JSON-Objekt.}
 }
 \texdocmethod{public}{void}{deletePlan}{(String planID)}{DELETE-Anfrage:
- Löscht den Plan mit dem gegebenen ID.}{\begin{texdocparameters}
+ Löscht den Plan mit der gegebenen ID.}{\begin{texdocparameters}
 \texdocparameter{planID}{ID des zu löschenden Plans.}
 \end{texdocparameters}
 }
 \texdocmethod{public}{JSONObject}{duplicatePlan}{(String planID)}{POST-Anfrage:
- Dupliziert der Plan mit der gegebenen ID}{\begin{texdocparameters}
+ Dupliziert den Plan mit der gegebenen ID}{\begin{texdocparameters}
 \texdocparameter{planID}{ID des zu duplizierenden Plans.}
 \end{texdocparameters}
-\texdocreturn{jsonPlan Plan als JSON Objekt.}
+\texdocreturn{Plan als JSON-Objekt.}
 }
 \texdocmethod{public}{JSONObject}{editPlan}{(String planID, GetParameters jsonPlan)}{PATCH-Anfrage:
  Bearbeitet den Plan mit der gegebenen ID.}{\begin{texdocparameters}
 \texdocparameter{planID}{ID des zu bearbeitenden Plans.}
-\texdocparameter{jsonPlan}{der Plan als Get-Parameter.}
+\texdocparameter{jsonPlan}{der Plan als GET-Parameter.}
 \end{texdocparameters}
-\texdocreturn{jsonChangedPlan JSON Objekt des bearbeiteten Plans.}
+\texdocreturn{JSON-Objekt des bearbeiteten Plans.}
 }
 \texdocmethod{public}{JSONObject}{getPlan}{(String plan\_id)}{GET-Anfrage:
  Gibt den Plan mit der gegebenen ID zurück.}{\begin{texdocparameters}
 \texdocparameter{planID}{ID des angefragten Plans.}
 \end{texdocparameters}
-\texdocreturn{jsonPlan der Plan als JSON Objekt.}
+\texdocreturn{der Plan als JSON-Objekt.}
 }
-\texdocmethod{public}{List\textless{}JSONObject\textgreater{}}{getPlans}{(Collection\textless{}JSONObject\textgreater{} jsonPlanList)}{GET-Anfrage:
- Gibt eine Liste aller vorhandenen StudienPläne zurück.}{\begin{texdocparameters}
-\texdocparameter{jsonPlanList}{einen Array aller vorhandenen StudienPläne als JSON Objekte.}
-\end{texdocparameters}
-\texdocreturn{jsonPlanList eine Liste aller vorhandenen StudienPläne als JSON Objekte.}
+\texdocmethod{public}{List\textless{}JSONObject\textgreater{}}{getPlans}{()}{GET-Anfrage:
+ Gibt eine Liste aller vorhandenen Studienpläne zurück.}{
+\texdocreturn{eine Liste aller vorhandenen Studienpläne als JSON-Objekte.}
 }
 \texdocmethod{public}{JSONObject}{replacePlan}{(String planID, JSONObject jsonPlan)}{PUT-Anfrage:
- Ersetzt den Plan mit der gegebenen ID mit den gegeben Plan .}{\begin{texdocparameters}
-\texdocparameter{planID}{ID des zu entfernenden Plans.}
-\texdocparameter{jsonPlan}{der zu speichernden Plan als JSON Objekt.}
+ Ersetzt den Plan mit der gegebenen ID mit dem übergebenen Plan .}{\begin{texdocparameters}
+\texdocparameter{planID}{ID des zu überschreibenden Plans.}
+\texdocparameter{jsonPlan}{der zu speichernde Plan als JSON-Objekt.}
 \end{texdocparameters}
-\texdocreturn{jsonNewPlan der gespeicherte Plan.}
+\texdocreturn{der gespeicherte Plan.}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -3444,14 +3400,14 @@ Diese Klasse repräsentiert die Planverifizierer-Ressource.\end{texdocclassintro
 \texdocconstructor{public}{PlanVerifierResource}{()}{Erstellt eine Planverifizierer-Ressource.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{VerificationManager}{getVerificationManager}{()}{Gibt den Verifizierungsmanager zurück.}{\texdocreturn{der verificationManager}
+\texdocmethod{public}{VerificationManager}{getVerificationManager}{()}{Gibt den Verifizierungsmanager zurück.}{\texdocreturn{der VerificationManager}
 }
 \texdocmethod{public}{JSONObject}{verifyPlan}{(String planID)}{GET-Anfrage:
- Verifiziert den Planmit den gegebenen ID, gibt den verifizierten Plan zurück und speichert ihn 
+ Verifiziert den Plan mit den gegebenen ID, gibt den verifizierten Plan mitsamt Verifizierungsergebnissen zurück und speichert den Verifikationsstatus 
  in der Datenbank.}{\begin{texdocparameters}
-\texdocparameter{planID}{ID des plans.}
+\texdocparameter{planID}{ID des Plans.}
 \end{texdocparameters}
-\texdocreturn{den verifizierten Plan als JSON Objekt.}
+\texdocreturn{den verifizierten Plan als JSON-Objekt.}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -3460,21 +3416,21 @@ Diese Klasse repräsentiert die Planverifizierer-Ressource.\end{texdocclassintro
 \begin{texdocclass}{class}{StudentResource}
 \label{texdoclet:edu.kit.informatik.studyplan.server.rest.StudentResource}
 \begin{texdocclassintro}
-Diese Klasse repräsentiert dir Student-Resource.\end{texdocclassintro}
+Diese Klasse repräsentiert die Student-Resource.\end{texdocclassintro}
 \begin{texdocclassconstructors}
-\texdocconstructor{public}{StudentResource}{()}{Erstellt eine Student-Resource.}{}
+\texdocconstructor{public}{StudentResource}{()}{Erstellt eine Student-Ressource.}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{void}{deleteStudent}{()}{DELETE-Anfrage:
- Löscht den Student.}{}
+ Löscht den Studenten.}{}
 \texdocmethod{public}{JSONObject}{getInformation}{()}{GET-Anfrage:
- Gibt die Studentinformationen zurück.}{\texdocreturn{die Studentinformationen als JSON Objekt.}
+ Gibt die Studenteninformationen zurück.}{\texdocreturn{die Studenteninformationen als JSON-Objekt.}
 }
 \texdocmethod{public}{JSONObject}{replaceInformation}{(JSONObject jsonStudentInformation)}{PUT-Anfrage:
  Ersetzt Informationen über einen Student und löscht die Verifikationsinformationen.}{\begin{texdocparameters}
-\texdocparameter{jsonStudentInformation}{die Informationen über den Student als JSON Objekt.}
+\texdocparameter{jsonStudentInformation}{die Informationen über den Student als JSON-Objekt.}
 \end{texdocparameters}
-\texdocreturn{Student mit neue Informationen als JSON Objekt.}
+\texdocreturn{Student mit neue Informationen als JSON-Objekt.}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -3490,15 +3446,15 @@ Diese Klasse repräsentiert dir Student-Resource.\end{texdocclassintro}
 \begin{texdocclass}{class}{VerificationResult}
 \label{texdoclet:edu.kit.informatik.studyplan.server.verification.VerificationResult}
 \begin{texdocclassintro}
-Die Klasse VerificationResult ist das Ergebins einer Verifizierung.\end{texdocclassintro}
+Die Klasse VerificationResult ist das Ergebnis einer Verifizierung.\end{texdocclassintro}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{VerificationResult}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
 \texdocmethod{public}{Collection\textless{}ModuleConstraint\textgreater{}}{getViolations}{()}{Gibt die verletzten Modul-Constraints zurück.}{\texdocreturn{die verletzten Modul-Constraints}
 }
-\texdocmethod{public}{boolean}{isCorrect}{()}{is correct prüft anhand von violations, ob der Studienplan erfolgreich verifiziert wurde.}{\texdocreturn{zurückgegeben wird false, falls der Studienplan fehlerhaft ist und true,
- wenn er zu einem erfolreichen Studienabschluss führt.}
+\texdocmethod{public}{boolean}{isCorrect}{()}{isCorrect prüft anhand von violations, ob der Studienplan erfolgreich verifiziert wurde.}{\texdocreturn{zurückgegeben wird false, falls der Studienplan fehlerhaft ist und true,
+ wenn er zu einem erfolgreichen Studienabschluss führt.}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
@@ -3507,14 +3463,14 @@ Die Klasse VerificationResult ist das Ergebins einer Verifizierung.\end{texdoccl
 \begin{texdocclass}{interface}{Verifier}
 \label{texdoclet:edu.kit.informatik.studyplan.server.verification.Verifier}
 \begin{texdocclassintro}
-Das Interface Verifier bietet die allgemeine Sturktur eines Verifizierers.\end{texdocclassintro}
+Das Interface Verifier bietet die allgemeine Struktur eines Verifizierers.\end{texdocclassintro}
 \begin{texdocclassmethods}
 \texdocmethod{public}{VerificationResult}{verify}{(Plan plan)}{Die Methode verify verifiziert einen übergebenen Studienplan. 
- Das heißt sie überprüft an Hand der gegebenen System-Constraints, 
- ob der Plan zu einem erfolreichen Studienabschluss führen kann.}{\begin{texdocparameters}
+ Das heißt, sie überprüft anhand der gegebenen System-Constraints, 
+ ob der Plan zu einem erfolgreichen Studienabschluss führen kann.}{\begin{texdocparameters}
 \texdocparameter{plan}{Ein zu verifizierender Studienplan wird übergeben.}
 \end{texdocparameters}
-\texdocreturn{invalid Ein VerificationResult wird als Ergebnis der Verifizierung zurückgegeben.}
+\texdocreturn{Ein VerificationResult wird als Ergebnis der Verifizierung zurückgegeben.}
 }
 \end{texdocclassmethods}
 \end{texdocclass}
