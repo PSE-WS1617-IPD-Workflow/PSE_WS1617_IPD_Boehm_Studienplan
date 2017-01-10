@@ -7,6 +7,29 @@
 Diese Klasse repräsentiert ein Modul, welches vom Server geladen wird. Das
  Modul wird als Element zunächst nur teilweise geladen. Mittels eines Aufrufs
  von fetch() werden dann gegebenfalls weitere notwendige Daten nachgeladen.\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{String}{category}{Die Kategorie des Moduls}
+	\texdocfield{private}{boolean}{compulsory}{Ob das Modul verpflichtend ist}
+	\texdocfield{private}{int}{creditPoints}{Die Anzahl an Credit Points, die das Modul erbringt}
+	\texdocfield{private}{String}{cycleType}{Ob das Modul im Wintersemester (="WS"), Sommersemester (="SS") oder immer
+		("both") stattfindet}
+	\texdocfield{private}{String}{description}{Die Beschreibung des Moduls.}
+	\texdocfield{private}{String}{discipline}{Das Fach des Moduls}
+	\texdocfield{private}{String}{lecturer}{Der Dozent des Moduls}
+	\texdocfield{private}{ModuleConstraint}{moduleconstraint}{Die zum Modul gehörenden System-Constraints}
+	\texdocfield{private}{String}{moduleId}{Die ID des Moduls}
+	\texdocfield{private}{String}{name}{Der Name des Moduls}
+	\texdocfield{private}{boolean}{passed}{Ob das Modul bereits vom Nutzer bestanden wurde. Dies wird gespeichert,
+		da die Trennung zwischen Modulen im Studienplan und bestandenen Modulen
+		für die Anzeige der Module auf der Client-Seite aufgehoben wird. Dies ist
+		problemlos möglich, da diese Trennung lediglich für Berechnungen
+		interessant sind, welche nicht auf der Client-Seite stattfinden.}
+	\texdocfield{private}{String}{planId}{Die ID des Plans zu der das Modul gehört (da die Präferenzen
+		Planspezifisch sind, wind die Module immer an einen Plan gebunden. Die
+		einzige Ausnahme hiervon sind die Module bei der Auswahl der bereits
+		bestandenen Leistungen. In diesem Fall ist postId = null}
+	\texdocfield{private}{Preference}{preference}{Die vom Nutzer für das Modul gesetzte Präferenz}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Module}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -17,6 +40,9 @@ Diese Klasse repräsentiert ein Modul, welches vom Server geladen wird. Das
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.modules.ModuleCollection}
 \begin{texdocclassintro}
 Eine Sammlung von Modulen, welche vom Server abgerufen werden kann\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Collection\textless{}Module\textgreater{}}{modules}{}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ModuleCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -32,6 +58,12 @@ Eine Sammlung von Modulen, welche vom Server abgerufen werden kann\end{texdoccla
 \begin{texdocclassintro}
 Diese Klasse beschreibt einen zu einem Modul gehörenden System-Constraint
  (erweitert Backbone.Model)\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{int}{modul1Id}{Die ID des ersten Moduls}
+	\texdocfield{private}{int}{modul2Id}{Die ID des zweiten Moduls}
+	\texdocfield{private}{String}{name}{Der Typ des ModuleConstraint. Dieser wird als String angegeben.}
+	\texdocfield{private}{String}{type}{Textuelle Beschreibung des ModuleConstraints für den Nutzer}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ModuleConstraint}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -43,6 +75,12 @@ Diese Klasse beschreibt einen zu einem Modul gehörenden System-Constraint
 \begin{texdocclassintro}
 Diese Klasse beschreibt eine zu einem Modul gehörende gesetzte Präferenz
  (positiv$/$neutral$/$negativ)\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{int}{moduleId}{Die ID des Moduls, zu welcher die Präferenz gehört}
+	\texdocfield{private}{String}{planId}{Die ID des Plans für welche die Präferenz gesetzt wurde.}
+	\texdocfield{private}{int}{value}{Beschreibt die gesetzte Präferenz Einer der drei Werte $\{$"negativ",
+		"positiv", ""$\}$}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Preference}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -72,6 +110,14 @@ Diese Klasse beschreibt eine zu einem Modul gehörende gesetzte Präferenz
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.plans.Plan}
 \begin{texdocclassintro}
 Klasse, welche einen Studienplan beschreibt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{int}{creditPoints}{Die Credit Points des Plans}
+	\texdocfield{private}{String}{name}{Der Name des Plans}
+	\texdocfield{private}{int}{planId}{Die ID des Plans}
+	\texdocfield{private}{SemesterCollection}{semestercollection}{Die Collection, welche die im Studienplan enthaltenen Semester beinhaltet}
+	\texdocfield{private}{String}{verificationState}{Der Verifikationsstatus des Plans}
+	\texdocfield{private}{Collection\textless{}ModuleConstraint\textgreater{}}{violations}{Die bei der Verifizierung festgestellten Fehler im Plan}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Plan}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -91,6 +137,9 @@ Klasse, welche einen Studienplan beschreibt\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.plans.PlanCollection}
 \begin{texdocclassintro}
 Klasse, welche eine Collection von Studienplänen beschreibt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Collection\textless{}Plan\textgreater{}}{plan}{Die Collection der Studienpläne}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{PlanCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -124,6 +173,9 @@ Klasse, welche einen vorgeschlagenen Plan repräsentiert\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.plans.Semester}
 \begin{texdocclassintro}
 Klasse, welcher ein Semester als Collection von Modulen beschreibt.\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{String}{planId}{Die ID des Plans zu welchem das Semester gehört.}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Semester}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -138,6 +190,9 @@ Klasse, welcher ein Semester als Collection von Modulen beschreibt.\end{texdoccl
 \begin{texdocclassintro}
 Eine Collection von Semestern, welche von einem Plan genutzt wird. (Erbt von
  Backbone.Collection)\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Collection\textless{}Semester\textgreater{}}{semester}{Die in der Collection enthaltenen Semester}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{SemesterCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -156,6 +211,10 @@ Eine Collection von Semestern, welche von einem Plan genutzt wird. (Erbt von
 \begin{texdocclassintro}
 Ein Model, welches in einem Cookie gespeichert wird (Erweitert von
  Backbone.Model)\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Object}{sync}{Die Synchronisierungs-Methode, welche das Model-Objekt in einem Cookie
+		speichert}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{CookieModel}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -166,6 +225,10 @@ Ein Model, welches in einem Cookie gespeichert wird (Erweitert von
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.Discipline}
 \begin{texdocclassintro}
 Klasse, welche ein Fach repräsentiert\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{String}{id}{ID des Fachs}
+	\texdocfield{private}{String}{name}{Name des Fachs}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Discipline}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -176,6 +239,9 @@ Klasse, welche ein Fach repräsentiert\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.DisciplineCollection}
 \begin{texdocclassintro}
 Klasse, welche eine Collection von Fächern repräsentiert\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Collection\textless{}Discipline\textgreater{}}{disciplines}{Die Collection der Fächern}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{DisciplineCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -192,6 +258,9 @@ Dieses Singleton wird als Event-Bus zwischen verschiedenen Komponenten der
 
  Ein Beispiel für einen solchen Event wäre die Anzeige eines Moduls in der
  Seitenleiste beim Klick auf das Modul. (Erbt von Backbone.Event)\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private static}{EventBus}{instance}{Die Instanz des Event-Busses}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{private}{EventBus}{()}{}{}
 \end{texdocclassconstructors}
@@ -206,6 +275,15 @@ Dieses Singleton wird als Event-Bus zwischen verschiedenen Komponenten der
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.Filter}
 \begin{texdocclassintro}
 Klasse welcher die Daten zu einem Filter speichert\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Object}{curValue}{Der aktuelle Wert des Filters}
+	\texdocfield{private}{Object}{defaultValue}{Der Standardwert des Filters (Struktur abhängig vom Filter)}
+	\texdocfield{private}{String}{id}{Die ID des Filters}
+	\texdocfield{private}{String}{name}{Name des Filters}
+	\texdocfield{private}{Object}{parameters}{Die den Filter spezifizierenden Eigenschaften}
+	\texdocfield{private}{String}{tooltip}{Ein Tooltip, der den Filter textuell beschreibt}
+	\texdocfield{private}{String}{type}{Typ des Filters ("range", "list", "contains")}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Filter}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -220,6 +298,9 @@ Klasse welcher die Daten zu einem Filter speichert\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.FilterCollection}
 \begin{texdocclassintro}
 Eine Collection von Filtern\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Collection\textless{}Filter\textgreater{}}{filter}{Die Filter der Collection}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{FilterCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -234,6 +315,12 @@ Singleton, welches die sprachlichen Ausgaben des Programms verwaltet. Hierbei
  setLanguage statisch einstellen. Die Nachrichten werden bereits zur
  Compile-Zeit in den Initialisierungscode des Programms geladen und sind
  deshalb von Beginn an verfügbar.\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private static}{String}{FALLBACK\_LANGUAGE}{Die Rückfall-Sprache des LanguageManagers}
+	\texdocfield{private static}{LanguageManager}{instance}{Die Instanz des LanguageManagers}
+	\texdocfield{private static}{String}{language}{Die eingestellte Sprache des LanguageManagers (als Sprachcode)}
+	\texdocfield{private}{Object}{messages}{Ein Objekt, welches die Strings, die das Programm ausgibt enthält}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{private}{LanguageManager}{()}{}{}
 \end{texdocclassconstructors}
@@ -258,6 +345,11 @@ Singleton, welches die sprachlichen Ausgaben des Programms verwaltet. Hierbei
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.Notification}
 \begin{texdocclassintro}
 Klasse, welche eine Benachrichtigung repräsentiert (erweitert Backbone.Model)\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{String}{text}{Der Text der Benachrichtigung}
+	\texdocfield{private}{String}{title}{Titel der Benachrichtigung}
+	\texdocfield{private}{boolean}{wasShown}{Ob die Benachrichtigung bereits angezeigt wurde}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Notification}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -270,6 +362,10 @@ Klasse, welche eine Benachrichtigung repräsentiert (erweitert Backbone.Model)\e
 Singleton-Collection, welche alle Benachrichtigungen enthält \texdocbr{}
 
  (erweitert Backbone.Collection)\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private static}{NotificationCollection}{instance}{Die aktuelle Instanz der NotificationCollection}
+	\texdocfield{private}{Collection\textless{}Notification\textgreater{}}{notification}{Die Collection aller Notifications}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{private}{NotificationCollection}{()}{}{}
 \end{texdocclassconstructors}
@@ -290,6 +386,10 @@ Singleton-Collection, welche alle Benachrichtigungen enthält \texdocbr{}
 Diese Klasse repräsentiert eine Collection, welche als Resource in der
  REST-Schnittstelle gespeichert ist, und bei welcher sich man beim Zugriff
  über OAUTH authentifizieren muss. (Erweitert Backbone.Collection)\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Object}{sync}{Die Synchronisierungs-Methode, welche das Model-Objekt in einem Cookie
+		speichert}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{OAuthCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -302,6 +402,10 @@ Diese Klasse repräsentiert eine Collection, welche als Resource in der
 Diese Klasse repräsentiert ein Model, welches als Resource in der
  REST-Schnittstelle gespeichert ist, und bei welchem man sich beim Zugriff
  über OAUTH authentifizieren muss. (Erweitert Backbone.Model)\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Object}{sync}{Die Synchronisierungs-Methode, welche das Model-Objekt in einem Cookie
+		speichert}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{OAuthModel}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -312,6 +416,10 @@ Diese Klasse repräsentiert ein Model, welches als Resource in der
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.ObjectiveFunction}
 \begin{texdocclassintro}
 Klasse, welche eine Objective Function repräsentiert\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{String}{description}{Beschreibung der Objective Function}
+	\texdocfield{private}{String}{name}{Name der Objective Function}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ObjectiveFunction}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -322,6 +430,9 @@ Klasse, welche eine Objective Function repräsentiert\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.ObjectiveFunctionCollection}
 \begin{texdocclassintro}
 Klasse, welche eine Collection von Objective Functions repräsentiert\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Collection\textless{}ObjectiveFunction\textgreater{}}{objectivefunction}{Die Collection aller ObjectiveFunctions}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ObjectiveFunctionCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -333,6 +444,11 @@ Klasse, welche eine Collection von Objective Functions repräsentiert\end{texdoc
 \begin{texdocclassintro}
 Die Methoden welche im Zusammenhang mit der Generierung eines Studienplans
  abgespeichert und zum Server geschickt werden. (Erweitert Backbone.Model)\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{String}{mainDiscipline}{Das gewählte Vertiefungsfach}
+	\texdocfield{private}{int}{maxEctsPerSemester}{Die maximale Anzahl an ECTS-Punkten pro Semester bei der Generierung}
+	\texdocfield{private}{ObjectiveFunction}{objectiveFunction}{Die ObjectiveFunction, welche zum generieren genutzt werden soll}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ProposalInformation}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -347,6 +463,11 @@ Die Seach-Collection, welche das Lazy-Loading der Module in der Suche
  geladen und in einzelne SearchModuleCollections gespeichert. Beim Abruf
  mittels getModules() werden diese dann in eine einzige Collection
  zusammengeführt.\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{FilterCollection}{filters}{Die Filter, welche beim Abruf zu berücksichtigen sind}
+	\texdocfield{private}{int}{planId}{Die ID des Plans zu welcher die Suche gehört oder null, falls die Suche
+		Plan-Unabhängig ist}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{SearchCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -366,6 +487,10 @@ Die Seach-Collection, welche das Lazy-Loading der Module in der Suche
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.SubjectDiscipline}
 \begin{texdocclassintro}
 Klasse, welche ein Vertiefungsfach repräsentiert\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{String}{id}{ID des Vertiefungsfachs}
+	\texdocfield{private}{String}{name}{Name des Vertiefungsfachs}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{SubjectDiscipline}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -376,6 +501,9 @@ Klasse, welche ein Vertiefungsfach repräsentiert\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.system.SubjectDisciplineCollection}
 \begin{texdocclassintro}
 Klasse, welche eine Collection von Vertiefungsfächern repräsentiert\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Collection\textless{}SubjectDiscipline\textgreater{}}{subjectDisciplines}{Die Collection der Vertiefungsfächer}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{SubjectDisciplineCollection}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -393,6 +521,11 @@ Singleton, welches die Templates für die Views verwaltet. Jedes Template
  Manager vorhanden. Der Vorteil dieses Vorgehens ist, dass man beim Laden der
  einzelnen Views nicht auf eine Antwort vom Server (welche das Template
  enthält) warten muss.\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private static}{TemplateManager}{instance}{Die aktuelle Instanz des TemplateManagers}
+	\texdocfield{private}{Object}{templates}{Das Objekt, welches die Templates enthält, auf welche man mittels des
+		Namens zugreifen kann.}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{private}{TemplateManager}{()}{}{}
 \end{texdocclassconstructors}
@@ -437,6 +570,14 @@ Die Collection aller bestandenen Module, welche zu einem Nutzer gehört\end{texd
 Die Informationen zur aktuellen Session der WebApp, welche in einem Cookie
  gespeichert werden. Diese Informationen werden in einem Singleton
  gespeichert, da es nicht mehr als ein SessionInformation-Objekt geben darf.\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{String}{access\_token}{Das Access Token welches vom Server generiert wurde}
+	\texdocfield{private static}{SessionInformation}{instance}{Die aktuelle Instanz der SessionInformation}
+	\texdocfield{private}{boolean}{loggedIn}{Ob der Nutzer bereits eingeloggt ist}
+	\texdocfield{private}{String}{state}{Ein String, welcher an den Server mitgesendet wird und anschließend
+		abgegelichen wird.}
+	\texdocfield{private}{Student}{student}{Das Objekt, das den Student$/$Nutzer beschreibt}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{private}{SessionInformation}{()}{}{}
 \end{texdocclassconstructors}
@@ -452,6 +593,15 @@ Die Informationen zur aktuellen Session der WebApp, welche in einem Cookie
 \label{texdoclet:edu.kit.informatik.studyplan.client.model.user.Student}
 \begin{texdocclassintro}
 Klasse, welche den Studenten beschreibt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{String}{discipline}{Das Fach des Nutzers}
+	\texdocfield{private}{PassedModuleCollection}{passedModules}{Die Collection der bestandenen Module des Studenten}
+	\texdocfield{private}{String}{studystartCycle}{Ob der Student im Sommer- (SS) oder Wintersemester (WS) angefangen hat zu
+		studieren}
+	\texdocfield{private}{int}{studyStartYear}{Das Jahr in dem der Student angefangen hat zu studieren}
+	\texdocfield{private}{String}{userId}{Die ID des Nutzers}
+	\texdocfield{private}{String}{username}{Der Nutzername}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Student}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -530,10 +680,10 @@ Dieses Objekt kapselt die Methoden zur Synchronisierung mit Server oder
 \texdocconstructor{public}{Sync}{()}{}{}
 \end{texdocclassconstructors}
 \begin{texdocclassmethods}
-\texdocmethod{public}{void}{CookieSync}{(String method, Object model, Object options)}{}{\begin{texdocparameters}
-\texdocparameter{method}{}
-\texdocparameter{model}{}
-\texdocparameter{options}{}
+\texdocmethod{public}{void}{CookieSync}{(String method, Object model, Object options)}{Methode zur Speicherung/zum Abruf von Model Daten aus Cookies}{\begin{texdocparameters}
+\texdocparameter{method}{Die Methode "create", "read", "update" oder "delete"}
+\texdocparameter{model}{Das zu speicherende Model}
+\texdocparameter{options}{Die Optionen, welche bei Backbone.sync verfügbar sind}
 \end{texdocparameters}
 }
 \texdocmethod{public}{void}{OAuthSync}{(String method, Object model, Object options)}{Methode zur synchronisierung mittels OAuth-REST-API}{\begin{texdocparameters}
@@ -557,6 +707,10 @@ Dieses Objekt kapselt die Methoden zur Synchronisierung mit Server oder
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent}
 \begin{texdocclassintro}
 Klasse, welche die Anzeige eine eines Filters kapselt.\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Filter}{filter}{Der Filter, welcher visualisiert wird}
+	\texdocfield{private}{String}{id}{Die ID des Filters}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{FilterComponent}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -575,6 +729,9 @@ Klasse, welche die Anzeige eine eines Filters kapselt.\end{texdocclassintro}
 \begin{texdocclassintro}
 Ein Filter, welcher die Menge der angezeigten Module auf Basis von Filtern
  einschränkt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Collection\textless{}FilterComponent\textgreater{}}{filterComponents}{Die Filterkomponenten, welche auswählbar sind}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ModuleFilter}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -590,6 +747,10 @@ Ein Filter, welcher die Menge der angezeigten Module auf Basis von Filtern
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter}
 \begin{texdocclassintro}
 Filter, welcher durch die Auswahl eines Bereichs aktiviert wird\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{int}{max}{Das Maximum des auswählbaren Bereichs}
+	\texdocfield{private}{int}{min}{Das Minimum des auswählbaren Bereichs}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{RangeFilter}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -603,6 +764,9 @@ Filter, welcher durch die Auswahl eines Bereichs aktiviert wird\end{texdocclassi
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.filter.SelectFilter}
 \begin{texdocclassintro}
 Filter, welcher durch die Auswahl eines Elements aktiviert wird\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Collection\textless{}String\textgreater{}}{options}{Die vorhandenen Optionen des Filters}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{SelectFilter}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -636,6 +800,10 @@ Filter, welcher durch die Eingabe eines Suchtexts aktiviert wird\end{texdocclass
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox}
 \begin{texdocclassintro}
 Diese Klasse repräsentiert eine einzelne Box, welche ein Modul darstellt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{boolean}{isRemovable}{Ob das Modul entfernbar ist}
+	\texdocfield{private}{Module}{module}{Das darzustellende Modul}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ModuleBox}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -656,6 +824,18 @@ Diese Klasse repräsentiert eine einzelne Box, welche ein Modul darstellt\end{te
 Klasse, welche den Modul Finder repräsentiert. Dieser erlaubt es nach Modulen
  zu suchen und diese (wenn es sich um eine Sidebar handelt) in einen Plan zu
  ziehen.\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Method}{isPlaced}{Methode, die prüfen kann, ob Module bereits in den Plan gesetzt sind.
+		Diese wird im Konstruktor übergeben.}
+	\texdocfield{private}{boolean}{isPreferencable}{Ob Module präferenzierbar sind (dies ist nur möglich, wenn sie im Kontext
+		eines Plans geladen sind)}
+	\texdocfield{private}{boolean}{isSidebar}{Ob es sich bei dem Modul Finder um eine Sidebar handelt. In diesem Fall
+		können Module aus dem ModulFilter in den Plan per Drag and Drop gezogen
+		werden.}
+	\texdocfield{private}{SearchCollection}{moduleCollection}{Die Collection der Module, welche geladen sind}
+	\texdocfield{private}{ModuleFilter}{moduleFilter}{Die Filteransicht}
+	\texdocfield{private}{ModuleList}{moduleList}{Die Modulansicht}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ModuleFinder}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -669,6 +849,10 @@ Klasse, welche den Modul Finder repräsentiert. Dieser erlaubt es nach Modulen
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar}
 \begin{texdocclassintro}
 Klasse, welche die Modul-Informations-Sidebar kapselt.\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Module}{module}{Modul, welches angezeigt werden soll}
+	\texdocfield{private}{Collection\textless{}ModuleBox\textgreater{}}{moduleBox}{Die ModuleBoxen, welche als Abhängigkeiten angezeigt werden.}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ModuleInfoSidebar}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -684,6 +868,12 @@ Klasse, welche die Modul-Informations-Sidebar kapselt.\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList}
 \begin{texdocclassintro}
 \end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{boolean}{isPreferencable}{Ob die Module in den Boxen präferenzierbar sind (nur im Zusammenhang mit
+		einem Plan)}
+	\texdocfield{private}{Collection\textless{}ModuleBox\textgreater{}}{moduleBox}{Die Modulboxen in welchen die Module angezeigt werden.}
+	\texdocfield{private}{SearchCollection}{modules}{Die Liste der Module, welche angezeigt werden sollen}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ModuleList}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -694,6 +884,9 @@ Klasse, welche die Modul-Informations-Sidebar kapselt.\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.NotificationBox}
 \begin{texdocclassintro}
 Klasse welche eine Benachrichtigungsbox kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Notification}{notification}{Die anzuzeigende Benachrichtigung}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{NotificationBox}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -709,6 +902,10 @@ Klasse welche eine Benachrichtigungsbox kapselt\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.PassedModulePlan}
 \begin{texdocclassintro}
 Plan der bestandenen Module\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Collection\textless{}Semester\textgreater{}}{semester}{Die Semster, in welche die bestandenen Module geordnet sind.}
+	\texdocfield{private}{Student}{student}{Der Student, der die Module bestanden hat}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{PassedModulePlan}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -719,6 +916,12 @@ Plan der bestandenen Module\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.Plan}
 \begin{texdocclassintro}
 Klasse, welche die Ansicht des Studienplans kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{String}{align}{Die Ausrichtung des Studienplans: Normalerweise links, im Fall des
+		Vergleichs aber auch rechts.}
+	\texdocfield{private}{Plan}{plan}{Das Modell-Objekt des Plans}
+	\texdocfield{private}{Collection\textless{}Semester\textgreater{}}{semester}{Die Semster des Plans}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Plan}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -734,6 +937,9 @@ Klasse, welche die Ansicht des Studienplans kapselt\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar}
 \begin{texdocclassintro}
 Klasse, welche die Kopfzeile des Plans kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Plan}{plan}{Der Plan, welcher angezeigt wird.}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{PlanHeadBar}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -747,6 +953,9 @@ Klasse, welche die Kopfzeile des Plans kapselt\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement}
 \begin{texdocclassintro}
 Klasse welche ein Element einer PlanList kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Plan}{plan}{Der Plan, welcher angezeigt werden soll}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{PlanListElement}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -789,6 +998,14 @@ Kopfzeile welche angezeigt wird, wenn ein regulärer Plan angezeigt wird\end{tex
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uielement.Semester}
 \begin{texdocclassintro}
 Klasse, welche ein Semester innerhalb eines Studienplans kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{String}{align}{Die Ausrichtung des Studienplans: Normalerweise links, im Fall des
+		Vergleichs aber auch rechts.}
+	\texdocfield{private}{boolean}{isRemovable}{Variable, die festsetzt, ob das Semester entfernbar ist}
+	\texdocfield{private}{Collection\textless{}ModuleBox\textgreater{}}{moduleBox}{Die ModulBoxen, welche die Module des Semesters anzeigen}
+	\texdocfield{private}{Semester}{moduleCollection}{Die Module, welche in dem Semester liegen}
+	\texdocfield{private}{int}{number}{Variable, die angibt, das wie vielte Semester dieses ist (von 1 zählend)}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Semester}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -817,6 +1034,10 @@ Klasse, welche ein Semester innerhalb eines Studienplans kapselt\end{texdocclass
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uipanel.ComparisonView}
 \begin{texdocclassintro}
 Anzeige, welche 2 Pläne vergleicht\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Plan}{plan1}{Der linke Plan des Vergleichs}
+	\texdocfield{private}{Plan}{plan2}{Der rechte Plan des Vergleichs}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ComparisonView}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -827,6 +1048,10 @@ Anzeige, welche 2 Pläne vergleicht\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1}
 \begin{texdocclassintro}
 Klasse, welche die erste Seite des Generierungs-Wizards kapselt.\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{ProposalInformation}{information}{Die notwendigen Informationen für die Generierung}
+	\texdocfield{private}{Plan}{plan}{Plan für welchen generiert werden soll}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{GenerationWizardComponent1}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -843,6 +1068,11 @@ Klasse, welche die erste Seite des Generierungs-Wizards kapselt.\end{texdocclass
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent2}
 \begin{texdocclassintro}
 \end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{ProposalInformation}{information}{Die notwendigen Informationen für die Generierung}
+	\texdocfield{private}{ModuleFinder}{moduleFinder}{Der Modul-Finder mit welchem die Module bewertet werden können.}
+	\texdocfield{private}{Plan}{plan}{Plan für welchen generiert werden soll}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{GenerationWizardComponent2}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -859,6 +1089,10 @@ Klasse, welche die erste Seite des Generierungs-Wizards kapselt.\end{texdocclass
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent3}
 \begin{texdocclassintro}
 \end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{ProposalInformation}{information}{Die notwendigen Informationen für die Generierung}
+	\texdocfield{private}{Plan}{plan}{Plan für welchen generiert werden soll}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{GenerationWizardComponent3}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -874,6 +1108,12 @@ Klasse, welche die erste Seite des Generierungs-Wizards kapselt.\end{texdocclass
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uipanel.NotificationCentre}
 \begin{texdocclassintro}
 Klasse, welche die Anzeige von Benachrichtigungen kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Collection\textless{}NotificationBox\textgreater{}}{notificationBox}{Die NotificationBoxes, welche die Benachrichtigungen anzeigen}
+	\texdocfield{private}{NotificationCollection}{notificationCollection}{Wird mittels NotificationCollection.getInstance() geladen.
+		NotificationCentre ist ein Observer der NotificationCollection und zeigt
+		neue Notifications ggf. an.}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{NotificationCentre}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -888,6 +1128,10 @@ Klasse, welche die Anzeige von Benachrichtigungen kapselt\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList}
 \begin{texdocclassintro}
 Klasse, welche eine Liste von Plänen kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{PlanCollection}{planCollection}{Die Pläne, welche angezeigt werden sollen}
+	\texdocfield{private}{Collection\textless{}PlanListElement\textgreater{}}{planListElements}{Die Elemente, welche in der Liste angezeigt werden}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{PlanList}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -919,6 +1163,9 @@ Sidebar, welche angezeigt wird, wenn ein generierter Plan angezeigt wird.\end{te
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1}
 \begin{texdocclassintro}
 Klasse, welche die erste Seite des Registrierungs-Wizards kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{Student}{student}{Der Student, der sich registriert}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{SignUpWizardComponent1}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -934,6 +1181,12 @@ Klasse, welche die erste Seite des Registrierungs-Wizards kapselt\end{texdocclas
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent2}
 \begin{texdocclassintro}
 Klasse, welche die zweite Seite des Registrierungswizards kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{ModuleFinder}{moduleFinder}{Der ModulFinder, welcher genutzt wird, um die Module als bestanden zu
+		markieren.}
+	\texdocfield{private}{PassedModulePlan}{passedModules}{Der Plan der vergangenen Semester mit bestandenen Modulen.}
+	\texdocfield{private}{Student}{student}{Der Student}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{SignUpWizardComponent2}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -974,6 +1227,13 @@ Klasse, welche eine Komponente eines Wizards kapselt. Die Wizards sind nach
 Der MainView kapselt die Benutzeroberfläche, er kann mittels gegebener
  Funktionen mit beliebigem Inhalt in Form von Objekten des Typs Backbone.View
  befüllt werden.\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{BackboneView}{content}{Die View, welche im Content-Bereich angezeigt wird.}
+	\texdocfield{private}{BackboneView}{header}{Die View, welcher im Header angezeigt wird.}
+	\texdocfield{private}{NotificationCentre}{notificationCentre}{Der NotificationCentre, welcher die Anzeige von Benachrichtigungen
+		übernimmt.}
+	\texdocfield{private}{SessionInformation}{sessionInformation}{Die Informationen zur Session}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{MainView}{()}{}{}
 \end{texdocclassconstructors}
@@ -1003,6 +1263,9 @@ Der MainView kapselt die Benutzeroberfläche, er kann mittels gegebener
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.subview.ComparisonPage}
 \begin{texdocclassintro}
 Klasse, welche die Vergleichsseite kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{ComparisonView}{comparisonView}{Das ComparisonView Element, welches angezeigt wird}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ComparisonPage}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -1013,6 +1276,10 @@ Klasse, welche die Vergleichsseite kapselt\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.subview.Header}
 \begin{texdocclassintro}
 Klasse, welche den Header der Seite kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{SessionInformation}{sessionInformation}{Das SessionInformation Objekt, welches zur Anzeige des Headers benötigt
+		wird}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{Header}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -1033,6 +1300,9 @@ Klasse, welche die Login-Seite kapselt\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.subview.MainPage}
 \begin{texdocclassintro}
 Klasse, welche die Hauptseite kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{PlanList}{planList}{Die anzuzeigende Plan Liste}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{MainPage}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -1046,6 +1316,11 @@ Klasse, welche die Hauptseite kapselt\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.subview.PlanEditPage}
 \begin{texdocclassintro}
 Klasse, welche die Plan-Bearbeitungsansicht kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{PlanHeadBar}{headBar}{Kopfzeile die angezeigt wird}
+	\texdocfield{private}{Plan}{plan}{Plan, der angezeigt wird}
+	\texdocfield{private}{BackboneView}{sidebar}{Sidebar, welche angezeigt wird (in der Hauptansicht der ModuleFinder)}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{PlanEditPage}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -1063,6 +1338,10 @@ Klasse, welche die Plan-Bearbeitungsansicht kapselt\end{texdocclassintro}
 \label{texdoclet:edu.kit.informatik.studyplan.client.view.subview.ProfilePage}
 \begin{texdocclassintro}
 Klasse, welche die Profil-Seite kapselt\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{private}{PassedModulePlan}{passedModules}{Ein Plan mit bestandenen Modulen}
+	\texdocfield{private}{ModuleFinder}{sidebar}{Die ModuleFinder sidebar}
+\end{texdocclassfields}
 \begin{texdocclassconstructors}
 \texdocconstructor{public}{ProfilePage}{(Object params)}{}{}
 \end{texdocclassconstructors}
@@ -1087,6 +1366,9 @@ Diese Klasse kapselt die Anzeige von Wizards in einem State-Machine-Pattern.
  WizardPage implementiert Backbone.Event, sodass man sich als Observer der
  WizardPage registrieren kann. Hier kann man auf den "wizardComplete"-Event
  reagieren, welcher bedeutet, dass der Wizard beendet ist.\end{texdocclassintro}
+\begin{texdocclassfields}
+	\texdocfield{public}{WizardComponent}{curView}{Der aktuell angezeigte WizardComponent}
+\end{texdocclassfields}
 \begin{texdocclassfields}
 \texdocfield{public}{WizardComponent}{curView}{Der aktuell angezeigte WizardComponent}
 \end{texdocclassfields}
