@@ -31,11 +31,19 @@
            classpath="${basedir}/build/closure.jar"/>
     
   <target name="compile">
+    <antcall target="run-grunt"></antcall>
+    <antcall target="include-templates"></antcall>
+    <antcall target="closure-compile-js"></antcall>
+  </target>
+  <target name="run-grunt">
+    <exec-node module="grunt">
+        <arg value="default" />
+    </exec-node>
+  </target>
+  <target name="include-templates">
     <!--
     KOMMT DEMNÄCHST DAZU
-    <exec-node module="grunt">
-        <arg value="jst" />
-    </exec-node>
+    
      <concat
          destfile="${basedir}/tmp/jst_comment.js" overwrite="yes">
          <filelist dir="${basedir}/tmp/" files="jst.js"/>
@@ -54,6 +62,8 @@ function TemplateLoader() {
               destfile="${basedir}/tmp/jst_comment.js" append="yes">
 }
 TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</concat>-->
+  </target>
+  <target name="closure-compile-js">
     <jscomp compilationLevel="simple" warning="verbose" 
         debug="false" output="${basedir}/htdocs/js/app.js">
 
@@ -69,8 +79,7 @@ TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</
       <sources dir="${basedir}/js/">
           <file name="test.js"/>
       </sources>
-    </jscomp>
-
+    </jscomp>  
   </target>
 
 </project>

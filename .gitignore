@@ -55,4 +55,14 @@ hs_err_pid*
 .recommenders/
 bin/
 
+#npm
+Implementierung/Client/WebApp/node_modules
+
+#sass
+Implementierung/Client/WebApp/.sass-cache
+*.css.map
+
+#generiert
+Implementierung/Client/WebApp/htdocs/css
+Implementierung/Client/WebApp/htdocs/js
 

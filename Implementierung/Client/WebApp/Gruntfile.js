@@ -20,9 +20,22 @@ module.exports = function (grunt) {
                     'tmp/jst.js': ['templates/*.html']
                 }
             }
-        }
+        },
+        sass: {
+            dist: {
+              files: {
+                'htdocs/css/main.css': 'scss/main.scss'
+              }
+            }
+      }
+
+
     });
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-jst');
-    grunt.registerTask('default', ['jst']);
+    grunt.loadNpmTasks('grunt-contrib-sass');
+
+
+    grunt.registerTask('default',['sass','jst']);
+    grunt.registerTask('jst', []);
 }
