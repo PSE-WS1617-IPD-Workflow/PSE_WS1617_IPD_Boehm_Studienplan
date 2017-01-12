@@ -22,10 +22,9 @@ public class RestDummy {
 	 * @return The Response
 	 */
 	@GET
-	@Path("/{param}")
-	public Response getMsg(@PathParam("param") String msg) {
+	public Response getMsg() {
 
-		String output = "Jersey say : " + msg;
+		String output = "It works!";
 		return Response.status(200).entity(output).build();
 
 	}
