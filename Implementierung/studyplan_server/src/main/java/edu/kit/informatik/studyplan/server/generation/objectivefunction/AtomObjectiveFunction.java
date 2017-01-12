@@ -13,8 +13,8 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  */
 public abstract class AtomObjectiveFunction implements PartialObjectiveFunction {
 
-  /*
-   * {@inheritDoc}
-   */
-  public abstract double evaluate(Plan plan);
+	/*
+	 * {@inheritDoc}
+	 */
+	public abstract double evaluate(Plan plan);
 };

@@ -11,7 +11,8 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 /************************************************************/
 /**
  * Modelliert eine zeitliche Abhängigkeit zwischen zwei Modulen:<br>
- * Die beiden Module können nicht im gleichen Semester belegt werden, da die Veranstaltung zur gleichen Zeit stattfindet.
+ * Die beiden Module können nicht im gleichen Semester belegt werden, da die
+ * Veranstaltung zur gleichen Zeit stattfindet.
  */
 public class OverlappingModuleConstraintType extends ModuleConstraintType {
 

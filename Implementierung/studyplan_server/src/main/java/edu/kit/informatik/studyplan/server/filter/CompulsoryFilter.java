@@ -7,22 +7,24 @@ import java.util.List;
  * Pflicht-, Wahlmodulen oder beidem als Wahlmöglichkeiten.
  */
 public class CompulsoryFilter extends ListFilter {
-    /**
-     * Erzeugt einen neuen Pflicht-/Wahlmodul-Auswahlfilter mit gegebener festgelegter Auswahl.
-     *
-     * @param selection die Nummer des ausgewählten Elements
-     */
-    public CompulsoryFilter(int selection) {
-        super(selection);
-    }
+	/**
+	 * Erzeugt einen neuen Pflicht-/Wahlmodul-Auswahlfilter mit gegebener
+	 * festgelegter Auswahl.
+	 *
+	 * @param selection
+	 *            die Nummer des ausgewählten Elements
+	 */
+	public CompulsoryFilter(int selection) {
+		super(selection);
+	}
 
-    @Override
-    public FilterDescriptor getDescriptor() {
-        return FilterDescriptor.COMPULSORY;
-    }
+	@Override
+	public FilterDescriptor getDescriptor() {
+		return FilterDescriptor.COMPULSORY;
+	}
 
-    @Override
-    public List<String> getItems() {
-        return null;
-    }
+	@Override
+	public List<String> getItems() {
+		return null;
+	}
 }

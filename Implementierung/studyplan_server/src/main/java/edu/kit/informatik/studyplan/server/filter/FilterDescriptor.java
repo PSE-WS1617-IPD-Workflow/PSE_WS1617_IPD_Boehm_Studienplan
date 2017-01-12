@@ -63,21 +63,27 @@ public enum FilterDescriptor {
 
 	/**
 	 * Gibt ein jOOQ-Field-Objekt zurück, das des Filters attributeName kapselt.
-	 * @return  das jOOQ-Field-Objekt
+	 * 
+	 * @return das jOOQ-Field-Objekt
 	 */
 	public Field<Object> toField() {
 		return null;
 	}
 
 	/**
-	 * Liefert eine JSON-Repräsentation des beschriebenen Filters für den Client.
+	 * Liefert eine JSON-Repräsentation des beschriebenen Filters für den
+	 * Client.
+	 * 
 	 * @return eine JSON-Repräsentation des beschriebenen Filters
 	 */
-	public JSONObject toJson() { return null; };
+	public JSONObject toJson() {
+		return null;
+	};
 
 	/**
 	 * Liefert die ID des Filters.
-	 * @return  die ID des Filters
+	 * 
+	 * @return die ID des Filters
 	 */
 	public int id() {
 		return id;
@@ -85,15 +91,18 @@ public enum FilterDescriptor {
 
 	/**
 	 * Liefert ein Default-Objekt des beschriebenen Filtertyps.
-	 * @return  das Default-Objekt
+	 * 
+	 * @return das Default-Objekt
 	 */
 	public AttributeFilter defaultFilter() {
 		return defaultFilter;
 	}
 
 	/**
-	 * Liefert den Namen des Module-Attributs, das durch beschriebenen Filter gefiltert werden soll.
-	 * @return  der Attribut-Name
+	 * Liefert den Namen des Module-Attributs, das durch beschriebenen Filter
+	 * gefiltert werden soll.
+	 * 
+	 * @return der Attribut-Name
 	 */
 	public String attributeName() {
 		return attributeName;
@@ -101,7 +110,8 @@ public enum FilterDescriptor {
 
 	/**
 	 * Liefert den Namen des Filters (für die Benutzeroberfläche).
-	 * @return  den Filternamen
+	 * 
+	 * @return den Filternamen
 	 */
 	public String filterName() {
 		return filterName;
@@ -109,7 +119,8 @@ public enum FilterDescriptor {
 
 	/**
 	 * Liefert den zum Filter gehörenden Tooltip (für die Benutzeroberfläche).
-	 * @return  das Tooltip zum Filter
+	 * 
+	 * @return das Tooltip zum Filter
 	 */
 	public String tooltip() {
 		return tooltip;

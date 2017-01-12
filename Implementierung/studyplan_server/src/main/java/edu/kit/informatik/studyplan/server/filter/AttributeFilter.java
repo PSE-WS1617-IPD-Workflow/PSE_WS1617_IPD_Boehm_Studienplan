@@ -14,13 +14,15 @@ import edu.kit.informatik.studyplan.server.filter.FilterType;
 public interface AttributeFilter extends Filter {
 	/**
 	 * Liefert die zum AttributeFilter gehörende Filterbeschreibung.
-	 * @return  die Filterbeschreibung
+	 * 
+	 * @return die Filterbeschreibung
 	 */
 	public FilterDescriptor getDescriptor();
 
 	/**
 	 * Liefert den Filter-Typ des AttributeFilters.
-	 * @return  der Filter-Typ
+	 * 
+	 * @return der Filter-Typ
 	 */
 	public FilterType getFilterType();
 };

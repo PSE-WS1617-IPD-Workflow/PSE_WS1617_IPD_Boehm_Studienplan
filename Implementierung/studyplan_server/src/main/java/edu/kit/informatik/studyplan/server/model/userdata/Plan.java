@@ -54,8 +54,10 @@ public class Plan {
 	/**
 	 * Gibt für ein übergebenes Modul die Präferenz zurück. <br>
 	 * <code>null</code>, falls keine Präferenz vorhanden
-	 * @return  die Präferenz
-	 * @param module das Modul
+	 * 
+	 * @return die Präferenz
+	 * @param module
+	 *            das Modul
 	 */
 	public PreferenceType getPreferenceForModule(Module module) {
 		return null;
@@ -71,11 +73,12 @@ public class Plan {
 
 	/**
 	 * 
-	 * @param planId die Plan-ID
+	 * @param planId
+	 *            die Plan-ID
 	 */
 	public void setPlanId(String planId) {
 	}
-	
+
 	/**
 	 * 
 	 * @return gibt den eindeutigen Plan-Identifier zurück
@@ -83,10 +86,11 @@ public class Plan {
 	public String getIdentifier() {
 		return identifier;
 	}
-	
+
 	/**
 	 * 
-	 * @param identifier der Plan-Identifier
+	 * @param identifier
+	 *            der Plan-Identifier
 	 */
 	public void setIdentifier(String identifier) {
 		this.identifier = identifier;
@@ -102,14 +106,15 @@ public class Plan {
 
 	/**
 	 * 
-	 * @param name der Name
+	 * @param name
+	 *            der Name
 	 */
 	public void setName(String name) {
 	}
 
 	/**
 	 * 
-	 * @return  gibt den Verifizierungsstatus des Plans zurück
+	 * @return gibt den Verifizierungsstatus des Plans zurück
 	 */
 	public VerificationState getVerificationState() {
 		return state;
@@ -117,7 +122,8 @@ public class Plan {
 
 	/**
 	 * 
-	 * @param verificationState der Verifizierungsstatus 
+	 * @param verificationState
+	 *            der Verifizierungsstatus
 	 */
 	public void setVerificationState(VerificationState verificationState) {
 	}
@@ -132,10 +138,11 @@ public class Plan {
 
 	/**
 	 * 
-	 * @param creditPoints die ECTS-Summe
+	 * @param creditPoints
+	 *            die ECTS-Summe
 	 */
 	public void setCreditPoints(int creditPoints) {
-		
+
 	}
 
 	/**
@@ -148,7 +155,8 @@ public class Plan {
 
 	/**
 	 * 
-	 * @param user der Eigentümer
+	 * @param user
+	 *            der Eigentümer
 	 */
 	public void setUser(User user) {
 	}

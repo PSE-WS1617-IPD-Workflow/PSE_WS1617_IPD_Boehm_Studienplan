@@ -9,8 +9,8 @@ import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
 
 /************************************************************/
 /**
- * Modelliert eine Modulpräferenz. 
- * Eine Modulpräferenz bezeichnet die Bewertung eines Moduls durch einen Nutzer.
+ * Modelliert eine Modulpräferenz. Eine Modulpräferenz bezeichnet die Bewertung
+ * eines Moduls durch einen Nutzer.
  */
 public class ModulePreference {
 	/**
@@ -24,7 +24,7 @@ public class ModulePreference {
 
 	/**
 	 * 
-	 * @return gibt das Modul zurück, zu dem die Präferenz gehört 
+	 * @return gibt das Modul zurück, zu dem die Präferenz gehört
 	 */
 	public Module getModule() {
 		return module;
@@ -32,7 +32,8 @@ public class ModulePreference {
 
 	/**
 	 * 
-	 * @param module das Modul
+	 * @param module
+	 *            das Modul
 	 */
 	public void setModule(Module module) {
 	}
@@ -48,7 +49,8 @@ public class ModulePreference {
 
 	/**
 	 * 
-	 * @param preferenceType der Präferenztyp
+	 * @param preferenceType
+	 *            der Präferenztyp
 	 */
 	public void setPreference(PreferenceType preferenceType) {
 	}

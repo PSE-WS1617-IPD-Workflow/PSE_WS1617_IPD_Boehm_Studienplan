@@ -30,14 +30,16 @@ public class ModuleEntry {
 
 	/**
 	 * 
-	 * @param module das Modul
+	 * @param module
+	 *            das Modul
 	 */
 	public void setModule(Module module) {
 	}
 
 	/**
 	 * 
-	 * @return gibt die Nummer des Semesters zurück, dem der Eintrag zugeordnet wurde
+	 * @return gibt die Nummer des Semesters zurück, dem der Eintrag zugeordnet
+	 *         wurde
 	 */
 	public int getSemester() {
 		return semester;
@@ -45,7 +47,8 @@ public class ModuleEntry {
 
 	/**
 	 * 
-	 * @param semester die Semesternummer
+	 * @param semester
+	 *            die Semesternummer
 	 */
 	public void setSemester(int semester) {
 	}

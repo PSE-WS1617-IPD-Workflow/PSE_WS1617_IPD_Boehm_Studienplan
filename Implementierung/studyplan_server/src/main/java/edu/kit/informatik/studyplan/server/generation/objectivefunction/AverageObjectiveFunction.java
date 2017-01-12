@@ -8,13 +8,14 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
- * Es wird bei der Auswertung der Teilzielfunktionen immer der durchschnitt genomen.
+ * Es wird bei der Auswertung der Teilzielfunktionen immer der durchschnitt
+ * genomen.
  */
 public class AverageObjectiveFunction extends ObjectiveFunction {
- 
-    /*
-     * Nimmt die durchschnittliche Bewertungen der Teilzielfunktionen.
-     */
+
+	/*
+	 * Nimmt die durchschnittliche Bewertungen der Teilzielfunktionen.
+	 */
 	@Override
 	public double evaluate(final Plan plan) {
 		// TODO Auto-generated method stub

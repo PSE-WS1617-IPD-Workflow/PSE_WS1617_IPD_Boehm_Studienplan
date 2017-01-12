@@ -4,11 +4,12 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 
-
 /**
- * Kapselt die für die Filterarchitektur nötigen Module-Attribut-Namen als Stringkonstanten.
- * Diese werden bei der Anwendung der Filter in den ModuleDao-Methoden für die eindeutige
- * Identifzierung von Module-Eigenschaften benutzt.
+ * Kapselt die für die Filterarchitektur nötigen Module-Attribut-Namen als
+ * Stringkonstanten. Diese werden bei der Anwendung der Filter in den
+ * ModuleDao-Methoden für die eindeutige Identifzierung von Module-Eigenschaften
+ * benutzt.
+ * 
  * @see edu.kit.informatik.studyplan.server.filter
  * @see ModuleDao
  */
@@ -18,7 +19,8 @@ public final class ModuleAttributeNames {
 	 */
 	public static final String CREDIT_POINTS = null;
 	/**
-	 * Stringkonstante, die die Kategorie-Eigenschaft eines Moduls repräsentiert.
+	 * Stringkonstante, die die Kategorie-Eigenschaft eines Moduls
+	 * repräsentiert.
 	 */
 	public static final String CATEGORY = null;
 	/**
@@ -30,15 +32,18 @@ public final class ModuleAttributeNames {
 	 */
 	public static final String CYCLE_TYPE = null;
 	/**
-	 * Stringkonstante, die die Fachrichtungs-Eigenschaft eines Moduls repräsentiert.
+	 * Stringkonstante, die die Fachrichtungs-Eigenschaft eines Moduls
+	 * repräsentiert.
 	 */
 	public static final String DISCIPLINE = null;
 	/**
-	 * Stringkonstante, die die Wahl-/Pflicht-Veranstaltungs-Eigenschaft eines Moduls repräsentiert.
+	 * Stringkonstante, die die Wahl-/Pflicht-Veranstaltungs-Eigenschaft eines
+	 * Moduls repräsentiert.
 	 */
 	public static final String IS_COMPULSORY = null;
 	/**
-	 * Stringkonstante, die die Modulnamens-Eigenschaft eines Moduls repräsentiert.
+	 * Stringkonstante, die die Modulnamens-Eigenschaft eines Moduls
+	 * repräsentiert.
 	 */
 	public static final String NAME = null;
 };

@@ -47,7 +47,8 @@ public class RESTClient {
 
 	/**
 	 * 
-	 * @param apiKey die ID des Klienten
+	 * @param apiKey
+	 *            die ID des Klienten
 	 */
 	public void setApiKey(String apiKey) {
 	}
@@ -62,14 +63,16 @@ public class RESTClient {
 
 	/**
 	 * 
-	 * @param apiSecret die Kennung
+	 * @param apiSecret
+	 *            die Kennung
 	 */
 	public void setApiSecret(String apiSecret) {
 	}
 
 	/**
 	 * 
-	 * @return gibt die Domain, von welcher aus der Client auf Ressourcen zugreifen kann als regulären Ausdruck zurück.
+	 * @return gibt die Domain, von welcher aus der Client auf Ressourcen
+	 *         zugreifen kann als regulären Ausdruck zurück.
 	 */
 	public String getOrigin() {
 		return apiKey;
@@ -77,7 +80,8 @@ public class RESTClient {
 
 	/**
 	 * 
-	 * @param der reguläre Ausdruck
+	 * @param der
+	 *            reguläre Ausdruck
 	 */
 	public void setOrigin(String origin) {
 	}
@@ -92,14 +96,16 @@ public class RESTClient {
 
 	/**
 	 * 
-	 * @param redirectUrl die Weiterleitungs-URL
+	 * @param redirectUrl
+	 *            die Weiterleitungs-URL
 	 */
 	public void setRedirectUrl(URL redirectUrl) {
 	}
 
 	/**
 	 * 
-	 * @return gibt eine Liste aller Berechtigungen zurück, die vom Client angefragt werden können
+	 * @return gibt eine Liste aller Berechtigungen zurück, die vom Client
+	 *         angefragt werden können
 	 */
 	public List<AuthorizationScope> getScopes() {
 		return null;

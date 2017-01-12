@@ -14,13 +14,18 @@ import javax.ws.rs.core.Response;
  */
 @Path("/hello")
 public class RestDummy {
-	
+
+	/**
+	 * 
+	 * @param msg
+	 *            Hallo
+	 * @return The Response
+	 */
 	@GET
 	@Path("/{param}")
 	public Response getMsg(@PathParam("param") String msg) {
 
 		String output = "Jersey say : " + msg;
-
 		return Response.status(200).entity(output).build();
 
 	}

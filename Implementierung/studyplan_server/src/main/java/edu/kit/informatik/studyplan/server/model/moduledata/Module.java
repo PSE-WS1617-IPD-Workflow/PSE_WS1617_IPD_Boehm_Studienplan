@@ -65,7 +65,7 @@ public class Module {
 	public int getModuleId() {
 		return moduleId;
 	}
-	
+
 	/**
 	 * 
 	 * @return gibt den eindeutigen Identifier-String zurück
@@ -92,7 +92,7 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  gibt den Turnus des Moduls zurück
+	 * @return gibt den Turnus des Moduls zurück
 	 */
 	public CycleType getCycleType() {
 		return null;
@@ -100,7 +100,7 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  gibt zurück, ob es sich um ein Pflichtmodul handelt
+	 * @return gibt zurück, ob es sich um ein Pflichtmodul handelt
 	 */
 	public boolean isCompulsory() {
 		return false;
@@ -109,10 +109,10 @@ public class Module {
 	/**
 	 * 
 	 * @return gibt den Studiengang, dem das Modul angehört, zurück <br>
-	 * Ein Modul ist immer eindeutig einem Studiengang zugeordnet. Wird ein Modul
-	 * in der Realität für mehrere Studiengänge angeboten, so handelt es sich jeweils
-	 * um unterschiedliche Module, denn in einem anderen Studiengang können Modulabhängigkeiten
-	 * ggf. varieren.
+	 *         Ein Modul ist immer eindeutig einem Studiengang zugeordnet. Wird
+	 *         ein Modul in der Realität für mehrere Studiengänge angeboten, so
+	 *         handelt es sich jeweils um unterschiedliche Module, denn in einem
+	 *         anderen Studiengang können Modulabhängigkeiten ggf. varieren.
 	 */
 	public Discipline getDiscipline() {
 		return null;
@@ -120,7 +120,7 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  gibt die Modul-Beschreibung des Moduls zurück
+	 * @return gibt die Modul-Beschreibung des Moduls zurück
 	 */
 	public ModuleDescription getModuleDescription() {
 		return null;
@@ -128,7 +128,7 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  gibt die Abhängigkeiten des Moduls zu anderen Modulen zurück
+	 * @return gibt die Abhängigkeiten des Moduls zu anderen Modulen zurück
 	 */
 	public List<ModuleConstraint> getConstraints() {
 		return null;
@@ -136,7 +136,7 @@ public class Module {
 
 	/**
 	 * 
-	 * @return  gibt die Kategorien, denen das Modul angehört, zurück
+	 * @return gibt die Kategorien, denen das Modul angehört, zurück
 	 */
 	public List<Category> getCategories() {
 		return null;

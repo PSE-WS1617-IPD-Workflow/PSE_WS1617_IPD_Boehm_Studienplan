@@ -14,21 +14,27 @@ public interface UserDao {
 
 	/**
 	 * Löscht den übergebenen Nutzer aus der Datenbank
-	 * @param user der Nutzer
+	 * 
+	 * @param user
+	 *            der Nutzer
 	 */
 	public void deleteUser(User user);
 
 	/**
 	 * Speichert die Änderungen am übergebenen Nutzer in der Datenbank<br>
 	 * Handelt es sich um einen neuen Nutzer, so wird dieser angelegt.
-	 * @param user der Nutzer
+	 * 
+	 * @param user
+	 *            der Nutzer
 	 */
 	public void updateUser(User user);
 
 	/**
 	 * Sucht nach dem ensprechenden Nutzer in der Datenbank. <br>
 	 * So kann ein Nutzer über die ID oder seinen Nutzernamen gefunden werden.
-	 * @param user der zu suchende Nutzer 
+	 * 
+	 * @param user
+	 *            der zu suchende Nutzer
 	 * @return der gefundene Nutzer
 	 */
 	public User findUser(User user);

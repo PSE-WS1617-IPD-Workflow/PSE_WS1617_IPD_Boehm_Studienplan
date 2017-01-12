@@ -55,16 +55,22 @@ public enum FilterType {
 	};
 
 	/**
-	 * Liefert den Spezifikation-Abschnitt der JSON-Repräsentation des übergebenen Default-Filters.
-	 * @param defaultFilter der Default-Filter
-	 * @return  die Spezifikation des Filters als JSON-Objekt
+	 * Liefert den Spezifikation-Abschnitt der JSON-Repräsentation des
+	 * übergebenen Default-Filters.
+	 * 
+	 * @param defaultFilter
+	 *            der Default-Filter
+	 * @return die Spezifikation des Filters als JSON-Objekt
 	 */
 	public abstract JSONObject toJsonSpecification(AttributeFilter defaultFilter);
 
 	/**
-	 * Liefert eine JSON-Repräsentation der Werte des übergebenen Default-Filters.
-	 * @param defaultFilter das Filter-Objekt mit Default-Werten
-	 * @return  die Werte des Default-Filters
+	 * Liefert eine JSON-Repräsentation der Werte des übergebenen
+	 * Default-Filters.
+	 * 
+	 * @param defaultFilter
+	 *            das Filter-Objekt mit Default-Werten
+	 * @return die Werte des Default-Filters
 	 */
 	public abstract JSONObject defaultJsonValue(AttributeFilter defaultFilter);
 };

@@ -13,10 +13,14 @@ public final class CreditPointsFilter extends RangeFilter {
 	/**
 	 * Erzeugt einen neuen ECTS-Intervall-Filter mit gegebenen Schranken.
 	 *
-	 * @param lower untere Schranke des Filters
-	 * @param upper obere Schranke des Filters
-	 * @param min   minimale untere Schranke des Filters
-	 * @param max   maximale obere Schranke des Filters
+	 * @param lower
+	 *            untere Schranke des Filters
+	 * @param upper
+	 *            obere Schranke des Filters
+	 * @param min
+	 *            minimale untere Schranke des Filters
+	 * @param max
+	 *            maximale obere Schranke des Filters
 	 */
 	public CreditPointsFilter(int lower, int upper, int min, int max) {
 		super(lower, upper, min, max);

@@ -14,7 +14,8 @@ public class PlanDaoFactory {
 
 	/**
 	 * 
-	 * @return liefert das für die verwendete Datenbankschnittstelle benötigte DAO zurück
+	 * @return liefert das für die verwendete Datenbankschnittstelle benötigte
+	 *         DAO zurück
 	 */
 	public static PlanDao getPlanDao() {
 		return null;

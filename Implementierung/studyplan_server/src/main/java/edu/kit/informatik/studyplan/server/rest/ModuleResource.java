@@ -9,42 +9,51 @@ public class ModuleResource {
 	/**
 	 * Erstellt eine Module-Ressource.
 	 */
-	public ModuleResource(){
-		
+	public ModuleResource() {
+
 	}
+
 	/**
-	 * GET Anfrage:
-	 * Gibt eine Liste der JSON-Representationen von Modulen, die dem gegebenen Filter entsprechen, zurück.
-	 * @param jsonFilter die benutzeten Filtern als Get-Parameter. 
-	 * @return eine Liste der JSON-Representationen von Modulen. 
+	 * GET Anfrage: Gibt eine Liste der JSON-Representationen von Modulen, die
+	 * dem gegebenen Filter entsprechen, zurück.
+	 * 
+	 * @param jsonFilter
+	 *            die benutzeten Filtern als Get-Parameter.
+	 * @return eine Liste der JSON-Representationen von Modulen.
 	 */
-	public List<JSONObject> getModules(GetParameters jsonFilter){
+	public List<JSONObject> getModules(GetParameters jsonFilter) {
 		return null;
 	}
 
 	/**
-	 * Get Anfrage:
-	 * Gibt eine JSON-Representation von dem Modul mit der gegebenen ID zurück.
-	 * @param moduleID ID des erforderten Modul.
+	 * Get Anfrage: Gibt eine JSON-Representation von dem Modul mit der
+	 * gegebenen ID zurück.
+	 * 
+	 * @param moduleID
+	 *            ID des erforderten Modul.
 	 * @return eine JSON-Representation von dem Modul.
 	 */
-	public JSONObject getModule(String moduleID){
+	public JSONObject getModule(String moduleID) {
 		return null;
 	}
+
 	/**
-	 * GET Anfrage:
-	 * Gibt eine Liste der JSON-Representationen von allen Fachrichtungen zurück.
-	 * @return eine Liste der JSON-Representationen von allen Fachrichtungen. 
+	 * GET Anfrage: Gibt eine Liste der JSON-Representationen von allen
+	 * Fachrichtungen zurück.
+	 * 
+	 * @return eine Liste der JSON-Representationen von allen Fachrichtungen.
 	 */
-	public List<JSONObject> getAllDisciplines(){
+	public List<JSONObject> getAllDisciplines() {
 		return null;
 	}
+
 	/**
-	 * GET Anfrage:
-	 * Gibt eine Liste der JSON-Representationen von allen Vertiefungsfächer zurück.
-	 * @return eine Liste der JSON-Representationen von allen Vertiefungsfächer. 
+	 * GET Anfrage: Gibt eine Liste der JSON-Representationen von allen
+	 * Vertiefungsfächer zurück.
+	 * 
+	 * @return eine Liste der JSON-Representationen von allen Vertiefungsfächer.
 	 */
-	public List<JSONObject> getAllSubjects(){
+	public List<JSONObject> getAllSubjects() {
 		return null;
 	}
 }

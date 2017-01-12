@@ -20,7 +20,7 @@ public class ModuleType {
 
 	/**
 	 * 
-	 * @return gibt die eindeutige Typ-ID zurück 
+	 * @return gibt die eindeutige Typ-ID zurück
 	 */
 	public int getTypeId() {
 		return typeId;

@@ -13,7 +13,8 @@ public interface Filter {
 
 	/**
 	 * Gibt die Filterbedingung als jOOQ-Condition-Objekt zurück.
-	 * @return  die Filterbedingung
+	 * 
+	 * @return die Filterbedingung
 	 */
 	public Condition getCondition();
 };

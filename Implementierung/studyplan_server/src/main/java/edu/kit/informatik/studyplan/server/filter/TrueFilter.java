@@ -5,17 +5,18 @@ package edu.kit.informatik.studyplan.server.filter;
  * daher konstant wahr ist).
  */
 public class TrueFilter implements Filter {
-    /**
-     * Erzeugt einen neuen TrueFilter.
-     */
-    public TrueFilter() {
-    }
+	/**
+	 * Erzeugt einen neuen TrueFilter.
+	 */
+	public TrueFilter() {
+	}
 
-    /**
-     * Gibt eine konstant wahre Filterbedingung zurück.
-     * @return die Filterbedingung als jOOQ-Condition-Objekt
-     */
-    public Condition getCondition() {
-        return null;
-    }
+	/**
+	 * Gibt eine konstant wahre Filterbedingung zurück.
+	 * 
+	 * @return die Filterbedingung als jOOQ-Condition-Objekt
+	 */
+	public Condition getCondition() {
+		return null;
+	}
 }

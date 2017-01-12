@@ -14,18 +14,20 @@ import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 
 /************************************************************/
 /**
- * Ein konkretes ModulDao, welches die Datenbankverbindung über Hibernate herstellt.
- * Es kann nur auf Module, Kategorien und Vertiefungsfächer 
- * des im Konstruktur angebenen Studiengangs zugreifen
+ * Ein konkretes ModulDao, welches die Datenbankverbindung über Hibernate
+ * herstellt. Es kann nur auf Module, Kategorien und Vertiefungsfächer des im
+ * Konstruktur angebenen Studiengangs zugreifen
  */
 class HibernateModuleDao implements ModuleDao {
-	
+
 	/**
 	 * initialisiert ein neues DAO für den angebenen Studiengang
-	 * @param discipline der Studiengang
+	 * 
+	 * @param discipline
+	 *            der Studiengang
 	 */
 	public HibernateModuleDao(Discipline discipline) {
-		
+
 	}
 
 	public Module getModuleById(String id) {
@@ -62,5 +64,5 @@ class HibernateModuleDao implements ModuleDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 };

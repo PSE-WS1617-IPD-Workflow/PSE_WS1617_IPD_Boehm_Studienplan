@@ -19,31 +19,43 @@ public interface ModuleDao {
 
 	/**
 	 * 
-	 * @param id der String-Identifier des zu suchenden Moduls
-	 * @return das Modul mit dem entsprechenden Identifier, <code>null</code> wenn kein Modul gefunden
+	 * @param id
+	 *            der String-Identifier des zu suchenden Moduls
+	 * @return das Modul mit dem entsprechenden Identifier, <code>null</code>
+	 *         wenn kein Modul gefunden
 	 */
 	public Module getModuleById(String id);
 
 	/**
-	 * Sucht alle Module die den angegebenen Filterkritierien entsprechen und gibt diese zurück
+	 * Sucht alle Module die den angegebenen Filterkritierien entsprechen und
+	 * gibt diese zurück
+	 * 
 	 * @return die Modulliste
-	 * @param filter der Modulfilter
+	 * @param filter
+	 *            der Modulfilter
 	 */
 	public List<Module> getModulesByFilter(Filter filter);
 
 	/**
-	 * Sucht alle Module die den angegebenen Filterkritierien entsprechen und gibt die Einträge Nr.
-	 * <code>start</code> bis <code>end</code> zurück.
+	 * Sucht alle Module die den angegebenen Filterkritierien entsprechen und
+	 * gibt die Einträge Nr. <code>start</code> bis <code>end</code> zurück.
+	 * 
 	 * @return die Modulliste
-	 * @param filter der Modulfilter
-	 * @param start Start-Index
-	 * @param end End-Index
+	 * @param filter
+	 *            der Modulfilter
+	 * @param start
+	 *            Start-Index
+	 * @param end
+	 *            End-Index
 	 */
 	public List<Module> getModulesByFilter(Filter filter, int start, int end);
 
 	/**
-	 * Gibt ein zufälliges Modul, welches den angebenen Filterkriterien entspricht, zurück
-	 * @param filter der Modulfilter
+	 * Gibt ein zufälliges Modul, welches den angebenen Filterkriterien
+	 * entspricht, zurück
+	 * 
+	 * @param filter
+	 *            der Modulfilter
 	 * @return das Modul
 	 */
 	public Module getRandomModuleByFilter(Filter filter);
@@ -59,7 +71,7 @@ public interface ModuleDao {
 	 * @return gibt eine Liste der verfügbaren Kategorien zurück
 	 */
 	public List<Category> getCategories();
-	
+
 	/**
 	 * 
 	 * @return gibt eine Liste der verfügbaren Vertiefungsfächer zurück

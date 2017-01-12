@@ -5,37 +5,45 @@ import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 import edu.kit.informatik.studyplan.server.verification.Verifier;
 
 /**
- * Verwaltet den Zugriff auf das Verifizierungsplug-in, das die Verifizierer-Schnittstelle enthält.
- * Diese Schnittstelle wird von dem VerificationManager adaptiert.
+ * Verwaltet den Zugriff auf das Verifizierungsplug-in, das die
+ * Verifizierer-Schnittstelle enthält. Diese Schnittstelle wird von dem
+ * VerificationManager adaptiert.
  */
 public class VerificationManager {
 	/**
 	 * Erstellt einen VerificationManager.
 	 */
-	public VerificationManager(){
-		
+	public VerificationManager() {
+
 	}
+
 	/**
 	 * Der Verifizierer.
+	 * 
 	 * @see edu.kit.informatik.studyplan.server.verification.Verifier
 	 */
 	public Verifier verifier;
 
 	/**
 	 * Gibt den Verifizierer zurück.
+	 * 
 	 * @return verifier : der Verifizierer
 	 */
 	public Verifier getVerifier() {
 		return verifier;
 	}
+
 	/**
 	 * Diese Methode ruft die verify Methode des
 	 * {@link edu.kit.informatik.studyplan.server.verification.Verifier }.
-	 * @param plan Ein zu verifizierender Studienplan wird übergeben.
-	 * @return invalid Ein VerificationResult wird als Ergebnis der Verifizierung zurückgegeben.
+	 * 
+	 * @param plan
+	 *            Ein zu verifizierender Studienplan wird übergeben.
+	 * @return invalid Ein VerificationResult wird als Ergebnis der
+	 *         Verifizierung zurückgegeben.
 	 */
-	public VerificationResult verify(Plan plan){
+	public VerificationResult verify(Plan plan) {
 		return null;
-		
+
 	}
 }

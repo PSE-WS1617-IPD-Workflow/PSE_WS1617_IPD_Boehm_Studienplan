@@ -17,12 +17,12 @@ public class Category {
 	 * 
 	 */
 	private String name;
-	
+
 	private boolean isSubject;
 
 	/**
 	 * 
-	 * @return  gibt die eindeutige Kategorie-ID zurück
+	 * @return gibt die eindeutige Kategorie-ID zurück
 	 */
 	public int getCategoryId() {
 		return categoryId;
@@ -30,15 +30,16 @@ public class Category {
 
 	/**
 	 * 
-	 * @return  gibt den Namen der Kategorie zurück
+	 * @return gibt den Namen der Kategorie zurück
 	 */
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
 	 * 
-	 * @return gibt zurück ob es sich bei der Kategorie um ein Vertiefungsfach handelt
+	 * @return gibt zurück ob es sich bei der Kategorie um ein Vertiefungsfach
+	 *         handelt
 	 */
 	public boolean isSubject() {
 		return isSubject;

@@ -22,8 +22,10 @@ public class Semester {
 	private int year;
 
 	/**
-	 * Berechnet die Anzahl an Semester, die seit diesem Semester vergangen sind (inkl. aktuelles)
-	 * @return  die Semesterzahl
+	 * Berechnet die Anzahl an Semester, die seit diesem Semester vergangen sind
+	 * (inkl. aktuelles)
+	 * 
+	 * @return die Semesterzahl
 	 */
 	public int getDistanceToCurrentSemester() {
 		return year;
@@ -40,7 +42,8 @@ public class Semester {
 
 	/**
 	 * 
-	 * @param semesterType der Semestertyp
+	 * @param semesterType
+	 *            der Semestertyp
 	 */
 	public void setSemesterType(SemesterType semesterType) {
 	}
@@ -55,7 +58,8 @@ public class Semester {
 
 	/**
 	 * 
-	 * @param year das Jahr in dem das Semester begonnen hat
+	 * @param year
+	 *            das Jahr in dem das Semester begonnen hat
 	 */
 	public void setYear(int year) {
 	}

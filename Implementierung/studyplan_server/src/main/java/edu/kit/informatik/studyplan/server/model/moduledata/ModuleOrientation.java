@@ -10,20 +10,20 @@ package edu.kit.informatik.studyplan.server.model.moduledata;
  * verify(first,second,orientation) Methode von ModuleConstraintType.
  */
 public enum ModuleOrientation {
-    /**
-     * Für ein gegebenes Tupel an Parametern (first,second) für die
-     * verify-Funktion mit gegebenen Constraint-Modulen modul1 und modul2 gilt:
-     * <br>
-     * first:=modul1<br>
-     * second:=modul2
-     */
-    LEFT_TO_RIGHT,
-    /**
-     * Für ein gegebenes Tupel an Parametern (first,second) für die
-     * verify-Funktion mit gegebenen Constraint-Modulen modul1 und modul2 gilt:
-     * <br>
-     * second:=modul1<br>
-     * first:=modul2
-     */
-    RIGHT_TO_LEFT;
+	/**
+	 * Für ein gegebenes Tupel an Parametern (first,second) für die
+	 * verify-Funktion mit gegebenen Constraint-Modulen modul1 und modul2 gilt:
+	 * <br>
+	 * first:=modul1<br>
+	 * second:=modul2
+	 */
+	LEFT_TO_RIGHT,
+	/**
+	 * Für ein gegebenes Tupel an Parametern (first,second) für die
+	 * verify-Funktion mit gegebenen Constraint-Modulen modul1 und modul2 gilt:
+	 * <br>
+	 * second:=modul1<br>
+	 * first:=modul2
+	 */
+	RIGHT_TO_LEFT;
 };

@@ -14,20 +14,27 @@ public interface PlanDao {
 
 	/**
 	 * Sucht einen Plan nach seinem String-Identifier.
+	 * 
 	 * @return den gefundenen Plan oder <code>null</code> falls nichts gefunden
-	 * @param id der Identifier-String
+	 * @param id
+	 *            der Identifier-String
 	 */
 	public Plan getPlanById(String id);
 
 	/**
 	 * Löscht den Plan aus der Datenbank.
-	 * @param plan der Plan
+	 * 
+	 * @param plan
+	 *            der Plan
 	 */
 	public void deletePlan(Plan plan);
 
 	/**
-	 * Speichert alle Änderungen am Plan in der Datenbank, legt ihn an, wenn noch nicht vorhanden.
-	 * @param plan der Plan
+	 * Speichert alle Änderungen am Plan in der Datenbank, legt ihn an, wenn
+	 * noch nicht vorhanden.
+	 * 
+	 * @param plan
+	 *            der Plan
 	 */
 	public void updatePlan(Plan plan);
 };

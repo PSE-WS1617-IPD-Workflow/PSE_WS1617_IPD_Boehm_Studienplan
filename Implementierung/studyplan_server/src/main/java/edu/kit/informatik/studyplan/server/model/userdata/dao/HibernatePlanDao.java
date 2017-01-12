@@ -9,9 +9,10 @@ import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDao;
 
 /************************************************************/
 /**
- * Ein konkretes PlanDao, welches die Datenbankverbindung über Hibernate herstellt.
+ * Ein konkretes PlanDao, welches die Datenbankverbindung über Hibernate
+ * herstellt.
  */
-class HibernatePlanDao implements PlanDao{
+class HibernatePlanDao implements PlanDao {
 
 	public Plan getPlanById(String id) {
 		// TODO Auto-generated method stub
@@ -20,12 +21,12 @@ class HibernatePlanDao implements PlanDao{
 
 	public void deletePlan(Plan plan) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void updatePlan(Plan plan) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 };

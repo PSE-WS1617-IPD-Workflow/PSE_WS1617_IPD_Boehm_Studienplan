@@ -10,43 +10,49 @@ import java.util.Collection;
 
 /************************************************************/
 /**
- * Die Klasse NodeWithOutput erbt von Node und stellt einen 
- * inneren Knoten der Graphenstruktur, also ein Modul, welches Vorraussetzung
- * für andere Module ist, dar. 
+ * Die Klasse NodeWithOutput erbt von Node und stellt einen inneren Knoten der
+ * Graphenstruktur, also ein Modul, welches Vorraussetzung für andere Module
+ * ist, dar.
  */
 public class NodeWithOutput extends Node {
-	
 
 	/**
-	 * Die Liste children vom Typ Node enthält alle Knoten, zu denen der 
-	 * Knoten eine Ausgangskante hat.
+	 * Die Liste children vom Typ Node enthält alle Knoten, zu denen der Knoten
+	 * eine Ausgangskante hat.
 	 */
 	private Collection<Node> children;
-	
+
 	/**
-   * Die Methode getChildren gibt eine Liste mit allen Knoten zurück, 
-   * zu denen der Knoten Ausgangskanten hat.
-   * @return children-moduls 
-   */
-  public Collection<Node> getChildren() {
-    return null;
-  }
-  /**
-   * Die Methode addChild für der Liste children vom Typ Node den übergebenen 
-   * Knoten hinzu, zu der der Knoten eine Ausgangskante hat.
-   * @param node der hinzuzufügende Knoten
-   */
-  public void addChild(Node node){
-    
-  }
-  /**
-   * Die Methode removeChild löscht den 
-   * übergebenen Knoten aus der Liste children vom Typ Node.
-   * Zurückgegeben wird die dann aktuelle Liste Children.
-   * @param node der zu löschende Knoten
-   * @return die jetzt aktuelle Liste children.
-   */
-  public Collection<Node> removeChild(Node node){
-    return null;
-  }
+	 * Die Methode getChildren gibt eine Liste mit allen Knoten zurück, zu denen
+	 * der Knoten Ausgangskanten hat.
+	 * 
+	 * @return children-moduls
+	 */
+	public Collection<Node> getChildren() {
+		return null;
+	}
+
+	/**
+	 * Die Methode addChild für der Liste children vom Typ Node den übergebenen
+	 * Knoten hinzu, zu der der Knoten eine Ausgangskante hat.
+	 * 
+	 * @param node
+	 *            der hinzuzufügende Knoten
+	 */
+	public void addChild(Node node) {
+
+	}
+
+	/**
+	 * Die Methode removeChild löscht den übergebenen Knoten aus der Liste
+	 * children vom Typ Node. Zurückgegeben wird die dann aktuelle Liste
+	 * Children.
+	 * 
+	 * @param node
+	 *            der zu löschende Knoten
+	 * @return die jetzt aktuelle Liste children.
+	 */
+	public Collection<Node> removeChild(Node node) {
+		return null;
+	}
 };

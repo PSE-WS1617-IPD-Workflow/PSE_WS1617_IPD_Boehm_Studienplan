@@ -39,7 +39,7 @@ public class User {
 
 	/**
 	 * 
-	 * @return gibt die eindeutige ID des Nutzers zurück 
+	 * @return gibt die eindeutige ID des Nutzers zurück
 	 */
 	public int getUserId() {
 		return userId;
@@ -47,14 +47,15 @@ public class User {
 
 	/**
 	 * 
-	 * @param userId Wert, auf den die ID gesetzt wird
+	 * @param userId
+	 *            Wert, auf den die ID gesetzt wird
 	 */
 	public void setUserId(int userId) {
 	}
 
 	/**
 	 * 
-	 * @return  gibt den eindeutigen Nutzernamen zurück
+	 * @return gibt den eindeutigen Nutzernamen zurück
 	 */
 	public String getUserName() {
 		return userName;
@@ -62,14 +63,15 @@ public class User {
 
 	/**
 	 * 
-	 * @param userName der Nutzername
+	 * @param userName
+	 *            der Nutzername
 	 */
 	public void setUserName(String userName) {
 	}
 
 	/**
 	 * 
-	 * @return  gibt den Studiengang zurück
+	 * @return gibt den Studiengang zurück
 	 */
 	public Discipline getDiscipline() {
 		return discipline;
@@ -77,7 +79,8 @@ public class User {
 
 	/**
 	 * 
-	 * @param discipline der Studiengang
+	 * @param discipline
+	 *            der Studiengang
 	 */
 	public void setDiscipline(Discipline discipline) {
 	}
@@ -92,7 +95,8 @@ public class User {
 
 	/**
 	 * 
-	 * @param semester das Semester des Studienstarts
+	 * @param semester
+	 *            das Semester des Studienstarts
 	 */
 	public void setStudyStart(Semester semester) {
 	}

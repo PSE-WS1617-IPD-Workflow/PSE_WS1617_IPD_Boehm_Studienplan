@@ -9,22 +9,30 @@ import edu.kit.informatik.studyplan.server.model.userdata.authorization.Authoriz
 
 /************************************************************/
 /**
- * Diese Klasse ermöglicht die Authentifizierung, indem sie Methoden zur Access-Token-Generierung, sowie zur Abfrage von Authentifizierungs-Kontexten bereitstellt.
+ * Diese Klasse ermöglicht die Authentifizierung, indem sie Methoden zur
+ * Access-Token-Generierung, sowie zur Abfrage von Authentifizierungs-Kontexten
+ * bereitstellt.
  */
 public abstract class AbstractSecurityProvider {
 
 	/**
-	 * Erzeugt zu einem Nutzer einen neuen Authentifizierungs-Kontext inklusive Access-Token und speichert diesen in der Datenbank.<br>
+	 * Erzeugt zu einem Nutzer einen neuen Authentifizierungs-Kontext inklusive
+	 * Access-Token und speichert diesen in der Datenbank.<br>
 	 * Die Gültigkeitsdauer wird auf 4 Stunden gesetzt.
-	 * @param user der User
+	 * 
+	 * @param user
+	 *            der User
 	 * @return den generierten Authentifizierungs-Kontext
 	 */
 	public abstract AuthorizationContext generateAuthorizationContext(User user);
 
 	/**
-	 * Liefert zu einem Access-Token den enstprechenden Authentifizierungs-Kontext.<br>
+	 * Liefert zu einem Access-Token den enstprechenden
+	 * Authentifizierungs-Kontext.<br>
 	 * Ist kein Kontext vorhanden, so wird <code>null</code> zurückgegeben.
-	 * @param accessToken der Access-Token
+	 * 
+	 * @param accessToken
+	 *            der Access-Token
 	 * @return der Authentifizierungs-Kontet
 	 */
 	public abstract AuthorizationContext getAuthorizationContext(String accessToken);

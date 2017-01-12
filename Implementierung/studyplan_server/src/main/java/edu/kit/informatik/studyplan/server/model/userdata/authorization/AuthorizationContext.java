@@ -52,7 +52,8 @@ public class AuthorizationContext {
 
 	/**
 	 * 
-	 * @param user der Nutzer
+	 * @param user
+	 *            der Nutzer
 	 */
 	public void setUser(User user) {
 	}
@@ -67,7 +68,8 @@ public class AuthorizationContext {
 
 	/**
 	 * 
-	 * @param accessToken der Access-Token
+	 * @param accessToken
+	 *            der Access-Token
 	 */
 	public void setAccessToken(String accessToken) {
 	}
@@ -82,7 +84,8 @@ public class AuthorizationContext {
 
 	/**
 	 * 
-	 * @param date das Verfallsdatum
+	 * @param date
+	 *            das Verfallsdatum
 	 */
 	public void setExpiryDate(Date date) {
 	}
@@ -97,14 +100,15 @@ public class AuthorizationContext {
 
 	/**
 	 * 
-	 * @param scope die Berechtigung
+	 * @param scope
+	 *            die Berechtigung
 	 */
 	public void setScope(AuthorizationScope scope) {
 	}
 
 	/**
 	 * 
-	 * @return  gibt den Refresh-Token zurück
+	 * @return gibt den Refresh-Token zurück
 	 */
 	public String getRefreshToken() {
 		return refreshToken;
@@ -112,7 +116,8 @@ public class AuthorizationContext {
 
 	/**
 	 * 
-	 * @param refreshToken der Refresh-Token
+	 * @param refreshToken
+	 *            der Refresh-Token
 	 */
 	public void setRefreshToken(String refreshToken) {
 	}
@@ -127,7 +132,8 @@ public class AuthorizationContext {
 
 	/**
 	 * 
-	 * @param client der REST-Client
+	 * @param client
+	 *            der REST-Client
 	 */
 	public void setRestClient(RESTClient client) {
 	}

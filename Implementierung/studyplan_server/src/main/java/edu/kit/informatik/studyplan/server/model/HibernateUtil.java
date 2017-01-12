@@ -8,12 +8,15 @@ import org.hibernate.SessionFactory;
 
 /************************************************************/
 /**
- * Fabrik zur Erzeugung von SessionFactories. Diese sind das Hibernate-Äquivalent zu Datenbankverbindungen.
+ * Fabrik zur Erzeugung von SessionFactories. Diese sind das
+ * Hibernate-Äquivalent zu Datenbankverbindungen.
  */
 class HibernateUtil {
 
 	/**
-	 * Erzeugt die SessionFactory zum Zugriff auf die Modul-Datenbank aus der entsprechenden Konfigurationsdatei
+	 * Erzeugt die SessionFactory zum Zugriff auf die Modul-Datenbank aus der
+	 * entsprechenden Konfigurationsdatei
+	 * 
 	 * @return die SessionFactory
 	 */
 	static SessionFactory getModuleDataSessionFactory() {
@@ -21,7 +24,9 @@ class HibernateUtil {
 	}
 
 	/**
-	 * Erzeugt die SessionFactory zum Zugriff auf die Nutzer-Datenbank aus der entsprechenden Konfigurationsdatei
+	 * Erzeugt die SessionFactory zum Zugriff auf die Nutzer-Datenbank aus der
+	 * entsprechenden Konfigurationsdatei
+	 * 
 	 * @return die SessionFactory
 	 */
 	static SessionFactory getUserDataSessionFactory() {

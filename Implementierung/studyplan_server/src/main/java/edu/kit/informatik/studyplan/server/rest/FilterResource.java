@@ -13,13 +13,13 @@ public class FilterResource {
 	/**
 	 * Erstellt eine Filter-Ressource.
 	 */
-	public FilterResource(){
-		
+	public FilterResource() {
+
 	}
 
 	/**
-	 * GET Anfrage:
-	 * Gibt eine Liste aller vorhandenen Filtern zurück.
+	 * GET Anfrage: Gibt eine Liste aller vorhandenen Filtern zurück.
+	 * 
 	 * @return eine Liste von Filtern.
 	 */
 	public List<JSONObject> getAllFilters() {

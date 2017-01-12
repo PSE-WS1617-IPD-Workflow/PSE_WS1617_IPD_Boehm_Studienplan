@@ -9,9 +9,10 @@ import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDao;
 
 /************************************************************/
 /**
- * Ein konkretes UserDao, welches die Datenbankverbindung über Hibernate herstellt.
+ * Ein konkretes UserDao, welches die Datenbankverbindung über Hibernate
+ * herstellt.
  */
-class HibernateUserDao implements UserDao{
+class HibernateUserDao implements UserDao {
 
 	public void deleteUser(User user) {
 		// TODO Auto-generated method stub
@@ -19,7 +20,7 @@ class HibernateUserDao implements UserDao{
 
 	public void updateUser(User user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public User findUser(User user) {
