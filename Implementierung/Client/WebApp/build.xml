@@ -79,6 +79,9 @@ TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</
       <sources dir="${basedir}/js/">
           <file name="test.js"/>
       </sources>
+        <sources dir="${basedir}/js/edu/kit/informatik/studyplan/client/view">
+        <file name="test.js"/>
+      </sources>
     </jscomp>  
   </target>
 
