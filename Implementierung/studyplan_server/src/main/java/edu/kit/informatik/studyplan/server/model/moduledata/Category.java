@@ -4,20 +4,31 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /************************************************************/
 /**
  * Modelliert eine Modul-Kategorie.
  */
+@Entity
+@Table(name = "category")
 public class Category {
 	/**
 	 * 
 	 */
+	@Id
+	@Column(name = "category_id")
 	private int categoryId;
 	/**
 	 * 
 	 */
+	@Column(name = "name")
 	private String name;
 
+	@Column(name = "is_subject")
 	private boolean isSubject;
 
 	/**

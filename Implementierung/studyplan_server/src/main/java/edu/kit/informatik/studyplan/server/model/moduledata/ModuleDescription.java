@@ -4,26 +4,44 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /************************************************************/
 /**
  * Modelliert eine Modulbeschreibung <br>
  * Eine Modulbeschreibung kann mehreren Modulen zugeordnet sein
  */
+@Entity
+@Table(name = "module_description")
 public class ModuleDescription {
 	/**
 	 * 
 	 */
+	@Id
+	@Column(name = "description_id")
 	private int descriptionId;
 	/**
 	 * 
 	 */
+	@Column(name = "description_text")
 	private String descriptionText;
 	/**
 	 * 
 	 */
+	@Column(name = "lecturer")
 	private String lecturer;
+
+	/**
+	 * 
+	 */
+	@ManyToOne
+	@JoinColumn(name = "type_id")
+	private ModuleType moduleType;
 
 	/**
 	 * 
@@ -54,6 +72,6 @@ public class ModuleDescription {
 	 * @return gibt den Modul-Typ zurück
 	 */
 	public ModuleType getModuleType() {
-		return null;
+		return moduleType;
 	}
 };

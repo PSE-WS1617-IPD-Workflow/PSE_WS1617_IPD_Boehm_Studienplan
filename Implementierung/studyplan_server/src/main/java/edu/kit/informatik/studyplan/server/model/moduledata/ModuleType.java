@@ -4,18 +4,28 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /************************************************************/
 /**
  * Modelliert einen Modultyp, wie beispielsweise Vorlesung, Seminar, etc.
  */
+@Entity
+@Table(name = "module_type")
 public class ModuleType {
 	/**
 	 * 
 	 */
+	@Id
+	@Column(name = "type_id")
 	private int typeId;
 	/**
 	 * 
 	 */
+	@Column(name = "name")
 	private String name;
 
 	/**

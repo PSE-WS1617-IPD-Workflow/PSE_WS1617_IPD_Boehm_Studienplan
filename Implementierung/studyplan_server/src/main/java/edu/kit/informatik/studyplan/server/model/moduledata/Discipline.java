@@ -4,18 +4,28 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /************************************************************/
 /**
  * Modelliert ein Studienfach
  */
+@Entity
+@Table (name = "discipline")
 public class Discipline {
 	/**
 	 * 
 	 */
+	@Id
+	@Column(name = "discipline_id")
 	private int disciplineId;
 	/**
 	 * 
 	 */
+	@Column(name = "description")
 	private String description;
 
 	/**
