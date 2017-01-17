@@ -80,8 +80,50 @@ TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</
           <file name="test.js"/>
       </sources>
         <sources dir="${basedir}/js/edu/kit/informatik/studyplan/client/view">
-        <file name="test.js"/>
+            <file name="Mainview.js"/>            
       </sources>
+        <sources dir="${basedir}/js/edu/kit/informatik/studyplan/client/view/components/filter">
+            <file name="FilterComponent.js"/>
+            <file name="ModuleFilter.js"/>
+            <file name="RangeFilter.js"/>
+            <file name="SelectFilter.js"/>
+            <file name="TextFilter.js"/>
+        </sources>
+        <sources dir="${basedir}/js/edu/kit/informatik/studyplan/client/view/components/uielement">
+            <file name="ModuleBox.js"/>
+            <file name="ModuleFinder.js"/>
+            <file name="ModuleInfoSidebar.js"/>
+            <file name="ModuleList.js"/>
+            <file name="NotificationBox.js"/>
+            <file name="PassedModulePlan.js"/>
+            <file name="Plan.js"/>
+            <file name="PlanHeadBar.js"/>
+            <file name="RegularHeadBar.js"/>
+            <file name="Semester.js"/>
+            <file name="PlanListElement.js"/>
+            <file name="ProposedHeadBar.js"/>
+        </sources>
+        <sources dir="${basedir}/js/edu/kit/informatik/studyplan/client/view/components/uipanel">
+            <file name="ComparisonView.js"/>
+            <file name="GenerationWizardComponent1"/>
+            <file name="GenerationWizardComponent2"/>
+            <file name="GenerationWizardComponent3"/>
+            <file name="NotificationCentre.js"/>
+            <file name="PlanList.js"/>
+            <file name="ProposalSidebar.js"/>
+            <file name="SignUpWizardComponent1.js"/>
+            <file name="SignUpWizardComponent2.js"/>
+            <file name="WizardComponent.js"/>
+        </sources>
+        <sources dir="${basedir}/js/edu/kit/informatik/studyplan/client/view/subview">
+            <file name="ComparisonPage.js"/>
+            <file name="Header.js"/>
+            <file name="LoginPage.js"/>
+            <file name="MainPage.js"/>
+            <file name="PlanEditPage.js"/>
+            <file name="ProfilPage.js"/>
+            <file name="WizardPage.js"/>
+        </sources>
     </jscomp>  
   </target>
 
