@@ -82,6 +82,7 @@ TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</
         <sources dir="${basedir}/js/edu/kit/informatik/studyplan/client/view">
             <file name="Mainview.js"/>            
       </sources>
+<<<<<<< HEAD
         <sources dir="${basedir}/js/edu/kit/informatik/studyplan/client/view/components/filter">
             <file name="FilterComponent.js"/>
             <file name="ModuleFilter.js"/>
@@ -124,12 +125,14 @@ TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</
             <file name="ProfilPage.js"/>
             <file name="WizardPage.js"/>
         </sources>
+=======
       <sources dir="${basedir}/js/edu/kit/informatik/studyplan/client/model/module">
         <file name="Module.js"/>
         <file name="ModuleCollection.js"/>
         <file name="ModuleConstraint.js"/>
         <file name="Preference.js"/>
       </sources>
+>>>>>>> cef9a3c47566dac75b09391424101b3dfbaa3f53
     </jscomp>  
   </target>
 
