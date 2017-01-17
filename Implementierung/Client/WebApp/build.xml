@@ -82,6 +82,12 @@ TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</
         <sources dir="${basedir}/js/edu/kit/informatik/studyplan/client/view">
         <file name="test.js"/>
       </sources>
+      <sources dir="${basedir}/js/edu/kit/informatik/studyplan/client/model/module">
+        <file name="Module.js"/>
+        <file name="ModuleCollection.js"/>
+        <file name="ModuleConstraint.js"/>
+        <file name="Preference.js"/>
+      </sources>
     </jscomp>  
   </target>
 

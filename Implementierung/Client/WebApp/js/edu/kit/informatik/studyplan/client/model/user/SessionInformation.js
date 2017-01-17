@@ -10,7 +10,8 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = edu.kit.info
     */
     getInstance : function () {
         "use strict";
-    }
+    },
+
     /**
     *
     */
