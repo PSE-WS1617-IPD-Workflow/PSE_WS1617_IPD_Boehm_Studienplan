@@ -9,7 +9,7 @@ edu.kit.informatik.studyplan.client.model.plans.PlanCollection = edu.kit.informa
     * @param {number} moduleId
     * @return {boolean}
     */
-    containsModule : function (moduleId) {
+    containsModule : function (moduleId) {git config credential.helper storegit config credential.helper storegit config credential.helper store
         "use strict";
     }
     /**
