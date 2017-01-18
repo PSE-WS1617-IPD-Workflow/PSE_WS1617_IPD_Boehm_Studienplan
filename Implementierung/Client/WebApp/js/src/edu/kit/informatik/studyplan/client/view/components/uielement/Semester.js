@@ -14,7 +14,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         },
     /**
     *@param{Event} event
-    *@param{Objcet} ui
+    *@param{Object} ui
     */
     onDrop:
         function (event, ui) {

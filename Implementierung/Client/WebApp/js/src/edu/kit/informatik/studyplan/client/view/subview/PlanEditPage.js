@@ -6,7 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.subview.PlanEditPage");
 
 edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.PlanEditPage} */{
     /**
-    *@param{Module} module
+    *@param{edu.kit.informatik.studyplan.client.model.module.Module} module
     */
     showModuleDetails:
         function (module) {

@@ -5,8 +5,8 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.Genera
  */
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1 = edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1.prototype}*/{
-    /*
-    *@return{WizardComponent}
+    /**
+    *@return{edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent}
     */
     next:
         function () {

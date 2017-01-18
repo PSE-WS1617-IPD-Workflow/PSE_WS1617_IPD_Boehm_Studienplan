@@ -13,7 +13,7 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
             "use strict";
         },
     /**
-    *@param {Module} module
+    *@param {edu.kit.informatik.studyplan.client.model.module.Module} module
     */
     showModuleDetails:
         function (module) {

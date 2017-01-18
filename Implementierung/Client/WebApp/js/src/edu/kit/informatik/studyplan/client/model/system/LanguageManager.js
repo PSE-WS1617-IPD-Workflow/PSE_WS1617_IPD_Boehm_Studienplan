@@ -1,6 +1,6 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.system.LanguageManager");
 /**
- * Singleton, which contains the Language Manager
+ * Singleton, which contains the Language Manager.
  */
 edu.kit.informatik.studyplan.client.model.system.LanguageManager = (function () {
     "use strict";
@@ -8,33 +8,34 @@ edu.kit.informatik.studyplan.client.model.system.LanguageManager = (function () 
      * @private
      */
     var LANGUAGE_MANAGER_FALLBACK_LANGUAGE = "de";
-    /**
-     * @type {LanguageManagerClass}
+     /**
+     * @type {LanguageManager }
      * @private
      */
     var instance = null;
+    
     /**
      * @constructor
      * @private
      */
     var LanguageManager = function () {
         /**
-         * @type {Object<String,Object<String, String>>}
+         * @type {Object<string,Object<string, string>>}
          */
         this.messages = {};
         /**
-         * @type {String}
+         * @type {string}
          */
         this.language = LANGUAGE_MANAGER_FALLBACK_LANGUAGE;
         /**
-         * @param {String} lang The language key to be set
+         * @param {string} lang The language key to be set
          */
         this.setLanguage = function (lang) {
             this.language = lang;
         };
         /**
-         * @param {String} key The key of the message.
-         * @return {String} The message in the set language, in the fallback language or the key (if the message does not exist)
+         * @param {string} key The key of the message.
+         * @return {string} The message in the set language, in the fallback language or the key (if the message does not exist)
          */
         this.getMessage = function (key) {
             if (typeof this.messages[this.language][key] !== "undefined") {
@@ -46,6 +47,7 @@ edu.kit.informatik.studyplan.client.model.system.LanguageManager = (function () 
             return key;
         };
     };
+    
     return {
         /**
          * @return {LanguageManager} The LanguageManager Object

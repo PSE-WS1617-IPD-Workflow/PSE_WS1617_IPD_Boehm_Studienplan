@@ -1,8 +1,7 @@
 goog.provide("edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent");
 /**
  * @constructor
- * @extends {Backbone.View}
- * @abstract 
+ * @extends {Backbone.View} 
  */
 
 edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent = Backbone.View.extend(
@@ -15,9 +14,6 @@ edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent = Bac
         function () {
             "use strict";
         },
-    /**
-    *@abstract
-    */
     onSelect:
         function () {
             "use strict";

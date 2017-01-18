@@ -122,6 +122,7 @@ Backbone.Model.prototype.omit = _.prototype.omit;
 /**
  * @param {Object} properties
  * @param {Object=} classProperties
+ * @return function(new:Backbone.Model)
  */
 Backbone.Model.prototype.extend = function(properties, classProperties) {};
 
@@ -598,6 +599,13 @@ Backbone.View.prototype.once = Backbone.Events.once;
 Backbone.View.prototype.listenTo = Backbone.Events.listenTo;
 Backbone.View.prototype.listenToOnce = Backbone.Events.listenToOnce;
 Backbone.View.prototype.stopListening = Backbone.Events.stopListening;
+
+/**
+ * @param {Object} properties
+ * @param {Object=} classProperties
+ * @return function(new:Backbone.View)
+ */
+Backbone.View.extend = function(properties, classProperties) {};
 /**
  * @type {function(Object=):string}
  */

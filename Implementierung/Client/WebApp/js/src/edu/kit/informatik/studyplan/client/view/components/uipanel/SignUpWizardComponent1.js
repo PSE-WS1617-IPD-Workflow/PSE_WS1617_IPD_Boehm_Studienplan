@@ -6,7 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.SignUp
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1 = edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1.prototype}*/{
     /**
-    *@return{WizardComponent}
+    *@return{edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent}
     */
     next:
         function () {

@@ -2,13 +2,11 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.Genera
 /**
  * @constructor
  * @extends {Backbone.View}
- * @abstract
  */
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent} */{
     /**
-    *@abstract
-    *@return{WizardComponent}
+    *@return{edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent}
     */
     next:
         function () {
