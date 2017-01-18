@@ -38,11 +38,15 @@ edu.kit.informatik.studyplan.client.model.system.LanguageManager = (function () 
          * @return {string} The message in the set language, in the fallback language or the key (if the message does not exist)
          */
         this.getMessage = function (key) {
-            if (typeof this.messages[this.language][key] !== "undefined") {
-                return this.messages[this.language][key];
+            if (typeof this.messages[this.language] !== "undefined") {
+                if (typeof this.messages[this.language][key] !== "undefined") {
+                    return this.messages[this.language][key];
+                }
             }
-            if (typeof this.messages[LANGUAGE_MANAGER_FALLBACK_LANGUAGE][key] !== "undefined") {
-                return this.messages[LANGUAGE_MANAGER_FALLBACK_LANGUAGE][key];
+            if (typeof this.messages[LANGUAGE_MANAGER_FALLBACK_LANGUAGE] !== "undefined") {
+                if (typeof this.messages[LANGUAGE_MANAGER_FALLBACK_LANGUAGE][key] !== "undefined") {
+                    return this.messages[LANGUAGE_MANAGER_FALLBACK_LANGUAGE][key];
+                }
             }
             return key;
         };
