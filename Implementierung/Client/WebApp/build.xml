@@ -35,9 +35,18 @@
     <antcall target="include-templates"></antcall>
     <antcall target="closure-compile-js"></antcall>
   </target>
+  <target name="test">
+    <antcall target="closure-compile-js"></antcall>
+    <antcall target="run-grunt-test"></antcall>
+  </target>
   <target name="run-grunt">
     <exec-node module="grunt">
         <arg value="default" />
+    </exec-node>
+  </target>
+  <target name="run-grunt-test">
+    <exec-node module="grunt">
+        <arg value="test" />
     </exec-node>
   </target>
   <target name="include-templates">
@@ -79,7 +88,7 @@ TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</
       <sources dir="${basedir}/js/">
           <file name="test.js"/>
       </sources>
-        <sources dir="${basedir}/js/edu/kit/informatik/studyplan/client/view">
+      <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/system">
         <file name="test.js"/>
       </sources>
     </jscomp>  

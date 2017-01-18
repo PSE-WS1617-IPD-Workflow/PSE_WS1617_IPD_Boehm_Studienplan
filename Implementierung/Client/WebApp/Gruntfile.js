@@ -27,6 +27,13 @@ module.exports = function (grunt) {
                 'htdocs/css/main.css': 'scss/main.scss'
               }
             }
+      },
+      karma: {
+          unit: {
+            configFile: 'karma.conf.js',
+            singleRun : true,
+            logLevel: 'ERROR'
+          }
       }
 
 
@@ -34,8 +41,10 @@ module.exports = function (grunt) {
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-jst');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-karma');
 
 
     grunt.registerTask('default',['sass','jst']);
     grunt.registerTask('jst', []);
+    grunt.registerTask('test',['karma']);
 }
