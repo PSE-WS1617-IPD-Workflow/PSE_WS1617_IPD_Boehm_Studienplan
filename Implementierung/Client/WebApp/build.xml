@@ -139,6 +139,9 @@ TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</
         <file name="ModuleConstraint.js"/>
         <file name="Preference.js"/>
       </sources>
+      <sources dir="${basedir}/resources/lang">
+        <file name="de.lang.js"/>  
+      </sources>
     </jscomp> 
       <antcall target="build-require-js-module"></antcall>
   </target>
