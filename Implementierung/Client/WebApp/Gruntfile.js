@@ -31,8 +31,7 @@ module.exports = function (grunt) {
       karma: {
           unit: {
             configFile: 'karma.conf.js',
-            singleRun : true,
-            logLevel: 'ERROR'
+            singleRun : true
           }
       }
 

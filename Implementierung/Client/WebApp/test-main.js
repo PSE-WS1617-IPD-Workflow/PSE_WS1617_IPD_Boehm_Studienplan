@@ -16,9 +16,11 @@ require.config({
   // Karma serves files under /base, which is the basePath from your config file
   baseUrl: '/base',
   paths: {
-      'studyplan' : 'htdocs/js/app.js'
+      'jquery' : '/base/htdocs/lib/jquery',
+      'underscore' : 'htdocs/lib/underscore',
+      'backbone' : 'htdocs/lib/backbone',
+      'studyplan' : 'htdocs/js/app'
   },
-
   // dynamically load all test files
   deps: allTestFiles,
 

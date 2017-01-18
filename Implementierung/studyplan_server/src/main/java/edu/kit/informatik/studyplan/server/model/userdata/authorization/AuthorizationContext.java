@@ -4,7 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.authorization;
 
+import java.security.Principal;
 import java.util.Date;
+
+import javax.ws.rs.core.SecurityContext;
 
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationScope;
@@ -16,7 +19,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClie
  * Er enthält die benötigten Informationen für einen authorisierten Benutzer
  * siehe Kapitel ???
  */
-public class AuthorizationContext {
+public class AuthorizationContext implements SecurityContext {
 	/**
 	 * 
 	 */
@@ -56,6 +59,7 @@ public class AuthorizationContext {
 	 *            der Nutzer
 	 */
 	public void setUser(User user) {
+		this.user = user;
 	}
 
 	/**
@@ -136,5 +140,25 @@ public class AuthorizationContext {
 	 *            der REST-Client
 	 */
 	public void setRestClient(RESTClient client) {
+	}
+
+	@Override
+	public Principal getUserPrincipal() {
+		return user;
+	}
+
+	@Override
+	public boolean isUserInRole(String role) {
+		return role.equals(scope.toString());
+	}
+
+	@Override
+	public boolean isSecure() {
+		return false;
+	}
+
+	@Override
+	public String getAuthenticationScheme() {
+		return BASIC_AUTH;
 	}
 };

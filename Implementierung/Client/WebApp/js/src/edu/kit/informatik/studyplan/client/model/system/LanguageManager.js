@@ -1,16 +1,18 @@
-goog.provide("edu.kit.informatik.studyplan.model.system.LanguageManager");
-
-edu.kit.informatik.studyplan.model.system.LanguageManager = (function () {
+goog.provide("edu.kit.informatik.studyplan.client.model.system.LanguageManager");
+/**
+ * Singleton, which contains the Language Manager
+ */
+edu.kit.informatik.studyplan.client.model.system.LanguageManager = (function () {
     "use strict";
     /**
-     * @define {String}
+     * @private
      */
     var LANGUAGE_MANAGER_FALLBACK_LANGUAGE = "de";
     /**
      * @type {LanguageManagerClass}
      * @private
      */
-    var instance = nul;
+    var instance = null;
     /**
      * @constructor
      * @private
@@ -44,14 +46,15 @@ edu.kit.informatik.studyplan.model.system.LanguageManager = (function () {
             return key;
         };
     };
-    return (function () {
+    return {
         /**
          * @return {LanguageManager} The LanguageManager Object
          */
-        this.getInstance = function () {
+        getInstance : function () {
             if (instance === null) {
                 instance = new LanguageManager();
             }
-        };
-    }());
+            return instance;
+        }
+    };
 }());

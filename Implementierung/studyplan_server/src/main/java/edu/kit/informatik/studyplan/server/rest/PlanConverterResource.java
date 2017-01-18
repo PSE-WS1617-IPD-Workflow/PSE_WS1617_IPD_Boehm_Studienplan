@@ -1,8 +1,16 @@
 package edu.kit.informatik.studyplan.server.rest;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response;
+
 /**
  * Diese Klasse repräsentiert die Plankonverter-Ressource.
  */
+@Path("plans")
 public class PlanConverterResource {
 	/**
 	 * Erstellt eine PlanKonverter-Ressource.
@@ -20,7 +28,12 @@ public class PlanConverterResource {
 	 *            Ein Token, zur Authentifizierung der Klient.
 	 * @return die PDF-Version des Plans.
 	 */
-	public PDF convertplanToPDF(String planID, String accessToken) {
+	@Produces("application/pdf")
+	@GET
+	@Path("/{planId}/pdf")
+	public Response convertPlanToPDF(@PathParam(value = "planId") String planID,
+			@QueryParam("acess_token") String accessToken) {
+		// TODO: implement
 		return null;
 	}
 }

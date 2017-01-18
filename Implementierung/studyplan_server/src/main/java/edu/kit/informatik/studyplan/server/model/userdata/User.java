@@ -4,6 +4,7 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import java.security.Principal;
 import java.util.List;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
@@ -15,7 +16,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.Semester;
 /**
  * Modelliert einen Nutzer.
  */
-public class User {
+public class User implements Principal {
 	/**
 	 * 
 	 */
@@ -67,6 +68,7 @@ public class User {
 	 *            der Nutzername
 	 */
 	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	/**
@@ -115,5 +117,10 @@ public class User {
 	 */
 	public List<Plan> getPlans() {
 		return null;
+	}
+
+	@Override
+	public String getName() {
+		return userName;
 	}
 };
