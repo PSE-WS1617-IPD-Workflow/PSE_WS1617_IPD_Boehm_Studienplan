@@ -31,7 +31,7 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend(/** @le
         this.$el.show();
     },
     /**
-    *@param{function(new:Backbone.View, :Object)} Header
+    *@param{function(new:Backbone.View, Object)} Header
     *@param{Object} options
     */
     setHeader : function (Header, options) {
@@ -43,7 +43,7 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend(/** @le
         this.curHeaderView = new Header(options);
     },
     /**
-    *@param{function(new:Backbone.View, :Object)} Content
+    *@param{function(new:Backbone.View, Object)} Content
     *@param{Object} options
     */
     setContent : function (Content, options) {

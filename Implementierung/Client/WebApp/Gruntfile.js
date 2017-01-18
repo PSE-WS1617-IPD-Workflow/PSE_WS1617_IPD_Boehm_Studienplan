@@ -17,7 +17,7 @@ module.exports = function (grunt) {
                     }
                 }
                 , files: {
-                    'tmp/jst.js': ['templates/*.html']
+                    'tmp/jst.js': ['resources/templates/**/*.html']
                 }
             }
         },
@@ -44,7 +44,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
 
 
-    grunt.registerTask('default',['sass','jst']);
-    grunt.registerTask('jst', []);
+    grunt.registerTask('default',['sass']);
+    grunt.registerTask('jst', ['jst']);
     grunt.registerTask('test',['karma']);
 }

@@ -1,6 +1,6 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.system.LanguageManager");
 /**
- * Singleton, which contains the Language Manager.
+ * Singleton, which contains the Language Manager
  */
 edu.kit.informatik.studyplan.client.model.system.LanguageManager = (function () {
     "use strict";

@@ -32,7 +32,6 @@
     
   <target name="compile">
     <antcall target="run-grunt"></antcall>
-    <antcall target="include-templates"></antcall>
     <antcall target="closure-compile-js"></antcall>
   </target>
   <target name="test">
@@ -50,9 +49,9 @@
     </exec-node>
   </target>
   <target name="include-templates">
-    <!--
-    KOMMT DEMNÄCHST DAZU
-    
+    <!--<exec-node module="grunt">
+        <arg value="jst" />
+    </exec-node>-->
      <concat
          destfile="${basedir}/tmp/jst_comment.js" overwrite="yes">
          <filelist dir="${basedir}/tmp/" files="jst.js"/>
@@ -70,9 +69,10 @@ function TemplateLoader() {
       <concat
               destfile="${basedir}/tmp/jst_comment.js" append="yes">
 }
-TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</concat>-->
+TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance())();</concat>
   </target>
   <target name="closure-compile-js">
+    <antcall target="include-templates"></antcall>
     <jscomp compilationLevel="simple" warning="verbose" 
         debug="false" prettyPrint="true" output="${basedir}/htdocs/js/app-compiled.js">
 
@@ -88,6 +88,7 @@ TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</
       <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/system">
         <file name="LanguageManager.js"/>
         <file name="EventBus.js"/>
+        <file name="TemplateManager.js"/>
         </sources>
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/view">
             <file name="Mainview.js"/>            
@@ -143,6 +144,9 @@ TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</
       <sources dir="${basedir}/resources/lang">
         <file name="de.lang.js"/>  
       </sources>
+      <!--<sources dir="${basedir}/tmp">
+        <file name="jst_comment.js"/>  
+      </sources>-->
     </jscomp> 
       <antcall target="build-require-js-module"></antcall>
   </target>
