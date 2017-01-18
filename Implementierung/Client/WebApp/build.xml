@@ -87,6 +87,7 @@ TemplateLoader.bind(StudyplanApp.Templating.TemplateRegistry.getInstance())();</
       <!-- Hier müssen ALLE Dateien hinzugefügt werden -->
       <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/system">
         <file name="LanguageManager.js"/>
+        <file name="EventBus.js"/>
         </sources>
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/view">
             <file name="Mainview.js"/>            
