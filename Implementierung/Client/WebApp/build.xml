@@ -85,14 +85,9 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
         <file name="underscore.js"/>
       </externs>
       <!-- Hier müssen ALLE Dateien hinzugefügt werden -->
-      <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/system">
-        <file name="LanguageManager.js"/>
-        <file name="EventBus.js"/>
-        <file name="TemplateManager.js"/>
-        </sources>
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/view">
-            <file name="Mainview.js"/>            
-      </sources>
+            <file name="MainView.js"/>            
+        </sources>
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/view/components/filter">
             <file name="FilterComponent.js"/>
             <file name="ModuleFilter.js"/>
@@ -141,6 +136,18 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
         <file name="ModuleConstraint.js"/>
         <file name="Preference.js"/>
       </sources>
+        <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/system">
+        <file name="Discipline.js"/>
+        <file name="DisciplineCollection.js"/>
+        <file name="EventBus.js"/>
+        <file name="Filter.js"/>
+        <file name="FilterCollection.js"/>
+        <file name="LanguageManager.js"/>
+        <file name="Notification.js"/>
+        <file name="NotificationCollection.js"/>
+        <file name="OAuthCollection.js"/>
+        </sources>
+
       <sources dir="${basedir}/resources/lang">
         <file name="de.lang.js"/>  
       </sources>
