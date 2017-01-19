@@ -1,5 +1,6 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.system.OAuthModel");
 /**
+ * test
  * @constructor
  * @extends {Backbone.Model}
  */

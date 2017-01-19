@@ -88,6 +88,7 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/system">
             <file name="OAuthCollection.js"/>
             <file name="OAuthModel.js"/>
+            <file name="CookieModel.js"/>
             <file name="Discipline.js"/>
             <file name="DisciplineCollection.js"/>
             <file name="EventBus.js"/>
@@ -96,9 +97,8 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
             <file name="LanguageManager.js"/>
             <file name="Notification.js"/>
             <file name="NotificationCollection.js"/>
-            <file name="ObjectiveFunctionsCollection.js"/>
+            <file name="ObjectiveFunctionCollection.js"/>
             <file name="ProposalInformation.js"/>
-            <file name="SearchCollection.js"/>
             <file name="SubjectDiscipline.js"/>
             <file name="SubjectDisciplineCollection.js"/>
             <file name="TemplateManager.js"/>
@@ -109,12 +109,15 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
             <file name="ModuleConstraint.js"/>
             <file name="Preference.js"/>
         </sources>
+        <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/system">
+            <file name="SearchCollection.js"/>
+        </sources>
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/plans">
             <file name="Plan.js"/>
             <file name="PlanCollection.js"/>
             <file name="ProposedPlan.js"/>
             <file name="Semester.js"/>
-            <file name="SemesterCollections.js"/>
+            <file name="SemesterCollection.js"/>
         </sources>
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/user">
             <file name="PassedModuleCollection.js"/>
