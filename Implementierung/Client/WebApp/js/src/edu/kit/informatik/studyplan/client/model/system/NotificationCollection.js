@@ -5,8 +5,8 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.NotificationColle
  */
 
 edu.kit.informatik.studyplan.client.model.system.NotificationCollection = Backbone.Collection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.NotificationCollection.prototype}*/{
-    /*
-    * @return {NotificationCollection}
+    /**
+    * @return {edu.kit.informatik.studyplan.client.model.system.NotificationCollection}
     */
     getInstance : function () {
         
