@@ -5,4 +5,8 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.Filter");
  */
 
 edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.Filter.prototype}*/{
+    parse : function (response, options) {
+        "use strict";
+        return response;
+    }
 });
