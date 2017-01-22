@@ -16,12 +16,9 @@ public class ModuleDaoFactory {
 	/**
 	 * 
 	 * @return liefert das für die verwendete Datenbankschnittstelle benötigte
-	 *         DAO zurück <br>
-	 *         Das DAO wird mit dem übergebenen Studiengang initialisiert.
-	 * @param discipline
-	 *            der Studiengang
+	 *         DAO zurück.
 	 */
-	public static ModuleDao getModuleDao(Discipline discipline) {
+	public static ModuleDao getModuleDao() {
 		return null;
 	}
 };

@@ -21,12 +21,9 @@ import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 class HibernateModuleDao implements ModuleDao {
 
 	/**
-	 * initialisiert ein neues DAO für den angebenen Studiengang
-	 * 
-	 * @param discipline
-	 *            der Studiengang
+	 * initialisiert ein neues DAO
 	 */
-	public HibernateModuleDao(Discipline discipline) {
+	public HibernateModuleDao() {
 
 	}
 
@@ -35,17 +32,17 @@ class HibernateModuleDao implements ModuleDao {
 		return null;
 	}
 
-	public List<Module> getModulesByFilter(Filter filter) {
+	public List<Module> getModulesByFilter(Filter filter, Discipline discipline) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<Module> getModulesByFilter(Filter filter, int start, int end) {
+	public List<Module> getModulesByFilter(Filter filter, Discipline discipline, int start, int end) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Module getRandomModuleByFilter(Filter filter) {
+	public Module getRandomModuleByFilter(Filter filter, Discipline discipline) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -55,12 +52,12 @@ class HibernateModuleDao implements ModuleDao {
 		return null;
 	}
 
-	public List<Category> getCategories() {
+	public List<Category> getCategories(Discipline discipline) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<Category> getSubjects() {
+	public List<Category> getFields(Discipline discipline) {
 		// TODO Auto-generated method stub
 		return null;
 	}

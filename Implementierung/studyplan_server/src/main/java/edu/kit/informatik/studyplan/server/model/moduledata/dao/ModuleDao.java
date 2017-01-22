@@ -33,8 +33,9 @@ public interface ModuleDao {
 	 * @return die Modulliste
 	 * @param filter
 	 *            der Modulfilter
+	 * @param discipline der Studiengang, in welchem gefiltert werden soll
 	 */
-	public List<Module> getModulesByFilter(Filter filter);
+	public List<Module> getModulesByFilter(Filter filter, Discipline discipline);
 
 	/**
 	 * Sucht alle Module die den angegebenen Filterkritierien entsprechen und
@@ -43,12 +44,13 @@ public interface ModuleDao {
 	 * @return die Modulliste
 	 * @param filter
 	 *            der Modulfilter
+	 * @param discipline der Studiengang, in welchem gefiltert werden soll
 	 * @param start
 	 *            Start-Index
 	 * @param end
 	 *            End-Index
 	 */
-	public List<Module> getModulesByFilter(Filter filter, int start, int end);
+	public List<Module> getModulesByFilter(Filter filter, Discipline discipline, int start, int end);
 
 	/**
 	 * Gibt ein zufälliges Modul, welches den angebenen Filterkriterien
@@ -56,25 +58,26 @@ public interface ModuleDao {
 	 * 
 	 * @param filter
 	 *            der Modulfilter
+	 * @param discipline der Studiengang, aus welchem das Modul gefischt werden soll
 	 * @return das Modul
 	 */
-	public Module getRandomModuleByFilter(Filter filter);
+	public Module getRandomModuleByFilter(Filter filter, Discipline discipline);
 
 	/**
-	 * 
+	 *
 	 * @return gibt eine Liste der verfügbaren Studiengänge zurück
 	 */
 	public List<Discipline> getDisciplines();
 
 	/**
-	 * 
-	 * @return gibt eine Liste der verfügbaren Kategorien zurück
+	 * @param discipline der die Kategorien enthaltende Studiengang
+	 * @return gibt eine Liste der zum Studiengang gehörenden verfügbaren Kategorien zurück
 	 */
-	public List<Category> getCategories();
+	public List<Category> getCategories(Discipline discipline);
 
 	/**
-	 * 
-	 * @return gibt eine Liste der verfügbaren Vertiefungsfächer zurück
+	 * @param discipline der die Bereiche enthaltende Studiengang
+	 * @return gibt eine Liste der zum Studiengang gehörenden verfügbaren Bereiche zurück
 	 */
-	public List<Category> getSubjects();
+	public List<Category> getFields(Discipline discipline);
 };
