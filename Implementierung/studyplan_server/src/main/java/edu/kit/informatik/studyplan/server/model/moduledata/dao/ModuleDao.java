@@ -33,7 +33,10 @@ public interface ModuleDao {
 	 * @return die Modulliste
 	 * @param filter
 	 *            der Modulfilter
+	 * @param discipline
+	 *            der Studiengang, in welchem gefiltert werden soll
 	 */
+
 	List<Module> getModulesByFilter(Filter filter, Discipline discipline);
 
 	/**
@@ -43,11 +46,14 @@ public interface ModuleDao {
 	 * @return die Modulliste
 	 * @param filter
 	 *            der Modulfilter
+	 * @param discipline
+	 *            der Studiengang, in welchem gefiltert werden soll
 	 * @param start
 	 *            Start-Index
 	 * @param end
 	 *            End-Index
 	 */
+
 	List<Module> getModulesByFilter(Filter filter, Discipline discipline, int start, int end);
 
 	/**
@@ -56,27 +62,34 @@ public interface ModuleDao {
 	 * 
 	 * @param filter
 	 *            der Modulfilter
+	 * @param discipline
+	 *            der Studiengang, aus welchem das Modul gefischt werden soll
 	 * @return das Modul
 	 */
 	Module getRandomModuleByFilter(Filter filter, Discipline discipline);
 
 	/**
-	 * 
+	 *
 	 * @return gibt eine Liste der verfügbaren Studiengänge zurück
 	 */
 	List<Discipline> getDisciplines();
 
 	/**
-	 * 
-	 * @return gibt eine Liste der verfügbaren Kategorien zurück
+	 * @param discipline
+	 *            der die Kategorien enthaltende Studiengang
+	 * @return gibt eine Liste der zum Studiengang gehörenden verfügbaren
+	 *         Kategorien zurück
 	 */
-	List<Category> getCategories();
+
+	List<Category> getCategories(Discipline discipline);
 
 	/**
-	 * 
-	 * @return gibt eine Liste der verfügbaren Vertiefungsfächer zurück
+	 * @param discipline
+	 *            der die Bereiche enthaltende Studiengang
+	 * @return gibt eine Liste der zum Studiengang gehörenden verfügbaren
+	 *         Bereiche zurück
 	 */
-	List<Category> getSubjects();
+	List<Category> getSubjects(Discipline discipline);
 
 	/**
 	 * 
@@ -86,4 +99,6 @@ public interface ModuleDao {
 	 *         <code>null</code>
 	 */
 	Discipline getDisciplineById(int disciplineId);
+
+	List<Category> getFields(Discipline discipline);
 };

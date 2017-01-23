@@ -16,7 +16,7 @@ public class ModuleDaoFactory {
 	 *         DAO zurück <br>
 	 *         Das DAO wird mit dem übergebenen Studiengang initialisiert.
 	 */
-	public ModuleDao getModuleDao() {
+	public static ModuleDao getModuleDao() {
 		return new HibernateModuleDao();
 	}
 };

@@ -50,19 +50,25 @@ class HibernateModuleDao implements ModuleDao {
 	}
 
 	@Override
-	public List<Category> getCategories() {
+	public List<Category> getCategories(Discipline discipline) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Category> getSubjects() {
+	public List<Category> getSubjects(Discipline discipline) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Discipline getDisciplineById(int disciplineId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Category> getFields(Discipline discipline) {
 		// TODO Auto-generated method stub
 		return null;
 	}

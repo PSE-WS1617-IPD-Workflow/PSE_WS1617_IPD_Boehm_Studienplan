@@ -122,7 +122,6 @@ Backbone.Model.prototype.omit = _.prototype.omit;
 /**
  * @param {Object} properties
  * @param {Object=} classProperties
- * @return function(new:Backbone.Model)
  */
 Backbone.Model.prototype.extend = function(properties, classProperties) {};
 
