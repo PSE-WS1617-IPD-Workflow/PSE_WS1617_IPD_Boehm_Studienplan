@@ -10,13 +10,6 @@ import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
 public class PlanModulesResource {
 
 	/**
-	 * Erstellt eine Planmodule-Ressource.
-	 */
-	public PlanModulesResource() {
-
-	}
-
-	/**
 	 * GET Anfrage: Gibt die Liste der JSON-Representationen von Modulen, die :
 	 * -in dem Plan mit der gegebenen ID sind und -den gegebenen Filtern
 	 * entsprechen, zurück.
@@ -97,7 +90,7 @@ public class PlanModulesResource {
 	 *            Anfrage als eine mehrwertige Zuordnung von Strings.
 	 * @return den angefragten Filter.
 	 */
-	public Filter getFilterFromRequest(MultivaluedMap<String, String> params) {
+	public static Filter getFilterFromRequest(MultivaluedMap<String, String> params) {
 		return null;
 
 	}
