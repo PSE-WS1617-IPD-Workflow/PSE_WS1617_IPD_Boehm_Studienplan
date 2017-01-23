@@ -9,6 +9,7 @@ import java.util.List;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 
 /************************************************************/
@@ -74,7 +75,17 @@ public interface ModuleDao {
 	 */
 	List<Discipline> getDisciplines();
 
-	/**
+    /**
+     *
+     * @param disciplineId
+     *            the unique ID of a discipline
+     * @return returns the discipline with the specific ID, if not found
+     *         <code>null</code>
+     */
+    Discipline getDisciplineById(int disciplineId);
+
+
+    /**
 	 * @param discipline
 	 *            der die Kategorien enthaltende Studiengang
 	 * @return gibt eine Liste der zum Studiengang gehörenden verfügbaren
@@ -84,21 +95,40 @@ public interface ModuleDao {
 	List<Category> getCategories(Discipline discipline);
 
 	/**
+	 * TODO maybe rewrite/override using SQL & DB if necessary
+	 *  @return the discipline's category with given ID or null if not found
+	 *
+	 */
+	public default Category getCategoryById(Discipline discipline, int id) {
+		return getCategories(discipline).stream()
+				.filter(category -> category.getCategoryId() == id)
+				.findFirst().orElse(null);
+	}
+
+    /**
+     * @param discipline
+     *            der die Bereiche enthaltende Studiengang
+     * @return gibt eine Liste der zum Studiengang gehörenden verfügbaren
+     *         Bereiche zurück
+     */
+    List<Category> getSubjects(Discipline discipline); //TODO delete?
+
+	/**
 	 * @param discipline
 	 *            der die Bereiche enthaltende Studiengang
 	 * @return gibt eine Liste der zum Studiengang gehörenden verfügbaren
 	 *         Bereiche zurück
 	 */
-	List<Category> getSubjects(Discipline discipline);
+	List<Field> getFields(Discipline discipline);
 
-	/**
-	 * 
-	 * @param disciplineId
-	 *            the unique ID of a discipline
-	 * @return returns the discipline with the specific ID, if not found
-	 *         <code>null</code>
-	 */
-	Discipline getDisciplineById(int disciplineId);
-
-	List<Category> getFields(Discipline discipline);
+    /**
+     * TODO maybe rewrite/override using SQL & DB if necessary
+     *  @return the discipline's field with given ID or null if not found
+     *
+     */
+    public default Field getFieldById(Discipline discipline, int id) {
+        return getFields(discipline).stream()
+                .filter(field -> field.getFieldId() == id)
+                .findFirst().orElse(null);
+    }
 };
