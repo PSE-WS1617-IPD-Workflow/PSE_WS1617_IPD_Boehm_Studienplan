@@ -4,6 +4,7 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -26,38 +28,41 @@ import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleCon
  * Modelliert ein Modul
  */
 @Entity
-@Table (name = "module")
+@Table(name = "module")
 public class Module {
 	/**
 	 * 
 	 */
 	@Transient
-	private List<ModuleConstraint> moduleConstraints;
+	private List<ModuleConstraint> moduleConstraints = new LinkedList<ModuleConstraint>();
+
+	@OneToMany(mappedBy = "secondModule")
+	private List<ModuleConstraint> toConstraints = new LinkedList<ModuleConstraint>();
+
+	@OneToMany(mappedBy = "firstModule")
+	private List<ModuleConstraint> fromConstraints = new LinkedList<ModuleConstraint>();
 	/**
 	 * 
 	 */
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "module_category_assignment",
-	joinColumns = 
-		@JoinColumn(name = "module_id"),
-	inverseJoinColumns =
-		@JoinColumn(name = "category_id"))
+	@JoinTable(name = "module_category_assignment", joinColumns = @JoinColumn(name = "module_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private List<Category> categories;
 	/**
 	 * 
 	 */
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "description_id")
 	private ModuleDescription moduleDescription;
 	/**
 	 * 
 	 */
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "discipline_id")
 	private Discipline discipline;
 	/**
 	 * 
 	 */
+
 	@Id
 	@Column(name = "module_id")
 	private int moduleId;
@@ -74,19 +79,23 @@ public class Module {
 	/**
 	 * 
 	 */
-	@Column (name = "credit_points")
+	@Column(name = "credit_points")
 	private double creditPoints;
 	/**
 	 * 
 	 */
-	@Column (name = "cycle_type")
+	@Column(name = "cycle_type")
 	@Enumerated(EnumType.STRING)
 	private CycleType cycleType;
 	/**
 	 * 
 	 */
-	@Column (name = "is_compulsory")
+	@Column(name = "is_compulsory")
 	private boolean compulsory;
+
+	@ManyToOne
+	@JoinColumn(name = "field_id")
+	private Field field;
 
 	/**
 	 * 
@@ -161,6 +170,8 @@ public class Module {
 	 * @return gibt die Abhängigkeiten des Moduls zu anderen Modulen zurück
 	 */
 	public List<ModuleConstraint> getConstraints() {
+		moduleConstraints.addAll(fromConstraints);
+		moduleConstraints.addAll(toConstraints);
 		return moduleConstraints;
 	}
 

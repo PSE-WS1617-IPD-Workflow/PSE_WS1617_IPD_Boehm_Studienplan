@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost/studyplan_moduledata</property>
+        <property name="connection.username">NiklasUhl</property>
+        <property name="connection.password"></property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- Use the C3P0 connection pool. -->  
+        <property name="c3p0.min_size">3</property>  
+        <property name="c3p0.max_size">5</property>  
+        <property name="c3p0.timeout">1800</property>  
+      
+        <!-- Disable second-level cache. -->  
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>  
+        <property name="cache.use_query_cache">false</property>  
+        <property name="cache.use_minimal_puts">false</property>  
+        <property name="max_fetch_depth">3</property>
+        
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        
+        <mapping class="edu.kit.informatik.studyplan.server.model.moduledata.Module"/>
+        <mapping class="edu.kit.informatik.studyplan.server.model.moduledata.ModuleDescription"/>
+		<mapping class="edu.kit.informatik.studyplan.server.model.moduledata.ModuleType"/>
+		<mapping class="edu.kit.informatik.studyplan.server.model.moduledata.Discipline"/>
+		<mapping class="edu.kit.informatik.studyplan.server.model.moduledata.Category"/>
+		<mapping class="edu.kit.informatik.studyplan.server.model.moduledata.Field"/>
+		<mapping class="edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup"/>
+		<mapping class="edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint"/>
+		<mapping class="edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraintType"/>
+		<mapping class="edu.kit.informatik.studyplan.server.model.moduledata.constraint.OverlappingModuleConstraintType"/>
+		<mapping class="edu.kit.informatik.studyplan.server.model.moduledata.constraint.PlanLinkModuleConstraintType"/>
+		<mapping class="edu.kit.informatik.studyplan.server.model.moduledata.constraint.PrerequisiteModuleConstraintType"/>
+		<mapping class="edu.kit.informatik.studyplan.server.model.moduledata.constraint.SemesterLinkModuleConstraintType"/>
+		
+    </session-factory>
+
+</hibernate-configuration>

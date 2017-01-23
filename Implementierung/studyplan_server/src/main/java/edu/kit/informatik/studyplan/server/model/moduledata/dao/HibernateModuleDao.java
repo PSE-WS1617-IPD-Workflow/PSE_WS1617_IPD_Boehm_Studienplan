@@ -10,7 +10,6 @@ import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 
 /************************************************************/
 /**
@@ -20,47 +19,50 @@ import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
  */
 class HibernateModuleDao implements ModuleDao {
 
-	/**
-	 * initialisiert ein neues DAO für den angebenen Studiengang
-	 * 
-	 * @param discipline
-	 *            der Studiengang
-	 */
-	public HibernateModuleDao(Discipline discipline) {
-
-	}
-
+	@Override
 	public Module getModuleById(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<Module> getModulesByFilter(Filter filter) {
+	@Override
+	public List<Module> getModulesByFilter(Filter filter, Discipline discipline) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<Module> getModulesByFilter(Filter filter, int start, int end) {
+	@Override
+	public List<Module> getModulesByFilter(Filter filter, Discipline discipline, int start, int end) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Module getRandomModuleByFilter(Filter filter) {
+	@Override
+	public Module getRandomModuleByFilter(Filter filter, Discipline discipline) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public List<Discipline> getDisciplines() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public List<Category> getCategories() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public List<Category> getSubjects() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Discipline getDisciplineById(int disciplineId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -4,6 +4,9 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.ModuleOrientation;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
@@ -12,8 +15,11 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
  * Modelliert eine Zusammenhangsabhängigkeit zwischen Modulen: <br>
  * Es müssen immer beide Module im Plan enthalten sein.
  */
+@Entity
+@DiscriminatorValue(value = "plan_link")
 public class PlanLinkModuleConstraintType extends ModuleConstraintType {
 
+	@Override
 	public boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation) {
 		return false;
 	}

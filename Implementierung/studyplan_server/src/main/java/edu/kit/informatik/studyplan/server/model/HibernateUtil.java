@@ -5,51 +5,40 @@
 package edu.kit.informatik.studyplan.server.model;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-
-import edu.kit.informatik.studyplan.server.model.moduledata.Category;
-import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.moduledata.ModuleDescription;
-import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
 
 /************************************************************/
 /**
  * Fabrik zur Erzeugung von SessionFactories. Diese sind das
  * Hibernate-Äquivalent zu Datenbankverbindungen.
  */
-final class HibernateUtil {
-	
+public final class HibernateUtil {
+
 	private static SessionFactory moduleDataSessionFactory;
-	
-	private HibernateUtil() { }
-	
-	
+
+	private static SessionFactory userDataSessionFactory;
+
+	private HibernateUtil() {
+	}
+
 	/**
 	 * Erzeugt die SessionFactory zum Zugriff auf die Modul-Datenbank aus der
 	 * entsprechenden Konfigurationsdatei
 	 * 
 	 * @return die SessionFactory
 	 */
-	static SessionFactory getModuleDataSessionFactory() {		
+	public static SessionFactory getModuleDataSessionFactory() {
 		if (moduleDataSessionFactory == null) {
-			 // loads configuration and mappings
-            Configuration configuration = new Configuration().configure();
-            configuration.addAnnotatedClass(Discipline.class);
-            configuration.addAnnotatedClass(Module.class);
-            configuration.addAnnotatedClass(ModuleDescription.class);
-            configuration.addAnnotatedClass(ModuleType.class);
-            configuration.addAnnotatedClass(Category.class);
-            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                    .applySettings(configuration.getProperties()).build();     
-            // builds a session factory from the service registry
-            moduleDataSessionFactory = configuration.buildSessionFactory(serviceRegistry); 
-        }
-         
-        return moduleDataSessionFactory;
+			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
+					.configure("moduledata.cfg.xml").build();
+			Metadata metadata = new MetadataSources(standardRegistry).buildMetadata();
+			moduleDataSessionFactory = metadata.buildSessionFactory();
+		}
+
+		return moduleDataSessionFactory;
 	}
 
 	/**
@@ -58,8 +47,15 @@ final class HibernateUtil {
 	 * 
 	 * @return die SessionFactory
 	 */
-	static SessionFactory getUserDataSessionFactory() {
-		return null;
+	public static SessionFactory getUserDataSessionFactory() {
+		if (userDataSessionFactory == null) {
+			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
+					.configure("userdata.cfg.xml").build();
+			Metadata metadata = new MetadataSources(standardRegistry).buildMetadata();
+			userDataSessionFactory = metadata.buildSessionFactory();
+		}
+
+		return userDataSessionFactory;
 	}
-	
+
 };

@@ -4,8 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.ModuleOrientation;
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraintType;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
 /************************************************************/
@@ -14,8 +16,11 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
  * Die beiden Module können nicht im gleichen Semester belegt werden, da die
  * Veranstaltung zur gleichen Zeit stattfindet.
  */
+@Entity
+@DiscriminatorValue(value = "overlapping")
 public class OverlappingModuleConstraintType extends ModuleConstraintType {
 
+	@Override
 	public boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation) {
 		return false;
 	}

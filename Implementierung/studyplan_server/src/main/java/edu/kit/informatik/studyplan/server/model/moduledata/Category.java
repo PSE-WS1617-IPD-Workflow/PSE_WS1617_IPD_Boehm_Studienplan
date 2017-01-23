@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 /************************************************************/
 /**
- * Modelliert eine Modul-Kategorie.
+ * Class modelling a module category.
  */
 @Entity
 @Table(name = "category")
@@ -40,11 +40,27 @@ public class Category {
 	}
 
 	/**
+	 * @param categoryId
+	 *            the categoryId to set
+	 */
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	/**
 	 * 
 	 * @return gibt den Namen der Kategorie zurück
 	 */
 	public String getName() {
 		return name;
+	}
+
+	/**
+	 * @param name
+	 *            the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -54,5 +70,13 @@ public class Category {
 	 */
 	public boolean isSubject() {
 		return isSubject;
+	}
+
+	/**
+	 * @param isSubject
+	 *            the isSubject to set
+	 */
+	public void setSubject(boolean isSubject) {
+		this.isSubject = isSubject;
 	}
 };

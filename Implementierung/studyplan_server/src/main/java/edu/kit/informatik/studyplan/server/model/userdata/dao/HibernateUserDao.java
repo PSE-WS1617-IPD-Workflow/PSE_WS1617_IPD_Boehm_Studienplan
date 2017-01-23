@@ -4,8 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
+import org.hibernate.Session;
+
+import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDao;
 
 /************************************************************/
 /**
@@ -24,7 +26,8 @@ class HibernateUserDao implements UserDao {
 	}
 
 	public User findUser(User user) {
-		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
+		session.beginTransaction();
 		return null;
 	}
 

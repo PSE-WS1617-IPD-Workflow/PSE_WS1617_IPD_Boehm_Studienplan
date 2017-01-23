@@ -4,20 +4,38 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 
 /************************************************************/
 /**
  * Modelliert einen Moduleintrag in einem Studienplan
  */
+@Entity
+@Table(name = "module_entry")
 public class ModuleEntry {
 	/**
 	 * 
 	 */
+	@Id
+	@Column(name = "entry_id")
+	private int id;
+
+	@Column(name = "moduleId")
+	private String moduleId;
+
+	@Transient
 	private Module module;
 	/**
 	 * 
 	 */
+	@Column(name = "semester")
 	private int semester;
 
 	/**
@@ -25,6 +43,9 @@ public class ModuleEntry {
 	 * @return gibt das Modul zurück
 	 */
 	public Module getModule() {
+		if (module == null) {
+			module = new ModuleDaoFactory().getModuleDao().getModuleById(moduleId);
+		}
 		return module;
 	}
 
@@ -34,6 +55,8 @@ public class ModuleEntry {
 	 *            das Modul
 	 */
 	public void setModule(Module module) {
+		this.moduleId = module.getIdentifier();
+		this.module = module;
 	}
 
 	/**
@@ -51,5 +74,6 @@ public class ModuleEntry {
 	 *            die Semesternummer
 	 */
 	public void setSemester(int semester) {
+		this.semester = semester;
 	}
 };

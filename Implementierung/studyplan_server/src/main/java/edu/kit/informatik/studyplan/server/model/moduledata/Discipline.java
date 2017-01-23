@@ -4,17 +4,21 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /************************************************************/
 /**
- * Modelliert ein Studienfach
+ * Class modelling a disciplines
  */
 @Entity
-@Table (name = "discipline")
+@Table(name = "discipline")
 public class Discipline {
 	/**
 	 * 
@@ -28,6 +32,9 @@ public class Discipline {
 	@Column(name = "description")
 	private String description;
 
+	@OneToMany(mappedBy = "discipline")
+	private List<Field> fields = new LinkedList<Field>();
+
 	/**
 	 * 
 	 * @return gibt die eindeutige Studienfach-ID zurück
@@ -37,10 +44,33 @@ public class Discipline {
 	}
 
 	/**
+	 * @param disciplineId
+	 *            the disciplineId to set
+	 */
+	public void setDisciplineId(int disciplineId) {
+		this.disciplineId = disciplineId;
+	}
+
+	/**
 	 * 
 	 * @return gibt die Kategoriebeschreibung zurück
 	 */
 	public String getDescription() {
 		return description;
+	}
+
+	/**
+	 * @param description
+	 *            the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the fields
+	 */
+	public List<Field> getFields() {
+		return fields;
 	}
 };

@@ -24,7 +24,7 @@ public interface ModuleDao {
 	 * @return das Modul mit dem entsprechenden Identifier, <code>null</code>
 	 *         wenn kein Modul gefunden
 	 */
-	public Module getModuleById(String id);
+	Module getModuleById(String id);
 
 	/**
 	 * Sucht alle Module die den angegebenen Filterkritierien entsprechen und
@@ -34,7 +34,7 @@ public interface ModuleDao {
 	 * @param filter
 	 *            der Modulfilter
 	 */
-	public List<Module> getModulesByFilter(Filter filter);
+	List<Module> getModulesByFilter(Filter filter, Discipline discipline);
 
 	/**
 	 * Sucht alle Module die den angegebenen Filterkritierien entsprechen und
@@ -48,7 +48,7 @@ public interface ModuleDao {
 	 * @param end
 	 *            End-Index
 	 */
-	public List<Module> getModulesByFilter(Filter filter, int start, int end);
+	List<Module> getModulesByFilter(Filter filter, Discipline discipline, int start, int end);
 
 	/**
 	 * Gibt ein zufälliges Modul, welches den angebenen Filterkriterien
@@ -58,23 +58,32 @@ public interface ModuleDao {
 	 *            der Modulfilter
 	 * @return das Modul
 	 */
-	public Module getRandomModuleByFilter(Filter filter);
+	Module getRandomModuleByFilter(Filter filter, Discipline discipline);
 
 	/**
 	 * 
 	 * @return gibt eine Liste der verfügbaren Studiengänge zurück
 	 */
-	public List<Discipline> getDisciplines();
+	List<Discipline> getDisciplines();
 
 	/**
 	 * 
 	 * @return gibt eine Liste der verfügbaren Kategorien zurück
 	 */
-	public List<Category> getCategories();
+	List<Category> getCategories();
 
 	/**
 	 * 
 	 * @return gibt eine Liste der verfügbaren Vertiefungsfächer zurück
 	 */
-	public List<Category> getSubjects();
+	List<Category> getSubjects();
+
+	/**
+	 * 
+	 * @param disciplineId
+	 *            the unique ID of a discipline
+	 * @return returns the discipline with the specific ID, if not found
+	 *         <code>null</code>
+	 */
+	Discipline getDisciplineById(int disciplineId);
 };
