@@ -4,6 +4,7 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import javax.persistence.Column;
@@ -30,6 +31,7 @@ public class ModuleConstraint {
 	 */
 	@Id
 	@Column(name = "constraint_id")
+	@JsonIgnore
 	private int constraintId;
 
 	// @ManyToOne
@@ -41,17 +43,18 @@ public class ModuleConstraint {
 
 	@ManyToOne
 	@JoinColumn(name = "module1")
+	@JsonProperty("first")
 	private Module firstModule;
 
 	@ManyToOne
 	@JoinColumn(name = "module2")
+	@JsonProperty("second")
 	private Module secondModule;
 
 	/**
 	 * 
 	 * @return gibt das erste Modul der Abhängigkeitsrelation zurück
 	 */
-	@JsonProperty("first")
 	public Module getFirstModule() {
 		return firstModule;
 	}
@@ -60,7 +63,6 @@ public class ModuleConstraint {
 	 * 
 	 * @return gibt das zweite Modul der Abhängigkeitsrelation zurück
 	 */
-	@JsonProperty("second")
 	public Module getSecondModule() {
 		return secondModule;
 	}
