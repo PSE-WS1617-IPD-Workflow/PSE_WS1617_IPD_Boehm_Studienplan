@@ -4,6 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
+import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -24,6 +28,7 @@ public class Semester {
 	 */
 	@Column(name = "semester_type")
 	@Enumerated(EnumType.STRING)
+	@JsonProperty("semester-type")
 	private SemesterType semesterType;
 	/**
 	 * 
@@ -37,12 +42,13 @@ public class Semester {
 	 * 
 	 * @return die Semesterzahl
 	 */
+	@JsonIgnore
 	public int getDistanceToCurrentSemester() {
 		return getDistanceTo(getCurrentSemester());
 	}
 
 	/**
-	 * 
+	 *
 	 * @return returns the current running semester
 	 */
 	private Semester getCurrentSemester() {

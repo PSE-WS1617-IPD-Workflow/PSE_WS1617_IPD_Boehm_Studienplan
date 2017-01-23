@@ -7,6 +7,9 @@ package edu.kit.informatik.studyplan.server.model.userdata;
 import java.time.LocalDate;
 
 /************************************************************/
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Modelliert Semester-Typen
  */
@@ -15,10 +18,12 @@ public enum SemesterType {
 	/**
 	 * Wintersemester
 	 */
+	@JsonProperty("WS")
 	WINTER_TERM,
 	/**
 	 * Sommersemester
 	 */
+	@JsonProperty("SS")
 	SUMMER_TERM;
 
 	public LocalDate getSemesterStartDate() {

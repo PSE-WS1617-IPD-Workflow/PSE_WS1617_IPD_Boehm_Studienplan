@@ -3,6 +3,9 @@
  */
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,23 +26,28 @@ import javax.persistence.Table;
 public class Field {
 	@Id
 	@Column(name = "field_id")
-	private int fieldId;
-
+	@JsonProperty("id")
+    private int fieldId;
+	
 	@Column(name = "name")
-	private String name;
-
+	@JsonProperty("name")
+    private String name;
+	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "discipline_id")
 	private Discipline discipline;
 
 	@Column(name = "min_ects")
-	private double minEcts;
-
+	@JsonProperty("min-ects")
+    private double minEcts;
+	
 	@Column(name = "is_choosable")
+	@JsonIgnore
 	private boolean isChoosable;
 
-	@OneToMany(mappedBy = "field")
-	private List<Module> modules = new LinkedList<Module>();
+    @OneToMany(mappedBy = "field")
+    private List<Module> modules = new LinkedList<Module>();
 
 	/**
 	 * @return the fieldId

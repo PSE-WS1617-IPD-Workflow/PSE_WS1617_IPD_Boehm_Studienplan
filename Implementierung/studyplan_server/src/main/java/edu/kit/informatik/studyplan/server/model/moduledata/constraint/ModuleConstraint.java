@@ -4,6 +4,8 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraintType;
+import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
 
 /************************************************************/
 /**
@@ -31,6 +35,8 @@ public class ModuleConstraint {
 	// @ManyToOne
 	// @JoinColumn(name = "type_id")
 	@Transient
+	@JsonSerialize(using = MyObjectMapperProvider.CustomSerializerModule.ModuleConstraintTypeSerializer.class)
+	@JsonProperty("type")
 	private ModuleConstraintType constraintType;
 
 	@ManyToOne
@@ -45,6 +51,7 @@ public class ModuleConstraint {
 	 * 
 	 * @return gibt das erste Modul der Abhängigkeitsrelation zurück
 	 */
+	@JsonProperty("first")
 	public Module getFirstModule() {
 		return firstModule;
 	}
@@ -53,6 +60,7 @@ public class ModuleConstraint {
 	 * 
 	 * @return gibt das zweite Modul der Abhängigkeitsrelation zurück
 	 */
+	@JsonProperty("second")
 	public Module getSecondModule() {
 		return secondModule;
 	}

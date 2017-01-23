@@ -4,6 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
+import edu.kit.informatik.studyplan.server.rest.StudentResource;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,11 +29,15 @@ public class Discipline {
 	 */
 	@Id
 	@Column(name = "discipline_id")
+	@JsonProperty("id")
+	@JsonView(StudentResource.Views.StudentClass.class)
 	private int disciplineId;
 	/**
 	 * 
 	 */
 	@Column(name = "description")
+	@JsonProperty("name")  //Yes, name; see REST specs.
+	@JsonView(StudentResource.Views.DisciplineClass.class)
 	private String description;
 
 	@OneToMany(mappedBy = "discipline")
