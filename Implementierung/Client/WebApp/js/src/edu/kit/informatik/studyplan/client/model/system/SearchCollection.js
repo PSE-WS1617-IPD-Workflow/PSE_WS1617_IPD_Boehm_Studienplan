@@ -5,19 +5,18 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.SearchCollection"
  */
 
 edu.kit.informatik.studyplan.client.model.system.SearchCollection = edu.kit.informatik.studyplan.client.model.module.ModuleCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.SearchCollection.prototype}*/{
+    model : edu.kit.informatik.studyplan.client.model.module.ModuleCollection,
     /**
-    * @param {edu.kit.informatik.studyplan.client.model.module.Module} filters
+    * @param {edu.kit.informatik.studyplan.client.model.system.FilterCollection} filters
     */
     setFilters : function (filters) {
         "use strict";
+        this.filters = filters;
     },
     
     parse :  function (response, options) {
         "use strict";
-        var mod = [];
-        for(var i = 0; i<response["modules"].length; i++){
-            mod.push(new this.model(response["modules"][i],{parse : true}));
-        }
-        return mod;
+        var col = new this.model(response, {parse : true});        
+        return col;
     }
 });
