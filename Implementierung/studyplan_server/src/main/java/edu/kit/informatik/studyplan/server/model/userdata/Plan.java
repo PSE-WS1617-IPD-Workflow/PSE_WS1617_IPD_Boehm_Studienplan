@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -18,7 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.NaturalId;
+import org.hibernate.annotations.GenericGenerator;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 
@@ -29,16 +30,13 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 @Entity
 @Table(name = "plan")
 public class Plan {
+
 	/**
 	 * 
 	 */
 	@Id
-	@Column(name = "plan_id")
-	private int planId;
-	/**
-	 * 
-	 */
-	@NaturalId
+	@GenericGenerator(name = "uuid-gen", strategy = "uuid")
+	@GeneratedValue(generator = "uuid-gen")
 	@Column(name = "identifier")
 	private String identifier;
 	/**
@@ -51,7 +49,7 @@ public class Plan {
 	 * 
 	 */
 	@Enumerated(EnumType.STRING)
-	@Column(name = "verification_state")
+	@Column(name = "state")
 	private VerificationState state;
 	/**
 	 * 
@@ -87,23 +85,6 @@ public class Plan {
 	public PreferenceType getPreferenceForModule(Module module) {
 		// TODO: implement
 		return null;
-	}
-
-	/**
-	 * 
-	 * @return gibt die eindeutige Plan-ID zurück
-	 */
-	public int getPlanId() {
-		return planId;
-	}
-
-	/**
-	 * 
-	 * @param planId
-	 *            die Plan-ID
-	 */
-	public void setPlanId(int planId) {
-		this.planId = planId;
 	}
 
 	/**

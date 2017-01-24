@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.NaturalId;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
@@ -59,6 +61,7 @@ public class User implements Principal {
 	 * 
 	 */
 	@OneToMany
+	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinTable(name = "passed_modules", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "entry_id"))
 	private List<ModuleEntry> passedModules = new LinkedList<ModuleEntry>();
 
@@ -105,7 +108,7 @@ public class User implements Principal {
 	 */
 	public Discipline getDiscipline() {
 		if (discipline == null) {
-			discipline = new ModuleDaoFactory().getModuleDao().getDisciplineById(disciplineId);
+			discipline = ModuleDaoFactory.getModuleDao().getDisciplineById(disciplineId);
 		}
 		return discipline;
 	}
@@ -154,6 +157,7 @@ public class User implements Principal {
 	}
 
 	@Override
+	@Transient
 	public String getName() {
 		return getUserName();
 	}

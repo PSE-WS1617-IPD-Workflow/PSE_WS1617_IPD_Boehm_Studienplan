@@ -16,19 +16,35 @@ import edu.kit.informatik.studyplan.server.model.userdata.User;
  */
 class HibernateUserDao implements UserDao {
 
+	@Override
 	public void deleteUser(User user) {
-		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
+		session.beginTransaction();
+		session.delete(user);
+		session.getTransaction().commit();
+		session.close();
 	}
 
+	@Override
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-
+		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
+		session.beginTransaction();
+		session.saveOrUpdate(user);
+		session.getTransaction().commit();
+		session.close();
 	}
 
+	@Override
 	public User findUser(User user) {
 		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
 		session.beginTransaction();
-		return null;
+		User result = session.bySimpleNaturalId(User.class).load(user.getUserName());
+		if (result == null) {
+			result = session.byId(User.class).load(user.getUserId());
+		}
+		session.getTransaction().commit();
+		session.close();
+		return result;
 	}
 
 };

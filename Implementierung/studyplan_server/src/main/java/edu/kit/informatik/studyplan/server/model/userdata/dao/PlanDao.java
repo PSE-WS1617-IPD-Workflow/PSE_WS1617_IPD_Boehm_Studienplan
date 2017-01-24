@@ -35,6 +35,7 @@ public interface PlanDao {
 	 * 
 	 * @param plan
 	 *            der Plan
+	 * @return
 	 */
-	public void updatePlan(Plan plan);
+	public String updatePlan(Plan plan);
 };
