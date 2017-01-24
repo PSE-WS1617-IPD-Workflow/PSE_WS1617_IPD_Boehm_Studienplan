@@ -21,6 +21,13 @@ public class PrerequisiteModuleConstraintType extends ModuleConstraintType {
 
 	@Override
 	public boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation) {
-		return false;
+		switch (orientation) {
+		case LEFT_TO_RIGHT:
+			return first.getSemester() < second.getSemester();
+		case RIGHT_TO_LEFT:
+			return second.getSemester() < first.getSemester();
+		default:
+			return first.getSemester() < second.getSemester();
+		}
 	}
 };

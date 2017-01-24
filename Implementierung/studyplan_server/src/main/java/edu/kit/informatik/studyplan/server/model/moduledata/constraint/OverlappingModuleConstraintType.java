@@ -22,6 +22,6 @@ public class OverlappingModuleConstraintType extends ModuleConstraintType {
 
 	@Override
 	public boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation) {
-		return false;
+		return first.getSemester() != second.getSemester();
 	}
 };
