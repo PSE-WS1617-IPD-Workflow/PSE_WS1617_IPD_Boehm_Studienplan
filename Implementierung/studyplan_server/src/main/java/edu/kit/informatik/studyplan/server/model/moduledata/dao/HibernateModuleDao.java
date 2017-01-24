@@ -6,7 +6,10 @@ package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
+
 import edu.kit.informatik.studyplan.server.filter.Filter;
+import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
@@ -21,8 +24,12 @@ class HibernateModuleDao implements ModuleDao {
 
 	@Override
 	public Module getModuleById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = HibernateUtil.getModuleDataSessionFactory().openSession();
+		session.beginTransaction();
+		Module module = session.bySimpleNaturalId(Module.class).load(id);
+		session.getTransaction().commit();
+		session.close();
+		return module;
 	}
 
 	@Override
@@ -63,8 +70,12 @@ class HibernateModuleDao implements ModuleDao {
 
 	@Override
 	public Discipline getDisciplineById(int disciplineId) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = HibernateUtil.getModuleDataSessionFactory().openSession();
+		session.beginTransaction();
+		Discipline discipline = session.byId(Discipline.class).load(disciplineId);
+		session.getTransaction().commit();
+		session.close();
+		return discipline;
 	}
 
 	@Override

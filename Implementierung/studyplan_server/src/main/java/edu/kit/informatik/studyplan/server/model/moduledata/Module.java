@@ -21,6 +21,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.NaturalId;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 
 /************************************************************/
@@ -70,6 +72,7 @@ public class Module {
 	 * 
 	 */
 	@Column(name = "identifier")
+	@NaturalId
 	private String identifier;
 	/**
 	 * 
