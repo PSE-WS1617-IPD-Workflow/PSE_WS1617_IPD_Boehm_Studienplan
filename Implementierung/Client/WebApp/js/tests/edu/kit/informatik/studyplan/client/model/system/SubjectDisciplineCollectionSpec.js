@@ -16,8 +16,7 @@ define(["studyplan"], function (client) {
                 }]
             };
             var subjectcol = new SubjectDisciplineCollection(json, {parse : true});
-            console.log(subjectcol);
-            expect(subjectcol.get(1).id).toEqual(1);
+            expect(subjectcol.get(1).id).toEqual(json.subjects[0].id);
             expect(subjectcol.get(1).get('name')).toEqual(json.subjects[0].name);
             expect(subjectcol.get(2).id).toEqual(json.subjects[1].id);
             expect(subjectcol.get(2).get('name')).toEqual(json.subjects[1].name);
