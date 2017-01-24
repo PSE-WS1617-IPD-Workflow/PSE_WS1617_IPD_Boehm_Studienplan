@@ -6,49 +6,72 @@ package edu.kit.informatik.studyplan.server.model.userdata;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
-import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
-import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
-import edu.kit.informatik.studyplan.server.model.userdata.User;
-import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 
 /************************************************************/
 /**
  * Modelliert einen Studienplan
  */
+@Entity
+@Table(name = "plan")
 public class Plan {
+
 	/**
 	 * 
 	 */
-	private int planId;
-	/**
-	 * 
-	 */
+	@Id
+	@GenericGenerator(name = "uuid-gen", strategy = "uuid")
+	@GeneratedValue(generator = "uuid-gen")
+	@Column(name = "identifier")
 	private String identifier;
 	/**
 	 * 
 	 */
+
+	@Column(name = "name")
 	private String name;
 	/**
 	 * 
 	 */
+	@Enumerated(EnumType.STRING)
+	@Column(name = "state")
 	private VerificationState state;
 	/**
 	 * 
 	 */
+	@Transient
 	private int creditPoints;
 	/**
 	 * 
 	 */
+	@ManyToOne
+	@JoinColumn(name = "user_id")
 	private User user;
 	/**
 	 * 
 	 */
+	@OneToMany
+	@JoinTable(name = "plan_entries", joinColumns = @JoinColumn(name = "plan_id"), inverseJoinColumns = @JoinColumn(name = "entry_id"))
 	private List<ModuleEntry> moduleEntries;
 	/**
 	 * 
 	 */
+	@OneToMany(mappedBy = "plan")
 	private List<ModulePreference> modulePreferences;
 
 	/**
@@ -60,23 +83,8 @@ public class Plan {
 	 *            das Modul
 	 */
 	public PreferenceType getPreferenceForModule(Module module) {
+		// TODO: implement
 		return null;
-	}
-
-	/**
-	 * 
-	 * @return gibt die eindeutige Plan-ID zurück
-	 */
-	public int getPlanId() {
-		return 0;
-	}
-
-	/**
-	 * 
-	 * @param planId
-	 *            die Plan-ID
-	 */
-	public void setPlanId(String planId) {
 	}
 
 	/**
@@ -110,6 +118,7 @@ public class Plan {
 	 *            der Name
 	 */
 	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -126,6 +135,7 @@ public class Plan {
 	 *            der Verifizierungsstatus
 	 */
 	public void setVerificationState(VerificationState verificationState) {
+		this.state = verificationState;
 	}
 
 	/**
@@ -134,15 +144,6 @@ public class Plan {
 	 */
 	public int getCreditPoints() {
 		return creditPoints;
-	}
-
-	/**
-	 * 
-	 * @param creditPoints
-	 *            die ECTS-Summe
-	 */
-	public void setCreditPoints(int creditPoints) {
-
 	}
 
 	/**
@@ -159,6 +160,7 @@ public class Plan {
 	 *            der Eigentümer
 	 */
 	public void setUser(User user) {
+		this.user = user;
 	}
 
 	/**
@@ -166,14 +168,14 @@ public class Plan {
 	 * @return gibt alle Moduleinträge des Plans zurück
 	 */
 	public List<ModuleEntry> getModuleEntries() {
-		return null;
+		return moduleEntries;
 	}
 
 	/**
 	 * 
 	 * @return gibt eine List der Modulpräferenzen zurück
 	 */
-	public ModulePreference getPreferences() {
-		return null;
+	public List<ModulePreference> getPreferences() {
+		return modulePreferences;
 	}
 };

@@ -4,8 +4,12 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
+import java.io.Serializable;
+
+import org.hibernate.Session;
+
+import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDao;
 
 /************************************************************/
 /**
@@ -14,19 +18,34 @@ import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDao;
  */
 class HibernatePlanDao implements PlanDao {
 
+	@Override
 	public Plan getPlanById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
+		session.beginTransaction();
+		Plan plan = session.byId(Plan.class).load(id);
+		session.getTransaction().commit();
+		session.close();
+		return plan;
 	}
 
+	@Override
 	public void deletePlan(Plan plan) {
-		// TODO Auto-generated method stub
-
+		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
+		session.beginTransaction();
+		session.delete(plan);
+		session.getTransaction().commit();
+		session.close();
 	}
 
-	public void updatePlan(Plan plan) {
-		// TODO Auto-generated method stub
-
+	@Override
+	public String updatePlan(Plan plan) {
+		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
+		session.beginTransaction();
+		session.saveOrUpdate(plan);
+		Serializable identifier = session.getIdentifier(plan);
+		session.getTransaction().commit();
+		session.close();
+		return (String) identifier;
 	}
 
 };

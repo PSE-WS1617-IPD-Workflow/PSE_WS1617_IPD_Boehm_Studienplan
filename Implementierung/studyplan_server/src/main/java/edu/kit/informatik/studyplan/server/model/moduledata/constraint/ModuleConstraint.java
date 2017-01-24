@@ -4,25 +4,49 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraintType;
 
 /************************************************************/
 /**
  * Diese Klasse modelliert eine Abhängigkeit zwischen zwei Modulen.
  */
+@Entity
+@Table(name = "module_constraint")
 public class ModuleConstraint {
 	/**
 	 * 
 	 */
+	@Id
+	@Column(name = "constraint_id")
+	private int constraintId;
+
+	// @ManyToOne
+	// @JoinColumn(name = "type_id")
+	@Transient
 	private ModuleConstraintType constraintType;
+
+	@ManyToOne
+	@JoinColumn(name = "module1")
+	private Module firstModule;
+
+	@ManyToOne
+	@JoinColumn(name = "module2")
+	private Module secondModule;
 
 	/**
 	 * 
 	 * @return gibt das erste Modul der Abhängigkeitsrelation zurück
 	 */
 	public Module getFirstModule() {
-		return null;
+		return firstModule;
 	}
 
 	/**
@@ -30,7 +54,7 @@ public class ModuleConstraint {
 	 * @return gibt das zweite Modul der Abhängigkeitsrelation zurück
 	 */
 	public Module getSecondModule() {
-		return null;
+		return secondModule;
 	}
 
 	/**

@@ -5,7 +5,7 @@ var namespaceClient = edu.kit.informatik.studyplan.client;
  * @extends {edu.kit.informatik.studyplan.client.model.system.OAuthCollection}
  */
 
-edu.kit.informatik.studyplan.client.model.system.FilterCollection = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.FilterCollection.prototype}*/{
+edu.kit.informatik.studyplan.client.model.system.FilterCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.FilterCollection.prototype}*/{
     
     model : namespaceClient.model.system.Filter,
     

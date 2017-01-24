@@ -4,11 +4,14 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import java.time.LocalDate;
+
 /************************************************************/
 /**
  * Modelliert Semester-Typen
  */
 public enum SemesterType {
+
 	/**
 	 * Wintersemester
 	 */
@@ -17,4 +20,15 @@ public enum SemesterType {
 	 * Sommersemester
 	 */
 	SUMMER_TERM;
+
+	public LocalDate getSemesterStartDate() {
+		switch (this) {
+		case WINTER_TERM:
+			return LocalDate.of(0, 10, 1);
+		case SUMMER_TERM:
+			return LocalDate.of(0, 4, 1);
+		default:
+			return null;
+		}
+	}
 };

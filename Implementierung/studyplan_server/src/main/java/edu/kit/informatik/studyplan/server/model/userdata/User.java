@@ -5,38 +5,68 @@
 package edu.kit.informatik.studyplan.server.model.userdata;
 
 import java.security.Principal;
+import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.NaturalId;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
-import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-import edu.kit.informatik.studyplan.server.model.userdata.Semester;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 
 /************************************************************/
 /**
  * Modelliert einen Nutzer.
  */
+@Entity
+@Table(name = "user")
 public class User implements Principal {
 	/**
 	 * 
 	 */
+	@Id
+	@Column(name = "user_id")
 	private int userId;
 	/**
 	 * 
 	 */
+	@NaturalId
+	@Column(name = "name")
 	private String userName;
 	/**
 	 * 
 	 */
+	@Column(name = "discipline_id")
+	private int disciplineId;
+
+	@Transient
 	private Discipline discipline;
 	/**
 	 * 
 	 */
+	@Embedded
 	private Semester studyStart;
 	/**
 	 * 
 	 */
-	private List<ModuleEntry> passedModules;
+	@OneToMany
+	@Cascade(CascadeType.SAVE_UPDATE)
+	@JoinTable(name = "passed_modules", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "entry_id"))
+	private List<ModuleEntry> passedModules = new LinkedList<ModuleEntry>();
+
+	@OneToMany(mappedBy = "user")
+	private List<Plan> plans = new LinkedList<Plan>();
 
 	/**
 	 * 
@@ -52,6 +82,7 @@ public class User implements Principal {
 	 *            Wert, auf den die ID gesetzt wird
 	 */
 	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	/**
@@ -76,6 +107,9 @@ public class User implements Principal {
 	 * @return gibt den Studiengang zurück
 	 */
 	public Discipline getDiscipline() {
+		if (discipline == null) {
+			discipline = ModuleDaoFactory.getModuleDao().getDisciplineById(disciplineId);
+		}
 		return discipline;
 	}
 
@@ -85,6 +119,8 @@ public class User implements Principal {
 	 *            der Studiengang
 	 */
 	public void setDiscipline(Discipline discipline) {
+		this.disciplineId = discipline.getDisciplineId();
+		this.discipline = discipline;
 	}
 
 	/**
@@ -101,6 +137,7 @@ public class User implements Principal {
 	 *            das Semester des Studienstarts
 	 */
 	public void setStudyStart(Semester semester) {
+		this.studyStart = semester;
 	}
 
 	/**
@@ -108,7 +145,7 @@ public class User implements Principal {
 	 * @return gibt eine Liste von Modul-Einträgen der bestandenen Module zurück
 	 */
 	public List<ModuleEntry> getPassedModules() {
-		return null;
+		return passedModules;
 	}
 
 	/**
@@ -116,11 +153,12 @@ public class User implements Principal {
 	 * @return gibt eine Liste der Studienpläne des Nutzers zurück
 	 */
 	public List<Plan> getPlans() {
-		return null;
+		return plans;
 	}
 
 	@Override
+	@Transient
 	public String getName() {
-		return userName;
+		return getUserName();
 	}
 };
