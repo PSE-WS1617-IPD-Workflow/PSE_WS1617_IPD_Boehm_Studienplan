@@ -7,6 +7,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.SubjectDiscipline
 edu.kit.informatik.studyplan.client.model.system.SubjectDiscipline = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.SubjectDiscipline.prototype}*/{
     parse : function (response, options) {
         "use strict";
+        //console.log(response);
         return response;
     }
 });
