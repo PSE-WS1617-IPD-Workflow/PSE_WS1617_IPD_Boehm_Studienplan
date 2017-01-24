@@ -10,21 +10,25 @@ goog.provide("edu.kit.informatik.studyplan.client.model.module.Module");
 
 edu.kit.informatik.studyplan.client.model.module.Module = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.Module.prototype}*/{
     planId : null,
+    /**
+    * Achtung: in jSon doku fehlt compulsory. 
+    *Plan iD wird von Plan durchgegeben, falls Modul zu Plan gehört. Kategorie ist kein eigenes Objekt. 
+    */
     parse : function (response, options) {
         "use strict";
         this.planId = response["planId"];
         var categories = [];
-        for(var i = 0; i<response["categories"].length;i++){
+        for (var i = 0; i<response["categories"].length;i++){
             categories.push(response.categories[i].name);
         }
-        response["categories"]=categories;
-        //edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({planId : response.id, modules : response.modules}, {parse : true});
+        response["categories"]=this.categories;
         var constraints = [];
         for(var i = 0;i<response["constraints"].length; i++){)
-        constraints.push(new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(response.constraints[i]{parse : true}));
+        this.constraints.push(new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint({response.constraints[i]},{parse : true}));
         }
-        response.constraints = constraints;
+        response.constraints = this.constraints;
+        
+        response["preference"]=new edu.kit.informatik.studyplan.client.model.module.Preference({response,{parse: true});
         return response;
-        // TODO: process response["module"];
     }
 });
