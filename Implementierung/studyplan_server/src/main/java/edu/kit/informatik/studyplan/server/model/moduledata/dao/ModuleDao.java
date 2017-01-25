@@ -7,10 +7,8 @@ package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 import java.util.List;
 
 import edu.kit.informatik.studyplan.server.filter.Filter;
-import edu.kit.informatik.studyplan.server.model.moduledata.Category;
-import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.moduledata.Field;
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.filter.Utils;
+import edu.kit.informatik.studyplan.server.model.moduledata.*;
 
 /************************************************************/
 /**
@@ -101,7 +99,7 @@ public interface ModuleDao {
 	 */
 	public default Category getCategoryById(Discipline discipline, int id) {
 		return getCategories(discipline).stream()
-				.filter(category -> category.getCategoryId() == id)
+				.filter(Utils.equals(Category::getCategoryId, id))
 				.findFirst().orElse(null);
 	}
 
@@ -128,7 +126,9 @@ public interface ModuleDao {
      */
     public default Field getFieldById(Discipline discipline, int id) {
         return getFields(discipline).stream()
-                .filter(field -> field.getFieldId() == id)
+                .filter(Utils.equals(Field::getFieldId, id))
                 .findFirst().orElse(null);
     }
+
+    public List<ModuleType> getModuleTypes();
 };
