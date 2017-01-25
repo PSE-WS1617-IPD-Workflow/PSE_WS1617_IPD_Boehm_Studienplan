@@ -5,4 +5,5 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.CookieModel");
  */
 
 edu.kit.informatik.studyplan.client.model.system.CookieModel = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.CookieModel.prototype}*/{
+    sync: edu.kit.informatik.studyplan.client.storage.CookieSync
 });
