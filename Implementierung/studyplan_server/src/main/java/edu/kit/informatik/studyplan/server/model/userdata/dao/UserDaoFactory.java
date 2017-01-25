@@ -4,8 +4,6 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
-import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDao;
-
 /************************************************************/
 /**
  * Factory zur UserDao-Erzeugung
@@ -18,6 +16,6 @@ public class UserDaoFactory {
 	 *         DAO zurück
 	 */
 	public static UserDao getUserDao() {
-		return null;
+		return new HibernateUserDao();
 	}
 };

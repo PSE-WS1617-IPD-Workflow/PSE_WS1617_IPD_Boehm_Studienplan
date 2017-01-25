@@ -4,29 +4,58 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 
 /************************************************************/
 /**
  * Modelliert eine Modulpräferenz. Eine Modulpräferenz bezeichnet die Bewertung
  * eines Moduls durch einen Nutzer.
  */
+@Entity
+@Table(name = "module_preference")
 public class ModulePreference {
+
+	@Id
+	@Column(name = "preference_id")
+	private int preferenceId;
+
+	@Column(name = "module_id")
+	private String moduleId;
 	/**
 	 * 
 	 */
+	@Transient
 	private Module module;
 	/**
 	 * 
 	 */
+	@Enumerated(EnumType.STRING)
+	@Column(name = "preference_type")
 	private PreferenceType type;
+
+	@ManyToOne
+	@JoinColumn(name = "plan_id")
+	private Plan plan;
 
 	/**
 	 * 
-	 * @return gibt das Modul zurück, zu dem die Präferenz gehört
+	 * @return gibt das Modul zurück
 	 */
 	public Module getModule() {
+		if (module == null) {
+			module = new ModuleDaoFactory().getModuleDao().getModuleById(moduleId);
+		}
 		return module;
 	}
 
@@ -36,6 +65,8 @@ public class ModulePreference {
 	 *            das Modul
 	 */
 	public void setModule(Module module) {
+		this.moduleId = module.getIdentifier();
+		this.module = module;
 	}
 
 	/**

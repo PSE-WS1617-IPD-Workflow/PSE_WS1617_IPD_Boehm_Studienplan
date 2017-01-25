@@ -4,7 +4,7 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleAttributeNames;
 
 /**
  * Repräsentiert einen ECTS-Intervall-Filter.
@@ -27,7 +27,7 @@ public final class CreditPointsFilter extends RangeFilter {
 	}
 
 	@Override
-	public FilterDescriptor getDescriptor() {
-		return FilterDescriptor.CREDIT_POINTS;
+	public String getAttributeName() {
+		return ModuleAttributeNames.CREDIT_POINTS;
 	}
 };

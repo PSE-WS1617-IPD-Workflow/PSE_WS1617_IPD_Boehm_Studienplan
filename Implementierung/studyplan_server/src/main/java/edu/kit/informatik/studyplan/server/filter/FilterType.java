@@ -4,8 +4,12 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.filter.AttributeFilter;
-import edu.kit.informatik.studyplan.server.rest.JSONObject;
+import edu.kit.informatik.studyplan.server.rest.SimpleJsonResponse;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Aufzählung der verschiedenen AttributeFilter-Typen.
@@ -16,13 +20,20 @@ public enum FilterType {
 	 */
 	RANGE {
 		@Override
-		public JSONObject toJsonSpecification(AttributeFilter defaultFilter) {
-			return null;
+		public Map<String, Object> toJsonSpecification(AttributeFilter defaultFilter) {
+			Map<String, Object> result = new HashMap<>(3);
+			result.put("type", "range");
+			result.put("min", ((RangeFilter)defaultFilter).getMin());
+			result.put("max", ((RangeFilter)defaultFilter).getMax());
+			return result;
 		}
 
 		@Override
-		public JSONObject defaultJsonValue(AttributeFilter defaultFilter) {
-			return null;
+		public Object defaultJsonValue(AttributeFilter defaultFilter) {
+			Map<String, Object> result = new HashMap<>(2);
+			result.put("min", ((RangeFilter)defaultFilter).getMin());
+			result.put("max", ((RangeFilter)defaultFilter).getMax());
+			return result;
 		}
 	},
 	/**
@@ -30,13 +41,18 @@ public enum FilterType {
 	 */
 	LIST {
 		@Override
-		public JSONObject toJsonSpecification(AttributeFilter defaultFilter) {
-			return null;
+		@SuppressWarnings("unchecked")
+		public Map<String, Object> toJsonSpecification(AttributeFilter defaultFilter) {
+			List<String> itemStrings = ((ListFilter)defaultFilter).getItemStrings(); //Don't worry. getItemStrings is not generic.
+			List<ListItem> result = itemStrings.parallelStream()
+					.map(itemString -> new ListItem(0, itemString))
+					.collect(Collectors.toList());
+			return SimpleJsonResponse.build("items", result);
 		}
 
 		@Override
-		public JSONObject defaultJsonValue(AttributeFilter defaultFilter) {
-			return null;
+		public Object defaultJsonValue(AttributeFilter defaultFilter) {
+			return 0;
 		}
 	},
 	/**
@@ -44,13 +60,13 @@ public enum FilterType {
 	 */
 	CONTAINS {
 		@Override
-		public JSONObject toJsonSpecification(AttributeFilter defaultFilter) {
-			return null;
+		public Map<String, Object> toJsonSpecification(AttributeFilter defaultFilter) {
+			return SimpleJsonResponse.build("type", "contains");
 		}
 
 		@Override
-		public JSONObject defaultJsonValue(AttributeFilter defaultFilter) {
-			return null;
+		public Object defaultJsonValue(AttributeFilter defaultFilter) {
+			return "";
 		}
 	};
 
@@ -62,7 +78,7 @@ public enum FilterType {
 	 *            der Default-Filter
 	 * @return die Spezifikation des Filters als JSON-Objekt
 	 */
-	public abstract JSONObject toJsonSpecification(AttributeFilter defaultFilter);
+	public abstract Map<String, Object> toJsonSpecification(AttributeFilter defaultFilter);
 
 	/**
 	 * Liefert eine JSON-Repräsentation der Werte des übergebenen
@@ -72,5 +88,31 @@ public enum FilterType {
 	 *            das Filter-Objekt mit Default-Werten
 	 * @return die Werte des Default-Filters
 	 */
-	public abstract JSONObject defaultJsonValue(AttributeFilter defaultFilter);
+	public abstract Object defaultJsonValue(AttributeFilter defaultFilter);
+
+	private static class ListItem {
+		private int id;
+		private String name;
+
+		public ListItem(int id, String name) {
+			this.id = id;
+			this.name = name;
+		}
+
+		public int getId() {
+			return id;
+		}
+
+		public void setId(int id) {
+			this.id = id;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+	}
 };

@@ -7,22 +7,37 @@ package edu.kit.informatik.studyplan.server.filter;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
 import edu.kit.informatik.studyplan.server.filter.FilterType;
+import org.jooq.Field;
+
+import static org.jooq.impl.DSL.field;
 
 /**
  * Repräsentiert einen Filter für ein bestimmtes Module-Attribut.
  */
-public interface AttributeFilter extends Filter {
+public abstract class AttributeFilter implements Filter {
+
 	/**
-	 * Liefert die zum AttributeFilter gehörende Filterbeschreibung.
-	 * 
-	 * @return die Filterbeschreibung
+	 * Liefert den Namen des Module-Attributs, das durch beschriebenen Filter
+	 * gefiltert werden soll.
+	 *
+	 * @return der Attribut-Name
 	 */
-	public FilterDescriptor getDescriptor();
+	public abstract String getAttributeName();
+
+	/**
+	 * Gibt ein jOOQ-Field-Objekt zurück, das des Filters attributeName kapselt.
+	 *
+	 * @return das jOOQ-Field-Objekt
+	 */
+	protected Field<Object> toField() {
+		return field(getAttributeName());
+	}
+
 
 	/**
 	 * Liefert den Filter-Typ des AttributeFilters.
 	 * 
 	 * @return der Filter-Typ
 	 */
-	public FilterType getFilterType();
+	public abstract FilterType getFilterType();
 };

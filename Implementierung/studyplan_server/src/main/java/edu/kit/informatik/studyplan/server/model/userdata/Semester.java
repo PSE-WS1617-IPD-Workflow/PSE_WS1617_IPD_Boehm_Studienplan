@@ -4,22 +4,39 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
+import java.time.LocalDate;
+import java.time.Period;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.NotNull;
 
 /************************************************************/
 /**
  * Modelliert ein Semester
  */
+@Embeddable
 public class Semester {
+
 	/**
 	 * 
 	 */
-	private CycleType semesterType;
+	@Column(name = "semester_type")
+	@Enumerated(EnumType.STRING)
+	@JsonProperty("semester-type")
+	@NotNull
+	private SemesterType semesterType;
 	/**
 	 * 
 	 */
-	private int year;
+	@Column(name = "year")
+	private int year = -1;
 
 	/**
 	 * Berechnet die Anzahl an Semester, die seit diesem Semester vergangen sind
@@ -27,8 +44,44 @@ public class Semester {
 	 * 
 	 * @return die Semesterzahl
 	 */
+	@JsonIgnore
 	public int getDistanceToCurrentSemester() {
-		return year;
+		return getDistanceTo(getCurrentSemester());
+	}
+
+	/**
+	 *
+	 * @return returns the current running semester
+	 */
+	private Semester getCurrentSemester() {
+		Semester currentSemester = new Semester();
+		LocalDate today = LocalDate.now();
+		LocalDate summerTermStart = SemesterType.SUMMER_TERM.getSemesterStartDate().withYear(today.getYear());
+		LocalDate winterTermStart = SemesterType.WINTER_TERM.getSemesterStartDate().withYear(today.getYear());
+		if (today.isBefore(summerTermStart)) {
+			currentSemester.setSemesterType(SemesterType.WINTER_TERM);
+			currentSemester.setYear(today.getYear() - 1);
+		} else {
+			if (today.isBefore(winterTermStart)) {
+				currentSemester.setSemesterType(SemesterType.SUMMER_TERM);
+				currentSemester.setYear(today.getYear());
+			} else {
+				currentSemester.setSemesterType(SemesterType.WINTER_TERM);
+				currentSemester.setYear(today.getYear());
+			}
+		}
+		return currentSemester;
+	}
+
+	public int getDistanceTo(Semester semester) {
+		LocalDate thisStart = this.semesterType.getSemesterStartDate().withYear(year);
+		LocalDate otherStart = semester.semesterType.getSemesterStartDate().withYear(semester.year);
+		Period studyPeriod = thisStart.until(otherStart);
+		int distance = studyPeriod.getYears() * 2 + 1;
+		if (studyPeriod.getMonths() != 0) {
+			distance++;
+		}
+		return distance;
 	}
 
 	/**
@@ -37,7 +90,7 @@ public class Semester {
 	 * @see edu.kit.informatik.studyplan.server.model.userdata.SemesterType
 	 */
 	public SemesterType getSemesterType() {
-		return null;
+		return semesterType;
 	}
 
 	/**
@@ -46,6 +99,7 @@ public class Semester {
 	 *            der Semestertyp
 	 */
 	public void setSemesterType(SemesterType semesterType) {
+		this.semesterType = semesterType;
 	}
 
 	/**
@@ -62,5 +116,7 @@ public class Semester {
 	 *            das Jahr in dem das Semester begonnen hat
 	 */
 	public void setYear(int year) {
+		this.year = year;
 	}
+
 };

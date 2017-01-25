@@ -4,6 +4,14 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.ModuleOrientation;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
@@ -11,18 +19,26 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 /**
  * Modelliert eine Abhängkeitstyp einer Modulabhängigkeit
  */
+@Entity
+@Table(name = "constraint_type")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "description")
 public abstract class ModuleConstraintType {
 	/**
 	 *
 	 */
+	@Id
+	@Column(name = "type_id")
 	private int id;
 	/**
 	 * 
 	 */
+	@Column(name = "description", insertable = false, updatable = false)
 	private String description;
 	/**
 	 * 
 	 */
+	@Column(name = "formal_description")
 	private String formalDescription;
 
 	/**

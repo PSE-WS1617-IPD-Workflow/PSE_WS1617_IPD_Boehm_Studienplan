@@ -12,7 +12,6 @@ define(["studyplan"], function (client) {
             expect(sesInfo).not.toBeNull();
         });
         it("Should generate random state", function () {
-            expect(sesInfo.get('state')).toBeUndefined();
             sesInfo.generateState();
             expect(typeof sesInfo.get('state')).toEqual("string");
             expect(sesInfo.get('state').length).not.toBeGreaterThan(30);

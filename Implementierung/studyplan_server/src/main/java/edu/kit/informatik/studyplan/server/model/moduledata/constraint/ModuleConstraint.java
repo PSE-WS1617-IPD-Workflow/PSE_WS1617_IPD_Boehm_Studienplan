@@ -4,25 +4,59 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraintType;
+import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
 
 /************************************************************/
 /**
  * Diese Klasse modelliert eine Abhängigkeit zwischen zwei Modulen.
  */
+@Entity
+@Table(name = "module_constraint")
 public class ModuleConstraint {
 	/**
 	 * 
 	 */
+	@Id
+	@Column(name = "constraint_id")
+	@JsonIgnore
+	private int constraintId;
+
+	// @ManyToOne
+	// @JoinColumn(name = "type_id")
+	@Transient
+	@JsonSerialize(using = MyObjectMapperProvider.CustomSerializerModule.ModuleConstraintTypeSerializer.class)
+	@JsonProperty("type")
 	private ModuleConstraintType constraintType;
+
+	@ManyToOne
+	@JoinColumn(name = "module1")
+	@JsonProperty("first")
+	private Module firstModule;
+
+	@ManyToOne
+	@JoinColumn(name = "module2")
+	@JsonProperty("second")
+	private Module secondModule;
 
 	/**
 	 * 
 	 * @return gibt das erste Modul der Abhängigkeitsrelation zurück
 	 */
 	public Module getFirstModule() {
-		return null;
+		return firstModule;
 	}
 
 	/**
@@ -30,7 +64,7 @@ public class ModuleConstraint {
 	 * @return gibt das zweite Modul der Abhängigkeitsrelation zurück
 	 */
 	public Module getSecondModule() {
-		return null;
+		return secondModule;
 	}
 
 	/**

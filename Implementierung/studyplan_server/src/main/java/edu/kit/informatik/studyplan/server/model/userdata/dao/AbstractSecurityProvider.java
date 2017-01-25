@@ -42,6 +42,6 @@ public abstract class AbstractSecurityProvider {
 	 * @return gibt eine konkrete SecurityProvider-Implementierung zurück
 	 */
 	public static final AbstractSecurityProvider getSecurityProviderImpl() {
-		return null;
+		return new SecurityProvider();
 	}
 };

@@ -3,7 +3,7 @@ package edu.kit.informatik.studyplan.server.filter;
 /**
  * Repräsentiert einen Textsuch-Attribut-Filter.
  */
-public abstract class ContainsFilter implements AttributeFilter {
+public abstract class ContainsFilter extends AttributeFilter {
 	/**
 	 * Der Suchstring.
 	 */
@@ -25,11 +25,9 @@ public abstract class ContainsFilter implements AttributeFilter {
 	 * 
 	 * @return die Filterbedingung als jOOQ-Condition-Objekt
 	 */
-	public Condition getCondition() {
-		return null;
+	public org.jooq.Condition getCondition() {
+		return toField().contains(substring);
 	}
-
-	public abstract FilterDescriptor getDescriptor();
 
 	public FilterType getFilterType() {
 		return FilterType.CONTAINS;
