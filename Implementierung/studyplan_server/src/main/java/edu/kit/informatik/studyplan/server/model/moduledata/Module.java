@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.NaturalId;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 
 /**
@@ -29,8 +31,12 @@ import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleCon
 @Table(name = "module")
 public class Module {
 	
-	@Column(name = "identifier")
+	@Column(name = "module_id")
 	@Id
+	private int moduleId;
+	
+	@Column(name = "identifier")
+	@NaturalId
 	private String identifier;
 	
 	@Column(name = "name")
@@ -50,6 +56,7 @@ public class Module {
 	@JoinColumn(name = "description_id")
 	private ModuleDescription moduleDescription;
 	
+	@ManyToOne
 	@JoinColumn(name = "discipline_id")
 	private Discipline discipline;
 	

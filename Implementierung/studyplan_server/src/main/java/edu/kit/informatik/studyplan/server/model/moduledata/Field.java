@@ -3,8 +3,10 @@
  */
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,8 +17,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
+ * Class modelling a field for a discipline
  * @author NiklasUhl
- *
+ * @version 1.0
  */
 @Entity
 @Table(name = "field")
@@ -40,7 +43,7 @@ public class Field {
 
 	@OneToMany(mappedBy = "field")
 	private List<Module> modules = new LinkedList<Module>();
-
+	
 	/**
 	 * @return the fieldId
 	 */
@@ -121,5 +124,21 @@ public class Field {
 	 */
 	public List<Module> getModules() {
 		return modules;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public List<Category> getSubjects() {
+		Set<Category> subjects = new HashSet<Category>();
+		for (Module module : modules) {
+			for (Category category : module.getCategories()) {
+				if (category.isSubject()) {
+					subjects.add(category);
+				}
+			}
+		}
+		return new LinkedList<>(subjects);
 	}
 }

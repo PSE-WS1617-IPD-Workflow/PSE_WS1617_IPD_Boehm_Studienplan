@@ -12,6 +12,7 @@ import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 
 /************************************************************/
@@ -82,6 +83,19 @@ class HibernateModuleDao implements ModuleDao {
 	public List<Category> getFields(Discipline discipline) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public List<Category> getSubjects(Field field) {
+		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		List<Category> result = session.createQuery("select distinct category "
+				+ "from Field as field  "
+				+ "join field.modules as module "
+				+ "join module.categories as category "
+				+ "where field.fieldId = :id "
+				+ "and category.isSubject = true", Category.class).setParameter("id", field.getFieldId()).getResultList();
+		session.getTransaction().commit();
+		return result;
 	}
 
 };
