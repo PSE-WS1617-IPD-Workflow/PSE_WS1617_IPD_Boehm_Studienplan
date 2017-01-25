@@ -2,6 +2,7 @@ package edu.kit.informatik.studyplan.server.filter;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleAttributeNames;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,7 +32,7 @@ public class ModuleTypeFilter extends ListFilter<ModuleType> {
 
 	@Override
 	public List<ModuleType> getItemObjects() {
-		return null; //TODO
+		return ModuleDaoFactory.getModuleDao().getModuleTypes();
 	}
 
 	@Override

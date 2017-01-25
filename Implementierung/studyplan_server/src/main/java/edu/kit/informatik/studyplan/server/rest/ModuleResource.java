@@ -47,6 +47,8 @@ public class ModuleResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, List<JsonModule>> getModules(@Context UriInfo uriInfo) {
 		User user = context.getUser();
+		if (user.getDiscipline() == null)
+			throw new UnprocessableEntityException();
 		Filter filter = PlanModulesResource.getFilterFromRequest(uriInfo.getQueryParameters());
 		if (filter == null)
 			throw new BadRequestException();
