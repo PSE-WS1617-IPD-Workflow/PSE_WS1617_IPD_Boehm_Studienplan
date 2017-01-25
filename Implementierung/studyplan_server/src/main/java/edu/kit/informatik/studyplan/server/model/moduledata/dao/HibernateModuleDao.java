@@ -6,14 +6,11 @@ package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 
 import java.util.List;
 
+import edu.kit.informatik.studyplan.server.model.moduledata.*;
 import org.hibernate.Session;
 
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.model.HibernateUtil;
-import edu.kit.informatik.studyplan.server.model.moduledata.Category;
-import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.moduledata.Field;
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 
 /************************************************************/
 /**
@@ -81,6 +78,12 @@ class HibernateModuleDao implements ModuleDao {
 
 	@Override
 	public List<Field> getFields(Discipline discipline) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ModuleType> getModuleTypes() {
 		// TODO Auto-generated method stub
 		return null;
 	}

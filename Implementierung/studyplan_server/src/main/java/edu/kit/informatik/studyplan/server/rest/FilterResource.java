@@ -35,11 +35,8 @@ public class FilterResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Map<String,Object>> getAllFilters() {
-		context = new AuthorizationContext();
-		context.setUser(new User());
-		context.getUser().setDiscipline(new Discipline());
-//		if (context.getUser().getDiscipline() == null)
-//			throw new UnprocessableEntityException();
+		if (context.getUser().getDiscipline() == null)
+			throw new UnprocessableEntityException();
 		return new FilterDescriptorProvider(context.getUser().getDiscipline()).values().parallelStream()
 				.map(FilterDescriptor::toJson)
 				.collect(Collectors.toList());
