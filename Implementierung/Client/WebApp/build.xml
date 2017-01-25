@@ -178,6 +178,9 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
             <file name="ProfilPage.js"/>
             <file name="WizardPage.js"/>
         </sources>
+        <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/router">
+            <file name="MainRouter.js"/>
+        </sources>
 
       <sources dir="${basedir}/resources/lang">
         <file name="de.lang.js"/>  
