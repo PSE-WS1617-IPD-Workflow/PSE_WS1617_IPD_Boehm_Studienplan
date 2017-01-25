@@ -23,8 +23,8 @@ define(["studyplan"], function (client) {
                 }]
             };
             var filtercol = new FilterCollection(json, {parse : true});
-            console.log(filtercol);
-            console.log(filtercol.get(0));
+            //console.log(filtercol);
+            //console.log(filtercol.get(0));
             
             expect(filtercol.get(0).id).toEqual(1);
             expect(filtercol.get(0).get('name')).toEqual("Test");

@@ -5,6 +5,8 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.Plan");
  */
 
 edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.Plan.prototype}*/{
+    urlRoot : API_DOMAIN + "/plans",
+    
     parse : function (response, options) {
         "use strict";
         // Check if plan modules were given in response

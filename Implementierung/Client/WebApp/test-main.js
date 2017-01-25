@@ -16,6 +16,7 @@ require.config({
   // Karma serves files under /base, which is the basePath from your config file
   baseUrl: '/base',
   paths: {
+      'cookies' : 'htdocs/lib/js.cookie',
       'jquery' : '/base/htdocs/lib/jquery',
       'underscore' : 'htdocs/lib/underscore',
       'backbone' : 'htdocs/lib/backbone',

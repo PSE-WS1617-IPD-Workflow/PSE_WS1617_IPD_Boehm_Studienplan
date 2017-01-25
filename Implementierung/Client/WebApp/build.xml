@@ -74,8 +74,9 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
   <target name="closure-compile-js">
     <antcall target="include-templates"></antcall>
     <jscomp compilationLevel="simple" warning="verbose" 
-        debug="false" prettyPrint="true" output="${basedir}/htdocs/js/app-compiled.js">
-
+        debug="false" prettyPrint="true" output="${basedir}/htdocs/js/app-compiled.js"
+            replaceProperties="true">
+        <define name="API_DOMAIN" value="api.studyplan.devel" />
       <externs dir="${basedir}/build/externs">
         <file name="extern.js"/>
         <file name="cookie.js"/>
@@ -85,6 +86,13 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
         <file name="underscore.js"/>
       </externs>
       <!-- Hier müssen ALLE Dateien hinzugefügt werden -->
+        <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/config">
+            <file name="config.js"/>
+        </sources>
+        <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/storage">
+            <file name="OAuthSync.js"/>
+            <file name="CookieSync.js"/>
+        </sources>
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/system">
             <file name="OAuthCollection.js"/>
             <file name="OAuthModel.js"/>
@@ -184,7 +192,7 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
          destfile="${basedir}/htdocs/js/app.js" overwrite="yes">
          <filelist dir="${basedir}/htdocs/js/" files="app-compiled.js"/>
       <header>
-          define("studyplan",["underscore", "backbone", "jquery"],function(_, Backbone, $){
+          define("studyplan",["underscore", "backbone", "jquery","cookies"],function(_, Backbone, $, Cookies){
         </header>
       </concat>
       <concat destfile="${basedir}/htdocs/js/app.js" append="yes">
