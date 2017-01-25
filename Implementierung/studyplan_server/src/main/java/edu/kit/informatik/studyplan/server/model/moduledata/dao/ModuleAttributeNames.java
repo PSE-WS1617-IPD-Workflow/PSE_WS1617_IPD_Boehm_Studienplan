@@ -17,33 +17,33 @@ public final class ModuleAttributeNames {
 	/**
 	 * Stringkonstante, die die ECTS-Eigenschaft eines Moduls repräsentiert.
 	 */
-	public static final String CREDIT_POINTS = null;
+	public static final String CREDIT_POINTS = "creditPoints";
 	/**
 	 * Stringkonstante, die die Kategorie-Eigenschaft eines Moduls
 	 * repräsentiert.
 	 */
-	public static final String CATEGORY = null;
+	public static final String CATEGORY = "category";
 	/**
 	 * Stringkonstante, die die Modultyp-Eigenschaft eines Moduls repräsentiert.
 	 */
-	public static final String MODULE_TYPE = null;
+	public static final String MODULE_TYPE = "moduleType";
 	/**
 	 * Stringkonstante, die die Turnus-Eigenschaft eines Moduls repräsentiert.
 	 */
-	public static final String CYCLE_TYPE = null;
+	public static final String CYCLE_TYPE = "cycleType";
 	/**
 	 * Stringkonstante, die die Fachrichtungs-Eigenschaft eines Moduls
 	 * repräsentiert.
 	 */
-	public static final String DISCIPLINE = null;
+	public static final String DISCIPLINE = "discipline";
 	/**
 	 * Stringkonstante, die die Wahl-/Pflicht-Veranstaltungs-Eigenschaft eines
 	 * Moduls repräsentiert.
 	 */
-	public static final String IS_COMPULSORY = null;
+	public static final String IS_COMPULSORY = "compulsory";
 	/**
 	 * Stringkonstante, die die Modulnamens-Eigenschaft eines Moduls
 	 * repräsentiert.
 	 */
-	public static final String NAME = null;
+	public static final String NAME = "name";
 };
