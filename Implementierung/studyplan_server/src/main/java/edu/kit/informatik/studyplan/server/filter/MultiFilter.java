@@ -1,8 +1,10 @@
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.filter.Filter;
+import org.jooq.Condition;
 
 import java.util.List;
+
+import static org.jooq.impl.DSL.trueCondition;
 
 /**
  * Bündelt mehrere Filter zu einem einzigen mittels UND-Verknüpfung der
@@ -37,7 +39,9 @@ public class MultiFilter implements Filter {
 	 * 
 	 * @return Die neue Filterbedingung als jOOQ-Condition-Objekt
 	 */
-	public Condition getCondition() {
-		return null;
+	public org.jooq.Condition getCondition() {
+		return filters.parallelStream()
+			.map(Filter::getCondition)
+			.reduce(trueCondition(), Condition::and);
 	}
 }

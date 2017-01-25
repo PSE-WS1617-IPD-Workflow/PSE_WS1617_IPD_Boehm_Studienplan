@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleAttributeNames;
+
 /**
  * Repräsentiert einen Modulnamen-Textsuchfilter.
  */
@@ -15,7 +17,7 @@ public class NameFilter extends ContainsFilter {
 	}
 
 	@Override
-	public FilterDescriptor getDescriptor() {
-		return FilterDescriptor.NAME;
+	public String getAttributeName() {
+		return ModuleAttributeNames.NAME;
 	}
 }

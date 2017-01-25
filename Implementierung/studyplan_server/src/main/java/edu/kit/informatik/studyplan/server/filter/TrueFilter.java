@@ -1,5 +1,9 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import java.util.concurrent.locks.Condition;
+
+import static org.jooq.impl.DSL.trueCondition;
+
 /**
  * Stellt einen Filter dar, der alle Module zulässt (und dessen Filterbedingung
  * daher konstant wahr ist).
@@ -16,7 +20,7 @@ public class TrueFilter implements Filter {
 	 * 
 	 * @return die Filterbedingung als jOOQ-Condition-Objekt
 	 */
-	public Condition getCondition() {
-		return null;
+	public org.jooq.Condition getCondition() {
+		return trueCondition();
 	}
 }

@@ -4,8 +4,6 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.filter.Condition;
-
 /**
  * Repräsentiert einen Filter für Module über eine Filterbedingung.
  */
@@ -16,5 +14,5 @@ public interface Filter {
 	 * 
 	 * @return die Filterbedingung
 	 */
-	public Condition getCondition();
+	public org.jooq.Condition getCondition();
 };
