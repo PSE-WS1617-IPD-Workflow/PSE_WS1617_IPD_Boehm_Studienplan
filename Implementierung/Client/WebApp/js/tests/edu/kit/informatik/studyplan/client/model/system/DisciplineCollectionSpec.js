@@ -20,6 +20,10 @@ define(["studyplan"], function (client) {
             expect(disciplinecol.get(1).get('name')).toEqual(json.disciplines[0].name);
             expect(disciplinecol.get(2).id).toEqual(json.disciplines[1].id);
             expect(disciplinecol.get(2).get('name')).toEqual(json.disciplines[1].name);
+            
+            disciplinecol.get(1).set("name", "blub");
+            expect(json.disciplines[0].name).toEqual("Test1");
+            expect( disciplinecol.get(1).get("name")).toEqual("blub");
         });
     });
 });
