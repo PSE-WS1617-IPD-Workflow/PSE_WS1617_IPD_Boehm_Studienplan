@@ -3,7 +3,6 @@ package edu.kit.informatik.studyplan.server.rest;
 import com.fasterxml.jackson.annotation.JsonView;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
-import sun.java2d.pipe.SpanShapeRenderer;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

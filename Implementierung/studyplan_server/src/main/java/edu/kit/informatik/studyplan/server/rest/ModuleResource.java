@@ -18,6 +18,8 @@ import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityPr
 import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDao;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDaoFactory;
 
+import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -32,7 +34,7 @@ import java.util.stream.Collectors;
  */
 @Path("/modules")
 public class ModuleResource {
-	@Context
+	@Inject
 	AuthorizationContext context;
 
 	/**
@@ -44,26 +46,22 @@ public class ModuleResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, List<JsonModule>> getModules(@Context UriInfo uriInfo) {
-		try {
-			User user = context.getUser();
-			Filter filter = PlanModulesResource.getFilterFromRequest(uriInfo.getQueryParameters());
-			if (filter == null)
-				throw new BadRequestException();
-			List<JsonModule> result = getModuleDao()
-					.getModulesByFilter(filter, user.getDiscipline())
-					.parallelStream().map(m -> {
-						JsonModule newModule = new JsonModule();
-						newModule.setId(m.getIdentifier());
-						newModule.setName(m.getName());
-						newModule.setCreditPoints(m.getCreditPoints());
-						newModule.setLecturer(m.getModuleDescription().getLecturer());
-						return newModule;
-					})
-					.collect(Collectors.toList());
-			return SimpleJsonResponse.build("modules", result);
-		} catch(NullPointerException ex) {
-			throw new InternalServerErrorException();
-		}
+		User user = context.getUser();
+		Filter filter = PlanModulesResource.getFilterFromRequest(uriInfo.getQueryParameters());
+		if (filter == null)
+			throw new BadRequestException();
+		List<JsonModule> result = getModuleDao()
+				.getModulesByFilter(filter, user.getDiscipline())
+				.parallelStream().map(m -> {
+					JsonModule newModule = new JsonModule();
+					newModule.setId(m.getIdentifier());
+					newModule.setName(m.getName());
+					newModule.setCreditPoints(m.getCreditPoints());
+					newModule.setLecturer(m.getModuleDescription().getLecturer());
+					return newModule;
+				})
+				.collect(Collectors.toList());
+		return SimpleJsonResponse.build("modules", result);
 	}
 
 	/**
@@ -78,18 +76,15 @@ public class ModuleResource {
 	@Path("/{moduleId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, JsonModule> getModule(@PathParam("moduleId") String moduleId) {
-		try {
-			Module module = getModuleDao().getModuleById(moduleId);
-			if (module == null)
-				throw new BadRequestException();
-			JsonModule result = JsonModule.fromModule(module, null, null);
-			return SimpleJsonResponse.build("module", result);
-		} catch(NullPointerException ex) {
-			throw new InternalServerErrorException();
-		}
+		Module module = getModuleDao().getModuleById(moduleId);
+		if (module == null)
+			throw new BadRequestException();
+		JsonModule result = JsonModule.fromModule(module, null, null);
+		return SimpleJsonResponse.build("module", result);
 	}
 
 	static class JsonModule {
+		@NotNull
 		private String id;
 		private String name;
 		private List<Category> categories;
@@ -97,7 +92,7 @@ public class ModuleResource {
 		private CycleType cycleType;
 		private Double creditPoints;
 		private String lecturer;
-		@JsonInclude(JsonInclude.Include.ALWAYS)
+//		@JsonInclude(JsonInclude.Include.ALWAYS)
 		@JsonSerialize(using = MyObjectMapperProvider.CustomSerializerModule.PreferenceTypeSerializer.class)
 		@JsonDeserialize(using = MyObjectMapperProvider.CustomSerializerModule.PreferenceTypeDeserializer.class)
 		private PreferenceType preference;

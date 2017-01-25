@@ -17,8 +17,9 @@ import org.glassfish.jersey.message.filtering.EntityFiltering;
 /**
  * Klasse für das Filtern von Authentifizierungs-Anfragen.
  */
-@Provider
-@PreMatching
+//Switch request filtering on/off with these two annotations:
+//@Provider
+//@PreMatching
 public class AuthorizationRequestFilter implements ContainerRequestFilter {
 
 	@Override
@@ -32,7 +33,7 @@ public class AuthorizationRequestFilter implements ContainerRequestFilter {
 			AbstractSecurityProvider securityProvider = AbstractSecurityProvider.getSecurityProviderImpl();
 			AuthorizationContext context = securityProvider.getAuthorizationContext(accessToken);
 			if (context != null) {
-				requestContext.setSecurityContext(context);
+				AuthorizationContextFactory.setContext(requestContext, context);
 			} else {
 				throw new WebApplicationException(Status.UNAUTHORIZED);
 			}
