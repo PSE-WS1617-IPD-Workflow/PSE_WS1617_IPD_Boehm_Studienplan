@@ -14,7 +14,11 @@ define(["studyplan", "cookies"], function (client, Cookies) {
             expect(res.state).toEqual(sesInfo.get('state'));
         });
         if("should retrieve information in cookie", function () {
-            
+            //sesInfo.set('access_token','Trash(e.g. Iron Sky)');
+            Cookies.set(_.result(sesInfo,'url'),{state:"abc",access_token:"TODO:insertSomethingFunHere"});
+            var res = client.storage.CookieSync("read",sesInfo);
+            expect(res.access_token).toEqual("TODO:insertSomethingFunHere");
+            expect(res.state).not.toEqual("abc");
         });
     });
 });

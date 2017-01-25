@@ -21,8 +21,18 @@ edu.kit.informatik.studyplan.client.storage.CookieSync = function (method, model
         }
     };
     if (typeof methods[method] !== "undefined") {
-        return methods[method](model);
+        var result = methods[method](model);
+        if(result===undefined&&options&&options.error){
+            options.error(null, "[edu.kit.informatik.studyplan.client.storage.CookieSync] Invalid method " + method, 400);
+        }
+        if(options&&options.success){
+            options.success(result);
+        }
+        return result;
     } else {
+        if(options&&options.error){
+            options.error(null, "[edu.kit.informatik.studyplan.client.storage.CookieSync] Invalid method " + method, 400);
+        }
         throw new Error("[edu.kit.informatik.studyplan.client.storage.CookieSync] Invalid method " + method);
     }
 };

@@ -1,6 +1,8 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.module.Preference");
 /**
  * @constructor
+ * @param {Object=} attributes
+ * @param {Object=} options
  * @extends {Backbone.Model}
  */
 

@@ -20,7 +20,7 @@ edu.kit.informatik.studyplan.client.model.module.Module = Backbone.Model.extend(
         var categorie = [];
         if (typeof response["categories"] !== "undefined"){
             for (var i = 0; i<response["categories"].length;i++){
-                var value = response.categories[i].name;
+                var value = response["categories"][i].name;
                 categorie.push(value);
             }
         }
