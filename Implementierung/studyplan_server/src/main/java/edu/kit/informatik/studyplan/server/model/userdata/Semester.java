@@ -15,6 +15,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.validation.constraints.NotNull;
 
 /************************************************************/
 /**
@@ -29,12 +30,13 @@ public class Semester {
 	@Column(name = "semester_type")
 	@Enumerated(EnumType.STRING)
 	@JsonProperty("semester-type")
+	@NotNull
 	private SemesterType semesterType;
 	/**
 	 * 
 	 */
 	@Column(name = "year")
-	private int year;
+	private int year = -1;
 
 	/**
 	 * Berechnet die Anzahl an Semester, die seit diesem Semester vergangen sind

@@ -25,7 +25,7 @@ public class Category {
 	@Id
 	@Column(name = "category_id")
 	@JsonProperty("id")
-	private int categoryId;
+	private int categoryId = -1;
 	/**
 	 * 
 	 */

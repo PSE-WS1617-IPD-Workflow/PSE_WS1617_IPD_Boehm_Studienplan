@@ -27,7 +27,7 @@ public class Field {
 	@Id
 	@Column(name = "field_id")
 	@JsonProperty("id")
-    private int fieldId;
+    private int fieldId = -1;
 	
 	@Column(name = "name")
 	@JsonProperty("name")

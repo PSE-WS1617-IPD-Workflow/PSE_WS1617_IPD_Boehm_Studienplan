@@ -31,7 +31,7 @@ public class Discipline {
 	@Column(name = "discipline_id")
 	@JsonProperty("id")
 	@JsonView(StudentResource.Views.StudentClass.class)
-	private int disciplineId;
+	private int disciplineId = -1;
 	/**
 	 * 
 	 */
