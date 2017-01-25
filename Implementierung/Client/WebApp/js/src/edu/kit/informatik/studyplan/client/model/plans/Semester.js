@@ -9,6 +9,9 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.Semester");
 edu.kit.informatik.studyplan.client.model.plans.Semester = Backbone.Collection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.Semester.prototype}*/{
     planId : null,
     semesterNum : 0,
+    url : function () {
+        return API_DOMAIN+"plans/"+this.planId+"/modules"
+    },
     parse : function (response, options) {
         "use strict";
         // Set planId
@@ -16,9 +19,14 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = Backbone.Collection.e
         this.semesterNum = response["semesterNum"];
         response = response["modules"];
         var result = [];
+        
         // Initialise modules
         for(var i = 0; i < response.length; i++){
-            result.push(new edu.kit.informatik.studyplan.client.model.module.Module({planId : this.planId, module : response[i]},{parse : true, collection : this}));
+            _.extend(response[i],{
+                planId : this.planId,
+                semester : this.semesterNum
+            });
+            result.push(new edu.kit.informatik.studyplan.client.model.module.Module({module : response[i]},{parse : true, collection : this}));
         }
         return result;
     }

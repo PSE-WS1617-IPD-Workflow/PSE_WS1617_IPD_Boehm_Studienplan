@@ -9,6 +9,19 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     
     parse : function (response, options) {
         "use strict";
+        for(var i = 0; i<response.modules; i++){
+            response.modules.passed = false;
+        }
+        var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
+        if(student){
+            var passedModules = student.get('passedModules');
+        }
+        if(passedModules){
+            passedModules.forEach(function(module){
+                module.passed = true;
+                response.modules.push(module);
+            });
+        }
         // Check if plan modules were given in response
         if (typeof response.modules !== "undefined") {
             // Initialise an object of type client.model.plans.SemesterCollection and set planId and module
@@ -24,6 +37,48 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
             response.violations = violations;
         }
         return response;
+    },
+    /**
+     * @param {Object} attributes
+     * @param {Object} options Backbone options for storage. On default PATCH will be used upon saving (created) objects
+     */
+    save : function (attributes, options){
+        _.defaults(options,{
+            patch : true,
+        });
+        if(this.isNew()){
+            options["method"]="create";
+        } else {
+            if(options.patch==true){
+                options["method"]="patch";
+            } else {
+                options["method"]="put";
+            }
+        }
+        Backbone.Model.prototype.save.apply(this,arguments);
+    },
+    toJSON : function (options) {
+        if(options.method==="create"||options.method==="patch"){
+            return {id : this.id, name : this.get('name')};
+        } else {
+            var result = {
+                id: this.id,
+                status: this.get('status'),
+                "creditpoints-sum":this.get('creditpoints-sum'),
+                "name": this.get('name'),
+            };
+            result.violations = [];
+            var violations = this.get('violations');
+            if(violations){
+                for(var i = 0; i<violations.length; i++){
+                    result.violations.push(violations[i].toJSON(options));
+                }
+            }
+            if(this.get('semesterCollection')){
+                result.modules = this.get('semesterCollection').toJSON(options);
+            }
+            return result;
+        }
     },
     /**
     * @param {number} moduleId
