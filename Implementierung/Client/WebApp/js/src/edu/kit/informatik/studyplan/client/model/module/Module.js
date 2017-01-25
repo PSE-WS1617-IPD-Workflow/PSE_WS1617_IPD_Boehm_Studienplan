@@ -17,18 +17,25 @@ edu.kit.informatik.studyplan.client.model.module.Module = Backbone.Model.extend(
     parse : function (response, options) {
         "use strict";
         this.planId = response["planId"];
-        var categories = [];
-        for (var i = 0; i<response["categories"].length;i++){
-            categories.push(response.categories[i].name);
+        var categorie = [];
+        if (typeof response["categories"] !== "undefined"){
+            for (var i = 0; i<response["categories"].length;i++){
+                var value = response.categories[i].name;
+                categorie.push(value);
+            }
         }
-        response["categories"]=this.categories;
-        var constraints = [];
-        for(var i = 0;i<response["constraints"].length; i++){)
-        this.constraints.push(new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint({response.constraints[i]},{parse : true}));
-        }
-        response.constraints = this.constraints;
+        response["categories"]=categorie;
         
-        response["preference"]=new edu.kit.informatik.studyplan.client.model.module.Preference({response,{parse: true});
+        var constraint = [];
+        if (typeof response["constraints"] !== "undefined"){
+            for(var i = 0;i<response["constraints"].length; i++){
+            var value = new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(response.constraints[i],{parse : true});
+            constraint.push(value);
+            }
+        }
+        response.constraints = constraint;
+        
+        response["preference"]= new edu.kit.informatik.studyplan.client.model.module.Preference(response,{parse: true});
         return response;
     }
 });
