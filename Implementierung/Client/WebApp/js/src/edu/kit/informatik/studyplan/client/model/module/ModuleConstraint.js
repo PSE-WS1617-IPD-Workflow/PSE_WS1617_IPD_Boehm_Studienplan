@@ -8,6 +8,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.module.ModuleConstraint"
 
 edu.kit.informatik.studyplan.client.model.module.ModuleConstraint = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.ModuleConstraint.prototype}*/{
     parse : function (response, options) {
+        response=response["constraint"];
         response["first"]=new edu.kit.informatik.studyplan.client.model.module.Module(response["first"], {parse: true});
         response["second"]= new edu.kit.informatik.studyplan.client.model.module.Module({module: response["second"]}, {parse: true});
         return response;

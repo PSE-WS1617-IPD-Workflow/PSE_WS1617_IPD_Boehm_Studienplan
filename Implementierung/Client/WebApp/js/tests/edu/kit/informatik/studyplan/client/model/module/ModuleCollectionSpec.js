@@ -18,7 +18,7 @@ define(["studyplan"], function (client) {
                         lecturer: "Hagrid",
                         preference: 1,
                         description: "Auf Heippogreifen reiten, Schrumpfhörnige Schnarchkackler füttern und beißende Bücher bändigen. Spannung Spaß und Abenteuer im Verbotenen Wald.",
-                        constraints: [{
+                        constraints: [{constraint: {
                             name: "keine Ahnung wozu der gut ist, ich glaube das sollte lieber ID sein, aber dazu bin ich vielleicht nicht befugt.",
         
                             first: {module: {
@@ -30,7 +30,7 @@ define(["studyplan"], function (client) {
                             }},
                             type: "Himmel und Hölle gleichzeitig zum Ausgleich."
 
-                        }]
+                        }}]
                     }},
                         
                     {module:
@@ -60,6 +60,7 @@ define(["studyplan"], function (client) {
             expect(module.get(1).get("name")).toContain("Zaubertränke");
             expect(module.get(2)).not.toBeDefined();
             expect(module.get(0).get("constraints")).toBeDefined();
+            
                    
     
            //weitere Tests: 
