@@ -16,9 +16,6 @@ edu.kit.informatik.studyplan.client.model.module.Module = Backbone.Model.extend(
     */
     parse : function (response, options) {
         "use strict";
-        console.log("---------------------------------------------------------------");
-        console.log(response);
-        //response = response["module"];
         this.planId = response["module"]["planId"];
         var categorie = [];
         if (typeof response.module["categories"] !== "undefined") {

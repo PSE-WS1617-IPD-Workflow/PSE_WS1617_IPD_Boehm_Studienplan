@@ -43,7 +43,6 @@ define(["studyplan"], function (client) {
                     };
             var json_copy1 = JSON.parse(JSON.stringify(json.constraint));
             var json_copy = {constraint: json_copy1};
-            console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             var constraint1 = new client.model.module.ModuleConstraint(json_copy, {parse : true});
             
             expect(constraint1.get("name")).toEqual(json.constraint["name"]);
