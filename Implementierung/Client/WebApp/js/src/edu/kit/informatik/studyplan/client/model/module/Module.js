@@ -38,7 +38,7 @@ edu.kit.informatik.studyplan.client.model.module.Module = Backbone.Model.extend(
         }
         response.module.constraints = constraint;
         
-        response.module["preference"]= new edu.kit.informatik.studyplan.client.model.module.Preference(response.module,{parse: true});
+        response.module["preference"]= new edu.kit.informatik.studyplan.client.model.module.Preference(response["module"],{parse: true});
         return response["module"];
     }
 });
