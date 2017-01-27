@@ -15,11 +15,13 @@ edu.kit.informatik.studyplan.client.model.module.Module = Backbone.Model.extend(
     *Plan iD wird von Plan durchgegeben, falls Modul zu Plan gehört. Kategorie ist kein eigenes Objekt. 
     */
     parse : function (response, options) {
-        //response = response["module"];
         "use strict";
+        console.log("---------------------------------------------------------------");
+        console.log(response);
+        //response = response["module"];
         this.planId = response["module"]["planId"];
         var categorie = [];
-        if (typeof response.module["categories"] !== "undefined"){
+        if (typeof response.module["categories"] !== "undefined") {
             for (var i = 0; i<response.module["categories"].length;i++){
                 var value = response.module["categories"][i].name;
                 categorie.push(value);

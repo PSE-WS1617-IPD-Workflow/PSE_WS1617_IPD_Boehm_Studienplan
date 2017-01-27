@@ -36,10 +36,10 @@ define(["studyplan"], function (client) {
                                 constraints: {
                                 }
                             }},
-                            second: {
+                            second: {module:{
                                 //wie stellt man das klugerweise da ? 
                                 id : 0
-                            },
+                            }},
                             type: "Himmel und Hölle gleichzeitig zum Ausgleich."
 
                         }]
@@ -51,6 +51,7 @@ define(["studyplan"], function (client) {
             var module1 = new client.model.module.Module(json_copy, {parse : true});
             
             expect(module1.get("name")).toEqual(json.module["name"]);
+            //expect(module1.get("name")).not.toBeDefined();
             expect(module1.get("lecturer")).toEqual(json.module["lecturer"]);
             expect(module1.get("preference").get("value")).toEqual(json.module["preference"]);
             expect(module1.get("description")).toEqual(json.module["description"]);

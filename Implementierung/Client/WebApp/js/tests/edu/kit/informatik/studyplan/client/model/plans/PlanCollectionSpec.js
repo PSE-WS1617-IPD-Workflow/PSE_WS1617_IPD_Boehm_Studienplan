@@ -44,7 +44,7 @@ define(["studyplan"], function (studyplan) {
                     name : "test2"
                 }
             ]
-        },{parse:true});
+        },{parse: true});
         //console.log(planCollection);
         // TODO: Proper testing
     });
