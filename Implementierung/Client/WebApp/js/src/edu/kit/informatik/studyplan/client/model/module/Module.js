@@ -15,27 +15,28 @@ edu.kit.informatik.studyplan.client.model.module.Module = Backbone.Model.extend(
     *Plan iD wird von Plan durchgegeben, falls Modul zu Plan gehört. Kategorie ist kein eigenes Objekt. 
     */
     parse : function (response, options) {
+        //response = response["module"];
         "use strict";
-        this.planId = response["planId"];
+        this.planId = response["module"]["planId"];
         var categorie = [];
-        if (typeof response["categories"] !== "undefined"){
-            for (var i = 0; i<response["categories"].length;i++){
-                var value = response["categories"][i].name;
+        if (typeof response.module["categories"] !== "undefined"){
+            for (var i = 0; i<response.module["categories"].length;i++){
+                var value = response.module["categories"][i].name;
                 categorie.push(value);
             }
         }
-        response["categories"]=categorie;
+        response.module["categories"]=categorie;
         
         var constraint = [];
-        if (typeof response["constraints"] !== "undefined"){
-            for(var i = 0;i<response["constraints"].length; i++){
-            var value = new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(response.constraints[i],{parse : true});
+        if (typeof response.module["constraints"] !== "undefined"){
+            for(var i = 0;i<response.module["constraints"].length; i++){
+            var value = new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(response.module.constraints[i],{parse : true});
             constraint.push(value);
             }
         }
-        response.constraints = constraint;
+        response.module.constraints = constraint;
         
-        response["preference"]= new edu.kit.informatik.studyplan.client.model.module.Preference(response,{parse: true});
-        return response;
+        response.module["preference"]= new edu.kit.informatik.studyplan.client.model.module.Preference(response.module,{parse: true});
+        return response["module"];
     }
 });

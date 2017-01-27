@@ -17,12 +17,15 @@ edu.kit.informatik.studyplan.client.model.module.ModuleCollection = Backbone.Col
     */
     parse : function (response, options) {
         "use strict";
-        response = response["modules"];
+        //response = response["modules"];
         var result = [];
         // Initialise modules
-        for(var i = 0; i < response.length; i++){
-            result.push(new edu.kit.informatik.studyplan.client.model.module.Module({module : response[i]},{parse : true, collection : this}));
+        if (typeof response.modules !== "undefined"){
+        for(var i = 0; i < response.modules.length; i++){
+            var temp = new edu.kit.informatik.studyplan.client.model.module.Module(response.modules[i],{parse : true});
+            result.push(temp);
         }
+    }
         return result;
     }
 });

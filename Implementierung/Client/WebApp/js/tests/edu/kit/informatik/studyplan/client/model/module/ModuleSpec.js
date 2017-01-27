@@ -3,7 +3,8 @@ define(["studyplan"], function (client) {
     describe("ModuleInitialisation", function () {
         it("testing parse", function () {
 
-            var json =  {
+            var json =  {module:
+                         {
                         id : 0,
                         name : "Magische Tierwesen",
                         categories://test,
@@ -19,14 +20,14 @@ define(["studyplan"], function (client) {
                         constraints: [{
                             name: "keine Ahnung wozu der gut ist, ich glaube das sollte lieber ID sein, aber dazu bin ich vielleicht nicht befugt.",
         
-                            first: {
+                            first: {module:{
                                 id : 1,
                                 name : "Zaubertränke",
-                                categories: 
+                                categories:
                                         {
-                                    id: 13,
-                                    name: "Mord und Heilung"
-                                },
+                                        id: 13,
+                                        name: "Mord und Heilung"
+                                    },
                                 semester: 5,
                                 "cycle-type": "Mittsommer",
                                 lecturer: "Snape",
@@ -34,7 +35,7 @@ define(["studyplan"], function (client) {
                                 description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
                                 constraints: {
                                 }
-                            },
+                            }},
                             second: {
                                 //wie stellt man das klugerweise da ? 
                                 id : 0
@@ -43,23 +44,25 @@ define(["studyplan"], function (client) {
 
                         }]
                     
-                };
-            var json_copy = JSON.parse(JSON.stringify(json));
-            var module = new client.model.module.Module(json_copy, {parse : true});
+                    }
+                        };
+            var json_copy1 = JSON.parse(JSON.stringify(json.module));
+            var json_copy = {module: json_copy1};
+            var module1 = new client.model.module.Module(json_copy, {parse : true});
             
-            expect(module.get("name")).toEqual(json["name"]);
-            expect(module.get("lecturer")).toEqual(json["lecturer"]);
-            expect(module.get("preference").get("value")).toEqual(json["preference"]);
-            expect(module.get("description")).toEqual(json["description"]);
-            expect(module.get("cycle-type")).toEqual(json["cycle-type"]);
-            expect(module.get("semester")).toEqual(json["semester"]);
-            expect(module.get("id")).toEqual(json["id"]);
-            expect(module.get("categories")[0]).toEqual(json.categories[0]["name"]);
-            expect(module.get("constraints")[0].get("name")).toEqual(json.constraints[0].name);
-            expect(module.get("constraints")[0].get("first").get("name")).toEqual(json.constraints[0].first.name);
-            expect(module.get("constraints")[0].get("second").get("name")).toEqual(json.constraints[0].second.name);
-            expect(module.get("constraints")[0].get("type")).toEqual(json.constraints[0].type);
-            expect(module.get("constraints")[0].get("first").get("description")).toEqual(json.constraints[0].first["description"]);
+            expect(module1.get("name")).toEqual(json.module["name"]);
+            expect(module1.get("lecturer")).toEqual(json.module["lecturer"]);
+            expect(module1.get("preference").get("value")).toEqual(json.module["preference"]);
+            expect(module1.get("description")).toEqual(json.module["description"]);
+            expect(module1.get("cycle-type")).toEqual(json.module["cycle-type"]);
+            expect(module1.get("semester")).toEqual(json.module["semester"]);
+            expect(module1.get("id")).toEqual(json.module["id"]);
+            expect(module1.get("categories")[0]).toEqual(json.module.categories[0]["name"]);
+            expect(module1.get("constraints")[0].get("name")).toEqual(json.module.constraints[0].name);
+            expect(module1.get("constraints")[0].get("first").get("name")).toEqual(json.module.constraints[0].first.module.name);
+            expect(module1.get("constraints")[0].get("second").get("name")).toEqual(json.module.constraints[0].second.name);
+            expect(module1.get("constraints")[0].get("type")).toEqual(json.module.constraints[0].type);
+            expect(module1.get("constraints")[0].get("first").get("description")).toEqual(json.module.constraints[0].first.module["description"]);
            //weitere Tests: Array nicht mehr Werte als vorgesehen, PlanID, passed, discipline, preference ausführlicher, leere Felder, tiefere Constraintverknüpfungen.
         });
     
