@@ -10,6 +10,8 @@ import org.glassfish.jersey.server.ServerProperties;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationContextFactory;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationRequestFilter;
+import edu.kit.informatik.studyplan.server.rest.CorsResponseFilter;
+import edu.kit.informatik.studyplan.server.rest.OptionsResponseFilter;
 import edu.kit.informatik.studyplan.server.rest.ValidationConfigContextResolver;
 
 /**
@@ -33,5 +35,7 @@ public class MainApplication extends ResourceConfig {
 		register(ValidationConfigContextResolver.class);
 		property(ServerProperties.BV_DISABLE_VALIDATE_ON_EXECUTABLE_OVERRIDE_CHECK, true);
 		register(AuthorizationRequestFilter.class);
+		register(OptionsResponseFilter.class);
+		register(CorsResponseFilter.class);
 	}
 };
