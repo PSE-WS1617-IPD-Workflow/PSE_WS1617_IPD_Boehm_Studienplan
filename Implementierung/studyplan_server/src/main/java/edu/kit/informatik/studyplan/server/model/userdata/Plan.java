@@ -35,7 +35,7 @@ public class Plan {
 	 * 
 	 */
 	@Id
-	@GenericGenerator(name = "uuid-gen", strategy = "uuid")
+	@GenericGenerator(name = "uuid-gen", strategy = "org.hibernate.id.UUIDGenerator")
 	@GeneratedValue(generator = "uuid-gen")
 	@Column(name = "identifier")
 	private String identifier;
