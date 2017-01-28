@@ -1,6 +1,6 @@
 define(["studyplan"], function (client) {
     "use strict";
-    describe("ModuleResult", function () {
+    describe("ModulesResult", function () {
         var searchCol, filterCol, resultObject;
         beforeEach(function () {
             searchCol = new client.model.system.SearchCollection({}, {planId : "abcdef"});

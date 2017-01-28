@@ -1,6 +1,6 @@
 define(["studyplan"], function (client) {
     "use strict";
-    describe("ModuleResult", function () {
+    describe("Plan", function () {
         var planCol, plan, resultObject, planResultObject;
         beforeEach(function () {
             jasmine.Ajax.install();

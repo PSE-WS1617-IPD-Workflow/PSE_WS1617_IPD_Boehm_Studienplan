@@ -1,6 +1,6 @@
 define(["studyplan"], function (client) {
     "use strict";
-    describe("ModuleResult", function () {
+    describe("Plans", function () {
         var planCol, resultObject;
         beforeEach(function () {
             resultObject = {
