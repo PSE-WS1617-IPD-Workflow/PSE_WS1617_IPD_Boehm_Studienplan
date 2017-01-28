@@ -26,7 +26,7 @@ define(["studyplan"], function (client) {
                     },
                     {
                         "name"  :   "testFilter3",
-                        "default-value" : {id : 1, text : "test1"},
+                        "default-value" : 1,
                         "tooltip"  :    "Test List Filter",
                         "specification" :   {
                             "type"  :   "list",

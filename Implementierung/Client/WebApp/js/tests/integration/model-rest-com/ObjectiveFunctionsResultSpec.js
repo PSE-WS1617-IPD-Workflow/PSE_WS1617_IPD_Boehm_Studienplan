@@ -38,6 +38,7 @@ define(["studyplan"], function (client) {
         it("Should retrieve data", function () {
             for (var i=0; i<3;i++) {
                 var importantFunction = objectiveCol.get(i+1);
+                expect(importantFunction.get('name')).toBeDefined();
                 expect(importantFunction.get('name')).toEqual(resultObject.functions[i].name);
                 expect(importantFunction.get('description')).toEqual(resultObject.functions[i].description);
             }
