@@ -87,10 +87,6 @@ define(["studyplan"], function (client) {
             expect(plan.get('semesterCollection').get(3).get('M1').get('name')).toEqual(planResultObject.plan.modules[0].name);
             expect(plan.get('semesterCollection').get(5).get('M2').get('name')).toEqual(planResultObject.plan.modules[1].name);
         });
-        it("test", function () {
-            var m = new client.model.module.Module();
-            m.toJSON();
-        })
         it("PUT /plans/P4", function () {
             plan.fetch();
             expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3');
@@ -139,6 +135,24 @@ define(["studyplan"], function (client) {
             expect(data.plan.modules).toContain(response.plan.modules[0]);
             expect(data.plan.modules).toContain(response.plan.modules[1]);
             
+        });
+        it("GET /plans/P3/verification", function () {
+            expect(plan.get('verificationResult').get('status')).toBe('invalid');
+            plan.get('verificationResult').fetch();
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3/verification');
+            expect(jasmine.Ajax.requests.mostRecent().method).toBe('GET');
+            jasmine.Ajax.requests.mostRecent().respondWith({
+                "status"    :   200,
+                "contentType"   :   "application/json",
+                "responseText"  :   JSON.stringify({
+                    plan: {
+                        id: "P3",
+                        status: "valid",
+                        violations:[]
+                    }
+                })
+            });
+            expect(plan.get('verificationResult').get('status')).toBe('valid');
         });
     });
 });

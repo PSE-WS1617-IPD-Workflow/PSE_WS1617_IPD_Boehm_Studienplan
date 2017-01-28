@@ -37,7 +37,7 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
     toJSON : function (options){
         var result = [];
         _.each(this.attributes, function (el) {
-            result = _.union(el.toJSON(options),result);
+            result = _.union(el.toJSON(options)["modules"],result);
         });
         return result;
     }
