@@ -67,12 +67,14 @@ class HibernateModuleDao implements ModuleDao {
 
 	@Override
 	public List<Category> getCategories(Discipline discipline) {
-		String query = "select distinct category "
+		String queryString = "select distinct category "
 				+ "from Module as module  "
 				+ "join module.categories as category "
 				+ "where module.discipline = :discipline";
 		Session session = startTransaction();
-		List<Category> resultList = session.createQuery(query, Category.class).getResultList();
+		Query<Category> query = session.createQuery(queryString, Category.class);
+		query.setParameter("discipline", discipline);
+		List<Category> resultList = query.getResultList();
 		cleanUp(session);
 		return resultList;
 	}
