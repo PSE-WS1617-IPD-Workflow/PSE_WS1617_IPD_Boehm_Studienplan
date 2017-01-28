@@ -36,10 +36,10 @@ define(["studyplan"], function (client) {
                         id : 1,
                         name : "Zaubertränke",
                         categories:
-                                {
+                                [{
                                 id: 13,
                                 name: "Mord und Heilung"
-                            },
+                            }],
                         semester: 5,
                         "cycle-type": "Mittsommer",
                         lecturer: "Snape",

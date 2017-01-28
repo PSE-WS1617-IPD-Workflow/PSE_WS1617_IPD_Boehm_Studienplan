@@ -1,3 +1,5 @@
+/**
+ * @Deprecated
 define(["studyplan"], function (client) {
     "use strict";
     
@@ -23,3 +25,4 @@ define(["studyplan"], function (client) {
         });
     });
 });
+*/
