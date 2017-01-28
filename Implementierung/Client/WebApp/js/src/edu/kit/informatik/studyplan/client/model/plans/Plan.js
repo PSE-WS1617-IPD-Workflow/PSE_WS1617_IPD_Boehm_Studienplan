@@ -30,15 +30,13 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         // Initialise an object of type client.model.plans.SemesterCollection and set planId and module
             // TODO: Inject modules from Student.getInstance().get('passedModules');
         response.semesterCollection = new edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({planId : response.id, modules : response.modules}, {parse : true});
-        // Check if violations exist, if so add them
-        if (typeof response["violations"] === "undefined") {
-            response["violations"]=[];   
-        }
-        var violations = [];
-        for (var i = 0; i < response["violations"].length; i++) {
-            violations.push(new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(response["violations"][i],{parse:true}));
-        }
-        response["violations"] = violations;
+        response.verificationResult = new edu.kit.informatik.studyplan.client.model.plans.VerificationResult({
+            plan: {
+                id: response["id"],
+                violations: response["violations"],
+                status: response["status"]
+            }
+        },{parse: true});
         return response;
     },
     /**
@@ -74,10 +72,8 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         return Backbone.Model.prototype.save.apply(this,[attrs, options]);
     },
     toJSON : function (options) {
-        if(options.method==="post"){
+        if(options.method==="post" || options.method==="patch"){
             return {plan:{name : this.get('name')}};
-        }else if(options.method==="patch"){
-            return {plan:{id : this.id, name : this.get('name')}};
         } else {
             var result = {
                 id: this.id,

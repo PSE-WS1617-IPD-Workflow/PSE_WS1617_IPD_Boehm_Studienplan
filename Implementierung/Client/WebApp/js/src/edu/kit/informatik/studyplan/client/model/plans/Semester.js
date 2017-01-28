@@ -23,12 +23,5 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
         }
         //console.log(response["modules"]);
         return edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype.parse.apply(this,[response,options]);
-    },
-    toJSON : function (options) {
-        var res = [];
-        this.each(function (el) {
-            res.push(el.toJSON(options)["module"]);
-        })
-        return res;
     }
 });

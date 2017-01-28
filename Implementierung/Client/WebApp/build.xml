@@ -122,6 +122,7 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
             <file name="SearchCollection.js"/>
         </sources>
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/plans">
+            <file name="VerificationResult.js"/>
             <file name="Plan.js"/>
             <file name="PlanCollection.js"/>
             <file name="ProposedPlan.js"/>
