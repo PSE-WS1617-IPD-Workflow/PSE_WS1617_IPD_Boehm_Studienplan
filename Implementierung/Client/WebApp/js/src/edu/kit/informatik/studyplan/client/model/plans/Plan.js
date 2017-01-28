@@ -9,8 +9,13 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     
     parse : function (response, options) {
         "use strict";
-        for(var i = 0; i<response.modules; i++){
-            response.modules.passed = false;
+        response = response["plan"];
+        if(response["modules"]){
+            for(var i = 0; i<response.modules.length; i++){
+                response["modules"]["passed"] = false;
+            }
+        } else {
+            response["modules"]=[];
         }
         var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
         if(student){
@@ -18,24 +23,22 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         }
         if(passedModules){
             passedModules.forEach(function(module){
-                module.passed = true;
-                response.modules.push(module);
+                module["passed"] = true;
+                response["modules"].push(module);
             });
         }
-        // Check if plan modules were given in response
-        if (typeof response.modules !== "undefined") {
-            // Initialise an object of type client.model.plans.SemesterCollection and set planId and module
+        // Initialise an object of type client.model.plans.SemesterCollection and set planId and module
             // TODO: Inject modules from Student.getInstance().get('passedModules');
-            response.semesterCollection = new edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({planId : response.id, modules : response.modules}, {parse : true});
-        }
+        response.semesterCollection = new edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({planId : response.id, modules : response.modules}, {parse : true});
         // Check if violations exist, if so add them
-        if (typeof response.violations !== "undefined") {
-            var violations = [];
-            for (var i = 0; i < response.violations; i++) {
-                violations.push(new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(response.violations[i],{parse:true}));
-            }
-            response.violations = violations;
+        if (typeof response["violations"] === "undefined") {
+            response["violations"]=[];   
         }
+        var violations = [];
+        for (var i = 0; i < response.violations; i++) {
+            violations.push(new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(response.violations[i],{parse:true}));
+        }
+        response["violations"] = violations;
         return response;
     },
     /**
@@ -53,11 +56,14 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         } else {
             (attrs = {})[key] = value;
         }
+        if (typeof options === "undefined") {
+            options = {};
+        }
         _.defaults(options,{
             patch : true,
         });
         if(this.isNew()){
-            options["method"]="create";
+            options["method"]="post";
         } else {
             if(options.patch==true){
                 options["method"]="patch";
@@ -68,7 +74,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         return Backbone.Model.prototype.save.apply(this,[attrs, options]);
     },
     toJSON : function (options) {
-        if(options.method==="create"||options.method==="patch"){
+        if(options.method==="post"||options.method==="patch"){
             return {id : this.id, name : this.get('name')};
         } else {
             var result = {

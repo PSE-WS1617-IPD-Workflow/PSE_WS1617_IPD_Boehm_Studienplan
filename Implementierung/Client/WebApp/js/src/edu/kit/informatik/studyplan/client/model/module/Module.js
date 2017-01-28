@@ -16,7 +16,7 @@ edu.kit.informatik.studyplan.client.model.module.Module = Backbone.Model.extend(
     parse : function (response, options) {
         "use strict";
         // Necessary because Model sometimes calls itself with its attributes (intelligent Backbone stuff...)
-        if(typeof response["module"] === 'undefined'){
+        if(!response["module"]){
             return response;
         }
         var result = response["module"];
@@ -43,6 +43,7 @@ edu.kit.informatik.studyplan.client.model.module.Module = Backbone.Model.extend(
             preference : response["module"]["preference"]
         }
         result["preference"]= new edu.kit.informatik.studyplan.client.model.module.Preference(preferenceInfo);
+        
         return result;
     },
     toJSON : function () {

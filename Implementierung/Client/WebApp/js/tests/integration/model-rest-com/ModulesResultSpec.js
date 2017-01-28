@@ -1,67 +1,69 @@
 define(["studyplan"], function (client) {
     "use strict";
-    var searchCol, filterCol, resultObject;
-    beforeEach(function () {
-        searchCol = new client.model.system.SearchCollection({}, {planId : "abcdef"});
-        filterCol = new client.model.system.FilterCollection({
-            filters: [
-                {
-                    "name"  :   "testFilter1",
-                    "default-value" : {min: 0, max: 20},
-                    "tooltip"  :    "Test Range Filter",
-                    "specification" :   {
-                        "type"  :   "range",
-                        "min"   :   0,
-                        "max"   :   15
-                    }
-                },
-                {
-                    "name"  :   "testFilter2",
-                    "default-value" : "abc",
-                    "tooltip"  :    "Test List Filter",
-                    "specification" :   {
-                        "type"  :   "contains"
-                    }
-                },
-                {
-                    "name"  :   "testFilter3",
-                    "default-value" : {id : 1, text : "test1"},
-                    "tooltip"  :    "Test List Filter",
-                    "specification" :   {
-                        "type"  :   "list",
-                        "items" :   [
-                            {
-                                "id"    :   1,
-                                "text"  :   "test1"
-                            },
-                            {
-                                "id"    :   2,
-                                "text"  :   "test2"
-                            }
-                        ]
-                    }
-                }
-            ]
-        }, {parse : true});
-        resultObject = {
-            modules : [
-                {
-                    id          :   "M1",
-                    name        :   "Bayrisch",
-                    creditpoints:   7,
-                    lecturer    :   "Aloisius"
-                },
-                {
-                    id          :   "M2",
-                    name        :   "Schwäbisch",
-                    creditpoints:   5,
-                    lecturer    :   "Maultaschius"
-                }
-            ]
-        };
-        searchCol.setFilters(filterCol);
-    });
     describe("ModuleResult", function () {
+        var searchCol, filterCol, resultObject;
+        beforeEach(function () {
+            searchCol = new client.model.system.SearchCollection({}, {planId : "abcdef"});
+            filterCol = new client.model.system.FilterCollection({
+                filters: [
+                    {
+                        "name"  :   "testFilter1",
+                        "default-value" : {min: 0, max: 20},
+                        "tooltip"  :    "Test Range Filter",
+                        "specification" :   {
+                            "type"  :   "range",
+                            "min"   :   0,
+                            "max"   :   15
+                        }
+                    },
+                    {
+                        "name"  :   "testFilter2",
+                        "default-value" : "abc",
+                        "tooltip"  :    "Test List Filter",
+                        "specification" :   {
+                            "type"  :   "contains"
+                        }
+                    },
+                    {
+                        "name"  :   "testFilter3",
+                        "default-value" : {id : 1, text : "test1"},
+                        "tooltip"  :    "Test List Filter",
+                        "specification" :   {
+                            "type"  :   "list",
+                            "items" :   [
+                                {
+                                    "id"    :   1,
+                                    "text"  :   "test1"
+                                },
+                                {
+                                    "id"    :   2,
+                                    "text"  :   "test2"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }, {parse : true});
+            resultObject = {
+                modules : [
+                    {
+                        id          :   "M1",
+                        name        :   "Bayrisch",
+                        creditpoints:   7,
+                        lecturer    :   "Aloisius",
+                        preference  :   "positive"
+                    },
+                    {
+                        id          :   "M2",
+                        name        :   "Schwäbisch",
+                        creditpoints:   5,
+                        lecturer    :   "Maultaschius",
+                        preference  :   "negative"
+                    }
+                ]
+            };
+            searchCol.setFilters(filterCol);
+        });
         beforeEach(function () {
             jasmine.Ajax.install();
         });

@@ -12,7 +12,7 @@ edu.kit.informatik.studyplan.client.model.plans.PlanCollection = edu.kit.informa
         var plans = [];
         // For each plan in response: Create an object of type client.model.plans.Plan
         for(var i = 0; i<response["plans"].length; i++){
-            plans.push(new this.model(response.plans[i],{parse : true}));
+            plans.push(new this.model({plan :   response.plans[i]},{parse : true}));
         }
         return plans;
     }

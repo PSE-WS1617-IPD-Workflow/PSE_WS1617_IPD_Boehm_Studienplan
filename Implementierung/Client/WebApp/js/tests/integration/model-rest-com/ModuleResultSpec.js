@@ -1,36 +1,36 @@
 define(["studyplan"], function (client) {
     "use strict";
-    var searchCol, filterCol, resultObject;
-    beforeEach(function () {
-        searchCol = new client.model.system.SearchCollection([
-            {
-                id : 'M1'
-            }
-        ], {planId : "abcdef"});
-        
-        resultObject = {
-            module : {
-                id          :   "M1",
-                name        :   "Bayrisch",
-                "cycle-type":   "WS",
-                preference  :   "positive",
-                categories  :   [{id : 1, name : "Tolle Sprachen"}, {id : 2, name : "Geheimnisse, die die Preißn nie lernen"}],
-                creditpoints:   7,
-                lecturer    :   "Aloisius",
-                description :   "[Insert pseudo bayrisch here]",
-                constraints :   [
-                    {
-                        name : "abc",
-                        first: {id:"M1"},
-                        second: {id:"M2"},
-                        type:   "Voraussetzung"
-                    }
-                ]   
-            }
-        };
-        searchCol.setFilters(filterCol);
-    });
     describe("ModuleResult", function () {
+        var searchCol, filterCol, resultObject;
+        beforeEach(function () {
+            searchCol = new client.model.system.SearchCollection([
+                {
+                    id : 'M1'
+                }
+            ], {planId : "abcdef"});
+
+            resultObject = {
+                module : {
+                    id          :   "M1",
+                    name        :   "Bayrisch",
+                    "cycle-type":   "WS",
+                    preference  :   "positive",
+                    categories  :   [{id : 1, name : "Tolle Sprachen"}, {id : 2, name : "Geheimnisse, die die Preißn nie lernen"}],
+                    creditpoints:   7,
+                    lecturer    :   "Aloisius",
+                    description :   "[Insert pseudo bayrisch here]",
+                    constraints :   [
+                        {
+                            name : "abc",
+                            first: {id:"M1"},
+                            second: {id:"M2"},
+                            type:   "Voraussetzung"
+                        }
+                    ]   
+                }
+            };
+            searchCol.setFilters(filterCol);
+        });
         beforeEach(function () {
             jasmine.Ajax.install();
         });

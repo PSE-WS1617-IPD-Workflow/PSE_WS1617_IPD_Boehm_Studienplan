@@ -3,8 +3,9 @@ define(["studyplan"], function (client) {
     var accessToken = 'weiredlyUnrandomAccessToken';
     describe("OAuthSync", function () {
         var plan = new client.model.plans.Plan({
+            plan:  {
                 name : "Der ultimative Studienplan"
-            }, {parse : true, url : 'api.studyplan.devel/plans'});
+            }}, {parse : true, url : 'api.studyplan.devel/plans'});
         beforeEach(function () {
             jasmine.Ajax.install();
             client.model.user.SessionInformation.getInstance().set('access_token', accessToken);

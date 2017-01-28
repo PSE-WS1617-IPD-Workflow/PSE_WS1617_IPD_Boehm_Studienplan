@@ -28,10 +28,11 @@ edu.kit.informatik.studyplan.client.model.module.ModuleCollection = Backbone.Col
         "use strict";
         var result = [];
         // Initialise modules
-        if (typeof response.modules !== "undefined") {
-            for (var i = 0; i < response.modules.length; i++) {
-                response.modules[i]["planId"]=this.planId;
-                var temp = new this.model({module : response.modules[i]},{parse : true, collection : this});
+        if (typeof response["modules"] !== "undefined") {
+            for (var i = 0; i < response["modules"].length; i++) {
+                response["modules"][i]["planId"]=this.planId;
+                var temp = new this.model(response["modules"][i]);
+                
                 result.push(temp);
             }
         }
