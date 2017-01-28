@@ -1,24 +1,23 @@
 package edu.kit.informatik.studyplan.server.rest;
 
-//import com.sun.xml.internal.ws.client.RequestContext;
-import edu.kit.informatik.studyplan.server.model.moduledata.Category;
-import edu.kit.informatik.studyplan.server.model.moduledata.Field;
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
-import edu.kit.informatik.studyplan.server.model.userdata.User;
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
-
-import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Request;
-import javax.ws.rs.core.SecurityContext;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+//import com.sun.xml.internal.ws.client.RequestContext;
+import edu.kit.informatik.studyplan.server.model.moduledata.Category;
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 
 @Path("/fields")
 public class FieldsResource {
@@ -49,7 +48,7 @@ public class FieldsResource {
     @GET
     @Path("/{id}/options")
     public Map<String,Set<Category>> getOptions(@PathParam("id") Integer id) {
-        Field field = ModuleDaoFactory.getModuleDao().getFieldById(context.getUser().getDiscipline(), id);
+        Field field = ModuleDaoFactory.getModuleDao().getFieldById(id);
         if (field == null)
             throw new BadRequestException();
         Set<Category> result = field.getModules().parallelStream()

@@ -7,8 +7,11 @@ package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 import java.util.List;
 
 import edu.kit.informatik.studyplan.server.filter.Filter;
-import edu.kit.informatik.studyplan.server.filter.Utils;
-import edu.kit.informatik.studyplan.server.model.moduledata.*;
+import edu.kit.informatik.studyplan.server.model.moduledata.Category;
+import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
 
 /************************************************************/
 /**
@@ -37,23 +40,6 @@ public interface ModuleDao {
 	 */
 
 	List<Module> getModulesByFilter(Filter filter, Discipline discipline);
-
-	/**
-	 * Sucht alle Module die den angegebenen Filterkritierien entsprechen und
-	 * gibt die Einträge Nr. <code>start</code> bis <code>end</code> zurück.
-	 * 
-	 * @return die Modulliste
-	 * @param filter
-	 *            der Modulfilter
-	 * @param discipline
-	 *            der Studiengang, in welchem gefiltert werden soll
-	 * @param start
-	 *            Start-Index
-	 * @param end
-	 *            End-Index
-	 */
-
-	List<Module> getModulesByFilter(Filter filter, Discipline discipline, int start, int end);
 
 	/**
 	 * Gibt ein zufälliges Modul, welches den angebenen Filterkriterien
@@ -97,21 +83,9 @@ public interface ModuleDao {
 	 *  @return the discipline's category with given ID or null if not found
 	 *
 	 */
-	public default Category getCategoryById(Discipline discipline, int id) {
-		return getCategories(discipline).stream()
-				.filter(Utils.equals(Category::getCategoryId, id))
-				.findFirst().orElse(null);
-	}
+	Category getCategoryById(int id);
 
     /**
-     * @param discipline
-     *            der die Bereiche enthaltende Studiengang
-     * @return gibt eine Liste der zum Studiengang gehörenden verfügbaren
-     *         Bereiche zurück
-     */
-    List<Category> getSubjects(Discipline discipline); //TODO delete?
-
-	/**
 	 * @param discipline
 	 *            der die Bereiche enthaltende Studiengang
 	 * @return gibt eine Liste der zum Studiengang gehörenden verfügbaren
@@ -124,11 +98,19 @@ public interface ModuleDao {
      *  @return the discipline's field with given ID or null if not found
      *
      */
-    public default Field getFieldById(Discipline discipline, int id) {
-        return getFields(discipline).stream()
-                .filter(Utils.equals(Field::getFieldId, id))
-                .findFirst().orElse(null);
-    }
+    Field getFieldById(int id);
+    
+    /**
+     * 
+     * @return
+     */
+    List<ModuleType> getModuleTypes();
 
-    public List<ModuleType> getModuleTypes();
+    
+    /**
+     * 
+     * @param field
+     * @return
+     */
+    List<Category> getSubjects(Field field);
 };
