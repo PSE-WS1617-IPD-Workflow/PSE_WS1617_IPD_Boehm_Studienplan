@@ -31,8 +31,7 @@ edu.kit.informatik.studyplan.client.model.module.ModuleCollection = Backbone.Col
         if (typeof response["modules"] !== "undefined") {
             for (var i = 0; i < response["modules"].length; i++) {
                 response["modules"][i]["planId"]=this.planId;
-                var temp = new this.model(response["modules"][i]);
-                
+                var temp = new this.model({module:response["modules"][i]},{parse:true});
                 result.push(temp);
             }
         }

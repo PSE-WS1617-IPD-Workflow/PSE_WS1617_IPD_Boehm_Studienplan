@@ -8,11 +8,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.module.Module");
  * Module contains all of the information of the module while planId might contain the name of the plan the module belongs to.
  */
 
-edu.kit.informatik.studyplan.client.model.module.Module = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.Module.prototype}*/{
-    /**
-    * Achtung: in jSon doku fehlt compulsory. 
-    *Plan iD wird von Plan durchgegeben, falls Modul zu Plan gehört. Kategorie ist kein eigenes Objekt. 
-    */
+edu.kit.informatik.studyplan.client.model.module.Module = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.Module.prototype}*/{
     parse : function (response, options) {
         "use strict";
         // Necessary because Model sometimes calls itself with its attributes (intelligent Backbone stuff...)
@@ -46,7 +42,7 @@ edu.kit.informatik.studyplan.client.model.module.Module = Backbone.Model.extend(
         
         return result;
     },
-    toJSON : function () {
+    toJSON : function (options) {
         return {
             module : {
                 id  :   this.get('id'),

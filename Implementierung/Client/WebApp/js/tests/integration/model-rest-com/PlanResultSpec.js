@@ -58,7 +58,7 @@ define(["studyplan"], function (client) {
                         }
                     ]
                 }
-            }
+            };
             planCol = new client.model.plans.PlanCollection();
             planCol.fetch();
             jasmine.Ajax.requests.mostRecent().respondWith({
@@ -86,6 +86,59 @@ define(["studyplan"], function (client) {
             expect(plan.get('status')).toEqual(planResultObject.plan.status);
             expect(plan.get('semesterCollection').get(3).get('M1').get('name')).toEqual(planResultObject.plan.modules[0].name);
             expect(plan.get('semesterCollection').get(5).get('M2').get('name')).toEqual(planResultObject.plan.modules[1].name);
+        });
+        it("test", function () {
+            var m = new client.model.module.Module();
+            m.toJSON();
+        })
+        it("PUT /plans/P4", function () {
+            plan.fetch();
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3');
+            expect(jasmine.Ajax.requests.mostRecent().method).toBe('GET');
+            jasmine.Ajax.requests.mostRecent().respondWith({
+                "status"    :   200,
+                "contentType"   :   "application/json",
+                "responseText"  :   JSON.stringify(planResultObject)
+            });
+            var newPlan = new client.model.plans.Plan({name :   "Neuer Plan"});
+            newPlan.save();
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans');
+            expect(jasmine.Ajax.requests.mostRecent().method).toBe('POST');
+            expect(jasmine.Ajax.requests.mostRecent().data()).toEqual({plan:{name :   "Neuer Plan"}});
+            jasmine.Ajax.requests.mostRecent().respondWith({
+                "status"    :   200,
+                "contentType"   :   "application/json",
+                "responseText"  :   JSON.stringify({plan   :   {id :   "P4", name :   "Neuer Plan"}})
+            });
+            var attr = plan.attributes;
+            attr["id"]="P4";
+            attr["name"]="Neuer Plan";
+            newPlan.attributes = attr;
+            newPlan.save({},{patch:false});
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P4');
+            expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
+            var response = {
+                plan:{
+                    id: "P4",
+                    name: "Neuer Plan",
+                    modules :   [
+                        {
+                            id          :   "M1",
+                            semester    :   3
+                        },
+                        {
+                            id          :   "M2",
+                            semester    :   5
+                        }
+                    ]
+                }
+            };
+            var data = jasmine.Ajax.requests.mostRecent().data();
+            expect(data.plan.id).toEqual(response.plan.id);
+            expect(data.plan.name).toEqual(response.plan.name);
+            expect(data.plan.modules).toContain(response.plan.modules[0]);
+            expect(data.plan.modules).toContain(response.plan.modules[1]);
+            
         });
     });
 });

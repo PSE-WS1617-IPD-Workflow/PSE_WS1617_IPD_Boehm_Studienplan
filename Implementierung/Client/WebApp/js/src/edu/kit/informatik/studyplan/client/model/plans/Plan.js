@@ -11,7 +11,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         "use strict";
         response = response["plan"];
         if(response["modules"]){
-            for(var i = 0; i<response.modules.length; i++){
+            for(var i = 0; i<response["modules"].length; i++){
                 response["modules"]["passed"] = false;
             }
         } else {
@@ -35,8 +35,8 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
             response["violations"]=[];   
         }
         var violations = [];
-        for (var i = 0; i < response.violations; i++) {
-            violations.push(new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(response.violations[i],{parse:true}));
+        for (var i = 0; i < response["violations"].length; i++) {
+            violations.push(new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(response["violations"][i],{parse:true}));
         }
         response["violations"] = violations;
         return response;
@@ -74,26 +74,19 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         return Backbone.Model.prototype.save.apply(this,[attrs, options]);
     },
     toJSON : function (options) {
-        if(options.method==="post"||options.method==="patch"){
-            return {id : this.id, name : this.get('name')};
+        if(options.method==="post"){
+            return {plan:{name : this.get('name')}};
+        }else if(options.method==="patch"){
+            return {plan:{id : this.id, name : this.get('name')}};
         } else {
             var result = {
                 id: this.id,
-                status: this.get('status'),
-                "creditpoints-sum":this.get('creditpoints-sum'),
-                "name": this.get('name'),
+                name: this.get('name'),
             };
-            result.violations = [];
-            var violations = this.get('violations');
-            if(violations){
-                for(var i = 0; i<violations.length; i++){
-                    result.violations.push(violations[i].toJSON(options));
-                }
-            }
             if(this.get('semesterCollection')){
                 result.modules = this.get('semesterCollection').toJSON(options);
             }
-            return result;
+            return {plan:result};
         }
     },
     /**

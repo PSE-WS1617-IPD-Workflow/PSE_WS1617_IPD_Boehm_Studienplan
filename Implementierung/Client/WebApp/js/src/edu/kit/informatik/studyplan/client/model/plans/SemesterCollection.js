@@ -33,5 +33,12 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
             },{parse:true});
         }
         return semesters;
+    },
+    toJSON : function (options){
+        var result = [];
+        _.each(this.attributes, function (el) {
+            result = _.union(el.toJSON(options),result);
+        });
+        return result;
     }
 });
