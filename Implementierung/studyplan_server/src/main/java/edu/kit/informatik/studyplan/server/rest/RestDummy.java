@@ -3,20 +3,18 @@
  */
 package edu.kit.informatik.studyplan.server.rest;
 
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
-
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.SecurityContext;
+
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 
 /**
  * @author NiklasUhl
  *
  */
-@Path("/hello")
+@Path("/dummy")
 public class RestDummy {
 
 	@Inject
@@ -28,8 +26,21 @@ public class RestDummy {
 	 * @return The Response
 	 */
 	@GET
-	public Response getMsg() {
-		String output = "It works!";
+	@Path("hello")
+	@AuthorizationNeeded
+	public Response getHello() {
+		String output = "Hello";
 		return Response.status(200).entity(output).build();
 	}
+	
+	/**
+	 * 
+	 * @return bye
+	 */
+	@GET
+	@Path("bye")
+	public Response getBye() {
+		String output = "Bye!";
+		return Response.status(200).entity(output).build();
+	} 
 }

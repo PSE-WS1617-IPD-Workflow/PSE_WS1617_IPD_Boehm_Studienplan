@@ -1,7 +1,5 @@
 package edu.kit.informatik.studyplan.server.filter;
 
-import java.util.concurrent.locks.Condition;
-
 import static org.jooq.impl.DSL.trueCondition;
 
 /**

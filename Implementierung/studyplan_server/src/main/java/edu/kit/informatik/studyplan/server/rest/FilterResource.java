@@ -3,21 +3,16 @@ package edu.kit.informatik.studyplan.server.rest;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
-import edu.kit.informatik.studyplan.server.filter.FilterDescriptorProvider;
-import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.userdata.User;
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
-import edu.kit.informatik.studyplan.server.rest.JSONObject;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+
+import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
+import edu.kit.informatik.studyplan.server.filter.FilterDescriptorProvider;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 
 /**
  * Diese Klasse repräsentiert die Filter-Ressource.

@@ -6,30 +6,36 @@ import java.util.List;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
-import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.ext.Provider;
 
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
-import org.glassfish.jersey.message.filtering.EntityFiltering;
 
 /**
- * Klasse für das Filtern von Authentifizierungs-Anfragen.
+ * ContainerRequestFiler for authorizing REST resource access
  */
-//Switch request filtering on/off with these two annotations:
-//@Provider
-//@PreMatching
+@AuthorizationNeeded
 public class AuthorizationRequestFilter implements ContainerRequestFilter {
+	
+	private static String accessTokenHeader = "Authorization";
+	private static String accessTokenPrefix = "Bearer";
+	
 
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
-		List<String> list = requestContext.getHeaders().get("access_token");
+		List<String> list = requestContext.getHeaders().get(accessTokenHeader);
 		if (list == null) {
+			// no header element for access token provided
 			throw new WebApplicationException(Status.UNAUTHORIZED);
 		}
 		if (!list.isEmpty()) {
-			String accessToken = list.get(0);
+			String value = list.get(0);
+			String[] split = value.split("\\s+");
+			//header value must only consist of prefix and the access token
+			if (split.length != 2 || !split[0].matches(accessTokenPrefix)) {
+				throw new WebApplicationException(Status.UNAUTHORIZED); 
+			}
+			String accessToken = split[1];
 			AbstractSecurityProvider securityProvider = AbstractSecurityProvider.getSecurityProviderImpl();
 			AuthorizationContext context = securityProvider.getAuthorizationContext(accessToken);
 			if (context != null) {
