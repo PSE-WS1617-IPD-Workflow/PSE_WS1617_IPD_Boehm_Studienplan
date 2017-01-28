@@ -33,7 +33,7 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
         "list" : function () {
             "use strict";
             var result = {};
-            result[this.get('name')] = this.get('curValue').id;
+            result[this.get('name')] = this.get('curValue');
             return result;
         },
         /**

@@ -10,7 +10,7 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
     planId : null,
     semesterNum : 0,
     url : function () {
-        return API_DOMAIN+"plans/"+this.planId+"/modules"
+        return API_DOMAIN + "plans/"+this.planId+"/modules"
     },
     parse : function (response, options) {
         "use strict";
