@@ -87,6 +87,13 @@ define(["studyplan"], function (client) {
             expect(plan.get('semesterCollection').get(3).get('M1').get('name')).toEqual(planResultObject.plan.modules[0].name);
             expect(plan.get('semesterCollection').get(5).get('M2').get('name')).toEqual(planResultObject.plan.modules[1].name);
         });
+        it("/plans/P3", function () {
+            plan.set('name','I like trains!');
+            plan.save();
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3');
+            expect(jasmine.Ajax.requests.mostRecent().method).toBe('PATCH');
+            expect(jasmine.Ajax.requests.mostRecent().data().plan.name).toEqual("I like trains!");
+        });
         it("PUT /plans/P4", function () {
             plan.fetch();
             expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3');

@@ -69,6 +69,8 @@ define(["studyplan"], function (client) {
                     id          :   "M5",
                     semester    :   5
                 });
+            expect(data["student"]["discipline"]["id"]).toEqual(42);
+            expect(data["student"]["study-start"]["semester-type"]).toEqual("WS");
         });
     });
 });

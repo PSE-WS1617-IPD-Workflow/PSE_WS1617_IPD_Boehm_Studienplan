@@ -72,10 +72,8 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         return Backbone.Model.prototype.save.apply(this,[attrs, options]);
     },
     toJSON : function (options) {
-        if(options.method==="post"){
+        if(options.method==="post" || options.method==="patch"){
             return {plan:{name : this.get('name')}};
-        }else if(options.method==="patch"){
-            return {plan:{id : this.id, name : this.get('name')}};
         } else {
             var result = {
                 id: this.id,
