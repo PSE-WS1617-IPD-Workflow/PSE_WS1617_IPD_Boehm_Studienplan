@@ -5,7 +5,18 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.SearchCollection"
  */
 
 edu.kit.informatik.studyplan.client.model.system.SearchCollection = edu.kit.informatik.studyplan.client.model.module.ModuleCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.SearchCollection.prototype}*/{
-    model : edu.kit.informatik.studyplan.client.model.module.ModuleCollection,
+    initialize : function () {
+        "use strict";
+        edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype.initialize.apply(this, arguments);
+    },
+    url : function () {
+        "use strict";
+        if (typeof this.planId !== "undefined" && this.planId!==null) {
+            return API_DOMAIN + "/plans/" + this.planId + "/modules";
+        } else {
+            return API_DOMAIN + "/modules";
+        }
+    },
     /**
     * @param {edu.kit.informatik.studyplan.client.model.system.FilterCollection} filters
     */
@@ -13,10 +24,12 @@ edu.kit.informatik.studyplan.client.model.system.SearchCollection = edu.kit.info
         "use strict";
         this.filters = filters;
     },
-    
-    parse :  function (response, options) {
+    fetch : function (options) {
         "use strict";
-        var col = new this.model(response, {parse : true});        
-        return col;
+        if (typeof options !== "object") {
+            options = {};
+        }
+        _.extend(options, {data : this.filters.getParams()});
+        return edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype.fetch.apply(this, [options]);
     }
 });

@@ -3,9 +3,9 @@ define(["studyplan"], function (client) {
     describe("ConstraintInitialisation", function () {
         it("testing parse", function () {
 
-            var json =  {constraint: {
+            var json =  {
                     name: "keine Ahnung wozu der gut ist, ich glaube das sollte lieber ID sein, aber dazu bin ich vielleicht nicht befugt.",
-                    first: {module: {
+                    first: {
                         id : 1,
                         name : "Zaubertränke",
                         categories:
@@ -20,9 +20,8 @@ define(["studyplan"], function (client) {
                         description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
                         constraints: []
                         
-                    }},
-                    second: {module:
-                        {
+                    },
+                    second: {
                             id : 0,
                             name : "Magische Tierwesen",
                             categories://test,
@@ -36,16 +35,14 @@ define(["studyplan"], function (client) {
                             preference: 1,
                             description: "Auf Heippogreifen reiten, Schrumpfhörnige Schnarchkackler füttern und beißende Bücher bändigen. Spannung Spaß und Abenteuer im Verbotenen Wald.",
                             constraints: []
-                        }},
+                        },
                     type: "Himmel und Hölle gleichzeitig zum Ausgleich."
-
-                }
                     };
-            var json_copy1 = JSON.parse(JSON.stringify(json.constraint));
-            var json_copy = {constraint: json_copy1};
+            var json_copy1 = JSON.parse(JSON.stringify(json));
+            var json_copy = json_copy1;
             var constraint1 = new client.model.module.ModuleConstraint(json_copy, {parse : true});
             
-            expect(constraint1.get("name")).toEqual(json.constraint["name"]);
+            expect(constraint1.get("name")).toEqual(json["name"]);
             expect(constraint1.get("name")).toBeDefined();
             expect(constraint1.get("first").get("name")).toBeDefined();
             expect(constraint1.get("type")).toContain("Hölle");

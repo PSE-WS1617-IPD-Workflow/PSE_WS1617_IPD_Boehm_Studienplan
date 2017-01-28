@@ -9,33 +9,52 @@ goog.provide("edu.kit.informatik.studyplan.client.model.module.Module");
  */
 
 edu.kit.informatik.studyplan.client.model.module.Module = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.Module.prototype}*/{
-    planId : null,
     /**
     * Achtung: in jSon doku fehlt compulsory. 
     *Plan iD wird von Plan durchgegeben, falls Modul zu Plan gehört. Kategorie ist kein eigenes Objekt. 
     */
     parse : function (response, options) {
         "use strict";
-        this.planId = response["module"]["planId"];
+        // Necessary because Model sometimes calls itself with its attributes (intelligent Backbone stuff...)
+        if(typeof response["module"] === 'undefined'){
+            return response;
+        }
+        var result = response["module"];
+        //this.planId = response["module"]["planId"];
         var categorie = [];
-        if (typeof response.module["categories"] !== "undefined") {
-            for (var i = 0; i<response.module["categories"].length;i++){
-                var value = response.module["categories"][i].name;
+        if (typeof response["module"]["categories"] !== "undefined") {
+            for (var i = 0; i<response["module"]["categories"].length;i++){
+                var value = response["module"]["categories"][i].name;
                 categorie.push(value);
             }
         }
-        response.module["categories"]=categorie;
+        result["categories"]=categorie;
         
         var constraint = [];
-        if (typeof response.module["constraints"] !== "undefined"){
-            for(var i = 0;i<response.module["constraints"].length; i++){
-            var value = new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(response.module.constraints[i],{parse : true});
+        if (typeof response["module"]["constraints"] !== "undefined"){
+            for(var i = 0;i<response["module"]["constraints"].length; i++){
+            var value = new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(response["module"]["constraints"][i],{parse : true});
             constraint.push(value);
             }
         }
-        response.module.constraints = constraint;
-        
-        response.module["preference"]= new edu.kit.informatik.studyplan.client.model.module.Preference(response["module"],{parse: true});
-        return response["module"];
+        result["constraints"] = constraint;
+        var preferenceInfo = {
+            module : this,
+            preference : response["module"]["preference"]
+        }
+        result["preference"]= new edu.kit.informatik.studyplan.client.model.module.Preference(preferenceInfo);
+        return result;
+    },
+    toJSON : function () {
+        return {
+            module : {
+                id  :   this.get('id'),
+                semester    :   this.get('semester')
+            }
+        };
+    },
+    // Modules are never 'new' (a.k.a. are always saved with a PUT request)
+    isNew : function () {
+        return false;
     }
 });

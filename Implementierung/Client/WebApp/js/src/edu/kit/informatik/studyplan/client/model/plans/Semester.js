@@ -15,19 +15,14 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = Backbone.Collection.e
     parse : function (response, options) {
         "use strict";
         // Set planId
-        this.planId = response["planId"];
         this.semesterNum = response["semesterNum"];
-        response = response["modules"];
-        var result = [];
         
         // Initialise modules
-        for(var i = 0; i < response.length; i++){
+        for(var i = 0; i < response["modules"].length; i++){
             _.extend(response[i],{
-                planId : this.planId,
                 semester : this.semesterNum
             });
-            result.push(new edu.kit.informatik.studyplan.client.model.module.Module({module : response[i]},{parse : true, collection : this}));
         }
-        return result;
+        return edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype.parse.apply(this,[response,options]);
     }
 });

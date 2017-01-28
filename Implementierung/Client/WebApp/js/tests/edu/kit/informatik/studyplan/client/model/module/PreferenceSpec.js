@@ -16,7 +16,7 @@ define(["studyplan"], function (client) {
                         semester: 5,
                         "cycle-type": "Mittsommer",
                         lecturer: "Hagrid",
-                        preference: 1,
+                        preference: "positive",
                         description: "Auf Heippogreifen reiten, Schrumpfhörnige Schnarchkackler füttern und beißende Bücher bändigen. Spannung Spaß und Abenteuer im Verbotenen Wald.",
                         constraints: [{constraint: {
                             name: "keine Ahnung wozu der gut ist, ich glaube das sollte lieber ID sein, aber dazu bin ich vielleicht nicht befugt.",        
@@ -45,15 +45,15 @@ define(["studyplan"], function (client) {
                     
                     }
                         };
-            var json_copy = JSON.parse(JSON.stringify(json.module));
-            var preference = new client.model.module.Preference(json_copy, {parse : true});
+            var json_copy = JSON.parse(JSON.stringify(json));
+            var preference = new client.model.module.Module(json_copy, {parse : true});
             
-            expect(preference.get("value")).toBeDefined();
-            expect(preference.get("moduleId")).toBeDefined();
-            expect(preference.get("planId")).toBeDefined();
-            expect(preference.get("planId")).toEqual("der perfekte Plan");
-            expect(preference.get("moduleId")).toEqual(json.module["id"]);
-            expect(preference.get("value")).toEqual(json.module["preference"]);
+            expect(preference.get('preference').get("preference")).toBeDefined();
+            expect(preference.get('preference').get("module")).toBeDefined();
+            //expect(preference.get("planId")).toBeDefined();
+            //expect(preference.get("planId")).toEqual("der perfekte Plan");
+            //expect(preference.get("module")).toEqual(json.module["id"]);
+            expect(preference.get('preference').get("preference")).toEqual(json.module["preference"]);
            //weitere Tests
         });
     

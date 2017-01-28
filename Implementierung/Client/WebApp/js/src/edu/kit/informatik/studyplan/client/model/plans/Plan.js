@@ -39,10 +39,20 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         return response;
     },
     /**
-     * @param {Object} attributes
-     * @param {Object} options Backbone options for storage. On default PATCH will be used upon saving (created) objects
+     * @param {string|Object=} key
+     * @param {*=} value
+     * @param {Object=} options
+     * @return {boolean|Object}
+     * @suppress {checkTypes}
      */
-    save : function (attributes, options){
+    save : function (key, value, options){
+        var attrs;
+        if (key == null || typeof key === 'object') {
+            attrs = key;
+            options = value;
+        } else {
+            (attrs = {})[key] = value;
+        }
         _.defaults(options,{
             patch : true,
         });
@@ -55,7 +65,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
                 options["method"]="put";
             }
         }
-        Backbone.Model.prototype.save.apply(this,arguments);
+        return Backbone.Model.prototype.save.apply(this,[attrs, options]);
     },
     toJSON : function (options) {
         if(options.method==="create"||options.method==="patch"){
