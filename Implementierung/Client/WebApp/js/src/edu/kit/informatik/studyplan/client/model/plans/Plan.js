@@ -28,7 +28,6 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
             });
         }
         // Initialise an object of type client.model.plans.SemesterCollection and set planId and module
-            // TODO: Inject modules from Student.getInstance().get('passedModules');
         response.semesterCollection = new edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({planId : response.id, modules : response.modules}, {parse : true});
         response.verificationResult = new edu.kit.informatik.studyplan.client.model.plans.VerificationResult({
             plan: {
@@ -37,6 +36,24 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
                 status: response["status"]
             }
         },{parse: true});
+        
+        var fieldViolations = [];
+        if(typeof response["field-violations"] !== "undefined") {
+            for(var i = 0; i<response["field-violations"].length; i++){
+                fieldViolations[i] = new edu.kit.informatik.studyplan.client.model.system.Field(
+                      response["field-violations"][i], {parse: true});
+            }
+        }
+        var ruleGroupViolations = [];
+        if(typeof response["rule-group-violations"] !== "undefined") {
+            for(var i = 0; i<response["rule-group-violations"].length; i++){
+               ruleGroupViolations[i] = new edu.kit.informatik.studyplan.client.model.plan.RuleGroup(
+                      response["rule-group-violations"][i], {parse: true});
+            }
+        }
+        response["field-violations"] = fieldViolations;
+        response["rule-group-violations"] = ruleGroupViolations; 
+        
         return response;
     },
     /**
