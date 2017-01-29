@@ -76,5 +76,40 @@ public class RuleGroup {
 	public List<Module> getModules() {
 		return modules;
 	}
+
+	/**
+	 * @param ruleId the ruleId to set
+	 */
+	void setRuleId(int ruleId) {
+		this.ruleId = ruleId;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @param minNum the minNum to set
+	 */
+	void setMinNum(int minNum) {
+		this.minNum = minNum;
+	}
+
+	/**
+	 * @param maxNum the maxNum to set
+	 */
+	void setMaxNum(int maxNum) {
+		this.maxNum = maxNum;
+	}
+
+	/**
+	 * @param modules the modules to set
+	 */
+	void setModules(List<Module> modules) {
+		this.modules = modules;
+	}
 	
 }
