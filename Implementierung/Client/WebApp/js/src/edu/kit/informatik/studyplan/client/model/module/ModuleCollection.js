@@ -43,5 +43,17 @@ edu.kit.informatik.studyplan.client.model.module.ModuleCollection = Backbone.Col
             res.push(el.toJSON(options)["module"]);
         })
         return {modules: res};
+    },
+    /**
+    * @param {number} moduleId
+    * @return {boolean}
+    */
+    containsModule : function (moduleId) {
+        "use strict";
+        if(this.get(moduleId) !== "undefined" /*&& this.get(moduleId).get("id") == moduleId*/) {
+            return true;
+        } else {
+            return false;
+        }
     }
 });

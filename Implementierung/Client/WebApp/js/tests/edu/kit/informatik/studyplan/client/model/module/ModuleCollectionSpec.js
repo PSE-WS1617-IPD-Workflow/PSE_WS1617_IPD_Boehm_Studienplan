@@ -52,12 +52,11 @@ define(["studyplan"], function (client) {
             };
             var json_copy = JSON.parse(JSON.stringify(json));
             var module = new client.model.module.ModuleCollection(json_copy, {parse : true});
-            //console.log(module);
             expect(module.get(0).get("name")).toEqual(json.modules[0]["name"]);
             expect(module.get(1).get("name")).toContain("Zaubertränke");
             expect(module.get(2)).not.toBeDefined();
             expect(module.get(0).get("constraints")).toBeDefined();
-            
+            expect(module.containsModule(0)).toBe(true);
                    
     
            //weitere Tests: 
