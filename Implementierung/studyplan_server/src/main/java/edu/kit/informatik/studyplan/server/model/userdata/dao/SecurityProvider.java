@@ -4,9 +4,13 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
+import java.time.LocalDateTime;
+
+import org.hibernate.Session;
+
+import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
 
 /************************************************************/
 /**
@@ -22,7 +26,16 @@ class SecurityProvider extends AbstractSecurityProvider {
 
 	@Override
 	public AuthorizationContext getAuthorizationContext(String accessToken) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
+		session.beginTransaction();
+		AuthorizationContext authorizationContext = session.byId(AuthorizationContext.class).load(accessToken);
+		session.getTransaction().commit();
+		session.close();
+		if (authorizationContext != null) {
+			if (authorizationContext.getExpiryDate().isBefore(LocalDateTime.now())) {
+				authorizationContext = null;
+			}
+		}
+		return authorizationContext;
 	}
 };
