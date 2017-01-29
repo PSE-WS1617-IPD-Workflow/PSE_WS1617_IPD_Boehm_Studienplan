@@ -8,7 +8,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.ProposedPlan");
 
 edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informatik.studyplan.client.model.plans.Plan.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.ProposedPlan.prototype}*/{
     url: function () {
-        if (this.proposalInfo) {
+        if (!this.proposalInfo) {
             throw new Error("[edu.kit.informatik.studyplan.client.model.plans.ProposedPlan] no proposal information");
         }
         return _.result(this.get('parent'),'url') + "/proposal/" + this.proposalInfo.get('objectiveFunction').get('id');
@@ -24,12 +24,47 @@ edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informati
         this.proposalInfo = info;
     },
     fetch : function (options) {
-        return edu.kit.informatik.studyplan.client.model.plans.Plan.apply(this, [options]);
+        if(typeof options === "undefined"){
+            options = {};
+        }
+        if(typeof options["data"] === "undefined"){
+            options["data"]={};
+        }
+        options["data"]["min-semesters"]=this.proposalInfo.get("min-semesters");
+        options["data"]["max-semesters"]=this.proposalInfo.get("max-semesters");
+        options["data"]["min-semester-ects"]=this.proposalInfo.get("min-semester-ects");
+        options["data"]["max-semester-ects"]=this.proposalInfo.get("max-semester-ects");
+        var fields = "";
+        this.proposalInfo.get('fieldCollection').each(function (field) {
+            fields += ((fields!=="") ? "," : "")+field.get("id");
+            options["data"]["field-"+field.get("id")]=field.get("curValue");
+        });
+        options["data"]["fields"]=fields;
+        return edu.kit.informatik.studyplan.client.model.plans.Plan.prototype.fetch.apply(this, [options]);
     },
     /**
     * @param {Object} options
+    * @return {edu.kit.informatik.studyplan.client.model.plans.Plan} The plan in which the proposal was saved
     */
     save : function (options) {
         "use strict";
+        if(options.newPlan){
+            var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({name: options["planName"]});
+            var self = this;
+            plan.save(null,{
+                success: function () {
+                    self.set('name',plan.get('name'));
+                    self.set('id', plan.get('id'));
+                    plan.attributes = self.attributes;
+                    plan.save(null,{patch:false});
+                }
+            });
+            
+            return plan;
+        } else {
+            this.get('parent').attributes = this.attributes;
+            this.get('parent').save(null,{patch: false});
+            return this.get('parent');
+        }
     }
 });
