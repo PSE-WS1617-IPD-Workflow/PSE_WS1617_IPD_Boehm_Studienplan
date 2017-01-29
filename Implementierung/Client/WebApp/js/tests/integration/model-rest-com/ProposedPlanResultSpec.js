@@ -142,10 +142,13 @@ define(["studyplan"], function (client) {
                     }
                 })
             });
-            propPlan.save({newPlan:false});
+            var realPlan = propPlan.save({newPlan:false});
             expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
-            // TODO: Testing of passed values
+            var data = jasmine.Ajax.requests.mostRecent().data();
+            expect(data.plan.modules).toContain({id: "M3", semester: 5});
+            expect(realPlan.get('id')).toEqual("P3");
+            expect(realPlan.get('semesterCollection').get(5).get("M3").get("name")).toEqual("Badensisch");
         });
         it("PUT /plans/P4", function () {
             propPlan.fetch();
@@ -187,7 +190,7 @@ define(["studyplan"], function (client) {
                     }
                 })
             });
-            propPlan.save({newPlan:true, planName: "toller, lustiger, intelligenter Name"});
+            var realPlan = propPlan.save({newPlan:true, planName: "toller, lustiger, intelligenter Name"});
             expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('POST');
             jasmine.Ajax.requests.mostRecent().respondWith({
@@ -202,6 +205,10 @@ define(["studyplan"], function (client) {
             });
             expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P4');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
+            var data = jasmine.Ajax.requests.mostRecent().data();
+            expect(data.plan.modules).toContain({id: "M3", semester: 5});
+            expect(realPlan.get('id')).toEqual("P4");
+            expect(realPlan.get('semesterCollection').get(5).get("M3").get("name")).toEqual("Badensisch");
             // TODO: testing for passed values
         });
     });
