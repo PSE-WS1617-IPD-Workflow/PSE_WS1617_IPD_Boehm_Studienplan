@@ -39,6 +39,7 @@ public class AuthorizationRequestFilter implements ContainerRequestFilter {
 			AbstractSecurityProvider securityProvider = AbstractSecurityProvider.getSecurityProviderImpl();
 			AuthorizationContext context = securityProvider.getAuthorizationContext(accessToken);
 			if (context != null) {
+				requestContext.setSecurityContext(context);
 				AuthorizationContextFactory.setContext(requestContext, context);
 			} else {
 				throw new WebApplicationException(Status.UNAUTHORIZED);

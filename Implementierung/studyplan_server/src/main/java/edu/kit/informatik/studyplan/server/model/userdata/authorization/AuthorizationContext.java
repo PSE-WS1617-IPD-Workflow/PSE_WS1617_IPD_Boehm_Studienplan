@@ -5,13 +5,22 @@
 package edu.kit.informatik.studyplan.server.model.userdata.authorization;
 
 import java.security.Principal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.ws.rs.core.SecurityContext;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import edu.kit.informatik.studyplan.server.model.userdata.User;
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationScope;
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClient;
 
 /************************************************************/
 /**
@@ -19,30 +28,44 @@ import edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClie
  * Er enthält die benötigten Informationen für einen authorisierten Benutzer
  * siehe Kapitel ???
  */
+@Entity
+@Table (name = "authorization_context")
 public class AuthorizationContext implements SecurityContext {
 	/**
 	 * 
 	 */
+	@Id
+	@GenericGenerator(name = "uuid-gen", strategy = "org.hibernate.id.UUIDGenerator")
+	@GeneratedValue(generator = "uuid-gen")
+	@Column(name = "access_token")
 	private String accessToken;
 	/**
 	 * 
 	 */
-	private Date expiryDate;
+	@Column(name = "expiry_date")
+	private LocalDateTime expiryDate;
 	/**
 	 * 
 	 */
+	@Enumerated(EnumType.STRING)
+	@Column(name = "scope")
 	private AuthorizationScope scope;
 	/**
 	 * 
 	 */
+	@Column(name = "refresh_token")
 	private String refreshToken;
 	/**
 	 * 
 	 */
+	@ManyToOne
+	@JoinColumn(name = "client_id")
 	private RESTClient restClient;
 	/**
 	 * 
 	 */
+	@ManyToOne
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	/**
@@ -76,13 +99,14 @@ public class AuthorizationContext implements SecurityContext {
 	 *            der Access-Token
 	 */
 	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
 	}
 
 	/**
 	 * 
 	 * @return gibt das Verfallsdatum des Access-Tokens zurück
 	 */
-	public Date getExpiryDate() {
+	public LocalDateTime getExpiryDate() {
 		return expiryDate;
 	}
 
@@ -91,7 +115,8 @@ public class AuthorizationContext implements SecurityContext {
 	 * @param date
 	 *            das Verfallsdatum
 	 */
-	public void setExpiryDate(Date date) {
+	public void setExpiryDate(LocalDateTime date) {
+		this.expiryDate = date;
 	}
 
 	/**
@@ -108,6 +133,7 @@ public class AuthorizationContext implements SecurityContext {
 	 *            die Berechtigung
 	 */
 	public void setScope(AuthorizationScope scope) {
+		this.scope = scope;
 	}
 
 	/**
@@ -124,6 +150,7 @@ public class AuthorizationContext implements SecurityContext {
 	 *            der Refresh-Token
 	 */
 	public void setRefreshToken(String refreshToken) {
+		this.refreshToken = refreshToken;
 	}
 
 	/**
@@ -140,6 +167,7 @@ public class AuthorizationContext implements SecurityContext {
 	 *            der REST-Client
 	 */
 	public void setRestClient(RESTClient client) {
+		this.restClient = client;
 	}
 
 	@Override

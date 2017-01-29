@@ -5,37 +5,52 @@
 package edu.kit.informatik.studyplan.server.model.userdata.authorization;
 
 import java.net.URL;
-import java.util.Collection;
 import java.util.List;
 
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationScope;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /************************************************************/
 /**
  * Modelliert einen Klienten, der auf die REST-Schnittstelle zugreifen kann
  * siehe Kapitel ????
  */
+@Entity
+@Table (name = "rest_client")
 public class RESTClient {
 	/**
 	 * 
 	 */
+	@Id
+	@Column(name = "client_id")
+	private int clientId;
+	
+	@Column(name = "api_key")
 	private String apiKey;
 	/**
 	 * 
 	 */
+	@Column(name = "api_secret")
 	private String apiSecret;
 	/**
 	 * 
 	 */
+	@Column(name = "origin")
 	private String origin;
 	/**
 	 * 
 	 */
+	@Column(name = "redirect_url")
 	private String redirectUrl;
 	/**
 	 * 
 	 */
-	private Collection<AuthorizationScope> scopes;
+	@Transient
+	//TODO find solution
+	private List<AuthorizationScope> scopes;
 
 	/**
 	 * 
