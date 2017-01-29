@@ -108,8 +108,8 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
             <file name="ObjectiveFunction.js"/>
             <file name="ObjectiveFunctionCollection.js"/>
             <file name="ProposalInformation.js"/>
-            <file name="SubjectDiscipline.js"/>
-            <file name="SubjectDisciplineCollection.js"/>
+            <file name="Field.js"/>
+            <file name="FieldCollection.js"/>
             <file name="TemplateManager.js"/>
         </sources>
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/module">
@@ -128,6 +128,7 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
             <file name="ProposedPlan.js"/>
             <file name="Semester.js"/>
             <file name="SemesterCollection.js"/>
+            <file name="RuleGroup.js"/>
         </sources>
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/model/user">
             <file name="PassedModuleCollection.js"/>

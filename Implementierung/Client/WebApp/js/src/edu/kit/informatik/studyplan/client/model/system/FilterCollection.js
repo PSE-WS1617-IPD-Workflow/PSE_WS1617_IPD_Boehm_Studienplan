@@ -6,7 +6,7 @@ var namespaceClient = edu.kit.informatik.studyplan.client;
  */
 
 edu.kit.informatik.studyplan.client.model.system.FilterCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.FilterCollection.prototype}*/{
-    
+    url: API_DOMAIN + "/filters",
     model : namespaceClient.model.system.Filter,
     
     parse : function (response, options) {

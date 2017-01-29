@@ -1,6 +1,6 @@
 define(["studyplan"], function (client) {
     "use strict";
-    describe("ModuleResult", function () {
+    describe("ModulesResult", function () {
         var searchCol, filterCol, resultObject;
         beforeEach(function () {
             searchCol = new client.model.system.SearchCollection({}, {planId : "abcdef"});
@@ -26,7 +26,7 @@ define(["studyplan"], function (client) {
                     },
                     {
                         "name"  :   "testFilter3",
-                        "default-value" : {id : 1, text : "test1"},
+                        "default-value" : 1,
                         "tooltip"  :    "Test List Filter",
                         "specification" :   {
                             "type"  :   "list",

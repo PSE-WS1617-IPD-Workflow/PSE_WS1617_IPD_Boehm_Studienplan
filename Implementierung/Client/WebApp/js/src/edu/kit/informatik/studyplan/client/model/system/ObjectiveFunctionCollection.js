@@ -5,6 +5,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.ObjectiveFunction
  */
 
 edu.kit.informatik.studyplan.client.model.system.ObjectiveFunctionCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.ObjectiveFunctionCollection.prototype}*/{
+    url: API_DOMAIN + "/objective-functions",
     model : edu.kit.informatik.studyplan.client.model.system.ObjectiveFunction,
     parse : function (response, options) {
         "use strict";

@@ -91,11 +91,12 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     */
     containsModule : function (moduleId) {
         "use strict";
+        throw Error("[edu.kit.informatik.studyplan.client.model.plans.Plan] containsModule not implemented yet");
     },
-    /**
-    *
-    */
-    loadVerification : function () {
-        "use strict";
+    retrieveProposedPlan: function () {
+        return new edu.kit.informatik.studyplan.client.model.plans.ProposedPlan({
+            id: this.get('id'),
+            parent: this
+        });
     }
 });
