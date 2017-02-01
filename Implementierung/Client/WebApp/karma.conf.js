@@ -19,6 +19,7 @@ module.exports = function(config) {
       //'node_modules/jasmine-ajax/lib/mock-ajax.js',
       {pattern: 'htdocs/js/app.js', included: false},
       {pattern: 'htdocs/lib/js.cookie.js', included: false},
+      {pattern: 'htdocs/lib/jquery-ui.js', included: false},
       {pattern: 'htdocs/lib/jquery.js', included: false},
       {pattern: 'htdocs/lib/backbone.js', included: false},
       {pattern: 'htdocs/lib/underscore.js', included: false},

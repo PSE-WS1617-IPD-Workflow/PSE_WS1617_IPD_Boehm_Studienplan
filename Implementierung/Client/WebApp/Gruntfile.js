@@ -11,12 +11,9 @@ module.exports = function (grunt) {
         jst: {
             compile: {
                 options: {
-                    namespace : 'templates',
-                    templateSettings: {
-                        variable: 'obj'
-                    }
-                }
-                , files: {
+                    namespace: "templates"
+                },
+                files: {
                     'tmp/jst.js': ['resources/templates/**/*.html']
                 }
             }
@@ -45,6 +42,6 @@ module.exports = function (grunt) {
 
 
     grunt.registerTask('default',['sass']);
-    grunt.registerTask('jst', ['jst']);
+    grunt.registerTask('templates', ['jst']);
     grunt.registerTask('test',['karma']);
 }

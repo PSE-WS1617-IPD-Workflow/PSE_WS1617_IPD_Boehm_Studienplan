@@ -1,8 +1,4 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.system.TemplateManager");
-/**
- * @constructor
- * @extends {Backbone.Model}
- */
 
 edu.kit.informatik.studyplan.client.model.system.TemplateManager = (function () {
     "use strict";
