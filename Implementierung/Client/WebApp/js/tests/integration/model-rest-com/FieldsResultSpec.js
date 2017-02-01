@@ -63,7 +63,6 @@ define(["studyplan"], function (client) {
                     }
                 })
             });
-            console.log(field1.attributes);
             expect(field1.get('categories')[0].name).toEqual("Meistern von lebensgefährlichen Situationen");
         });
     });

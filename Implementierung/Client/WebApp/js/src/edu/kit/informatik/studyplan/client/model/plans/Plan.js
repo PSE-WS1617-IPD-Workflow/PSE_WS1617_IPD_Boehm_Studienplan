@@ -110,7 +110,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     */
     containsModule : function (moduleId) {
         "use strict";
-        throw Error("[edu.kit.informatik.studyplan.client.model.plans.Plan] containsModule not implemented yet");
+        return this.get("semesterCollection").containsModule(moduleId);
     },
     retrieveProposedPlan: function () {
         return new edu.kit.informatik.studyplan.client.model.plans.ProposedPlan({
