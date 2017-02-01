@@ -188,7 +188,9 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/router">
             <file name="MainRouter.js"/>
         </sources>
-
+        <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/config">
+            <file name="init.js"/>
+        </sources>
       <sources dir="${basedir}/resources/lang">
         <file name="de.lang.js"/>  
       </sources>

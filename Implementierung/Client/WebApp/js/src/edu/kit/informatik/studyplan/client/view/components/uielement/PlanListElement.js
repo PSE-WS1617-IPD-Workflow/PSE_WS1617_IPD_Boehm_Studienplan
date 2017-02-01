@@ -1,5 +1,4 @@
 goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement");
-console.log(edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance());
 /**
  * @constructor
  * @param {Object} options
@@ -12,10 +11,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
     plan: null,
     initialize: function (options) {
         this.plan = options.plan;
-        this.checkBox = $("<input type='checkbox'");
+        this.checkBox = $("<input type='checkbox'/>");
     },
     render: function () {
-        return this.template({plan: this.plan});
+        this.$el.html(this.template({plan: this.plan}));
     },
     /**
     *

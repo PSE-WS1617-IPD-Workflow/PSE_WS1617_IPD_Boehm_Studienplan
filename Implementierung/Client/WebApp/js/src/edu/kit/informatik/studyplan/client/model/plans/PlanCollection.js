@@ -1,6 +1,8 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.plans.PlanCollection");
 /**
  * @constructor
+ * @param {Object=} attributes
+ * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.model.system.OAuthCollection}
  */
 
