@@ -4,31 +4,29 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /************************************************************/
 /**
  * Class modelling a module category.
+ * @author NiklasUhl
+ * @version 1.0
  */
 @Entity
 @Table(name = "category")
 public class Category {
-	/**
-	 * 
-	 */
+	
 	@Id
 	@Column(name = "category_id")
 	@JsonProperty("id")
 	private int categoryId = -1;
-	/**
-	 * 
-	 */
+	
 	@Column(name = "name")
 	@JsonProperty("name")
 	private String name;
@@ -49,7 +47,7 @@ public class Category {
 	 * @param categoryId
 	 *            the categoryId to set
 	 */
-	public void setCategoryId(int categoryId) {
+	void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -65,7 +63,7 @@ public class Category {
 	 * @param name
 	 *            the name to set
 	 */
-	public void setName(String name) {
+	void setName(String name) {
 		this.name = name;
 	}
 
@@ -82,7 +80,7 @@ public class Category {
 	 * @param isSubject
 	 *            the isSubject to set
 	 */
-	public void setSubject(boolean isSubject) {
+	void setSubject(boolean isSubject) {
 		this.isSubject = isSubject;
 	}
 };

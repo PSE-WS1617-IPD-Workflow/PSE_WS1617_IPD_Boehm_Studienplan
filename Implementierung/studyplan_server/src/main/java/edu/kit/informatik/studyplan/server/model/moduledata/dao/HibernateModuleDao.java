@@ -141,7 +141,6 @@ class HibernateModuleDao implements ModuleDao {
 	private String createWhereClause(Filter filter) {
 		//TODO implement
 		return null;
-		
 	}
 	
 	private Session startTransaction() {

@@ -3,13 +3,12 @@
  */
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,6 +17,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 
 /**
  * Class modelling a field for a discipline
@@ -49,11 +50,11 @@ public class Field {
 	@JsonIgnore
 	private boolean isChoosable;
 
-	@OneToMany(mappedBy = "field")
+	@OneToMany(mappedBy = "field", fetch = FetchType.LAZY)
 	private List<Module> modules = new LinkedList<Module>();
 	
 	/**
-	 * @return the fieldId
+	 * @return the unique field id
 	 */
 	public int getFieldId() {
 		return fieldId;
@@ -63,7 +64,7 @@ public class Field {
 	 * @param fieldId
 	 *            the fieldId to set
 	 */
-	public void setFieldId(int fieldId) {
+	void setFieldId(int fieldId) {
 		this.fieldId = fieldId;
 	}
 
@@ -78,7 +79,7 @@ public class Field {
 	 * @param name
 	 *            the name to set
 	 */
-	public void setName(String name) {
+	void setName(String name) {
 		this.name = name;
 	}
 
@@ -93,12 +94,12 @@ public class Field {
 	 * @param discipline
 	 *            the discipline to set
 	 */
-	public void setDiscipline(Discipline discipline) {
+	void setDiscipline(Discipline discipline) {
 		this.discipline = discipline;
 	}
 
 	/**
-	 * @return the minEcts
+	 * @return the minimum value of credit points for the field
 	 */
 	public double getMinEcts() {
 		return minEcts;
@@ -108,46 +109,42 @@ public class Field {
 	 * @param minEcts
 	 *            the minEcts to set
 	 */
-	public void setMinEcts(double minEcts) {
+	void setMinEcts(double minEcts) {
 		this.minEcts = minEcts;
 	}
 
 	/**
-	 * @return the isChoosable
+	 * @return if the field allows a selection of subjects
 	 */
 	public boolean isChoosable() {
 		return isChoosable;
 	}
 
 	/**
+	 * set the field choosable
 	 * @param isChoosable
-	 *            the isChoosable to set
+	 *            if the field allows a selection of subjects
 	 */
-	public void setChoosable(boolean isChoosable) {
+	void setChoosable(boolean isChoosable) {
 		this.isChoosable = isChoosable;
 	}
 
 	/**
-	 * @return the modules
+	 * @return list of modules belonging to the field
 	 */
 	public List<Module> getModules() {
 		return modules;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @return returns the the field's subjects<br>
+	 * returns <code>null</code> if field is not choosable
 	 */
 	public List<Category> getSubjects() {
-		//TODO: replace
-		Set<Category> subjects = new HashSet<Category>();
-		for (Module module : modules) {
-			for (Category category : module.getCategories()) {
-				if (category.isSubject()) {
-					subjects.add(category);
-				}
-			}
+		if (isChoosable) {
+			return ModuleDaoFactory.getModuleDao().getSubjects(this);
+		} else {
+			return null;
 		}
-		return new LinkedList<>(subjects);
 	}
 }

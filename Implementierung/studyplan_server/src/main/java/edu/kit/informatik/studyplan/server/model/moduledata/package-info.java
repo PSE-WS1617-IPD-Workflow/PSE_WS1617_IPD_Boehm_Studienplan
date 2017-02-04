@@ -1,4 +1,4 @@
 /**
- * Dieses Paket enthält Modellklassen der Moduldaten.
+ * Contains model classes for modules
  */
 package edu.kit.informatik.studyplan.server.model.moduledata;

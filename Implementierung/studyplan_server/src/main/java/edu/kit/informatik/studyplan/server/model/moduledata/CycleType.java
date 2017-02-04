@@ -9,21 +9,23 @@ package edu.kit.informatik.studyplan.server.model.moduledata;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Turnus eines Moduls
+ * cycles types for a module
+ * @author NiklasUhl
+ * @version 1.0
  */
 public enum CycleType {
 	/**
-	 * Modul wird nur im Wintersemester angeboten
+	 * module is only offered in winter term
 	 */
 	@JsonProperty("WS")
 	WINTER_TERM,
 	/**
-	 * Modul wird nur im Sommersemester angeboten
+	 * module is only offered in summer term
 	 */
 	@JsonProperty("SS")
 	SUMMER_TERM,
 	/**
-	 * Modul wird in jedem Semester angeboten
+	 * module is offered every semester
 	 */
 	@JsonProperty("both")
 	BOTH;
