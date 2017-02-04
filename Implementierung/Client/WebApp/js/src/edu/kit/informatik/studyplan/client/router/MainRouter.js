@@ -93,7 +93,8 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             },
             loginPage: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] loginPage");
-
+                this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.LoginPage, {});
+                this.view.render();
             },
             showProfile: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] showProfile");

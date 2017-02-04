@@ -1,0 +1,18 @@
+.box{
+    width:850px;
+    min-height: 60px;
+    margin:10px auto 10px auto;
+    padding: 10px 30px 10px 30px;
+    
+    border:1px solid $boxBorderColor;
+    background-color: $boxBgColor;
+    color: $boxColor;
+    line-height: 20px;
+    h1{
+        display:block;
+        margin:0px;
+        min-height:60px;
+        line-height: 60px;
+        width:850px;
+    }
+}

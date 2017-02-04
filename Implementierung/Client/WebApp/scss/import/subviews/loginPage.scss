@@ -1,0 +1,16 @@
+.loginPage{
+    margin:30px 0px 0px 0px;
+    a.loginButton{
+        display:block;
+        width:600px;
+        height:80px;
+        margin:20px auto 20px auto;
+        background-color:$bg1;
+        
+        text-align:center;
+        text-decoration: none;
+        color: $color1;
+        font-size:20px;
+        line-height:80px;
+    }
+}

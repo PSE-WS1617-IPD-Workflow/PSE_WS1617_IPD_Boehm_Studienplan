@@ -11,3 +11,6 @@ LM.messages["de"]["notLoggedIn"] = "Nicht angemeldet";
 LM.messages["de"]["profile"] = "Profil";
 LM.messages["de"]["logout"] = "Logout";
 LM.messages["de"]["login"] = "Login";
+// Login
+LM.messages["de"]["welcome"] = "Herzlich willkommen!"
+LM.messages["de"]["welcomeText"] = "Herzlich willkommen bei STUDYplan. Zur Benutzung der Software loggen Sie sich bitte ein."

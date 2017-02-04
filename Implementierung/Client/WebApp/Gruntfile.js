@@ -11,7 +11,11 @@ module.exports = function (grunt) {
         jst: {
             compile: {
                 options: {
-                    namespace: "templates"
+                    namespace: "templates",
+                    templateSettings: {
+                        interpolate: /\{\{=(.+?)\}\}/g,
+                        evaluate: /\{\{(.+?)\}\}/g
+                    }
                 },
                 files: {
                     'tmp/jst.js': ['resources/templates/**/*.html']
