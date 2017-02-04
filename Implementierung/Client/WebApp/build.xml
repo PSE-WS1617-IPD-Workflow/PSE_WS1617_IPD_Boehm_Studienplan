@@ -73,12 +73,29 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
   </target>
   <target name="closure-compile-js">
     <antcall target="include-templates"></antcall>
+      <condition property="API_DOMAIN" value="${API_DOMAIN}" else="http://api.studyplan.devel">
+        <isset property="API_DOMAIN" />
+      </condition>
+      <condition property="API_KEY" value="${API_KEY}" else="fakeKey-abcdef">
+        <isset property="API_KEY" />
+      </condition>
+      <condition property="API_SCOPE" value="${API_SCOPE}" else="student">
+        <isset property="API_SCOPE" />
+      </condition>
+      <condition property="API_TOKEN" value="${API_TOKEN}" else="fakeAccessToken">
+        <isset property="API_TOKEN" />
+      </condition>
+      <condition property="DEBUG_ALWAYS_LOGIN" value="${DEBUG_ALWAYS_LOGIN}" else="false">
+        <isset property="DEBUG_ALWAYS_LOGIN" />
+      </condition>  
     <jscomp compilationLevel="simple" warning="verbose" 
         debug="false" prettyPrint="true" output="${basedir}/htdocs/js/app-compiled.js"
             replaceProperties="true">
-        <define name="API_DOMAIN" value="http://api.studyplan.devel" />
-        <define name="API_KEY" value="abcdef" />
-        <define name="API_SCOPE" value="student" />
+        <define name="API_DOMAIN" value="${API_DOMAIN}" />
+        <define name="API_KEY" value="${API_KEY}" />
+        <define name="API_SCOPE" value="${API_SCOPE}" />
+        <define name="API_TOKEN" value="${API_TOKEN}" />
+        <define name="DEBUG_ALWAYS_LOGIN" value="${DEBUG_ALWAYS_LOGIN}" />
       <externs dir="${basedir}/build/externs">
         <file name="extern.js"/>
         <file name="cookie.js"/>

@@ -21,7 +21,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
              * @this {edu.kit.informatik.studyplan.client.router.MainRouter}
              */
             initialize: function () {
-                console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] initialize")
+                console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] initialize");
                 this.view = new edu.kit.informatik.studyplan.client.view.MainView();
                 this.view.setHeader(edu.kit.informatik.studyplan.client.view.subview.Header, {
                     sessionInformation: edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance()
