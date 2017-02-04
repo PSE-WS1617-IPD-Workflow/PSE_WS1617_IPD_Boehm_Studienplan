@@ -18,6 +18,7 @@ require.config({
   paths: {
       'cookies' : 'htdocs/lib/js.cookie',
       'jquery' : '/base/htdocs/lib/jquery',
+      'jquery-ui': '/base/htdocs/lib/jquery-ui',
       'underscore' : 'htdocs/lib/underscore',
       'backbone' : 'htdocs/lib/backbone',
       'studyplan' : 'htdocs/js/app'

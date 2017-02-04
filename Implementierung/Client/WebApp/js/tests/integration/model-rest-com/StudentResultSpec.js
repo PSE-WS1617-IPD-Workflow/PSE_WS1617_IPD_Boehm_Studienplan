@@ -62,7 +62,7 @@ define(["studyplan"], function (client) {
                 }
             }, {parse: true}));
             student.save();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/student');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/student');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
             var data = jasmine.Ajax.requests.mostRecent().data();
             expect(data["student"]["passed-modules"]).toContain({

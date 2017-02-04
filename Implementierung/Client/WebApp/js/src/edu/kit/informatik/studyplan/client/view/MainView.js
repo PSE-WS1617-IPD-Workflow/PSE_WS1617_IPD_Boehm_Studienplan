@@ -11,22 +11,31 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend(/** @le
     headerElement : null,
     contentElement: null,
     
-    initalize : function () {
+    initialize : function () {
         "use strict";
-        this.render();
+        console.info("[edu.kit.informatik.studyplan.client.view.MainView] initializing...")
         this.headerElement = $("<div id='header'></div>");
-        this.$el.append(this.headerElement);
         this.contentElement = $("<div id='content'></div>");
-        this.$el.append(this.contentElement);
+        this.render();
     },
     
     render : function () {
         "use strict";
+        this.$el.html('');
+        this.$el.append(this.headerElement);
+        this.headerElement.html('');
+        this.$el.append(this.contentElement);
+        this.contentElement.html('');
         if (this.curHeaderView !== null) {
             this.curHeaderView.render();
+            this.headerElement.html('');
+            this.headerElement.append(this.curHeaderView.$el);
         }
         if (this.curContentView !== null) {
             this.curContentView.render();
+            console.log(this.contentElement.html());
+            this.contentElement.html('');
+            this.contentElement.append(this.curContentView.$el);
         }
         this.$el.show();
     },
@@ -39,7 +48,6 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend(/** @le
         if (this.curHeaderView !== null) {
             this.curHeaderView.remove();
         }
-        options["el"] = this.headerElement;
         this.curHeaderView = new Header(options);
     },
     /**
@@ -51,7 +59,6 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend(/** @le
         if (this.curContentView !== null) {
             this.curContentView.remove();
         }
-        options["el"] = this.contentElement;
         this.curContentView = new Content(options);
     }
 });

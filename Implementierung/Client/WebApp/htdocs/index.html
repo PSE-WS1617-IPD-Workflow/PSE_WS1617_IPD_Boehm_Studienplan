@@ -1,8 +1,32 @@
 <html>
     <head>
-    
+        <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script src="lib/require.js"></script>
+        <script type="application/javascript">
+            require.config({
+                // Karma serves files under /base, which is the basePath from your config file
+                baseUrl: '/',
+                paths: {
+                    'cookies' : 'lib/js.cookie',
+                    'jquery' : 'lib/jquery',
+                    'jquery-ui': 'lib/jquery-ui',
+                    'underscore' : 'lib/underscore',
+                    'backbone' : 'lib/backbone',
+                    'studyplan' : 'js/app'
+                }
+            });
+            requirejs(["studyplan"], function (client) {
+                client.config.init();
+            },function(err){
+                console.log("[index.html init] Could not initialize application");
+                console.log(err);
+                alert("ERROR: Not able to initialize application. Please contact the administrator!");
+            });
+        </script>
     </head>
     <body>
-        <h1>It works: Studyplan Client</h1>
+        <h1>Loading...</h1>
     </body>
 </html>

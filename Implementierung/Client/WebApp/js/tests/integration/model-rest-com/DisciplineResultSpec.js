@@ -22,7 +22,7 @@ define(["studyplan"], function (client) {
             };
             disciplineCol = new client.model.system.DisciplineCollection();
             disciplineCol.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toEqual('api.studyplan.devel/disciplines');
+            expect(jasmine.Ajax.requests.mostRecent().url).toEqual('http://api.studyplan.devel/disciplines');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
                 "contentType"   :   "application/json",

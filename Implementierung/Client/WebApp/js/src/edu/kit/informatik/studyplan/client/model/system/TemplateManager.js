@@ -1,8 +1,4 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.system.TemplateManager");
-/**
- * @constructor
- * @extends {Backbone.Model}
- */
 
 edu.kit.informatik.studyplan.client.model.system.TemplateManager = (function () {
     "use strict";
@@ -36,7 +32,11 @@ edu.kit.informatik.studyplan.client.model.system.TemplateManager = (function () 
          */
         this.getTemplate = function (key) {
             if (typeof this.templates[key] !== "undefined") {
-                return this.templates[key];
+                return (function (options) {
+                    var params = _.clone(options);
+                    params["LM"] = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
+                    return this.templates[key](params);
+                }).bind(this);
             } else {
                 console.error("[TemplateFactory] Cannot find template '" + key + "'.");
             }

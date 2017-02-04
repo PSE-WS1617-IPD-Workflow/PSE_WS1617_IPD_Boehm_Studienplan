@@ -32,7 +32,7 @@ define(["studyplan"], function (client) {
         });
         it("/plans", function () {
             planCol.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
                 "contentType"   :   "application/json",
@@ -59,7 +59,7 @@ define(["studyplan"], function (client) {
                 name    :   "Nevils Studienplan"
             }));
             plan.save();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('POST');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,

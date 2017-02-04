@@ -35,7 +35,21 @@ define(["studyplan"], function (studyplan) {
                             },
                             type: "abc"
                         }
-                    ]
+                    ],
+                    "rule-group-violations" : [{
+                        "name" : "someNameViolation",
+                        "min-ects" : 100,
+                        "max-ects" : 200
+                    }],
+                    "field-violations" : [{
+                        id : "42",
+                        name : "blaFieldViolation" ,
+                        "min-ects" : 10,
+                        categories : [{
+                            "id" : 9001,
+                            "name" : "over 9000"
+                        }]
+                    }]
                 },
                 {
                     id : 5,

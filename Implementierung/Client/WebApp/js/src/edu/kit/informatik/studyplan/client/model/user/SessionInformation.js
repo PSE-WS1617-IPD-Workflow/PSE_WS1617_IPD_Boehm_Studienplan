@@ -40,6 +40,9 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
                 random = Math.ceil(Math.random() * 10000000 + 1000000).toString(36);
             }
             this.set('state', random.substr(0,30));
+        },
+        isLoggedIn: function () {
+            return edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().has('access_token');
         }
     });
     return {

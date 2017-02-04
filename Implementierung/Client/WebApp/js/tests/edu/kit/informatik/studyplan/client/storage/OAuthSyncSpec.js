@@ -15,7 +15,7 @@ define(["studyplan"], function (client) {
         });
         it("Should include header", function () {
             client.storage.OAuthSync("create",plan,{});
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans');
             //console.log(jasmine.Ajax.requests.mostRecent().eventBus.source);
             expect(jasmine.Ajax.requests.mostRecent().requestHeaders.Authorization).toEqual("Bearer "+accessToken);
             //expect(jasmine.Ajax.requests.mostRecent().requestHeaders.Authorization).toEqual("Bearer asdf "+accessToken);

@@ -1,0 +1,20 @@
+<div class="subviewHeader">
+    <div class="icon">
+        {{=LM.getMessage('icon')}}
+    </div>
+    <div class="info">
+        {{ if(obj.sessionInformation.isLoggedIn()){ }}
+            {{=LM.getMessage('loggedIn')}} | 
+            <a href="#profile">
+                {{=LM.getMessage('profile')}}
+            </a> |
+            <a href="{{=API_DOMAIN}}/auth/logout">
+                {{=LM.getMessage('logout')}}
+            </a>
+        {{ } else { }}
+            {{=LM.getMessage('notLoggedIn')}}, <a href="{{=API_DOMAIN}}/auth/login?api_key={{=API_KEY}}&scope={{=API_SCOPE}}">
+                {{=LM.getMessage('login')}}
+            </a>
+        {{ } }}
+    </div>
+</div>
