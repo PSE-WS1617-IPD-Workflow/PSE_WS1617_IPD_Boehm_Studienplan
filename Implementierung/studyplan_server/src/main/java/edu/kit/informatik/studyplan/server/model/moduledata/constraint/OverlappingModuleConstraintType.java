@@ -7,7 +7,6 @@ package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-import edu.kit.informatik.studyplan.server.model.moduledata.ModuleOrientation;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
 /************************************************************/
