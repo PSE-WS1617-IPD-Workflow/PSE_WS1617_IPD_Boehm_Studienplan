@@ -51,8 +51,9 @@ public class Field {
 	private boolean isChoosable;
 
 	@OneToMany(mappedBy = "field", fetch = FetchType.LAZY)
-	private List<Module> modules = new LinkedList<Module>();
-	
+    @JsonIgnore
+    private List<Module> modules = new LinkedList<Module>();
+
 	/**
 	 * @return the unique field id
 	 */
@@ -135,7 +136,7 @@ public class Field {
 	public List<Module> getModules() {
 		return modules;
 	}
-	
+
 	/**
 	 * @return returns the the field's subjects<br>
 	 * returns <code>null</code> if field is not choosable
