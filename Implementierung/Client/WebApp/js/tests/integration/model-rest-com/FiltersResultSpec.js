@@ -49,7 +49,7 @@ define(["studyplan"], function (client) {
             };
             filterCol = new client.model.system.FilterCollection();
             filterCol.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toEqual('api.studyplan.devel/filters');
+            expect(jasmine.Ajax.requests.mostRecent().url).toEqual('http://api.studyplan.devel/filters');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
                 "contentType"   :   "application/json",

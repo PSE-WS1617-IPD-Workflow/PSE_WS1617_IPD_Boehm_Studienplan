@@ -25,7 +25,7 @@ define(["studyplan"], function (client) {
             };
             fieldsCol = new client.model.system.FieldCollection();
             fieldsCol.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toEqual('api.studyplan.devel/fields');
+            expect(jasmine.Ajax.requests.mostRecent().url).toEqual('http://api.studyplan.devel/fields');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
                 "contentType"   :   "application/json",
@@ -47,7 +47,7 @@ define(["studyplan"], function (client) {
         it("Should load single field", function () {
             var field1 = fieldsCol.get(1);
             field1.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toEqual('api.studyplan.devel/fields/1');
+            expect(jasmine.Ajax.requests.mostRecent().url).toEqual('http://api.studyplan.devel/fields/1');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
                 "contentType"   :   "application/json",

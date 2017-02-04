@@ -25,7 +25,7 @@ define(["studyplan"], function (client) {
             };
             objectiveCol = new client.model.system.ObjectiveFunctionCollection();
             objectiveCol.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toEqual('api.studyplan.devel/objective-functions');
+            expect(jasmine.Ajax.requests.mostRecent().url).toEqual('http://api.studyplan.devel/objective-functions');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
                 "contentType"   :   "application/json",

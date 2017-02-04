@@ -73,7 +73,7 @@ define(["studyplan"], function (client) {
         });
         it("/plans/P3", function () {
             plan.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/P3');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('GET');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
@@ -90,13 +90,13 @@ define(["studyplan"], function (client) {
         it("/plans/P3", function () {
             plan.set('name','I like trains!');
             plan.save();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/P3');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('PATCH');
             expect(jasmine.Ajax.requests.mostRecent().data().plan.name).toEqual("I like trains!");
         });
         it("PUT /plans/P4", function () {
             plan.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/P3');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('GET');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
@@ -105,7 +105,7 @@ define(["studyplan"], function (client) {
             });
             var newPlan = new client.model.plans.Plan({name :   "Neuer Plan"});
             newPlan.save();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('POST');
             expect(jasmine.Ajax.requests.mostRecent().data()).toEqual({plan:{name :   "Neuer Plan"}});
             jasmine.Ajax.requests.mostRecent().respondWith({
@@ -118,7 +118,7 @@ define(["studyplan"], function (client) {
             attr["name"]="Neuer Plan";
             newPlan.attributes = attr;
             newPlan.save({},{patch:false});
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P4');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/P4');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
             var response = {
                 plan:{
@@ -146,7 +146,7 @@ define(["studyplan"], function (client) {
         it("GET /plans/P3/verification", function () {
             expect(plan.get('verificationResult').get('status')).toBe('invalid');
             plan.get('verificationResult').fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3/verification');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/P3/verification');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('GET');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,

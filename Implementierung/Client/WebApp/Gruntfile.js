@@ -31,17 +31,28 @@ module.exports = function (grunt) {
             singleRun : true,
             logLevel : 'ERROR'
           }
+      },
+      sass_globbing: {
+        your_target: {
+          files: {
+            'tmp/main_import.scss': 'scss/import/**/*.scss',
+            'tmp/config_import.scss': 'scss/config/**/*.scss',
+          },
+          options: {
+            useSingleQuotes: false,
+            signature: '// Temporary file, do not change!'
+          }
+        }
       }
-
-
     });
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-jst');
+    grunt.loadNpmTasks('grunt-sass-globbing');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-karma');
 
 
-    grunt.registerTask('default',['sass']);
+    grunt.registerTask('default',['sass_globbing','sass']);
     grunt.registerTask('templates', ['jst']);
     grunt.registerTask('test',['karma']);
 }

@@ -72,7 +72,7 @@ define(["studyplan"], function (client) {
         });
         it("/plan/abcdef/modules", function () {
             searchCol.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/abcdef/modules?filter=testFilter1%2CtestFilter2%2CtestFilter3&testFilter1-min=0&testFilter1-max=20&testFilter2=abc&testFilter3=1');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/abcdef/modules?filter=testFilter1%2CtestFilter2%2CtestFilter3&testFilter1-min=0&testFilter1-max=20&testFilter2=abc&testFilter3=1');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
                 "contentType"   :   "application/json",
@@ -91,7 +91,7 @@ define(["studyplan"], function (client) {
         it("/modules", function () {
             searchCol.planId = null;
             searchCol.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/modules?filter=testFilter1%2CtestFilter2%2CtestFilter3&testFilter1-min=0&testFilter1-max=20&testFilter2=abc&testFilter3=1');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/modules?filter=testFilter1%2CtestFilter2%2CtestFilter3&testFilter1-min=0&testFilter1-max=20&testFilter2=abc&testFilter3=1');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
                 "contentType"   :   "application/json",

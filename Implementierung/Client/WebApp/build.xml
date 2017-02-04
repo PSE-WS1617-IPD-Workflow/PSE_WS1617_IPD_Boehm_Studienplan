@@ -76,7 +76,9 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
     <jscomp compilationLevel="simple" warning="verbose" 
         debug="false" prettyPrint="true" output="${basedir}/htdocs/js/app-compiled.js"
             replaceProperties="true">
-        <define name="API_DOMAIN" value="api.studyplan.devel" />
+        <define name="API_DOMAIN" value="http://api.studyplan.devel" />
+        <define name="API_KEY" value="abcdef" />
+        <define name="API_SCOPE" value="student" />
       <externs dir="${basedir}/build/externs">
         <file name="extern.js"/>
         <file name="cookie.js"/>

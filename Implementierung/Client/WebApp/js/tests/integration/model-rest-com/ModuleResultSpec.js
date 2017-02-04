@@ -39,7 +39,7 @@ define(["studyplan"], function (client) {
         });
         it("/plans/abcdef/modules/M1", function () {
             searchCol.get('M1').fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/abcdef/modules/M1');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/abcdef/modules/M1');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
                 "contentType"   :   "application/json",
@@ -58,7 +58,7 @@ define(["studyplan"], function (client) {
         it("/modules/M1", function () {
             searchCol.planId = null;
             searchCol.get('M1').fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/modules/M1');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/modules/M1');
             
         });
         
@@ -79,7 +79,7 @@ define(["studyplan"], function (client) {
                     preference  :   "negative"
                 })
             });
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/abcdef/modules/M1/preference');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/abcdef/modules/M1/preference');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
             expect(jasmine.Ajax.requests.mostRecent().data()).toEqual({module : {id : 'M1', preference : 'negative'}});
             expect(searchCol.get('M1').get('preference').get('module')).toEqual(searchCol.get('M1'))
@@ -93,7 +93,7 @@ define(["studyplan"], function (client) {
             });
             searchCol.get('M1').set('semester',4);
             searchCol.get('M1').save();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/abcdef/modules/M1');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/abcdef/modules/M1');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
             expect(jasmine.Ajax.requests.mostRecent().data()).toEqual({module : {id : 'M1', semester : 4}});
         });

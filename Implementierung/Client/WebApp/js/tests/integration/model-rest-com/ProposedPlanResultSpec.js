@@ -62,7 +62,7 @@ define(["studyplan"], function (client) {
         });
         it("GET /plans/P3/proposal/3", function () {
             propPlan.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3/proposal/3?min-semesters=1&max-semesters=9&min-semester-ects=10&max-semester-ects=40&field-2=7&fields=2');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/P3/proposal/3?min-semesters=1&max-semesters=9&min-semester-ects=10&max-semester-ects=40&field-2=7&fields=2');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('GET');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
@@ -104,7 +104,7 @@ define(["studyplan"], function (client) {
         });
         it("PUT /plans/P3", function () {
             propPlan.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3/proposal/3?min-semesters=1&max-semesters=9&min-semester-ects=10&max-semester-ects=40&field-2=7&fields=2');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/P3/proposal/3?min-semesters=1&max-semesters=9&min-semester-ects=10&max-semester-ects=40&field-2=7&fields=2');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('GET');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
@@ -143,7 +143,7 @@ define(["studyplan"], function (client) {
                 })
             });
             var realPlan = propPlan.save({newPlan:false});
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/P3');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
             var data = jasmine.Ajax.requests.mostRecent().data();
             expect(data.plan.modules).toContain({id: "M3", semester: 5});
@@ -152,7 +152,7 @@ define(["studyplan"], function (client) {
         });
         it("PUT /plans/P4", function () {
             propPlan.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P3/proposal/3?min-semesters=1&max-semesters=9&min-semester-ects=10&max-semester-ects=40&field-2=7&fields=2');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/P3/proposal/3?min-semesters=1&max-semesters=9&min-semester-ects=10&max-semester-ects=40&field-2=7&fields=2');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('GET');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
@@ -191,7 +191,7 @@ define(["studyplan"], function (client) {
                 })
             });
             var realPlan = propPlan.save({newPlan:true, planName: "toller, lustiger, intelligenter Name"});
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('POST');
             jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
@@ -203,7 +203,7 @@ define(["studyplan"], function (client) {
                     }
                 })
             });
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('api.studyplan.devel/plans/P4');
+            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/P4');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
             var data = jasmine.Ajax.requests.mostRecent().data();
             expect(data.plan.modules).toContain({id: "M3", semester: 5});
