@@ -4,12 +4,14 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
+import antlr.collections.impl.IntRange;
 import edu.kit.informatik.studyplan.server.rest.SimpleJsonResponse;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Aufzählung der verschiedenen AttributeFilter-Typen.
@@ -41,13 +43,15 @@ public enum FilterType {
 	 */
 	LIST {
 		@Override
-		@SuppressWarnings("unchecked")
 		public Map<String, Object> toJsonSpecification(AttributeFilter defaultFilter) {
-			List<String> itemStrings = ((ListFilter)defaultFilter).getItemStrings(); //Don't worry. getItemStrings is not generic.
-			List<ListItem> result = itemStrings.parallelStream()
-					.map(itemString -> new ListItem(0, itemString))
+			Map<String, Object> result = new HashMap<>(2);
+			result.put("type", "list");
+			List<String> itemStrings = ((ListFilter<?>)defaultFilter).getItemStrings();
+			List<ListItem> items = IntStream.range(0, itemStrings.size())
+					.mapToObj(i -> new ListItem(0, itemStrings.get(i)))
 					.collect(Collectors.toList());
-			return SimpleJsonResponse.build("items", result);
+			result.put("items", items);
+			return result;
 		}
 
 		@Override

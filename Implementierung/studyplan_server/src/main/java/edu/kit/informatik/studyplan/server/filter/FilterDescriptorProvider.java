@@ -45,7 +45,7 @@ public final class FilterDescriptorProvider {
 
     public FilterDescriptor COMPULSORY() {
         return new FilterDescriptor(4, new CompulsoryFilter(0), "Pflicht/Wahl",
-                "Ob nach Pflicht-, Wahlmodulen oder beidem gesucht werden soll ");
+                "Ob nach Pflicht-, Wahlmodulen oder beidem gesucht werden soll");
     };
 
     public FilterDescriptor NAME() {

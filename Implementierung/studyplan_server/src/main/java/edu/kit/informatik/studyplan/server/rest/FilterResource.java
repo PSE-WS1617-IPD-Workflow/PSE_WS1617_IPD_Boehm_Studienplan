@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 
 import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
 import edu.kit.informatik.studyplan.server.filter.FilterDescriptorProvider;
+import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 
 /**
@@ -30,9 +31,10 @@ public class FilterResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Map<String,Object>> getAllFilters() {
-		if (context.getUser().getDiscipline() == null)
+		Discipline discipline = context.getUser().getDiscipline();
+		if (discipline == null)
 			throw new UnprocessableEntityException();
-		return new FilterDescriptorProvider(context.getUser().getDiscipline()).values().parallelStream()
+		return new FilterDescriptorProvider(discipline).values().parallelStream()
 				.map(FilterDescriptor::toJson)
 				.collect(Collectors.toList());
 	}
