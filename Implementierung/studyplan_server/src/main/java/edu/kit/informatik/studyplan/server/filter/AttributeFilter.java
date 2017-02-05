@@ -24,15 +24,6 @@ public abstract class AttributeFilter implements Filter {
 	 */
 	public abstract String getAttributeName();
 
-	/**
-	 * Gibt ein jOOQ-Field-Objekt zurück, das des Filters attributeName kapselt.
-	 *
-	 * @return das jOOQ-Field-Objekt
-	 */
-	protected Field<Object> toField() {
-		return field(getAttributeName());
-	}
-
 
 	/**
 	 * Liefert den Filter-Typ des AttributeFilters.

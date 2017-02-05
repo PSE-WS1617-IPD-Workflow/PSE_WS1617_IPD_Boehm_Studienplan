@@ -1,5 +1,11 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import edu.kit.informatik.studyplan.server.filter.condition.Condition;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Repräsentiert einen Textsuch-Attribut-Filter.
  */
@@ -25,8 +31,8 @@ public abstract class ContainsFilter extends AttributeFilter {
 	 * 
 	 * @return die Filterbedingung als jOOQ-Condition-Objekt
 	 */
-	public org.jooq.Condition getCondition() {
-		return toField().contains(substring);
+	public List<Condition> getConditions() {
+		return Collections.singletonList(Condition.createContains(getAttributeName(), substring));
 	}
 
 	public FilterType getFilterType() {

@@ -4,15 +4,19 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
+import edu.kit.informatik.studyplan.server.filter.condition.Condition;
+
+import java.util.List;
+
 /**
  * Repräsentiert einen Filter für Module über eine Filterbedingung.
  */
 public interface Filter {
 
 	/**
-	 * Gibt die Filterbedingung als jOOQ-Condition-Objekt zurück.
+	 * Returns the filter condition as a list of {@link Condition} objects.
 	 * 
-	 * @return die Filterbedingung
+	 * @return the filter condition.
 	 */
-	public org.jooq.Condition getCondition();
+	public List<Condition> getConditions();
 };

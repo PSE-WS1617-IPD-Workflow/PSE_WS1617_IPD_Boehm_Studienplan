@@ -1,5 +1,10 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import edu.kit.informatik.studyplan.server.filter.condition.Condition;
+
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Repräsentiert einen Intervall-Beschränkungs-Filter für ganzzahlige Attribute.
  */
@@ -46,8 +51,8 @@ public abstract class RangeFilter extends AttributeFilter {
 	 * 
 	 * @return die Filterbedingung als jOOQ-Condition-Objekt
 	 */
-	public org.jooq.Condition getCondition() {
-		return toField().between(lower, upper);
+	public List<Condition> getConditions() {
+		return Collections.singletonList(Condition.createBetween(getAttributeName(), lower, upper));
 	}
 
 	public FilterType getFilterType() {

@@ -1,5 +1,8 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import edu.kit.informatik.studyplan.server.filter.condition.Condition;
+
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -27,8 +30,8 @@ public abstract class ListFilter<T> extends AttributeFilter {
 	 * 
 	 * @return die Filterbedingung als jOOQ-Condition-Objekt
 	 */
-	public org.jooq.Condition getCondition() {
-		return toField().equal(selection);
+	public List<Condition> getConditions() {
+		return Collections.singletonList(Condition.createEquals(getAttributeName(), getItemObjects().get(selection)));
 	}
 
 	public FilterType getFilterType() {

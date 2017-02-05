@@ -1,10 +1,12 @@
 package edu.kit.informatik.studyplan.server.filter;
 
-import static org.jooq.impl.DSL.trueCondition;
+import edu.kit.informatik.studyplan.server.filter.condition.Condition;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
- * Stellt einen Filter dar, der alle Module zulässt (und dessen Filterbedingung
- * daher konstant wahr ist).
+ *  Represents a filter accepting all modules.
  */
 public class TrueFilter implements Filter {
 	/**
@@ -14,11 +16,9 @@ public class TrueFilter implements Filter {
 	}
 
 	/**
-	 * Gibt eine konstant wahre Filterbedingung zurück.
-	 * 
-	 * @return die Filterbedingung als jOOQ-Condition-Objekt
+	 * @return An empty Condition list.
 	 */
-	public org.jooq.Condition getCondition() {
-		return trueCondition();
+	public List<Condition> getConditions() {
+		return Collections.emptyList();
 	}
 }

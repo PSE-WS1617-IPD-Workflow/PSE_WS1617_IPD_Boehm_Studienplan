@@ -1,8 +1,9 @@
 package edu.kit.informatik.studyplan.server.filter;
 
-import org.jooq.Condition;
+import edu.kit.informatik.studyplan.server.filter.condition.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.jooq.impl.DSL.trueCondition;
 
@@ -33,15 +34,14 @@ public class MultiFilter implements Filter {
 	}
 
 	/**
-	 * Gibt die UND-Verknüpfung der Filterbedingungen der gebündelten Filter als
-	 * Filterbedingung zurück, oder eine konstant wahre Filterbedingung, falls
-	 * filters leer ist.
+	 * Gibt eine Liste der Filterbedingungen der gebündelten Filter zurück. Diese ist ggf. leer.
 	 * 
-	 * @return Die neue Filterbedingung als jOOQ-Condition-Objekt
+	 * @return Die Liste der Filterbedingungen
 	 */
-	public org.jooq.Condition getCondition() {
+	public List<Condition> getConditions() {
 		return filters.parallelStream()
-			.map(Filter::getCondition)
-			.reduce(trueCondition(), Condition::and);
+			.map(Filter::getConditions)
+			.flatMap(List::stream)
+			.collect(Collectors.toList());
 	}
 }
