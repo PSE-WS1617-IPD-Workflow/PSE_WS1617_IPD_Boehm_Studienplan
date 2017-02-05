@@ -18,12 +18,12 @@ public enum SemesterType {
 	/**
 	 * Wintersemester
 	 */
-	@JsonProperty("WS")
+	@JsonProperty("WT")
 	WINTER_TERM,
 	/**
 	 * Sommersemester
 	 */
-	@JsonProperty("SS")
+	@JsonProperty("ST")
 	SUMMER_TERM;
 
 	public LocalDate getSemesterStartDate() {

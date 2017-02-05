@@ -17,12 +17,12 @@ public enum CycleType {
 	/**
 	 * module is only offered in winter term
 	 */
-	@JsonProperty("WS")
+	@JsonProperty("WT")
 	WINTER_TERM,
 	/**
 	 * module is only offered in summer term
 	 */
-	@JsonProperty("SS")
+	@JsonProperty("ST")
 	SUMMER_TERM,
 	/**
 	 * module is offered every semester
