@@ -8,36 +8,68 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend(/** @le
     el: "body",
     curHeaderView : null,
     curContentView : null,
+    notificationCentre: null,
     headerElement : null,
     contentElement: null,
-    
+    notificationElement: null,
+    showLoad: false,
+    loading: $(edu.kit.informatik.studyplan.client.model.system.TemplateManager
+                .getInstance()
+                .getTemplate("resources/templates/subview/loading.html")()),
     initialize : function () {
         "use strict";
-        console.info("[edu.kit.informatik.studyplan.client.view.MainView] initializing...")
+        console.info("[edu.kit.informatik.studyplan.client.view.MainView] initializing...");
         this.headerElement = $("<div id='header'></div>");
         this.contentElement = $("<div id='content'></div>");
+        this.notificationElement = $("<div id='notifications'></div>");
+        this.notificationCentre = new edu.kit.informatik.studyplan.client.view.components.uipanel.NotificationCentre();
         this.render();
     },
     
     render : function () {
         "use strict";
+        if (this.curHeaderView !== null) {
+            this.curHeaderView.remove();
+        }
+        if (this.curContentView !== null) {
+            this.curContentView.remove();
+        }
         this.$el.html('');
-        this.$el.append(this.headerElement);
         this.headerElement.html('');
-        this.$el.append(this.contentElement);
+        this.$el.append(this.headerElement);
         this.contentElement.html('');
+        this.$el.append(this.contentElement);
+        this.notificationElement.html('');
+        this.$el.append(this.notificationElement);
         if (this.curHeaderView !== null) {
             this.curHeaderView.render();
-            this.headerElement.html('');
             this.headerElement.append(this.curHeaderView.$el);
         }
         if (this.curContentView !== null) {
             this.curContentView.render();
-            console.log(this.contentElement.html());
-            this.contentElement.html('');
             this.contentElement.append(this.curContentView.$el);
         }
+        this.notificationCentre.render();
+        this.notificationElement.append(this.notificationCentre.$el);
+        if (this.showLoad) {
+            this.$el.append(this.loading);
+        }
         this.$el.show();
+        this.delegateEvents();
+    },
+    showLoading: function () {
+        var old = this.showLoad;
+        this.showLoad=true;
+        if(old!=this.showLoad){
+            this.render();
+        }
+    },
+    hideLoading: function () {
+        var old = this.showLoad;
+        this.showLoad=false;
+        if(old!=this.showLoad){
+            this.render();
+        }
     },
     /**
     *@param{function(new:Backbone.View, Object)} Header

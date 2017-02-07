@@ -9,12 +9,19 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
     tagName: 'tr',
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/planListEl.html"),
     plan: null,
+    events: {
+        "change input[type=checkbox]" : "test"
+    },
+    test: function () {
+        
+    },
     initialize: function (options) {
         this.plan = options.plan;
         this.checkBox = $("<input type='checkbox'/>");
     },
     render: function () {
         this.$el.html(this.template({plan: this.plan}));
+        this.delegateEvents();
     },
     /**
     *

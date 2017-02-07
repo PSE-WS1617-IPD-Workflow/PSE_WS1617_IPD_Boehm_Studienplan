@@ -33,12 +33,15 @@ edu.kit.informatik.studyplan.client.model.system.TemplateManager = (function () 
         this.getTemplate = function (key) {
             if (typeof this.templates[key] !== "undefined") {
                 return (function (options) {
+                    if (typeof options === "undefined") {
+                        options = {};
+                    }
                     var params = _.clone(options);
                     params["LM"] = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
                     return this.templates[key](params);
                 }).bind(this);
             } else {
-                console.error("[TemplateFactory] Cannot find template '" + key + "'.");
+                console.error("[edu.kit.informatik.studyplan.client.model.system.TemplateManager] Cannot find template '" + key + "'.");
             }
         };
     }

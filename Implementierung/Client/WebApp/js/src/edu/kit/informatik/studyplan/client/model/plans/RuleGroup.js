@@ -6,7 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plan.RuleGroup");
  * @extends {Backbone.Model}
  */
 
-edu.kit.informatik.studyplan.client.model.plan.RuleGroup = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plan.RuleGroup.prototype}*/{
+edu.kit.informatik.studyplan.client.model.plans.RuleGroup = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.RuleGroup.prototype}*/{
     parse : function (response, options) {
         "use strict";
         return response;

@@ -49,7 +49,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         var ruleGroupViolations = [];
         if(typeof response["rule-group-violations"] !== "undefined") {
             for(var i = 0; i<response["rule-group-violations"].length; i++){
-               ruleGroupViolations[i] = new edu.kit.informatik.studyplan.client.model.plan.RuleGroup(
+               ruleGroupViolations[i] = new edu.kit.informatik.studyplan.client.model.plans.RuleGroup(
                       response["rule-group-violations"][i], {parse: true});
             }
         }
