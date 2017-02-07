@@ -1,11 +1,11 @@
 <div class="loginPage">
     <div class="box">
-        <h1>{{=LM.getMessage('welcome')}}</h1>
+        <h1>{{=obj.LM.getMessage('welcome')}}</h1>
     </div>
     <div class="box">
-        {{=LM.getMessage('welcomeText')}}
+        {{=obj.LM.getMessage('welcomeText')}}
     </div>
     <div class="box">
-        <a href="{{=API_DOMAIN}}/auth/login?api_key={{=API_KEY}}&scope={{=API_SCOPE}}" class="loginButton">{{=LM.getMessage('login')}}</a>
+        <a href="{{=API_DOMAIN}}/auth/login?api_key={{=API_KEY}}&scope={{=API_SCOPE}}" class="loginButton">{{=obj.LM.getMessage('login')}}</a>
     </div>
 </div>

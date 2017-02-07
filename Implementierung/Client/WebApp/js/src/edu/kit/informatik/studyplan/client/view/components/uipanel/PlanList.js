@@ -1,6 +1,7 @@
 goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList");
 /**
  * @constructor
+ * @param {Object=} options
  * @extends {Backbone.View}
  */
 
@@ -23,14 +24,13 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
     },
     render: function () {
         "use strict";
-        this.$el.append($(this.template()));
+        this.$el.html(this.template());
         var self = this;
         _.each(this.planListElements, function (el) {
-            console.info("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList]")
-            console.info(el);
             el.render();
             self.$("#planList").append(el.el);
         });
+        this.delegateEvents();
     },
     /**
     *

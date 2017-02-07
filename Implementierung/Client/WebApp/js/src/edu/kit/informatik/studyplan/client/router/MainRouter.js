@@ -70,7 +70,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                         }
                     ]
                 }, {parse: true});
-                this.view.setContent(edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList,
+                this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.MainPage,
                     {
                         planCollection: planCollection
                     });
@@ -107,10 +107,19 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             notFound: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] notFound");
 
+            },
+            showLoading: function () {
+                this.view.showLoading();
+            },
+            hideLoading: function () {
+                this.view.hideLoading();
             }
         }
     );
     return {
+        /**
+         * @return {edu.kit.informatik.studyplan.client.router.MainRouter}
+         */
         getInstance: function () {
             if (instance === null) {
                 instance = new Constructor();

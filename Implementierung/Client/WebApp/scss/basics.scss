@@ -3,5 +3,9 @@ body {
     padding: 0px;
     border: 0px solid transparent;
     background-color:$mainBg;
-    font-family: 'Roboto', sans-serif;
+    font-family: $font1;
+    font-size: $regularSize;
+}
+#content{
+    margin-top:130px;
 }
