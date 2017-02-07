@@ -22,11 +22,11 @@ public final class ModuleAttributeNames {
 	 * Stringkonstante, die die Kategorie-Eigenschaft eines Moduls
 	 * repräsentiert.
 	 */
-	public static final String CATEGORY = "category";
+	public static final String CATEGORY = "categories";
 	/**
 	 * Stringkonstante, die die Modultyp-Eigenschaft eines Moduls repräsentiert.
 	 */
-	public static final String MODULE_TYPE = "moduleType";
+	public static final String MODULE_TYPE = "moduleDescription.moduleType";
 	/**
 	 * Stringkonstante, die die Turnus-Eigenschaft eines Moduls repräsentiert.
 	 */
