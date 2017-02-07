@@ -37,6 +37,10 @@ public class Semester implements Comparable<Semester>{
 	@Column(name = "year")
 	private int year = -1;
 	
+	public Semester() {
+		
+	}
+	
 	/**
 	 * Creates a new semester
 	 * @param semesterType the semester Type
