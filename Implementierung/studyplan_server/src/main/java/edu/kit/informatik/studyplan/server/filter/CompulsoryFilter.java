@@ -10,7 +10,7 @@ import java.util.*;
  * Repräsentiert einen Pflicht-/Wahlmodul-Auswahlfilter mit Filterung nach
  * Pflicht-, Wahlmodulen oder beidem als Wahlmöglichkeiten.
  */
-public class CompulsoryFilter extends ListFilter<Set<Boolean>> {
+public class CompulsoryFilter extends ListFilter<Boolean> {
 	/**
 	 * Erzeugt einen neuen Pflicht-/Wahlmodul-Auswahlfilter mit gegebener
 	 * festgelegter Auswahl.
@@ -24,15 +24,12 @@ public class CompulsoryFilter extends ListFilter<Set<Boolean>> {
 
 	@Override
 	public List<String> getItemStrings() {
-		return Arrays.asList("Pflicht/Wahl", "Pflichtmodule", "Wahlmodule");
+		return Arrays.asList("Pflichtmodule", "Wahlmodule");
 	}
 
-
-
-
 	@Override
-	public List<Set<Boolean>> getItemObjects() {
-		return Arrays.asList(setOf(true, false), setOf(true), setOf(false));
+	public List<Boolean> getItemObjects() {
+		return Arrays.asList(true, false);
 	}
 
 	@Override

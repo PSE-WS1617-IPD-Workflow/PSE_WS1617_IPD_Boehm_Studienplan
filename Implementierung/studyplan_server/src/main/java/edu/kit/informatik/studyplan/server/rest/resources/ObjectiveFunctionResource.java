@@ -1,12 +1,11 @@
-package edu.kit.informatik.studyplan.server.rest;
+package edu.kit.informatik.studyplan.server.rest.resources;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
-import edu.kit.informatik.studyplan.server.generation.objectivefunction.ObjectiveFunction;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
 import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
+import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -44,7 +43,7 @@ public class ObjectiveFunctionResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Collection<PartialObjectiveFunction>> getAllObjectiveFunctions() {
-		//TODO @annotate (Partial?)ObjectiveFunction; add its missing attributes.
+		//TODO @annotate (Partial?)ObjectiveFunction; add its missing attributes. (Wait for Nada)
 		return SimpleJsonResponse.build("functions", new GenerationManager().getObjectiveFunction());
 	}
 }

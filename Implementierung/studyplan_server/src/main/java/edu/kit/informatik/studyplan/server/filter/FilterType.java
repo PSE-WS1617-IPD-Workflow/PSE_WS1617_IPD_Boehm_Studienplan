@@ -4,8 +4,7 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
-import antlr.collections.impl.IntRange;
-import edu.kit.informatik.studyplan.server.rest.SimpleJsonResponse;
+import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 import java.util.HashMap;
 import java.util.List;

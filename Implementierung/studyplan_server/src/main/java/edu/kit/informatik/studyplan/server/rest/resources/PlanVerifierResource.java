@@ -1,6 +1,7 @@
-package edu.kit.informatik.studyplan.server.rest;
+package edu.kit.informatik.studyplan.server.rest.resources;
 
 import edu.kit.informatik.studyplan.server.pluginmanager.VerificationManager;
+import edu.kit.informatik.studyplan.server.rest.JSONObject;
 
 /**
  * Diese Klasse repräsentiert die Planverifizierer-Ressource.
