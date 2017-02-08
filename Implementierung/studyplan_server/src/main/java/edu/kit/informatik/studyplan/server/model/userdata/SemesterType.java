@@ -33,7 +33,7 @@ public enum SemesterType {
 		case SUMMER_TERM:
 			return LocalDate.of(0, 4, 1);
 		default:
-			return null;
+			throw new IllegalStateException("Unknown semester type");
 		}
 	}
 };

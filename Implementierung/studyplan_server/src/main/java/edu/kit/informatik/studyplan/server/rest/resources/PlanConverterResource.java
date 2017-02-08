@@ -1,4 +1,4 @@
-package edu.kit.informatik.studyplan.server.rest;
+package edu.kit.informatik.studyplan.server.rest.resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

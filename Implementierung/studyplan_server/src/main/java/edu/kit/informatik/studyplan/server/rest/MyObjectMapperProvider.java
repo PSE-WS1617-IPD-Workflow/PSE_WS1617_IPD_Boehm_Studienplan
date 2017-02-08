@@ -46,6 +46,8 @@ public class MyObjectMapperProvider implements ContextResolver<ObjectMapper> {
         }
 
         public class ModuleConstraintTypeSerializer extends JsonSerializer<ModuleConstraintType> {
+			public ModuleConstraintTypeSerializer() { }
+		
             @Override
             public void serialize(ModuleConstraintType value,
                                   JsonGenerator jgen,
@@ -55,6 +57,8 @@ public class MyObjectMapperProvider implements ContextResolver<ObjectMapper> {
         }
 
         public class PreferenceTypeSerializer extends JsonSerializer<PreferenceType> {
+			public PreferenceTypeSerializer() { }
+			
             @Override
             public void serialize(PreferenceType value,
                                   JsonGenerator jgen,
@@ -67,6 +71,8 @@ public class MyObjectMapperProvider implements ContextResolver<ObjectMapper> {
         }
 
         public class PreferenceTypeDeserializer extends JsonDeserializer<PreferenceType> {
+			public PreferenceTypeDeserializer() { }
+			
             @Override
             public PreferenceType deserialize(JsonParser jsonParser,
                                               DeserializationContext deserializationContext)
@@ -79,7 +85,8 @@ public class MyObjectMapperProvider implements ContextResolver<ObjectMapper> {
         }
 
         public class PassedModulesSerializer extends JsonSerializer<List<ModuleEntry>> {
-
+			public PassedModulesSerializer() { }
+			
             @Override
             public void serialize(List<ModuleEntry> moduleEntries,
                                   JsonGenerator jsonGenerator,

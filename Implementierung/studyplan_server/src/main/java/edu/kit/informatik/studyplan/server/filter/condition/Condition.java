@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.filter.condition;
 
+import java.util.Arrays;
+
 /**
  * Represents a simple one-relational attribute-based boolean condition.
  */
@@ -39,13 +41,13 @@ public final class Condition {
 
     @Override
     public String toString() {
-        return String.format("(%s %s %s)", lhsName, relation, rhsValues);
+        return String.format("(%s %s %s)", lhsName, relation, Arrays.toString(rhsValues));
     }
 
     /**
-     * Creates an `Equals` conditition.
-     * @param lhsName the attribute name of the left-hand side
-     * @param rhsValue the value object of the right-hand side
+     * Creates an `Equals` condition.
+     * @param lhsName the attribute name of the left-hand side. Must not be null.
+     * @param rhsValue the value object of the right-hand side. Must not be null.
      * @return the condition
      */
     public static Condition createEquals(String lhsName, Object rhsValue) {
@@ -53,8 +55,8 @@ public final class Condition {
     }
 
     /**
-     * Creates a `Between` condition.
-     * @param lhsName the attribute name of the left-hand side
+     * Creates a `Between` condition. lower must be <= greater.
+     * @param lhsName the attribute name of the left-hand side. Must not be null.
      * @param lower the lower bound
      * @param upper the upper bound
      * @return the condition
@@ -64,9 +66,9 @@ public final class Condition {
     }
 
     /**
-     * Creates a `Contains`condition
-     * @param lhsName the attribute name of the left-hand side
-     * @param rhsSubstring the substring on the right-hand side
+     * Creates a `Contains` condition.
+     * @param lhsName the attribute name of the left-hand side. Must not be null.
+     * @param rhsSubstring the substring on the right-hand side. Must not be null.
      * @return the condition
      */
     public static Condition createContains(String lhsName, String rhsSubstring) {
