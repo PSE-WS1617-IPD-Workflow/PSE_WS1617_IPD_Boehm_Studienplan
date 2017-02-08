@@ -13,4 +13,19 @@
 	<welcome-file>default.htm</welcome-file>
 	<welcome-file>default.jsp</welcome-file>
 </welcome-file-list>
+<security-constraint>
+    <web-resource-collection>
+    	<web-resource-name>
+                Entire Application
+        </web-resource-name>
+        <url-pattern>/rest/auth/login</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>student</role-name>
+    </auth-constraint>
+</security-constraint>
+<login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>Please login</realm-name>
+</login-config>
 </web-app>

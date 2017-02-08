@@ -4,13 +4,28 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.authorization;
 
+import java.util.Arrays;
+
 /************************************************************/
 /**
- * Berechtigungen die ein Nutzer anfragen kann
+ * Scopes a user may request
  */
 public enum AuthorizationScope {
 	/**
-	 * Berechtigung Student. Kann alle Kernfunktionen nutzen.
+	 * scope student. May use all core functions;
 	 */
 	STUDENT;
+	
+	/**
+	 * 
+	 * @param string the string
+	 * @return returns the scope specified by this string ignoring case <br>
+	 * return <code>null</code> if no scope with this name exists.
+	 */
+	public static AuthorizationScope fromString(String string) {
+		return Arrays.asList(values()).stream()
+				.filter(scope -> scope.toString().toLowerCase().equals(string.toLowerCase()))
+				.findFirst()
+				.orElse(null);
+	}
 };

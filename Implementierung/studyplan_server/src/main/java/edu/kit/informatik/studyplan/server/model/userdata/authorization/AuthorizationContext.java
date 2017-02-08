@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.ws.rs.core.SecurityContext;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -67,6 +68,9 @@ public class AuthorizationContext implements SecurityContext {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+	
+	@Transient
+	private AbstractSecurityProvider provider;
 
 	/**
 	 * 
@@ -188,5 +192,13 @@ public class AuthorizationContext implements SecurityContext {
 	@Override
 	public String getAuthenticationScheme() {
 		return BASIC_AUTH;
+	}
+	
+	void setProvider(AbstractSecurityProvider provider) {
+		this.provider = provider;
+	}
+	
+	public void cleanUp() {
+		this.provider.cleanUp();
 	}
 };
