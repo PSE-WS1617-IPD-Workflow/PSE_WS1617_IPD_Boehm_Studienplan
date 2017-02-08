@@ -4,9 +4,14 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.authorization;
 
-import javax.persistence.*;
-import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /************************************************************/
 /**
@@ -20,9 +25,6 @@ public class RESTClient {
 	 * 
 	 */
 	@Id
-	@Column(name = "client_id")
-	private int clientId;
-	
 	@Column(name = "api_key")
 	private String apiKey;
 	/**
@@ -57,26 +59,10 @@ public class RESTClient {
 
 	/**
 	 * 
-	 * @param apiKey
-	 *            die ID des Klienten
-	 */
-	public void setApiKey(String apiKey) {
-	}
-
-	/**
-	 * 
 	 * @return gibt die nur dem Klienten bekannte Kennung zurück
 	 */
 	public String getApiSecret() {
 		return apiKey;
-	}
-
-	/**
-	 * 
-	 * @param apiSecret
-	 *            die Kennung
-	 */
-	public void setApiSecret(String apiSecret) {
 	}
 
 	/**
@@ -90,26 +76,10 @@ public class RESTClient {
 
 	/**
 	 * 
-	 * @param der
-	 *            reguläre Ausdruck
-	 */
-	public void setOrigin(String origin) {
-	}
-
-	/**
-	 * 
 	 * @return gibt die Weiterleitungs-URL zurück
 	 */
-	public URL getRedirectUrl() {
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param redirectUrl
-	 *            die Weiterleitungs-URL
-	 */
-	public void setRedirectUrl(URL redirectUrl) {
+	public String getRedirectUrl() {
+		return redirectUrl;
 	}
 
 	/**
@@ -118,6 +88,8 @@ public class RESTClient {
 	 *         angefragt werden können
 	 */
 	public List<AuthorizationScope> getScopes() {
-		return null;
+		ArrayList<AuthorizationScope> scopes = new ArrayList<AuthorizationScope>();
+		scopes.add(AuthorizationScope.STUDENT);
+		return scopes;
 	}
 };

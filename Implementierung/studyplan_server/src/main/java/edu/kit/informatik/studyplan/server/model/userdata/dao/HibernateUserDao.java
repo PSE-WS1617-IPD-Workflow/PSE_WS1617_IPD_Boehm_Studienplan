@@ -14,36 +14,41 @@ import org.hibernate.Session;
  * herstellt.
  */
 class HibernateUserDao implements UserDao {
-
+	
+	private Session session;
+	
+	HibernateUserDao() {
+		session = HibernateUtil.getUserDataSessionFactory().openSession();
+	}
+	
 	@Override
 	public void deleteUser(User user) {
-		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
 		session.beginTransaction();
 		session.delete(user);
 		session.getTransaction().commit();
-		session.close();
 	}
 
 	@Override
 	public void updateUser(User user) {
-		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
 		session.beginTransaction();
 		session.saveOrUpdate(user);
 		session.getTransaction().commit();
-		session.close();
 	}
 
 	@Override
 	public User findUser(User user) {
-		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
 		session.beginTransaction();
 		User result = session.bySimpleNaturalId(User.class).load(user.getUserName());
 		if (result == null) {
 			result = session.byId(User.class).load(user.getUserId());
 		}
 		session.getTransaction().commit();
-		session.close();
 		return result;
+	}
+
+	@Override
+	public void cleanUp() {
+		session.close();
 	}
 
 };

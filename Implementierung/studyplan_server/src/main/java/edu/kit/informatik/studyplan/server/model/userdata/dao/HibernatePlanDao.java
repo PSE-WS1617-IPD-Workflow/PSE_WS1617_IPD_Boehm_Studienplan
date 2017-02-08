@@ -17,34 +17,39 @@ import java.io.Serializable;
  */
 class HibernatePlanDao implements PlanDao {
 
+	private Session session;
+	
+	HibernatePlanDao() {
+		session = HibernateUtil.getUserDataSessionFactory().openSession();
+	}
+	
 	@Override
 	public Plan getPlanById(String id) {
-		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
 		session.beginTransaction();
 		Plan plan = session.byId(Plan.class).load(id);
 		session.getTransaction().commit();
-		session.close();
 		return plan;
 	}
 
 	@Override
 	public void deletePlan(Plan plan) {
-		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
 		session.beginTransaction();
 		session.delete(plan);
 		session.getTransaction().commit();
-		session.close();
 	}
 
 	@Override
 	public String updatePlan(Plan plan) {
-		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
 		session.beginTransaction();
 		session.saveOrUpdate(plan);
 		Serializable identifier = session.getIdentifier(plan);
 		session.getTransaction().commit();
-		session.close();
 		return (String) identifier;
+	}
+
+	@Override
+	public void cleanUp() {
+		session.close();
 	}
 
 };

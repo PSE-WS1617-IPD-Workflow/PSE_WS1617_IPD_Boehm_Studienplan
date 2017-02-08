@@ -4,13 +4,14 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
+import edu.kit.informatik.studyplan.server.model.Dao;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
  * DataAccessObject zum Zugriff auf Studienpläne aus der Datenbank
  */
-public interface PlanDao {
+public interface PlanDao extends Dao {
 
 	/**
 	 * Sucht einen Plan nach seinem String-Identifier.

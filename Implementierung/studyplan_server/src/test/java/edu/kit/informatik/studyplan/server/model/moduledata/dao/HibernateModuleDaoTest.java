@@ -63,7 +63,7 @@ public class HibernateModuleDaoTest {
 	
 	public static void main (String[] args) {
 		
-		new HibernateModuleDaoTest().test4();
+		new HibernateModuleDaoTest().test3();
 	}
 
 }

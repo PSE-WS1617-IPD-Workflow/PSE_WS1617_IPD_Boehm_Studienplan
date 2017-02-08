@@ -5,7 +5,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.filter.SelectF
  */
 
 edu.kit.informatik.studyplan.client.view.components.filter.SelectFilter = edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.filter.SelectFilter.prototype}*/{
-    template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/SelectFilter.html"),
+    template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/filter/selectFilter.html"),
     tag: "ul",
     /**
     *return String

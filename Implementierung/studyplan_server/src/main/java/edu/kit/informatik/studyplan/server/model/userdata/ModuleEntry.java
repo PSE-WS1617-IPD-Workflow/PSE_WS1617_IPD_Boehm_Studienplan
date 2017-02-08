@@ -40,7 +40,7 @@ public class ModuleEntry {
 	 */
 	public Module getModule() {
 		if (module == null) {
-			module = new ModuleDaoFactory().getModuleDao().getModuleById(moduleId);
+			module = ModuleDaoFactory.getModuleDao().getModuleById(moduleId);
 		}
 		return module;
 	}
