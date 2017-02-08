@@ -1,5 +1,9 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +21,7 @@ import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 import javax.inject.Inject;
+import javax.jws.WebMethod;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -111,7 +116,7 @@ public class PlansResource {
 	 *            der Plan als Get-Parameter.
 	 * @return jsonChangedPlan JSON Objekt des bearbeiteten Plans.
 	 */
-	@POST
+	@PATCH
 	@Path("/{id}")
 	public PlanInOut renamePlan(@QueryParam("id") String planId, PlanInOut planInput) {
 		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getVerificationState() != null
@@ -147,34 +152,6 @@ public class PlansResource {
 		return Response.ok().build();
 	}
 
-	/**
-	 * POST-Anfrage: Dupliziert der Plan mit der gegebenen ID
-	 * 
-	 * @param planID
-	 *            ID des zu duplizierenden Plans.
-	 * @return jsonPlan Plan als JSON Objekt.
-	 */
-	@POST
-	@Path("/{id}")
-	public PlanInOut duplicatePlan(@QueryParam("id") String planId, PlanInOut planInput) {
-		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getVerificationState() != null
-				|| planInput.getPlan().getModuleEntries() != null || planInput.getPlan().getPreferences() != null
-				|| planInput.getPlan().getCreditPoints() != 0)
-			throw new BadRequestException();
-		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
-		if (plan == null)
-			throw new NotFoundException();
-		plan.setName(planInput.getPlan().getName());
-		plan.setIdentifier(null);  //TODO Hibernate by-reference or by primary key ident.?
-		try {
-			String newId = PlanDaoFactory.getPlanDao().updatePlan(plan);  //TODO Error handling myself?
-			planInput.getPlan().setIdentifier(newId);
-			return planInput;
-		} catch (Exception ex) {
-			throw new UnprocessableEntityException();
-		}
-	}
-
 	static class PlanInOut {
 		@JsonProperty("plan")
 		@NotNull
@@ -193,5 +170,11 @@ public class PlansResource {
 		public void setPlan(Plan plan) {
 			this.plan = plan;
 		}
+	}
+
+	@Target({ElementType.METHOD})
+	@Retention(RetentionPolicy.RUNTIME)
+	@HttpMethod("PATCH")
+	@interface PATCH {
 	}
 };
