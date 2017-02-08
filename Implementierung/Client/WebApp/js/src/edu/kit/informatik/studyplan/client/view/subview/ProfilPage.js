@@ -4,7 +4,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.subview.ProfilPage");
  * @extends {Backbone.View}
  */
 
-edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.ProfilPage} */{
+edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.ProfilPage.prototype} */{
     /**
     *
     */
@@ -18,7 +18,15 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
     showModuleDetails:
         function (module) {
             "use strict";
-        },
+    },
+    
+    render: function () {
+        this.$el.html($(this.template()));
+        var listDiv = this.$el.find(".mainPagePlanList");
+        this.planList.render();
+        listDiv.append(this.planList.$el);
+        this.delegateEvents();
+    },
     /**
     *
     */
