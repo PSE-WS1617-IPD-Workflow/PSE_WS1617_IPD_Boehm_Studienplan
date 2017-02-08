@@ -13,12 +13,14 @@ edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend
         "click button.mainPageAddPlan": "addPlan"
     },
     initialize: function (options) {
+        "use strict";
         this.planCollection = options.planCollection;
         this.planList = new edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList({
             planCollection: this.planCollection
         });
     },
     render: function () {
+        "use strict";
         this.$el.html(this.template());
         var listDiv = this.$el.find(".mainPagePlanList");
         this.planList.render();
@@ -31,8 +33,8 @@ edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend
     addPlan:
         function () {
             "use strict";
-            var planName= prompt(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("planNameQuestion"), "");
-            if(planName===null){
+            var planName = prompt(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("planNameQuestion"), "");
+            if (planName===null){
                 return;
             }
             var newPlan = new edu.kit.informatik.studyplan.client.model.plans.Plan({

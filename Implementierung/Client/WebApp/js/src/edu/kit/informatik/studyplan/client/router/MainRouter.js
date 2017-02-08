@@ -128,8 +128,27 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             generationWizard: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] generationWizard");
                 this.showLoading();
-                // Do stuff here
-                this.hideLoading();
+                var plan = new edu.kit.informatik.studyplan.client.model.palns.Plan({id: planId});
+                var info = new edu.kit.informatik.studyplan.client.model.system.ProposalInformation()
+                var self = this;
+                plan.fetch({
+                    success: function () {
+                        self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
+                            firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1({
+                                plan: plan,
+                                information: info
+                            }),
+                            onFinish: function () {
+                                /*
+                                *todo:
+                                *Generierungsaufruf
+                                */
+                            }
+                        });
+                    // Do stuff here
+                        self.hideLoading();
+                    }
+                });
             },
             handleLogin: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] handleLogin");
