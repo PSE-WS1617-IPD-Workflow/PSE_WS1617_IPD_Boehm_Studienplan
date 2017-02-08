@@ -4,6 +4,7 @@ edu.kit.informatik.studyplan.client.model.system.TemplateManager = (function () 
     "use strict";
     /**
      * @type {TemplateRegistry}
+     * @private
      */
     var instance = null;
     /**
