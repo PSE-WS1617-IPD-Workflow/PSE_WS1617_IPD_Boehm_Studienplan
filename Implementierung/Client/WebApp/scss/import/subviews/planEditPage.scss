@@ -1,0 +1,22 @@
+.planEditHeadWrapper{
+    margin-top:130px;
+    width:75%;
+    height:50px;
+}
+.planEditPlanWrapper{
+    width:75%;
+    min-height:100%;
+}
+.planEditModuleFinderWrapper{
+    position:fixed;
+    top:0px;
+    right:0px;
+    width: 25%;
+    height: 100%;
+    padding-top: 130px;
+    box-sizing: border-box;
+
+    color:$boxColor;
+    background-color:$boxBgColor;
+    border-left:1px solid $boxBorderColor;
+}

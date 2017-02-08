@@ -44,6 +44,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     "profile": "showProfile",
                     "signup": "signUpWizard",
                     "":     "mainPage",
+                    "logout": "logoutPage",
                     "*notFound": "notFound"
                 };
             },
@@ -157,6 +158,12 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             },
             notFound: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] notFound");
+                this.showLoading();
+                // Do stuff here
+                this.hideLoading();
+            },
+            logoutPage: function () {
+                console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] logoutPage");
                 this.showLoading();
                 // Do stuff here
                 this.hideLoading();
