@@ -1,0 +1,22 @@
+table.planList td.verification{
+    background-position:center center;
+    background-repeat: no-repeat;
+    &.valid{
+        background-image: url("../img/verification-valid.png")
+    }
+    &.invalid{
+        background-image: url("../img/verification-invalid.png")
+    }
+    &.not-verified{
+        background-image: url("../img/verification-not-verified.png")
+    }
+}
+table.planList td button{
+    cursor: pointer;
+    font-family:$font1;
+    font-size:$regularSize;
+    background-color: #FFFFFF;
+    color: $boxColor;
+    border:1px solid $boxBorderColor;
+    padding:3px;
+}

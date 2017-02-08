@@ -49,6 +49,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             },
             mainPage: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] mainPage");
+                this.showLoading();
                 var planCollection = new edu.kit.informatik.studyplan.client.model.plans.PlanCollection({
                     plans   :   [
                         {
@@ -75,38 +76,55 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                         planCollection: planCollection
                     });
                 this.view.render();
+                this.hideLoading();
             },
             editPage: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] editPage");
-
+                this.showLoading();
+                // Do stuff here
+                this.hideLoading();
             },
             comparisonPage: function (planId1, planId2) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] comparisonPage");
-
+                this.showLoading();
+                // Do stuff here
+                this.hideLoading();
             },
             generationWizard: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] generationWizard");
+                this.showLoading();
+                // Do stuff here
+                this.hideLoading();
             },
             handleLogin: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] handleLogin");
-
+                this.showLoading();
+                // Do stuff here
+                this.hideLoading();
             },
             loginPage: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] loginPage");
+                this.showLoading();
                 this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.LoginPage, {});
-                this.view.render();
+                this.hideLoading();
             },
             showProfile: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] showProfile");
-
+                this.showLoading();
+                // Do stuff here
+                this.hideLoading();
             },
             signUpWizard: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] signUpWizard");
-
+                this.showLoading();
+                // Do stuff here
+                this.hideLoading();
             },
             notFound: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] notFound");
-
+                this.showLoading();
+                // Do stuff here
+                this.hideLoading();
             },
             showLoading: function () {
                 this.view.showLoading();

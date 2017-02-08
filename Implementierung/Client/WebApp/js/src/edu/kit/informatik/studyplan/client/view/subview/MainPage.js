@@ -31,7 +31,7 @@ edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend
     addPlan:
         function () {
             "use strict";
-            var planName= prompt("Wie soll der neue Plan heißen?", "");
+            var planName= prompt(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("planNameQuestion"), "");
             if(planName===null){
                 return;
             }

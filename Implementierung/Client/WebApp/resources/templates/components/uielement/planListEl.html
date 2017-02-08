@@ -2,5 +2,17 @@
     <input type="checkbox">
 </td>
 <td>
-    {{=obj.plan.name}}
+    {{=obj.plan.get('name')}}
+</td>
+<td class="verification {{=obj.plan.get('status')}}">
+
+</td>
+<td>
+    {{=obj.plan.get('creditpoints-sum')}}
+</td>
+<td>
+    <button class="showPlan">{{=obj.LM.getMessage('showPlan')}}</button>
+    <button class="duplicatePlan">{{=obj.LM.getMessage('duplicatePlan')}}</button>
+    <button class="deletePlan">{{=obj.LM.getMessage('deletePlan')}}</button>
+    <button class="exportPlan">{{=obj.LM.getMessage('exportPlan')}}</button>
 </td>

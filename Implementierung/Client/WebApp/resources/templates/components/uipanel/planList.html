@@ -1,10 +1,17 @@
-<table>
+<select class="planListAction">
+    <option value="none">{{=obj.LM.getMessage('selectAction')}}</option>
+    <option value="comparePlans">{{=obj.LM.getMessage('comparePlan')}}</option>
+    <option value="deletePlans">{{=obj.LM.getMessage('deletePlan')}}</option>
+</select>
+<button class="planListActionExecution">{{=obj.LM.getMessage('execute')}}</button>
+<table class="planList">
     <thead>
         <tr>
+            <th><input type="checkbox" id="checkAllCheckbox"></th>
+            <th>{{=obj.LM.getMessage('planName')}}</th>
             <th></th>
-            <th>Name</th>
+            <th>{{=obj.LM.getMessage('planEctsSum')}}</th>
             <th></th>
-            <th>ECTS Punkte</th>
         </tr>
     </thead>
     <tbody id="planList">
