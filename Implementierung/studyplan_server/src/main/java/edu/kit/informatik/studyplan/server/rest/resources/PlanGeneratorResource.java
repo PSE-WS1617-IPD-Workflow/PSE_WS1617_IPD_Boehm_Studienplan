@@ -1,6 +1,8 @@
-package edu.kit.informatik.studyplan.server.rest;
+package edu.kit.informatik.studyplan.server.rest.resources;
 
 import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
+import edu.kit.informatik.studyplan.server.rest.GetParameters;
+import edu.kit.informatik.studyplan.server.rest.JSONObject;
 
 /**
  * Diese Klasse repräsentiert die Plangenerierer-Ressource.

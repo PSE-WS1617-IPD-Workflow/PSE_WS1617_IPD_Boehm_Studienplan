@@ -1,4 +1,4 @@
-package edu.kit.informatik.studyplan.server.rest;
+package edu.kit.informatik.studyplan.server.rest.resources.json;
 
 import java.util.HashMap;
 import java.util.Map;

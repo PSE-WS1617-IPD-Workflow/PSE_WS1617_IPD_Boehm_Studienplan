@@ -1,8 +1,9 @@
-package edu.kit.informatik.studyplan.server.rest;
+package edu.kit.informatik.studyplan.server.rest.resources;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

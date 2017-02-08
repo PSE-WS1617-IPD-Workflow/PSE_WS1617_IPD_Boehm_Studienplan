@@ -1,4 +1,4 @@
-package edu.kit.informatik.studyplan.server.rest;
+package edu.kit.informatik.studyplan.server.rest.resources;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -10,12 +10,12 @@ import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDaoFactory;
+import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
+import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -91,8 +91,8 @@ public class StudentResource {
 	@JsonView(Views.StudentClass.class)
 	@Produces(MediaType.APPLICATION_JSON)
 	public StudentInOut getInformation() {
-		List<ModuleResource.JsonModule> passedModules = context.getUser().getPassedModules().parallelStream().map(entry -> {
-			ModuleResource.JsonModule m = new ModuleResource.JsonModule();
+		List<JsonModule> passedModules = context.getUser().getPassedModules().parallelStream().map(entry -> {
+			JsonModule m = new JsonModule();
 			m.setId(entry.getModule().getIdentifier());
 			m.setSemester(entry.getSemester());
 			return m;
@@ -110,11 +110,9 @@ public class StudentResource {
 	@DELETE
 	@JsonView(Views.StudentClass.class)
 	public Response deleteStudent() {
-		try {
-			UserDaoFactory.getUserDao().deleteUser(context.getUser());
-		} catch (Exception ex) { //TODO Exception spec
-
-		}
+		if (UserDaoFactory.getUserDao().findUser(context.getUser()) == null)
+			throw new UnprocessableEntityException();
+		UserDaoFactory.getUserDao().deleteUser(context.getUser());
 		return Response.ok().build();
 	}
 
@@ -143,11 +141,11 @@ public class StudentResource {
 		@JsonProperty("study-start")
 		private Semester studyStart;
 		@JsonProperty("passed-modules")
-		private List<ModuleResource.JsonModule> passedModules;
+		private List<JsonModule> passedModules;
 
 		public JsonStudent() {}
 
-		public JsonStudent(Discipline discipline, Semester studyStart, List<ModuleResource.JsonModule> passedModules) {
+		public JsonStudent(Discipline discipline, Semester studyStart, List<JsonModule> passedModules) {
 			this.setDiscipline(discipline);
 			this.setStudyStart(studyStart);
 			this.setPassedModules(passedModules);
@@ -169,11 +167,11 @@ public class StudentResource {
 			this.studyStart = studyStart;
 		}
 
-		public List<ModuleResource.JsonModule> getPassedModules() {
+		public List<JsonModule> getPassedModules() {
 			return passedModules;
 		}
 
-		public void setPassedModules(List<ModuleResource.JsonModule> passedModules) {
+		public void setPassedModules(List<JsonModule> passedModules) {
 			this.passedModules = passedModules;
 		}
 	}
