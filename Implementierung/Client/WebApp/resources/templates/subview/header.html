@@ -1,14 +1,14 @@
 <div class="subviewHeader">
     <div class="icon">
-        {{=obj.LM.getMessage('icon')}}
+        <a href="#" class="home">{{=obj.LM.getMessage('icon')}}</a>
     </div>
     <div class="info">
         {{ if(obj.sessionInformation.isLoggedIn()){ }}
             {{=obj.LM.getMessage('loggedIn')}} | 
-            <a href="#profile">
+            <a href="#" class="profile">
                 {{=obj.LM.getMessage('profile')}}
             </a> |
-            <a href="{{=API_DOMAIN}}/auth/logout">
+            <a href="#" class="logout">
                 {{=obj.LM.getMessage('logout')}}
             </a>
         {{ } else { }}
