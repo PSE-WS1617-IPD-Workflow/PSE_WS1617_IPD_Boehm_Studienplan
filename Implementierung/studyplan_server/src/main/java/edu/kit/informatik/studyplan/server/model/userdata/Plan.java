@@ -4,7 +4,9 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +20,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.NotFoundException;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
+import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDaoFactory;
+import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import org.hibernate.annotations.GenericGenerator;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
@@ -38,57 +50,68 @@ public class Plan {
 	@GenericGenerator(name = "uuid-gen", strategy = "org.hibernate.id.UUIDGenerator")
 	@GeneratedValue(generator = "uuid-gen")
 	@Column(name = "identifier")
+	@JsonProperty("id")
 	private String identifier;
 	/**
 	 * 
 	 */
 
 	@Column(name = "name")
+	@JsonProperty("name")
 	private String name;
 	/**
 	 * 
 	 */
 	@Enumerated(EnumType.STRING)
 	@Column(name = "state")
+	@JsonProperty("status")
 	private VerificationState state;
 	/**
 	 * 
 	 */
 	@Transient
+	@JsonProperty("creditpoints-sum")
 	private int creditPoints;
 	/**
 	 * 
 	 */
 	@ManyToOne
 	@JoinColumn(name = "user_id")
+	@JsonIgnore
 	private User user;
+
 	/**
-	 * 
+	 *
 	 */
 	@OneToMany
 	@JoinTable(name = "plan_entries", joinColumns = @JoinColumn(name = "plan_id"), inverseJoinColumns = @JoinColumn(name = "entry_id"))
+	@JsonIgnore
 	private List<ModuleEntry> moduleEntries;
+
 	/**
-	 * 
+	 *
 	 */
 	@OneToMany(mappedBy = "plan")
+	@JsonIgnore
 	private List<ModulePreference> modulePreferences;
-
 	/**
 	 * Gibt für ein übergebenes Modul die Präferenz zurück. <br>
 	 * <code>null</code>, falls keine Präferenz vorhanden
-	 * 
+	 *
 	 * @return die Präferenz
 	 * @param module
 	 *            das Modul
 	 */
+	@JsonIgnore
 	public PreferenceType getPreferenceForModule(Module module) {
 		// TODO: implement
 		return null;
 	}
 
+
+
 	/**
-	 * 
+	 *
 	 * @return gibt den eindeutigen Plan-Identifier zurück
 	 */
 	public String getIdentifier() {
@@ -96,7 +119,7 @@ public class Plan {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param identifier
 	 *            der Plan-Identifier
 	 */
@@ -105,7 +128,7 @@ public class Plan {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return gibt den Namen des Plans zurück
 	 */
 	public String getName() {
@@ -113,7 +136,7 @@ public class Plan {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param name
 	 *            der Name
 	 */
@@ -122,7 +145,7 @@ public class Plan {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return gibt den Verifizierungsstatus des Plans zurück
 	 */
 	public VerificationState getVerificationState() {
@@ -130,7 +153,7 @@ public class Plan {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param verificationState
 	 *            der Verifizierungsstatus
 	 */
@@ -139,7 +162,7 @@ public class Plan {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return gibt die ECTS-Summe des Plans zurück
 	 */
 	public int getCreditPoints() {
@@ -147,7 +170,7 @@ public class Plan {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return gibt den Eigentümer des Plans zurück
 	 */
 	public User getUser() {
@@ -155,7 +178,7 @@ public class Plan {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param user
 	 *            der Eigentümer
 	 */
@@ -164,11 +187,19 @@ public class Plan {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return gibt alle Moduleinträge des Plans zurück
 	 */
 	public List<ModuleEntry> getModuleEntries() {
 		return moduleEntries;
+	}
+
+	public void setModuleEntries(List<ModuleEntry> moduleEntries) {
+		this.moduleEntries = moduleEntries;
+	}
+
+	public void setModulePreferences(List<ModulePreference> modulePreferences) {
+		this.modulePreferences = modulePreferences;
 	}
 
 	/**
@@ -177,5 +208,54 @@ public class Plan {
 	 */
 	public List<ModulePreference> getPreferences() {
 		return modulePreferences;
+	}
+
+
+	/**
+	 * Only being called by Jackson and/or REST handlers, respectively.
+	 * @return Publishes the module entries inside the plan's JSON representation.
+     */
+	@JsonProperty("modules")
+	public List<JsonModule> getJsonModules() {
+		return this.getModuleEntries().stream()
+				.map(entry -> {
+					JsonModule jsonModule = new JsonModule();
+					jsonModule.setId(entry.getModule().getIdentifier());
+					jsonModule.setName(entry.getModule().getName());
+					jsonModule.setSemester(entry.getSemester());
+					jsonModule.setCreditPoints(entry.getModule().getCreditPoints());
+					jsonModule.setLecturer(entry.getModule().getModuleDescription().getLecturer());
+					jsonModule.setCycleType(entry.getModule().getCycleType());
+					jsonModule.setPreference(getPreferenceForModule(entry.getModule()));
+					return jsonModule;
+				})
+				.collect(Collectors.toList());
+	}
+
+	/**
+	 * Only being called by Jackson and/or REST handlers, respectively.
+	 * @param jsonModules The modules attribute's content from the plan's JSON representation.
+     */
+	@JsonProperty("modules")
+	public void setJsonModules(List<JsonModule> jsonModules) {
+		HashSet<String> placedModulesIds = new HashSet<>(jsonModules.size()); //for finding duplicates
+		List<ModuleEntry> moduleEntries = jsonModules.stream()
+				.map(jsonModule -> {
+					if (placedModulesIds.contains(jsonModule.getId()))
+						throw new BadRequestException();
+					else
+						placedModulesIds.add(jsonModule.getId());
+					if (jsonModule.getSemester() < user.getStudyStart().getDistanceToCurrentSemester())
+						throw new BadRequestException();
+					Module m = ModuleDaoFactory.getModuleDao().getModuleById(jsonModule.getId());
+					if (m == null)
+						throw new NotFoundException();
+					ModuleEntry entry = new ModuleEntry();
+					entry.setSemester(jsonModule.getSemester());
+					entry.setModule(m);
+					return entry;
+				})
+				.collect(Collectors.toList());
+		this.moduleEntries = moduleEntries;
 	}
 };
