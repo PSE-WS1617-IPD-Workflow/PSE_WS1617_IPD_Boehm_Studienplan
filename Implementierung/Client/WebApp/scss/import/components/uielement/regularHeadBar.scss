@@ -1,0 +1,44 @@
+.planHeadBar{
+    width:100%;
+    box-sizing: border-box;
+    padding:10px 10px 10px 20px;
+    
+    background-color:$bg2;
+    color:$color2;
+    h3{
+        float:left;
+        
+        font-size: $regularSize;
+        font-weight:700;
+        input{
+            border-width:0px 0px 1px 0px;
+            border-color:$color2;
+            border-style: solid;
+            background-color: transparent;
+        }
+    }
+    .headBarButtons{
+        float:right;
+        button{
+            padding:3px;
+            
+            color:$boxColor;
+            border:1px solid $boxBorderColor;
+            background-color:$boxBgColor;
+            &#verifyPlan{
+                padding:3px 3px 3px 30px;
+                background-position: 15px 15px;
+                background-repeat:no-repeat;
+                &.valid{
+                    background-image:url("img/verification-valid.png")
+                }
+                &.invalid{
+                    background-image:url("img/verification-invalid.png")
+                }
+                &.not-verified{
+                    background-image:url("img/verification-not-verified.png")
+                }
+            }
+        }
+    }
+}

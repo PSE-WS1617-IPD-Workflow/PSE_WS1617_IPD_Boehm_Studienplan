@@ -43,3 +43,8 @@ LM.messages["de"]["planDuplicatedTitle"] = "Plan dupliziert.";
 LM.messages["de"]["planDuplicatedText"] = "Der Plan wurde erfolgreich dupliziert.";
 LM.messages["de"]["planDeletedTitle"] = "Plan gelöscht.";
 LM.messages["de"]["planDeletedText"] = "Der Plan wurde erfolgreich gelöscht.";
+
+// RegularHeadBar
+LM.messages["de"]["home"] = "Home";
+LM.messages["de"]["makeProposal"] = "Plan vervollständigen";
+LM.messages["de"]["verify"] = "Überprüfen";
