@@ -81,8 +81,43 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             editPage: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] editPage");
                 this.showLoading();
-                // Do stuff here
-                this.hideLoading();
+                var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({
+                    plan    :   {
+                        id  :   'P3',
+                        name:   'Rons Studienplan',
+                        status: 'invalid',
+                        'creditpoints-sum': 100,
+                        modules :   [
+                            {
+                                id          :   "M1",
+                                name        :   "Bayrisch",
+                                creditpoints:   7,
+                                lecturer    :   "Aloisius",
+                                preference  :   "positive",
+                                semester    :   3
+                            },
+                            {
+                                id          :   "M2",
+                                name        :   "Schwäbisch",
+                                creditpoints:   5,
+                                lecturer    :   "Maultaschius",
+                                preference  :   "negative",
+                                semester    :   5
+                            }
+                        ]
+                    }
+                },{parse:true});/*{
+                    id: planId,
+                    
+                });*/
+                /*plan.fetch({
+                    success: function () {*/
+                        this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.PlanEditPage, {
+                            plan:  plan
+                        });
+                        this.hideLoading();
+                    /*}
+                });*/
             },
             comparisonPage: function (planId1, planId2) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] comparisonPage");
