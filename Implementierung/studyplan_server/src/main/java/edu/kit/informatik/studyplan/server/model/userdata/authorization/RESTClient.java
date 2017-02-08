@@ -4,7 +4,6 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.authorization;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 

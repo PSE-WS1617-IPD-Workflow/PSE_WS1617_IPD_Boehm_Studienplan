@@ -12,7 +12,7 @@ public class Utils {
         return new HashSet<T>(Arrays.asList(elements));
     }
 
-    public static <T,R> Predicate<T> equals(Function<T, R> mapper, R value) {
+    public static <T, R> Predicate<T> equals(Function<T, R> mapper, R value) {
         return t -> mapper.apply(t).equals(value);
     }
 }

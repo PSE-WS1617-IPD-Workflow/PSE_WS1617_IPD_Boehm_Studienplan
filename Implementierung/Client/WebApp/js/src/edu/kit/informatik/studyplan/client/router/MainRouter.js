@@ -44,6 +44,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     "profile": "showProfile",
                     "signup": "signUpWizard",
                     "":     "mainPage",
+                    "logout": "logoutPage",
                     "*notFound": "notFound"
                 };
             },
@@ -81,8 +82,43 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             editPage: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] editPage");
                 this.showLoading();
-                // Do stuff here
-                this.hideLoading();
+                var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({
+                    plan    :   {
+                        id  :   'P3',
+                        name:   'Rons Studienplan',
+                        status: 'invalid',
+                        'creditpoints-sum': 100,
+                        modules :   [
+                            {
+                                id          :   "M1",
+                                name        :   "Bayrisch",
+                                creditpoints:   7,
+                                lecturer    :   "Aloisius",
+                                preference  :   "positive",
+                                semester    :   3
+                            },
+                            {
+                                id          :   "M2",
+                                name        :   "Schwäbisch",
+                                creditpoints:   5,
+                                lecturer    :   "Maultaschius",
+                                preference  :   "negative",
+                                semester    :   5
+                            }
+                        ]
+                    }
+                },{parse:true});/*{
+                    id: planId,
+                    
+                });*/
+                /*plan.fetch({
+                    success: function () {*/
+                        this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.PlanEditPage, {
+                            plan:  plan
+                        });
+                        this.hideLoading();
+                    /*}
+                });*/
             },
             comparisonPage: function (planId1, planId2) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] comparisonPage");
@@ -93,8 +129,27 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             generationWizard: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] generationWizard");
                 this.showLoading();
-                // Do stuff here
-                this.hideLoading();
+                var plan = new edu.kit.informatik.studyplan.client.model.palns.Plan({id: planId});
+                var info = new edu.kit.informatik.studyplan.client.model.system.ProposalInformation()
+                var self = this;
+                plan.fetch({
+                    success: function () {
+                        self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
+                            firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1({
+                                plan: plan,
+                                information: info
+                            }),
+                            onFinish: function () {
+                                /*
+                                *todo:
+                                *Generierungsaufruf
+                                */
+                            }
+                        });
+                    // Do stuff here
+                        self.hideLoading();
+                    }
+                });
             },
             handleLogin: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] handleLogin");
@@ -111,6 +166,11 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             showProfile: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] showProfile");
                 this.showLoading();
+                var filter = new edu.kit.informatik.studyplan.client.model.system.FilterCollection({
+                    filters: []
+                }, {parse:true});
+                this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.ProfilPage, {});
+                this.view.render();
                 // Do stuff here
                 this.hideLoading();
             },
@@ -122,6 +182,12 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             },
             notFound: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] notFound");
+                this.showLoading();
+                // Do stuff here
+                this.hideLoading();
+            },
+            logoutPage: function () {
+                console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] logoutPage");
                 this.showLoading();
                 // Do stuff here
                 this.hideLoading();

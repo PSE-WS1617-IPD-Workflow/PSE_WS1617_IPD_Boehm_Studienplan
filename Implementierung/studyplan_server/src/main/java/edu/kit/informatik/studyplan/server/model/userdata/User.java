@@ -4,26 +4,16 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
-import java.security.Principal;
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
+import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.NaturalId;
 
-import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+import javax.persistence.*;
+import java.security.Principal;
+import java.util.LinkedList;
+import java.util.List;
 
 /************************************************************/
 /**

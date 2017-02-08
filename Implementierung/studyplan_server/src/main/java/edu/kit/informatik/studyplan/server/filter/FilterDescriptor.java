@@ -7,8 +7,6 @@ package edu.kit.informatik.studyplan.server.filter;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.jooq.impl.DSL.field;
-
 /**
  * Beschreibungen der nach außen sichtbaren Filterklassen für den Client.
  */

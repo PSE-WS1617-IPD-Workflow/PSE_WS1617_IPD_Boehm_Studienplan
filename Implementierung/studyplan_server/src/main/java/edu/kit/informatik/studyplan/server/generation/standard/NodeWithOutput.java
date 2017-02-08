@@ -4,8 +4,6 @@
 
 package edu.kit.informatik.studyplan.server.generation.standard;
 
-import edu.kit.informatik.studyplan.server.generation.standard.Node;
-
 import java.util.Collection;
 
 /************************************************************/

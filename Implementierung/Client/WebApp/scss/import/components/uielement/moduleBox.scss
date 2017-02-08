@@ -1,0 +1,22 @@
+#moduleBox ul{
+    position: relative;
+    width:300;
+    height: 400;
+    border: 3px solid #dddddd;
+    background-color: #ff0000;
+    
+    #preferenceButtonBox div{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    .preferenceButton button{
+        width:30px;
+        height:30px;
+        border:0px solid transparent;
+        text-align:center;
+        line-height:30px;
+        font-size:25px;
+        background-color:transparent;
+    }
+}

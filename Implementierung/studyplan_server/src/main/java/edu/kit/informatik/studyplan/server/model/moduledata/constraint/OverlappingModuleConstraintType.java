@@ -4,10 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-
-import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
 /************************************************************/
 /**

@@ -5,8 +5,14 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.filter.FilterC
  */
 
 edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent = Backbone.View.extend(
-    /** @lends {edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent} */
-    {
+    /** @lends {edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent.prototype} */{
+        
+    filter: null,
+    
+    initialize: function (options) {
+        "use strict";
+        this.filter = options.filter;
+    },
     /**
     *return String
     */
@@ -23,5 +29,9 @@ edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent = Bac
     */
     getFilter: function () {
         "use strict";
+    },
+    render: function () {
+        this.$el.html(this.template({filter: this.filter}));
+        this.delegateEvents();
     }
 });

@@ -4,12 +4,11 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
-import java.io.Serializable;
-
-import org.hibernate.Session;
-
 import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import org.hibernate.Session;
+
+import java.io.Serializable;
 
 /************************************************************/
 /**

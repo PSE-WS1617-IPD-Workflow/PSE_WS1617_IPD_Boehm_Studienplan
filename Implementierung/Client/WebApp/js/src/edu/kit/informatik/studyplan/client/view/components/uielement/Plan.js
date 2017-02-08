@@ -1,6 +1,7 @@
 goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Plan");
 /**
  * @constructor
+ * @param {Object=} options
  * @extends {Backbone.View}
  */
 

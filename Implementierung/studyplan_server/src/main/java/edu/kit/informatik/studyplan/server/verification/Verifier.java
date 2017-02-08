@@ -5,7 +5,6 @@
 package edu.kit.informatik.studyplan.server.verification;
 
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 
 /************************************************************/
 /**

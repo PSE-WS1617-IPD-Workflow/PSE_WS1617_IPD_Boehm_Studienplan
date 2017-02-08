@@ -1,24 +1,11 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 import org.hibernate.annotations.NaturalId;
 
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
+import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Class modeling a module

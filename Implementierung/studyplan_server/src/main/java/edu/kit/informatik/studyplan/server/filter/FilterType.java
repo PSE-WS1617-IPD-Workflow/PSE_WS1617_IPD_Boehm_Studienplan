@@ -24,16 +24,16 @@ public enum FilterType {
 		public Map<String, Object> toJsonSpecification(AttributeFilter defaultFilter) {
 			Map<String, Object> result = new HashMap<>(3);
 			result.put("type", "range");
-			result.put("min", ((RangeFilter)defaultFilter).getMin());
-			result.put("max", ((RangeFilter)defaultFilter).getMax());
+			result.put("min", ((RangeFilter) defaultFilter).getMin());
+			result.put("max", ((RangeFilter) defaultFilter).getMax());
 			return result;
 		}
 
 		@Override
 		public Object defaultJsonValue(AttributeFilter defaultFilter) {
 			Map<String, Object> result = new HashMap<>(2);
-			result.put("min", ((RangeFilter)defaultFilter).getMin());
-			result.put("max", ((RangeFilter)defaultFilter).getMax());
+			result.put("min", ((RangeFilter) defaultFilter).getMin());
+			result.put("max", ((RangeFilter) defaultFilter).getMax());
 			return result;
 		}
 	},
@@ -45,7 +45,7 @@ public enum FilterType {
 		public Map<String, Object> toJsonSpecification(AttributeFilter defaultFilter) {
 			Map<String, Object> result = new HashMap<>(2);
 			result.put("type", "list");
-			List<String> itemStrings = ((ListFilter<?>)defaultFilter).getItemStrings();
+			List<String> itemStrings = ((ListFilter<?>) defaultFilter).getItemStrings();
 			List<ListItem> items = IntStream.range(0, itemStrings.size())
 					.mapToObj(i -> new ListItem(0, itemStrings.get(i)))
 					.collect(Collectors.toList());

@@ -2,9 +2,8 @@ package edu.kit.informatik.studyplan.server.filter;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleAttributeNames;
 
-import static edu.kit.informatik.studyplan.server.filter.Utils.setOf;
-
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Repräsentiert einen Pflicht-/Wahlmodul-Auswahlfilter mit Filterung nach

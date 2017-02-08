@@ -1,18 +1,12 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
-
 import edu.kit.informatik.studyplan.server.rest.resources.StudentResource;
+
+import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /************************************************************/
 /**

@@ -3,12 +3,11 @@
  */
 package edu.kit.informatik.studyplan.server.rest;
 
-import java.io.IOException;
-
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.core.MultivaluedMap;
+import java.io.IOException;
 
 /**
  * @author NiklasUhl

@@ -4,10 +4,9 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
-import org.hibernate.Session;
-
 import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
+import org.hibernate.Session;
 
 /************************************************************/
 /**
