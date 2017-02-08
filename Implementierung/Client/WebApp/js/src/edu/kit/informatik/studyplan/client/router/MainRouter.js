@@ -129,7 +129,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             generationWizard: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] generationWizard");
                 this.showLoading();
-                var plan = new edu.kit.informatik.studyplan.client.model.palns.Plan({id: planId});
+                var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({id: planId});
                 var info = new edu.kit.informatik.studyplan.client.model.system.ProposalInformation()
                 var self = this;
                 plan.fetch({

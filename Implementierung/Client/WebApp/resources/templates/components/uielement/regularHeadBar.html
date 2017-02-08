@@ -4,6 +4,6 @@
     </h3>
     <div class="headBarButtons">
         <button id="generatePlan">{{=obj.LM.getMessage("makeProposal")}}</button>
-        <button id="verifyPlan" class="{{=obj.plan.get('status')}}">{{=obj.LM.getMessage("verify")}}</button>
+        <button id="verifyPlan" class="{{=obj.plan.get('verificationResult').get('status')}}">{{=obj.LM.getMessage("verify")}}</button>
     </div>
 </div>
