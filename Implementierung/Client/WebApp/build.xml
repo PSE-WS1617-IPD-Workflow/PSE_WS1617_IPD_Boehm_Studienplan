@@ -82,7 +82,7 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
       <condition property="API_SCOPE" value="${API_SCOPE}" else="student">
         <isset property="API_SCOPE" />
       </condition>
-      <condition property="API_TOKEN" value="${API_TOKEN}" else="fakeAccessToken">
+      <condition property="API_TOKEN" value="${API_TOKEN}" else="admin123">
         <isset property="API_TOKEN" />
       </condition>
       <condition property="DEBUG_ALWAYS_LOGIN" value="${DEBUG_ALWAYS_LOGIN}" else="false">

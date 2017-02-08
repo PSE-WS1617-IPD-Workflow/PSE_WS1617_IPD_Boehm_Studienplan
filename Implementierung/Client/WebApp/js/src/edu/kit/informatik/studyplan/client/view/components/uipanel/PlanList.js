@@ -18,7 +18,6 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
         "use strict";
         this.planCollection = options.planCollection;
         this.planListElements = [];
-        var self = this;
         this.listenTo(this.planCollection, "change", this.reload);
         this.listenTo(this.planCollection, "add", this.reload);
         this.listenTo(this.planCollection, "reset", this.reload);

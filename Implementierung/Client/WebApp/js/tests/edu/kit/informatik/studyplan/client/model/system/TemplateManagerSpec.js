@@ -4,9 +4,9 @@ define(["studyplan","underscore"], function (studyplan,_) {
         var TM = null; //test
         beforeEach(function () {
             TM = studyplan.model.system.TemplateManager.getInstance();
-            TM.templates = {
+            _.extend(TM.templates,{
                 "test" : _.template("<foo><bar><%=obj.test%></bar></foo>")
-            };
+            });
         });
         it("Instance should not be null", function () {
             expect(TM).not.toBeNull();//test

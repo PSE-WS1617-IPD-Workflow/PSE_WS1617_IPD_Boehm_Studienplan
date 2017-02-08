@@ -16,6 +16,8 @@ edu.kit.informatik.studyplan.client.storage.OAuthSync = function (method, model,
     var errorCallback = options["error"];
     options["error"] = function (xhr, textStatus, errorThrown) {
         console.log("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Request failed: "+textStatus+" ("+errorThrown+")");
+        console.log("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Method: "+method);
+        console.log(model);
         console.log(xhr);
         var notificationCollection = edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance();
         // Retrieve error message

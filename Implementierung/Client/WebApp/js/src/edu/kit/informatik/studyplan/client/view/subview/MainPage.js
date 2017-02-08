@@ -19,7 +19,7 @@ edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend
         });
     },
     render: function () {
-        this.$el.html($(this.template()));
+        this.$el.html(this.template());
         var listDiv = this.$el.find(".mainPagePlanList");
         this.planList.render();
         listDiv.append(this.planList.$el);

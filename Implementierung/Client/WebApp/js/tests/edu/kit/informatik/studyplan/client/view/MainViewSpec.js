@@ -13,7 +13,7 @@ define(["studyplan"], function (studyplan) {
             mainView = new studyplan.view.MainView();
             headerWrapper = { headerConstructor : function (options) {} };
             contentWrapper = { contentConstructor : function (options) {} };
-            renderWrapper = { render : function () {} };
+            renderWrapper = { render : function () {} , remove : function () {} };
             options = {test: "foo"};
         });
         it("Instance should not be null", function () {
