@@ -42,7 +42,8 @@ public class ModuleResource {
 		if (user.getDiscipline() == null) {
 			throw new UnprocessableEntityException();
 		}
-		Filter filter = PlanModulesResource.getFilterFromRequest(uriInfo.getQueryParameters());
+		Filter filter = PlanModulesResource.getFilterFromRequest(uriInfo.getQueryParameters(),
+				context.getUser().getDiscipline());
 		if (filter == null) {
 			throw new BadRequestException();
 		}

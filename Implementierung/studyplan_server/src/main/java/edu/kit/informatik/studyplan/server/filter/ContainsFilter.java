@@ -21,6 +21,9 @@ public abstract class ContainsFilter extends AttributeFilter {
 	 *            der Suchstring
 	 */
 	protected ContainsFilter(String substring) {
+		if (substring == null) {
+			throw new IllegalArgumentException("substring must not be null");
+		}
 		this.substring = substring;
 	}
 
