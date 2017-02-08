@@ -21,7 +21,7 @@ import org.hibernate.annotations.NaturalId;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 
 /**
- * Class modelling a module
+ * Class modeling a module
  * 
  * @author NiklasUhl
  * @version 1.0
