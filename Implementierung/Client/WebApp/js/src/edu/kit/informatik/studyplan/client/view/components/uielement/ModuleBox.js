@@ -5,9 +5,13 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Modu
  */
 
 edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox} */{
-/**
-*@param{boolean} setBorder
-*/
+    model: null,
+    tagName: "ul",
+    template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/moduleBox.html"),
+    
+    /**
+    *@param{boolean} setBorder
+    */
     setRedBorder:
         function (setBorder) {
             "use strict";
@@ -25,5 +29,12 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     click:
         function () {
             "use strict";
-        }
+        },
+    /**
+    *
+    */
+    render: function () {
+        this.$el.html(this.template({notification: this.model}));
+        this.delegateEvents();
+    }
 });
