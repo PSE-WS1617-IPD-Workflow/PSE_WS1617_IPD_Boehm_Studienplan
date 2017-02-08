@@ -2,7 +2,6 @@ package edu.kit.informatik.studyplan.server.filter;
 
 import edu.kit.informatik.studyplan.server.filter.condition.Condition;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

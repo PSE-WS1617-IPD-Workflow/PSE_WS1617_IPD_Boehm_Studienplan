@@ -1,11 +1,9 @@
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.filter.condition.*;
+import edu.kit.informatik.studyplan.server.filter.condition.Condition;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.jooq.impl.DSL.trueCondition;
 
 /**
  * Bündelt mehrere Filter zu einem einzigen mittels UND-Verknüpfung der

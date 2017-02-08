@@ -4,11 +4,11 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 
 /************************************************************/
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Modelliert Semester-Typen

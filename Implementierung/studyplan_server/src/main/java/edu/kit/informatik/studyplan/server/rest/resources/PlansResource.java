@@ -1,31 +1,26 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDaoFactory;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
-import edu.kit.informatik.studyplan.server.rest.GetParameters;
 import edu.kit.informatik.studyplan.server.rest.JSONObject;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 import javax.inject.Inject;
-import javax.jws.WebMethod;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Diese Klasse repräsentiert die Pläne-Ressource.
@@ -47,11 +42,13 @@ public class PlansResource {
 	public PlanInOut createPlan(PlanInOut planInput) {
 		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getVerificationState() != null
 				|| planInput.getPlan().getModuleEntries() != null || planInput.getPlan().getPreferences() != null
-				|| planInput.getPlan().getCreditPoints() != 0)
+				|| planInput.getPlan().getCreditPoints() != 0) {
 			throw new BadRequestException();
+		}
 		String newId = PlanDaoFactory.getPlanDao().updatePlan(planInput.getPlan());
-		if (newId == null)
+		if (newId == null) {
 			throw new UnprocessableEntityException();
+		}
 		planInput.getPlan().setIdentifier(newId);
 		return planInput;
 	}
@@ -101,10 +98,11 @@ public class PlansResource {
 	@Path("/{plan-id}")
 	public PlanInOut getPlan(@PathParam("plan-id") String planId) {
 		Plan result = PlanDaoFactory.getPlanDao().getPlanById(planId);
-		if (result == null)
+		if (result == null) {
 			throw new NotFoundException();
-		else
+		} else {
 			return new PlanInOut(result);
+		}
 	}
 
 	/**
@@ -121,11 +119,13 @@ public class PlansResource {
 	public PlanInOut renamePlan(@QueryParam("id") String planId, PlanInOut planInput) {
 		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getVerificationState() != null
 				|| planInput.getPlan().getModuleEntries() != null || planInput.getPlan().getPreferences() != null
-				|| planInput.getPlan().getCreditPoints() != 0)
+				|| planInput.getPlan().getCreditPoints() != 0) {
 			throw new BadRequestException();
+		}
 		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
-		if (plan == null)
+		if (plan == null) {
 			throw new NotFoundException();
+		}
 		plan.setName(planInput.getPlan().getName());
 		try {
 			PlanDaoFactory.getPlanDao().updatePlan(plan);  //TODO Error handling myself?
@@ -146,8 +146,9 @@ public class PlansResource {
 	@Path("/{id}")
 	public Response deletePlan(@QueryParam("id") String planId) {
 		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
-		if (plan == null)
+		if (plan == null) {
 			throw new UnprocessableEntityException();
+		}
 		PlanDaoFactory.getPlanDao().deletePlan(plan);
 		return Response.ok().build();
 	}

@@ -4,36 +4,19 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.NotFoundException;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.kit.informatik.studyplan.server.model.moduledata.Field;
-import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDaoFactory;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import org.hibernate.annotations.GenericGenerator;
 
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import javax.persistence.*;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.NotFoundException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /************************************************************/
 /**
@@ -241,15 +224,18 @@ public class Plan {
 		HashSet<String> placedModulesIds = new HashSet<>(jsonModules.size()); //for finding duplicates
 		List<ModuleEntry> moduleEntries = jsonModules.stream()
 				.map(jsonModule -> {
-					if (placedModulesIds.contains(jsonModule.getId()))
+					if (placedModulesIds.contains(jsonModule.getId())) {
 						throw new BadRequestException();
-					else
+					} else {
 						placedModulesIds.add(jsonModule.getId());
-					if (jsonModule.getSemester() < user.getStudyStart().getDistanceToCurrentSemester())
+					}
+					if (jsonModule.getSemester() < user.getStudyStart().getDistanceToCurrentSemester()) {
 						throw new BadRequestException();
+					}
 					Module m = ModuleDaoFactory.getModuleDao().getModuleById(jsonModule.getId());
-					if (m == null)
+					if (m == null) {
 						throw new NotFoundException();
+					}
 					ModuleEntry entry = new ModuleEntry();
 					entry.setSemester(jsonModule.getSemester());
 					entry.setModule(m);

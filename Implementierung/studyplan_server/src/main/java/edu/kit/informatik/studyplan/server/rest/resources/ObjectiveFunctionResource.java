@@ -1,8 +1,5 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import java.util.Collection;
-import java.util.Map;
-
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
 import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
@@ -11,6 +8,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.Collection;
+import java.util.Map;
 
 /**
  * Diese Klasse repräsentiert die Zielfunktion-Ressource.

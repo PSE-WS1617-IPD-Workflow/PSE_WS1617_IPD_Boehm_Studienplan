@@ -39,7 +39,7 @@ public class MyObjectMapperProvider implements ContextResolver<ObjectMapper> {
 
     public static class CustomSerializerModule extends SimpleModule {
         public CustomSerializerModule() {
-            super ("CustomSerializerModule", Version.unknownVersion());
+            super("CustomSerializerModule", Version.unknownVersion());
             this.addSerializer(ModuleConstraintType.class, new ModuleConstraintTypeSerializer());
             this.addSerializer(PreferenceType.class, new PreferenceTypeSerializer());
             this.addDeserializer(PreferenceType.class, new PreferenceTypeDeserializer());
@@ -63,10 +63,7 @@ public class MyObjectMapperProvider implements ContextResolver<ObjectMapper> {
             public void serialize(PreferenceType value,
                                   JsonGenerator jgen,
                                   SerializerProvider serializerProvider) throws IOException, JsonProcessingException {
-                if (value != null)
-                    jgen.writeString(value.toString().toLowerCase());
-                else
-                    jgen.writeString("");
+                jgen.writeString(value != null ? value.toString().toLowerCase() : "");
             }
         }
 
@@ -77,10 +74,11 @@ public class MyObjectMapperProvider implements ContextResolver<ObjectMapper> {
             public PreferenceType deserialize(JsonParser jsonParser,
                                               DeserializationContext deserializationContext)
                     throws IOException, JsonProcessingException {
-                if (Objects.equals(jsonParser.getValueAsString(), ""))
+                if (Objects.equals(jsonParser.getValueAsString(), "")) {
                     return null;
-                else
+                } else {
                     return PreferenceType.valueOf(jsonParser.getValueAsString().toUpperCase());
+                }
             }
         }
 

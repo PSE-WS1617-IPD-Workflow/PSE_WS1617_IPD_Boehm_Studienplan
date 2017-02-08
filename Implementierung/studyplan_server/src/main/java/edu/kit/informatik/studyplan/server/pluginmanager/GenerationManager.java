@@ -1,11 +1,11 @@
 package edu.kit.informatik.studyplan.server.pluginmanager;
 
-import java.util.Collection;
-
 import edu.kit.informatik.studyplan.server.generation.Generator;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+
+import java.util.Collection;
 
 /**
  * Verwaltet den Zugriff auf das Generierungsplug-in. Das Generierungsplug-in

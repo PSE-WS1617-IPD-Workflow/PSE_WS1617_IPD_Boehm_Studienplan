@@ -1,14 +1,8 @@
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
-
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
+
+import javax.persistence.*;
 
 /**
  * Class modeling the type of a module constraint

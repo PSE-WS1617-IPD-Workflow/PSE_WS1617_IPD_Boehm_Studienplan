@@ -8,9 +8,9 @@ import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDao;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDaoFactory;
+import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
-import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -39,11 +39,13 @@ public class ModuleResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, List<JsonModule>> getModules(@Context UriInfo uriInfo) {
 		User user = context.getUser();
-		if (user.getDiscipline() == null)
+		if (user.getDiscipline() == null) {
 			throw new UnprocessableEntityException();
+		}
 		Filter filter = PlanModulesResource.getFilterFromRequest(uriInfo.getQueryParameters());
-		if (filter == null)
+		if (filter == null) {
 			throw new BadRequestException();
+		}
 		List<JsonModule> result = getModuleDao()
 				.getModulesByFilter(filter, user.getDiscipline())
 				.parallelStream().map(m -> {
@@ -72,8 +74,9 @@ public class ModuleResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, JsonModule> getModule(@PathParam("moduleId") String moduleId) {
 		Module module = getModuleDao().getModuleById(moduleId);
-		if (module == null)
+		if (module == null) {
 			throw new NotFoundException();
+		}
 		JsonModule result = JsonModule.fromModule(module, null, null);
 		return SimpleJsonResponse.build("module", result);
 	}

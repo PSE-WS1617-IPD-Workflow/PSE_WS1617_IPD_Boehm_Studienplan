@@ -24,12 +24,12 @@ public final class FilterDescriptorProvider {
     }
 
     public FilterDescriptor CREDIT_POINTS() {
-        return new FilterDescriptor(0, new CreditPointsFilter(0,30,0,30), "ECTS",
+        return new FilterDescriptor(0, new CreditPointsFilter(0, 30, 0, 30), "ECTS",
                 "Das Intervall, in welchem die ECTS der gefundenen Module liegen sollen");
     };
 
     public FilterDescriptor CATEGORY() {
-        return new FilterDescriptor(1, new CategoryFilter(0, discipline),"Kategorie",
+        return new FilterDescriptor(1, new CategoryFilter(0, discipline), "Kategorie",
                 "Die Kategorie der gefundenen Module");
     };
 
