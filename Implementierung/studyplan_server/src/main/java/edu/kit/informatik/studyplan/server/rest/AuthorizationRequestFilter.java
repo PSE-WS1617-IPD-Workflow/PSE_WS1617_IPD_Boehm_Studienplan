@@ -1,15 +1,14 @@
 package edu.kit.informatik.studyplan.server.rest;
 
-import java.io.IOException;
-import java.util.List;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.Response.Status;
-
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * ContainerRequestFiler for authorizing REST resource access

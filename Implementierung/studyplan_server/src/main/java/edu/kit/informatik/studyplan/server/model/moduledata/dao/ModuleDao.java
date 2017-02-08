@@ -4,15 +4,11 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 
-import java.util.List;
-
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.model.Dao;
-import edu.kit.informatik.studyplan.server.model.moduledata.Category;
-import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.moduledata.Field;
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
+import edu.kit.informatik.studyplan.server.model.moduledata.*;
+
+import java.util.List;
 
 /************************************************************/
 /**

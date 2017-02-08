@@ -4,13 +4,6 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.filter.Filter;
-import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
-import edu.kit.informatik.studyplan.server.filter.FilterType;
-import org.jooq.Field;
-
-import static org.jooq.impl.DSL.field;
-
 /**
  * Repräsentiert einen Filter für ein bestimmtes Module-Attribut.
  */

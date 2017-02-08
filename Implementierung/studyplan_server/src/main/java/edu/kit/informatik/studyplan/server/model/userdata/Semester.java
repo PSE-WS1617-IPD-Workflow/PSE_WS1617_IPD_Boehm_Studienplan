@@ -4,24 +4,23 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
-import java.time.LocalDate;
-import java.time.Period;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDate;
+import java.time.Period;
 
 /************************************************************/
 /**
  * Modelliert ein Semester
  */
 @Embeddable
-public class Semester implements Comparable<Semester>{
+public class Semester implements Comparable<Semester> {
 
 	/**
 	 * 
@@ -48,7 +47,7 @@ public class Semester implements Comparable<Semester>{
 	 * @param year the start year of the semester
 	 * @throws IllegalArgumentException if semesterType is set to <code>null</code> or year is set to non positive value
 	 */
-	public Semester(SemesterType semesterType, int year) throws IllegalArgumentException{
+	public Semester(SemesterType semesterType, int year) throws IllegalArgumentException {
 		if (semesterType == null) {
 			throw new IllegalArgumentException("SemesterType must not be null");
 		}

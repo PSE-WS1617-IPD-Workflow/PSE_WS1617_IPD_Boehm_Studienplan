@@ -1,9 +1,8 @@
 package edu.kit.informatik.studyplan.server.rest;
 
+import javax.ws.rs.NameBinding;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
-import javax.ws.rs.NameBinding;
 
 /**
  * Resources or resource methods annotated with @AuthorizationNeeded

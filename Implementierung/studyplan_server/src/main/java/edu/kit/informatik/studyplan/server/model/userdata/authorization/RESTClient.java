@@ -4,14 +4,9 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.authorization;
 
+import javax.persistence.*;
 import java.net.URL;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
 
 /************************************************************/
 /**

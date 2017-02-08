@@ -21,8 +21,9 @@ public abstract class ListFilter<T> extends AttributeFilter {
 	 *            die Nummer des ausgewählten Elements
 	 */
 	protected ListFilter(int selection) {
-		if (selection >= getItemObjects().size())
+		if (selection >= getItemObjects().size()) {
 			throw new IllegalArgumentException("ListFilter.selection must not be greater than the item list size.");
+		}
 		this.selection = selection;
 	}
 

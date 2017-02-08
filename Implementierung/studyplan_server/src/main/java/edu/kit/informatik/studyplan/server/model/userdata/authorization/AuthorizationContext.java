@@ -4,23 +4,13 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.authorization;
 
-import java.security.Principal;
-import java.time.LocalDateTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.ws.rs.core.SecurityContext;
-
+import edu.kit.informatik.studyplan.server.model.userdata.User;
 import org.hibernate.annotations.GenericGenerator;
 
-import edu.kit.informatik.studyplan.server.model.userdata.User;
+import javax.persistence.*;
+import javax.ws.rs.core.SecurityContext;
+import java.security.Principal;
+import java.time.LocalDateTime;
 
 /************************************************************/
 /**

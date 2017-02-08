@@ -1,12 +1,11 @@
 package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.hibernate.query.Query;
-
 import edu.kit.informatik.studyplan.server.filter.condition.Condition;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import org.hibernate.query.Query;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConditionQueryConverter {
 	

@@ -8,7 +8,6 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
 import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
-import edu.kit.informatik.studyplan.server.rest.resources.ModuleResource;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -30,7 +29,7 @@ public class JsonModule {
     private String description;
     private List<ModuleConstraint> constraints;
 
-    public JsonModule() {} //for Jackson
+    public JsonModule() { } //for Jackson
 
     public JsonModule(String id,
                       String name,

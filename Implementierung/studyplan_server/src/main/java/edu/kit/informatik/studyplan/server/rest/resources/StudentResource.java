@@ -57,12 +57,15 @@ public class StudentResource {
 					.map(jsonModule -> {
 						ModuleEntry entry = new ModuleEntry();
 						entry.setModule(ModuleDaoFactory.getModuleDao().getModuleById(jsonModule.getId()));
-						if (entry.getModule() == null)
+						if (entry.getModule() == null) {
 							throw new BadRequestException();
-						if (jsonModule.getSemester() == null)
+						}
+						if (jsonModule.getSemester() == null) {
 							throw new BadRequestException();
-						if (jsonModule.getSemester() >= thisStudent.getStudyStart().getDistanceToCurrentSemester())
+						}
+						if (jsonModule.getSemester() >= thisStudent.getStudyStart().getDistanceToCurrentSemester()) {
 							throw new BadRequestException();
+						}
 						entry.setSemester(jsonModule.getSemester());
 						return entry;
 					})
@@ -110,8 +113,9 @@ public class StudentResource {
 	@DELETE
 	@JsonView(Views.StudentClass.class)
 	public Response deleteStudent() {
-		if (UserDaoFactory.getUserDao().findUser(context.getUser()) == null)
+		if (UserDaoFactory.getUserDao().findUser(context.getUser()) == null) {
 			throw new UnprocessableEntityException();
+		}
 		UserDaoFactory.getUserDao().deleteUser(context.getUser());
 		return Response.ok().build();
 	}
@@ -120,7 +124,7 @@ public class StudentResource {
 		@NotNull
 		private JsonStudent student;
 
-		public StudentInOut() {}
+		public StudentInOut() { }
 
 		public StudentInOut(JsonStudent student) {
 			this.student = student;
@@ -143,7 +147,7 @@ public class StudentResource {
 		@JsonProperty("passed-modules")
 		private List<JsonModule> passedModules;
 
-		public JsonStudent() {}
+		public JsonStudent() { }
 
 		public JsonStudent(Discipline discipline, Semester studyStart, List<JsonModule> passedModules) {
 			this.setDiscipline(discipline);
@@ -177,7 +181,7 @@ public class StudentResource {
 	}
 
 	public static class Views {
-		public static class DisciplineClass extends StudentClass {}
-		public static class StudentClass {}
+		public static class DisciplineClass extends StudentClass { }
+		public static class StudentClass { }
 	}
 }

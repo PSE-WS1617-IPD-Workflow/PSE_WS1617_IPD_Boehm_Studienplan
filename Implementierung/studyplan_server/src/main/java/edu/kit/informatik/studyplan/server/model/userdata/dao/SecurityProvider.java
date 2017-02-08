@@ -4,13 +4,12 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
-import java.time.LocalDateTime;
-
-import org.hibernate.Session;
-
 import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
+import org.hibernate.Session;
+
+import java.time.LocalDateTime;
 
 /************************************************************/
 /**

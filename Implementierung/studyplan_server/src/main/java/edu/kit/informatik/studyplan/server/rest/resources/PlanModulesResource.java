@@ -1,10 +1,10 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import javax.ws.rs.core.MultivaluedMap;
 import edu.kit.informatik.studyplan.server.filter.Filter;
-import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
 import edu.kit.informatik.studyplan.server.rest.GetParameters;
 import edu.kit.informatik.studyplan.server.rest.JSONObject;
+
+import javax.ws.rs.core.MultivaluedMap;
 
 /**
  * Diese Klasse repräsentiert die Planmodule-Ressource.

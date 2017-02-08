@@ -4,9 +4,9 @@
 
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
-import java.util.Collection;
-
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+
+import java.util.Collection;
 
 /************************************************************/
 /**
