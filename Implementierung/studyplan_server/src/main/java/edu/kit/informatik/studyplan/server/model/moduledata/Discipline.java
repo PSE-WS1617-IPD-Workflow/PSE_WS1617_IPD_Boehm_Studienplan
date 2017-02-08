@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import edu.kit.informatik.studyplan.server.rest.StudentResource;
+import edu.kit.informatik.studyplan.server.rest.resources.StudentResource;
 
 /************************************************************/
 /**

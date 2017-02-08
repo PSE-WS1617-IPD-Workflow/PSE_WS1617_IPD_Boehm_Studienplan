@@ -5,6 +5,9 @@
 package edu.kit.informatik.studyplan.server.model.userdata;
 
 /************************************************************/
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Modelliert den Verifikationsstatus eines Studienplans
  */
@@ -12,13 +15,16 @@ public enum VerificationState {
 	/**
 	 * der Plan wurde noch nicht verifiziert
 	 */
+	@JsonProperty("not-verified")
 	NOT_VERIFIED,
 	/**
 	 * der Plan ist gültig
 	 */
+	@JsonProperty("valid")
 	VALID,
 	/**
 	 * der Plan enhält Fehler, d.h. Constraints sind verletzt
 	 */
+	@JsonProperty("invalid")
 	INVALID;
 };

@@ -35,6 +35,7 @@ public class Semester implements Comparable<Semester>{
 	 * 
 	 */
 	@Column(name = "year")
+	@JsonProperty("year")
 	private int year = -1;
 	
 	public Semester() {
@@ -97,6 +98,7 @@ public class Semester implements Comparable<Semester>{
 	 * @return calculates the distance to the given semester including this one<br>
 	 * 			always returns a value greater zero
 	 */
+	@JsonIgnore
 	public int getDistanceTo(Semester semester) {
 		LocalDate thisStart = this.semesterType.getSemesterStartDate().withYear(year);
 		LocalDate otherStart = semester.semesterType.getSemesterStartDate().withYear(semester.year);
@@ -144,6 +146,7 @@ public class Semester implements Comparable<Semester>{
 	}
 
 	@Override
+	@JsonIgnore
 	public int compareTo(Semester o) {
 		if (year < o.getYear()) {
 			return -1;

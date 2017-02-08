@@ -141,6 +141,7 @@ public class Field {
 	 * @return returns the the field's subjects<br>
 	 * returns <code>null</code> if field is not choosable
 	 */
+	@JsonProperty("categories")
 	public List<Category> getSubjects() {
 		if (isChoosable) {
 			return ModuleDaoFactory.getModuleDao().getSubjects(this);

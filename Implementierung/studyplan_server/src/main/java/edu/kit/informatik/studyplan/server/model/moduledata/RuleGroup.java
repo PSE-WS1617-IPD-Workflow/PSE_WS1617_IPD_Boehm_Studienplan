@@ -1,5 +1,8 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -23,15 +26,19 @@ public class RuleGroup {
 	
 	@Id
 	@Column(name = "rule_id")
+	@JsonIgnore
 	private int ruleId;
 	
 	@Column(name = "name")
+	@JsonProperty("name")
 	private String name;
 	
 	@Column(name = "min_num")
+	@JsonProperty("min-ects")
 	private int minNum;
 	
 	@Column(name = "max_num")
+	@JsonProperty("max-ects")
 	private int maxNum;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -40,6 +47,7 @@ public class RuleGroup {
 		@JoinColumn(name = "module_id"),
 	inverseJoinColumns =
 		@JoinColumn(name = "rule_id"))
+	@JsonIgnore
 	private List<Module> modules;
 
 	/**
