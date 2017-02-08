@@ -147,34 +147,6 @@ public class PlansResource {
 		return Response.ok().build();
 	}
 
-	/**
-	 * POST-Anfrage: Dupliziert der Plan mit der gegebenen ID
-	 * 
-	 * @param planID
-	 *            ID des zu duplizierenden Plans.
-	 * @return jsonPlan Plan als JSON Objekt.
-	 */
-	@POST
-	@Path("/{id}")
-	public PlanInOut duplicatePlan(@QueryParam("id") String planId, PlanInOut planInput) {
-		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getVerificationState() != null
-				|| planInput.getPlan().getModuleEntries() != null || planInput.getPlan().getPreferences() != null
-				|| planInput.getPlan().getCreditPoints() != 0)
-			throw new BadRequestException();
-		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
-		if (plan == null)
-			throw new NotFoundException();
-		plan.setName(planInput.getPlan().getName());
-		plan.setIdentifier(null);  //TODO Hibernate by-reference or by primary key ident.?
-		try {
-			String newId = PlanDaoFactory.getPlanDao().updatePlan(plan);  //TODO Error handling myself?
-			planInput.getPlan().setIdentifier(newId);
-			return planInput;
-		} catch (Exception ex) {
-			throw new UnprocessableEntityException();
-		}
-	}
-
 	static class PlanInOut {
 		@JsonProperty("plan")
 		@NotNull
