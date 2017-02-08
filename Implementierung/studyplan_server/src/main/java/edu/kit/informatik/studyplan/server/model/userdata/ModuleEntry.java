@@ -35,6 +35,16 @@ public class ModuleEntry {
 	private int semester;
 
 	/**
+	 * Creates a new ModuleEntry with a given module and semester.
+	 * @param module the module to place inside the plan
+	 * @param semester the number of the semester into which the module is placed
+     */
+	public ModuleEntry(Module module, int semester) {
+		this.module = module;
+		this.semester = semester;
+	}
+
+	/**
 	 * 
 	 * @return gibt das Modul zurück
 	 */

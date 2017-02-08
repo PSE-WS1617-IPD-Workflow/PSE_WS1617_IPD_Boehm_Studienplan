@@ -55,8 +55,9 @@ public class StudentResource {
 			List<ModuleEntry> newPassedModules = jsonStudent.getPassedModules()
 					.parallelStream()
 					.map(jsonModule -> {
-						ModuleEntry entry = new ModuleEntry();
-						entry.setModule(ModuleDaoFactory.getModuleDao().getModuleById(jsonModule.getId()));
+						ModuleEntry entry =
+								new ModuleEntry(ModuleDaoFactory.getModuleDao().getModuleById(jsonModule.getId()),
+										jsonModule.getSemester());
 						if (entry.getModule() == null) {
 							throw new BadRequestException();
 						}
@@ -66,7 +67,6 @@ public class StudentResource {
 						if (jsonModule.getSemester() >= thisStudent.getStudyStart().getDistanceToCurrentSemester()) {
 							throw new BadRequestException();
 						}
-						entry.setSemester(jsonModule.getSemester());
 						return entry;
 					})
 					.collect(Collectors.toList());
