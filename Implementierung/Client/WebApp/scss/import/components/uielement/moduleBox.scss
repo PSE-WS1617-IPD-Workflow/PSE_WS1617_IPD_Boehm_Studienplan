@@ -1,10 +1,14 @@
-#moduleBox ul{
-    position: relative;
-    width:300;
-    height: 400;
-    border: 3px solid #dddddd;
-    background-color: #ff0000;
+.moduleBox{
+    box-sizing: border-box;
+    padding:5px;
     
+    border: 1px solid $boxBorderColor;
+    background-color: $boxBgColor;
+    color:$boxColor;
+    
+    h3{
+        
+    }
     #preferenceButtonBox div{
         position: absolute;
         bottom: 0;
@@ -18,5 +22,17 @@
         line-height:30px;
         font-size:25px;
         background-color:transparent;
+    }
+}
+.leftSided .moduleBox{
+    float:left;
+}
+.rightSided .moduleBox{
+    float:right;
+}
+.semesterModules{
+    .moduleBox{
+        width:160px;
+        height:100px;
     }
 }

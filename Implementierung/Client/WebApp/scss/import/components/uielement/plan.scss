@@ -1,0 +1,46 @@
+.planView{
+    width:100%;
+    height: auto;
+    padding:20px;
+    box-sizing:border-box;
+    table{
+        width:100%;
+        box-sizing: border-box;
+        h3 {
+            color: #444444;
+            font-size:$subtitleSize;
+            font-weight:700;
+            margin:0px;
+        }
+        thead tr{
+            td, th {
+                border-bottom: 1px solid $boxBorderColor;
+            }
+            th {
+                color: #444444;
+                padding:5px;
+                font-weight:200;
+            }
+        }
+        
+        td, th {
+            padding:5px;
+            vertical-align: top;
+            
+            &:nth-child(1) {
+                width:130px;
+                text-align:right;
+            }
+            &:nth-child(2) {
+                border-left: 1px solid $boxBorderColor;
+
+                text-align:left;
+            }
+        }
+        tbody{
+            tr{
+                height:100px;
+            }
+        }
+    }
+}
