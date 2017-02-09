@@ -114,7 +114,7 @@ public class AuthResource {
 	 */
 	@POST
 	public void postToken(MultivaluedMap<String, String> params) {
-
+		
 	}
 
 	/**
