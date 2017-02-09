@@ -1,6 +1,7 @@
 goog.provide("edu.kit.informatik.studyplan.client.view.subview.WizardPage");
 /**
  * @constructor
+ * @param {Object=} options
  * @extends {Backbone.View}
  */
 
@@ -12,12 +13,21 @@ edu.kit.informatik.studyplan.client.view.subview.WizardPage = Backbone.View.exte
         "click button.wizwardPageNextWizard": "next"
     },
     
+    /**
+    *Konstruktor: Methode onFinish, welche Generierung auslößt und erstes Wizardfenster firstPage wird übergeben.
+    * @this {Backbone.View}
+    * @param {...*} options
+    * @return *
+    */
     initialize: function (options) {
         "use strict";
         this.curView = options.firstPage;
         this.onFinish = options.onFinish;
     },
     
+    /**
+    *
+    */
     render:
         function () {
             "use strict";
