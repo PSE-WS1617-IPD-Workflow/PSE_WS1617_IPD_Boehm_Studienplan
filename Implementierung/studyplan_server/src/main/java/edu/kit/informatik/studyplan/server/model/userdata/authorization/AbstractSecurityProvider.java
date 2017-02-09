@@ -21,9 +21,10 @@ public abstract class AbstractSecurityProvider {
 	 * 
 	 * @param user
 	 *            der User
+	 * @param scope 
 	 * @return den generierten Authentifizierungs-Kontext
 	 */
-	public abstract AuthorizationContext generateAuthorizationContext(User user, RESTClient client);
+	public abstract AuthorizationContext generateAuthorizationContext(User user, RESTClient client, AuthorizationScope scope);
 
 	/**
 	 * Liefert zu einem Access-Token den enstprechenden

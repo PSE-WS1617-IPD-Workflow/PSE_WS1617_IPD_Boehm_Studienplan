@@ -1,7 +1,23 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
@@ -12,14 +28,6 @@ import edu.kit.informatik.studyplan.server.model.userdata.authorization.Authoriz
 import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDaoFactory;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
-
-import javax.inject.Inject;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Diese Klasse repräsentiert dir Student-Resource.
@@ -113,7 +121,7 @@ public class StudentResource {
 	@DELETE
 	@JsonView(Views.StudentClass.class)
 	public Response deleteStudent() {
-		if (UserDaoFactory.getUserDao().findUser(context.getUser()) == null) {
+		if (context.getUser() == null) {
 			throw new UnprocessableEntityException();
 		}
 		UserDaoFactory.getUserDao().deleteUser(context.getUser());

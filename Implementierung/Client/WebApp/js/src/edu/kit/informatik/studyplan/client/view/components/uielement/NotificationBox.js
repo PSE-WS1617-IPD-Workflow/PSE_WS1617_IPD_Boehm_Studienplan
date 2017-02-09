@@ -21,7 +21,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.NotificationBox = 
         var self = this;
         window.setTimeout(function () {
             self.onClose();
-        }, 2000);
+        }, 10000);
         this.delegateEvents();
     },
     /**

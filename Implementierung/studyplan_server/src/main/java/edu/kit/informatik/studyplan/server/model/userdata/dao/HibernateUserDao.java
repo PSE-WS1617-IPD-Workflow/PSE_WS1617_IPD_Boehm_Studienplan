@@ -4,9 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
+import org.hibernate.Session;
+
 import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
-import org.hibernate.Session;
 
 /************************************************************/
 /**
@@ -36,14 +37,11 @@ class HibernateUserDao implements UserDao {
 	}
 
 	@Override
-	public User findUser(User user) {
+	public User getUserByName(String name) {
 		session.beginTransaction();
-		User result = session.bySimpleNaturalId(User.class).load(user.getUserName());
-		if (result == null) {
-			result = session.byId(User.class).load(user.getUserId());
-		}
+		User user = session.bySimpleNaturalId(User.class).load(name);
 		session.getTransaction().commit();
-		return result;
+		return user;
 	}
 
 	@Override
