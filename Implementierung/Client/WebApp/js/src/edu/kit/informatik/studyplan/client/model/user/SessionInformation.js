@@ -40,6 +40,13 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
                 random = Math.ceil(Math.random() * 10000000 + 1000000).toString(36);
             }
             this.set('state', random.substr(0,30));
+            this.save();
+        },
+        getLoginUrl : function () {
+            if(!this.has('state')){
+                this.generateState();
+            }
+            return API_DOMAIN + "/auth/login?response_type=token&client_id="+API_KEY+"&scope=student&state="+this.get('state');
         },
         isLoggedIn: function () {
             return edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().has('access_token');
@@ -52,6 +59,13 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
         getInstance : function () {
             if (instance === null) {
                 instance = new Constructor();
+            }
+            if (!instance.get('wasLoaded')){
+                instance.fetch({
+                    success: function () {
+                        instance.set('wasLoaded', true);
+                    }
+                });
             }
             return instance;
         }

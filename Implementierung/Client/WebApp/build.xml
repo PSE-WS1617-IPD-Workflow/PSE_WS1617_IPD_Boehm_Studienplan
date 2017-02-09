@@ -79,7 +79,7 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
       <condition property="API_DOMAIN" value="${API_DOMAIN}" else="http://api.studyplan.devel">
         <isset property="API_DOMAIN" />
       </condition>
-      <condition property="API_KEY" value="${API_KEY}" else="fakeKey-abcdef">
+      <condition property="API_KEY" value="${API_KEY}" else="key-26hg02lsa">
         <isset property="API_KEY" />
       </condition>
       <condition property="API_SCOPE" value="${API_SCOPE}" else="student">
@@ -104,6 +104,7 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
         <file name="cookie.js"/>
         <file name="require.js"/>
         <file name="jquery.js"/>
+        <file name="jquery-ui.js"/>
         <file name="backbone.js"/>
         <file name="underscore.js"/>
       </externs>

@@ -27,15 +27,23 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     sessionInformation: edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance()
                 });
                 this.view.render();
+                this.on("route", function(route, params) {
+                    if (!edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().isLoggedIn()) {
+                        if (route!="handleLogin" && route!="loginPage") {
+                            this.navigate("/login", {trigger: true});
+                        }
+                    }
+                });
             },
-            routes: function () {
-                if (!edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().isLoggedIn()) {
+            routes: /*function () {
+                console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] building route hash");
+                /if (!edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().isLoggedIn()) {
                     return {
                         "processLogin": "handleLogin",
                         "*notFound": "loginPage"
                     };
                 }
-                return {
+                return */{
                     "plans/:planId":  "editPage",
                     "compare/:planId1/:planId2": "comparisonPage",
                     "plans/:planId/generate": "generationWizard",
@@ -44,14 +52,15 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     "profile": "showProfile",
                     "signup": "signUpWizard",
                     "":     "mainPage",
+                    "/":     "mainPage",
                     "logout": "logoutPage",
                     "*notFound": "notFound"
-                };
-            },
+                }/*;
+            }*/,
             mainPage: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] mainPage");
                 this.showLoading();
-                var planCollection = new edu.kit.informatik.studyplan.client.model.plans.PlanCollection({
+                /*var planCollection = new edu.kit.informatik.studyplan.client.model.plans.PlanCollection({
                     plans   :   [
                         {
                             id  :   'P1',
@@ -78,6 +87,20 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     });
                 this.view.render();
                 this.hideLoading();
+                */
+                var planCollection = new edu.kit.informatik.studyplan.client.model.plans.PlanCollection();
+                var self = this;
+                planCollection.fetch({
+                    success: function () {
+                        self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.MainPage,
+                            {
+                                planCollection: planCollection
+                            });
+                        self.view.render();
+                        self.hideLoading();
+                    }
+                });
+                
             },
             editPage: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] editPage");
@@ -107,7 +130,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                             }
                         ]
                     }
-                },{parse:true});/*{
+                }, {parse: true});/*{
                     id: planId,
                     
                 });*/
@@ -154,8 +177,77 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             handleLogin: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] handleLogin");
                 this.showLoading();
-                // Do stuff here
-                this.hideLoading();
+                var redirectData = this.processData(window.location.hash.substr(1));
+                console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] redirectData:")
+                console.info(redirectData);
+                var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
+                var self = this;
+                if (redirectData["state"]
+                        !==edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('state')) {
+                    edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                        .add(
+                            new edu.kit.informatik.studyplan.client.model.system.Notification({
+                                title: LM.getMessage("invalidStateTitle"),
+                                text: LM.getMessage("invalidStateText"),
+                                wasShown: false,
+                                type: "error"
+                            })
+                        );
+                    this.navigate("/login", {trigger: true});
+                    return;
+                }
+                if (redirectData["error"]) {
+                    edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                        .add(
+                            new edu.kit.informatik.studyplan.client.model.system.Notification({
+                                title: LM.getMessage("authError"+redirectData["error"]+"Title"),
+                                text: LM.getMessage("authError"+redirectData["error"]+"Text"),
+                                wasShown: false,
+                                type: "error"
+                            })
+                        );
+                    this.navigate("/login", {trigger: true});
+                    return;
+                }
+                var info = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance();
+                info.set('access_token',redirectData["access_token"]);
+                info.save();
+                window.setTimeout(function () {
+                    edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                        .add(
+                            new edu.kit.informatik.studyplan.client.model.system.Notification({
+                                title: LM.getMessage("authEndTitle"),
+                                text: LM.getMessage("authEndText"),
+                                wasShown: false,
+                                type: "error"
+                            })
+                        );
+                }, (redirectData["expires_in"]*1000-(100*1000)));
+                window.setTimeout(function () {
+                    info.set('access_token', undefined);
+                    info.save();
+                    self.navigate("/login", {trigger: true});
+                    edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                        .add(
+                            new edu.kit.informatik.studyplan.client.model.system.Notification({
+                                title: LM.getMessage("realAuthEndTitle"),
+                                text: LM.getMessage("realAuthEndText"),
+                                wasShown: false,
+                                type: "error"
+                            })
+                        );
+                },redirectData["expires_in"]*1000);
+                console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] authentication successful");
+                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                    .add(
+                        new edu.kit.informatik.studyplan.client.model.system.Notification({
+                            title: LM.getMessage("loginSuccessfulTitle"),
+                            text: LM.getMessage("loginSuccessfulText"),
+                            wasShown: false,
+                            type: "success"
+                        })
+                    );
+                this.navigate("/", {trigger: true});
             },
             loginPage: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] loginPage");
@@ -168,7 +260,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 this.showLoading();
                 var filter = new edu.kit.informatik.studyplan.client.model.system.FilterCollection({
                     filters: []
-                }, {parse:true});
+                }, {parse: true});
                 this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.ProfilPage, {});
                 this.view.render();
                 // Do stuff here
@@ -189,14 +281,41 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             logoutPage: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] logoutPage");
                 this.showLoading();
-                // Do stuff here
+                var info = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance();
+                info.set('access_token',undefined);
+                info.save();
+                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                    .add(
+                        new edu.kit.informatik.studyplan.client.model.system.Notification({
+                            title: LM.getMessage("logoutSuccessfulTitle"),
+                            text: LM.getMessage("logoutSuccessfulText"),
+                            wasShown: false,
+                            type: "success"
+                        })
+                    );
                 this.hideLoading();
+                this.navigate("/login", {trigger: true});
             },
             showLoading: function () {
                 this.view.showLoading();
             },
             hideLoading: function () {
                 this.view.hideLoading();
+            },
+            /**
+             * Helper function which processes data in hash
+             * @private
+             * @param {String} params Parameters which should be parsed
+             * @return {Object}
+             */
+            processData: function (params) {
+                var split = params.split("&");
+                var result = {};
+                _.each(split, function(param) {
+                    var parts = param.split("=",2);
+                    result[parts[0]] = parts[1];
+                });
+                return result;
             }
         }
     );
