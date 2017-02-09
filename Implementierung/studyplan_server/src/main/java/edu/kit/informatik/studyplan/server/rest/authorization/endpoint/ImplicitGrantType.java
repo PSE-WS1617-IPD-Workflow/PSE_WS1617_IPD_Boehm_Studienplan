@@ -6,9 +6,13 @@ import javax.ws.rs.core.MultivaluedMap;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 
+import edu.kit.informatik.studyplan.server.model.userdata.User;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AbstractSecurityProvider;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationScope;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClient;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDao;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDaoFactory;
 
 /**
  * Diese Klasse repräsentiert einen ImplicitGrantType { @see RFC 6749 Kapitel
@@ -38,13 +42,22 @@ public class ImplicitGrantType implements GrantType {
 			return null;
 		}
 		String userName = split[0];
-		return null;
+		UserDao dao = UserDaoFactory.getUserDao();
+		User user = dao.getUserByName(userName);
+		if (user == null) {
+			user = new User();
+			user.setUserName(userName);
+			dao.updateUser(user);
+		}
+		AbstractSecurityProvider provider = AbstractSecurityProvider.getSecurityProviderImpl();
+		AuthorizationContext context = provider.generateAuthorizationContext(user, client, scope);
+		dao.cleanUp();
+		return context;
 	}
 
 	@Override
 	public void postToken(MultivaluedMap<String, String> params) {
-		// TODO Auto-generated method stub
-		
+		//does nothing for this grant type
 	}
 
 }

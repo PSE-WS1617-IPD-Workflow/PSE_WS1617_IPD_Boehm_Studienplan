@@ -4,6 +4,7 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.authorization;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import org.hibernate.Session;
@@ -19,14 +20,27 @@ class SecurityProvider extends AbstractSecurityProvider {
 	
 	private Session session;
 	
+	private static long SECONDS = 3600;
+	
 	SecurityProvider() {
 		this.session = HibernateUtil.getUserDataSessionFactory().openSession();
 	}
 	
 	@Override
-	public AuthorizationContext generateAuthorizationContext(User user, RESTClient client) {
-		// TODO Auto-generated method stub
-		return null;
+	public AuthorizationContext generateAuthorizationContext(User user, RESTClient client, AuthorizationScope scope) {
+		session.beginTransaction();
+		AuthorizationContext context = new AuthorizationContext();
+		context.setProvider(this);
+		context.setRestClient(client);
+		context.setScope(scope);
+		context.setUser(user);
+		LocalDateTime expiryDate = LocalDateTime.now().plusSeconds(SECONDS);
+		context.setExpiryDate(expiryDate);
+		Serializable id = session.save(context);
+		session.flush();
+		session.refresh(context);
+		session.getTransaction().commit();
+		return context;
 	}
 
 	@Override
@@ -35,18 +49,18 @@ class SecurityProvider extends AbstractSecurityProvider {
 		AuthorizationContext authorizationContext = session.byId(AuthorizationContext.class).load(accessToken);
 		session.getTransaction().commit();
 		if (authorizationContext != null) {
+			authorizationContext.setProvider(this);
 			if (authorizationContext.getExpiryDate().isBefore(LocalDateTime.now())) {
 				authorizationContext = null;
 			}
-			authorizationContext.setProvider(this);
 		}
 		return authorizationContext;
 	}
 
 	@Override
-	public RESTClient getClient(String clientId) {
+	public RESTClient getClient(String apiKey) {
 		session.beginTransaction();
-		RESTClient client = session.byId(RESTClient.class).load(clientId);
+		RESTClient client = session.bySimpleNaturalId(RESTClient.class).load(apiKey);
 		session.getTransaction().commit();
 		return client;
 	}

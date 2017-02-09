@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
-import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.Response.Status;
 
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AbstractSecurityProvider;
@@ -16,7 +15,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.authorization.Authoriz
  * ContainerRequestFiler for authorizing REST resource access
  */
 @AuthorizationNeeded
-@PreMatching
+//@PreMatching
 public class AuthorizationRequestFilter implements ContainerRequestFilter {
 	
 	private static String accessTokenHeader = "Authorization";

@@ -13,10 +13,13 @@
 	<welcome-file>default.htm</welcome-file>
 	<welcome-file>default.jsp</welcome-file>
 </welcome-file-list>
+<security-role>
+	<role-name>student</role-name>
+</security-role>
 <security-constraint>
     <web-resource-collection>
     	<web-resource-name>
-                Entire Application
+         Entire Application
         </web-resource-name>
         <url-pattern>/rest/auth/login</url-pattern>
     </web-resource-collection>

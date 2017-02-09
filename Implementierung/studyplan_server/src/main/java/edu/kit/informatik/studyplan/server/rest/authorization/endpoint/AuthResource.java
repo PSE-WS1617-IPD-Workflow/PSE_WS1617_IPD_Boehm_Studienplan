@@ -94,8 +94,6 @@ public class AuthResource {
 			uri += "&state=" + state;
 			return Response.temporaryRedirect(URI.create(uri)).build();
 		}
-		context.setExpiryDate(LocalDateTime.now().plusHours(1));
-		context.setScope(AuthorizationScope.STUDENT);
 		String uri = client.getRedirectUrl() + "#";
 		uri += "access_token=" + context.getAccessToken();
 		uri += "&token_type=Bearer";
@@ -104,6 +102,7 @@ public class AuthResource {
 		uri += "&scope=" + context.getScope().toString().toLowerCase();
 		uri += "&state=" + state;
 		provider.cleanUp();
+		context.cleanUp();
 		return Response.temporaryRedirect(URI.create(uri)).build();
 	}
 
