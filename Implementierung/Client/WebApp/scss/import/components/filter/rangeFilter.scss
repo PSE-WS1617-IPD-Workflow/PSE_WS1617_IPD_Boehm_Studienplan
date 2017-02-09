@@ -1,0 +1,29 @@
+.profileFilterWrapperSettings{
+    .minRange{
+        font: $font1;
+        float:left;
+        overflow:hidden;
+    }
+    .maxRange{
+        font: $font1;
+        float:right;
+        overflow:hidden;
+    }
+    .rangeSlider{
+        clear:both;
+    }
+    input{
+        font: $font1;
+        border: none;
+        background-color: transparent;
+        width: 50%;
+    }
+    .currentMinRange{
+        float: left;
+        text-align: left;
+    }
+    .currentMaxRange{
+        float: right;
+        text-align: right;
+    }
+}
