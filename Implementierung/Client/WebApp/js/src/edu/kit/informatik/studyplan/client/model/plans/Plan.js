@@ -35,26 +35,11 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
             plan: {
                 id: response["id"],
                 violations: response["violations"],
-                status: response["status"]
+                status: response["status"],
+                "field-violations": response["field-violations"],
+                "rule-group-violations": response["rule-group-violations"]
             }
         },{parse: true});
-        
-        var fieldViolations = [];
-        if(typeof response["field-violations"] !== "undefined") {
-            for(var i = 0; i<response["field-violations"].length; i++){
-                fieldViolations[i] = new edu.kit.informatik.studyplan.client.model.system.Field(
-                      response["field-violations"][i], {parse: true});
-            }
-        }
-        var ruleGroupViolations = [];
-        if(typeof response["rule-group-violations"] !== "undefined") {
-            for(var i = 0; i<response["rule-group-violations"].length; i++){
-               ruleGroupViolations[i] = new edu.kit.informatik.studyplan.client.model.plans.RuleGroup(
-                      response["rule-group-violations"][i], {parse: true});
-            }
-        }
-        response["field-violations"] = fieldViolations;
-        response["rule-group-violations"] = ruleGroupViolations; 
         
         return response;
     },

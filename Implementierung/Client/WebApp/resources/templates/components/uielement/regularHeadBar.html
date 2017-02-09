@@ -1,0 +1,9 @@
+<div class="planHeadBar">
+    <h3>
+        {{=obj.LM.getMessage("home")}}&nbsp;&gt;&nbsp;<input value="{{=obj.plan.get('name')}}" id="curPlanName"/>
+    </h3>
+    <div class="headBarButtons">
+        <button id="generatePlan">{{=obj.LM.getMessage("makeProposal")}}</button>
+        <button id="verifyPlan" class="{{=obj.plan.get('verificationResult').get('status')}}">{{=obj.LM.getMessage("verify")}}</button>
+    </div>
+</div>

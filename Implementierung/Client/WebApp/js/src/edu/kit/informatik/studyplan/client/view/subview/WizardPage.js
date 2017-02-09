@@ -4,7 +4,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.subview.WizardPage");
  * @extends {Backbone.View}
  */
 
-edu.kit.informatik.studyplan.client.view.subview.WizardPage = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.WizardPage} */{
+edu.kit.informatik.studyplan.client.view.subview.WizardPage = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.WizardPage.prototype} */{
     curView: null,
     onFinish: function () {},
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/subview/wizardPage.html"),

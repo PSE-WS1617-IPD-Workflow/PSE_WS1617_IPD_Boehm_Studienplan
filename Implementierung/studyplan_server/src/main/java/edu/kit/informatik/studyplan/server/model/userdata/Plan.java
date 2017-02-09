@@ -14,7 +14,9 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.NotFoundException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -222,26 +224,29 @@ public class Plan {
 	@JsonProperty("modules")
 	public void setJsonModules(List<JsonModule> jsonModules) {
 		HashSet<String> placedModulesIds = new HashSet<>(jsonModules.size()); //for finding duplicates
-		List<ModuleEntry> moduleEntries = jsonModules.stream()
-				.map(jsonModule -> {
-					if (placedModulesIds.contains(jsonModule.getId())) {
-						throw new BadRequestException();
-					} else {
-						placedModulesIds.add(jsonModule.getId());
-					}
-					if (jsonModule.getSemester() < user.getStudyStart().getDistanceToCurrentSemester()) {
-						throw new BadRequestException();
-					}
-					Module m = ModuleDaoFactory.getModuleDao().getModuleById(jsonModule.getId());
-					if (m == null) {
-						throw new NotFoundException();
-					}
-					ModuleEntry entry = new ModuleEntry();
-					entry.setSemester(jsonModule.getSemester());
-					entry.setModule(m);
-					return entry;
-				})
-				.collect(Collectors.toList());
+		List<ModuleEntry> moduleEntries = new ArrayList<>(jsonModules.size());
+		List<ModulePreference> preferences = new LinkedList<>();
+		for (JsonModule jsonModule : jsonModules) {
+			if (placedModulesIds.contains(jsonModule.getId())) {
+				throw new BadRequestException();
+			} else {
+				placedModulesIds.add(jsonModule.getId());
+			}
+			if (jsonModule.getSemester() < user.getStudyStart().getDistanceToCurrentSemester()) {
+				throw new BadRequestException();  //TODO rather UnprocessableEntity?
+			}
+			Module module = ModuleDaoFactory.getModuleDao().getModuleById(jsonModule.getId());
+			if (module == null) {
+				throw new NotFoundException();
+			}
+			ModuleEntry entry = new ModuleEntry(module, jsonModule.getSemester());
+			moduleEntries.add(entry);
+			if (jsonModule.getPreference() != null) {
+				ModulePreference preference = new ModulePreference(module, jsonModule.getPreference());
+				preferences.add(preference);
+			}
+		}
 		this.moduleEntries = moduleEntries;
+		this.modulePreferences = preferences;
 	}
 };

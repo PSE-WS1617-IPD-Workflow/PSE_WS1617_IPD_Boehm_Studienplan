@@ -43,3 +43,14 @@ LM.messages["de"]["planDuplicatedTitle"] = "Plan dupliziert.";
 LM.messages["de"]["planDuplicatedText"] = "Der Plan wurde erfolgreich dupliziert.";
 LM.messages["de"]["planDeletedTitle"] = "Plan gelöscht.";
 LM.messages["de"]["planDeletedText"] = "Der Plan wurde erfolgreich gelöscht.";
+
+// RegularHeadBar
+LM.messages["de"]["home"] = "Home";
+LM.messages["de"]["makeProposal"] = "Plan vervollständigen";
+LM.messages["de"]["verify"] = "Überprüfen";
+LM.messages["de"]["verificationSuccessTitle"] = "Verifikation erfolgreich!";
+LM.messages["de"]["verificationSuccessText"] = "Der Studienplan wurde erfolgreich überprüft und ist korrekt!";
+LM.messages["de"]["verificationFailTitle"] = "Verifikation fehlgeschlagen!";
+LM.messages["de"]["verificationFailText"] = "Der Studienplan wurde überprüft und ist nicht korrekt!";
+LM.messages["de"]["changeSavedTitle"] = "Änderung gespeichert";
+LM.messages["de"]["changeSavedText"] = "Die Änderung wurde erfolgreich gespeichert";

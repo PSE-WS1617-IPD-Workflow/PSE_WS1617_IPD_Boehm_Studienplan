@@ -41,12 +41,22 @@ public class ModulePreference {
 	private Plan plan;
 
 	/**
+	 * Creates a new ModulePreference with given module and preference type
+	 * @param module the module whose preference shall be set
+	 * @param preference the preference to assign
+     */
+	public ModulePreference(Module module, PreferenceType preference) {
+		this.module = module;
+		this.type = preference;
+	}
+
+    /**
 	 * 
 	 * @return gibt das Modul zurück
 	 */
 	public Module getModule() {
 		if (module == null) {
-			module = new ModuleDaoFactory().getModuleDao().getModuleById(moduleId);
+			module = ModuleDaoFactory.getModuleDao().getModuleById(moduleId);
 		}
 		return module;
 	}

@@ -39,6 +39,9 @@ public abstract class RangeFilter extends AttributeFilter {
 	 *            maximale obere Schranke des Filters
 	 */
 	protected RangeFilter(int lower, int upper, int min, int max) {
+		if (lower > upper || max > min || lower < min || upper > max) {
+			throw new IllegalArgumentException("RangeFilter must have valid ranges");
+		}
 		this.lower = lower;
 		this.upper = upper;
 		this.min = min;

@@ -4,9 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
+import org.hibernate.Session;
+
 import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
-import org.hibernate.Session;
 
 /************************************************************/
 /**
@@ -14,36 +15,38 @@ import org.hibernate.Session;
  * herstellt.
  */
 class HibernateUserDao implements UserDao {
-
+	
+	private Session session;
+	
+	HibernateUserDao() {
+		session = HibernateUtil.getUserDataSessionFactory().openSession();
+	}
+	
 	@Override
 	public void deleteUser(User user) {
-		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
 		session.beginTransaction();
 		session.delete(user);
 		session.getTransaction().commit();
-		session.close();
 	}
 
 	@Override
 	public void updateUser(User user) {
-		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
 		session.beginTransaction();
 		session.saveOrUpdate(user);
 		session.getTransaction().commit();
-		session.close();
 	}
 
 	@Override
-	public User findUser(User user) {
-		Session session = HibernateUtil.getUserDataSessionFactory().openSession();
+	public User getUserByName(String name) {
 		session.beginTransaction();
-		User result = session.bySimpleNaturalId(User.class).load(user.getUserName());
-		if (result == null) {
-			result = session.byId(User.class).load(user.getUserId());
-		}
+		User user = session.bySimpleNaturalId(User.class).load(name);
 		session.getTransaction().commit();
+		return user;
+	}
+
+	@Override
+	public void cleanUp() {
 		session.close();
-		return result;
 	}
 
 };

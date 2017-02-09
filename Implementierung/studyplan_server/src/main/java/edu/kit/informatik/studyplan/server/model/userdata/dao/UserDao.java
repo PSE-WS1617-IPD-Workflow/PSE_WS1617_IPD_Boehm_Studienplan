@@ -4,13 +4,14 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
+import edu.kit.informatik.studyplan.server.model.Dao;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 
 /************************************************************/
 /**
  * DataAccessObject zum Zugriff auf Nutzer in der Datenbank
  */
-public interface UserDao {
+public interface UserDao extends Dao{
 
 	/**
 	 * Löscht den übergebenen Nutzer aus der Datenbank
@@ -37,6 +38,6 @@ public interface UserDao {
 	 *            der zu suchende Nutzer
 	 * @return der gefundene Nutzer
 	 */
-	public User findUser(User user);
+	public User getUserByName(String name);
 
 };

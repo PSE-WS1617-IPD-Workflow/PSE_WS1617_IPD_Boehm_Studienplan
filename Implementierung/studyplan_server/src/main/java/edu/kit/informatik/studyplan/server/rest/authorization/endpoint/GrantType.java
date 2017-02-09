@@ -1,6 +1,12 @@
 package edu.kit.informatik.studyplan.server.rest.authorization.endpoint;
 
+import java.util.List;
+
 import javax.ws.rs.core.MultivaluedMap;
+
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationScope;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClient;
 
 /**
  * Diese Schnittstelle repräsentiert eine Fabrik zur erstellung von Typen von
@@ -17,11 +23,11 @@ public interface GrantType {
 	 *            den api_key des Klienten.
 	 * @param scope
 	 *            in den ersten Versionen des Systems immer „student“.
-	 * @param state
+	 * @param authorizationHeader
 	 *            ein Schlüssel, der vom REST-Webservice in der Antwort
 	 *            mitgesendet wird.
 	 */
-	public void getLogin(String clientId, String scope, String state);
+	public AuthorizationContext getLogin(RESTClient client, AuthorizationScope scope, List<String> authorizationHeader) throws UnsupportedOperationException;
 
 	/**
 	 * POST-Anfrage: Setzt den Token Endpoint { @see RFC 6749 Kapitel 3.1}.

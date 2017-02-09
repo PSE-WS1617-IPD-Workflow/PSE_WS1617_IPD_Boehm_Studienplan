@@ -2,9 +2,10 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.FilterCollection"
 var namespaceClient = edu.kit.informatik.studyplan.client;
 /**
  * @constructor
+ * @param {Object=} response
+ * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.model.system.OAuthCollection}
  */
-
 edu.kit.informatik.studyplan.client.model.system.FilterCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.FilterCollection.prototype}*/{
     url: API_DOMAIN + "/filters",
     model : namespaceClient.model.system.Filter,

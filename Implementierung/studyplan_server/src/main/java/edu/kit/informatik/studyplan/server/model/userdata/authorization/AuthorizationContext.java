@@ -4,13 +4,24 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.authorization;
 
-import edu.kit.informatik.studyplan.server.model.userdata.User;
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
-import javax.ws.rs.core.SecurityContext;
 import java.security.Principal;
 import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.ws.rs.core.SecurityContext;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import edu.kit.informatik.studyplan.server.model.userdata.User;
 
 /************************************************************/
 /**
@@ -57,6 +68,9 @@ public class AuthorizationContext implements SecurityContext {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+	
+	@Transient
+	private AbstractSecurityProvider provider;
 
 	/**
 	 * 
@@ -178,5 +192,13 @@ public class AuthorizationContext implements SecurityContext {
 	@Override
 	public String getAuthenticationScheme() {
 		return BASIC_AUTH;
+	}
+	
+	void setProvider(AbstractSecurityProvider provider) {
+		this.provider = provider;
+	}
+	
+	public void cleanUp() {
+		this.provider.cleanUp();
 	}
 };
