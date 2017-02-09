@@ -1,0 +1,15 @@
+<div class="generationWizardComponent1">
+    <div class="box">
+        <h1>{{=obj.LM.getMessage('generationTitle')}}</h1>
+    </div>
+    <div class="box">
+        {{=obj.LM.getMessage('generationExplanation')}}
+    </div>
+    <div>
+        <select class="objectiveFunctionDropDown" size="1">
+            {{obj.functions.each(function (el) { }}
+            <option value ="{{=el.get('id')}}">{{=el.get('name')}}</option>
+            {{ }) }}
+        </select>
+    </div>
+</div>
