@@ -54,5 +54,8 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
             }
         } );
         return contained;
+    },
+    each: function (method) {
+        _.each(this.attributes, method);
     }
 });

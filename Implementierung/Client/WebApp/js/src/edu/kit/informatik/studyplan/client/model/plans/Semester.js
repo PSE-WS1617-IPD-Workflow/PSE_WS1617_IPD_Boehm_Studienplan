@@ -23,5 +23,12 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
         }
         //console.log(response["modules"]);
         return edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype.parse.apply(this,[response,options]);
+    },
+    getEctsSum: function () {
+        var sum = 0;
+        this.each(function (module) {
+            sum+=module.get('creditpoints');
+        });
+        return sum;
     }
 });

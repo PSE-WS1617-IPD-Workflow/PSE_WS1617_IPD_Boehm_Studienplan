@@ -1,6 +1,7 @@
 goog.provide("edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent");
 /**
  * @constructor
+ * @param {Object=} options
  * @extends {Backbone.View} 
  */
 
@@ -31,7 +32,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent = Bac
         "use strict";
     },
     render: function () {
-        this.$el.html(this.template({filter: this.filter}));
+        this.$el.html(this.template({ filter: this.filter}));
         this.delegateEvents();
     }
 });

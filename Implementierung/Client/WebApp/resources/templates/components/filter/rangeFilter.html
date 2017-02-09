@@ -1,4 +1,10 @@
 <ui>
-    RangeFilter
-    <button>x</button>
+    <div class='range'>
+        <p>{{=obj.filter.get("name")}}</p>
+        <label>min: {{=obj.filter.get("specification").min}} </label>
+        <label>max: {{=obj.filter.get("specification").max}}</label>
+        <div class="rangeSlider"></div>
+        <input type="number" value='{{=obj.filter.get("curValue").min}}'>
+        <input type="number" value='{{=obj.filter.get("curValue").max}}'>
+    </div>
 </ui>
