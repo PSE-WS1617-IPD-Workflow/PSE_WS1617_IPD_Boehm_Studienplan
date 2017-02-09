@@ -6,7 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.filter.ModuleF
  */
 
 edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter.prototype} */{
-    template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/filter/rangeFilter.html"),
+    template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/filter/moduleFilter.html"),
     tag: "ul",
     filterComponents: null,
     filterCollection: null,
@@ -29,6 +29,32 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
                         min : 0,
                         max : 200
                     }
+                }, {
+                    id : 4,
+                    name : "TestList",
+                    'default-value': 1,
+                    tooltip : "Test",
+                    specification: {
+                        type : "list",
+                        items : [{
+                            id: 1,
+                            text:"a"
+                        },{
+                            id: 2,
+                            text:"b"
+                        }, {
+                            id: 3,
+                            text:"c"
+                        }]
+                    }
+                },{
+                    id : 2,
+                    name : "TestContains",
+                    'default-value': "testDefVal",
+                    tooltip : "Test",
+                    specification: {
+                        type : "contains",
+                    }
                 }]}, {parse:true});
         
         this.searchCollection = new edu.kit.informatik.studyplan.client.model.system.SearchCollection(this.filterCollection);
@@ -43,16 +69,16 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
             /**
              * @type {edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent}
              */
-            var uiFilter = null;
-            switch(el.type) {
+            var uiFilter = null;            
+            switch(el.get("specification").type) {
                 case "contains":
-                    uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.TextFilter();
+                    uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.TextFilter(el);
                     break;
                 case "list":
-                    uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.SelectFilter();
+                    uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.SelectFilter(el);
                     break;
                 case "range":
-                    uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter();
+                    uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter(el);
                     break;
             }
             if(uiFilter !== null) {
@@ -64,7 +90,13 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     render: function () {
         "use strict";
         this.$el.html(this.template());
-        
+        this.$el.html(this.template());
+        var finder = this.$el.find(".moduleFilter");
+        for(var i = 0; i < this.filterComponents.length; i++){
+            var tmpFilterComponent = this.filterComponents[i];
+            tmpFilterComponent.render();
+            finder.append(tmpFilterComponent.$el);
+        }
         this.delegateEvents();
     },
     

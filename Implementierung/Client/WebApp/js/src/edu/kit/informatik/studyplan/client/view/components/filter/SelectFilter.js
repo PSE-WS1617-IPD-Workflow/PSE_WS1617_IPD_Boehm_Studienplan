@@ -1,6 +1,7 @@
 goog.provide("edu.kit.informatik.studyplan.client.view.components.filter.SelectFilter");
 /**
  * @constructor
+ * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent}
  */
 

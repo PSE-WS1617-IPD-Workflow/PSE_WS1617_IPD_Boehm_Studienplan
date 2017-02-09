@@ -1,7 +1,10 @@
-<p>{{=obj.filter.get('value')}}</p>
-<button>x</button>
-
-<select name="">    
-    <!-- TODO: implement template  -->
-    <option value=""></option>
+<p>{{=obj.filter.get("name")}}</p>
+<select name='select_filter_{{=obj.filter.get("name")}}' >
+    {{_.each(obj.filter.get("specification").items, function (item) { }}
+        <option value='{{=item.id}}' 
+                {{if(item.id === obj.filter.get("curVal")) { }}
+                selected
+                {{ } }}
+        >{{=item.text}}</option>
+    {{ }) }}
 </select>
