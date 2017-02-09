@@ -3,12 +3,13 @@
  */
 package edu.kit.informatik.studyplan.server.rest;
 
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
-
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
+
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 
 /**
  * @author NiklasUhl
@@ -18,7 +19,7 @@ import javax.ws.rs.core.Response;
 public class RestDummy {
 
 	@Inject
-	AuthorizationContext context;
+	Provider<AuthorizationContext> context;
 
 	/**
 	 * 
@@ -29,7 +30,7 @@ public class RestDummy {
 	@Path("hello")
 	@AuthorizationNeeded
 	public Response getHello() {
-		String output = "Hello";
+		String output = "Hello " + context.get().getUserPrincipal().getName();
 		return Response.status(200).entity(output).build();
 	}
 	

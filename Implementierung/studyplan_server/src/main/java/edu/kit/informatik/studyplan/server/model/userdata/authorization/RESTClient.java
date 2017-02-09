@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.NaturalId;
+
 /************************************************************/
 /**
  * Modelliert einen Klienten, der auf die REST-Schnittstelle zugreifen kann
@@ -21,10 +23,14 @@ import javax.persistence.Transient;
 @Entity
 @Table (name = "rest_client")
 public class RESTClient {
+	
+	@Id
+	@Column(name = "client_id")
+	private int clientId;
 	/**
 	 * 
 	 */
-	@Id
+	@NaturalId
 	@Column(name = "api_key")
 	private String apiKey;
 	/**

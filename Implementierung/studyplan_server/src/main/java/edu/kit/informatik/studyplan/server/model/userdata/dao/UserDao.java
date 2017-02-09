@@ -38,6 +38,6 @@ public interface UserDao extends Dao{
 	 *            der zu suchende Nutzer
 	 * @return der gefundene Nutzer
 	 */
-	public User findUser(User user);
+	public User getUserByName(String name);
 
 };

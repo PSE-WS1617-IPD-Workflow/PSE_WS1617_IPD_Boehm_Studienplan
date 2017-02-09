@@ -24,7 +24,7 @@ public enum AuthorizationScope {
 	 */
 	public static AuthorizationScope fromString(String string) {
 		return Arrays.asList(values()).stream()
-				.filter(scope -> scope.toString().toLowerCase().equals(string.toLowerCase()))
+				.filter(scope -> scope.toString().equalsIgnoreCase(string))
 				.findFirst()
 				.orElse(null);
 	}
