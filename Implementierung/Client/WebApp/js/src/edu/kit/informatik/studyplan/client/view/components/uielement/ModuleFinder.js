@@ -9,7 +9,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/moduleFinder.html"),
     moduleFilter: null,
     moduleCollection: null,
-    
+    events: {
+        "click .filterButton": "refreshSearchCollection"
+    },
     isSidebar: true,
     isPreferencable: true,
     isPlaced : null,
@@ -21,6 +23,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
         this.isPlaced = options.isPlaced;
         
         //TODO: correct parameters
+        //this.moduleCollection = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleCollection( { });
         this.moduleFilter = new edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter( { } );        
     },
     
@@ -34,13 +37,20 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
         "use strict";
         this.$el.html(this.template());
         
-        var filter = this.$el.find(".moduleFilter");
+        var filter = this.$el.find(".profileModuleFinderWrapper");
         this.moduleFilter.render();
-        filter.append(this.moduleFilter.$el);
+        filter.prepend(this.moduleFilter.$el);
+        
+        //TODO add module list
         
         this.delegateEvents();
     },
     getFilter: function (){
         "use strict";
+    },
+    refreshSearchCollection: function () {
+        //TODO: fetch has to be implemented properly
+        
+        this.moduleFilter.getSearchCollection().fetch();
     }
 });

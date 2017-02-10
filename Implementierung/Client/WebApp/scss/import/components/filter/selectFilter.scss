@@ -1,0 +1,16 @@
+.profileSelectFilterWrapper{
+    width: 100%;
+}
+.profileFilterWrapperSettings{
+    .selectFilterDropDown{
+        padding: 2px 10px;
+        border-radius: 5px;
+        border:1px solid $boxBorderColor;
+
+        display: inline-block;
+        background-color: white;
+
+        position: relative;
+        width: 100%;
+    }
+}

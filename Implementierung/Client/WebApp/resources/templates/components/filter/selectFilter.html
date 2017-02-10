@@ -1,10 +1,14 @@
-<p>{{=obj.filter.get("name")}}</p>
-<select name='select_filter_{{=obj.filter.get("name")}}' >
-    {{_.each(obj.filter.get("specification").items, function (item) { }}
-        <option value='{{=item.id}}' 
-                {{if(item.id === obj.filter.get("curVal")) { }}
-                selected
-                {{ } }}
-        >{{=item.text}}</option>
-    {{ }) }}
-</select>
+<button class='profileFilterWrapper'>
+    {{=obj.filter.get("name")}}
+</button>
+<div class="profileFilterWrapperSettings">
+    <select class='selectFilterDropDown'>
+        {{_.each(obj.filter.get("specification").items, function (item) { }}
+            <option value='{{=item.id}}' 
+                    {{if(item.id === obj.filter.get("curVal")) { }}
+                    selected
+                    {{ } }}
+            >{{=item.text}}</option>
+        {{ }) }}
+    </select>
+</div>
