@@ -83,6 +83,7 @@ LM.messages["de"]["generationSemesterQuestion"] = "Wie viele Semester möchtest 
 LM.messages["de"]["generationChooseFunction"] = "Studienziel";
 //ProfilePage
 LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
+LM.messages["de"]["mainMenuButton"] = "Hauptmenü";
 
 //RadioSlider
 LM.messages["de"]["radioSliderMin"] = "min";
