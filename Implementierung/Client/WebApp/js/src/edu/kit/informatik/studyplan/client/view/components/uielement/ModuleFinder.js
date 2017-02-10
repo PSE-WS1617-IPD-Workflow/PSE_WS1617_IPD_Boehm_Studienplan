@@ -8,7 +8,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Modu
 edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder.prototype} */{
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/moduleFinder.html"),
     moduleFilter: null,
-    moduleCollection: null,
+    moduleList: null,
     events: {
         "click .filterButton": "refreshSearchCollection"
     },
@@ -23,7 +23,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
         this.isPlaced = options.isPlaced;
         
         //TODO: correct parameters
-        //this.moduleCollection = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleCollection( { });
+        this.moduleList = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList( { });
         this.moduleFilter = new edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter( { } );        
     },
     
@@ -41,7 +41,11 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
         this.moduleFilter.render();
         filter.prepend(this.moduleFilter.$el);
         
-        //TODO add module list
+        var list = this.$el.find("moduleListWrapper");
+        this.moduleList.render();
+        list.prepend(this.moduleList.$el);
+        
+        
         
         this.delegateEvents();
     },
