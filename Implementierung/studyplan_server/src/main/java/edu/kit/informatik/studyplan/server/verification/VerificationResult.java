@@ -4,9 +4,12 @@
 
 package edu.kit.informatik.studyplan.server.verification;
 
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
-
+import java.util.ArrayList;
 import java.util.Collection;
+
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
+import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 
 /************************************************************/
 /**
@@ -18,6 +21,15 @@ public class VerificationResult {
 	 * In diesem werden verletzte Modulconstraints gespeichert.
 	 */
 	private Collection<ModuleConstraint> violations;
+	private Collection<Field> fieldViolations;
+	private Collection<RuleGroup> ruleGroupViolations;
+	private boolean correct;
+	
+	public VerificationResult () {
+		violations = new ArrayList<ModuleConstraint>();
+		fieldViolations = new ArrayList<Field>();
+		ruleGroupViolations = new ArrayList<RuleGroup>();
+	}
 
 	/**
 	 * Gibt die verletzten Modul-Constraints zurück.
@@ -26,6 +38,14 @@ public class VerificationResult {
 	 */
 	public Collection<ModuleConstraint> getViolations() {
 		return violations;
+	}
+	
+	public Collection<Field> getFieldViolations() {
+		return fieldViolations;
+	}
+	
+	public Collection<RuleGroup> getRuleGroupViolations() {
+		return ruleGroupViolations;
 	}
 
 	/**
@@ -36,6 +56,10 @@ public class VerificationResult {
 	 *         und true, wenn er zu einem erfolreichen Studienabschluss führt.
 	 */
 	public boolean isCorrect() {
-		return false;
+		return correct;
+	}
+	
+	public void setCorrect(boolean isCorrect) {
+		correct = isCorrect;
 	}
 };
