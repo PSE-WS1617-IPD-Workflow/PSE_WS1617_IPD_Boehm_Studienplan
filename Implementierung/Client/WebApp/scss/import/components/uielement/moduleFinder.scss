@@ -14,6 +14,12 @@
     
     .filterButton{
         width: 100%;
-        font-size: $regularSize;
+        font-size: $searchButtonSize;
+        font: $font1;
+        background-color: $pink1;
+        //background-color: deeppink;
+        
+        border-radius: 5px;
+        border-width: 0px;
     }
 }
