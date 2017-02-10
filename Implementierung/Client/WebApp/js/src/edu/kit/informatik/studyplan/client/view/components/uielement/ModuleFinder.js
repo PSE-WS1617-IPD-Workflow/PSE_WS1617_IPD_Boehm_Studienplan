@@ -41,7 +41,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
         this.moduleFilter.render();
         filter.prepend(this.moduleFilter.$el);
         
-        var list = this.$el.find("moduleListWrapper");
+        var list = this.$el.find(".profileModuleCollectionWrapper");
         this.moduleList.render();
         list.prepend(this.moduleList.$el);
         

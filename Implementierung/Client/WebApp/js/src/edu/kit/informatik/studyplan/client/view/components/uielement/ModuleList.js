@@ -60,22 +60,29 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
                 ]
             };
         this.moduleCollection = new edu.kit.informatik.studyplan.client.model.module.ModuleCollection(json,{parse:true});
-
+        
         this.moduleBoxes = [];
         var self = this;
         this.moduleCollection.each(function (module) {
-            var tmpModuleBox = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox( module );
+            var tmpModuleBox = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
+                module: module,
+                //TODO: einstellbar
+                isRemovable: false,
+                isDraggable: true,
+                isPreferencable: true,
+            });
             self.moduleBoxes.push(tmpModuleBox);
         });
     },
     render: function () {
         this.$el.html(this.template());
-        var container = this.$el.find(".profileModuleFinderWrapper");
-        var self = this;
+        var container = this.$el.find(".moduleListWrapper");
         _.each(this.moduleBoxes, function(el){
-            self.moduleBoxes.render();
-            container.prepend(el.$el)
-        })
+            el.render();
+            container.append(el.$el)
+            console.log(el);
+        }.bind(this));
+        console.log(container);
         this.delegateEvents();
     }
 });
