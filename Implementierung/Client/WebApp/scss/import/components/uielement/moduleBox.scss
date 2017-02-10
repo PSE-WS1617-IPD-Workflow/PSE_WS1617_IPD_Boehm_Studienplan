@@ -1,7 +1,6 @@
 .moduleBox{
     box-sizing: border-box;
     padding:10px;
-    cursor:pointer;
     
     border: 1px solid $boxBorderColor;
     background-color: $boxBgColor;
@@ -28,6 +27,9 @@
         line-height:30px;
         font-size:25px;
         background-color:transparent;
+    }
+    &.draggable{
+        cursor:pointer;
     }
     &.grabbing{
         cursor:grabbing;

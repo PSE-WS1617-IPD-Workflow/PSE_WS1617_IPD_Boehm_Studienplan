@@ -15,7 +15,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
         semesterCol.each((function (semester) {
             this.semesterElements.push(
                 new edu.kit.informatik.studyplan.client.view.components.uielement.Semester({
-                    semester: semester
+                    semester: semester,
+                    isRemovable: true,
+                    isPreferencable: true
                 })
             );
         }).bind(this));

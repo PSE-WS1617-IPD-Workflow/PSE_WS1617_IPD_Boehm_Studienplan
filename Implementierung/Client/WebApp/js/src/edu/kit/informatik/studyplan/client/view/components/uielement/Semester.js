@@ -12,6 +12,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
     moduleElements: [],
     initialize: function (options) {
         this.model = options.semester;
+        this.isRemovable = options.isRemovable;
+        this.isPreferencable = options.isPreferencable;
         this.reload();
         this.listenTo(this.model, "change", this.reload);
         this.listenTo(this.model, "all", this.reload);
@@ -24,7 +26,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         this.model.each(function (el) {
             this.moduleElements.push(
                 new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
-                    module: el
+                    module: el,
+                    isDraggable: true,
+                    isRemovable: true,
+                    isPreferencable: this.isPreferencable
                 })
             );
         }.bind(this));
@@ -42,7 +47,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         this.$el.droppable({
             drop: this.onDrop.bind(this)
         });
-        console.info(this.moduleElements);
         _.each(this.moduleElements, function (element) {
             element.render();
             this.$el.find(".semesterModules").append(element.$el);
