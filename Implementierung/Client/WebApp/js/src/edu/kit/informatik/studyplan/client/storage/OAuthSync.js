@@ -15,10 +15,13 @@ edu.kit.informatik.studyplan.client.storage.OAuthSync = function (method, model,
     });
     var errorCallback = options["error"];
     options["error"] = function (xhr, textStatus, errorThrown) {
-        console.log("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Request failed: "+textStatus+" ("+errorThrown+")");
-        console.log("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Method: "+method);
-        console.log(model);
-        console.log(xhr);
+        console.group()
+        console.info("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Request failed: "+textStatus+" ("+errorThrown+")");
+        console.info("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Method: "+method);
+        console.log("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Status code:"+xhr.status);
+        console.info(model);
+        console.info(xhr);
+        console.groupEnd();
         var notificationCollection = edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance();
         // Retrieve error message
         var msg = "";
@@ -46,9 +49,11 @@ edu.kit.informatik.studyplan.client.storage.OAuthSync = function (method, model,
         notificationCollection.add(notification);
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
         if(errorCallback) errorCallback.call(options.context, xhr, textStatus, errorThrown)
-        console.log("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Status code:"+xhr.status);
+        // Logout when unauthorized
         if (xhr.status===401) {
-            edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().set('access_token', undefined);
+            edu.kit.informatik.studyplan.client.model.user.SessionInformation
+                .getInstance()
+                .set('access_token', undefined);
             edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().save();
             edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/login", {trigger: true});
             edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
