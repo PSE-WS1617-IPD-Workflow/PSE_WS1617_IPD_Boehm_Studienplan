@@ -26,10 +26,11 @@ public class StandardVerifier implements Verifier {
 		VerificationResult res = new VerificationResult();
 		for(ModuleEntry firstModuleEntry : plan.getModuleEntries()) {
 				for(ModuleConstraint constraint: firstModuleEntry.getModule().getConstraints()) {
-					Module secondModuleEntry;
+					ModuleEntry secondModuleEntry;
 					if (constraint.getConstraintType() instanceof PrerequisiteModuleConstraintType) {
 						if(plan.contains(secondModuleEntry)) {
 							plan.getEntryFor(getRemainingModuleFromConstraint(constraint, firstModuleEntry))
+							constraint.getConstraintType().isValid(firstModuleEntry, secondModuleEntry, orientation)
 						}
 					} else if (constraint.getConstraintType() instanceof PlanLinkModuleConstraintType) {
 						
