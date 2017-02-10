@@ -66,6 +66,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
     */
     onDrop:function (event, ui) {
         console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.Semester] drop event");
+        //TODO: Make module deletable when it wasn't before!
         var model = ui.helper.data("modelObject");
         if (model.collection!==this.model) {
             model.collection.remove(model);
