@@ -29,7 +29,10 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
         function (module) {
             "use strict";
     },
-    
+    /**
+    * @this {Backbone.View}
+    * @return *    
+    */
     render: function () {
         "use strict";
         this.$el.html(this.template());
