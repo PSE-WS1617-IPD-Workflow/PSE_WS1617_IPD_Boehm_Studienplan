@@ -29,7 +29,9 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
                     name: "abc"
                 }
             ]);
-            /*this.objectiveFunctions.fetch({
+                
+            /*todo: kram hierdrunter wiedereinfügen anstelle des objekts hierdrüber.
+            this.objectiveFunctions.fetch({
                 success: (function () {
                     this.render();
                 }.bind(this))
@@ -55,7 +57,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             var temp = new edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent2({
                 plan: this.plan,
                 information: this.information
-            });
+            });            
             return temp;
         },
         

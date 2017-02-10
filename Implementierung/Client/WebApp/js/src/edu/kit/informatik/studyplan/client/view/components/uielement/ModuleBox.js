@@ -10,8 +10,14 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     tagName: "li",
     className: "moduleBox",
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/moduleBox.html"),
+    isPreferencable: true,
+    isDraggable: true,
+    isDeletable: true,
     initialize: function (options) {
         this.model=options.module;
+        this.isRemovable = options.isRemovable;
+        this.isDraggable = options.isDraggable;
+        this.isPreferencable = options.isPreferencable;
     },
     
     /**
@@ -39,7 +45,13 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     *
     */
     render: function () {
-        this.$el.html(this.template({module: this.model}));
+        this.$el.addClass((this.isDraggable) ? 'draggable' : '');
+        this.$el.html(this.template({
+            module: this.model,
+            isRemovable : this.isRemovable,
+            isDraggable : this.isDraggable,
+            isPreferencable : this.isPreferencable
+        }));
         this.$el.draggable({
             scroll: true,
             opacity: 0.7,

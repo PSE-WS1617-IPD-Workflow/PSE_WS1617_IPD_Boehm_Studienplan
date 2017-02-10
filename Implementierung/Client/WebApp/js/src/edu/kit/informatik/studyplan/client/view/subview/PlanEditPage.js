@@ -38,6 +38,9 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
         
         this.planView.render();
         this.$el.find(".planEditPlanWrapper").append(this.planView.$el);
+        
+        this.moduleFinder.render();
+        this.$el.find(".planEditModuleFinderWrapper").append(this.moduleFinder.$el);
     },
     /**
     *@param{edu.kit.informatik.studyplan.client.model.module.Module} module
