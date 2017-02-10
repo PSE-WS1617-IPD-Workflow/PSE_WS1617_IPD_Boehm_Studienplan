@@ -105,5 +105,12 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     },
     getEctsSum: function () {
         return this.get('semesterCollection').getEctsSum();
+    },
+    
+    /**
+    * Ignores if a semester was passed
+    */
+    addModule: function (module) {
+        this.get("semesterCollection").add(module);
     }
 });
