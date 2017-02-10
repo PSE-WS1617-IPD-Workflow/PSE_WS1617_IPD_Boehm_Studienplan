@@ -7,7 +7,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.filter.FilterC
 
 edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent = Backbone.View.extend(
     /** @lends {edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent.prototype} */{
-        
+    className: "filterComponent",
     filter: null,
     
     initialize: function (options) {

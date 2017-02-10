@@ -90,8 +90,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     render: function () {
         "use strict";
         this.$el.html(this.template());
-        this.$el.html(this.template());
-        var finder = this.$el.find(".moduleFilter");
+        var finder = this.$el.find(".profileModuleFilterWrapper");
         for(var i = 0; i < this.filterComponents.length; i++){
             var tmpFilterComponent = this.filterComponents[i];
             tmpFilterComponent.render();
@@ -106,12 +105,10 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     onSearch: function () {
         "use strict";
     },
-    
-    /**
-    * return FilterCollection
-    */
-    getFilters: function () {
-        "use strict";
-        return this.filterCollection;
+    buildParam: function () {
+    },
+    getSearchCollection: function () {
+        this.searchCollection.setFilters(this.filterCollection);
+        return this.searchCollection;
     }
 });

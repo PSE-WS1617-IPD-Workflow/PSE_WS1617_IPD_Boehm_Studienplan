@@ -1,0 +1,19 @@
+.profileModuleCollectionWrapper{
+}
+.profileModuleFinderWrapper{
+    position:relative;
+    top:0px;
+    right:0px;
+    width: 100%;
+    box-sizing: border-box;
+
+    color:$boxColor;
+    background-color:$boxBgColor;
+    border-bottom:1px solid $boxBorderColor;
+    padding: 20px;
+    
+    .filterButton{
+        width: 100%;
+        font-size: $regularSize;
+    }
+}

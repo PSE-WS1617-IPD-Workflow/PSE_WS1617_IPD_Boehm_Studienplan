@@ -31,22 +31,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter = edu.kit
         this.filter.get("curValue").min = ui.values[ 0 ];
         this.filter.get("curValue").max = ui.values[ 1 ];
         
-        console.info("[edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter]");
-        console.info("min:" + this.filter.get("curValue").min + " | max: " +  this.filter.get("curValue").max);
-        
-        //TODO: update other UI components
-    },
-    /**
-    *return String
-    */
-    getParams:
-        function () {
-            "use strict";
-        },
-    /**
-    *
-    */
-    onSelect: function () {
-        "use strict";
+        $("#min_range_" + this.filter.get("id")).val(ui.values[ 0 ]);
+        $("#max_range_" + this.filter.get("id")).val(ui.values[ 1 ]);
     }
 });
