@@ -12,18 +12,15 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
     events: {
         "click .filterButton": "refreshSearchCollection"
     },
-    isSidebar: true,
-    isPreferencable: true,
-    isPlaced : null,
     initialize: function (options) {
         "use strict";
         this.moduleCollection = options.moduleCollection;
-        this.isSidebar = options.isSidebar;
-        this.isPreferencable = options.isPreferencable;
-        this.isPlaced = options.isPlaced;
         
         //TODO: correct parameters
-        this.moduleList = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList( { });
+        this.moduleList = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList( {               isRemovable: false,
+                isDraggable: options.isDraggable,
+                isPreferencable: options.isPreferencable
+        });
         this.moduleFilter = new edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter( { } );        
     },
     

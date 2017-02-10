@@ -61,6 +61,12 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
                     }
                 ]
             };
+        this.isDraggable = options.isDraggable;
+        this.isRemovable = options.isRemovable;
+        this.isPreferencable = options.isPreferencable;
+        
+        
+        
         this.moduleCollection = new edu.kit.informatik.studyplan.client.model.module.ModuleCollection(json,{parse:true});
         
         this.moduleBoxes = [];
@@ -69,10 +75,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
             var tmpModuleBox = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
                 module: module,
                 //TODO: einstellbar
-                isRemovable: false,
-                isDraggable: true,
-                isPreferencable: true,
-            });
+                isRemovable: options.isRemovable,
+                isDraggable: options.isDraggable,
+                isPreferencable: options.isPreferencable,
+            }).bind(this);
             self.moduleBoxes.push(tmpModuleBox);
         });
     },

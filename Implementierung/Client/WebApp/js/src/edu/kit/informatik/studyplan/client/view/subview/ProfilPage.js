@@ -11,8 +11,9 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
     
     initialize: function (){
         this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
-            isSidebar: true,
-            isPreferencable: false,
+            isDraggable = true;
+            isPreferencable = false;
+        
         });
     },
     
