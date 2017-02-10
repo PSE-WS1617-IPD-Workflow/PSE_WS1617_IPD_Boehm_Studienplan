@@ -4,6 +4,7 @@
     padding:20px;
     box-sizing:border-box;
     table{
+        position: relative;
         width:100%;
         box-sizing: border-box;
         h3 {
@@ -26,6 +27,7 @@
         td, th {
             padding:5px;
             vertical-align: top;
+            overflow:hidden;
             
             &:nth-child(1) {
                 width:130px;
@@ -33,13 +35,22 @@
             }
             &:nth-child(2) {
                 border-left: 1px solid $boxBorderColor;
-
+                width:50px;
                 text-align:left;
             }
+            &:nth-child(3) {
+                width:800px;
+                text-align:left;
+            }
+            &:nth-child(4) {
+                width:50px;
+                text-align:left;
+            }
+            
         }
         tbody{
             tr{
-                height:100px;
+                height:140px;
             }
         }
     }
