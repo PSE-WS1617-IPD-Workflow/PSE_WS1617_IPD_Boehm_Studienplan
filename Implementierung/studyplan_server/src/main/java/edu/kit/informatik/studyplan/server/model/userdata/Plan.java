@@ -274,4 +274,25 @@ public class Plan {
 		this.moduleEntries = moduleEntries;
 		this.modulePreferences = preferences;
 	}
+
+
+
+	public boolean contains(Module module) {
+		return getAllModuleEntries().stream().anyMatch(entry -> entry.getModule().equals(module));
+	}
+	
+	@Transient
+	public ModuleEntry getEntryFor(Module module) {
+		return getAllModuleEntries().stream()
+				.filter(entry -> entry.getModule().equals(module))
+				.findFirst()
+				.orElse(null);
+	}
+	
+	@Transient
+	public List<ModuleEntry> getAllModuleEntries() {
+		LinkedList<ModuleEntry> allEntries = new LinkedList<ModuleEntry>(moduleEntries);
+		allEntries.addAll(user.getPassedModules());
+		return allEntries;
+	}
 };

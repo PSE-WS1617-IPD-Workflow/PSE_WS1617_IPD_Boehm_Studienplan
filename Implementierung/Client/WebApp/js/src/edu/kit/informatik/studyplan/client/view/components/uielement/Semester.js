@@ -10,10 +10,14 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
     tagName: "tr",
     model: null,
     moduleElements: [],
+    isPassedSemester: false,
+    isPassedPlan: false,
     initialize: function (options) {
         this.model = options.semester;
         this.isRemovable = options.isRemovable;
         this.isPreferencable = options.isPreferencable;
+        this.isPassedSemester = options.isPassedSemester;
+        this.isPassedPlan = options.isPassedPlan;
         this.reload();
         this.listenTo(this.model, "change", this.reload);
         this.listenTo(this.model, "all", this.reload);
@@ -24,12 +28,26 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
     reload: function () {
         this.moduleElements=[];
         this.model.each(function (el) {
+            var removable = true;
+            if(!this.isPassedPlan&&this.isPassedSemester) {
+                removable = false;
+            }
+            if(!this.isPassedPlan&&el.get('passed')){
+                removable = false;
+            }
+            var draggable = true;
+            console.log(!this.isPassedPlan&&this.model.get('passed'));
+            if(!this.isPassedPlan&&el.get('passed')){
+                draggable = false;
+            }
+                
             this.moduleElements.push(
                 new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
                     module: el,
-                    isDraggable: true,
-                    isRemovable: true,
-                    isPreferencable: this.isPreferencable
+                    isDraggable: draggable,
+                    isRemovable: removable,
+                    isPreferencable: this.isPreferencable,
+                    isPassedPlanModule: this.isPassedPlan
                 })
             );
         }.bind(this));

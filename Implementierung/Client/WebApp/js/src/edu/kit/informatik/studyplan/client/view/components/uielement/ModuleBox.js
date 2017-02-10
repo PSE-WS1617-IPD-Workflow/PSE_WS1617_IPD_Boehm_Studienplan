@@ -13,11 +13,13 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     isPreferencable: true,
     isDraggable: true,
     isDeletable: true,
+    isPassedPlanModule: false,
     initialize: function (options) {
         this.model=options.module;
         this.isRemovable = options.isRemovable;
         this.isDraggable = options.isDraggable;
         this.isPreferencable = options.isPreferencable;
+        this.isPassedPlanModule = options.isPassedPlanModule;
     },
     
     /**
