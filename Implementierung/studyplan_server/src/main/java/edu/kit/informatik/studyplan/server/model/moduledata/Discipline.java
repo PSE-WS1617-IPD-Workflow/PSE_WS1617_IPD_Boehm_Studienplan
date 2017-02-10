@@ -1,16 +1,22 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonView;
-import edu.kit.informatik.studyplan.server.rest.resources.StudentResource;
-
-import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import edu.kit.informatik.studyplan.server.rest.resources.StudentResource;
+
 /************************************************************/
 /**
- * Class modelling a discipline
+ * Class modeling a discipline
  * @author NiklasUhl
  * @version 1.0
  */
@@ -31,6 +37,8 @@ public class Discipline {
 
 	@OneToMany(mappedBy = "discipline")
 	private List<Field> fields = new LinkedList<Field>();
+	
+	private List<RuleGroup> ruleGroups = new LinkedList<RuleGroup>();
 
 	/**
 	 * 
@@ -69,5 +77,13 @@ public class Discipline {
 	 */
 	public List<Field> getFields() {
 		return fields;
+	}
+	
+	/**
+	 * 
+	 * @return returns a list of all rule groups associated with this discipline
+	 */
+	public List<RuleGroup> getRuleGroups() {
+		return ruleGroups;
 	}
 }

@@ -274,4 +274,11 @@ public class Plan {
 		this.moduleEntries = moduleEntries;
 		this.modulePreferences = preferences;
 	}
+
+
+
+	public boolean contains(Module module) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 };
