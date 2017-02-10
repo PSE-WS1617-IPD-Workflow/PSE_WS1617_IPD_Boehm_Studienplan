@@ -40,6 +40,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     */
     render: function () {
         this.$el.html(this.template({module: this.model}));
+        this.$el.draggable({
+            scroll: true,
+            
+        });
         this.delegateEvents();
     }
 });

@@ -57,5 +57,12 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
     },
     each: function (method) {
         _.each(this.attributes, method);
+    },
+    getEctsSum: function () {
+        var sum = 0;
+        this.each(function (semester) {
+            sum+=semester.getEctsSum();
+        });
+        return sum;
     }
 });

@@ -102,5 +102,8 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
             id: this.get('id'),
             parent: this
         });
+    },
+    getEctsSum: function () {
+        return this.get('semesterCollection').getEctsSum();
     }
 });

@@ -1,13 +1,18 @@
 .moduleBox{
     box-sizing: border-box;
-    padding:5px;
+    padding:10px;
     
     border: 1px solid $boxBorderColor;
     background-color: $boxBgColor;
     color:$boxColor;
     
-    h3{
-        
+    h3.moduleTitle{
+        font-size:$regularSize;
+        font-weight:700;
+        margin:0px;
+    }
+    p{
+        margin:0px;
     }
     #preferenceButtonBox div{
         position: absolute;
