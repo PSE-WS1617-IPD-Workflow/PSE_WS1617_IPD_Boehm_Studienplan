@@ -1,3 +1,13 @@
+.moduleFinderWrapper{
+    height:100%;
+    box-sizing: border-box;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+     -webkit-flex-direction: column;
+}
 .profileModuleCollectionWrapper{
 }
 .profileModuleFinderWrapper{

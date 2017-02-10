@@ -7,6 +7,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Modu
 
 edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder.prototype} */{
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/moduleFinder.html"),
+    className: "moduleFinderWrapper",
     /**  @type {edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter} */
     moduleFilter: null,
     /**  @type {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList} */

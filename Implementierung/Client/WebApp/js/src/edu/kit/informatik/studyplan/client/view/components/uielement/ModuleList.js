@@ -8,6 +8,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Modu
 edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList.prototype} */{
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/moduleList.html"),
     moduleCollection: null,
+    tagName: "ul",
     moduleBoxes: null,
     initialize: function(options){
         "use strict";
@@ -45,6 +46,57 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
                     {
                         id : 1,
                         name : "Zaubertränke",
+                        categories:
+                                [{
+                                id: 13,
+                                name: "Mord und Heilung"
+                            }],
+                        semester: 5,
+                        creditpoints:700,
+                        "cycle-type": "Mittsommer",
+                        lecturer: "Snape",
+                        preference: "0",
+                        description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
+                        constraints: [
+                        ]
+                    },
+                    {
+                        id : 2,
+                        name : "Zaubertränke 2",
+                        categories:
+                                [{
+                                id: 13,
+                                name: "Mord und Heilung"
+                            }],
+                        semester: 5,
+                        creditpoints:700,
+                        "cycle-type": "Mittsommer",
+                        lecturer: "Snape",
+                        preference: "0",
+                        description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
+                        constraints: [
+                        ]
+                    },
+                    {
+                        id : 3,
+                        name : "Zaubertränke 3",
+                        categories:
+                                [{
+                                id: 13,
+                                name: "Mord und Heilung"
+                            }],
+                        semester: 5,
+                        creditpoints:700,
+                        "cycle-type": "Mittsommer",
+                        lecturer: "Snape",
+                        preference: "0",
+                        description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
+                        constraints: [
+                        ]
+                    },
+                    {
+                        id : 4,
+                        name : "Zaubertränke 4",
                         categories:
                                 [{
                                 id: 13,
