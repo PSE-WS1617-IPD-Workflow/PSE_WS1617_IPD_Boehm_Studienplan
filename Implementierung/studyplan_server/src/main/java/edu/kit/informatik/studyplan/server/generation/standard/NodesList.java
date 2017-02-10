@@ -24,15 +24,15 @@ public class NodesList extends ArrayList<Node>{
 	public NodesList(){
 	}
 	private List<Node> allNodes = new ArrayList<Node>(); 
-	private List<Node> randomlyAddedNodes = new ArrayList<Node>(); 
-	/**
-	 * gets the index of the node given in the nodes list of the generator.
-	 * If this node doesn't exist in the list this method returns -1.
-	 * @param node the node whose index is needed
-	 * @return the index needed
-	 */
-
-
+	private List<Node> randomlyAddedNodes = new NodesList(); 
+	
+	public void addNode(Node node){
+		if(addToAllNodes(node)) {
+			add(node);
+		}
+		
+	}
+	
 	public boolean hasNode(Node node) {
 		for(Node n : allNodes){
 			if (n.equals(node)) {
@@ -115,11 +115,11 @@ public class NodesList extends ArrayList<Node>{
 				//remove the node itself
 				getRandomlyAddedNodes().remove(nodeBefRem);
 				allNodes.remove(nodeBefRem);
+				remove(nodeBefRem);
 				// remove this node from the child list of the remaining nodes
 				for(Node nodeAfRem : allNodes) {
 					nodeAfRem.removeChild(n);
 				}
-				
 			}
 		}
 	}
