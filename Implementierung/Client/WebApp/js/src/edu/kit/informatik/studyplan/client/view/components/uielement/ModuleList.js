@@ -23,6 +23,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
                                 name: "Meistern von lebensgefährliche n Situationen"
                             }],
                         semester: 5,
+                        creditpoints: 18,
                         "cycle-type": "Mittsommer",
                         lecturer: "Hagrid",
                         preference: 1,
@@ -50,6 +51,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
                                 name: "Mord und Heilung"
                             }],
                         semester: 5,
+                        creditpoints:700,
                         "cycle-type": "Mittsommer",
                         lecturer: "Snape",
                         preference: "0",
