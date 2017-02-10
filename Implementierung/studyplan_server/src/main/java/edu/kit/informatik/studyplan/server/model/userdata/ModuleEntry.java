@@ -4,10 +4,16 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
-
-import javax.persistence.*;
 
 /************************************************************/
 /**
@@ -20,10 +26,11 @@ public class ModuleEntry {
 	 * 
 	 */
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "entry_id")
 	private int id;
 
-	@Column(name = "moduleId")
+	@Column(name = "module_id")
 	private String moduleId;
 
 	@Transient
@@ -33,6 +40,10 @@ public class ModuleEntry {
 	 */
 	@Column(name = "semester")
 	private int semester;
+	
+	public ModuleEntry() {
+		
+	}
 
 	/**
 	 * Creates a new ModuleEntry with a given module and semester.
@@ -40,7 +51,7 @@ public class ModuleEntry {
 	 * @param semester the number of the semester into which the module is placed
      */
 	public ModuleEntry(Module module, int semester) {
-		this.module = module;
+		setModule(module);
 		this.semester = semester;
 	}
 

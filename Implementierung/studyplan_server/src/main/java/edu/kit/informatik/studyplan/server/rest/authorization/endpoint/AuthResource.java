@@ -17,10 +17,10 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AbstractSecurityProvider;
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationScope;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClient;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 
 /**
  * Diese Klasse repräsentiert die Authentifizierung-Ressource. Der Resource

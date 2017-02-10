@@ -4,21 +4,36 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
-import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.NotFoundException;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 
 /************************************************************/
 /**
@@ -56,7 +71,7 @@ public class Plan {
 	 */
 	@Transient
 	@JsonProperty("creditpoints-sum")
-	private int creditPoints;
+	private double creditPoints = -1;
 	/**
 	 * 
 	 */
@@ -68,10 +83,12 @@ public class Plan {
 	/**
 	 *
 	 */
-	@OneToMany
-	@JoinTable(name = "plan_entries", joinColumns = @JoinColumn(name = "plan_id"), inverseJoinColumns = @JoinColumn(name = "entry_id"))
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinTable(name = "plan_entries", 
+		joinColumns = @JoinColumn(name = "plan_identifier"), 
+		inverseJoinColumns = @JoinColumn(name = "entry_id"))
 	@JsonIgnore
-	private List<ModuleEntry> moduleEntries;
+	private List<ModuleEntry> moduleEntries = new LinkedList<ModuleEntry>();
 
 	/**
 	 *
@@ -79,6 +96,8 @@ public class Plan {
 	@OneToMany(mappedBy = "plan")
 	@JsonIgnore
 	private List<ModulePreference> modulePreferences;
+	
+	
 	/**
 	 * Gibt für ein übergebenes Modul die Präferenz zurück. <br>
 	 * <code>null</code>, falls keine Präferenz vorhanden
@@ -89,8 +108,9 @@ public class Plan {
 	 */
 	@JsonIgnore
 	public PreferenceType getPreferenceForModule(Module module) {
-		// TODO: implement
-		return null;
+		return modulePreferences.stream()
+		.filter(preference -> preference.getModule().equals(module))
+		.map(preference -> preference.getPreference()).findFirst().orElse(null);
 	}
 
 
@@ -150,7 +170,12 @@ public class Plan {
 	 *
 	 * @return gibt die ECTS-Summe des Plans zurück
 	 */
-	public int getCreditPoints() {
+	public double getCreditPoints() {
+		if (creditPoints == -1) {
+			creditPoints =  moduleEntries.stream()
+					.mapToDouble(entry -> entry.getModule().getCreditPoints())
+					.sum();
+		}
 		return creditPoints;
 	}
 
@@ -202,7 +227,7 @@ public class Plan {
      */
 	@JsonProperty("modules")
 	public List<JsonModule> getJsonModules() {
-		return this.getModuleEntries().stream()
+		return getModuleEntries().stream()
 				.map(entry -> {
 					JsonModule jsonModule = new JsonModule();
 					jsonModule.setId(entry.getModule().getIdentifier());

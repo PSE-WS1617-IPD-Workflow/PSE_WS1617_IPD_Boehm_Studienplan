@@ -17,9 +17,15 @@ import edu.kit.informatik.studyplan.server.model.userdata.User;
 class HibernateUserDao implements UserDao {
 	
 	private Session session;
+	private boolean independet;
 	
-	HibernateUserDao() {
-		session = HibernateUtil.getUserDataSessionFactory().openSession();
+	HibernateUserDao(AuthorizationContext authorizationContext) {
+		if (authorizationContext != null) {
+			session = ((SecurityProvider) authorizationContext.getProvider()).getSession();
+		} else {
+			session = HibernateUtil.getUserDataSessionFactory().openSession();
+			independet = true;
+		}
 	}
 	
 	@Override
@@ -46,7 +52,9 @@ class HibernateUserDao implements UserDao {
 
 	@Override
 	public void cleanUp() {
-		session.close();
+		if (independet) {
+			session.close();
+		}
 	}
 
 };

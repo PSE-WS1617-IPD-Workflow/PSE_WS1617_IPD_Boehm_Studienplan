@@ -8,8 +8,8 @@ import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.Response.Status;
 
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AbstractSecurityProvider;
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 
 /**
  * ContainerRequestFiler for authorizing REST resource access
