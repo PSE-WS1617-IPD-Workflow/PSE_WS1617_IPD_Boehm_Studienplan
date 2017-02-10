@@ -73,6 +73,7 @@ LM.messages["de"]["logoutSuccessfulTitle"] = "Logout erfolgreich";
 LM.messages["de"]["logoutSuccessfulText"] = "";
 LM.messages["de"]["loginSuccessfulTitle"] = "Login erfolgreich";
 LM.messages["de"]["loginSuccessfulText"] = "";
+//GenerationWizard
 LM.messages["de"]["generationTitle"] = "Studienplan-Vorschlag erstellen";
 LM.messages["de"]["generationExplanation1"] = "Wir benötigen einige Hinweise über deine Studienziele, um dir einen Studienplan vorschlagen zu können.";
 LM.messages["de"]["generationExplanation2"] = "Du kannst mit dem Pfeil nach oben und dem Pfeil nach unten bewerten, welche Veranstaltungen dir gut, und welche eher schlecht gefallen.";
@@ -81,3 +82,8 @@ LM.messages["de"][""] = "";
 LM.messages["de"][""] = "";
 LM.messages["de"][""] = "";
 LM.messages["de"][""] = "";
+LM.messages["de"][""] = "";
+
+
+//ProfilePage
+LM.messages["de"]["applyFilterButton"] = "Filter anwenden";

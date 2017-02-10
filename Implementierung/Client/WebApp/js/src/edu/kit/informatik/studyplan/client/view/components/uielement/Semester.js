@@ -30,15 +30,24 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         }.bind(this));
         this.render();
     },
+    /**
+     * @this {Backbone.View}
+     * @suppress {missingProperties}
+     * @return {Backbone.View|null}
+     */
     render: function () {
         this.$el.html(this.template({
             semester: this.model
         }));
+        this.$el.droppable({
+            drop: this.onDrop.bind(this)
+        });
         console.info(this.moduleElements);
         _.each(this.moduleElements, function (element) {
             element.render();
             this.$el.find(".semesterModules").append(element.$el);
         }.bind(this));
+        return null;
     },
 /**
 *
@@ -51,10 +60,17 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
     *@param{Event} event
     *@param{Object} ui
     */
-    onDrop:
-        function (event, ui) {
-            "use strict";
-        },
+    onDrop:function (event, ui) {
+        console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.Semester] drop event");
+        var model = ui.helper.data("modelObject");
+        if (model.collection!==this.model) {
+            model.collection.remove(model);
+            model.set('semester', this.model.semesterNum);
+            this.model.add(model);
+            model.collection = this.model;
+            model.save();
+        }
+    },
     /**
     *
     */

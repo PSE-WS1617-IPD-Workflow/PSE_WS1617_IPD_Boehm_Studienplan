@@ -1,13 +1,19 @@
 .moduleBox{
     box-sizing: border-box;
-    padding:5px;
+    padding:10px;
+    cursor:pointer;
     
     border: 1px solid $boxBorderColor;
     background-color: $boxBgColor;
     color:$boxColor;
     
-    h3{
-        
+    h3.moduleTitle{
+        font-size:$regularSize;
+        font-weight:700;
+        margin:0px;
+    }
+    p{
+        margin:0px;
     }
     #preferenceButtonBox div{
         position: absolute;
@@ -23,6 +29,9 @@
         font-size:25px;
         background-color:transparent;
     }
+    &.grabbing{
+        cursor:grabbing;
+    }
 }
 .leftSided .moduleBox{
     float:left;
@@ -34,5 +43,6 @@
     .moduleBox{
         width:160px;
         height:100px;
+        margin-right:20px;
     }
 }
