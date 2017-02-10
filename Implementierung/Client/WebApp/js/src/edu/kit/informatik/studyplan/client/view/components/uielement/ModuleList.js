@@ -78,7 +78,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
                 isRemovable: options.isRemovable,
                 isDraggable: options.isDraggable,
                 isPreferencable: options.isPreferencable,
-            }).bind(this);
+            });
             self.moduleBoxes.push(tmpModuleBox);
         });
     },
