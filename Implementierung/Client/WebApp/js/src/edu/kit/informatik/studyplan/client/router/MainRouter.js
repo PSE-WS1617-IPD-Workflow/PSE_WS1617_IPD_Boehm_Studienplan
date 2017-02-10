@@ -131,6 +131,46 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 lecturer    :   "Maultaschius",
                                 preference  :   "negative",
                                 semester    :   5
+                            },
+                            {
+                                id : 0,
+                                semester : 4,
+                                name : "Magische Tierwesen",
+                                creditpoints: 18,
+                                preference  :   "negative",
+                                lecturer: "Hagrid",
+                            },
+                            {
+                                id : 1,
+                                name : "Zaubertränke",
+                                semester : 4,
+                                creditpoints:700,
+                                preference  :   "negative",
+                                lecturer: "Snape",
+                            },
+                            {
+                                id : 2,
+                                name : "Zaubertränke 2",
+                                semester: 4,
+                                creditpoints:700,
+                                preference  :   "negative",
+                                lecturer: "Snape"
+                            },
+                            {
+                                id : 3,
+                                name : "Zaubertränke 3",
+                                semester: 4,
+                                creditpoints:700,
+                                preference  :   "negative",
+                                lecturer: "Snape",
+                            },
+                            {
+                                id : 4,
+                                name : "Zaubertränke 4",
+                                semester: 4,
+                                creditpoints:700,
+                                preference  :   "negative",
+                                lecturer: "Snape",
                             }
                         ]
                     }
