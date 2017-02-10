@@ -35,7 +35,11 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     }
                 });
             },
-            routes: /*function () {
+            routes: 
+            /**
+            *todo: server wiedereinschalten (hierdrunter derzeit auskommentiert.)
+            */
+            /*function () {
                 console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] building route hash");
                 /if (!edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().isLoggedIn()) {
                     return {

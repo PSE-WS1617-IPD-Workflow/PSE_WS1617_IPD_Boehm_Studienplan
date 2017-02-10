@@ -10,7 +10,7 @@ edu.kit.informatik.studyplan.client.view.subview.WizardPage = Backbone.View.exte
     onFinish: function () {},
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/subview/wizardPage.html"),
     events: {
-        "click button.wizwardPageNextWizard": "next"
+        "click button.wizardPageNextWizard": "next"
     },
     
     /**
@@ -36,6 +36,7 @@ edu.kit.informatik.studyplan.client.view.subview.WizardPage = Backbone.View.exte
             this.curView.render();
             listDiv.append(this.curView.$el);
             this.delegateEvents();
+            
         },
         
     /**
@@ -44,7 +45,6 @@ edu.kit.informatik.studyplan.client.view.subview.WizardPage = Backbone.View.exte
     next:
         function () {
             "use strict";
-            
             var next = this.curView.next();
             if (next === null) {
                 this.onFinish();
