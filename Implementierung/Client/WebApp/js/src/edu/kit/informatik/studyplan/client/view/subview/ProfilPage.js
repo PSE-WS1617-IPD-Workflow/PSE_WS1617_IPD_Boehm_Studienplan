@@ -9,6 +9,7 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
     
     moduleFinder: null,
     planView: null,
+    passedModules: null,
     events: {
       "click button.mainPageNavigation": "navigateToMainPage"  
     },    
@@ -24,11 +25,11 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
         //Initialize plan view
         //TODO: replace with fetch
         var json = {};
-        var passedModules = new edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection(json, {parse:true});
+        this.passedModules = new edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection(json, {parse:true});
         /*
         this.planView = new edu.kit.informatik.studyplan.client.view.components.uielement.Plan({
-            plan: passedModules
-        });**/
+            plan: PassedCollection.toPlan(passedModules)
+        });*/
         
     },
     
@@ -70,6 +71,10 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
     */
     hideModuleDetails: function () {
             "use strict";
+    },
+    save(){
+      //TODO: get passedModules from plan
+        //this.passedModules = ....fromPlan(planView.getPlan());
     },
     navigateToMainPage: function () {
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/",{trigger:true});
