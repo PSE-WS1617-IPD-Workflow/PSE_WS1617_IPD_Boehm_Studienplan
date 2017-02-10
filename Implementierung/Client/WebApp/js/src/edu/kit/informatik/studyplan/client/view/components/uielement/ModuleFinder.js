@@ -60,9 +60,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
     /**
     * Reloads modules with applied filters
     */
-    refreshSearchCollection: function () {
-        //TODO: fetch has to be implemented properly
-        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+    refreshSearchCollection: function () {  edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         this.moduleFilter.getSearchCollection().fetch({
             success: function () {
               edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
