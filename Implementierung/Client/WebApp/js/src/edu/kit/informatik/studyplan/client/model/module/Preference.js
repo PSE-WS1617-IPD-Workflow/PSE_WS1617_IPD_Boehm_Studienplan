@@ -7,6 +7,12 @@ goog.provide("edu.kit.informatik.studyplan.client.model.module.Preference");
  */
 
 edu.kit.informatik.studyplan.client.model.module.Preference = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.Preference.prototype}*/{
+    initialize: function () {
+        this.listenTo(this, "change", this.onChange);
+    },
+    onChange: function () {
+        this.get('module').trigger('change');
+    },
     /**
     * @return {string}
     */

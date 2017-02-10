@@ -20,6 +20,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         this.isPassedPlan = options.isPassedPlan;
         this.reload();
         this.listenTo(this.model, "change", this.reload);
+        this.listenTo(this.model, "destroy", this.reload);
         this.listenTo(this.model, "all", this.reload);
         this.listenTo(this.model, "reset", this.reload);
         this.listenTo(this.model, "add", this.reload);
@@ -36,7 +37,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
                 removable = false;
             }
             var draggable = true;
-            console.log(!this.isPassedPlan&&this.model.get('passed'));
             if(!this.isPassedPlan&&el.get('passed')){
                 draggable = false;
             }
@@ -95,8 +95,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
             droppedModel.collection = null;
             // Do not insert a module twice
             if (this.model.collection.containsModule(droppedModel.get('id'))) {
-                console.log(droppedModel);
-                console.log(this.model.collection);
                 var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
                 edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
                     new edu.kit.informatik.studyplan.client.model.system.Notification({
@@ -109,16 +107,26 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
                 return false;
             }
         }
-        console.log(droppedModel);
-        console.log(this.model);
         if (droppedModel.collection!==this.model) {
+            var oldCol = droppedModel.collection;
+            var oldSem = droppedModel.get('semester');
             if(droppedModel.collection!==null){
                 droppedModel.collection.remove(droppedModel);
             }
             droppedModel.set('semester', this.model.semesterNum);
             this.model.add(droppedModel);
             droppedModel.collection = this.model;
-            droppedModel.save();
+            droppedModel.save(null, {
+                error: function () {
+                    console.log(droppedModel);
+                    this.model.remove(droppedModel);
+                    if (oldCol!==null) {
+                        droppedModel.set('semester', oldSem);
+                        oldCol.add(droppedModel);
+                    }
+                    console.log(droppedModel);
+                }.bind(this)
+            });
         }
     },
     /**

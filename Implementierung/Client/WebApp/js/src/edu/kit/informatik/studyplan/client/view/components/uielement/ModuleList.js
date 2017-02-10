@@ -140,9 +140,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
         _.each(this.moduleBoxes, function(el){
             el.render();
             container.append(el.$el)
-            console.log(el);
         }.bind(this));
-        console.log(container);
         this.delegateEvents();
     }
 });

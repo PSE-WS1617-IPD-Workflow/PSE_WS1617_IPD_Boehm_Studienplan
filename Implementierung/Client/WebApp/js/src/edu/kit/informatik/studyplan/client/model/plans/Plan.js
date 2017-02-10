@@ -22,8 +22,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         if(student){
             var passedModules = student.get('passedModules');
         }
-        console.log("[edu.kit.informatik.studyplan.client.model.plans.Plan] parsing plan")
-        console.info(passedModules);
+        console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] parsing plan")
         if(passedModules){
             passedModules.each(function(module){
                 module.set('passed', true);
