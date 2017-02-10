@@ -1,3 +1,14 @@
+.planHeadBar{
+    .mainPageNavigation button{
+        height:30px;
+        box-sizing: border-box;
+        padding:5px;
+        margin:0px 0px 0px 20px;
+        color:$boxColor;
+        border:1px solid $boxBorderColor;
+        background-color:$boxBgColor;
+    }
+}
 .profileEditHeadWrapper{
     margin-top:130px;
     width:75%;
