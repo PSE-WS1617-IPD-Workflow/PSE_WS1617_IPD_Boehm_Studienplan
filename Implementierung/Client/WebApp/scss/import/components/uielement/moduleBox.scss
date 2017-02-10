@@ -1,6 +1,7 @@
 .moduleBox{
     box-sizing: border-box;
     padding:10px;
+    cursor:pointer;
     
     border: 1px solid $boxBorderColor;
     background-color: $boxBgColor;
@@ -28,6 +29,9 @@
         font-size:25px;
         background-color:transparent;
     }
+    &.grabbing{
+        cursor:grabbing;
+    }
 }
 .leftSided .moduleBox{
     float:left;
@@ -39,5 +43,6 @@
     .moduleBox{
         width:160px;
         height:100px;
+        margin-right:20px;
     }
 }
