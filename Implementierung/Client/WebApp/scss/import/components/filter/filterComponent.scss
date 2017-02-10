@@ -4,10 +4,15 @@
     font: $font1;
     font-size: $regularSize;
     float: left;
-    border:1px solid $boxBorderColor;
+    background-color: $boxBorderColor;
+    border:2px solid $boxBorderColor;
     display: inline-block;
     padding: 3px 5px;
     border-radius: 5px;
+    &:hover{
+        border-color: $bg2;
+        border-bottom-width: 2px;
+    }
 }
 .profileFilterWrapperSettings{
     //visibility: hidden;
@@ -20,7 +25,7 @@
     left: 0px;
     */
     
-    padding: 2px 10px;
+    padding: 5px 10px;
     border-radius: 5px;
     border:1px solid $boxBorderColor;
     
