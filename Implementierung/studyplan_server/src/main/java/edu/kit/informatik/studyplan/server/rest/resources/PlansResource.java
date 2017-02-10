@@ -1,35 +1,51 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.kit.informatik.studyplan.server.filter.Filter;
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
-import edu.kit.informatik.studyplan.server.model.userdata.*;
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDao;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
-import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
-import edu.kit.informatik.studyplan.server.rest.GetParameters;
-import edu.kit.informatik.studyplan.server.rest.JSONObject;
-import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
-import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
-import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
-
-import javax.inject.Inject;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.HttpMethod;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import edu.kit.informatik.studyplan.server.filter.Filter;
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
+import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
+import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import edu.kit.informatik.studyplan.server.model.userdata.User;
+import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDao;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
+import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
+import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
+import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
+import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 /**
  * Diese Klasse repräsentiert die Pläne-Ressource.
@@ -38,7 +54,7 @@ import java.util.stream.Collectors;
 @AuthorizationNeeded
 public class PlansResource {
 	@Inject
-	AuthorizationContext context;
+	Provider<AuthorizationContext> contextProvider;
 
 	/**
 	 * POST-Anfrage: Erstellt einen neuen Studienplan.
@@ -54,7 +70,7 @@ public class PlansResource {
 				|| planInput.getPlan().getCreditPoints() != 0) {
 			throw new BadRequestException();
 		}
-		String newId = PlanDaoFactory.getPlanDao().updatePlan(planInput.getPlan());
+		String newId = PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(planInput.getPlan());
 		if (newId == null) {
 			throw new UnprocessableEntityException();
 		}
@@ -73,10 +89,10 @@ public class PlansResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, List<Plan>> getPlans() {
-		List<Plan> result = context.getUser().getPlans().stream()
+		List<Plan> result = contextProvider.get().getUser().getPlans().stream()
 				.map(plan -> {
-					plan.setModuleEntries(null);
-					plan.setModulePreferences(null);
+					plan.setModuleEntries(new ArrayList<ModuleEntry>());
+					plan.setModulePreferences(new ArrayList<ModulePreference>());
 					return plan;
 				})
 				.collect(Collectors.toList());
@@ -102,12 +118,12 @@ public class PlansResource {
 				|| !Objects.equals(planInput.getPlan().getIdentifier(), planID)) {
 			throw new BadRequestException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planInput.getPlan().getIdentifier());
+		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planInput.getPlan().getIdentifier());
 		if (plan == null) {
 			throw new NotFoundException();
 		}
 		planInput.getPlan().setVerificationState(VerificationState.NOT_VERIFIED);
-		PlanDaoFactory.getPlanDao().updatePlan(planInput.getPlan());
+		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(planInput.getPlan());
 		return planInput;
 	}
 
@@ -122,7 +138,7 @@ public class PlansResource {
 	@Path("/{plan-id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public PlanInOut getPlan(@PathParam("plan-id") String planId) {
-		Plan result = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		Plan result = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
 		if (result == null) {
 			throw new NotFoundException();
 		} else {
@@ -150,16 +166,16 @@ public class PlansResource {
 				|| planInput.getPlan().getCreditPoints() != 0) {
 			throw new BadRequestException();
 		}
-		if (context.getUser().getPlans().stream()
+		if (contextProvider.get().getUser().getPlans().stream()
 				.anyMatch(plan -> plan.getName().equals(planInput.getPlan().getName()))) {
 			throw new UnprocessableEntityException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
 		if (plan == null) {
 			throw new NotFoundException();
 		}
 		plan.setName(planInput.getPlan().getName());
-		PlanDaoFactory.getPlanDao().updatePlan(plan);
+		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
 		planInput.getPlan().setIdentifier(planId);
 		return planInput;
 	}
@@ -173,11 +189,13 @@ public class PlansResource {
 	@DELETE
 	@Path("/{id}")
 	public Response deletePlan(@PathParam("id") String planId) {
-		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		PlanDao dao = PlanDaoFactory.getPlanDao(contextProvider.get());
+		Plan plan = dao.getPlanById(planId);
 		if (plan == null) {
 			throw new UnprocessableEntityException();
 		}
-		PlanDaoFactory.getPlanDao().deletePlan(plan);
+		dao.deletePlan(plan);
+		dao.cleanUp();
 		return Response.ok().build();
 	}
 
@@ -198,11 +216,11 @@ public class PlansResource {
 	@Path("/{id}/modules")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, List<JsonModule>> getModules(@PathParam("id") String planId, @Context UriInfo uriInfo) {
-		User user = context.getUser();
+		User user = contextProvider.get().getUser();
 		if (user.getDiscipline() == null) {
 			throw new UnprocessableEntityException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
 		if (plan == null) {
 			throw new NotFoundException();
 		}
@@ -240,7 +258,7 @@ public class PlansResource {
 	@Path("/{plan}/modules/{module}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, JsonModule> getModule(@PathParam("plan") String planId, @PathParam("module") String moduleId) {
-		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
 		if (plan == null) {
 			throw new NotFoundException();
 		}
@@ -274,7 +292,7 @@ public class PlansResource {
 				|| moduleInput.getModule().getSemester() == null) {
 			throw new BadRequestException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
 		if (plan == null) {
 			throw new NotFoundException();
 		}
@@ -284,12 +302,12 @@ public class PlansResource {
 		}
 		if (plan.getModuleEntries().stream().anyMatch(entry -> entry.getModule().equals(module))
 				|| moduleInput.getModule().getSemester()
-					< context.getUser().getStudyStart().getDistanceToCurrentSemester()) {
+					< contextProvider.get().getUser().getStudyStart().getDistanceToCurrentSemester()) {
 			throw new UnprocessableEntityException();
 		}
 		plan.getModuleEntries().add(new ModuleEntry(module, moduleInput.getModule().getSemester()));
 		plan.setVerificationState(VerificationState.NOT_VERIFIED);
-		PlanDaoFactory.getPlanDao().updatePlan(plan);
+		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
 		return moduleInput;
 	}
 
@@ -305,7 +323,7 @@ public class PlansResource {
 	@DELETE
 	@Path("/{plan}/modules/{module}")
 	public Response removeModuleSemester(@PathParam("plan") String planId, @PathParam("module") String moduleId) {
-		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
 		if (plan == null) {
 			throw new NotFoundException();
 		}
@@ -318,7 +336,7 @@ public class PlansResource {
 				.findFirst().orElseThrow(UnprocessableEntityException::new);
 		plan.getModuleEntries().remove(moduleEntry);
 		plan.setVerificationState(VerificationState.NOT_VERIFIED);
-		PlanDaoFactory.getPlanDao().updatePlan(plan);
+		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
 		return Response.ok().build();
 	}
 
@@ -347,7 +365,7 @@ public class PlansResource {
 		if (module == null) {
 			throw new NotFoundException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
 		if (plan == null) {
 			throw new NotFoundException();
 		}
@@ -363,7 +381,7 @@ public class PlansResource {
 			}
 			preferences.add(new ModulePreference(module, moduleInput.getModule().getPreference()));
 		}
-		PlanDaoFactory.getPlanDao().updatePlan(plan);
+		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
 		return moduleInput;
 	}
 

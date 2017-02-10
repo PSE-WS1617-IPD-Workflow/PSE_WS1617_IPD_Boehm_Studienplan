@@ -3,7 +3,7 @@ package edu.kit.informatik.studyplan.server.rest.resources;
 import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
 import edu.kit.informatik.studyplan.server.filter.FilterDescriptorProvider;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 
 import javax.inject.Inject;

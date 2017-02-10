@@ -1,6 +1,8 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.module.ModuleCollection");
 /**
  * @constructor
+ * @param {Object=} response
+ * @param {Object=} options
  * @extends {Backbone.Collection}
  */
 

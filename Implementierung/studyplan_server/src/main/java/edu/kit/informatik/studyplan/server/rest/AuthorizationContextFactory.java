@@ -1,10 +1,11 @@
 package edu.kit.informatik.studyplan.server.rest;
 
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
-import org.glassfish.hk2.api.Factory;
-
 import javax.inject.Inject;
 import javax.ws.rs.container.ContainerRequestContext;
+
+import org.glassfish.hk2.api.Factory;
+
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 
 public class AuthorizationContextFactory implements Factory<AuthorizationContext> {
     private static final String AUTHORIZATION_CONTEXT_PROPERTY = "authorizationContext";
@@ -22,6 +23,7 @@ public class AuthorizationContextFactory implements Factory<AuthorizationContext
 
     @Override
     public void dispose(AuthorizationContext authorizationContext) {
+    	authorizationContext.cleanUp();
     }
 
     /**

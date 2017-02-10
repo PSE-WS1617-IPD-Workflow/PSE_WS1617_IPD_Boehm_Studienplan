@@ -4,11 +4,12 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
-import edu.kit.informatik.studyplan.server.model.HibernateUtil;
-import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import java.io.Serializable;
+
 import org.hibernate.Session;
 
-import java.io.Serializable;
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
+import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
@@ -19,8 +20,8 @@ class HibernatePlanDao implements PlanDao {
 
 	private Session session;
 	
-	HibernatePlanDao() {
-		session = HibernateUtil.getUserDataSessionFactory().openSession();
+	HibernatePlanDao(AuthorizationContext context) {
+		session = ((SecurityProvider) context.getProvider()).getSession();
 	}
 	
 	@Override
@@ -34,6 +35,9 @@ class HibernatePlanDao implements PlanDao {
 	@Override
 	public void deletePlan(Plan plan) {
 		session.beginTransaction();
+		for (ModuleEntry entry : plan.getModuleEntries()) {
+			session.delete(entry);
+		}
 		session.delete(plan);
 		session.getTransaction().commit();
 	}
@@ -49,7 +53,6 @@ class HibernatePlanDao implements PlanDao {
 
 	@Override
 	public void cleanUp() {
-		session.close();
 	}
 
 };

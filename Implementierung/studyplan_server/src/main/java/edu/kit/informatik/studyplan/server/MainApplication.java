@@ -7,7 +7,7 @@ import org.glassfish.jersey.process.internal.RequestScoped;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
 
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationContextFactory;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationRequestFilter;
 import edu.kit.informatik.studyplan.server.rest.CorsResponseFilter;

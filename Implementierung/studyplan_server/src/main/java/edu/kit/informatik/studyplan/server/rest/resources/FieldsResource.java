@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
