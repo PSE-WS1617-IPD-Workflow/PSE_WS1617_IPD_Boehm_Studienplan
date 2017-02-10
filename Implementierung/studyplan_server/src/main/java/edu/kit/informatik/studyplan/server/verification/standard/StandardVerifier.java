@@ -38,7 +38,7 @@ public class StandardVerifier implements Verifier {
 	private void findFieldViolations(Plan plan) {
 		HashMap<Field, Double> fieldMap = new HashMap<Field, Double>();
 		//get total credit points per field
-		for (ModuleEntry entry : plan.getModuleEntries()) {
+		for (ModuleEntry entry : plan.getAllModuleEntries()) {
 			Field field = entry.getModule().getField();
 			if (!fieldMap.containsKey(field)) {
 				fieldMap.put(field, entry.getModule().getCreditPoints());
@@ -80,8 +80,7 @@ public class StandardVerifier implements Verifier {
 		
 
 	private void findConstraintViolations(Plan plan) {
-		// TODO Auto-generated method stub
-		
+		//TODO: implement
 	}
 
 	private boolean isInRange(int numberOfModules, RuleGroup ruleGroup) {
