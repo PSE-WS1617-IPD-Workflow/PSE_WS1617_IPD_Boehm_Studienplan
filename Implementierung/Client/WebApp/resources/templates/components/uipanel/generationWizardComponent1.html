@@ -3,13 +3,14 @@
         <h1>{{=obj.LM.getMessage('generationTitle')}}</h1>
     </div>
     <div class="box">
-        {{=obj.LM.getMessage('generationExplanation1')}}
+        <p>{{=obj.LM.getMessage('generationExplanation1')}}</p>
     </div>
-    <div>
+    <div class="box">
+        <p><label>{{=obj.LM.getMessage('generationChooseFunction')}}</label>
         <select class="objectiveFunctionDropDown" size="1">
             {{obj.functions.each(function (el) { }}
             <option value ="{{=el.get('id')}}">{{=el.get('name')}}</option>
             {{ }) }}
-        </select>
+        </select></p>
     </div>
 </div>
