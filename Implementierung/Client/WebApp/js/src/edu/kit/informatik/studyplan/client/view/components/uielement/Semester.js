@@ -30,6 +30,11 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         }.bind(this));
         this.render();
     },
+    /**
+     * @this {Backbone.View}
+     * @suppress {missingProperties}
+     * @return {Backbone.View|null}
+     */
     render: function () {
         this.$el.html(this.template({
             semester: this.model
@@ -42,6 +47,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
             element.render();
             this.$el.find(".semesterModules").append(element.$el);
         }.bind(this));
+        return null;
     },
 /**
 *
