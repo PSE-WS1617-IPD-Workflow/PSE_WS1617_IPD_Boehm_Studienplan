@@ -133,7 +133,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 semester    :   5
                             },
                             {
-                                id : 0,
+                                id : 22,
                                 semester : 4,
                                 name : "Magische Tierwesen",
                                 creditpoints: 18,
@@ -141,7 +141,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 lecturer: "Hagrid",
                             },
                             {
-                                id : 1,
+                                id : 21,
                                 name : "Zaubertränke",
                                 semester : 4,
                                 creditpoints:700,
@@ -149,7 +149,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 lecturer: "Snape",
                             },
                             {
-                                id : 2,
+                                id : 20,
                                 name : "Zaubertränke 2",
                                 semester: 4,
                                 creditpoints:700,
@@ -157,7 +157,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 lecturer: "Snape"
                             },
                             {
-                                id : 3,
+                                id : 30,
                                 name : "Zaubertränke 3",
                                 semester: 4,
                                 creditpoints:700,
@@ -165,7 +165,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 lecturer: "Snape",
                             },
                             {
-                                id : 4,
+                                id : 40,
                                 name : "Zaubertränke 4",
                                 semester: 4,
                                 creditpoints:700,
