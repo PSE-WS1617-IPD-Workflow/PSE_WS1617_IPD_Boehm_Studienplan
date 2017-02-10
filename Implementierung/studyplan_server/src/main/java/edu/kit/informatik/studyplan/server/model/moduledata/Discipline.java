@@ -38,6 +38,7 @@ public class Discipline {
 	@OneToMany(mappedBy = "discipline")
 	private List<Field> fields = new LinkedList<Field>();
 	
+	@OneToMany(mappedBy = "discipline")
 	private List<RuleGroup> ruleGroups = new LinkedList<RuleGroup>();
 
 	/**
