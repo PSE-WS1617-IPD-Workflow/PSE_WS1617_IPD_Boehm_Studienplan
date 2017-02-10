@@ -18,12 +18,6 @@ public class NodeWithoutOutput extends NodeWithOutput {
 	public NodeWithoutOutput(Module module) {
 		super(module);
 	}
-	
-	public NodeWithOutput addOutput(){
-		NodeWithOutput node = new NodeWithOutput(getModule());
-		node.addInnerNode(getInnerNode());
-		return node;
-	}
 
 	@Override
 	public NodesList getChildren() {
@@ -42,7 +36,6 @@ public class NodeWithoutOutput extends NodeWithOutput {
 
 	@Override
 	public List<Node> fulfillConstraints(NodesList graphNodes, boolean random) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
