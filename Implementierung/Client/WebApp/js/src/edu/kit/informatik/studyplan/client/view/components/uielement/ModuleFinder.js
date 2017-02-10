@@ -13,6 +13,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
     /**  @type {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList} */
     moduleList: null,
     events: {
+        "change" : "",
         "click .filterButton": "refreshSearchCollection"
     },
     /**
@@ -53,12 +54,19 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
         
         this.delegateEvents();
     },
+    onChange: function (){
+        this.render();
+    },
     /**
     * Reloads modules with applied filters
     */
     refreshSearchCollection: function () {
         //TODO: fetch has to be implemented properly
-        
-        this.moduleFilter.getSearchCollection().fetch();
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+        this.moduleFilter.getSearchCollection().fetch({
+            success: function () {
+              edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+            }
+        });
     }
 });
