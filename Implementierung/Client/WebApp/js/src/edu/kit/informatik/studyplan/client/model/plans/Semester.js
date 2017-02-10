@@ -9,6 +9,10 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.Semester");
 edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.studyplan.client.model.module.ModuleCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.Semester.prototype}*/{
     planId : null,
     semesterNum : 0,
+    /** 
+     * @type {edu.kit.informatik.studyplan.client.model.plans.SemesterCollection}
+     */
+    collection: null,
     initialize: function (attributes, options) {
         this.collection = options.collection;
         this.listenTo(this, "change", this.onChange);

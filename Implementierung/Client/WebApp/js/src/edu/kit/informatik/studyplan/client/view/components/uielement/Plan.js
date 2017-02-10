@@ -21,6 +21,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
                 })
             );
         }).bind(this));
+        this.listenTo(this.model, "change", this.render);
     },
     render: function () {
         this.$el.html(this.template({

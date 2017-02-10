@@ -24,9 +24,11 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             this.information = options.information;
         },
     
-     /**
-    *
-    */
+    /**
+     * @suppress {missingProperties}
+     * @this {edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent3}
+     * @return {Backbone.View|null}
+     */
     render:
         function () {
             "use strict";
@@ -60,6 +62,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
                 slide: this.updateVal//.bind(this)
             });
             this.delegateEvents();
+            return this;
         },
     
     /**

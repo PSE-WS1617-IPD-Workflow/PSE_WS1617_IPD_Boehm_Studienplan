@@ -52,7 +52,7 @@ edu.kit.informatik.studyplan.client.model.module.ModuleCollection = Backbone.Col
     */
     containsModule : function (moduleId) {
         "use strict";
-        if(this.get(moduleId) !== "undefined" /*&& this.get(moduleId).get("id") == moduleId*/) {
+        if(typeof this.get(moduleId) !== "undefined" /*&& this.get(moduleId).get("id") == moduleId*/) {
             return true;
         } else {
             return false;

@@ -67,13 +67,40 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
     onDrop:function (event, ui) {
         console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.Semester] drop event");
         //TODO: Make module deletable when it wasn't before!
-        var model = ui.helper.data("modelObject");
-        if (model.collection!==this.model) {
-            model.collection.remove(model);
-            model.set('semester', this.model.semesterNum);
-            this.model.add(model);
-            model.collection = this.model;
-            model.save();
+        var droppedElement = ui.helper.data("viewObject");
+        /**
+         * @type {edu.kit.informatik.studyplan.client.model.module.Module}
+         */
+        var droppedModel = droppedElement.model;
+        if (!(droppedModel.collection instanceof edu.kit.informatik.studyplan.client.model.plans.Semester)){
+            droppedModel = /** @type {edu.kit.informatik.studyplan.client.model.module.Module} */(droppedModel.clone());
+            droppedModel.collection = null;
+            // Do not insert a module twice
+            if (this.model.collection.containsModule(droppedModel.get('id'))) {
+                console.log(droppedModel);
+                console.log(this.model.collection);
+                var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
+                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
+                    new edu.kit.informatik.studyplan.client.model.system.Notification({
+                        title: LM.getMessage('notInsertTwiceTitle'),
+                        text: LM.getMessage('notInsertTwiceText'),
+                        wasShown: false,
+                        type: "error"
+                    })
+                );
+                return false;
+            }
+        }
+        console.log(droppedModel);
+        console.log(this.model);
+        if (droppedModel.collection!==this.model) {
+            if(droppedModel.collection!==null){
+                droppedModel.collection.remove(droppedModel);
+            }
+            droppedModel.set('semester', this.model.semesterNum);
+            this.model.add(droppedModel);
+            droppedModel.collection = this.model;
+            droppedModel.save();
         }
     },
     /**

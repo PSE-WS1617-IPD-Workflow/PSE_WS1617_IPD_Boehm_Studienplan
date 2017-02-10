@@ -8,11 +8,6 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.Plan");
 
 edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.Plan.prototype}*/{
     urlRoot : API_DOMAIN + "/plans",
-    initialize: function (attributes, options) {
-        this.listenTo(this,"change",function () {
-            console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] plan changed")
-        });
-    },
     parse : function (response, options) {
         "use strict";
         response = response["plan"];

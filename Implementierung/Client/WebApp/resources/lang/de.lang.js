@@ -89,3 +89,12 @@ LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
 //RadioSlider
 LM.messages["de"]["radioSliderMin"] = "min";
 LM.messages["de"]["radioSliderMax"] = "max";
+
+//Plan
+LM.messages["de"]["notInsertTwiceTitle"] = "Module bereits vorhanden";
+LM.messages["de"]["notInsertTwiceText"] = "Module können nur einmal dem Studienplan hinzugefügt werden. Dieses ist bereits im Plan vorhanden!";
+
+LM.messages["de"]["sum"] = "Gesamt: ";
+LM.messages["de"]["modules"] = "Module";
+
+
