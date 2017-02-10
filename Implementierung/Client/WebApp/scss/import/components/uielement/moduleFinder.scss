@@ -23,6 +23,7 @@
     padding: 20px;
     
     .filterButton{
+        cursor: pointer;
         padding-bottom: 3px;
         padding-top: 3px;
         width: 100%;
@@ -33,5 +34,9 @@
         
         border-radius: 5px;
         border-width: 0px;
+        
+        &:hover{
+            background: $bg1;
+        }
     }
 }
