@@ -4,6 +4,13 @@
 
 package edu.kit.informatik.studyplan.server.verification.standard;
 
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleOrientation;
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.PlanLinkModuleConstraintType;
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.PrerequisiteModuleConstraintType;
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.SemesterLinkModuleConstraintType;
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 import edu.kit.informatik.studyplan.server.verification.Verifier;
@@ -16,6 +23,44 @@ import edu.kit.informatik.studyplan.server.verification.Verifier;
 public class StandardVerifier implements Verifier {
 
 	public VerificationResult verify(Plan plan) {
-		return null;
+		VerificationResult res = new VerificationResult();
+		for(ModuleEntry firstModuleEntry : plan.getModuleEntries()) {
+				for(ModuleConstraint constraint: firstModuleEntry.getModule().getConstraints()) {
+					Module secondModuleEntry;
+					if (constraint.getConstraintType() instanceof PrerequisiteModuleConstraintType) {
+						if(plan.contains(secondModuleEntry)) {
+							plan.getEntryFor(getRemainingModuleFromConstraint(constraint, firstModuleEntry))
+						}
+					} else if (constraint.getConstraintType() instanceof PlanLinkModuleConstraintType) {
+						
+					} else if (constraint.getConstraintType() instanceof SemesterLinkModuleConstraintType) {
+					
+					}
+//					Module module = getRemainingModuleFromConstraint(constraint, firstModuleEntry);
+//					ModuleOrientation orientation;
+//					if(module.equals(constraint.getFirstModule())) {
+//						orientation = ModuleOrientation.RIGHT_TO_LEFT;
+//					}
+//					else {
+//						orientation = ModuleOrientation.LEFT_TO_RIGHT;
+//					}
+//					ModuleEntry 
+//				if(constraint.getConstraintType().isValid(firstModuleEntry, new ModuleEntry(getRemainingModuleFromConstraint(constraint, firstModuleEntry)), orientation)) {
+//				}	
+			}
+		}
+		return res;
+		
+	}
+	
+	/**
+	 * 
+	 * @return the module that is on the other end of the constraint
+	 */
+	private Module getRemainingModuleFromConstraint(ModuleConstraint c, ModuleEntry entry) {
+		if (entry.getModule().getIdentifier() == c.getFirstModule().getIdentifier()) {
+			return c.getSecondModule();
+		} else
+			return c.getFirstModule();
 	}
 };

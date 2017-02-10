@@ -20,6 +20,13 @@ public class VerificationResult {
 	private Collection<ModuleConstraint> violations;
 
 	/**
+	 * @param violations the violations to set
+	 */
+	public void addToViolations(ModuleConstraint violation) {
+		this.violations.add(violation);
+	}
+
+	/**
 	 * Gibt die verletzten Modul-Constraints zurück.
 	 * 
 	 * @return die verletzten Modul-Constraints
