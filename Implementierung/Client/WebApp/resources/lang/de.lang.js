@@ -85,3 +85,7 @@ LM.messages["de"]["generationmaxSemester"] = "Wie viele Semester möchtest du ma
 LM.messages["de"][""] = "";
 //ProfilePage
 LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
+
+//RadioSlider
+LM.messages["de"]["radioSliderMin"] = "min";
+LM.messages["de"]["radioSliderMax"] = "max";
