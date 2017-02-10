@@ -4,6 +4,11 @@
 
 package edu.kit.informatik.studyplan.server.verification.standard;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 import edu.kit.informatik.studyplan.server.verification.Verifier;
@@ -14,8 +19,49 @@ import edu.kit.informatik.studyplan.server.verification.Verifier;
  * verifizierende Klasse.
  */
 public class StandardVerifier implements Verifier {
-
+	
+	private VerificationResult result;
+	
+	@Override
 	public VerificationResult verify(Plan plan) {
-		return null;
+		result = new VerificationResult();
+		result.setCorrect(true);
+		findFieldViolations(plan);
+		findRuleGroupViolations(plan);
+		findConstraintViolations(plan);
+		return result;
+	}
+
+	private void findFieldViolations(Plan plan) {
+		HashMap<Field, Double> fieldMap = new HashMap<Field, Double>();
+		//get total credit points per field
+		for (ModuleEntry entry : plan.getModuleEntries()) {
+			Field field = entry.getModule().getField();
+			if (!fieldMap.containsKey(field)) {
+				fieldMap.put(field, entry.getModule().getCreditPoints());
+			} else {
+				double sum = fieldMap.get(field);
+				fieldMap.put(field, sum + entry.getModule().getCreditPoints());
+			}
+		}
+		//field is violated if the actual credit point sum is less than the minimum value
+		for (Entry<Field, Double> entry: fieldMap.entrySet()) {
+			double minEcts = entry.getKey().getMinEcts();
+			double actualEcts = entry.getValue();
+			if (actualEcts < minEcts) {
+				result.getFieldViolations().add(entry.getKey());
+				result.setCorrect(false);
+			}
+		}
+	}
+
+	private void findRuleGroupViolations(Plan plan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void findConstraintViolations(Plan plan) {
+		// TODO Auto-generated method stub
+		
 	}
 };
