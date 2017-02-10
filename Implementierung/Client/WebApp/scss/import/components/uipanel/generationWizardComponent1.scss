@@ -21,16 +21,21 @@ div[class^=generationWizardComponent] .box label {
     margin-left: 0;
 }
 
-.generationWizardComponent3 .box label.minECTSmin {
+.generationWizardComponent3 .box label.minValue {
     margin:0;
     float: left;
 }
 
-.generationWizardComponent3 .box label.minECTSmax {
-    margin:0;
+.generationWizardComponent3 .box label.maxValue {
+    margin: 0 0 ;
     float: right;
-    clear: both;
 }
+
+.generationWizardComponent3 .box p {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 
 .objectiveFunctionDropDown{
     
