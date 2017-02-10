@@ -35,7 +35,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
     * Renders the ModuleFinder whereby 
     *   uiFilters will be put into .profileModuleFinderWrapper
     *   uiModuleCollection will be put into .profileModuleCollectionWrapper
-        * @this {Backbone.View}
+    * @this {Backbone.View}
     * @return *    
     */
     render: function () {

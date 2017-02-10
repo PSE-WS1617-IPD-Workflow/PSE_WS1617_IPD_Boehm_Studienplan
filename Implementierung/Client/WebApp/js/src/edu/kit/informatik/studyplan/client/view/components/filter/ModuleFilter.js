@@ -87,6 +87,10 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
             }
         });
     },
+    /**
+    * @this {Backbone.View}
+    * @return *    
+    */
     render: function () {
         "use strict";
         this.$el.html(this.template());

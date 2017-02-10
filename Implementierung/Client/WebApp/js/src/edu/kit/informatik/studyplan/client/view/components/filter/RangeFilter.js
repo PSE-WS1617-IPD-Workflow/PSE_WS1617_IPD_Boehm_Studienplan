@@ -10,7 +10,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter = edu.kit
     tag: "ul",
     /**
      * @this {Backbone.View}
-     * @return {Backbone.View|null}
+     * @return *
      * @suppress {missingProperties}
      */
     render: function () {
