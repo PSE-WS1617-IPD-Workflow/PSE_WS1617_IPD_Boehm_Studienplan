@@ -5,9 +5,12 @@
 package edu.kit.informatik.studyplan.server.verification.standard;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
@@ -56,12 +59,46 @@ public class StandardVerifier implements Verifier {
 	}
 
 	private void findRuleGroupViolations(Plan plan) {
-		// TODO Auto-generated method stub
-		
+		List<RuleGroup> ruleGroups = plan.getUser().getDiscipline().getRuleGroups();
+		int[] numberOfModules = new int[ruleGroups.size()];
+		for (int i = 0; i < ruleGroups.size(); i++) {
+			List<Module> modules = ruleGroups.get(i).getModules();
+			for (Module module : modules) {
+				if (plan.contains(module)) {
+					numberOfModules[i]++;
+				}
+			}
+		}
+		for (int i = 0; i < ruleGroups.size(); i++) {
+			RuleGroup group = ruleGroups.get(i);
+			if (!isInRange(numberOfModules[i], group)) {
+				result.getRuleGroupViolations().add(group);
+				result.setCorrect(false);
+			}
+		}
 	}
+		
 
 	private void findConstraintViolations(Plan plan) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	private boolean isInRange(int numberOfModules, RuleGroup ruleGroup) {
+		int minNum = ruleGroup.getMinNum();
+		int maxNum = ruleGroup.getMaxNum();
+		if (minNum == -1) {
+			if (maxNum == -1) {
+				return true;
+			} else {
+				return numberOfModules <= maxNum;
+			}
+		} else {
+			if (maxNum == -1) {
+				return numberOfModules >= minNum;
+			} else {
+				return numberOfModules >= minNum && numberOfModules >= maxNum;
+			}
+		}
 	}
 };
