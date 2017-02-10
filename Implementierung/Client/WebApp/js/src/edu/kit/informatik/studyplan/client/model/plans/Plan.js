@@ -22,10 +22,12 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         if(student){
             var passedModules = student.get('passedModules');
         }
+        console.log("[edu.kit.informatik.studyplan.client.model.plans.Plan] parsing plan")
+        console.info(passedModules);
         if(passedModules){
-            passedModules.forEach(function(module){
-                module["passed"] = true;
-                response["modules"].push(module);
+            passedModules.each(function(module){
+                module.set('passed', true);
+                response["modules"].push(module.toJSON({planModule: true}));
             });
         }
         // Initialise an object of type client.model.plans.SemesterCollection and set planId and module
