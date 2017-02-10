@@ -83,7 +83,5 @@ LM.messages["de"][""] = "";
 LM.messages["de"][""] = "";
 LM.messages["de"][""] = "";
 LM.messages["de"][""] = "";
-
-
 //ProfilePage
 LM.messages["de"]["applyFilterButton"] = "Filter anwenden";

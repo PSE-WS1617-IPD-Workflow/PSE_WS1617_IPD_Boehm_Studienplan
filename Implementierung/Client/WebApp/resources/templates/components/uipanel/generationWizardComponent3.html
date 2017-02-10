@@ -13,7 +13,16 @@
     <div class="box">
         {{=obj.LM.getMessage('generationExplanation3')}}
     </div>
+   <div class="rangeSlider">
+        <input class="min-ECTS"type="number" value='{{=obj.filter.get("curValue").min}}' readonly>
+        <input id='max_range_{{=obj.filter.get("id")}}' class="currentMaxRange" value='{{=obj.filter.get("curValue").max}}' readonly>
+    </div>
     <div>
+        
+        
+    </div>
+    <div>
+        
         
     </div>
 </div>
