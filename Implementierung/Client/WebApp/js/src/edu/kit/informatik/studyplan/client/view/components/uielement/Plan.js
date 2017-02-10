@@ -11,7 +11,12 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
     semesterElements : [],
     initialize: function (options) {
         this.model = options.plan;
+        this.listenTo(this.model, "change", this.reload);
+        this.reload();
+    },
+    reload: function () {
         var semesterCol = this.model.get('semesterCollection');
+        this.semesterElements = [];
         semesterCol.each((function (semester) {
             this.semesterElements.push(
                 new edu.kit.informatik.studyplan.client.view.components.uielement.Semester({
@@ -21,7 +26,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
                 })
             );
         }).bind(this));
-        this.listenTo(this.model, "change", this.render);
+        this.render();
     },
     render: function () {
         this.$el.html(this.template({

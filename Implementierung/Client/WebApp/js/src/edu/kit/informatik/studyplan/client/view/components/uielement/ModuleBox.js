@@ -52,17 +52,19 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
             isDraggable : this.isDraggable,
             isPreferencable : this.isPreferencable
         }));
-        this.$el.draggable({
-            scroll: true,
-            opacity: 0.7,
-            helper: "clone",
-            appendTo: 'body',
-            containment: 'window',
-            start: function (event, ui){
-                ui.helper.data("viewObject", this);
-                ui.helper.addClass("grabbing");
-            }.bind(this)
-        });
+        if(this.isDraggable){
+            this.$el.draggable({
+                scroll: true,
+                opacity: 0.7,
+                helper: "clone",
+                appendTo: 'body',
+                containment: 'window',
+                start: function (event, ui){
+                    ui.helper.data("viewObject", this);
+                    ui.helper.addClass("grabbing");
+                }.bind(this)
+            });
+        }
         this.delegateEvents();
     }
 });
