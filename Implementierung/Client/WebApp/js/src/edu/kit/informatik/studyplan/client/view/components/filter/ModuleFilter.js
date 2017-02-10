@@ -12,7 +12,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     filterCollection: null,
     searchCollection: null,
     events: {
-        "change": "onChange";
+        "change": "onChange"
     },
     initialize: function (options){
         
