@@ -46,6 +46,21 @@ edu.kit.informatik.studyplan.client.storage.OAuthSync = function (method, model,
         notificationCollection.add(notification);
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
         if(errorCallback) errorCallback.call(options.context, xhr, textStatus, errorThrown)
+        console.log("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Status code:"+xhr.status);
+        if (xhr.status===401) {
+            edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().set('access_token', undefined);
+            edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().save();
+            edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/login", {trigger: true});
+            edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                .add(
+                    new edu.kit.informatik.studyplan.client.model.system.Notification({
+                            title: LM.getMessage("realAuthEndTitle"),
+                            text: LM.getMessage("realAuthEndText"),
+                            wasShown: false,
+                            type: "error"
+                    })
+                );
+        }
     }
     return Backbone.sync(method, model, options);
 };

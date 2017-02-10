@@ -1,9 +1,14 @@
-<ul id="moduleBox">
-    <h3>Subject</h3>
-    <p>Lecturer</p>
-    <p>ECTS</p>
+<h3 class="moduleTitle">{{=obj.module.get('name')}}</h3>
+<p>{{=obj.module.get('lecturer')}}</p>
+<p>{{=obj.module.get('creditpoints')}} ECTS</p>
+<div class="buttons">
+    {{ if(obj.isRemovable) { }}
+    <button class="deleteButton">delete</button>
+    {{ } }}
+    {{ if (obj.isPreferencable) { }}
     <div id="preferenceButtonBox">
       <button class="preferenceButtonUp">+</button>
       <button class="preferenceButtonDown">-</button>
     </div>
-</ul>
+    {{ } }}
+</div>

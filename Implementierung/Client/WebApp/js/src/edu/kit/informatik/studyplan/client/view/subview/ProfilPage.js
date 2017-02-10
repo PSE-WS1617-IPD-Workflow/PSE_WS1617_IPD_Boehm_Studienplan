@@ -33,7 +33,7 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
     render: function () {
         "use strict";
         this.$el.html(this.template());
-        var finder = this.$el.find(".modulefinder");
+        var finder = this.$el.find(".profileEditModuleFinderWrapper");
         
         this.moduleFinder.render();
         finder.append(this.moduleFinder.$el);

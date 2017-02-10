@@ -8,7 +8,11 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.Plan");
 
 edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.Plan.prototype}*/{
     urlRoot : API_DOMAIN + "/plans",
-    
+    initialize: function (attributes, options) {
+        this.listenTo(this,"change",function () {
+            console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] plan changed")
+        });
+    },
     parse : function (response, options) {
         "use strict";
         response = response["plan"];
@@ -30,7 +34,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
             });
         }
         // Initialise an object of type client.model.plans.SemesterCollection and set planId and module
-        response.semesterCollection = new edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({planId : response.id, modules : response.modules}, {parse : true});
+        response.semesterCollection = new edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({planId : response.id, modules : response.modules}, {parse : true, plan: this});
         response.verificationResult = new edu.kit.informatik.studyplan.client.model.plans.VerificationResult({
             plan: {
                 id: response["id"],
@@ -102,5 +106,8 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
             id: this.get('id'),
             parent: this
         });
+    },
+    getEctsSum: function () {
+        return this.get('semesterCollection').getEctsSum();
     }
 });

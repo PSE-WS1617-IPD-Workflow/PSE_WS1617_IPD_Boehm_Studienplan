@@ -1,0 +1,19 @@
+.profileTextFilter{
+    padding: 2px 10px;
+    border-radius: 5px;
+    border:1px solid $boxBorderColor;
+    
+    display: inline-block;
+    background-color: white;
+    width: 100%;
+    
+    margin-top: 5px;
+    .profilePageTextFilterInput{
+        width: 100%;
+        font: $font1;
+        font-size: $searchBarSize;
+        font-style: normal;
+        border:none;
+        border-radius: 5px;
+    }
+}

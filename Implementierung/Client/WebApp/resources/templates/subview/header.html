@@ -12,7 +12,7 @@
                 {{=obj.LM.getMessage('logout')}}
             </a>
         {{ } else { }}
-            {{=obj.LM.getMessage('notLoggedIn')}}, <a href="{{=API_DOMAIN}}/auth/login?api_key={{=API_KEY}}&scope={{=API_SCOPE}}">
+            {{=obj.LM.getMessage('notLoggedIn')}}, <a href="{{=obj.sessionInformation.getLoginUrl()}}">
                 {{=obj.LM.getMessage('login')}}
             </a>
         {{ } }}

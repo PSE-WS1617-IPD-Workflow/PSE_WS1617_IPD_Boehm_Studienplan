@@ -54,3 +54,34 @@ LM.messages["de"]["verificationFailTitle"] = "Verifikation fehlgeschlagen!";
 LM.messages["de"]["verificationFailText"] = "Der Studienplan wurde überprüft und ist nicht korrekt!";
 LM.messages["de"]["changeSavedTitle"] = "Änderung gespeichert";
 LM.messages["de"]["changeSavedText"] = "Die Änderung wurde erfolgreich gespeichert";
+
+LM.messages["de"]["invalidStateTitle"] = "Authentifizierungsfehler";
+LM.messages["de"]["invalidStateText"] = "Bitte versuchen Sie die Anmeldung erneut!";
+LM.messages["de"]["authErrorinvalid_requestTitle"] = "Authentifizierungsfehler";
+LM.messages["de"]["authErrorinvalid_requestText"] = "Es ist zu einem Systemfehler gekommen. Nitte kontaktieren Sie den Administrator!";
+LM.messages["de"]["authErrorunsupported_response_typeTitle"] = "Authentifizierungsfehler";
+LM.messages["de"]["authErrorunsupported_response_typeText"] = "Es ist zu einem Systemfehler gekommen. Nitte kontaktieren Sie den Administrator!";
+LM.messages["de"]["authErrorinvalid_scopeTitle"] = "Authentifizierungsfehler";
+LM.messages["de"]["authErrorinvalid_scopeText"] = "Es ist zu einem Systemfehler gekommen. Nitte kontaktieren Sie den Administrator!";
+LM.messages["de"]["authErrorserver_errorTitle"] = "Authentifizierungsfehler";
+LM.messages["de"]["authErrorserver_errorText"] = "Es ist zu einem Systemfehler gekommen. Nitte kontaktieren Sie den Administrator!";
+LM.messages["de"]["authEndTitle"] = "ACHTUNG: Ende der Session!";
+LM.messages["de"]["authEndText"] = "Bitte beachten Sie, dass Sie in weniger als 60 Sekunden ausgeloggt werden!";
+LM.messages["de"]["realAuthEndTitle"] = "Sie wurden ausgeloggt";
+LM.messages["de"]["realAuthEndText"] = "Bitte loggen Sie sich erneut ein.";
+LM.messages["de"]["logoutSuccessfulTitle"] = "Logout erfolgreich";
+LM.messages["de"]["logoutSuccessfulText"] = "";
+LM.messages["de"]["loginSuccessfulTitle"] = "Login erfolgreich";
+LM.messages["de"]["loginSuccessfulText"] = "";
+//GenerationWizard
+LM.messages["de"]["generationTitle"] = "Studienplan-Vorschlag erstellen";
+LM.messages["de"]["generationExplanation1"] = "Wir benötigen einige Hinweise über deine Studienziele, um dir einen Studienplan vorschlagen zu können.";
+LM.messages["de"]["generationExplanation2"] = "Du kannst mit dem Pfeil nach oben und dem Pfeil nach unten bewerten, welche Veranstaltungen dir gut, und welche eher schlecht gefallen.";
+LM.messages["de"]["generationExplanation3"] = "Hier kannst du noch weitere Einschränkungen für deinen Studienplan machen.";
+LM.messages["de"]["generationMinEctsQuestion"] = "Wie viele ECTS-Punkte möchtest du mindestestens pro Semester erreichen?";
+LM.messages["de"]["generationMaxEctsQuestion"] = "Wie viele ECTS-Punkte möchtest du maximal pro Semester erreichen?";
+LM.messages["de"]["generationminSemester"] = "Wie viele Semester möchtest du mindestens studieren?";
+LM.messages["de"]["generationmaxSemester"] = "Wie viele Semester möchtest du maximal studieren?";
+LM.messages["de"][""] = "";
+//ProfilePage
+LM.messages["de"]["applyFilterButton"] = "Filter anwenden";

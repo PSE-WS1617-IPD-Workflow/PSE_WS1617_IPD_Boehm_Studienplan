@@ -1,0 +1,27 @@
+.profileModuleCollectionWrapper{
+}
+.profileModuleFinderWrapper{
+    position:relative;
+    top:0px;
+    right:0px;
+    width: 100%;
+    box-sizing: border-box;
+
+    color:$boxColor;
+    background-color:$boxBgColor;
+    border-bottom:1px solid $boxBorderColor;
+    padding: 20px;
+    
+    .filterButton{
+        padding-bottom: 3px;
+        padding-top: 3px;
+        width: 100%;
+        font-size: $searchButtonSize;
+        font: $font1;
+        background-color: $pink1;
+        //background-color: deeppink;
+        
+        border-radius: 5px;
+        border-width: 0px;
+    }
+}

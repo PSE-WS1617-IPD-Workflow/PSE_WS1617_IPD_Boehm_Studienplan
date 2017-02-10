@@ -1,0 +1,38 @@
+.profileFilterWrapper{
+    z-index: 10000;
+    margin-right: 5px;
+    font: $font1;
+    font-size: $regularSize;
+    float: left;
+    background-color: $boxBorderColor;
+    border:2px solid $boxBorderColor;
+    display: inline-block;
+    padding: 3px 5px;
+    border-radius: 5px;
+    &:hover{
+        border-color: $bg2;
+        border-bottom-width: 2px;
+    }
+}
+.profileFilterWrapperSettings{
+    //visibility: hidden;
+    &Visible{
+        visibility: visible;
+    }
+    /*position: absolute;
+    top: 25px;
+    z-index: 1000;
+    left: 0px;
+    */
+    
+    padding: 5px 10px;
+    border-radius: 5px;
+    border:1px solid $boxBorderColor;
+    
+    display: inline-block;
+    background-color: white;
+    width: 100%;
+}
+.filterComponent{
+    position: relative;
+}
