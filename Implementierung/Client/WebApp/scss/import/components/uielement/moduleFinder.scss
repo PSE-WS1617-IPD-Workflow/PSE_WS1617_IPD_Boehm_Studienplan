@@ -1,3 +1,13 @@
+.moduleFinderWrapper{
+    height:100%;
+    box-sizing: border-box;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+     -webkit-flex-direction: column;
+}
 .profileModuleCollectionWrapper{
 }
 .profileModuleFinderWrapper{
@@ -18,7 +28,7 @@
         width: 100%;
         font-size: $searchButtonSize;
         font: $font1;
-        background-color: $pink1;
+        background-color: $bg2;
         //background-color: deeppink;
         
         border-radius: 5px;

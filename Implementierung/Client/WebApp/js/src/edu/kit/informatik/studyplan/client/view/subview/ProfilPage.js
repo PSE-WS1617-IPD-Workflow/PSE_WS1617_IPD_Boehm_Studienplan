@@ -8,11 +8,13 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/subview/profilPage.html"),
     
     moduleFinder: null,
-    
+    events: {
+      "click button.mainPageNavigation": "navigateToMainPage"  
+    },    
     initialize: function (){
         this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
-            isSidebar: true,
-            isPreferencable: false,
+            isDraggable: true,
+            isPreferencable: false
         });
     },
     
@@ -29,7 +31,10 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
         function (module) {
             "use strict";
     },
-    
+    /**
+    * @this {Backbone.View}
+    * @return *    
+    */
     render: function () {
         "use strict";
         this.$el.html(this.template());
@@ -45,5 +50,8 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
     */
     hideModuleDetails: function () {
             "use strict";
+    },
+    navigateToMainPage: function () {
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/",{trigger:true});
     }
 });

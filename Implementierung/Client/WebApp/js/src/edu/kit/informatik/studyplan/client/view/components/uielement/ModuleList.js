@@ -8,6 +8,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Modu
 edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList.prototype} */{
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/moduleList.html"),
     moduleCollection: null,
+    tagName: "ul",
     moduleBoxes: null,
     initialize: function(options){
         "use strict";
@@ -23,6 +24,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
                                 name: "Meistern von lebensgefährliche n Situationen"
                             }],
                         semester: 5,
+                        creditpoints: 18,
                         "cycle-type": "Mittsommer",
                         lecturer: "Hagrid",
                         preference: 1,
@@ -50,6 +52,58 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
                                 name: "Mord und Heilung"
                             }],
                         semester: 5,
+                        creditpoints:700,
+                        "cycle-type": "Mittsommer",
+                        lecturer: "Snape",
+                        preference: "0",
+                        description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
+                        constraints: [
+                        ]
+                    },
+                    {
+                        id : 2,
+                        name : "Zaubertränke 2",
+                        categories:
+                                [{
+                                id: 13,
+                                name: "Mord und Heilung"
+                            }],
+                        semester: 5,
+                        creditpoints:700,
+                        "cycle-type": "Mittsommer",
+                        lecturer: "Snape",
+                        preference: "0",
+                        description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
+                        constraints: [
+                        ]
+                    },
+                    {
+                        id : 3,
+                        name : "Zaubertränke 3",
+                        categories:
+                                [{
+                                id: 13,
+                                name: "Mord und Heilung"
+                            }],
+                        semester: 5,
+                        creditpoints:700,
+                        "cycle-type": "Mittsommer",
+                        lecturer: "Snape",
+                        preference: "0",
+                        description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
+                        constraints: [
+                        ]
+                    },
+                    {
+                        id : 4,
+                        name : "Zaubertränke 4",
+                        categories:
+                                [{
+                                id: 13,
+                                name: "Mord und Heilung"
+                            }],
+                        semester: 5,
+                        creditpoints:700,
                         "cycle-type": "Mittsommer",
                         lecturer: "Snape",
                         preference: "0",
@@ -59,6 +113,12 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
                     }
                 ]
             };
+        this.isDraggable = options.isDraggable;
+        this.isRemovable = options.isRemovable;
+        this.isPreferencable = options.isPreferencable;
+        
+        
+        
         this.moduleCollection = new edu.kit.informatik.studyplan.client.model.module.ModuleCollection(json,{parse:true});
         
         this.moduleBoxes = [];
@@ -67,9 +127,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
             var tmpModuleBox = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
                 module: module,
                 //TODO: einstellbar
-                isRemovable: false,
-                isDraggable: true,
-                isPreferencable: true,
+                isRemovable: options.isRemovable,
+                isDraggable: options.isDraggable,
+                isPreferencable: options.isPreferencable,
             });
             self.moduleBoxes.push(tmpModuleBox);
         });

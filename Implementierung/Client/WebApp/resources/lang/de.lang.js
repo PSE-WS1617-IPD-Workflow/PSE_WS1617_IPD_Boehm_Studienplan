@@ -78,10 +78,21 @@ LM.messages["de"]["generationTitle"] = "Studienplan-Vorschlag erstellen";
 LM.messages["de"]["generationExplanation1"] = "Wir benötigen einige Hinweise über deine Studienziele, um dir einen Studienplan vorschlagen zu können.";
 LM.messages["de"]["generationExplanation2"] = "Du kannst mit dem Pfeil nach oben und dem Pfeil nach unten bewerten, welche Veranstaltungen dir gut, und welche eher schlecht gefallen.";
 LM.messages["de"]["generationExplanation3"] = "Hier kannst du noch weitere Einschränkungen für deinen Studienplan machen.";
-LM.messages["de"]["generationMinEctsQuestion"] = "Wie viele ECTS-Punkte möchtest du mindestestens pro Semester erreichen?";
-LM.messages["de"]["generationMaxEctsQuestion"] = "Wie viele ECTS-Punkte möchtest du maximal pro Semester erreichen?";
-LM.messages["de"]["generationminSemester"] = "Wie viele Semester möchtest du mindestens studieren?";
-LM.messages["de"]["generationmaxSemester"] = "Wie viele Semester möchtest du maximal studieren?";
-LM.messages["de"][""] = "";
+LM.messages["de"]["generationEctsQuestion"] = "Wie viele ECTS-Punkte möchtest du mindestestens und maximal pro Semester erreichen?";
+LM.messages["de"]["generationSemesterQuestion"] = "Wie viele Semester möchtest du mindestens und maximal studieren?";
+LM.messages["de"]["generationChooseFunction"] = "Studienziel";
 //ProfilePage
 LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
+
+//RadioSlider
+LM.messages["de"]["radioSliderMin"] = "min";
+LM.messages["de"]["radioSliderMax"] = "max";
+
+//Plan
+LM.messages["de"]["notInsertTwiceTitle"] = "Module bereits vorhanden";
+LM.messages["de"]["notInsertTwiceText"] = "Module können nur einmal dem Studienplan hinzugefügt werden. Dieses ist bereits im Plan vorhanden!";
+
+LM.messages["de"]["sum"] = "Gesamt: ";
+LM.messages["de"]["modules"] = "Module";
+
+

@@ -3,32 +3,21 @@
         <h1>{{=obj.LM.getMessage('generationTitle')}}</h1>
     </div>
     <div class="box">
-        {{=obj.LM.getMessage('generationExplanation3')}}
+        <p>{{=obj.LM.getMessage('generationExplanation3')}}</p>
     </div>
-    <div>
-        <label>{{=obj.LM.getMessage('generationMinEctsQuestion')}}</label>
-        <label class="minECTSmin">min: 0 </label>
-        <label class="minECTSmax">max: 55</label>
-        <div class="rangeSlider1"></div>
-    </div>
-    <div>
-        <label>{{=obj.LM.getMessage('generationMaxEctsQuestion')}}</label>
-        <label class="maxECTSmin">min: 5 </label>
-        <label class="maxECTSmax">max: 60</label>
-        <div class="rangeSlider2"></div>
+    <div class="box">
+        <div>
+            <label class="label-center">{{=obj.LM.getMessage('generationEctsQuestion')}}</label>
+            <label class="minECTSmin">min: 0 </label>
+            <label class="minECTSmax">max: 60</label>
+            <div class="rangeSlider1"></div>
+        </div>
         
-    </div>
-    <div>
-        <label>{{=obj.LM.getMessage('generationminSemester')}}</label>
-        <label class="maxECTSmin">min: 2 </label>
-        <label class="maxECTSmax">max: 20</label>
-        <div class="rangeSlider3"></div>    
-        
-    </div>
-    <div>
-        <label>{{=obj.LM.getMessage('generationmaxSemester')}}</label>
-        <label class="maxECTSmin">min: 2 </label>
-        <label class="maxECTSmax">max: 20</label>
-        <div class="rangeSlider4"></div>    
+        <div>
+            <label class="label-center">{{=obj.LM.getMessage('generationSemesterQuestion')}}</label>
+            <label class="maxECTSmin">min: 2 </label>
+            <label class="maxECTSmax">max: 20</label>
+            <div class="rangeSlider2"></div>    
+        </div>
     </div>
 </div>

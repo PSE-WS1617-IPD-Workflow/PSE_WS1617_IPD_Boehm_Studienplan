@@ -11,11 +11,19 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     filterComponents: null,
     filterCollection: null,
     searchCollection: null,
+    events: {
+        "change": "onChange"
+    },
     initialize: function (options){
         
         //TODO: enable fetch again
-        //this.filterCollection = new edu.kit.informatik.studyplan.client.model.system.FilterCollection();
-        //this.filterCollection.fetch();
+        /*edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+        this.filterCollection = new edu.kit.informatik.studyplan.client.model.system.FilterCollection();
+        this.filterCollection.fetch({
+            success: function () {
+                edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+            }
+        });*/
         this.filterCollection = new edu.kit.informatik.studyplan.client.model.system.FilterCollection(   {                  filters : [{
                     id : 0,
                     name : "Test",
@@ -87,6 +95,10 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
             }
         });
     },
+    /**
+    * @this {Backbone.View}
+    * @return *    
+    */
     render: function () {
         "use strict";
         this.$el.html(this.template());
@@ -102,8 +114,9 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     /**
     *
     */
-    onSearch: function () {
+    onChange: function () {
         "use strict";
+        this.render();
     },
     buildParam: function () {
     },
