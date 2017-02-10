@@ -1,6 +1,7 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.system.ObjectiveFunctionCollection");
 /**
  * @constructor
+ * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.model.system.OAuthCollection}
  */
 
