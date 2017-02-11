@@ -11,6 +11,10 @@
     background-color: $boxBgColor;
     color:$boxColor;
     
+    &.invalid{
+        border: 1px solid $error1;
+        background-color:lighten($error1, 60%);
+    }
     h3.moduleTitle{
         max-width:144px;
         float:left;

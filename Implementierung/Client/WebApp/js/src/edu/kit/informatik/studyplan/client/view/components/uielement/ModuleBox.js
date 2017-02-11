@@ -44,7 +44,11 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     */
     setRedBorder:
         function (setBorder) {
-            "use strict";
+            if(setBorder){
+                this.$el.addClass("invalid");
+            } else {
+                this.$el.removeClass("invalid")
+            }
         },
     
     /**

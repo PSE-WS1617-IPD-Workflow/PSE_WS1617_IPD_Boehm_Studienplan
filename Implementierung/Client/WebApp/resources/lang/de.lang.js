@@ -81,13 +81,13 @@ LM.messages["de"]["generationExplanation3"] = "Hier kannst du noch weitere Einsc
 LM.messages["de"]["generationEctsQuestion"] = "Wie viele ECTS-Punkte möchtest du mindestestens und maximal pro Semester erreichen?";
 LM.messages["de"]["generationSemesterQuestion"] = "Wie viele Semester möchtest du mindestens und maximal studieren?";
 LM.messages["de"]["generationChooseFunction"] = "Studienziel:";
-//ProfilePage
-LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
-LM.messages["de"]["mainMenuButton"] = "Hauptmenü";
+
 
 //RadioSlider
 LM.messages["de"]["radioSliderMin"] = "min";
 LM.messages["de"]["radioSliderMax"] = "max";
+
+
 
 //Plan
 LM.messages["de"]["notInsertTwiceTitle"] = "Module bereits vorhanden";
@@ -111,5 +111,20 @@ LM.messages["de"]["savePlan"] = "Speichern";
 LM.messages["de"]["profileSavedTitle"] = "Profil gespeichert";
 LM.messages["de"]["profileSavedText"] = "Das Profil wurde erfolgreich gespeichert.";
 
+
+LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
+LM.messages["de"]["mainMenuButton"] = "Hauptmenü";
+
+LM.messages["de"]["deleteUser"] = "Konto Löschen";
+LM.messages["de"]["deleteUserPrompt"] = "Profil wirklich löschen?";
+LM.messages["de"]["deleteUserSuccess"] = "Erfolgreich! Thank you for traveling with StudyPlan!";
+
 // Not Found
 LM.messages["de"]["notFoundTitle"] = "Diese Seite existiert nicht!";
+
+// Proposed plan
+LM.messages["de"]["newNameRequest"] = "Wie soll der neue Plan heißen?";
+LM.messages["de"]["deleteProposal"] = "Plan verwerfen";
+LM.messages["de"]["saveProposal"] = "Plan ersetzen";
+LM.messages["de"]["saveAsProposal"] = "Unter anderem Namen speichern";
+LM.messages["de"]["proposal"] = "Vorschlag";
