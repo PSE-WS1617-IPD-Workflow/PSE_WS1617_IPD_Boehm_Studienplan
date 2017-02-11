@@ -1,7 +1,6 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
 import edu.kit.informatik.studyplan.server.pluginmanager.VerificationManager;
-import edu.kit.informatik.studyplan.server.rest.JSONObject;
 
 /**
  * Diese Klasse repräsentiert die Planverifizierer-Ressource.
@@ -30,16 +29,6 @@ public class PlanVerifierResource {
 		return verificationManager;
 	}
 
-	/**
-	 * GET-Anfrage: Verifiziert den Planmit den gegebenen ID, gibt den
-	 * verifizierten Plan zurück und speichert ihn in der Datenbank.
-	 * 
-	 * @param planID
-	 *            ID des plans.
-	 * @return den verifizierten Plan als JSON Objekt.
-	 */
-	public JSONObject verifyPlan(String planID) {
-		return null;
-	}
+
 
 }

@@ -1,8 +1,9 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 import javax.ws.rs.GET;
@@ -18,6 +19,6 @@ public class DisciplinesResource {
     @Produces(MediaType.APPLICATION_JSON)
     @JsonView(StudentResource.Views.DisciplineClass.class)
     public Map<String, List<Discipline>> getAllDisciplines() {
-        return SimpleJsonResponse.build("disciplines", ModuleDaoFactory.getModuleDao().getDisciplines());
+        return SimpleJsonResponse.build("disciplines", Utils.withModuleDao(ModuleDao::getDisciplines));
     }
 }
