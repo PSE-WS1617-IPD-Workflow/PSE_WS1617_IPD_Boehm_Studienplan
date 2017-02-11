@@ -38,7 +38,6 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.userdata.*;
-import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
 import edu.kit.informatik.studyplan.server.pluginmanager.VerificationManager;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
