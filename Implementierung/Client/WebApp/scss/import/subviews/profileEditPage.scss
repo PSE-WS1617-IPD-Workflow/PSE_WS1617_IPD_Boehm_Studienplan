@@ -1,5 +1,7 @@
 .planHeadBar{
-    z-index: 0;
+    .homeSymbol{
+        font-size: $subtitleSize;
+    }
     .mainPageNavigation{
         height:30px;
         box-sizing: border-box;
@@ -8,6 +10,7 @@
         color:$boxColor;
         border:none;
         background-color: transparent;
+        cursor: pointer;
     }
 }
 .profileEditHeadWrapper{

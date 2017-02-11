@@ -15,6 +15,7 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
     collection: null,
     initialize: function (attributes, options) {
         this.collection = options.collection;
+        this.listenTo(this, "destroy", this.onChange);
         this.listenTo(this, "change", this.onChange);
         this.listenTo(this, "all", this.onChange);
         this.listenTo(this, "add", this.onChange);
@@ -24,7 +25,7 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
         this.collection.trigger("change");
     },
     url : function () {
-        return API_DOMAIN + "plans/"+this.planId+"/modules"
+        return API_DOMAIN + "/plans/"+this.planId+"/modules"
     },
     parse : function (response, options) {
         "use strict";
