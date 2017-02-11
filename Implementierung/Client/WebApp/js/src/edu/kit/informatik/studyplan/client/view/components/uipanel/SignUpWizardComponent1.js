@@ -12,7 +12,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     disciplines: null,
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uipanel/signUpWizardComponent1.html"),
     events: {
-        "change select.objectiveFunctionDropDown": "onChange"
+        "change select.beginningdateDropDown": "onChange1",
+        "change select.disciplineDropDown": "onChange2"
     },
     date: null,
     
@@ -73,25 +74,44 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     /**
     *
     */
-    onChange:
+    onChange1:
         function () {
             "use strict";
+            
+            this.student.set('studyStartYear', this.beginningArray[(this.$el.find("select.beginningdateDropDown").val())]['year']);
+            this.student.set('studyStartCycle', this.beginningArray[this.$el.find("select.beginningdateDropDown").val()]['term']);
+            
+        },
+    
+    /**
+    *
+    */
+    onChange2:
+        function () {
+            "use strict";
+            this.student.set('discipline', this.disciplines.get(this.$el.find("select.disciplineDropDown").val()));            
         },
     
     /**
     *
     */
     beginning:
-        function (year) {
+        function (curyear) {
             "use strict";
             for (var i = 0; i <= 10; i++){
-                var temp = year-i;
-                this.beginningArray.push(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("winterterm")+ temp);
-                this.beginningArray.push(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("summerterm")+ temp);
+                var temp = curyear-i;
+                this.beginningArray.push({
+                    name: (edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("winterterm")+ temp),
+                    year: curyear-i,
+                    term: "WT"
+                });
+                this.beginningArray.push({
+                    name: (edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("summerterm")+ temp),
+                    year: curyear-i,
+                    term: "ST"
+            });
                 console.log(this.beginningArray[i]);
             }
-            //speichern: WT 2017
-            //speichern: ST 2017
         }
 
 });
