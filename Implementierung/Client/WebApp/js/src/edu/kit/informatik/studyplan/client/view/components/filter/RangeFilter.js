@@ -22,11 +22,10 @@ edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter = edu.kit
             max: this.filter.get("specification").max,
             values: [ this.filter.get("curValue").min, this.filter.get("curValue").max ],
             slide: this.updateVal.bind(this)
-        });
-        
-      this.delegateEvents();
-        return this;
+        }); 
+        this.delegateEvents();
     },
+    
     updateVal: function (event, ui) {
         this.filter.get("curValue").min = ui.values[ 0 ];
         this.filter.get("curValue").max = ui.values[ 1 ];

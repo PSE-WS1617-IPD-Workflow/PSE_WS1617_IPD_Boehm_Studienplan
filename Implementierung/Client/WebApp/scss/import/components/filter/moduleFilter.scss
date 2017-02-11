@@ -1,3 +1,22 @@
+.collectiveFilterSettings{
+    clear: both;
+}
+.filterMenuButton{
+    cursor: pointer;
+    margin-right: 5px;
+    font: $font1;
+    font-size: $regularSize;
+    float: left;
+    background-color: $boxBorderColor;
+    border:2px solid $boxBorderColor;
+    display: inline-block;
+    padding: 3px 5px;
+    border-radius: 5px;
+    &:hover{
+        border-color: $bg2;
+        border-bottom-width: 2px;
+    }
+}
 .profileModuleFilterWrapper{
     margin-bottom: 20px;
     position: relative;
