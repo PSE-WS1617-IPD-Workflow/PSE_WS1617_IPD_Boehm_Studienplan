@@ -3,17 +3,20 @@
     border-radius: 5px;
     border:1px solid $boxBorderColor;
     
+    bottom: 0px;
     display: inline-block;
     background-color: white;
-    width: 100%;
+    width: 90%;
     
-    margin-top: 5px;
-    .profilePageTextFilterInput{
+    margin-top: 15px;
+
+    .textFilterInput{
         width: 100%;
         font: $font1;
         font-size: $searchBarSize;
         font-style: normal;
         border:none;
+        background-color: transparent;
         border-radius: 5px;
     }
     .searchIcon{
