@@ -21,7 +21,8 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
             isSidebar:true,
             isPreferencable:true,
             isDraggable: true,
-            isPlaced:this.model.containsModule
+            isPlaced:this.model.containsModule,
+            planId: this.model.id
         })
         this.planView = new edu.kit.informatik.studyplan.client.view.components.uielement.Plan({
             plan: this.model

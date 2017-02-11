@@ -301,10 +301,11 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             showProfile: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] showProfile");
                 this.showLoading();
-                var filter = new edu.kit.informatik.studyplan.client.model.system.FilterCollection({
-                    filters: []
-                }, {parse: true});
-                this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.ProfilPage, {});
+                var student = new edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
+                var plan = student.get('passedModules').toPlan();
+                this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.ProfilPage, {
+                    plan: plan
+                });
                 this.view.render();
                 // Do stuff heresignUpWizard
                 this.hideLoading();

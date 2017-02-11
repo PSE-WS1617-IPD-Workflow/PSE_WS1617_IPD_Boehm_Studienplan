@@ -1,0 +1,15 @@
+.planHeadBar{
+    .homeSymbol{
+        font-size: $subtitleSize;
+    }
+    .mainPageNavigation{
+        height:30px;
+        box-sizing: border-box;
+        padding: 0px 5px 5px 5px;
+        margin:0px 0px 0px 20px;
+        color:$boxColor;
+        border:none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}

@@ -45,12 +45,14 @@ edu.kit.informatik.studyplan.client.model.module.Module = edu.kit.informatik.stu
     toJSON : function (options) {
         if(options.planModule){
             return {
-                id : this.get('id'),
-                semester : this.get('semester'),
-                name : this.get('name'),
-                creditpoints: this.get('creditpoints'),
-                lecturer: this.get('lecturer'),
-                passed: this.get('passed')
+                module: {
+                    id : this.get('id'),
+                    semester : this.get('semester'),
+                    name : this.get('name'),
+                    creditpoints: this.get('creditpoints'),
+                    lecturer: this.get('lecturer'),
+                    passed: this.get('passed')
+                }
             }
         }
         return {

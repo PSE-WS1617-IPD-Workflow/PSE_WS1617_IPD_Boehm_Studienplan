@@ -39,6 +39,15 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
         //console.log(response["modules"]);
         return edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype.parse.apply(this,[response,options]);
     },
+    toJSON: function (options) {
+        var modules = [];
+        this.each(function (curMod) {
+            modules.push(curMod.toJSON(options)["module"])
+        });
+        return {
+            modules: modules
+        }
+    },
     getEctsSum: function () {
         var sum = 0;
         this.each(function (module) {

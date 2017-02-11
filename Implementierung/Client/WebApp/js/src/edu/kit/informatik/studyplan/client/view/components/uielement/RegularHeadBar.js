@@ -11,7 +11,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
     events: {
         "change #curPlanName": "rename",
         "click #generatePlan": "generate",
-        "click #verifyPlan": "verify"
+        "click #verifyPlan": "verify",
+        "click button.mainPageNavigation": "goHome"
     },
     initialize: function (options) {
         "use strict";
@@ -30,6 +31,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
         "use strict";
         console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar] generate");
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("plans/"+this.model.get('id')+"/generate", {trigger: true});
+    },
+    goHome: function () {
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/", {trigger: true})
     },
     /**
     *

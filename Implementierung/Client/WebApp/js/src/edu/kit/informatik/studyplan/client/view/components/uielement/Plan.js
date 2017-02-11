@@ -9,10 +9,13 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/plan.html"),
     model: null,
     semesterElements : [],
+    isPreferencable: true,
+    isPassedPlan: false,
     initialize: function (options) {
         this.model = options.plan;
+        this.isPreferencable = (typeof options.isPreferencable !== "undefined") ? options.isPreferencable : this.isPreferencable;
+        this.isPassedPlan = (typeof options.isPassedPlan !== "undefined") ? options.isPassedPlan : this.isPassedPlan;
         this.listenTo(this.model, "change", this.reload);
-        console.log("HIEEEEEEEEEEEEEEEEER");
         
         this.reload();
     },
@@ -24,7 +27,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
                 new edu.kit.informatik.studyplan.client.view.components.uielement.Semester({
                     semester: semester,
                     isRemovable: true,
-                    isPreferencable: true
+                    isPreferencable: this.isPreferencable,
+                    isPassedPlan: this.isPassedPlan
                 })
             );
         }).bind(this));
@@ -43,15 +47,13 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
     /**
     *
     */
-    addSemester:
-        function () {
+    addSemester: function () {
             "use strict";
-        },
+    },
     /**
     *
     */
-    onChange:
-        function () {
-            "use strict";
-        }
+    onChange: function () {
+        "use strict";
+    }
 });

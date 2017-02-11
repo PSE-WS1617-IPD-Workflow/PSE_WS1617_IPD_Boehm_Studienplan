@@ -13,6 +13,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
     initialize: function(options){
         "use strict";
         //TODO: fetchModuleCollection
+        // TODO: Verknüfpung zu Module Collection?
         var json = {
                 modules: [
                     {
@@ -115,11 +116,15 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
             };
         this.isDraggable = options.isDraggable;
         this.isRemovable = options.isRemovable;
+        this.planId = options.planId;
         this.isPreferencable = options.isPreferencable;
         
         
         
-        this.moduleCollection = new edu.kit.informatik.studyplan.client.model.module.ModuleCollection(json,{parse:true});
+        this.moduleCollection = new edu.kit.informatik.studyplan.client.model.system.SearchCollection(json,{
+            parse:true,
+            planId: this.planId
+        });
         
         this.moduleBoxes = [];
         var self = this;

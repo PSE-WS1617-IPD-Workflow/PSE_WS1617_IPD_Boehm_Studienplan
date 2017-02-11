@@ -26,7 +26,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         if(passedModules){
             passedModules.each(function(module){
                 module.set('passed', true);
-                response["modules"].push(module.toJSON({planModule: true}));
+                response["modules"].push(module.toJSON({planModule: true})["module"]);
             });
         }
         // Initialise an object of type client.model.plans.SemesterCollection and set planId and module
