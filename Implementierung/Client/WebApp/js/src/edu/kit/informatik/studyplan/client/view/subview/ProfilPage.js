@@ -76,10 +76,15 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
         
         
         //TODO: fix this
+        alert("");
         console.log("[edu.kit.informatik.studyplan.client.view.subview.ProfilPage]");
         console.log(this.passedModules);
+        console.log("END JSON");
+        
+        var tmpPlan = this.passedModules.toPlan();
+        console.log(tmpPlan.toJSON());
         this.planView = new edu.kit.informatik.studyplan.client.view.components.uielement.Plan({
-            plan: this.passedModules.toPlan()
+           plan: tmpPlan
         });
 
         console.log(this.passedModules.toPlan());
@@ -114,7 +119,8 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
         
         var profile = this.$el.find("profileEditWrapper");
         this.planView.render();
-        finder.append(this.planView.$el);
+        console.log(this.planView.$el);
+        profile.append(this.planView.$el);
         
         
         this.delegateEvents();

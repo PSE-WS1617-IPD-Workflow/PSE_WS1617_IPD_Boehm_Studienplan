@@ -12,6 +12,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
     initialize: function (options) {
         this.model = options.plan;
         this.listenTo(this.model, "change", this.reload);
+        console.log("HIEEEEEEEEEEEEEEEEER");
+        
         this.reload();
     },
     reload: function () {

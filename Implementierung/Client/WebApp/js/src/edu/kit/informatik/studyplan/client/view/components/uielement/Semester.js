@@ -46,7 +46,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
             if(!this.isPassedPlan&&el.get('passed')){
                 draggable = false;
             }
-                
+            console.log("SEMESTER UI");
+            console.log(el);
             this.moduleElements.push(
                 new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
                     module: el,

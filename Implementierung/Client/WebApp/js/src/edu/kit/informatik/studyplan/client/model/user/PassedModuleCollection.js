@@ -18,7 +18,7 @@ edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection = edu.kit.
                     modules :   [],
                 }
             },{parse:true});
-        
+        console.log(plan.toJSON());
         var collections = [];
         this.each(function (module) {
             plan.addModule(module);

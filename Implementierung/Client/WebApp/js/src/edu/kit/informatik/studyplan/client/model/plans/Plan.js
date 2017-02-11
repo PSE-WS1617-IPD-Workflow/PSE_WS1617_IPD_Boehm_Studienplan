@@ -116,8 +116,6 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     * Ignores if a semester was passed
     */
     addModule: function (module) {
-        console.log("This is inside of Plan.addModule");
-        console.log(this.get("semesterCollection"));
         this.get("semesterCollection").addModule(module);
     }
 });
