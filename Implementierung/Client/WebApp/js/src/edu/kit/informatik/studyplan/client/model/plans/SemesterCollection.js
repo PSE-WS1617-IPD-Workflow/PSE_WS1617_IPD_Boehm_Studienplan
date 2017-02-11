@@ -74,13 +74,13 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
     },
     addModule: function (module) {
         var i = module.get("semester");
-        if(!this[i]) {
-            this[i] = new edu.kit.informatik.studyplan.client.model.plans.Semester({
+        if(!this.get(i)) {
+            this.set(i, new edu.kit.informatik.studyplan.client.model.plans.Semester({
                 planId : this.planId,
                 semesterNum : module.get("semester"),
                 modules : []
-            },{parse:true, collection: this});
+            },{parse:true, collection: this}));
         }
-        this[i].get("modules").push(module);
+        this.get(i).push(module);
     }
 });

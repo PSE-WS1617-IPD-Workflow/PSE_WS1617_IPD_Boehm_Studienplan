@@ -24,12 +24,65 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
         
         //Initialize plan view
         //TODO: replace with fetch
-        var json = {};
+        var json = {
+            modules: [
+                    {
+                        id : 0,
+                        name : "Magische Tierwesen",
+                        categories://test,
+                            [{
+                                id: 42,
+                                name: "Meistern von lebensgefährliche n Situationen"
+                            }],
+                        semester: 5,
+                        "cycle-type": "Mittsommer",
+                        lecturer: "Hagrid",
+                        preference: 1,
+                        description: "Auf Heippogreifen reiten, Schrumpfhörnige Schnarchkackler füttern und beißende Bücher bändigen. Spannung Spaß und Abenteuer im Verbotenen Wald.",
+                        constraints: [{
+                            name: "keine Ahnung wozu der gut ist, ich glaube das sollte lieber ID sein, aber dazu bin ich vielleicht nicht befugt.",
+        
+                            first: {
+                                id : 1
+                            },
+                            second: {
+                                //wie stellt man das klugerweise da ? 
+                                id : 0
+                            },
+                            type: "Himmel und Hölle gleichzeitig zum Ausgleich."
+
+                        }]
+                    },
+                    {
+                        id : 1,
+                        name : "Zaubertränke",
+                        categories:
+                                [{
+                                id: 13,
+                                name: "Mord und Heilung"
+                            }],
+                        semester: 5,
+                        "cycle-type": "Mittsommer",
+                        lecturer: "Snape",
+                        preference: "0",
+                        description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
+                        constraints: [
+                        ]
+                    }
+                ]
+        };
         this.passedModules = new edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection(json, {parse:true});
-        /*
+        //END_REPLACE
+        
+        
+        //TODO: fix this
+        console.log("[edu.kit.informatik.studyplan.client.view.subview.ProfilPage]");
+        console.log(this.passedModules);
         this.planView = new edu.kit.informatik.studyplan.client.view.components.uielement.Plan({
-            plan: PassedCollection.toPlan(passedModules)
-        });*/
+            plan: this.passedModules.toPlan()
+        });
+
+        console.log(this.passedModules.toPlan());
         
     },
     
@@ -58,11 +111,11 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
         this.moduleFinder.render();
         finder.append(this.moduleFinder.$el);
         
-        /*
+        
         var profile = this.$el.find("profileEditWrapper");
         this.planView.render();
         finder.append(this.planView.$el);
-        */
+        
         
         this.delegateEvents();
     },

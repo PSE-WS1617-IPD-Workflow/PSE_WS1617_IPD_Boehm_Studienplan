@@ -30,7 +30,12 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
             });
         }
         // Initialise an object of type client.model.plans.SemesterCollection and set planId and module
-        response.semesterCollection = new edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({planId : response.id, modules : response.modules}, {parse : true, plan: this});
+        response.semesterCollection = new edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({
+            planId : response.id, 
+            modules : 
+            response.modules
+        }, {parse : true, plan: this});
+        
         response.verificationResult = new edu.kit.informatik.studyplan.client.model.plans.VerificationResult({
             plan: {
                 id: response["id"],
@@ -111,6 +116,8 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     * Ignores if a semester was passed
     */
     addModule: function (module) {
-        this.get("semesterCollection").add(module);
+        console.log("This is inside of Plan.addModule");
+        console.log(this.get("semesterCollection"));
+        this.get("semesterCollection").addModule(module);
     }
 });
