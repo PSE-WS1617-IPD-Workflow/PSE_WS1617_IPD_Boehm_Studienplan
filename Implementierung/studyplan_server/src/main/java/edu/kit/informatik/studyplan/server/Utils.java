@@ -37,12 +37,12 @@ public class Utils {
     }
 
     public static <T> T withPlanDao(Function<PlanDao, T> code) {
-        PlanDao dao = PlanDaoFactory.getPlanDao(null); //TODO
+        PlanDao dao = PlanDaoFactory.getPlanDao(null); //TODO remove null parameter
         T result;
         try {
             result = code.apply(dao);
         } finally {
-            dao.cleanUp();
+            dao.cleanUp();   //TODO remove this, if cleanUp not needed anymore
         }
         return result;
     }
@@ -52,12 +52,12 @@ public class Utils {
     }
 
     public static <T> T withUserDao(Function<UserDao, T> code) {
-        UserDao dao = UserDaoFactory.getUserDao(null);  //TODO
+        UserDao dao = UserDaoFactory.getUserDao(null);  //TODO remove null parameter
         T result;
         try {
             result = code.apply(dao);
         } finally {
-            dao.cleanUp();
+            dao.cleanUp();  //TODO remove this, if cleanUp not needed anymore
         }
         return result;
     }

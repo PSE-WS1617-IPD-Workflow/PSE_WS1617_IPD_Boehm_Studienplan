@@ -462,8 +462,8 @@ public class PlansResource {
 			plan.setVerificationState(result.isCorrect() ? VerificationState.VALID : VerificationState.INVALID);
 			planOut.setVerificationState(plan.getVerificationState());
 			planOut.setViolations(new ArrayList<>(result.getViolations()));
-			planOut.setFieldViolations(null);  //TODO pull and fix
-			planOut.setRuleGroupViolations(null);  //TODO pull and fix
+			planOut.setFieldViolations(new ArrayList<>(result.getFieldViolations()));
+			planOut.setRuleGroupViolations(new ArrayList<>(result.getRuleGroupViolations()));
 			dao.updatePlan(plan);
 			return new PlanInOut(planOut);
 		});
