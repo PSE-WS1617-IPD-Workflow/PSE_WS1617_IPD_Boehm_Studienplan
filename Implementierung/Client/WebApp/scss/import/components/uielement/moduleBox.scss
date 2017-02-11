@@ -100,6 +100,13 @@
 .rightSided .moduleBox{
     float:right;
 }
+.generationWizardComponent2{
+    .moduleBox{
+        float: left;
+        min-width: 180;
+        max-width: 240px;
+    }
+}
 .semesterModules{
     .moduleBox{
         .buttons{

@@ -6,8 +6,10 @@ package edu.kit.informatik.studyplan.server.verification;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 
@@ -23,12 +25,14 @@ public class VerificationResult {
 	private Collection<ModuleConstraint> violations;
 	private Collection<Field> fieldViolations;
 	private Collection<RuleGroup> ruleGroupViolations;
+	private Collection<Module> compulsoryViolations;
 	private boolean correct;
 	
 	public VerificationResult () {
-		violations = new ArrayList<ModuleConstraint>();
+		violations = new HashSet<ModuleConstraint>();
 		fieldViolations = new ArrayList<Field>();
 		ruleGroupViolations = new ArrayList<RuleGroup>();
+		compulsoryViolations = new ArrayList<Module>();
 	}
 
 	/**
@@ -46,6 +50,13 @@ public class VerificationResult {
 	
 	public Collection<RuleGroup> getRuleGroupViolations() {
 		return ruleGroupViolations;
+	}
+
+	/**
+	 * @return the compulsoryViolations
+	 */
+	public Collection<Module> getCompulsoryViolations() {
+		return compulsoryViolations;
 	}
 
 	/**

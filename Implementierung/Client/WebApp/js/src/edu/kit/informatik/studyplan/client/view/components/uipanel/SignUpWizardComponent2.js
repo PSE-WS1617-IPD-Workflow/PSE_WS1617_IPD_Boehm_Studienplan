@@ -9,10 +9,13 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     
     
     student: null,
+    moduleFinder: null,
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uipanel/signUpWizardComponent2.html"),
     events: {
         "change select.objectiveFunctionDropDown": "onChange"
     },
+    
+    //Profilpage einfügen mit parameter isSignUp: true
     
     /**
     *
@@ -21,7 +24,20 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
         function (objects) {
             "use strict";
             this.student = objects.student;
-            
+            edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+            this.student.getDistance({
+                success:
+                    function () {
+                        this.render();
+                        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+                        
+                    }
+            });
+            this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
+                isDraggable: true,
+                isPreferencable: false,
+                planId: null
+            });
         },
     
     /**
@@ -31,6 +47,9 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
         function () {
             "use strict";
             this.$el.html(this.template());
+            var finder = this.$el.find(".signUpWizardmodules");
+            this.moduleFinder.render();
+            finder.append(this.moduleFinder.$el);
             this.delegateEvents();
         },
     /**

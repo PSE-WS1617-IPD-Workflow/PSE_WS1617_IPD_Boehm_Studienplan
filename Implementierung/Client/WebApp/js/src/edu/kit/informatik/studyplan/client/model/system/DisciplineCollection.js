@@ -1,6 +1,8 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.system.DisciplineCollection");
 /**
  * @constructor
+ * @param {Object=} attributes
+ * @param {Object=} optionas
  * @extends {edu.kit.informatik.studyplan.client.model.system.OAuthCollection}
  */
 

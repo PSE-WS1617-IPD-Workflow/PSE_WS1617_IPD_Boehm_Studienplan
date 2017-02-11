@@ -39,6 +39,8 @@ edu.kit.informatik.studyplan.client.view.subview.WizardPage = Backbone.View.exte
             
         },
         
+    //on finish: student.safe(null, {success: })
+    
     /**
     *
     */
@@ -47,8 +49,7 @@ edu.kit.informatik.studyplan.client.view.subview.WizardPage = Backbone.View.exte
             "use strict";
             var next = this.curView.next();
             if (next === null) {
-                this.onFinish();
-                // this.trigger("wizardComplete");
+                this.onFinish(this.curView);
             } else {
                 this.curView = next;
                 this.render();

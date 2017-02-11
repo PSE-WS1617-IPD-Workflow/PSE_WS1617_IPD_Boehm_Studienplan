@@ -12,6 +12,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     filterCollection: null,
     events: {
         "click .filterMenuButton": "showFilterSettings",
+        "click .filterMenuButton_highlited_FilterButton": "showFilterSettings", 
         "change .filterButton": "onChange"
     },
     initialize: function (options){
@@ -63,9 +64,13 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
         "use strict";
         var filterButtons = [];
         for(var i = 0; i < this.filterComponents.length; i++){
+
             var tmpFilterComponent = this.filterComponents[i];
-            filterButtons.push({ id: tmpFilterComponent.filter.get("id"),
-                                name: tmpFilterComponent.filter.get("name")});
+            if(tmpFilterComponent.attributes.specification.type !== "contains"){
+                filterButtons.push({ 
+                    id: tmpFilterComponent.filter.get("id"),
+                    name: tmpFilterComponent.filter.get("name")});
+            }
         }
         
         this.$el.html(this.template({
@@ -93,8 +98,15 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     showFilterSettings : function (event){
         console.log("[ModuleFilter] EVENTS:");
         console.log(event.target.id);
+
+        var tmpVisible = $("#filterId_" + event.target.id).is(":visible")
+        
+        $(".highlited_FilterButton").removeClass("highlited_FilterButton");        
         $(".profileFilterWrapperSettings").hide();
-        $("#filterId_" + event.target.id).show();
+        if(!tmpVisible) {
+            $("#filterId_" + event.target.id).show();
+            $("#" + event.target.id).addClass("highlited_FilterButton");
+        }
         
     }
 });

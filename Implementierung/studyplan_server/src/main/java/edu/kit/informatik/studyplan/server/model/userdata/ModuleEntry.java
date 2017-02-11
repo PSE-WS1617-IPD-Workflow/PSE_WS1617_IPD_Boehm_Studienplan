@@ -20,7 +20,7 @@ public class ModuleEntry {
 	 * 
 	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "entry_id")
 	private int id;
 
@@ -34,6 +34,9 @@ public class ModuleEntry {
 	 */
 	@Column(name = "semester")
 	private int semester;
+	
+	@Transient
+	private boolean isPassed;
 	
 	public ModuleEntry() {
 	}
@@ -85,5 +88,19 @@ public class ModuleEntry {
 	 */
 	public void setSemester(int semester) {
 		this.semester = semester;
+	}
+
+	/**
+	 * @return the isPassed
+	 */
+	public boolean isPassed() {
+		return isPassed;
+	}
+
+	/**
+	 * @param isPassed the isPassed to set
+	 */
+	public void setPassed(boolean isPassed) {
+		this.isPassed = isPassed;
 	}
 };

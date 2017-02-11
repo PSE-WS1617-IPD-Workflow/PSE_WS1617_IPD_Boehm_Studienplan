@@ -196,17 +196,17 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             generationWizard: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] generationWizard");
                 this.showLoading();
-                var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({id: planId});
                 var info = new edu.kit.informatik.studyplan.client.model.system.ProposalInformation();
                 var self = this;
                 /*plan.fetch({
                     success: function () {*/
                         self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
                             firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1({
-                                plan: plan,
+                                plan: planId,
                                 information: info
                             }),
-                            onFinish: function () {
+                            onFinish: function (lastView) {
+                               
                                 /*
                                 *todo:
                                 *Generierungsaufruf
@@ -313,15 +313,22 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             signUpWizard: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] signUpWizard");
                 this.showLoading();
-                var student = new edu.kit.informatik.studyplan.client.model.user.Student();
+                var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
                 var self = this;
                 /*plan.fetch({
                     success: function () {*/
                         self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
                             firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1({
-                               student: self.student
+                               student: student
                             }),
-                            onFinish: function () {
+                            onFinish: function (lastView) {
+                                self.showLoading();
+                                lastView['student'].save(null,{
+                                    success:
+                                        function(){                                            
+                                            self.navigate("/", {trigger:true});
+                                        }
+                                });
                                 /*
                                 *todo:
                                 *Weiterleiten auf Hauptseite

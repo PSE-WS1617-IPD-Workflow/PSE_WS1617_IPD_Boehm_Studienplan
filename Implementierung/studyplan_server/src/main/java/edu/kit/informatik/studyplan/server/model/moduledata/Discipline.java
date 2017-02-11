@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -43,6 +45,10 @@ public class Discipline {
 	@OneToMany(mappedBy = "discipline")
     @JsonIgnore
 	private List<RuleGroup> ruleGroups = new LinkedList<RuleGroup>();
+	
+	@OneToMany(mappedBy = "discipline")
+	@Where(clause = "is_compulsory = true")
+	private List<Module> compulsoryModules = new LinkedList<Module>();
 
 	/**
 	 * 
@@ -56,7 +62,7 @@ public class Discipline {
 	 * @param disciplineId
 	 *            the disciplineId to set
 	 */
-	void setDisciplineId(int disciplineId) {
+	public void setDisciplineId(int disciplineId) {
 		this.disciplineId = disciplineId;
 	}
 
@@ -72,7 +78,7 @@ public class Discipline {
 	 * @param description
 	 *            the description to set
 	 */
-	 void setDescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
@@ -89,5 +95,12 @@ public class Discipline {
 	 */
 	public List<RuleGroup> getRuleGroups() {
 		return ruleGroups;
+	}
+
+	/**
+	 * @return the compulsoryModules
+	 */
+	public List<Module> getCompulsoryModules() {
+		return compulsoryModules;
 	}
 }
