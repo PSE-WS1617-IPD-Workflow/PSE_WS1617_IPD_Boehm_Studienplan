@@ -124,13 +124,13 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
             droppedModel.collection = this.model;
             droppedModel.save(null, {
                 error: function () {
-                    /*console.log(droppedModel);
+                    console.log(droppedModel);
                     this.model.remove(droppedModel);
                     if (oldCol!==null) {
                         droppedModel.set('semester', oldSem);
                         oldCol.add(droppedModel);
                     }
-                    console.log(droppedModel);*/
+                    console.log(droppedModel);
                 }.bind(this)
             });
         }
