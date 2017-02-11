@@ -4,7 +4,6 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import org.hibernate.Session;
@@ -20,25 +19,23 @@ import edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClie
  */
 class SecurityProvider extends AbstractSecurityProvider {
 	
+	@Deprecated
 	private Session session;
 	
 	private static long SECONDS = 3600;
 	
-	SecurityProvider() {
-		this.session = HibernateUtil.getUserDataSessionFactory().openSession();
-	}
 	
 	@Override
 	public AuthorizationContext generateAuthorizationContext(User user, RESTClient client, AuthorizationScope scope) {
+		Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		AuthorizationContext context = new AuthorizationContext();
-		context.setProvider(this);
 		context.setRestClient(client);
 		context.setScope(scope);
 		context.setUser(user);
 		LocalDateTime expiryDate = LocalDateTime.now().plusSeconds(SECONDS);
 		context.setExpiryDate(expiryDate);
-		Serializable id = session.save(context);
+		session.save(context);
 		session.flush();
 		session.refresh(context);
 		session.getTransaction().commit();
@@ -47,11 +44,11 @@ class SecurityProvider extends AbstractSecurityProvider {
 
 	@Override
 	public AuthorizationContext getAuthorizationContext(String accessToken) {
+		Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		AuthorizationContext authorizationContext = session.byId(AuthorizationContext.class).load(accessToken);
 		session.getTransaction().commit();
 		if (authorizationContext != null) {
-			authorizationContext.setProvider(this);
 			if (authorizationContext.getExpiryDate().isBefore(LocalDateTime.now())) {
 				authorizationContext = null;
 			}
@@ -61,6 +58,7 @@ class SecurityProvider extends AbstractSecurityProvider {
 
 	@Override
 	public RESTClient getClient(String apiKey) {
+		Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		RESTClient client = session.bySimpleNaturalId(RESTClient.class).load(apiKey);
 		session.getTransaction().commit();
@@ -68,10 +66,12 @@ class SecurityProvider extends AbstractSecurityProvider {
 	}
 
 	@Override
+	@Deprecated
 	public void cleanUp() {
 		session.close();
 	}
 	
+	@Deprecated
 	Session getSession() {
 		return session;
 	}

@@ -72,6 +72,7 @@ public class AuthorizationContext implements SecurityContext {
 	private User user;
 	
 	@Transient
+	@Deprecated
 	private AbstractSecurityProvider provider;
 
 	/**
@@ -196,15 +197,17 @@ public class AuthorizationContext implements SecurityContext {
 		return BASIC_AUTH;
 	}
 	
+	@Deprecated
 	void setProvider(AbstractSecurityProvider provider) {
 		this.provider = provider;
 	}
 	
+	@Deprecated
 	AbstractSecurityProvider getProvider() {
 		return provider;
 	}
 	
-	
+	@Deprecated
 	public void cleanUp() {
 		this.provider.cleanUp();
 	}

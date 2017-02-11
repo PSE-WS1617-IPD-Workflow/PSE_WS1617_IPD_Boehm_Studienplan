@@ -19,9 +19,12 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  */
 class HibernatePlanDao implements PlanDao {
 
+	@Deprecated
 	private Session session;
+	@Deprecated
 	private boolean independet;
 	
+	@Deprecated
 	HibernatePlanDao(AuthorizationContext context) {
 		if (context != null) {
 			session = ((SecurityProvider) context.getProvider()).getSession();
@@ -31,8 +34,13 @@ class HibernatePlanDao implements PlanDao {
 		}
 	}
 	
+	public HibernatePlanDao() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	@Override
 	public Plan getPlanById(String id) {
+		Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Plan plan = session.byId(Plan.class).load(id);
 		session.getTransaction().commit();
@@ -41,6 +49,7 @@ class HibernatePlanDao implements PlanDao {
 
 	@Override
 	public void deletePlan(Plan plan) {
+		Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		for (ModuleEntry entry : plan.getModuleEntries()) {
 			session.delete(entry);
@@ -51,6 +60,7 @@ class HibernatePlanDao implements PlanDao {
 
 	@Override
 	public String updatePlan(Plan plan) {
+		Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.saveOrUpdate(plan);
 		Serializable identifier = session.getIdentifier(plan);
@@ -59,6 +69,7 @@ class HibernatePlanDao implements PlanDao {
 	}
 
 	@Override
+	@Deprecated
 	public void cleanUp() {
 		if (independet) {
 			session.close();
