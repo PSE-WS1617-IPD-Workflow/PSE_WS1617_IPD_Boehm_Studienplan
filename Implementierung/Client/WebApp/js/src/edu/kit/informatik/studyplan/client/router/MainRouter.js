@@ -172,6 +172,14 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 preference  :   "negative",
                                 lecturer: "Snape",
                             }
+                        ],
+                        violations: [
+                            {
+                                name: "test",
+                                first: {id: 40},
+                                second: {id: 30},
+                                type: "type"
+                            }
                         ]
                     }
                 }, {parse: true});/*{
@@ -198,7 +206,75 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 this.showLoading();
                 var info = new edu.kit.informatik.studyplan.client.model.system.ProposalInformation();
                 var self = this;
-                /*plan.fetch({
+                var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({
+                    plan    : {
+                        
+                        id  :   'P3',
+                        name:   'Rons Studienplan',
+                        status: 'invalid',
+                        'creditpoints-sum': 100,
+                        modules :   [
+                            {
+                                id          :   "M1",
+                                name        :   "Bayrisch",
+                                creditpoints:   7,
+                                lecturer    :   "Aloisius",
+                                preference  :   "positive",
+                                semester    :   3
+                            },
+                            {
+                                id          :   "M2",
+                                name        :   "Schwäbisch",
+                                creditpoints:   5,
+                                lecturer    :   "Maultaschius",
+                                preference  :   "negative",
+                                semester    :   5
+                            },
+                            {
+                                id : 22,
+                                semester : 4,
+                                name : "Magische Tierwesen",
+                                creditpoints: 18,
+                                preference  :   "negative",
+                                lecturer: "Hagrid",
+                            },
+                            {
+                                id : 21,
+                                name : "Zaubertränke",
+                                semester : 4,
+                                creditpoints:700,
+                                preference  :   "negative",
+                                lecturer: "Snape",
+                            },
+                            {
+                                id : 20,
+                                name : "Zaubertränke 2",
+                                semester: 4,
+                                creditpoints:700,
+                                preference  :   "negative",
+                                lecturer: "Snape"
+                            },
+                            {
+                                id : 30,
+                                name : "Zaubertränke 3",
+                                semester: 4,
+                                creditpoints:700,
+                                preference  :   "negative",
+                                lecturer: "Snape",
+                            },
+                            {
+                                id : 40,
+                                name : "Zaubertränke 4",
+                                semester: 4,
+                                creditpoints:700,
+                                preference  :   "negative",
+                                lecturer: "Snape",
+                            }
+                        ]
+                    }
+                }, {parse:true});
+                /*
+                plan.fetch({
                     success: function () {*/
                         self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
                             firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1({
@@ -206,12 +282,26 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 information: info
                             }),
                             onFinish: function (lastView) {
-                               
+                                this.showLoading();
+                                var proposedPlan = plan.retrieveProposedPlan();
+                                proposedPlan.setInfo(info);
+                                // TODO: remove the following line
+                                proposedPlan.attributes.parent.attributes.parent=proposedPlan.attributes.parent;
+                                /*proposedPlan.fetch({
+                                    success: function () {*/
+                                        this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.PlanEditPage, {
+                                            plan:  proposedPlan.attributes.parent,//TODO: change back to proposedPlan
+                                            proposed: true,
+                                            isAddable: false 
+                                        });
+                                        this.hideLoading();
+                                    /*}
+                                });*/
                                 /*
                                 *todo:
                                 *Generierungsaufruf
                                 */
-                            }
+                            }.bind(this)
                         });
                     // Do stuff here
                         self.hideLoading();

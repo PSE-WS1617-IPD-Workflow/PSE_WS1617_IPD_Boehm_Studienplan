@@ -111,3 +111,10 @@ LM.messages["de"]["profileSavedText"] = "Das Profil wurde erfolgreich gespeicher
 
 // Not Found
 LM.messages["de"]["notFoundTitle"] = "Diese Seite existiert nicht!";
+
+// Proposed plan
+LM.messages["de"]["newNameRequest"] = "Wie soll der neue Plan heißen?";
+LM.messages["de"]["deleteProposal"] = "Plan verwerfen";
+LM.messages["de"]["saveProposal"] = "Plan ersetzen";
+LM.messages["de"]["saveAsProposal"] = "Unter anderem Namen speichern";
+LM.messages["de"]["proposal"] = "Vorschlag";

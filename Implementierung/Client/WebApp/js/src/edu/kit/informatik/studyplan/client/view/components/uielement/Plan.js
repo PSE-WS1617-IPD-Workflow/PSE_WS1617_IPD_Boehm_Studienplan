@@ -42,7 +42,13 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
             el.render();
             this.$el.find(".semesters").append(el.$el);
         }).bind(this));
-        
+        _.each(this.model.get('verificationResult').get('violations'), function (violation) {
+            _.each(this.semesterElements, (function (semester) {
+                semester.setRedBorder(violation.get('first').get('id'));
+                semester.setRedBorder(violation.get('second').get('id'));
+            }).bind(this));
+        }.bind(this));
+                    
     },
     /**
     *

@@ -46,7 +46,7 @@ edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informati
     * @param {Object} options
     * @return {edu.kit.informatik.studyplan.client.model.plans.Plan} The plan in which the proposal was saved
     */
-    save : function (options) {
+    getPlan : function (options) {
         "use strict";
         if(options.newPlan){
             var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({name: options["planName"]});
@@ -56,14 +56,12 @@ edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informati
                     self.set('name',plan.get('name'));
                     self.set('id', plan.get('id'));
                     plan.attributes = self.attributes;
-                    plan.save(null,{patch:false});
                 }
             });
             
             return plan;
         } else {
             this.get('parent').attributes = this.attributes;
-            this.get('parent').save(null,{patch: false});
             return this.get('parent');
         }
     }
