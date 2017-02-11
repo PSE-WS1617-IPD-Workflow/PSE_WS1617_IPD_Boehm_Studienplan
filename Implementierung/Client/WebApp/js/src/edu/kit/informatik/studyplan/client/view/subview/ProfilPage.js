@@ -71,6 +71,7 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
                     }
                 ]
         };
+        /*
         this.passedModules = new edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection(json, {parse:true});
         //END_REPLACE
         
@@ -88,7 +89,7 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
         });
 
         console.log(this.passedModules.toPlan());
-        
+        */
     },
     
     /**
@@ -116,12 +117,12 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.exte
         this.moduleFinder.render();
         finder.append(this.moduleFinder.$el);
         
-        
+        /*
         var profile = this.$el.find("profileEditWrapper");
         this.planView.render();
         console.log(this.planView.$el);
         profile.append(this.planView.$el);
-        
+        */
         
         this.delegateEvents();
     },
