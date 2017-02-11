@@ -7,7 +7,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.SearchCollection"
  */
 
 edu.kit.informatik.studyplan.client.model.system.SearchCollection = edu.kit.informatik.studyplan.client.model.module.ModuleCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.SearchCollection.prototype}*/{
-    initialize : function (attributes, options) {
+    initialize : function (models, options) {
         "use strict";
         this.planId = options.planId
         edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype.initialize.apply(this, arguments);

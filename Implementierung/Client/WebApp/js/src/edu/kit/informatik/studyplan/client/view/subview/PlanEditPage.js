@@ -17,12 +17,11 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
     initialize: function (options) {
         this.model = options.plan;
         this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
-            moduleCollection:new edu.kit.informatik.studyplan.client.model.system.SearchCollection(),
             isSidebar:true,
             isPreferencable:true,
             isDraggable: true,
             isPlaced:this.model.containsModule,
-            planId: this.model.id
+            planId: this.model.get('id')
         })
         this.planView = new edu.kit.informatik.studyplan.client.view.components.uielement.Plan({
             plan: this.model

@@ -8,7 +8,6 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik
     initialize: function (options) {
         this.model = options.plan;
         this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
-            moduleCollection:new edu.kit.informatik.studyplan.client.model.system.SearchCollection(),
             isSidebar:true,
             isPreferencable:false,
             isDraggable: true,
