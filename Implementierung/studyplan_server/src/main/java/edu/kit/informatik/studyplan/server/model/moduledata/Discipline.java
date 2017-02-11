@@ -1,21 +1,14 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.Where;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
-
 import edu.kit.informatik.studyplan.server.rest.resources.StudentResource;
+import org.hibernate.annotations.Where;
+
+import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /************************************************************/
 /**
@@ -48,6 +41,7 @@ public class Discipline {
 	
 	@OneToMany(mappedBy = "discipline")
 	@Where(clause = "is_compulsory = true")
+	@JsonIgnore
 	private List<Module> compulsoryModules = new LinkedList<Module>();
 
 	/**
