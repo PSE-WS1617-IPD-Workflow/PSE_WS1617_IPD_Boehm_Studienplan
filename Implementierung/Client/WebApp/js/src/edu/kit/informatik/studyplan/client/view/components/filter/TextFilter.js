@@ -1,4 +1,4 @@
-goog.provide("edu.kit.informatik.studyplan.components.view.components.filter.TextFilter");
+goog.provide("edu.kit.informatik.studyplan.client.view.components.filter.TextFilter");
 /**
  * @constructor
  * @param {Object=} options

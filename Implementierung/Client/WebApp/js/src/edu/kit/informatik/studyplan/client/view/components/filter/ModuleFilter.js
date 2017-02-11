@@ -12,7 +12,8 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     filterCollection: null,
     searchCollection: null,
     events: {
-        "change": "onChange"
+        "click .filterMenuButton": "showFilterSettings",
+        "change .filterButton": "onChange"
     },
     initialize: function (options){
         
@@ -101,8 +102,18 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     */
     render: function () {
         "use strict";
-        this.$el.html(this.template());
-        var finder = this.$el.find(".profileModuleFilterWrapper");
+        var filterButtons = [];
+        for(var i = 0; i < this.filterComponents.length; i++){
+            var tmpFilterComponent = this.filterComponents[i];
+            filterButtons.push({ id: tmpFilterComponent.filter.get("id"),
+                                name: tmpFilterComponent.filter.get("name")});
+        }
+        
+        this.$el.html(this.template({
+            buttons : filterButtons
+        }));
+        
+        var finder = this.$el.find(".collectivefilterSettings");
         for(var i = 0; i < this.filterComponents.length; i++){
             var tmpFilterComponent = this.filterComponents[i];
             tmpFilterComponent.render();
@@ -123,5 +134,12 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     getSearchCollection: function () {
         this.searchCollection.setFilters(this.filterCollection);
         return this.searchCollection;
+    },
+    showFilterSettings : function (event){
+        console.log("[ModuleFilter] EVENTS:");
+        console.log(event.target.id);
+        $(".profileFilterWrapperSettings").hide();
+        $("#filterId_" + event.target.id).show();
+        
     }
 });

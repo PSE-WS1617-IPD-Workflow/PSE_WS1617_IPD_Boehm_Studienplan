@@ -4,6 +4,16 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import edu.kit.informatik.studyplan.server.Utils;
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -84,8 +94,8 @@ public class Plan {
 	 *
 	 */
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinTable(name = "plan_entries", 
-		joinColumns = @JoinColumn(name = "plan_identifier"), 
+	@JoinTable(name = "plan_entries",
+		joinColumns = @JoinColumn(name = "plan_identifier"),
 		inverseJoinColumns = @JoinColumn(name = "entry_id"))
 	@JsonIgnore
 	private List<ModuleEntry> moduleEntries = new LinkedList<ModuleEntry>();
@@ -96,8 +106,8 @@ public class Plan {
 	@OneToMany(mappedBy = "plan")
 	@JsonIgnore
 	private List<ModulePreference> modulePreferences;
-	
-	
+
+
 	/**
 	 * Gibt für ein übergebenes Modul die Präferenz zurück. <br>
 	 * <code>null</code>, falls keine Präferenz vorhanden
@@ -257,10 +267,10 @@ public class Plan {
 			} else {
 				placedModulesIds.add(jsonModule.getId());
 			}
-			if (jsonModule.getSemester() < user.getStudyStart().getDistanceToCurrentSemester()) {
-				throw new BadRequestException();  //TODO rather UnprocessableEntity?
-			}
-			Module module = ModuleDaoFactory.getModuleDao().getModuleById(jsonModule.getId());
+//			if (jsonModule.getSemester() < user.getStudyStart().getDistanceToCurrentSemester()) {
+//				throw new BadRequestException();
+//			}
+			Module module = Utils.withModuleDao(dao -> dao.getModuleById(jsonModule.getId()));
 			if (module == null) {
 				throw new NotFoundException();
 			}
@@ -280,7 +290,7 @@ public class Plan {
 	public boolean contains(Module module) {
 		return getAllModuleEntries().stream().anyMatch(entry -> entry.getModule().equals(module));
 	}
-	
+
 	@Transient
 	public ModuleEntry getEntryFor(Module module) {
 		return getAllModuleEntries().stream()
@@ -288,7 +298,7 @@ public class Plan {
 				.findFirst()
 				.orElse(null);
 	}
-	
+
 	@Transient
 	public List<ModuleEntry> getAllModuleEntries() {
 		LinkedList<ModuleEntry> allEntries = new LinkedList<ModuleEntry>(moduleEntries);

@@ -4,18 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+
+import javax.persistence.*;
 
 /************************************************************/
 /**
@@ -49,7 +41,6 @@ public class ModulePreference {
 	private Plan plan;
 	
 	public ModulePreference() {
-		
 	}
 
 	/**
@@ -62,7 +53,7 @@ public class ModulePreference {
 		this.type = preference;
 	}
 
-    /**
+	/**
 	 * 
 	 * @return gibt das Modul zurück
 	 */

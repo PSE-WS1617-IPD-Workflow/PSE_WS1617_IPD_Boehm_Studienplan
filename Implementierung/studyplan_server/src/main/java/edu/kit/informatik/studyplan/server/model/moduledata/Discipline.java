@@ -1,5 +1,6 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,9 +37,11 @@ public class Discipline {
 	private String description;
 
 	@OneToMany(mappedBy = "discipline")
+	@JsonIgnore
 	private List<Field> fields = new LinkedList<Field>();
-	
+
 	@OneToMany(mappedBy = "discipline")
+    @JsonIgnore
 	private List<RuleGroup> ruleGroups = new LinkedList<RuleGroup>();
 
 	/**
@@ -79,9 +82,9 @@ public class Discipline {
 	public List<Field> getFields() {
 		return fields;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @return returns a list of all rule groups associated with this discipline
 	 */
 	public List<RuleGroup> getRuleGroups() {

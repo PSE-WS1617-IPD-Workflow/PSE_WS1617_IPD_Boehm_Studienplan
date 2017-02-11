@@ -43,6 +43,6 @@ public class ObjectiveFunctionResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Collection<PartialObjectiveFunction>> getAllObjectiveFunctions() {
 		//TODO @annotate (Partial?)ObjectiveFunction; add its missing attributes. (Wait for Nada)
-		return SimpleJsonResponse.build("functions", new GenerationManager().getObjectiveFunction());
+		return SimpleJsonResponse.build("functions", new GenerationManager().getAllObjectiveFunctions());
 	}
 }
