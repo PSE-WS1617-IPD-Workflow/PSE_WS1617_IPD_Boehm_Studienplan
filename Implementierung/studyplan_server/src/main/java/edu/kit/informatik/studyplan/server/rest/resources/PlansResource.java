@@ -384,6 +384,11 @@ public class PlansResource {
 		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
 		return moduleInput;
 	}
+	
+	@Path("/")
+	public PlanConverterResource getPlanConverterResource() {
+		return new PlanConverterResource();
+	}
 
 
 	static class ModuleInOut {
