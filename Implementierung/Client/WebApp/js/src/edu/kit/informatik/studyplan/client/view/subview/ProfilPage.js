@@ -6,6 +6,8 @@
 
 edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik.studyplan.client.view.subview.PlanEditPage.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.ProfilPage.prototype} */{
     initialize: function (options) {
+        // TODO: isSignUp
+        this.isSignUp = options.isSignUp
         this.model = options.plan;
         this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
             isSidebar:true,
@@ -19,8 +21,10 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik
             isPreferencable: false,
             isPassedPlan: true
         });
-        this.planHeadBar = new edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar({
-            plan: this.model
-        });
+        if(!this.isSignUp){
+            this.planHeadBar = new edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar({
+                plan: this.model
+            });
+        }
     }
 });
