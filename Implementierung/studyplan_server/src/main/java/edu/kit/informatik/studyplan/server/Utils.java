@@ -37,7 +37,7 @@ public class Utils {
     }
 
     public static <T> T withPlanDao(Function<PlanDao, T> code) {
-        PlanDao dao = PlanDaoFactory.getPlanDao();
+        PlanDao dao = PlanDaoFactory.getPlanDao(null); //TODO
         T result;
         try {
             result = code.apply(dao);
@@ -52,7 +52,7 @@ public class Utils {
     }
 
     public static <T> T withUserDao(Function<UserDao, T> code) {
-        UserDao dao = UserDaoFactory.getUserDao();
+        UserDao dao = UserDaoFactory.getUserDao(null);  //TODO
         T result;
         try {
             result = code.apply(dao);
