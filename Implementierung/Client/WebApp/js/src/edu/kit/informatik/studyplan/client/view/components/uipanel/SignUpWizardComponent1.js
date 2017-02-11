@@ -7,12 +7,14 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.SignUp
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1 = edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1.prototype}*/{
     
+    beginningArray: [],
     student: null,
     disciplines: null,
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uipanel/signUpWizardComponent1.html"),
     events: {
         "change select.objectiveFunctionDropDown": "onChange"
     },
+    date: null,
     
     
     /** 
@@ -21,6 +23,9 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     initialize:
         function (options) {
             "use strict";
+            this.date = new Date(Date.now()).getFullYear();
+            this.beginning(this.date);
+            console.log(this.date);
             this.student = options.student;
             this.disciplines = new edu.kit.informatik.studyplan.client.model.system.DisciplineCollection([
                 {
@@ -34,6 +39,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
                 success: (function () {
                     this.render();
                 }.bind(this))
+                
             });*/
             
         },
@@ -45,7 +51,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
         function () {
             "use strict";
             this.$el.html(this.template({
-                disciplines: this.disciplines
+                disciplines: this.disciplines,
+                beginningVal: this.beginningArray
             }));
             this.delegateEvents();
         },
@@ -58,9 +65,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     next:
         function () {
             "use strict";
-            console.log(this.student)
             var temp = new edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent2({
-                student: this.student,
+                student: this.student
             });
             return temp;
         },
@@ -70,6 +76,22 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     onChange:
         function () {
             "use strict";
+        },
+    
+    /**
+    *
+    */
+    beginning:
+        function (year) {
+            "use strict";
+            for (var i = 0; i <= 10; i++){
+                var temp = year-i;
+                this.beginningArray.push(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("winterterm")+ temp);
+                this.beginningArray.push(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("summerterm")+ temp);
+                console.log(this.beginningArray[i]);
+            }
+            //speichern: WT 2017
+            //speichern: ST 2017
         }
 
 });
