@@ -12,7 +12,7 @@ public abstract class ListFilter<T> extends AttributeFilter {
 	/**
 	 * Die Nummer des ausgewählten Elements.
 	 */
-	protected int selection;
+	protected T selection;
 
 	/**
 	 * Erzeugt einen neuen Auswahlfilter mit gegebener festgelegter Auswahl.
@@ -20,9 +20,9 @@ public abstract class ListFilter<T> extends AttributeFilter {
 	 * @param selection
 	 *            die Nummer des ausgewählten Elements
 	 */
-	protected ListFilter(int selection) {
-		if (selection >= getItemObjects().size()) {
-			throw new IllegalArgumentException("ListFilter.selection must not be greater than the item list size.");
+	protected ListFilter(T selection) {
+		if (selection == null) {
+			throw new IllegalArgumentException("Filter selection must not be null.");
 		}
 		this.selection = selection;
 	}
@@ -34,7 +34,7 @@ public abstract class ListFilter<T> extends AttributeFilter {
 	 * @return die Filterbedingung als jOOQ-Condition-Objekt
 	 */
 	public List<Condition> getConditions() {
-		return Collections.singletonList(Condition.createEquals(getAttributeName(), getItemObjects().get(selection)));
+		return Collections.singletonList(Condition.createEquals(getAttributeName(), selection));
 	}
 
 	public FilterType getFilterType() {
@@ -46,7 +46,7 @@ public abstract class ListFilter<T> extends AttributeFilter {
 	 * 
 	 * @return die Element-Nummer
 	 */
-	public int getSelection() {
+	public T getSelection() {
 		return selection;
 	}
 
