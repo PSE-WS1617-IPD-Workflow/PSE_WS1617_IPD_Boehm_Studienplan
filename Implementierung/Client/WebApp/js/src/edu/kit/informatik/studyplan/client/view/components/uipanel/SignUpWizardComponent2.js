@@ -1,6 +1,7 @@
 goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent2");
 /**
  * @constructor
+ * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent}
  */
 

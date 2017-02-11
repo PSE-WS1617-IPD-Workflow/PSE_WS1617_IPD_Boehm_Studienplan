@@ -5,6 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -24,37 +26,50 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.filter.Filter;
+import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
+import edu.kit.informatik.studyplan.server.model.moduledata.Category;
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import edu.kit.informatik.studyplan.server.model.userdata.PlanWithViolations;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDao;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
-import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
+import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
+import edu.kit.informatik.studyplan.server.pluginmanager.VerificationManager;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
+import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 
 /**
  * Diese Klasse repräsentiert die Pläne-Ressource.
  */
 @Path("/plans")
-@AuthorizationNeeded
+//@AuthorizationNeeded
 public class PlansResource {
 	@Inject
-	Provider<AuthorizationContext> contextProvider;
+	Provider<AuthorizationContext> context;
+
+	private User getUser() {
+		return context.get().getUser();
+	}
 
 	/**
 	 * POST-Anfrage: Erstellt einen neuen Studienplan.
@@ -70,12 +85,14 @@ public class PlansResource {
 				|| planInput.getPlan().getCreditPoints() != 0) {
 			throw new BadRequestException();
 		}
-		String newId = PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(planInput.getPlan());
-		if (newId == null) {
-			throw new UnprocessableEntityException();
-		}
-		planInput.getPlan().setIdentifier(newId);
-		return planInput;
+		return Utils.withPlanDao(dao -> {
+			String newId = dao.updatePlan(planInput.getPlan());
+			if (newId == null) {
+				throw new UnprocessableEntityException();
+			}
+			planInput.getPlan().setIdentifier(newId);
+			return planInput;
+		});
 	}
 
 	/**
@@ -89,10 +106,10 @@ public class PlansResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, List<Plan>> getPlans() {
-		List<Plan> result = contextProvider.get().getUser().getPlans().stream()
+		List<Plan> result = getUser().getPlans().stream()
 				.map(plan -> {
-					plan.setModuleEntries(new ArrayList<ModuleEntry>());
-					plan.setModulePreferences(new ArrayList<ModulePreference>());
+					plan.setModuleEntries(null);
+					plan.setModulePreferences(null);
 					return plan;
 				})
 				.collect(Collectors.toList());
@@ -102,7 +119,7 @@ public class PlansResource {
 	/**
 	 * PUT-Anfrage: Ersetzt den Plan mit der gegebenen ID mit den gegeben Plan .
 	 * 
-	 * @param planID
+	 * @param planId
 	 *            ID des zu entfernenden Plans.
 	 * @param jsonPlan
 	 *            der zu speichernden Plan als JSON Objekt.
@@ -112,19 +129,21 @@ public class PlansResource {
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public PlanInOut replacePlan(@PathParam("id") String planID, PlanInOut planInput) {
+	public PlanInOut replacePlan(@PathParam("id") String planId, PlanInOut planInput) {
 		if (planInput.getPlan().getModuleEntries() == null || planInput.getPlan().getPreferences() == null
-				|| planInput.getPlan().getVerificationState() == null || planInput.getPlan().getName() == null
-				|| !Objects.equals(planInput.getPlan().getIdentifier(), planID)) {
+				|| planInput.getPlan().getName() == null
+				|| !Objects.equals(planInput.getPlan().getIdentifier(), planId)) {
 			throw new BadRequestException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planInput.getPlan().getIdentifier());
-		if (plan == null) {
-			throw new NotFoundException();
-		}
-		planInput.getPlan().setVerificationState(VerificationState.NOT_VERIFIED);
-		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(planInput.getPlan());
-		return planInput;
+		return Utils.withPlanDao(dao -> {
+			Plan plan = dao.getPlanById(planId);
+			if (plan == null) {
+				throw new NotFoundException();
+			}
+			planInput.getPlan().setVerificationState(VerificationState.NOT_VERIFIED);
+			dao.updatePlan(planInput.getPlan());
+			return planInput;
+		});
 	}
 
 	/**
@@ -138,12 +157,14 @@ public class PlansResource {
 	@Path("/{plan-id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public PlanInOut getPlan(@PathParam("plan-id") String planId) {
-		Plan result = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
-		if (result == null) {
-			throw new NotFoundException();
-		} else {
-			return new PlanInOut(result);
-		}
+		return Utils.withPlanDao(dao -> {
+			Plan result = dao.getPlanById(planId);
+			if (result == null) {
+				throw new NotFoundException();
+			} else {
+				return new PlanInOut(result);
+			}
+		});
 	}
 
 	/**
@@ -166,18 +187,20 @@ public class PlansResource {
 				|| planInput.getPlan().getCreditPoints() != 0) {
 			throw new BadRequestException();
 		}
-		if (contextProvider.get().getUser().getPlans().stream()
+		if (getUser().getPlans().stream()
 				.anyMatch(plan -> plan.getName().equals(planInput.getPlan().getName()))) {
 			throw new UnprocessableEntityException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
-		if (plan == null) {
-			throw new NotFoundException();
-		}
-		plan.setName(planInput.getPlan().getName());
-		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
-		planInput.getPlan().setIdentifier(planId);
-		return planInput;
+		return Utils.withPlanDao(dao -> {
+			Plan plan = dao.getPlanById(planId);
+			if (plan == null) {
+				throw new NotFoundException();
+			}
+			plan.setName(planInput.getPlan().getName());
+			dao.updatePlan(plan);
+			planInput.getPlan().setIdentifier(planId);
+			return planInput;
+		});
 	}
 
 	/**
@@ -189,14 +212,14 @@ public class PlansResource {
 	@DELETE
 	@Path("/{id}")
 	public Response deletePlan(@PathParam("id") String planId) {
-		PlanDao dao = PlanDaoFactory.getPlanDao(contextProvider.get());
-		Plan plan = dao.getPlanById(planId);
-		if (plan == null) {
-			throw new UnprocessableEntityException();
-		}
-		dao.deletePlan(plan);
-		dao.cleanUp();
-		return Response.ok().build();
+		return Utils.withPlanDao(dao -> {
+			Plan plan = dao.getPlanById(planId);
+			if (plan == null) {
+				throw new UnprocessableEntityException();
+			}
+			dao.deletePlan(plan);
+			return Response.ok().build();
+		});
 	}
 
 	/* ******************************  /{id}/modules  ******************************** */
@@ -216,32 +239,36 @@ public class PlansResource {
 	@Path("/{id}/modules")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, List<JsonModule>> getModules(@PathParam("id") String planId, @Context UriInfo uriInfo) {
-		User user = contextProvider.get().getUser();
+		User user = getUser();
 		if (user.getDiscipline() == null) {
 			throw new UnprocessableEntityException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
-		if (plan == null) {
-			throw new NotFoundException();
-		}
-		Filter filter = PlanModulesResource.getFilterFromRequest(uriInfo.getQueryParameters(), user.getDiscipline());
-		if (filter == null) {
-			throw new BadRequestException();
-		}
-		List<JsonModule> result = ModuleDaoFactory.getModuleDao()
-				.getModulesByFilter(filter, user.getDiscipline())
-				.parallelStream().map(m -> {
-					JsonModule newModule = new JsonModule();
-					newModule.setId(m.getIdentifier());
-					newModule.setName(m.getName());
-					newModule.setCreditPoints(m.getCreditPoints());
-					newModule.setLecturer(m.getModuleDescription().getLecturer());
-					newModule.setCycleType(m.getCycleType());
-					newModule.setPreference(plan.getPreferenceForModule(m));
-					return newModule;
-				})
-				.collect(Collectors.toList());
-		return SimpleJsonResponse.build("modules", result);
+		return Utils.withPlanDao(planDao -> {
+			Plan plan = planDao.getPlanById(planId);
+			if (plan == null) {
+				throw new NotFoundException();
+			}
+			Filter filter = ModuleResource.getFilterFromRequest(uriInfo.getQueryParameters(), user.getDiscipline());
+			if (filter == null) {
+				throw new BadRequestException();
+			}
+			return Utils.withModuleDao(moduleDao -> {
+				List<JsonModule> result = moduleDao
+						.getModulesByFilter(filter, user.getDiscipline())
+						.stream().map(m -> {
+							JsonModule newModule = new JsonModule();
+							newModule.setId(m.getIdentifier());
+							newModule.setName(m.getName());
+							newModule.setCreditPoints(m.getCreditPoints());
+							newModule.setLecturer(m.getModuleDescription().getLecturer());
+							newModule.setCycleType(m.getCycleType());
+							newModule.setPreference(plan.getPreferenceForModule(m));
+							return newModule;
+						})
+						.collect(Collectors.toList());
+				return SimpleJsonResponse.build("modules", result);
+			});
+		});
 	}
 
 	/**
@@ -258,16 +285,18 @@ public class PlansResource {
 	@Path("/{plan}/modules/{module}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, JsonModule> getModule(@PathParam("plan") String planId, @PathParam("module") String moduleId) {
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
-		if (plan == null) {
-			throw new NotFoundException();
-		}
-		Module module = ModuleDaoFactory.getModuleDao().getModuleById(moduleId);
-		if (module == null) {
-			throw new NotFoundException();
-		}
-		JsonModule result = JsonModule.fromModule(module, null, plan.getPreferenceForModule(module));
-		return SimpleJsonResponse.build("module", result);
+		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
+            Plan plan = planDao.getPlanById(planId);
+            if (plan == null) {
+                throw new NotFoundException();
+            }
+            Module module = moduleDao.getModuleById(moduleId);
+            if (module == null) {
+                throw new NotFoundException();
+            }
+            JsonModule result = JsonModule.fromModule(module, null, plan.getPreferenceForModule(module));
+            return SimpleJsonResponse.build("module", result);
+        }));
 	}
 
 	/**
@@ -292,23 +321,27 @@ public class PlansResource {
 				|| moduleInput.getModule().getSemester() == null) {
 			throw new BadRequestException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
-		if (plan == null) {
-			throw new NotFoundException();
-		}
-		Module module = ModuleDaoFactory.getModuleDao().getModuleById(moduleId);
-		if (module == null) {
-			throw new NotFoundException();
-		}
-		if (plan.getModuleEntries().stream().anyMatch(entry -> entry.getModule().equals(module))
-				|| moduleInput.getModule().getSemester()
-					< contextProvider.get().getUser().getStudyStart().getDistanceToCurrentSemester()) {
-			throw new UnprocessableEntityException();
-		}
-		plan.getModuleEntries().add(new ModuleEntry(module, moduleInput.getModule().getSemester()));
-		plan.setVerificationState(VerificationState.NOT_VERIFIED);
-		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
-		return moduleInput;
+		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
+			Plan plan = planDao.getPlanById(planId);
+			if (plan == null) {
+				throw new NotFoundException();
+			}
+			Module module = moduleDao.getModuleById(moduleId);
+			if (module == null) {
+				throw new NotFoundException();
+			}
+			if (plan.getModuleEntries().stream().anyMatch(entry ->
+					entry.getModule().getIdentifier().equals(module.getIdentifier()))
+//					|| moduleInput.getModule().getSemester()
+//						< getUser().getStudyStart().getDistanceToCurrentSemester()
+					) {
+				throw new UnprocessableEntityException();
+			}
+			plan.getModuleEntries().add(new ModuleEntry(module, moduleInput.getModule().getSemester()));
+			plan.setVerificationState(VerificationState.NOT_VERIFIED);
+			planDao.updatePlan(plan);
+			return moduleInput;
+		}));
 	}
 
 	/**
@@ -323,21 +356,23 @@ public class PlansResource {
 	@DELETE
 	@Path("/{plan}/modules/{module}")
 	public Response removeModuleSemester(@PathParam("plan") String planId, @PathParam("module") String moduleId) {
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
-		if (plan == null) {
-			throw new NotFoundException();
-		}
-		Module module = ModuleDaoFactory.getModuleDao().getModuleById(moduleId);
-		if (module == null) {
-			throw new NotFoundException();
-		}
-		ModuleEntry moduleEntry = plan.getModuleEntries().stream()
-				.filter(entry -> entry.getModule().equals(module))
-				.findFirst().orElseThrow(UnprocessableEntityException::new);
-		plan.getModuleEntries().remove(moduleEntry);
-		plan.setVerificationState(VerificationState.NOT_VERIFIED);
-		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
-		return Response.ok().build();
+		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
+			Plan plan = planDao.getPlanById(planId);
+			if (plan == null) {
+				throw new NotFoundException();
+			}
+			Module module = moduleDao.getModuleById(moduleId);
+			if (module == null) {
+				throw new NotFoundException();
+			}
+			ModuleEntry moduleEntry = plan.getModuleEntries().stream()
+					.filter(entry -> entry.getModule().equals(module))
+					.findFirst().orElseThrow(UnprocessableEntityException::new);
+			plan.getModuleEntries().remove(moduleEntry);
+			plan.setVerificationState(VerificationState.NOT_VERIFIED);
+			planDao.updatePlan(plan);
+			return Response.ok().build();
+		}));
 	}
 
 	/**
@@ -361,28 +396,158 @@ public class PlansResource {
 		if (!Objects.equals(moduleInput.getModule().getId(), moduleId)) {
 			throw new BadRequestException();
 		}
-		Module module = ModuleDaoFactory.getModuleDao().getModuleById(moduleId);
-		if (module == null) {
-			throw new NotFoundException();
-		}
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
-		if (plan == null) {
-			throw new NotFoundException();
-		}
-		List<ModulePreference> preferences = plan.getPreferences();
-		if (moduleInput.getModule().getPreference() == null) {
-			if (preferences.stream().noneMatch(preference -> preference.getModule().equals(module))) {
-				throw new UnprocessableEntityException();
+		return Utils.withModuleDao(moduleDao -> Utils.withPlanDao(planDao -> {
+			Module module = moduleDao.getModuleById(moduleId);
+			if (module == null) {
+				throw new NotFoundException();
 			}
-			preferences.removeIf(preference -> preference.getModule().equals(module));
-		} else {
-			if (preferences.stream().anyMatch(preference -> preference.getModule().equals(module))) {
-				throw new UnprocessableEntityException();
+			Plan plan = planDao.getPlanById(planId);
+			if (plan == null) {
+				throw new NotFoundException();
 			}
-			preferences.add(new ModulePreference(module, moduleInput.getModule().getPreference()));
+			List<ModulePreference> preferences = plan.getPreferences();
+			if (moduleInput.getModule().getPreference() == null) {
+				if (preferences.stream().noneMatch(preference -> preference.getModule().equals(module))) {
+					throw new UnprocessableEntityException();
+				}
+				preferences.removeIf(preference -> preference.getModule().equals(module));
+			} else {
+				if (preferences.stream().anyMatch(preference -> preference.getModule().equals(module))) {
+					throw new UnprocessableEntityException();
+				}
+				preferences.add(new ModulePreference(module, moduleInput.getModule().getPreference()));
+			}
+			planDao.updatePlan(plan);
+			return moduleInput;
+		}));
+
+	}
+
+	/* ******************************  /{plan}/verification  ******************************** */
+
+	/**
+	 * GET-Anfrage: Verifiziert den Planmit den gegebenen ID, gibt den
+	 * verifizierten Plan zurück und speichert ihn in der Datenbank.
+	 *
+	 * @param planId
+	 *            ID des plans.
+	 * @return den verifizierten Plan als JSON Objekt.
+	 */
+	@GET
+	@Path("/{plan}/verification")
+	@Produces(MediaType.APPLICATION_JSON)
+	public PlanInOut verifyPlan(@PathParam("plan") String planId) {
+		return Utils.withPlanDao(dao -> {
+			Plan plan = dao.getPlanById(planId);
+			if (plan == null) {
+				throw new NotFoundException();
+			}
+			VerificationManager manager = new VerificationManager();
+			VerificationResult result = manager.verify(plan);
+			PlanWithViolations planOut = new PlanWithViolations();
+			planOut.setIdentifier(planId);
+			plan.setVerificationState(result.isCorrect() ? VerificationState.VALID : VerificationState.INVALID);
+			planOut.setVerificationState(plan.getVerificationState());
+			planOut.setViolations(new ArrayList<>(result.getViolations()));
+			planOut.setFieldViolations(new ArrayList<>(result.getFieldViolations()));
+			planOut.setRuleGroupViolations(new ArrayList<>(result.getRuleGroupViolations()));
+			dao.updatePlan(plan);
+			return new PlanInOut(planOut);
+		});
+	}
+
+	/* ******************************  /{plan}/proposal/{objectiveId}  ******************************** */
+
+
+	/**
+	 * GET-Anfrage: Erstellt und gibt einen auf Basis des Plans mit der
+	 * gegebenen ID generierten Plan als JSON-Objekt zurück.
+	 *
+	 * @param planId
+	 *            ID des Basis-Plans.
+	 * @param jsonSettings
+	 *            die gesetzten Einstellungen des Plans als Get-Parameter.
+	 * @return den generierten Plan als JSON Objekt.
+	 */
+	@GET
+	@Path("/{plan}/proposal/{objectiveId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public PlanInOut generatePlan(@PathParam("plan") String planId, @PathParam("objectiveId") String objectiveId,
+								   @Context UriInfo uriInfo) {
+		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
+			Plan plan = planDao.getPlanById(planId);
+			if (plan == null) {
+				throw new NotFoundException();
+			}
+
+			MultivaluedMap<String, String> parameters = uriInfo.getQueryParameters();
+
+			try {
+				int minSemesters = Integer.parseInt(parameters.getFirst("min-semesters"));
+				int maxSemesters = Integer.parseInt(parameters.getFirst("max-semesters"));
+				int minSemestersEcts = Integer.parseInt(parameters.getFirst("min-semesters-ects"));
+				int maxSemestersEcts = Integer.parseInt(parameters.getFirst("max-semesters-ects"));
+
+				Map<Field, Category> preferredSubjects = getPreferredSubjectsFromRequest(parameters);
+
+				GenerationManager manager = new GenerationManager();
+				PartialObjectiveFunction objective = manager.getAllObjectiveFunctions().stream()
+						.filter(fn -> false  //TODO:  fn.getId() == objectiveId
+						).findFirst().orElseThrow(NotFoundException::new);
+
+				Plan result = manager.generate(objective, plan, moduleDao);  //TODO incorporate 4 ints & preferredSubs
+
+				return new PlanInOut(result); //TODO Check serialization of `result` inside generator
+			} catch (IllegalArgumentException ex) {
+				throw new BadRequestException();
+			}
+		}));
+	}
+
+	private Map<Field, Category> getPreferredSubjectsFromRequest(MultivaluedMap<String, String> parameters) {
+		if (!parameters.containsKey("fields")) {
+			throw new BadRequestException();
 		}
-		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
-		return moduleInput;
+		Map<Field, Category> result = new HashMap<>();
+		try {
+			Utils.useModuleDao(moduleDao -> {
+				Arrays.stream(parameters.getFirst("fields").split(",")).forEach(fieldIdStr -> {
+					Field key = moduleDao.getFieldById(Integer.parseInt(fieldIdStr));
+					Category value = moduleDao.getCategoryById(Integer.parseInt(
+							parameters.getFirst("field-" + fieldIdStr)
+					));
+					result.put(key, value);
+				});
+			});
+		} catch (IllegalArgumentException ex) {
+			throw new BadRequestException();
+		}
+		return result;
+	}
+	
+	/**
+	 * GET-Anfrage: Gibt die PDF-Version des Plans mit den gegebenen ID zurück.
+	 * 
+	 * @param planID
+	 *            ID des zu konvertierenden Plans.
+	 * @param accessToken
+	 *            Ein Token, zur Authentifizierung der Klient.
+	 * @return die PDF-Version des Plans.
+	 */
+	@Produces("text/html")
+	@GET
+	@Path("/{planId}/pdf")
+	public Response convertPlanToPDF(@PathParam(value = "planId") String planId,
+			@QueryParam("access-token") String accessToken) {
+		AbstractSecurityProvider provider = AbstractSecurityProvider.getSecurityProviderImpl();
+		AuthorizationContext context = provider.getAuthorizationContext(accessToken);
+		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		if (context == null || !context.getUser().equals(plan.getUser())) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		PlanConverter converter = new PlanConverter(plan);
+		converter.getWriter().flush();
+		return Response.ok(converter.getWriter().toString()).build();
 	}
 
 

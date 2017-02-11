@@ -1,35 +1,27 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
-
+import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Semester;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDaoFactory;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
-import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Diese Klasse repräsentiert dir Student-Resource.
@@ -38,7 +30,11 @@ import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 @AuthorizationNeeded
 public class StudentResource {
 	@Inject
-	Provider<AuthorizationContext> contextProvider;
+	Provider<AuthorizationContext> context;
+
+	private User getUser() {
+		return context.get().getUser();
+	}
 
 	/**
 	 * PUT-Anfrage: Ersetzt Informationen über einen Student und löscht die
@@ -52,46 +48,54 @@ public class StudentResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@JsonView(Views.StudentClass.class)
 	public StudentInOut replaceInformation(StudentInOut studentInput) {
-		User thisStudent = contextProvider.get().getUser();
-		JsonStudent jsonStudent = studentInput.getStudent();
-		if (jsonStudent.getDiscipline() != null) {
-			Discipline foundDiscipline = ModuleDaoFactory.getModuleDao()
-					.getDisciplineById(jsonStudent.getDiscipline().getDisciplineId());
-			thisStudent.setDiscipline(foundDiscipline);
-		}
-        if (jsonStudent.getStudyStart() != null) {
-			thisStudent.setStudyStart(jsonStudent.getStudyStart());
-		}
-		if (jsonStudent.getPassedModules() != null) {
-			List<ModuleEntry> newPassedModules = jsonStudent.getPassedModules()
-					.parallelStream()
-					.map(jsonModule -> {
-						ModuleEntry entry =
-								new ModuleEntry(ModuleDaoFactory.getModuleDao().getModuleById(jsonModule.getId()),
-										jsonModule.getSemester());
-						if (entry.getModule() == null) {
-							throw new BadRequestException();
-						}
-						if (jsonModule.getSemester() == null) {
-							throw new BadRequestException();
-						}
-						if (jsonModule.getSemester() > thisStudent.getStudyStart().getDistanceToCurrentSemester()) {
-							throw new BadRequestException();
-						}
-						return entry;
-					})
-					.collect(Collectors.toList());
+		return Utils.withUserDao(userDao -> Utils.withModuleDao(moduleDao -> Utils.withPlanDao(planDao -> {
+			User thisStudent = getUser();
+			JsonStudent jsonStudent = studentInput.getStudent();
+			if (jsonStudent.getDiscipline() != null) {
+				Discipline foundDiscipline = moduleDao
+						.getDisciplineById(jsonStudent.getDiscipline().getDisciplineId());
+				thisStudent.setDiscipline(foundDiscipline);
+			}
+			if (jsonStudent.getStudyStart() != null) {
+				thisStudent.setStudyStart(jsonStudent.getStudyStart());
+			}
+			if (jsonStudent.getPassedModules() != null) {
+				List<ModuleEntry> newPassedModules = jsonStudent.getPassedModules()
+						.stream()
+						.map(jsonModule -> {
+							ModuleEntry entry =
+									new ModuleEntry(moduleDao.getModuleById(jsonModule.getId()),
+											jsonModule.getSemester());
+							if (entry.getModule() == null) {
+								throw new BadRequestException();
+							}
+							if (jsonModule.getSemester() == null) {
+								throw new BadRequestException();
+							}
+							if (jsonModule.getSemester() > thisStudent.getStudyStart().getDistanceToCurrentSemester()) {
+								throw new BadRequestException();
+							}
+							return entry;
+						})
+						.collect(Collectors.toList());
 
-			thisStudent.getPassedModules().clear();
-			thisStudent.getPassedModules().addAll(newPassedModules);
-		}
+				thisStudent.getPassedModules().clear();
+				thisStudent.getPassedModules().addAll(newPassedModules);
+			}
 
-		if (jsonStudent.getDiscipline() != null || jsonStudent.getPassedModules() != null) {
-			thisStudent.getPlans().parallelStream()
-					.forEach(plan -> plan.setVerificationState(VerificationState.NOT_VERIFIED));
-		}
-		UserDaoFactory.getUserDao(contextProvider.get()).updateUser(thisStudent);
-		return studentInput; //hasn't changed
+			if (jsonStudent.getDiscipline() != null || jsonStudent.getPassedModules() != null) {
+				Set<Module> passedModuleSet = thisStudent.getPassedModules().stream()
+						.map(ModuleEntry::getModule)
+						.collect(Collectors.toSet());
+
+				thisStudent.getPlans().forEach(plan -> {
+					plan.getModuleEntries().removeIf(entry -> passedModuleSet.contains(entry.getModule()));
+					plan.setVerificationState(VerificationState.NOT_VERIFIED);
+				});
+			}
+			userDao.updateUser(thisStudent);
+			return studentInput; //hasn't changed
+		})));
 	}
 
 
@@ -105,16 +109,19 @@ public class StudentResource {
 	@JsonView(Views.StudentClass.class)
 	@Produces(MediaType.APPLICATION_JSON)
 	public StudentInOut getInformation() {
-		List<JsonModule> passedModules = contextProvider.get().getUser().getPassedModules().parallelStream().map(entry -> {
+		List<JsonModule> passedModules = getUser().getPassedModules().stream().map(entry -> {
 			JsonModule m = new JsonModule();
 			m.setId(entry.getModule().getIdentifier());
+			m.setName(entry.getModule().getName());
+			m.setCreditPoints(entry.getModule().getCreditPoints());
+			m.setLecturer(entry.getModule().getModuleDescription().getLecturer());
 			m.setSemester(entry.getSemester());
 			return m;
 		}).collect(Collectors.toList());
 		JsonStudent result = new JsonStudent(
-				contextProvider.get().getUser().getDiscipline(),
-				contextProvider.get().getUser().getStudyStart(),
-				passedModules);   //TODO aufräumen
+				getUser().getDiscipline(),
+				getUser().getStudyStart(),
+				passedModules);
 		return new StudentInOut(result);
 	}
 
@@ -124,11 +131,10 @@ public class StudentResource {
 	@DELETE
 	@JsonView(Views.StudentClass.class)
 	public Response deleteStudent() {
-		if (contextProvider.get().getUser() == null) {
-			throw new UnprocessableEntityException();
-		}
-		UserDaoFactory.getUserDao(contextProvider.get()).deleteUser(contextProvider.get().getUser());
-		return Response.ok().build();
+		return Utils.withUserDao(dao -> {
+			dao.deleteUser(getUser());
+			return Response.ok().build();
+		});
 	}
 
 	static class StudentInOut {

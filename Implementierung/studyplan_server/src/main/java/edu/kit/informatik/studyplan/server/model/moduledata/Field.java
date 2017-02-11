@@ -3,16 +3,25 @@
  */
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
-
-import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+
 /**
- * Class modelling a field for a discipline
+ * Class modeling a field for a discipline
  * @author NiklasUhl
  * @version 1.0
  */
@@ -56,7 +65,7 @@ public class Field {
 	 * @param fieldId
 	 *            the fieldId to set
 	 */
-	void setFieldId(int fieldId) {
+	public void setFieldId(int fieldId) {
 		this.fieldId = fieldId;
 	}
 
@@ -71,7 +80,7 @@ public class Field {
 	 * @param name
 	 *            the name to set
 	 */
-	void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -86,7 +95,7 @@ public class Field {
 	 * @param discipline
 	 *            the discipline to set
 	 */
-	void setDiscipline(Discipline discipline) {
+	public void setDiscipline(Discipline discipline) {
 		this.discipline = discipline;
 	}
 
@@ -101,7 +110,7 @@ public class Field {
 	 * @param minEcts
 	 *            the minEcts to set
 	 */
-	void setMinEcts(double minEcts) {
+	public void setMinEcts(double minEcts) {
 		this.minEcts = minEcts;
 	}
 
@@ -117,7 +126,7 @@ public class Field {
 	 * @param isChoosable
 	 *            if the field allows a selection of subjects
 	 */
-	void setChoosable(boolean isChoosable) {
+	public void setChoosable(boolean isChoosable) {
 		this.isChoosable = isChoosable;
 	}
 

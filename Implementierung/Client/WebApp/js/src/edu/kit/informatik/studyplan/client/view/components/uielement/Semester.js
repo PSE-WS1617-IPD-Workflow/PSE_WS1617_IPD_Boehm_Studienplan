@@ -12,17 +12,15 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
     moduleElements: [],
     isPassedSemester: false,
     isPassedPlan: false,
-    ulOffset: 0,
     events : {
-        "click button.prev": "clickPrev",
-        "click button.next": "clickNext"
+        
     },
     initialize: function (options) {
         this.model = options.semester;
-        this.isRemovable = options.isRemovable;
-        this.isPreferencable = options.isPreferencable;
-        this.isPassedSemester = options.isPassedSemester;
-        this.isPassedPlan = options.isPassedPlan;
+        this.isRemovable = (typeof options.isRemovable !== "undefined") ? options.isRemovable : this.isRemovable;
+        this.isPreferencable = (typeof options.isPreferencable !== "undefined") ? options.isPreferencable : this.isPreferencable;
+        this.isPassedSemester = (typeof options.isPassedSemester !== "undefined") ? options.isPassedSemester : this.isPassedSemester;
+        this.isPassedPlan = (typeof options.isPassedPlan !== "undefined") ? options.isPassedPlan : this.isPassedPlan;
         this.reload();
         this.listenTo(this.model, "change", this.reload);
         this.listenTo(this.model, "destroy", this.reload);
@@ -32,11 +30,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         this.reload();
     },
     reload: function () {
-        this.ulOffset = 0;
         this.moduleElements=[];
         this.model.each(function (el) {
             var removable = true;
-            if(!this.isPassedPlan&&this.isPassedSemester) {
+            if(!this.isPassedPlan) {
                 removable = false;
             }
             if(!this.isPassedPlan&&el.get('passed')){
@@ -46,7 +43,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
             if(!this.isPassedPlan&&el.get('passed')){
                 draggable = false;
             }
-                
+            console.log("SEMESTER UI");
+            console.log(el);
             this.moduleElements.push(
                 new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
                     module: el,
@@ -57,6 +55,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
                 })
             );
         }.bind(this));
+        console.log(this);
         this.render();
     },
     /**
@@ -65,43 +64,18 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
      * @return {Backbone.View|null}
      */
     render: function () {
-        var tdWidth = this.$el.innerWidth();
-        this.$el.find(".semesterModules").css({
-            transform: "translate("+this.ulOffset+"px,0px)",
-            width: (this.moduleElements.length*260+50)+"px"
-        })
+        this.$el.html(this.template({semester: this.model}));
         this.$el.droppable({
             drop: this.onDrop.bind(this)
         });
         _.each(this.moduleElements, function (element) {
             element.render();
+            console.log(element);
             this.$el.find(".semesterModules").append(element.$el);
         }.bind(this));
+        console.log(this.$el);
         this.delegateEvents();
         return null;
-    },
-    clickPrev: function () {
-        this.changeOffset(50);
-    },
-    clickNext: function () {
-        this.changeOffset(-50);
-    },
-    changeOffset: function (val) {
-        console.info("changing offset")
-        var tdWidth = this.$el.innerWidth();
-        var ulWidth = this.$el.find(".semesterModules").innerWidth();
-        if(ulWidth-tdWidth+250>-(this.ulOffset+val)){
-            this.ulOffset+=val;
-        }
-        if(this.ulOffset>0){
-            this.ulOffset=0;
-        }
-        console.info(this.ulOffset);
-        this.$el.find(".semesterModules").css({
-            transform: "translate("+this.ulOffset+"px,0px)",
-            width: (this.moduleElements.length*260+100)+"px"
-        })
-        
     },
 /**
 *
@@ -146,19 +120,24 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
                 droppedModel.collection.remove(droppedModel);
             }
             droppedModel.set('semester', this.model.semesterNum);
+            if (this.isPassedPlan) {
+                droppedModel.set('passed', true);
+            }
             this.model.add(droppedModel);
             droppedModel.collection = this.model;
-            droppedModel.save(null, {
-                error: function () {
-                    /*console.log(droppedModel);
-                    this.model.remove(droppedModel);
-                    if (oldCol!==null) {
-                        droppedModel.set('semester', oldSem);
-                        oldCol.add(droppedModel);
-                    }
-                    console.log(droppedModel);*/
-                }.bind(this)
-            });
+            if(!this.isPassedPlan){
+                droppedModel.save(null, {
+                    error: function () {
+                        console.log(droppedModel);
+                        this.model.remove(droppedModel);
+                        if (oldCol!==null) {
+                            droppedModel.set('semester', oldSem);
+                            oldCol.add(droppedModel);
+                        }
+                        console.log(droppedModel);
+                    }.bind(this)
+                });
+            }
         }
     },
     /**

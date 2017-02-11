@@ -10,6 +10,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
 import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JsonModule {
@@ -56,10 +57,10 @@ public class JsonModule {
     }
 
     public static JsonModule fromModule(Module module, Integer semester, PreferenceType preference) {
-        return new JsonModule(module.getIdentifier(), module.getName(), module.getCategories(), semester,
-                module.getCycleType(), module.getCreditPoints(), module.getModuleDescription().getLecturer(),
+        return new JsonModule(module.getIdentifier(), module.getName(), new ArrayList<>(module.getCategories()),
+                semester, module.getCycleType(), module.getCreditPoints(), module.getModuleDescription().getLecturer(),
                 preference, module.isCompulsory(), module.getModuleDescription().getDescriptionText(),
-                module.getConstraints());
+                new ArrayList<>(module.getConstraints()));
     }
 
     public String getId() {

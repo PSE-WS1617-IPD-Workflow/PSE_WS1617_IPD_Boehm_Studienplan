@@ -1,20 +1,5 @@
-.planHeadBar{
-    .homeSymbol{
-        font-size: $subtitleSize;
-    }
-    .mainPageNavigation{
-        height:30px;
-        box-sizing: border-box;
-        padding:5px;
-        margin:0px 0px 0px 20px;
-        color:$boxColor;
-        border:none;
-        background-color: transparent;
-        cursor: pointer;
-    }
-}
 .profileEditHeadWrapper{
-    margin-top:130px;
+    margin-top:100px;
     width:75%;
     height:50px;
 }
@@ -28,7 +13,7 @@
     right:0px;
     width: 25%;
     height: 100%;
-    padding-top: 130px;
+    padding-top: 100px;
     box-sizing: border-box;
 
     color:$boxColor;

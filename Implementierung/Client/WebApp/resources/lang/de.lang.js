@@ -104,4 +104,7 @@ LM.messages["de"]["signUpExplanation2"] = "Bitte gib an, welche Module du bereit
 LM.messages["de"]["discipline"] = "Studienfach:";
 LM.messages["de"]["beginningdate"] = "Studienbeginn:";
 
-
+// Profile
+LM.messages["de"]["savePlan"] = "Speichern";
+LM.messages["de"]["profileSavedTitle"] = "Profil gespeichert";
+LM.messages["de"]["profileSavedText"] = "Das Profil wurde erfolgreich gespeichert.";

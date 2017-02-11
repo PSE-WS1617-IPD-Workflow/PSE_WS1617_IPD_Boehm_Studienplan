@@ -10,19 +10,16 @@ edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection = edu.kit.
     url: API_DOMAIN + "/modules",
     
     toPlan: function(){
-        var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({
-                plan    :   {
-                    id  :   'someId',
-                    name:   'someName',
-                    'creditpoints-sum': 0,
-                    modules :   [],
-                }
-            },{parse:true});
-        
-        var collections = [];
-        this.each(function (module) {
-            plan.addModule(module);
-        })
-        return plan;
+        var passedPlan = new edu.kit.informatik.studyplan.client.model.plans.Plan({
+            plan: {
+                id: null,
+                status: "not-verified",
+                "creditpoints-sum": 0,
+                name:"Bestanden",
+                modules: []
+            }
+        }, {parse: true});
+        passedPlan.url = function () { return ""; }
+        return passedPlan;
     }
 });

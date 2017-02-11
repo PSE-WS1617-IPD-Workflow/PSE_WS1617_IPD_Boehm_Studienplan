@@ -1,5 +1,6 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Where;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -36,10 +39,16 @@ public class Discipline {
 	private String description;
 
 	@OneToMany(mappedBy = "discipline")
+	@JsonIgnore
 	private List<Field> fields = new LinkedList<Field>();
+
+	@OneToMany(mappedBy = "discipline")
+    @JsonIgnore
+	private List<RuleGroup> ruleGroups = new LinkedList<RuleGroup>();
 	
 	@OneToMany(mappedBy = "discipline")
-	private List<RuleGroup> ruleGroups = new LinkedList<RuleGroup>();
+	@Where(clause = "is_compulsory = true")
+	private List<Module> compulsoryModules = new LinkedList<Module>();
 
 	/**
 	 * 
@@ -53,7 +62,7 @@ public class Discipline {
 	 * @param disciplineId
 	 *            the disciplineId to set
 	 */
-	void setDisciplineId(int disciplineId) {
+	public void setDisciplineId(int disciplineId) {
 		this.disciplineId = disciplineId;
 	}
 
@@ -69,7 +78,7 @@ public class Discipline {
 	 * @param description
 	 *            the description to set
 	 */
-	 void setDescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
@@ -79,12 +88,19 @@ public class Discipline {
 	public List<Field> getFields() {
 		return fields;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @return returns a list of all rule groups associated with this discipline
 	 */
 	public List<RuleGroup> getRuleGroups() {
 		return ruleGroups;
+	}
+
+	/**
+	 * @return the compulsoryModules
+	 */
+	public List<Module> getCompulsoryModules() {
+		return compulsoryModules;
 	}
 }

@@ -21,10 +21,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     },
     initialize: function (options) {
         this.model=options.module;
-        this.isRemovable = options.isRemovable;
-        this.isDraggable = options.isDraggable;
-        this.isPreferencable = options.isPreferencable;
-        this.isPassedPlanModule = options.isPassedPlanModule;
+        this.isRemovable = (typeof options.isRemovable !== "undefined") ? options.isRemovable : this.isRemovable;
+        this.isDraggable = (typeof options.isDraggable !== "undefined") ? options.isDraggable : this.isDraggable;
+        this.isPreferencable = (typeof options.isPreferencable !== "undefined") ? options.isPreferencable : this.isPreferencable;
+        this.isPassedPlanModule = (typeof options.isPassedPlanModule !== "undefined") ? options.isPassedPlanModule : this.isPassedPlanModule;
     },
     voteUp: function () {
         "use strict";
@@ -53,9 +53,14 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     removeModule:
         function () {
             "use strict";
+            // TODO zeug
             console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] remove");
             var oldCol = this.model.collection;
-            this.model.destroy();
+            if(this.isPassedPlanModule){
+                this.model.collection.remove(this.model);
+            } else {
+                this.model.destroy();
+            }
         },
     /**
     *

@@ -11,7 +11,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.User;
 /**
  * DataAccessObject zum Zugriff auf Nutzer in der Datenbank
  */
-public interface UserDao extends Dao{
+public interface UserDao extends Dao {
 
 	/**
 	 * Löscht den übergebenen Nutzer aus der Datenbank

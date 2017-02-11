@@ -17,7 +17,9 @@ edu.kit.informatik.studyplan.client.model.system.OAuthModel = Backbone.Model.ext
             (attrs = {})[key] = val;
         }
         options = options || {};
-        options["wait"]=true;
+        _.defaults(options,{
+            wait: true
+        })
         Backbone.Model.prototype.save.apply(this,[attrs, options])
     },
     destroy: function (options) {

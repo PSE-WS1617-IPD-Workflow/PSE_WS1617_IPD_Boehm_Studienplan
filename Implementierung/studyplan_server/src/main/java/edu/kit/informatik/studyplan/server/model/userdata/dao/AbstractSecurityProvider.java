@@ -49,5 +49,6 @@ public abstract class AbstractSecurityProvider {
 	
 	public abstract RESTClient getClient(String clientId);
 	
+	@Deprecated
 	public abstract void cleanUp();
 };

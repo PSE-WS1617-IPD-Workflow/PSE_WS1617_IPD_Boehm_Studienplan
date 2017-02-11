@@ -1,13 +1,15 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.system.SearchCollection");
 /**
  * @constructor
+ * @param {Object=} attributes
  * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.model.module.ModuleCollection}
  */
 
 edu.kit.informatik.studyplan.client.model.system.SearchCollection = edu.kit.informatik.studyplan.client.model.module.ModuleCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.SearchCollection.prototype}*/{
-    initialize : function () {
+    initialize : function (models, options) {
         "use strict";
+        this.planId = options.planId
         edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype.initialize.apply(this, arguments);
     },
     url : function () {

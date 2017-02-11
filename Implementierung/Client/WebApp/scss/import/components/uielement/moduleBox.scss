@@ -40,6 +40,11 @@
     }
     &.grabbing{
         cursor:grabbing;
+        width:220px;
+        height:140px;
+    }
+    &.grabbing .buttons{
+        display:none;
     }
     .passed {
         float:right;
@@ -97,9 +102,12 @@
 }
 .semesterModules{
     .moduleBox{
+        .buttons{
+            bottom:10px;
+        }
         width:220px;
         height:140px;
-        margin-right:20px;
+        margin:10px;
     }
 }
 .moduleListWrapper{

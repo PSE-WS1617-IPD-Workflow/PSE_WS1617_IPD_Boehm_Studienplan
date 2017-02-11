@@ -20,14 +20,15 @@ import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
  */
 class HibernateModuleDao implements ModuleDao {
 	
+	@Deprecated
 	private Session session;
-	
-	public HibernateModuleDao() {
-		session = HibernateUtil.getModuleDataSessionFactory().openSession();
-	}
 	
 	@Override
 	public Module getModuleById(String id) {
+		if (id == null) {
+			return null;
+		}
+		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Module module = session.bySimpleNaturalId(Module.class).load(id);
 		session.getTransaction().commit();
@@ -36,6 +37,7 @@ class HibernateModuleDao implements ModuleDao {
 
 	@Override
 	public List<Module> getModulesByFilter(Filter filter, Discipline discipline) {
+		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		ConditionQueryConverter converter = new ConditionQueryConverter(filter.getConditions());
 		session.beginTransaction();
 		String queryString = "from Module m where " + converter.getQueryString() + " and m.discipline = :discipline";
@@ -56,6 +58,7 @@ class HibernateModuleDao implements ModuleDao {
 
 	@Override
 	public List<Discipline> getDisciplines() {
+		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		List<Discipline> resultList = session.createQuery("from Discipline", Discipline.class).getResultList();
 		session.getTransaction().commit();
@@ -64,6 +67,7 @@ class HibernateModuleDao implements ModuleDao {
 
 	@Override
 	public List<Category> getCategories(Discipline discipline) {
+		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		String queryString = "select distinct category "
 				+ "from Module as module  "
 				+ "join module.categories as category "
@@ -78,6 +82,7 @@ class HibernateModuleDao implements ModuleDao {
 
 	@Override
 	public Discipline getDisciplineById(int disciplineId) {
+		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Discipline discipline = session.byId(Discipline.class).load(disciplineId);
 		session.getTransaction().commit();
@@ -86,6 +91,7 @@ class HibernateModuleDao implements ModuleDao {
 
 	@Override
 	public List<Field> getFields(Discipline discipline) {
+		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		String queryString = "from Field field where field.discipline = :discipline";
 		Query<Field> query = session.createQuery(queryString, Field.class);
@@ -97,6 +103,7 @@ class HibernateModuleDao implements ModuleDao {
 
 	@Override
 	public List<ModuleType> getModuleTypes() {
+		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		List<ModuleType> resultList = session.createQuery("from ModuleType", ModuleType.class).getResultList();
 		session.getTransaction().commit();
@@ -105,6 +112,7 @@ class HibernateModuleDao implements ModuleDao {
 	
 	@Override
 	public List<Category> getSubjects(Field field) {
+		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Query<Category> query = session.createQuery("select distinct category "
 				+ "from Field as field  "
@@ -119,6 +127,7 @@ class HibernateModuleDao implements ModuleDao {
 
 	@Override
 	public Category getCategoryById(int id) {
+		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		session.beginTransaction().commit();
 		Category category = session.byId(Category.class).load(id);
 		session.getTransaction().commit();
@@ -127,6 +136,7 @@ class HibernateModuleDao implements ModuleDao {
 
 	@Override
 	public Field getFieldById(int id) {
+		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Field field = session.byId(Field.class).load(id);
 		session.getTransaction().commit();
@@ -134,6 +144,7 @@ class HibernateModuleDao implements ModuleDao {
 	}
 
 	@Override
+	@Deprecated
 	public void cleanUp() {
 		session.close();
 	}

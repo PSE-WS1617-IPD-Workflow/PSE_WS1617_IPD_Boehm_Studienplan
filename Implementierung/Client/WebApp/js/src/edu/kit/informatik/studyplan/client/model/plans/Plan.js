@@ -26,7 +26,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         if(passedModules){
             passedModules.each(function(module){
                 module.set('passed', true);
-                response["modules"].push(module.toJSON({planModule: true}));
+                response["modules"].push(module.toJSON({planModule: true})["module"]);
             });
         }
         // Initialise an object of type client.model.plans.SemesterCollection and set planId and module
@@ -116,8 +116,6 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     * Ignores if a semester was passed
     */
     addModule: function (module) {
-        console.log("This is inside of Plan.addModule");
-        console.log(this.get("semesterCollection"));
         this.get("semesterCollection").addModule(module);
     }
 });

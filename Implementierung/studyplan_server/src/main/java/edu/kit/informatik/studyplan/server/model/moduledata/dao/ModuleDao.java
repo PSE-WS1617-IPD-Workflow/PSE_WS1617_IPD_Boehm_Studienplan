@@ -76,7 +76,7 @@ public interface ModuleDao extends Dao {
 	List<Category> getCategories(Discipline discipline);
 
 	/**
-	 * TODO maybe rewrite/override using SQL & DB if necessary
+	 *
 	 *  @return the discipline's category with given ID or null if not found
 	 *
 	 */
@@ -91,7 +91,7 @@ public interface ModuleDao extends Dao {
 	List<Field> getFields(Discipline discipline);
 
     /**
-     * TODO maybe rewrite/override using SQL & DB if necessary
+     *
      *  @return the discipline's field with given ID or null if not found
      *
      */
