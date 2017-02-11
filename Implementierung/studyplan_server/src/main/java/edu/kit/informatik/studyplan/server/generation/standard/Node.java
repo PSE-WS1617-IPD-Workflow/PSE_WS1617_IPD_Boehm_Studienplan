@@ -1,6 +1,7 @@
 package edu.kit.informatik.studyplan.server.generation.standard;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
@@ -16,27 +17,35 @@ public abstract class Node {
 	 */
 	private Module module;
 	/**
-	 * 
+	 * the plan that this Node was created from.
 	 */
 	private Plan plan;
 	/**
-	 * 
+	 * True if the module of this node is a passed module.
+	 * False if not.
 	 */
 	private boolean isPassed = false;
 	/**
-	 * 
+	 * If this Node was created from a module entry in a plan this attribute 
+	 * returns the number of the Semester it was in.
 	 */
-	private boolean isFixed = false;
+	private int semester = 0;
 	/**
-	 * Ein Knoten beinhaltet eine Liste parents vom Typ Node, die alle Knoten
-	 * enthält, die Kanten zu diesem Knoten haben.
+	 * List of nodes that have an edge to this node.
 	 */
 	private ArrayList<Node> parents = new ArrayList<Node>();	
 	/**
-	 * ein innerer Knoten zur Darstellung von parallelen Modulen (Knoten).
+	 * An inner node to represent nodes of parallel modules.
 	 */
 	private Node innerNode = null;
+	/**
+	 * An outer Node is used to be able to iterate back to nodes that have this node 
+	 * as an inner node. 
+	 */
 	private Node outerNode = null;
+	/**
+	 * Boolean that says if the module constraints of this node are already fulfilled.
+	 */
 	private boolean constraintsFulfilled = false;
 	/**
 	 * If this  is a node with output, this method fulfills all constraints related to 
@@ -57,14 +66,14 @@ public abstract class Node {
 	 * @param random -true if this node is a randomly added node from the generator
 	 * 				 -false if not
 	 */
-	public abstract List<Node> fulfillConstraints(NodesList graphNodes, boolean random);
+	protected abstract List<Node> fulfillConstraints(NodesList graphNodes, boolean random);
 	/**
 	 * If this is a Node with Output, this method returns a list of all nodes, to which 
 	 * this node is connected with an output edge.
 	 * If this is a node without output, it returns null.
 	 * @return children-nodes
 	 */
-	public abstract ArrayList<Node> getChildren();
+	protected abstract ArrayList<Node> getChildren();
 	
 	/**
 	 * If this is a Node with Output, this method adds a node to the list of nodes to which 
@@ -73,7 +82,7 @@ public abstract class Node {
 	 * 
 	 * @param node the node to add.
 	 */
-	public abstract void addChild(Node node);
+	protected abstract void addChild(Node node);
 	
 	/**
 	 * If this is a Node with Output, this method removes the given node to the list of
@@ -85,12 +94,21 @@ public abstract class Node {
 	 * @return -true if the removal was successful
 	 * 		   -false if the node given couldn't be found or the Node is without Output 
 	 */
-	public abstract boolean removeChild(Node node);
-
+	protected abstract boolean removeChild(Node node);
+	/**
+	 * Creates a new Node with the module given.
+	 * This constructor should only be used as an auxiliary by the Generator (e.g. to use the equals
+	 * method) .
+	 * @param module of this Node.
+	 */
 	protected Node(Module module){
 		this.module = module;
 	}
-	
+	/**
+	 * Creates a new Node from the plan given with the module given.
+	 * @param module of this Node.
+	 * @param plan from which this Node was created.
+	 */
 	protected Node(Module module, Plan plan){
 		this.module = module;
 		this.plan = plan;
@@ -102,30 +120,35 @@ public abstract class Node {
 		}
 	}
 	/**
-	 * Die Methode getPartens gibt die Liste parents zurück.
-	 * 
-	 * @return parent-moduls
+	 * @param semester the semester to set
 	 */
-	public ArrayList<Node> getParents() {
+	protected void setSemester(int semester) {
+		this.semester = semester;
+	}
+	/**
+	 * Returns the list of parents.
+	 * 
+	 * @return parent-modules
+	 */
+	protected ArrayList<Node> getParents() {
 		return parents;
 	}
 
 	/**
-	 * Die Methode gibt das Modul zurück, welches der Knoten darstellt.
+	 * Returns the module that this node represents.
 	 * 
-	 * @return Das Modul (Typ Module), welches der Knoten repräsentiert.
+	 * @return the module this nodes's module
 	 */
-	public Module getModule() {
+	protected Module getModule() {
 		return module;
 	}
 
 	/**
-	 * Die Methode addParent fügt der Liste parents vom Typ node den übergebenen
-	 * node hinzu.
+	 * Adds the node given to parents list.
 	 * 
 	 * @param node
 	 */
-	public void addParent(Node node) {
+	protected void addParent(Node node) {
 		if (!getChildren().contains(node) && !getParents().contains(node)){
 			node.setPlan(plan);
 			parents.add(node);
@@ -134,27 +157,30 @@ public abstract class Node {
 	}
 
 	/**
-	 * die Methode getInnerNodes gibt eventuell enthaltene weitere Knoten zurück.
+	 * Returns inner node if this node has one, nothing if it doesn't. 
 	 * 
-	 * @return enthaltene Knoten
+	 * @return inner node
 	 */
-	public Node getInnerNode() {
+	protected Node getInnerNode() {
 		return innerNode;
 	}
-
-	public Node getOuterNode() {
+	/**
+	 * Returns outer node if this node has one, nothing if it doesn't. 
+	 * 
+	 * @return outer node
+	 */
+	protected Node getOuterNode() {
 		return outerNode;
 	}
 	
 	
 	/**
-	 * Die Methode addInnerNode fügt dem innersten Knoten den übergebenen Knoten
-	 * als inneren Knoten hinzu.
+	 * Adds an inner node to the innermost node.
 	 * 
 	 * @param node
-	 *            der neue innerste Knoten.
+	 *            inner node to add.
 	 */
-	public void addInnerNode(Node node) {
+	protected void addInnerNode(Node node) {
 		if(this.equals(node)){
 			throw new IllegalArgumentException("The node to add should be different from the current Node");
 		}
@@ -176,17 +202,29 @@ public abstract class Node {
 		n.innerNode = node;
 		node.setOuterNode(n);
 	}
-	public void setOuterNode(Node node){
+	/**
+	 * Sets the outer node
+	 * @param node to set
+	 */
+	protected void setOuterNode(Node node){
 		this.outerNode = node;
 	}
-	public Node getInnermostNode() {
+	/**
+	 * returns the innermost node.
+	 * @return innermost node.
+	 */
+	protected Node getInnermostNode() {
 		Node n = this;
 		while (n.hasInnerNode()){
 			n = n.getInnerNode();
 		}
 		return n;
 	}
-	public Node getOutermostNode() {
+	/**
+	 * returns the outermost node.
+	 * @return outermost node.
+	 */
+	protected Node getOutermostNode() {
 		Node n = this;
 		while (n.hasOuterNode()){
 			n = n.getOuterNode();
@@ -196,29 +234,46 @@ public abstract class Node {
 	/**
 	 * @param innerNode the innerNode to set
 	 */
-	public void setInnerNode(Node innerNode) {
+	protected void setInnerNode(Node innerNode) {
 		this.innerNode = innerNode;
 		innerNode.setOuterNode(this);
 	}
-	public boolean isPassed(){
+	/**
+	 * True if the module of this nodes is passed, false if not.
+	 * @return isPassed
+	 */
+	protected boolean isPassed(){
 		return isPassed;
 	}
-	public ModuleEntry toModuleEntry(){
-		return null;
-		// TODO
+	/**
+	 * Creates a module entry from this node.
+	 * @return module entry
+	 */
+	protected ModuleEntry toModuleEntry(){
+		ModuleEntry entry = new ModuleEntry();
+		entry.setModule(module);
+		entry.setSemester(semester);
+		return entry;
 	}
 	/**
-	 * @return the plan
+	 * @return the plan from which this node was created.
 	 */
-	public Plan getPlan() {
+	protected Plan getPlan() {
 		return plan;
 	}
-
-	public void setPlan(Plan plan) {
+	/**
+	 * Sets the plan from which this node was created.
+	 * @param plan to set.
+	 */
+	protected void setPlan(Plan plan) {
 		this.plan = plan;
 	}
-	
-	public boolean hasInnerNode() {
+	/**
+	 * Checks if this Node has an inner node.
+	 * @return true if this node has an inner node, 
+	 * 			false if not.
+	 */
+	protected boolean hasInnerNode() {
 		if (getInnerNode() == null) {
 			return false;
 		}
@@ -226,7 +281,12 @@ public abstract class Node {
 			return true;
 		}
 	}
-	public boolean hasOuterNode() {
+	/**
+	 * Checks if this Node has an inner node.
+	 * @return true if this node has an inner node, 
+	 * 			false if not.
+	 */
+	protected boolean hasOuterNode() {
 		if (getOuterNode() == null) {
 			return false;
 		}
@@ -246,28 +306,42 @@ public abstract class Node {
         return res;
 	}
 	/**
-	 * @return the isFixed
+	 * @return the semester
 	 */
-	public boolean isFixed() {
-		return isFixed;
-	}
-	/**
-	 * @param isFixed the isFixed to set
-	 */
-	public void setFixed(boolean isFixed) {
-		this.isFixed = isFixed;
+	protected int getSemester() {
+		return semester;
 	}
 	/**
 	 * @return the constraintsFulfilled
 	 */
-	public boolean constraintsAreFulfilled() {
+	protected boolean constraintsAreFulfilled() {
 		return constraintsFulfilled;
 	}
 	/**
 	 * @param constraintsFulfilled the constraintsFulfilled to set
 	 */
-	public void setConstraintsFulfilled(boolean constraintsFulfilled) {
+	protected void setConstraintsFulfilled(boolean constraintsFulfilled) {
 		this.constraintsFulfilled = constraintsFulfilled;
 	}
-
+	/**
+	 * 
+	 * @return the module that is on the other end of the constraint
+	 */
+	protected Module getRemainingModuleFromConstraint(ModuleConstraint c) {
+		if (this.getModule().getIdentifier() == c.getFirstModule().getIdentifier()) {
+			return c.getSecondModule();
+		} else
+			return c.getFirstModule();
+	}
+	private boolean fitsInSemester(int i){
+		if(semester != 0) {
+			if(semester == i) {
+				return true;
+			}
+			return false;
+		}
+		
+		//TODO
+		return false;
+	}
 }

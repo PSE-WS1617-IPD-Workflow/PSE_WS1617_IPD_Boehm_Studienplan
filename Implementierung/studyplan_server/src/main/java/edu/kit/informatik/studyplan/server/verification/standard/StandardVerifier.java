@@ -4,12 +4,13 @@
 
 package edu.kit.informatik.studyplan.server.verification.standard;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
+
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleOrientation;
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.PlanLinkModuleConstraintType;
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.PrerequisiteModuleConstraintType;
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.SemesterLinkModuleConstraintType;
+import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
@@ -21,47 +22,82 @@ import edu.kit.informatik.studyplan.server.verification.Verifier;
  * verifizierende Klasse.
  */
 public class StandardVerifier implements Verifier {
-
+	
+	private VerificationResult result;
+	
+	@Override
 	public VerificationResult verify(Plan plan) {
-		VerificationResult res = new VerificationResult();
-		for(ModuleEntry firstModuleEntry : plan.getModuleEntries()) {
-				for(ModuleConstraint constraint: firstModuleEntry.getModule().getConstraints()) {
-					ModuleEntry secondModuleEntry;
-					if (constraint.getConstraintType() instanceof PrerequisiteModuleConstraintType) {
-						if(plan.contains(secondModuleEntry)) {
-							plan.getEntryFor(getRemainingModuleFromConstraint(constraint, firstModuleEntry))
-							constraint.getConstraintType().isValid(firstModuleEntry, secondModuleEntry, orientation)
-						}
-					} else if (constraint.getConstraintType() instanceof PlanLinkModuleConstraintType) {
-						
-					} else if (constraint.getConstraintType() instanceof SemesterLinkModuleConstraintType) {
-					
-					}
-//					Module module = getRemainingModuleFromConstraint(constraint, firstModuleEntry);
-//					ModuleOrientation orientation;
-//					if(module.equals(constraint.getFirstModule())) {
-//						orientation = ModuleOrientation.RIGHT_TO_LEFT;
-//					}
-//					else {
-//						orientation = ModuleOrientation.LEFT_TO_RIGHT;
-//					}
-//					ModuleEntry 
-//				if(constraint.getConstraintType().isValid(firstModuleEntry, new ModuleEntry(getRemainingModuleFromConstraint(constraint, firstModuleEntry)), orientation)) {
-//				}	
+		result = new VerificationResult();
+		result.setCorrect(true);
+		findFieldViolations(plan);
+		findRuleGroupViolations(plan);
+		findConstraintViolations(plan);
+		return result;
+	}
+
+	private void findFieldViolations(Plan plan) {
+		HashMap<Field, Double> fieldMap = new HashMap<Field, Double>();
+		//get total credit points per field
+		for (ModuleEntry entry : plan.getAllModuleEntries()) {
+			Field field = entry.getModule().getField();
+			if (!fieldMap.containsKey(field)) {
+				fieldMap.put(field, entry.getModule().getCreditPoints());
+			} else {
+				double sum = fieldMap.get(field);
+				fieldMap.put(field, sum + entry.getModule().getCreditPoints());
 			}
 		}
-		return res;
-		
+		//field is violated if the actual credit point sum is less than the minimum value
+		for (Entry<Field, Double> entry: fieldMap.entrySet()) {
+			double minEcts = entry.getKey().getMinEcts();
+			double actualEcts = entry.getValue();
+			if (actualEcts < minEcts) {
+				result.getFieldViolations().add(entry.getKey());
+				result.setCorrect(false);
+			}
+		}
 	}
-	
-	/**
-	 * 
-	 * @return the module that is on the other end of the constraint
-	 */
-	private Module getRemainingModuleFromConstraint(ModuleConstraint c, ModuleEntry entry) {
-		if (entry.getModule().getIdentifier() == c.getFirstModule().getIdentifier()) {
-			return c.getSecondModule();
-		} else
-			return c.getFirstModule();
+
+	private void findRuleGroupViolations(Plan plan) {
+		List<RuleGroup> ruleGroups = plan.getUser().getDiscipline().getRuleGroups();
+		int[] numberOfModules = new int[ruleGroups.size()];
+		for (int i = 0; i < ruleGroups.size(); i++) {
+			List<Module> modules = ruleGroups.get(i).getModules();
+			for (Module module : modules) {
+				if (plan.contains(module)) {
+					numberOfModules[i]++;
+				}
+			}
+		}
+		for (int i = 0; i < ruleGroups.size(); i++) {
+			RuleGroup group = ruleGroups.get(i);
+			if (!isInRange(numberOfModules[i], group)) {
+				result.getRuleGroupViolations().add(group);
+				result.setCorrect(false);
+			}
+		}
+	}
+		
+
+	private void findConstraintViolations(Plan plan) {
+		//TODO: implement
+	}
+
+	private boolean isInRange(int numberOfModules, RuleGroup ruleGroup) {
+		int minNum = ruleGroup.getMinNum();
+		int maxNum = ruleGroup.getMaxNum();
+		if (minNum == -1) {
+			if (maxNum == -1) {
+				return true;
+			} else {
+				return numberOfModules <= maxNum;
+			}
+		} else {
+			if (maxNum == -1) {
+				return numberOfModules >= minNum;
+			} else {
+				return numberOfModules >= minNum && numberOfModules >= maxNum;
+			}
+		}
 	}
 };

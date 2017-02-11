@@ -20,11 +20,11 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  */
 public class NodeWithOutput extends Node {
 
-	public NodeWithOutput(Module module) {
+	protected NodeWithOutput(Module module) {
 		super(module);
 	}	
 
-	public NodeWithOutput(Module module, Plan plan) {
+	protected NodeWithOutput(Module module, Plan plan) {
 		super(module, plan);
 	}
 	/**
@@ -33,18 +33,11 @@ public class NodeWithOutput extends Node {
 	 */
 	private ArrayList<Node> children = new ArrayList<Node>();
 
-	public ArrayList<Node> getChildren() {
+	protected ArrayList<Node> getChildren() {
 		return children;
 	}
-	//af ful
-	// TODO To the SimpleGenerator class !!!!!!!
-	// TODO constraint prerequisite change !!!
-	/* plan link is in both modules constraintlists 
-	 * prerequisite is only in the second module's list
-	 * semester link in both
-	 * overlapping in both
-	*/
-	public List<Node> fulfillConstraints(NodesList nodes, boolean random) {
+	
+	protected List<Node> fulfillConstraints(NodesList nodes, boolean random) {
 		//the List to return
 		if(this.isPassed()) {
 			return null;
@@ -94,7 +87,7 @@ public class NodeWithOutput extends Node {
 		return newNodes;
 	}
 	@Override
-	public void addChild(Node node) {
+	protected void addChild(Node node) {
 		if (!children.contains(node) && !getParents().contains(node)){
 			node.setPlan(getPlan());
 			children.add(node);
@@ -103,19 +96,10 @@ public class NodeWithOutput extends Node {
 	}
 
 	@Override
-	public boolean removeChild(Node node) {
+	protected boolean removeChild(Node node) {
 		return children.remove(node);
 	}
 
-	/**
-	 * 
-	 * @return the module that is on the other end of the constraint
-	 */
-	private Module getRemainingModuleFromConstraint(ModuleConstraint c) {
-		if (this.getModule().getIdentifier() == c.getFirstModule().getIdentifier()) {
-			return c.getSecondModule();
-		} else
-			return c.getFirstModule();
-	}
+
 
 }

@@ -13,29 +13,29 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Module;
  * Graphenstruktur da, das heißt Module, die nicht Voraussetzung für ein anderes
  * Modul des Studienplans sind.
  */
-public class NodeWithoutOutput extends NodeWithOutput {
+public class NodeWithoutOutput extends Node {
 
-	public NodeWithoutOutput(Module module) {
+	protected NodeWithoutOutput(Module module) {
 		super(module);
 	}
 
 	@Override
-	public NodesList getChildren() {
+	protected NodesList getChildren() {
 		return null;
 	}
 
 	@Override
-	public void addChild(Node node) {
+	protected void addChild(Node node) {
 		
 	}
 
 	@Override
-	public boolean removeChild(Node node) {
+	protected boolean removeChild(Node node) {
 		return false;
 	}
 
 	@Override
-	public List<Node> fulfillConstraints(NodesList graphNodes, boolean random) {
+	protected List<Node> fulfillConstraints(NodesList graphNodes, boolean random) {
 		return null;
 	}
 
