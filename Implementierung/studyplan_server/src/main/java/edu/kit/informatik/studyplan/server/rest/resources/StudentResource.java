@@ -72,7 +72,7 @@ public class StudentResource {
 							if (jsonModule.getSemester() == null) {
 								throw new BadRequestException();
 							}
-							if (jsonModule.getSemester() > thisStudent.getStudyStart().getDistanceToCurrentSemester()) {
+							if (jsonModule.getSemester() >= thisStudent.getStudyStart().getDistanceToCurrentSemester()) {
 								throw new BadRequestException();
 							}
 							return entry;
@@ -121,7 +121,7 @@ public class StudentResource {
 		JsonStudent result = new JsonStudent(
 				getUser().getDiscipline(),
 				getUser().getStudyStart(),
-				passedModules);
+				passedModules, getUser().getStudyStart().getDistanceToCurrentSemester());
 		return new StudentInOut(result);
 	}
 
@@ -163,10 +163,13 @@ public class StudentResource {
 		private Semester studyStart;
 		@JsonProperty("passed-modules")
 		private List<JsonModule> passedModules;
+		@JsonProperty("current-semester")
+		private Integer currentSemester;
 
 		public JsonStudent() { }
 
-		public JsonStudent(Discipline discipline, Semester studyStart, List<JsonModule> passedModules) {
+		public JsonStudent(Discipline discipline, Semester studyStart, List<JsonModule> passedModules, Integer currentSemester) {
+			this.currentSemester = currentSemester;
 			this.setDiscipline(discipline);
 			this.setStudyStart(studyStart);
 			this.setPassedModules(passedModules);
@@ -194,6 +197,14 @@ public class StudentResource {
 
 		public void setPassedModules(List<JsonModule> passedModules) {
 			this.passedModules = passedModules;
+		}
+
+		public Integer getCurrentSemester() {
+			return currentSemester;
+		}
+
+		public void setCurrentSemester(Integer currentSemester) {
+			this.currentSemester = currentSemester;
 		}
 	}
 
