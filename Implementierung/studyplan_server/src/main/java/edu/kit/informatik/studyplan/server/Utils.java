@@ -1,16 +1,16 @@
 package edu.kit.informatik.studyplan.server;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDao;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDao;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDaoFactory;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
 
 public class Utils {
     public static <T> boolean hasDuplicates(List<T> list) {
@@ -24,11 +24,7 @@ public class Utils {
     public static <T> T withModuleDao(Function<ModuleDao, T> code) {
         ModuleDao dao = ModuleDaoFactory.getModuleDao();
         T result;
-        try {
-            result = code.apply(dao);
-        } finally {
-            dao.cleanUp();
-        }
+        result = code.apply(dao);
         return result;
     }
 
@@ -37,13 +33,9 @@ public class Utils {
     }
 
     public static <T> T withPlanDao(Function<PlanDao, T> code) {
-        PlanDao dao = PlanDaoFactory.getPlanDao(null); //TODO remove null parameter
+        PlanDao dao = PlanDaoFactory.getPlanDao();
         T result;
-        try {
-            result = code.apply(dao);
-        } finally {
-            dao.cleanUp();   //TODO remove this, if cleanUp not needed anymore
-        }
+        result = code.apply(dao);
         return result;
     }
 
@@ -52,13 +44,9 @@ public class Utils {
     }
 
     public static <T> T withUserDao(Function<UserDao, T> code) {
-        UserDao dao = UserDaoFactory.getUserDao(null);  //TODO remove null parameter
+        UserDao dao = UserDaoFactory.getUserDao();
         T result;
-        try {
-            result = code.apply(dao);
-        } finally {
-            dao.cleanUp();  //TODO remove this, if cleanUp not needed anymore
-        }
+        result = code.apply(dao);
         return result;
     }
 

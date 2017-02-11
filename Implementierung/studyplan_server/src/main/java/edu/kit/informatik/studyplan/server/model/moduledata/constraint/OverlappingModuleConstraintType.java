@@ -4,10 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
-import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
 /************************************************************/
 /**
@@ -21,6 +21,11 @@ public class OverlappingModuleConstraintType extends ModuleConstraintType {
 
 	@Override
 	public boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation) {
-		return first.getSemester() != second.getSemester();
+		if (first != null && second != null 
+				&& !first.isPassed() && !second.isPassed() 
+				&& first.getSemester() == second.getSemester())  {
+			return false;
+		}
+		return true;
 	}
 };

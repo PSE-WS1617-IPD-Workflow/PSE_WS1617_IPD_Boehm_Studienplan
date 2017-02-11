@@ -101,8 +101,6 @@ public class AuthResource {
 		uri += "&expires_in=" + seconds;
 		uri += "&scope=" + context.getScope().toString().toLowerCase();
 		uri += "&state=" + state;
-		provider.cleanUp();
-		context.cleanUp();
 		return Response.temporaryRedirect(URI.create(uri)).build();
 	}
 

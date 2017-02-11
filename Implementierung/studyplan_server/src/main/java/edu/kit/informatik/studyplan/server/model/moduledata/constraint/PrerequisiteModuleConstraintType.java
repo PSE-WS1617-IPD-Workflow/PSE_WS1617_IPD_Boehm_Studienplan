@@ -4,10 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
-import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
 /************************************************************/
 /**
@@ -22,11 +22,29 @@ public class PrerequisiteModuleConstraintType extends ModuleConstraintType {
 	public boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation) {
 		switch (orientation) {
 		case LEFT_TO_RIGHT:
-			return first.getSemester() < second.getSemester();
+			return check(first, second);
 		case RIGHT_TO_LEFT:
-			return second.getSemester() < first.getSemester();
+			return check(second, first);
 		default:
-			return first.getSemester() < second.getSemester();
+			return check(first, second);
 		}
+
 	}
-};
+
+	private boolean check(ModuleEntry first, ModuleEntry second) {
+		//TODO: first isPassed always true?
+		if (second == null) {
+			return true;
+		}
+		if (second.isPassed()) {
+			return true;
+		}
+		if (first == null) {
+			return false;
+		}
+		if (first.isPassed()) {
+			return true;
+		}
+		return first.getSemester() < second.getSemester();
+	}
+}

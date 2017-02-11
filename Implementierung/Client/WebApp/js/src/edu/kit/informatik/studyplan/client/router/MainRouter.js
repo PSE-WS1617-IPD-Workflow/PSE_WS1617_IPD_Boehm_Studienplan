@@ -196,17 +196,17 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             generationWizard: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] generationWizard");
                 this.showLoading();
-                var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({id: planId});
                 var info = new edu.kit.informatik.studyplan.client.model.system.ProposalInformation();
                 var self = this;
                 /*plan.fetch({
                     success: function () {*/
                         self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
                             firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1({
-                                plan: plan,
+                                plan: planId,
                                 information: info
                             }),
-                            onFinish: function () {
+                            onFinish: function (lastView) {
+                               
                                 /*
                                 *todo:
                                 *Generierungsaufruf
@@ -321,7 +321,14 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                             firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1({
                                student: self.student
                             }),
-                            onFinish: function () {
+                            onFinish: function (lastView) {
+                                this.showLoading();
+                                lastView.get('student').save(null,{
+                                    success:
+                                        function(){                                            
+                                            this.navigate("/", {trigger:true});
+                                        }
+                                });
                                 /*
                                 *todo:
                                 *Weiterleiten auf Hauptseite

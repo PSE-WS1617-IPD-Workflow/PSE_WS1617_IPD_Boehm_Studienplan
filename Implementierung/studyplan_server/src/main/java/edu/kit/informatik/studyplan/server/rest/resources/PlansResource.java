@@ -5,6 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -24,54 +26,43 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.kit.informatik.studyplan.server.Utils;
 
+import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.userdata.*;
-import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
-import edu.kit.informatik.studyplan.server.pluginmanager.VerificationManager;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import edu.kit.informatik.studyplan.server.model.userdata.PlanWithViolations;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDao;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
-import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
+import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
+import edu.kit.informatik.studyplan.server.pluginmanager.VerificationManager;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.util.*;
-import java.util.stream.Collectors;
-
 /**
  * Diese Klasse repräsentiert die Pläne-Ressource.
  */
 @Path("/plans")
-@AuthorizationNeeded
+//@AuthorizationNeeded
 public class PlansResource {
 	@Inject
 	Provider<AuthorizationContext> context;
@@ -210,7 +201,6 @@ public class PlansResource {
 			planInput.getPlan().setIdentifier(planId);
 			return planInput;
 		});
-
 	}
 
 	/**
@@ -230,7 +220,6 @@ public class PlansResource {
 			dao.deletePlan(plan);
 			return Response.ok().build();
 		});
-
 	}
 
 	/* ******************************  /{id}/modules  ******************************** */
@@ -280,7 +269,6 @@ public class PlansResource {
 				return SimpleJsonResponse.build("modules", result);
 			});
 		});
-
 	}
 
 	/**
@@ -354,7 +342,6 @@ public class PlansResource {
 			planDao.updatePlan(plan);
 			return moduleInput;
 		}));
-
 	}
 
 	/**
@@ -536,6 +523,31 @@ public class PlansResource {
 			throw new BadRequestException();
 		}
 		return result;
+	}
+	
+	/**
+	 * GET-Anfrage: Gibt die PDF-Version des Plans mit den gegebenen ID zurück.
+	 * 
+	 * @param planID
+	 *            ID des zu konvertierenden Plans.
+	 * @param accessToken
+	 *            Ein Token, zur Authentifizierung der Klient.
+	 * @return die PDF-Version des Plans.
+	 */
+	@Produces("text/html")
+	@GET
+	@Path("/{planId}/pdf")
+	public Response convertPlanToPDF(@PathParam(value = "planId") String planId,
+			@QueryParam("access-token") String accessToken) {
+		AbstractSecurityProvider provider = AbstractSecurityProvider.getSecurityProviderImpl();
+		AuthorizationContext context = provider.getAuthorizationContext(accessToken);
+		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		if (context == null || !context.getUser().equals(plan.getUser())) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		PlanConverter converter = new PlanConverter(plan);
+		converter.getWriter().flush();
+		return Response.ok(converter.getWriter().toString()).build();
 	}
 
 

@@ -1,5 +1,6 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -36,11 +37,11 @@ public class RuleGroup {
 	
 	@Column(name = "min_num")
 	@JsonProperty("min-ects")
-	private int minNum;
+	private int minNum = -1;
 	
 	@Column(name = "max_num")
 	@JsonProperty("max-ects")
-	private int maxNum;
+	private int maxNum = -1;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "rule_module_assignment",
@@ -49,7 +50,7 @@ public class RuleGroup {
 	inverseJoinColumns =
 		@JoinColumn(name = "rule_id"))
 	@JsonIgnore
-	private List<Module> modules;
+	private List<Module> modules = new LinkedList<Module>();
 	
 	@JoinColumn(name = "discipline_id")
 	@ManyToOne
@@ -93,36 +94,29 @@ public class RuleGroup {
 	/**
 	 * @param ruleId the ruleId to set
 	 */
-	void setRuleId(int ruleId) {
+	public void setRuleId(int ruleId) {
 		this.ruleId = ruleId;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
-	void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
 	 * @param minNum the minNum to set
 	 */
-	void setMinNum(int minNum) {
+	public void setMinNum(int minNum) {
 		this.minNum = minNum;
 	}
 
 	/**
 	 * @param maxNum the maxNum to set
 	 */
-	void setMaxNum(int maxNum) {
+	public void setMaxNum(int maxNum) {
 		this.maxNum = maxNum;
-	}
-
-	/**
-	 * @param modules the modules to set
-	 */
-	void setModules(List<Module> modules) {
-		this.modules = modules;
 	}
 	
 }

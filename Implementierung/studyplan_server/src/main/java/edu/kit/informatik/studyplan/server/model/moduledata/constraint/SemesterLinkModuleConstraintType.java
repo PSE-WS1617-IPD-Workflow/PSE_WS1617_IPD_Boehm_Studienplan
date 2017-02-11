@@ -4,10 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
-import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
 /************************************************************/
 /**
@@ -20,6 +20,12 @@ public class SemesterLinkModuleConstraintType extends ModuleConstraintType {
 
 	@Override
 	public boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation) {
+		if (first == null || second == null) {
+			return false;
+		}
+		if (first.isPassed() && second.isPassed()) {
+			return true;
+		}
 		return first.getSemester() == second.getSemester();
 	}
 };

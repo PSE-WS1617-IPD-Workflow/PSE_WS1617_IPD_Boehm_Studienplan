@@ -1,11 +1,24 @@
 <div class="signUpWizardComponent1">
     <div class="box">
-        <h1>{{=obj.LM.getMessage('signUpTitle')}}</h1>
+        <h1>{{=obj.LM.getMessage('signUpTitle1')}}</h1>
     </div>
     <div class="box">
         <p>{{=obj.LM.getMessage('signUpExplanation1')}}</p>
     </div>
     <div class="box">
+        <p><label>{{=obj.LM.getMessage('discipline')}}</label>
+            <select class="disciplineDropDown" size="1">
+            {{obj.disciplines.each(function (el) { }}
+            <option value ="{{=el.get('id')}}">{{=el.get('name')}}</option>
+            {{ }) }}
+        </select>
+        </p>
+    </div>
+    <div class="box">
+    <p>
+        <label>{{=obj.LM.getMessage('beginningdate') }}</label>
+        //date api
         
+    </p>
     </div>
 </div>
