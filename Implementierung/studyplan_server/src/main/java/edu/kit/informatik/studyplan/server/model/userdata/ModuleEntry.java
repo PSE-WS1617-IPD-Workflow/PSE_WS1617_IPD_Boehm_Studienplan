@@ -55,6 +55,9 @@ public class ModuleEntry {
 		this.semester = semester;
 	}
 
+	public ModuleEntry() {
+	}
+
 	/**
 	 * 
 	 * @return gibt das Modul zurück

@@ -62,7 +62,10 @@ public class ModulePreference {
 		this.type = preference;
 	}
 
-    /**
+	public ModulePreference() {
+	}
+
+	/**
 	 * 
 	 * @return gibt das Modul zurück
 	 */
