@@ -25,6 +25,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             this.information = options.information;
             this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
                 isDraggable: false,
+                isSidebar:false,
                 isPreferencable: true,
                 planId: this.planId
             });

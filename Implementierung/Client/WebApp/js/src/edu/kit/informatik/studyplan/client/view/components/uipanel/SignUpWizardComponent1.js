@@ -58,6 +58,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     next:
         function () {
             "use strict";
+            console.log(this.student)
             var temp = new edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent2({
                 student: this.student,
             });

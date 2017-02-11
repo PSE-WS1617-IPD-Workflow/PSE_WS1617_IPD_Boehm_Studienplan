@@ -313,20 +313,20 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             signUpWizard: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] signUpWizard");
                 this.showLoading();
-                var student = new edu.kit.informatik.studyplan.client.model.user.Student();
+                var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
                 var self = this;
                 /*plan.fetch({
                     success: function () {*/
                         self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
                             firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1({
-                               student: self.student
+                               student: student
                             }),
                             onFinish: function (lastView) {
-                                this.showLoading();
-                                lastView.get('student').save(null,{
+                                self.showLoading();
+                                lastView['student'].save(null,{
                                     success:
                                         function(){                                            
-                                            this.navigate("/", {trigger:true});
+                                            self.navigate("/", {trigger:true});
                                         }
                                 });
                                 /*
