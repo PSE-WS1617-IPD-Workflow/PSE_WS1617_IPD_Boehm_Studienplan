@@ -27,7 +27,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
     */
     initialize: function (options) {
         "use strict";
-        this.moduleList = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList( {               isRemovable: false,
+        this.moduleList = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList( {               
+                isRemovable: false,
                 isDraggable: options.isDraggable,
                 isPreferencable: options.isPreferencable
         });
