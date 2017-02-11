@@ -15,7 +15,6 @@ import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
 /**
  * Diese Klasse repräsentiert die Plankonverter-Ressource.
  */
-@Path("stuff")
 public class PlanConverterResource {
 	
 	private Provider<AuthorizationContext> contextProvider;
