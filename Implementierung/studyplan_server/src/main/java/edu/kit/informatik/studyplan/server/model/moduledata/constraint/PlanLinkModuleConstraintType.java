@@ -4,10 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
-import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
 /************************************************************/
 /**
@@ -20,6 +20,12 @@ public class PlanLinkModuleConstraintType extends ModuleConstraintType {
 
 	@Override
 	public boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation) {
-		return true;
+		if (first != null && first.isPassed() && second == null) {
+			return false;
+		}
+		if (second != null && second.isPassed() && first == null) {
+			return false;
+		}
+		return first != null && second != null;
 	}
 };

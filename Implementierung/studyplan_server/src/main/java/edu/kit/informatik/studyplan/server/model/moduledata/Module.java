@@ -1,11 +1,24 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
-import org.hibernate.annotations.NaturalId;
-
-import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.NaturalId;
+
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 
 /**
  * Class modeling a module
@@ -148,91 +161,70 @@ public class Module {
 	/**
 	 * @return the toConstraints
 	 */
-	List<ModuleConstraint> getToConstraints() {
+	public List<ModuleConstraint> getToConstraints() {
 		return toConstraints;
-	}
-
-	/**
-	 * @param toConstraints the toConstraints to set
-	 */
-	void setToConstraints(List<ModuleConstraint> toConstraints) {
-		this.toConstraints = toConstraints;
 	}
 
 	/**
 	 * @return the fromConstraints
 	 */
-	List<ModuleConstraint> getFromConstraints() {
+	public List<ModuleConstraint> getFromConstraints() {
 		return fromConstraints;
-	}
-
-	/**
-	 * @param fromConstraints the fromConstraints to set
-	 */
-	void setFromConstraints(List<ModuleConstraint> fromConstraints) {
-		this.fromConstraints = fromConstraints;
 	}
 
 	/**
 	 * @param identifier the identifier to set
 	 */
-	void setIdentifier(String identifier) {
+	public void setIdentifier(String identifier) {
 		this.identifier = identifier;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
-	void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
 	 * @param creditPoints the creditPoints to set
 	 */
-	void setCreditPoints(double creditPoints) {
+	public void setCreditPoints(double creditPoints) {
 		this.creditPoints = creditPoints;
 	}
 
 	/**
 	 * @param cycleType the cycleType to set
 	 */
-	void setCycleType(CycleType cycleType) {
+	public void setCycleType(CycleType cycleType) {
 		this.cycleType = cycleType;
 	}
 
 	/**
 	 * @param compulsory the compulsory to set
 	 */
-	void setCompulsory(boolean compulsory) {
+	public void setCompulsory(boolean compulsory) {
 		this.compulsory = compulsory;
 	}
 
 	/**
 	 * @param moduleDescription the moduleDescription to set
 	 */
-	void setModuleDescription(ModuleDescription moduleDescription) {
+	public void setModuleDescription(ModuleDescription moduleDescription) {
 		this.moduleDescription = moduleDescription;
 	}
 
 	/**
 	 * @param discipline the discipline to set
 	 */
-	void setDiscipline(Discipline discipline) {
+	public void setDiscipline(Discipline discipline) {
 		this.discipline = discipline;
 	}
 
 	/**
 	 * @param field the field to set
 	 */
-	void setField(Field field) {
+	public void setField(Field field) {
 		this.field = field;
-	}
-
-	/**
-	 * @param categories the categories to set
-	 */
-	void setCategories(List<Category> categories) {
-		this.categories = categories;
 	}
 }
