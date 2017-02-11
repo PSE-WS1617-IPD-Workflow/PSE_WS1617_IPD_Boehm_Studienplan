@@ -341,7 +341,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             notFound: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] notFound");
                 this.showLoading();
-                // Do stuff here
+                this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.NotFoundPage, {});
                 this.hideLoading();
             },
             logoutPage: function () {
