@@ -227,7 +227,7 @@ public class SimpleGenerator implements Generator {
 		return null;
 	}
 	/**
-	 * 
+	 * Checks if 
 	 * @param node1
 	 * @param node2
 	 * @return
