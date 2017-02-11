@@ -1,6 +1,7 @@
 .planHeadBar{
     position:fixed;
-    top:130px;
+    z-index:998;
+    top:100px;
     left:0px;
     width:75%;
     height:50px;
@@ -9,14 +10,13 @@
     overflow: hidden;
     
     background-color:$bg2;
-    color:$color2;
+    color:$boxColor;
     h3{
         float:left;
         margin:0px;
         padding: 5px 0px 0px 0px;
         
         font-size: $regularSize;
-        font-weight:700;
         input{
             border-width:0px 0px 1px 0px;
             border-color:$color2;
@@ -24,7 +24,6 @@
             
             background-color: transparent;
             font-size: $regularSize;
-            font-weight:400;
         }
     }
     .headBarButtons{

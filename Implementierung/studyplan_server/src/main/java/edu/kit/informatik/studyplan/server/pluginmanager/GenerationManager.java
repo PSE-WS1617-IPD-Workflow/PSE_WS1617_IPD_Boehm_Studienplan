@@ -66,7 +66,7 @@ public class GenerationManager {
 	 * 
 	 * @return objectiveFunction : die Liste der Zielfunktionen
 	 */
-	public Collection<PartialObjectiveFunction> getObjectiveFunction() {
+	public Collection<PartialObjectiveFunction> getAllObjectiveFunctions() {
 		return objectiveFunction;
 	}
 

@@ -1,5 +1,8 @@
 .moduleBox{
-    box-sizing: border-box;
+    p{
+        clear: both;
+    }
+    position:relative;
     padding:10px;
     list-style-type: none;
     list-style-image: none;
@@ -9,6 +12,8 @@
     color:$boxColor;
     
     h3.moduleTitle{
+        max-width:144px;
+        float:left;
         font-size:$regularSize;
         font-weight:700;
         margin:0px;
@@ -35,6 +40,58 @@
     }
     &.grabbing{
         cursor:grabbing;
+        width:220px;
+        height:140px;
+    }
+    &.grabbing .buttons{
+        display:none;
+    }
+    .passed {
+        float:right;
+        width:16px;
+        height:16px;
+        background-image: url("../img/passed.png");
+
+    }
+    .buttons{
+        position:absolute;
+        bottom:20px;
+        height: 30px;
+        width:220px;
+        button{
+            border: 0px solid transparent;
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            cursor: pointer;
+        }
+        .deleteButton{
+            background-image: url("../img/trash.png");
+            float:left;
+            height: 30px;
+        }
+        .preferenceButtonBox{
+            float:right;
+            height: 30px;
+            .preferenceButtonUp{
+                background-image:url("../img/voting-up-grey.png")
+            }
+            .preferenceButtonDown{
+                background-image:url("../img/voting-down-grey.png")
+            }
+        }
+        .preferenceButtonBox.positive{
+            .preferenceButtonUp{
+                background-image:url("../img/voting-up-green.png")
+            }
+        }
+        .preferenceButtonBox.negative{
+            .preferenceButtonDown{
+                background-image:url("../img/voting-down-red.png")
+            }
+        }
     }
 }
 .leftSided .moduleBox{
@@ -45,8 +102,22 @@
 }
 .semesterModules{
     .moduleBox{
-        width:160px;
-        height:100px;
-        margin-right:20px;
+        .buttons{
+            bottom:10px;
+        }
+        width:220px;
+        height:140px;
+        margin:10px;
+    }
+}
+.moduleListWrapper{
+    .moduleBox{
+        h3{
+            float: none;
+        }
+        .buttons{
+            height: 20%;
+            width: 95%;
+        }
     }
 }

@@ -37,7 +37,7 @@ public class MultiFilter implements Filter {
 	 * @return Die Liste der Filterbedingungen
 	 */
 	public List<Condition> getConditions() {
-		return filters.parallelStream()
+		return filters.stream()
 			.map(Filter::getConditions)
 			.flatMap(List::stream)
 			.collect(Collectors.toList());

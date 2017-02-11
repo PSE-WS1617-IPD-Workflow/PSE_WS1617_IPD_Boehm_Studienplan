@@ -27,15 +27,15 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     sessionInformation: edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance()
                 });
                 this.view.render();
-                this.on("route", function(route, params) {
+                this.on("route", function (route, params) {
                     if (!edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().isLoggedIn()) {
-                        if (route!="handleLogin" && route!="loginPage") {
+                        if (route != "handleLogin" && route != "loginPage") {
                             this.navigate("/login", {trigger: true});
                         }
                     }
                 });
             },
-            routes: 
+            routes:
             /**
             *todo: server wiedereinschalten (hierdrunter derzeit auskommentiert.)
             */
@@ -131,6 +131,46 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 lecturer    :   "Maultaschius",
                                 preference  :   "negative",
                                 semester    :   5
+                            },
+                            {
+                                id : 22,
+                                semester : 4,
+                                name : "Magische Tierwesen",
+                                creditpoints: 18,
+                                preference  :   "negative",
+                                lecturer: "Hagrid",
+                            },
+                            {
+                                id : 21,
+                                name : "Zaubertränke",
+                                semester : 4,
+                                creditpoints:700,
+                                preference  :   "negative",
+                                lecturer: "Snape",
+                            },
+                            {
+                                id : 20,
+                                name : "Zaubertränke 2",
+                                semester: 4,
+                                creditpoints:700,
+                                preference  :   "negative",
+                                lecturer: "Snape"
+                            },
+                            {
+                                id : 30,
+                                name : "Zaubertränke 3",
+                                semester: 4,
+                                creditpoints:700,
+                                preference  :   "negative",
+                                lecturer: "Snape",
+                            },
+                            {
+                                id : 40,
+                                name : "Zaubertränke 4",
+                                semester: 4,
+                                creditpoints:700,
+                                preference  :   "negative",
+                                lecturer: "Snape",
                             }
                         ]
                     }
@@ -157,7 +197,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] generationWizard");
                 this.showLoading();
                 var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({id: planId});
-                var info = new edu.kit.informatik.studyplan.client.model.system.ProposalInformation()
+                var info = new edu.kit.informatik.studyplan.client.model.system.ProposalInformation();
                 var self = this;
                 /*plan.fetch({
                     success: function () {*/
@@ -182,12 +222,11 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] handleLogin");
                 this.showLoading();
                 var redirectData = this.processData(window.location.hash.substr(1));
-                console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] redirectData:")
+                console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] redirectData:");
                 console.info(redirectData);
                 var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
                 var self = this;
-                if (redirectData["state"]
-                        !==edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('state')) {
+                if (redirectData["state"] !== edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('state')) {
                     edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
                         .add(
                             new edu.kit.informatik.studyplan.client.model.system.Notification({
@@ -262,17 +301,33 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             showProfile: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] showProfile");
                 this.showLoading();
-                var filter = new edu.kit.informatik.studyplan.client.model.system.FilterCollection({
-                    filters: []
-                }, {parse: true});
-                this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.ProfilPage, {});
+                var student = new edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
+                var plan = student.get('passedModules').toPlan();
+                this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.ProfilPage, {
+                    plan: plan
+                });
                 this.view.render();
-                // Do stuff here
+                // Do stuff heresignUpWizard
                 this.hideLoading();
             },
             signUpWizard: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] signUpWizard");
                 this.showLoading();
+                var student = new edu.kit.informatik.studyplan.client.model.user.Student();
+                var self = this;
+                /*plan.fetch({
+                    success: function () {*/
+                        self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
+                            firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1({
+                               student: self.student
+                            }),
+                            onFinish: function () {
+                                /*
+                                *todo:
+                                *Weiterleiten auf Hauptseite
+                                */
+                            }
+                        });
                 // Do stuff here
                 this.hideLoading();
             },

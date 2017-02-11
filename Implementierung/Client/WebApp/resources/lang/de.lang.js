@@ -83,6 +83,7 @@ LM.messages["de"]["generationSemesterQuestion"] = "Wie viele Semester möchtest 
 LM.messages["de"]["generationChooseFunction"] = "Studienziel";
 //ProfilePage
 LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
+LM.messages["de"]["mainMenuButton"] = "Hauptmenü";
 
 //RadioSlider
 LM.messages["de"]["radioSliderMin"] = "min";
@@ -95,4 +96,7 @@ LM.messages["de"]["notInsertTwiceText"] = "Module können nur einmal dem Studien
 LM.messages["de"]["sum"] = "Gesamt: ";
 LM.messages["de"]["modules"] = "Module";
 
-
+// Profile
+LM.messages["de"]["savePlan"] = "Speichern";
+LM.messages["de"]["profileSavedTitle"] = "Profil gespeichert";
+LM.messages["de"]["profileSavedText"] = "Das Profil wurde erfolgreich gespeichert.";

@@ -32,6 +32,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent = Bac
         "use strict";
     },
     render: function () {
+        "use strict";
         this.$el.html(this.template({ filter: this.filter}));
         this.delegateEvents();
     }

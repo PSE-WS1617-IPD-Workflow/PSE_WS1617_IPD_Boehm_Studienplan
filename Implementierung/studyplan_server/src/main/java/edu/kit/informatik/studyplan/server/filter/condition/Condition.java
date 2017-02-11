@@ -61,7 +61,7 @@ public final class Condition {
      * @param upper the upper bound
      * @return the condition
      */
-    public static Condition createBetween(String lhsName, int lower, int upper) {
+    public static Condition createBetween(String lhsName, double lower, double upper) {
         return new Condition(lhsName, new Object[]{lower, upper}, BooleanRelation.BETWEEN);
     }
 

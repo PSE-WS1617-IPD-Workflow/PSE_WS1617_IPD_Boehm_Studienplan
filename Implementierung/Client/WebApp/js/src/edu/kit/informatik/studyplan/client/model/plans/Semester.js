@@ -15,6 +15,7 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
     collection: null,
     initialize: function (attributes, options) {
         this.collection = options.collection;
+        this.listenTo(this, "destroy", this.onChange);
         this.listenTo(this, "change", this.onChange);
         this.listenTo(this, "all", this.onChange);
         this.listenTo(this, "add", this.onChange);
@@ -24,7 +25,7 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
         this.collection.trigger("change");
     },
     url : function () {
-        return API_DOMAIN + "plans/"+this.planId+"/modules"
+        return API_DOMAIN + "/plans/"+this.planId+"/modules"
     },
     parse : function (response, options) {
         "use strict";
@@ -37,6 +38,15 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
         }
         //console.log(response["modules"]);
         return edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype.parse.apply(this,[response,options]);
+    },
+    toJSON: function (options) {
+        var modules = [];
+        this.each(function (curMod) {
+            modules.push(curMod.toJSON(options)["module"])
+        });
+        return {
+            modules: modules
+        }
     },
     getEctsSum: function () {
         var sum = 0;

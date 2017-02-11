@@ -13,13 +13,32 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     isPreferencable: true,
     isDraggable: true,
     isDeletable: true,
+    isPassedPlanModule: false,
+    events: {
+        "click button.deleteButton": "removeModule",
+        "click button.preferenceButtonUp": "voteUp",
+        "click button.preferenceButtonDown": "voteDown"
+    },
     initialize: function (options) {
         this.model=options.module;
-        this.isRemovable = options.isRemovable;
-        this.isDraggable = options.isDraggable;
-        this.isPreferencable = options.isPreferencable;
+        this.isRemovable = (typeof options.isRemovable !== "undefined") ? options.isRemovable : this.isRemovable;
+        this.isDraggable = (typeof options.isDraggable !== "undefined") ? options.isDraggable : this.isDraggable;
+        this.isPreferencable = (typeof options.isPreferencable !== "undefined") ? options.isPreferencable : this.isPreferencable;
+        this.isPassedPlanModule = (typeof options.isPassedPlanModule !== "undefined") ? options.isPassedPlanModule : this.isPassedPlanModule;
     },
-    
+    voteUp: function () {
+        "use strict";
+        console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteUp");
+        var preference = this.model.get('preference');
+        preference.set('preference','positive');
+        preference.save();
+    },
+    voteDown: function () {
+        console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteDown");
+        var preference = this.model.get('preference');
+        preference.set('preference','negative');
+        preference.save();
+    },
     /**
     *@param{boolean} setBorder
     */
@@ -27,12 +46,21 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
         function (setBorder) {
             "use strict";
         },
+    
     /**
     *
     */
     removeModule:
         function () {
             "use strict";
+            // TODO zeug
+            console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] remove");
+            var oldCol = this.model.collection;
+            if(this.isPassedPlanModule){
+                this.model.collection.remove(this.model);
+            } else {
+                this.model.destroy();
+            }
         },
     /**
     *

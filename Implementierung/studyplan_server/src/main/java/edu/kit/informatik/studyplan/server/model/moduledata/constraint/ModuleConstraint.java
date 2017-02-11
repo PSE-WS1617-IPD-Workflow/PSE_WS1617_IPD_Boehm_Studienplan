@@ -38,12 +38,12 @@ public class ModuleConstraint {
 
 	@ManyToOne
 	@JoinColumn(name = "module1")
-	@JsonProperty("first")
+	@JsonIgnore
 	private Module firstModule;
 
 	@ManyToOne
 	@JoinColumn(name = "module2")
-	@JsonProperty("second")
+	@JsonIgnore
 	private Module secondModule;
 
 	/**
@@ -61,6 +61,24 @@ public class ModuleConstraint {
 	public Module getSecondModule() {
 		return secondModule;
 	}
+
+    /**
+     * Only being called by Jackson and/or REST handlers.
+     * @return Serialization getter for first module.
+     */
+	@JsonProperty("first")
+	public String getJsonFirstModule() {
+	    return firstModule.getIdentifier();
+    }
+
+    /**
+     * Only being called by Jackson and/or REST handlers.
+     * @return Serialization getter for second module.
+     */
+    @JsonProperty("second")
+    public String getJsonSecondModule() {
+        return secondModule.getIdentifier();
+    }
 
 	/**
 	 * 

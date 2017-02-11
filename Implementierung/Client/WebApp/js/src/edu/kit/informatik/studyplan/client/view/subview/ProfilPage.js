@@ -1,57 +1,26 @@
-goog.provide("edu.kit.informatik.studyplan.client.view.subview.ProfilPage");
+ goog.provide("edu.kit.informatik.studyplan.client.view.subview.ProfilPage");
 /**
  * @constructor
- * @extends {Backbone.View}
+ * @extends {edu.kit.informatik.studyplan.client.view.subview.PlanEditPage}
  */
 
-edu.kit.informatik.studyplan.client.view.subview.ProfilPage = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.ProfilPage.prototype} */{
-    template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/subview/profilPage.html"),
-    
-    moduleFinder: null,
-    events: {
-      "click button.mainPageNavigation": "navigateToMainPage"  
-    },    
-    initialize: function (){
+edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik.studyplan.client.view.subview.PlanEditPage.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.ProfilPage.prototype} */{
+    initialize: function (options) {
+        this.model = options.plan;
         this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
+            isSidebar:true,
+            isPreferencable:false,
             isDraggable: true,
-            isPreferencable: false
+            isPlaced:this.model.containsModule,
+            planId: null
+        })
+        this.planView = new edu.kit.informatik.studyplan.client.view.components.uielement.Plan({
+            plan: this.model,
+            isPreferencable: false,
+            isPassedPlan: true
         });
-    },
-    
-    /**
-    *
-    */
-    close: function () {
-        "use strict";
-    },
-    /**
-    *@param {edu.kit.informatik.studyplan.client.model.module.Module} module
-    */
-    showModuleDetails:
-        function (module) {
-            "use strict";
-    },
-    /**
-    * @this {Backbone.View}
-    * @return *    
-    */
-    render: function () {
-        "use strict";
-        this.$el.html(this.template());
-        var finder = this.$el.find(".profileEditModuleFinderWrapper");
-        
-        this.moduleFinder.render();
-        finder.append(this.moduleFinder.$el);
-        
-        this.delegateEvents();
-    },
-    /**
-    *
-    */
-    hideModuleDetails: function () {
-            "use strict";
-    },
-    navigateToMainPage: function () {
-        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/",{trigger:true});
+        this.planHeadBar = new edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar({
+            plan: this.model
+        });
     }
 });

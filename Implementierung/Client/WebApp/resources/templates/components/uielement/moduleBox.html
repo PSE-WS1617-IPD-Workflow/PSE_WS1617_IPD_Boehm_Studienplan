@@ -1,14 +1,19 @@
 <h3 class="moduleTitle">{{=obj.module.get('name')}}</h3>
+{{ if(obj.module.get('passed')) { }}
+    <div class="passed">
+
+    </div>
+{{ } }}
 <p>{{=obj.module.get('lecturer')}}</p>
 <p>{{=obj.module.get('creditpoints')}} ECTS</p>
 <div class="buttons">
     {{ if(obj.isRemovable) { }}
-    <button class="deleteButton">delete</button>
+    <button class="deleteButton"></button>
     {{ } }}
     {{ if (obj.isPreferencable) { }}
-    <div id="preferenceButtonBox">
-      <button class="preferenceButtonUp">+</button>
-      <button class="preferenceButtonDown">-</button>
+    <div class="preferenceButtonBox {{=obj.module.get('preference').get('preference')}}">
+      <button class="preferenceButtonUp"></button>
+      <button class="preferenceButtonDown"></button>
     </div>
     {{ } }}
 </div>

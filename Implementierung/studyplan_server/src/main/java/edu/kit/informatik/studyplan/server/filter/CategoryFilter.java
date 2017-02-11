@@ -1,9 +1,9 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleAttributeNames;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,21 +24,21 @@ public class CategoryFilter extends ListFilter<Category> {
 	 * @param discipline
 	 * 			  the discipline of the categories
 	 */
-	public CategoryFilter(int selection, Discipline discipline) {
+	public CategoryFilter(Category selection, Discipline discipline) {
 		super(selection);
 		this.discipline = discipline;
 	}
 
 	@Override
 	public List<String> getItemStrings() {
-		return getItemObjects().parallelStream()
+		return getItemObjects().stream()
 			.map(Category::getName)
 			.collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Category> getItemObjects() {
-		return ModuleDaoFactory.getModuleDao().getCategories(discipline);
+		return Utils.withModuleDao(moduleDao -> moduleDao.getCategories(discipline));
 	}
 
 	@Override

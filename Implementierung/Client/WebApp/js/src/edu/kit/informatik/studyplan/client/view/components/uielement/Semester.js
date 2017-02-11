@@ -10,12 +10,20 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
     tagName: "tr",
     model: null,
     moduleElements: [],
+    isPassedSemester: false,
+    isPassedPlan: false,
+    events : {
+        
+    },
     initialize: function (options) {
         this.model = options.semester;
-        this.isRemovable = options.isRemovable;
-        this.isPreferencable = options.isPreferencable;
+        this.isRemovable = (typeof options.isRemovable !== "undefined") ? options.isRemovable : this.isRemovable;
+        this.isPreferencable = (typeof options.isPreferencable !== "undefined") ? options.isPreferencable : this.isPreferencable;
+        this.isPassedSemester = (typeof options.isPassedSemester !== "undefined") ? options.isPassedSemester : this.isPassedSemester;
+        this.isPassedPlan = (typeof options.isPassedPlan !== "undefined") ? options.isPassedPlan : this.isPassedPlan;
         this.reload();
         this.listenTo(this.model, "change", this.reload);
+        this.listenTo(this.model, "destroy", this.reload);
         this.listenTo(this.model, "all", this.reload);
         this.listenTo(this.model, "reset", this.reload);
         this.listenTo(this.model, "add", this.reload);
@@ -24,15 +32,30 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
     reload: function () {
         this.moduleElements=[];
         this.model.each(function (el) {
+            var removable = true;
+            if(!this.isPassedPlan) {
+                removable = false;
+            }
+            if(!this.isPassedPlan&&el.get('passed')){
+                removable = false;
+            }
+            var draggable = true;
+            if(!this.isPassedPlan&&el.get('passed')){
+                draggable = false;
+            }
+            console.log("SEMESTER UI");
+            console.log(el);
             this.moduleElements.push(
                 new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
                     module: el,
-                    isDraggable: true,
-                    isRemovable: true,
-                    isPreferencable: this.isPreferencable
+                    isDraggable: draggable,
+                    isRemovable: removable,
+                    isPreferencable: this.isPreferencable,
+                    isPassedPlanModule: this.isPassedPlan
                 })
             );
         }.bind(this));
+        console.log(this);
         this.render();
     },
     /**
@@ -41,16 +64,17 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
      * @return {Backbone.View|null}
      */
     render: function () {
-        this.$el.html(this.template({
-            semester: this.model
-        }));
+        this.$el.html(this.template({semester: this.model}));
         this.$el.droppable({
             drop: this.onDrop.bind(this)
         });
         _.each(this.moduleElements, function (element) {
             element.render();
+            console.log(element);
             this.$el.find(".semesterModules").append(element.$el);
         }.bind(this));
+        console.log(this.$el);
+        this.delegateEvents();
         return null;
     },
 /**
@@ -77,8 +101,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
             droppedModel.collection = null;
             // Do not insert a module twice
             if (this.model.collection.containsModule(droppedModel.get('id'))) {
-                console.log(droppedModel);
-                console.log(this.model.collection);
                 var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
                 edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
                     new edu.kit.informatik.studyplan.client.model.system.Notification({
@@ -91,16 +113,31 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
                 return false;
             }
         }
-        console.log(droppedModel);
-        console.log(this.model);
         if (droppedModel.collection!==this.model) {
+            var oldCol = droppedModel.collection;
+            var oldSem = droppedModel.get('semester');
             if(droppedModel.collection!==null){
                 droppedModel.collection.remove(droppedModel);
             }
             droppedModel.set('semester', this.model.semesterNum);
+            if (this.isPassedPlan) {
+                droppedModel.set('passed', true);
+            }
             this.model.add(droppedModel);
             droppedModel.collection = this.model;
-            droppedModel.save();
+            if(!this.isPassedPlan){
+                droppedModel.save(null, {
+                    error: function () {
+                        console.log(droppedModel);
+                        this.model.remove(droppedModel);
+                        if (oldCol!==null) {
+                            droppedModel.set('semester', oldSem);
+                            oldCol.add(droppedModel);
+                        }
+                        console.log(droppedModel);
+                    }.bind(this)
+                });
+            }
         }
     },
     /**

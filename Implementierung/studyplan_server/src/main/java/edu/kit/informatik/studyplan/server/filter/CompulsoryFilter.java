@@ -17,7 +17,7 @@ public class CompulsoryFilter extends ListFilter<Boolean> {
 	 * @param selection
 	 *            die Nummer des ausgewählten Elements
 	 */
-	public CompulsoryFilter(int selection) {
+	public CompulsoryFilter(boolean selection) {
 		super(selection);
 	}
 

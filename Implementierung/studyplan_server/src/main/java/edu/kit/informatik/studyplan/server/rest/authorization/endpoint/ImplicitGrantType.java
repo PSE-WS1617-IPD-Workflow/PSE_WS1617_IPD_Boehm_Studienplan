@@ -42,7 +42,7 @@ public class ImplicitGrantType implements GrantType {
 			return null;
 		}
 		String userName = split[0];
-		UserDao dao = UserDaoFactory.getUserDao(null);
+		UserDao dao = UserDaoFactory.getUserDao();
 		User user = dao.getUserByName(userName);
 		if (user == null) {
 			user = new User();

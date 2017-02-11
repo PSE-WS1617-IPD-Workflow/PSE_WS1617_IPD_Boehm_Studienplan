@@ -18,7 +18,7 @@ public class CycleTypeFilter extends ListFilter<CycleType> {
 	 * @param selection
 	 *            die Nummer des ausgewählten Elements
 	 */
-	public CycleTypeFilter(int selection) {
+	public CycleTypeFilter(CycleType selection) {
 		super(selection);
 	}
 

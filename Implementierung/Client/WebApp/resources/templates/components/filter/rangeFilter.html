@@ -1,10 +1,7 @@
-<button class='profileFilterWrapper'>
-    {{=obj.filter.get("name")}}
-</button>
-<div class="profileFilterWrapperSettings">
+<div style="display:none;" class="profileFilterWrapperSettings" id="filterId_{{=obj.filter.get('id')}}">
     <label class="minRange">{{=obj.LM.getMessage("radioSliderMin")}} {{=obj.filter.get("specification").min}} </label>
     <label class="maxRange">{{=obj.LM.getMessage("radioSliderMax")}} {{=obj.filter.get("specification").max}}</label>
     <div class="rangeSlider"></div>
     <input id='min_range_{{=obj.filter.get("id")}}' class="currentMinRange"type="number" value='{{=obj.filter.get("curValue").min}}' readonly>
-    <input id='max_range_{{=obj.filter.get("id")}}' class="currentMaxRange" value='{{=obj.filter.get("curValue").max}}' readonly>
+    <input id='max_range_{{=obj.filter.get("id")}}' class="currentMaxRange"type="number" value='{{=obj.filter.get("curValue").max}}' readonly>
 </div>

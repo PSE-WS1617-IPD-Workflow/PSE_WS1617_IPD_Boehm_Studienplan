@@ -5,7 +5,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.SemesterCollection
  * @param {Object=} options
  * @extends {Backbone.Model}
  */
-edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.Plan.prototype}*/{
+edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.SemesterCollection.prototype}*/{
     planId : null,
     initialize: function (attributes, options) {
         this.plan = options.plan;
@@ -71,5 +71,16 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
             sum+=semester.getEctsSum();
         });
         return sum;
+    },
+    addModule: function (module) {
+        var i = module.get("semester");
+        if(!this.get(i)) {
+            this.set(i, new edu.kit.informatik.studyplan.client.model.plans.Semester({
+                planId : this.planId,
+                semesterNum : module.get("semester"),
+                modules : []
+            },{parse:true, collection: this}));
+        }
+        this.get(i).push(module);
     }
 });

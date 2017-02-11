@@ -22,14 +22,20 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         if(student){
             var passedModules = student.get('passedModules');
         }
+        console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] parsing plan")
         if(passedModules){
-            passedModules.forEach(function(module){
-                module["passed"] = true;
-                response["modules"].push(module);
+            passedModules.each(function(module){
+                module.set('passed', true);
+                response["modules"].push(module.toJSON({planModule: true})["module"]);
             });
         }
         // Initialise an object of type client.model.plans.SemesterCollection and set planId and module
-        response.semesterCollection = new edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({planId : response.id, modules : response.modules}, {parse : true, plan: this});
+        response.semesterCollection = new edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({
+            planId : response.id, 
+            modules : 
+            response.modules
+        }, {parse : true, plan: this});
+        
         response.verificationResult = new edu.kit.informatik.studyplan.client.model.plans.VerificationResult({
             plan: {
                 id: response["id"],
@@ -104,5 +110,12 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     },
     getEctsSum: function () {
         return this.get('semesterCollection').getEctsSum();
+    },
+    
+    /**
+    * Ignores if a semester was passed
+    */
+    addModule: function (module) {
+        this.get("semesterCollection").addModule(module);
     }
 });
