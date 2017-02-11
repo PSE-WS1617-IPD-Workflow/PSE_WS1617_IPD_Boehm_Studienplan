@@ -80,10 +80,15 @@ public class PlansResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public PlanInOut createPlan(PlanInOut planInput) {
-		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getVerificationState() != null
+		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getName() == null
+				|| planInput.getPlan().getVerificationState() != null
 				|| planInput.getPlan().getModuleEntries() != null || planInput.getPlan().getPreferences() != null
 				|| planInput.getPlan().getCreditPoints() != 0) {
 			throw new BadRequestException();
+		}
+		if (getUser().getPlans().stream()
+				.anyMatch(plan -> plan.getName().equals(planInput.getPlan().getName()))) {
+			throw new UnprocessableEntityException();
 		}
 		return Utils.withPlanDao(dao -> {
 			String newId = dao.updatePlan(planInput.getPlan());
@@ -137,7 +142,7 @@ public class PlansResource {
 		}
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
-			if (plan == null) {
+			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
 			}
 			planInput.getPlan().setVerificationState(VerificationState.NOT_VERIFIED);
@@ -159,7 +164,7 @@ public class PlansResource {
 	public PlanInOut getPlan(@PathParam("plan-id") String planId) {
 		return Utils.withPlanDao(dao -> {
 			Plan result = dao.getPlanById(planId);
-			if (result == null) {
+			if (result == null || !getUser().equals(result.getUser())) {
 				throw new NotFoundException();
 			} else {
 				return new PlanInOut(result);
@@ -193,7 +198,7 @@ public class PlansResource {
 		}
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
-			if (plan == null) {
+			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
 			}
 			plan.setName(planInput.getPlan().getName());
@@ -214,7 +219,7 @@ public class PlansResource {
 	public Response deletePlan(@PathParam("id") String planId) {
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
-			if (plan == null) {
+			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new UnprocessableEntityException();
 			}
 			dao.deletePlan(plan);
@@ -245,7 +250,7 @@ public class PlansResource {
 		}
 		return Utils.withPlanDao(planDao -> {
 			Plan plan = planDao.getPlanById(planId);
-			if (plan == null) {
+			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
 			}
 			Filter filter = ModuleResource.getFilterFromRequest(uriInfo.getQueryParameters(), user.getDiscipline());
@@ -287,7 +292,7 @@ public class PlansResource {
 	public Map<String, JsonModule> getModule(@PathParam("plan") String planId, @PathParam("module") String moduleId) {
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
             Plan plan = planDao.getPlanById(planId);
-            if (plan == null) {
+            if (plan == null || !getUser().equals(plan.getUser())) {
                 throw new NotFoundException();
             }
             Module module = moduleDao.getModuleById(moduleId);
@@ -323,7 +328,7 @@ public class PlansResource {
 		}
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
 			Plan plan = planDao.getPlanById(planId);
-			if (plan == null) {
+			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
 			}
 			Module module = moduleDao.getModuleById(moduleId);
@@ -358,7 +363,7 @@ public class PlansResource {
 	public Response removeModuleSemester(@PathParam("plan") String planId, @PathParam("module") String moduleId) {
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
 			Plan plan = planDao.getPlanById(planId);
-			if (plan == null) {
+			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
 			}
 			Module module = moduleDao.getModuleById(moduleId);
@@ -402,7 +407,7 @@ public class PlansResource {
 				throw new NotFoundException();
 			}
 			Plan plan = planDao.getPlanById(planId);
-			if (plan == null) {
+			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
 			}
 			List<ModulePreference> preferences = plan.getPreferences();
@@ -439,7 +444,7 @@ public class PlansResource {
 	public PlanInOut verifyPlan(@PathParam("plan") String planId) {
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
-			if (plan == null) {
+			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
 			}
 			VerificationManager manager = new VerificationManager();
@@ -476,7 +481,7 @@ public class PlansResource {
 								   @Context UriInfo uriInfo) {
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
 			Plan plan = planDao.getPlanById(planId);
-			if (plan == null) {
+			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
 			}
 
@@ -524,19 +529,19 @@ public class PlansResource {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * GET-Anfrage: Gibt die PDF-Version des Plans mit den gegebenen ID zurück.
-	 * 
+	 *
 	 * @param planID
 	 *            ID des zu konvertierenden Plans.
 	 * @param accessToken
 	 *            Ein Token, zur Authentifizierung der Klient.
 	 * @return die PDF-Version des Plans.
 	 */
-	@Produces("text/html")
 	@GET
 	@Path("/{planId}/pdf")
+	@Produces("text/html")
 	public Response convertPlanToPDF(@PathParam(value = "planId") String planId,
 			@QueryParam("access-token") String accessToken) {
 		AbstractSecurityProvider provider = AbstractSecurityProvider.getSecurityProviderImpl();

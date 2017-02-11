@@ -20,31 +20,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.NotFoundException;
-
-import org.hibernate.annotations.GenericGenerator;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
-import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
-
 /************************************************************/
 /**
  * Modelliert einen Studienplan
@@ -120,7 +95,7 @@ public class Plan {
 	public PreferenceType getPreferenceForModule(Module module) {
 		return modulePreferences.stream()
 		.filter(preference -> preference.getModule().equals(module))
-		.map(preference -> preference.getPreference()).findFirst().orElse(null);
+		.map(ModulePreference::getPreference).findFirst().orElse(null);
 	}
 
 
@@ -292,6 +267,7 @@ public class Plan {
 	}
 
 	@Transient
+    @JsonIgnore
 	public ModuleEntry getEntryFor(Module module) {
 		return getAllModuleEntries().stream()
 				.filter(entry -> entry.getModule().equals(module))
@@ -300,6 +276,7 @@ public class Plan {
 	}
 
 	@Transient
+    @JsonIgnore
 	public List<ModuleEntry> getAllModuleEntries() {
 		LinkedList<ModuleEntry> allEntries = new LinkedList<ModuleEntry>(moduleEntries);
 		allEntries.addAll(user.getPassedModules());

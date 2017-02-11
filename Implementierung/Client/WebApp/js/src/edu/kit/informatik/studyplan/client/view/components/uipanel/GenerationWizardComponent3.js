@@ -104,8 +104,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             this.information.set('min-semester-ects', temp1);
             this.information.set('max-semester-ects', temp2);
         
-            $("#minECTS" + this.information.get('min-semester-ects')).val(ui.values[0]);
-            $("#maxECTS" + this.filter.get('max-semester-ects')).val(ui.values[1]);
+            $("#minECTS").val(ui.values[0]);
+            $("#maxECTS").val(ui.values[1]);
         },
      /**wizardPageContent
     *
@@ -118,8 +118,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             this.information.set('min-semesters', temp1);
             this.information.set('max-semesters', temp2);
         
-            $("#minSemester" + this.information.get('min-semesters')).val(ui.values[0]);
-            $("#maxSemester" + this.filter.get('max-semesters')).val(ui.values[1]);
+            $("#minSemester").val(ui.values[0]);
+            $("#maxSemester").val(ui.values[1]);
         },
         
               

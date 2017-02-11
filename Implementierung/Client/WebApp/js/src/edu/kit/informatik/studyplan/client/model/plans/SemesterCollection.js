@@ -39,6 +39,17 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
                 modules : semesterModules[i]
             },{parse:true, collection: this});
         }
+        var semesterNum = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance()
+            .get('student').get('current-semester');
+        if(semesters.length<semesterNum){
+            for(var i = semesters.length; i<=semesterNum; i++){
+                semesters[i] = new edu.kit.informatik.studyplan.client.model.plans.Semester({
+                    planId : this.planId,
+                    semesterNum : i,
+                    modules : []
+                },{parse:true, collection: this})
+            }
+        }
         return semesters;
     },
     toJSON : function (options){

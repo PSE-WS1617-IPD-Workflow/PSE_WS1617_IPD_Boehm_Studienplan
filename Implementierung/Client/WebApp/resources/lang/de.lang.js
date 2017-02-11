@@ -108,9 +108,14 @@ LM.messages["de"]["beginningdate"] = "Studienbeginn:";
 LM.messages["de"]["savePlan"] = "Speichern";
 LM.messages["de"]["profileSavedTitle"] = "Profil gespeichert";
 LM.messages["de"]["profileSavedText"] = "Das Profil wurde erfolgreich gespeichert.";
+
+
 LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
 LM.messages["de"]["mainMenuButton"] = "Hauptmenü";
 
 LM.messages["de"]["deleteUser"] = "Konto Löschen";
 LM.messages["de"]["deleteUserPrompt"] = "Profil wirklich löschen?";
 LM.messages["de"]["deleteUserSuccess"] = "Erfolgreich! Thank you for traveling with StudyPlan!";
+
+// Not Found
+LM.messages["de"]["notFoundTitle"] = "Diese Seite existiert nicht!";
