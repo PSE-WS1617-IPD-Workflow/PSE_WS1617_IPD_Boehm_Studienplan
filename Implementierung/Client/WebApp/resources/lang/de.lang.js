@@ -80,7 +80,7 @@ LM.messages["de"]["generationExplanation2"] = "Du kannst mit dem Pfeil nach oben
 LM.messages["de"]["generationExplanation3"] = "Hier kannst du noch weitere Einschränkungen für deinen Studienplan machen.";
 LM.messages["de"]["generationEctsQuestion"] = "Wie viele ECTS-Punkte möchtest du mindestestens und maximal pro Semester erreichen?";
 LM.messages["de"]["generationSemesterQuestion"] = "Wie viele Semester möchtest du mindestens und maximal studieren?";
-LM.messages["de"]["generationChooseFunction"] = "Studienziel";
+LM.messages["de"]["generationChooseFunction"] = "Studienziel:";
 //ProfilePage
 LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
 LM.messages["de"]["mainMenuButton"] = "Hauptmenü";
@@ -95,5 +95,13 @@ LM.messages["de"]["notInsertTwiceText"] = "Module können nur einmal dem Studien
 
 LM.messages["de"]["sum"] = "Gesamt: ";
 LM.messages["de"]["modules"] = "Module";
+//SignupWizard
+LM.messages["de"]["signUpTitle1"] = "Herzlich Willkommen!";
+LM.messages["de"]["signUpExplanation1"] = "Wir benötigen einige Informationen über dich, um dir bei der Studienplanerstellung helfen zu können. Diese kannst du auf den folgenden Seiten angeben.";
+LM.messages["de"]["signUpExplanation2"] = "";
+LM.messages["de"]["signUpTitle2"] = "Beendete Module";
+LM.messages["de"]["signUpExplanation2"] = "Bitte gib an, welche Module du bereits bestanden hast.";
+LM.messages["de"]["discipline"] = "Studienfach:";
+LM.messages["de"]["beginningdate"] = "Studienbeginn:";
 
 

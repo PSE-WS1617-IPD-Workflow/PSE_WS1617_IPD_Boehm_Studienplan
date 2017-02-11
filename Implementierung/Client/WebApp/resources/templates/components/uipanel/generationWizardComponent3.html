@@ -30,9 +30,9 @@
     {{obj.fields.each(function (el) { }}
     <div class="box">
         <p><label>{{=el.get('name')}}</label>
-        <select class="fieldDropDown" size="1">
-            {{ _.each(el.categories,function(el2) { }}
-            <option value ="{{=el2.get('id')}}">{{=el2.get('name')}}</option>
+        <select class=" fieldDropDown" data-field-id="{{=el.get('id')}}" size="1">
+            {{ _.each(el.get('categories'),function(el2) { }}
+            <option value ="{{=el2.id}}">{{=el2.name}}</option>
             {{ }) }}
         </select></p>
     </div>
