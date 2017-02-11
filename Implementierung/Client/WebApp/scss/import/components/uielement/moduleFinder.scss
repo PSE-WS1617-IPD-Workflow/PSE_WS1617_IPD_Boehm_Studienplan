@@ -8,6 +8,11 @@
     flex-direction: column;
      -webkit-flex-direction: column;
 }
+.generationWizardComponent2{
+    .moduleFinderWrapper{
+        overflow: visible;
+    }
+}
 .profileModuleCollectionWrapper{
 }
 .profileModuleFinderWrapper{
@@ -40,3 +45,4 @@
         }
     }
 }
+
