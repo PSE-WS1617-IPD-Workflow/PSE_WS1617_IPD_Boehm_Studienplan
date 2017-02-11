@@ -25,6 +25,9 @@ class HibernateModuleDao implements ModuleDao {
 	
 	@Override
 	public Module getModuleById(String id) {
+		if (id == null) {
+			return null;
+		}
 		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Module module = session.bySimpleNaturalId(Module.class).load(id);

@@ -44,6 +44,9 @@ class SecurityProvider extends AbstractSecurityProvider {
 
 	@Override
 	public AuthorizationContext getAuthorizationContext(String accessToken) {
+		if (accessToken == null) {
+			return null;
+		}
 		Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		AuthorizationContext authorizationContext = session.byId(AuthorizationContext.class).load(accessToken);
@@ -58,6 +61,9 @@ class SecurityProvider extends AbstractSecurityProvider {
 
 	@Override
 	public RESTClient getClient(String apiKey) {
+		if (apiKey == null) {
+			return null;
+		}
 		Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		RESTClient client = session.bySimpleNaturalId(RESTClient.class).load(apiKey);

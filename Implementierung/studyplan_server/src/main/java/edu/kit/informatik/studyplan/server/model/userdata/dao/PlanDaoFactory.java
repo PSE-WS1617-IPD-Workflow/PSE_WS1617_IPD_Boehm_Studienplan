@@ -15,7 +15,8 @@ public class PlanDaoFactory {
 	 * @return liefert das für die verwendete Datenbankschnittstelle benötigte
 	 *         DAO zurück
 	 */
-	public static PlanDao getPlanDao(AuthorizationContext context) {
-		return new HibernatePlanDao(context);
+	public static PlanDao getPlanDao() {
+		return new HibernatePlanDao();
 	}
+	
 };

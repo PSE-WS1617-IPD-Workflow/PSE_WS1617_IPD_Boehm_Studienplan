@@ -40,6 +40,9 @@ class HibernatePlanDao implements PlanDao {
 	
 	@Override
 	public Plan getPlanById(String id) {
+		if (id == null) {
+			return null;
+		}
 		Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Plan plan = session.byId(Plan.class).load(id);

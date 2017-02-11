@@ -35,5 +35,11 @@ public class SemesterTest {
 	@Test
 	public void compareTest() {
 	}
+	
+	@Test
+	public void currentTest() {
+		int distance = new Semester(SemesterType.WINTER_TERM, 2015).getDistanceToCurrentSemester();
+		assertEquals(distance, 3);
+	}
 
 }

@@ -4,7 +4,8 @@
 		<title>Report</title>
 	</head>
 	<body>
-		<h1>$plan.getName()<h1>
+		<h1>$plan.getName()</h1>
+		<p class="totalCredits">$plan.formatCreditPoints($plan.getTotalCredits())</p>
 		<table>
 			<tbody>
 				#foreach ($semester in $plan.getSemesters())
@@ -12,14 +13,14 @@
 					<td>
 						<div class = "semester">
 						<h2>Semester $semester.getNumber()</h2>
-						<p>$semester.getTotalCredits() ECTS</p>
+						<p>$plan.formatCreditPoints($semester.getTotalCredits()) ECTS</p>
 						</div>
 					</td>
 					<td>
 						#foreach ($module in $semester.getModules())
 						<div class = "module">
 							<h2>$module.getName()</h2>
-							<p>$module.getCreditPoints() ECTS</p>
+							<p>$plan.formatCreditPoints($module.getCreditPoints()) ECTS</p>
 						</div>
 						#end
 					</td>

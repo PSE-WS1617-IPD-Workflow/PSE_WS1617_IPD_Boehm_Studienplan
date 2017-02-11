@@ -24,9 +24,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -39,10 +41,10 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDao;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
-import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
@@ -51,7 +53,7 @@ import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonRespons
  * Diese Klasse repräsentiert die Pläne-Ressource.
  */
 @Path("/plans")
-@AuthorizationNeeded
+//@AuthorizationNeeded
 public class PlansResource {
 	@Inject
 	Provider<AuthorizationContext> contextProvider;
@@ -70,7 +72,7 @@ public class PlansResource {
 				|| planInput.getPlan().getCreditPoints() != 0) {
 			throw new BadRequestException();
 		}
-		String newId = PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(planInput.getPlan());
+		String newId = PlanDaoFactory.getPlanDao().updatePlan(planInput.getPlan());
 		if (newId == null) {
 			throw new UnprocessableEntityException();
 		}
@@ -118,12 +120,12 @@ public class PlansResource {
 				|| !Objects.equals(planInput.getPlan().getIdentifier(), planID)) {
 			throw new BadRequestException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planInput.getPlan().getIdentifier());
+		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planInput.getPlan().getIdentifier());
 		if (plan == null) {
 			throw new NotFoundException();
 		}
 		planInput.getPlan().setVerificationState(VerificationState.NOT_VERIFIED);
-		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(planInput.getPlan());
+		PlanDaoFactory.getPlanDao().updatePlan(planInput.getPlan());
 		return planInput;
 	}
 
@@ -138,7 +140,7 @@ public class PlansResource {
 	@Path("/{plan-id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public PlanInOut getPlan(@PathParam("plan-id") String planId) {
-		Plan result = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
+		Plan result = PlanDaoFactory.getPlanDao().getPlanById(planId);
 		if (result == null) {
 			throw new NotFoundException();
 		} else {
@@ -170,12 +172,12 @@ public class PlansResource {
 				.anyMatch(plan -> plan.getName().equals(planInput.getPlan().getName()))) {
 			throw new UnprocessableEntityException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
+		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
 		if (plan == null) {
 			throw new NotFoundException();
 		}
 		plan.setName(planInput.getPlan().getName());
-		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
+		PlanDaoFactory.getPlanDao().updatePlan(plan);
 		planInput.getPlan().setIdentifier(planId);
 		return planInput;
 	}
@@ -189,7 +191,7 @@ public class PlansResource {
 	@DELETE
 	@Path("/{id}")
 	public Response deletePlan(@PathParam("id") String planId) {
-		PlanDao dao = PlanDaoFactory.getPlanDao(contextProvider.get());
+		PlanDao dao = PlanDaoFactory.getPlanDao();
 		Plan plan = dao.getPlanById(planId);
 		if (plan == null) {
 			throw new UnprocessableEntityException();
@@ -220,7 +222,7 @@ public class PlansResource {
 		if (user.getDiscipline() == null) {
 			throw new UnprocessableEntityException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
+		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
 		if (plan == null) {
 			throw new NotFoundException();
 		}
@@ -258,7 +260,7 @@ public class PlansResource {
 	@Path("/{plan}/modules/{module}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, JsonModule> getModule(@PathParam("plan") String planId, @PathParam("module") String moduleId) {
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
+		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
 		if (plan == null) {
 			throw new NotFoundException();
 		}
@@ -292,7 +294,7 @@ public class PlansResource {
 				|| moduleInput.getModule().getSemester() == null) {
 			throw new BadRequestException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
+		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
 		if (plan == null) {
 			throw new NotFoundException();
 		}
@@ -307,7 +309,7 @@ public class PlansResource {
 		}
 		plan.getModuleEntries().add(new ModuleEntry(module, moduleInput.getModule().getSemester()));
 		plan.setVerificationState(VerificationState.NOT_VERIFIED);
-		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
+		PlanDaoFactory.getPlanDao().updatePlan(plan);
 		return moduleInput;
 	}
 
@@ -323,7 +325,7 @@ public class PlansResource {
 	@DELETE
 	@Path("/{plan}/modules/{module}")
 	public Response removeModuleSemester(@PathParam("plan") String planId, @PathParam("module") String moduleId) {
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
+		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
 		if (plan == null) {
 			throw new NotFoundException();
 		}
@@ -336,7 +338,7 @@ public class PlansResource {
 				.findFirst().orElseThrow(UnprocessableEntityException::new);
 		plan.getModuleEntries().remove(moduleEntry);
 		plan.setVerificationState(VerificationState.NOT_VERIFIED);
-		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
+		PlanDaoFactory.getPlanDao().updatePlan(plan);
 		return Response.ok().build();
 	}
 
@@ -365,7 +367,7 @@ public class PlansResource {
 		if (module == null) {
 			throw new NotFoundException();
 		}
-		Plan plan = PlanDaoFactory.getPlanDao(contextProvider.get()).getPlanById(planId);
+		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
 		if (plan == null) {
 			throw new NotFoundException();
 		}
@@ -381,13 +383,33 @@ public class PlansResource {
 			}
 			preferences.add(new ModulePreference(module, moduleInput.getModule().getPreference()));
 		}
-		PlanDaoFactory.getPlanDao(contextProvider.get()).updatePlan(plan);
+		PlanDaoFactory.getPlanDao().updatePlan(plan);
 		return moduleInput;
 	}
 	
-	@Path("/")
-	public PlanConverterResource getPlanConverterResource() {
-		return new PlanConverterResource();
+	/**
+	 * GET-Anfrage: Gibt die PDF-Version des Plans mit den gegebenen ID zurück.
+	 * 
+	 * @param planID
+	 *            ID des zu konvertierenden Plans.
+	 * @param accessToken
+	 *            Ein Token, zur Authentifizierung der Klient.
+	 * @return die PDF-Version des Plans.
+	 */
+	@Produces("text/html")
+	@GET
+	@Path("/{planId}/pdf")
+	public Response convertPlanToPDF(@PathParam(value = "planId") String planId,
+			@QueryParam("access-token") String accessToken) {
+		AbstractSecurityProvider provider = AbstractSecurityProvider.getSecurityProviderImpl();
+		AuthorizationContext context = provider.getAuthorizationContext(accessToken);
+		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		if (context == null || !context.getUser().equals(plan.getUser())) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		PlanConverter converter = new PlanConverter(plan);
+		converter.getWriter().flush();
+		return Response.ok(converter.getWriter().toString()).build();
 	}
 
 

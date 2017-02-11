@@ -51,7 +51,6 @@ public class ImplicitGrantType implements GrantType {
 		}
 		AbstractSecurityProvider provider = AbstractSecurityProvider.getSecurityProviderImpl();
 		AuthorizationContext context = provider.generateAuthorizationContext(user, client, scope);
-		dao.cleanUp();
 		return context;
 	}
 
