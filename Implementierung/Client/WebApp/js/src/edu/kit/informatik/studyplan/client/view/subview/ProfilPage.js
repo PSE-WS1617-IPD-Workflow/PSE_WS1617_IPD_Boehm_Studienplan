@@ -25,6 +25,8 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik
             this.planHeadBar = new edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar({
                 plan: this.model
             });
+        } else {
+            this.planHeadBar = null;
         }
     }
 });

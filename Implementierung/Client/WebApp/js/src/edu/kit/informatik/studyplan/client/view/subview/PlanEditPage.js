@@ -34,8 +34,10 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
         this.$el.html(this.template({
             plan: this.model
         }));
-        this.planHeadBar.render();
-        this.$el.find(".planEditHeadWrapper").append(this.planHeadBar.$el);
+        if (this.planHeadBar!==null) {
+            this.planHeadBar.render();
+            this.$el.find(".planEditHeadWrapper").append(this.planHeadBar.$el);
+        }
         
         this.planView.render();
         this.$el.find(".planEditPlanWrapper").append(this.planView.$el);
