@@ -11,8 +11,9 @@ edu.kit.informatik.studyplan.client.config.init = function () {
                     },
                     "study-start":  {
                         "semester-type":    "WS",
-                        "year": 1825
+                        "year": 2015
                     },
+                    "current-semester": 3,
                     "passed-modules": [
                         {
                             id          :   "M5",

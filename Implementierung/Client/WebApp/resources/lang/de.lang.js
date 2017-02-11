@@ -108,3 +108,6 @@ LM.messages["de"]["beginningdate"] = "Studienbeginn:";
 LM.messages["de"]["savePlan"] = "Speichern";
 LM.messages["de"]["profileSavedTitle"] = "Profil gespeichert";
 LM.messages["de"]["profileSavedText"] = "Das Profil wurde erfolgreich gespeichert.";
+
+// Not Found
+LM.messages["de"]["notFoundTitle"] = "Diese Seite existiert nicht!";
