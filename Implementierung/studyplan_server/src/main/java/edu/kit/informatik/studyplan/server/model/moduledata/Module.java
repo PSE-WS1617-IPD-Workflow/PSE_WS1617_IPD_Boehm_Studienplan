@@ -235,4 +235,10 @@ public class Module {
 	void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return getClass() == obj.getClass()
+				&& getIdentifier().equals(((Module) obj).getIdentifier());
+	}
 }

@@ -72,6 +72,7 @@ public class Category {
 	 * @return gibt zurück ob es sich bei der Kategorie um ein Vertiefungsfach
 	 *         handelt
 	 */
+	@JsonIgnore
 	public boolean isSubject() {
 		return isSubject;
 	}

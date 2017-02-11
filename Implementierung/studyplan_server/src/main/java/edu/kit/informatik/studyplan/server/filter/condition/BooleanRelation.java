@@ -12,7 +12,7 @@ public enum BooleanRelation {
     /**
      * Represents the between relation.
      * The right-hand side of a between condition should contain two elements: the lower bound and the upper bound,
-     * both Integers.
+     * both Doubles.
      */
     BETWEEN,
     /**
