@@ -333,15 +333,16 @@ public abstract class Node {
 		} else
 			return c.getFirstModule();
 	}
-	private boolean fitsInSemester(int i){
+	protected boolean fitsInSemester(int i){
 		if(semester != 0) {
 			if(semester == i) {
 				return true;
 			}
 			return false;
 		}
-		
-		//TODO
+//		if () {
+//		TODO	
+//		}
 		return false;
 	}
 }

@@ -15,7 +15,9 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 import edu.kit.informatik.studyplan.server.verification.Verifier;
+import org.kohsuke.MetaInfServices;
 
+@MetaInfServices(Verifier.class)
 /************************************************************/
 /**
  * Der StandardVerifier importiert den Verifier. Er ist eine konkret

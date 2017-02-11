@@ -1,11 +1,20 @@
 package edu.kit.informatik.studyplan.server.pluginmanager;
 
 import edu.kit.informatik.studyplan.server.generation.Generator;
+import edu.kit.informatik.studyplan.server.generation.objectivefunction.ObjectiveFunction;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
+import edu.kit.informatik.studyplan.server.model.moduledata.Category;
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import edu.kit.informatik.studyplan.server.verification.Verifier;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.ServiceLoader;
 
 /**
  * Verwaltet den Zugriff auf das Generierungsplug-in. Das Generierungsplug-in
@@ -21,12 +30,6 @@ public class GenerationManager {
 
 	}
 
-	/**
-	 * Der Generierer.
-	 * 
-	 * @see edu.kit.informatik.studyplan.server.generation.Generator
-	 */
-	private Generator generator;
 
 	/**
 	 * Gibt den Generator zurück.
@@ -34,6 +37,12 @@ public class GenerationManager {
 	 * @return generator : der Generator
 	 */
 	public Generator getGenerator() {
+		Generator generator = null;
+		ServiceLoader<Generator> loader = ServiceLoader.load(Generator.class);
+		Iterator<Generator> iterator = loader.iterator();
+		if (iterator.hasNext()) {
+			generator = iterator.next();
+		}
 		return generator;
 	}
 
@@ -50,36 +59,24 @@ public class GenerationManager {
 	 * @return ein vollständiger, korrekter und optimierter Studienplan vom Typ
 	 *         Plan.
 	 */
-	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO) {
-		return null;
+	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, Map<Field, Category> preferredSubjects) {
+		return getGenerator().generate(objectiveFunction, currentPlan, preferredSubjects);
 	}
 
-	/**
-	 * Liste der Zielfunktionen.
-	 * 
-	 * @see edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction
-	 */
-	private Collection<PartialObjectiveFunction> objectiveFunction;
 
 	/**
 	 * Gibt die Liste der Zielfunktionen zurück.
 	 * 
 	 * @return objectiveFunction : die Liste der Zielfunktionen
 	 */
-	public Collection<PartialObjectiveFunction> getObjectiveFunction() {
+	public List<PartialObjectiveFunction> getAllObjectiveFunction() {
+		List<PartialObjectiveFunction> objectiveFunction = new ArrayList<PartialObjectiveFunction>();
+		ServiceLoader<PartialObjectiveFunction> loader = ServiceLoader.load(PartialObjectiveFunction.class);
+		Iterator<PartialObjectiveFunction> iterator = loader.iterator();
+		if (iterator.hasNext()) {
+			objectiveFunction.add(iterator.next());
+		}
 		return objectiveFunction;
-	}
-
-	/**
-	 * Diese Methode ruft die evaluate Methode der
-	 * {@link edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction}.
-	 * 
-	 * @return Wert zwischen 0 und 1 der den Plan evaluiert.
-	 * @param plan
-	 *            der zu bewertende Plan.
-	 */
-	public double evaluate(Plan plan) {
-		return 0;
 	}
 
 }
