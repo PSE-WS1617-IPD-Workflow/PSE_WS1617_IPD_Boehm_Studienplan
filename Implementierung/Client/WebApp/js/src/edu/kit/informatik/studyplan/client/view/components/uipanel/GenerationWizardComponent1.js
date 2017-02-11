@@ -26,7 +26,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             this.objectiveFunctions = new edu.kit.informatik.studyplan.client.model.system.ObjectiveFunctionCollection([
                 {
                     id: 5,
-                    name: "abc"
+                    name: "möglichst schneller Studienabschluss"
                 }
             ]);
                 

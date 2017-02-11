@@ -27,31 +27,18 @@
         td, th {
             padding:5px;
             vertical-align: top;
-            overflow:hidden;
             
             &:nth-child(1) {
-                width:130px;
+                width:10%;
                 text-align:right;
             }
             &:nth-child(2) {
                 border-left: 1px solid $boxBorderColor;
-                width:50px;
-                text-align:left;
-            }
-            &:nth-child(3) {
-                width:800px;
-                text-align:left;
-            }
-            &:nth-child(4) {
-                width:50px;
+                border-bottom: 1px solid $boxBorderColor;
+                width:90%;
                 text-align:left;
             }
             
-        }
-        tbody{
-            tr{
-                height:140px;
-            }
         }
     }
 }
