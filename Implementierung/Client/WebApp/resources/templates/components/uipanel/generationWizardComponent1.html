@@ -6,11 +6,11 @@
         <p>{{=obj.LM.getMessage('generationExplanation1')}}</p>
     </div>
     <div class="box">
-        <p><label>{{=obj.LM.getMessage('generationChooseFunction')}}</label>
+        <p class="dropdownWrapper"><label>{{=obj.LM.getMessage('generationChooseFunction')}}</label>
         <select class="objectiveFunctionDropDown" size="1">
             {{obj.functions.each(function (el) { }}
             <option value ="{{=el.get('id')}}">{{=el.get('name')}}</option>
             {{ }) }}
-        </select></p>
+        </select><br clear="all" /></p>
     </div>
 </div>

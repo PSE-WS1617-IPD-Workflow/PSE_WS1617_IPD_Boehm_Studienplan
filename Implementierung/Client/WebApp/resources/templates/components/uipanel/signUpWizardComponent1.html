@@ -6,7 +6,7 @@
         <p>{{=obj.LM.getMessage('signUpExplanation1')}}</p>
     </div>
     <div class="box">
-        <p><label>{{=obj.LM.getMessage('discipline')}}</label>
+        <p class="dropdownWrapper"><label>{{=obj.LM.getMessage('discipline')}}</label>
             <select class="disciplineDropDown" size="1">
             {{obj.disciplines.each(function (el) { }}
             <option value ="{{=el.get('id')}}">{{=el.get('name')}}</option>
@@ -15,7 +15,7 @@
         </p>
     </div>
     <div class="box">
-    <p>
+    <p class="dropdownWrapper">
         <label>{{=obj.LM.getMessage('beginningdate') }}</label>
         <select class="beginningdateDropDown" size="1">
             {{var counter = 0}}

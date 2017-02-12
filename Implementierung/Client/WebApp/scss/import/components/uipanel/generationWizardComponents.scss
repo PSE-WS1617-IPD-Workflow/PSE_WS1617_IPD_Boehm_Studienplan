@@ -1,0 +1,101 @@
+div[class^=generationWizardComponent] {
+    padding-top: 30px;
+}
+div[class^=generationWizardComponent] .box {
+    width: 55%;
+    min-width: 500px;
+    margin-bottom: 10px;
+}
+
+div[class^=generationWizardComponent] .box label {
+    font-weight: bold;
+    position: relative;
+    top: 2px;
+}
+
+.dropdownWrapper {
+    margin: 13px auto;
+    max-width: 500px;
+}
+
+.dropdownWrapper label {
+    float: left;
+    max-width: 200px;
+}
+
+.dropdownWrapper select {
+    float: right;
+    max-width: 300px;
+}
+
+.generationWizardComponent2 .profileModuleFinderWrapper {
+    padding: 0 0 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.generationWizardComponent2 .moduleFinderWrapper {
+    padding: 0px;
+    
+    .profileModuleFilterWrapper {
+        margin-bottom: 40px;
+    }
+    
+    .profileTextFilter {
+        width: 33%;
+        
+        .textFilterInput {
+            font-size: 16px;
+        }
+    }
+    
+    .filterButton {
+        width: 200px;
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+    }
+    
+    .profileModuleCollectionWrapper .moduleListWrapper .moduleBox {
+        margin-left: 5px;
+    }
+    
+    .profileModuleCollectionWrapper .moduleListWrapper .moduleBox:firstChild {
+        margin-left: 0;
+    }
+}
+
+.generationWizardComponent3 .box label.label-center {
+    display: block;
+    text-align: center;
+    margin-left: 0;
+}
+
+.generationWizardComponent3 .box label.minValue {
+    margin: 0;
+    float: left;
+}
+
+.generationWizardComponent3 .box label.maxValue {
+    margin: 0 0 ;
+    float: right;
+}
+
+.generationWizardComponent3 .box p {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.generationWizardComponent3 .currentMinValue {
+    float:left;
+    margin-top: 5px;
+    width: 50px;
+    text-align: center;
+}
+
+.generationWizardComponent3 .currentMaxValue {
+    float:right;
+    margin-top: 5px;
+    width: 50px;
+    text-align: center;
+}

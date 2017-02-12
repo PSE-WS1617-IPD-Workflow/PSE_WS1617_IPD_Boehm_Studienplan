@@ -1,0 +1,39 @@
+.signUpWizardComponent1 {
+    padding-top: 30px;
+}
+
+.signUpWizardComponent1 .box {
+    width: 55%;
+    min-width: 500px;
+    margin-bottom: 10px;
+}
+
+.signUpWizardComponent1 .box label {
+    font-weight: bold;
+    position: relative;
+    top: 2px;
+}
+
+.dropdownWrapper {
+    margin: 13px auto;
+    max-width: 500px;
+}
+
+.dropdownWrapper label {
+    float: left;
+    max-width: 200px;
+}
+
+.dropdownWrapper select {
+    float: right;
+    max-width: 300px;
+}
+
+.signUpWizardComponent1 .box p {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.signUpWizardComponent2 .planEditHeadWrapper {
+    display: none;
+}

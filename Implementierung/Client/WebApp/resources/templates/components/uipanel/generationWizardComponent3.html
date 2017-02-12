@@ -15,6 +15,7 @@
             <div class="rangeSlider1"></div>
             <input id="minECTS" class="currentMinValue"type="number" value='{{=obj.curvalues.get("min-semester-ects")}}' readonly>
             <input id="maxECTS" class="currentMaxValue"type="number" value='{{=obj.curvalues.get("max-semester-ects")}}' readonly>
+            <br clear="all" />
         
         
         <p>            
@@ -26,15 +27,16 @@
             <div class="rangeSlider2"></div>
             <input id="minSemester" class="currentMinValue"type="number" value='{{=obj.curvalues.get("min-semesters")}}' readonly>
             <input id="maxSemester" class="currentMaxValue"type="number" value='{{=obj.curvalues.get("max-semesters")}}' readonly>
+            <br clear="all" />
     </div>
     {{obj.fields.each(function (el) { }}
     <div class="box">
-        <p><label>{{=el.get('name')}}</label>
+        <p class="dropdownWrapper"><label>{{=el.get('name')}}</label>
         <select class=" fieldDropDown" data-field-id="{{=el.get('id')}}" size="1">
             {{ _.each(el.get('categories'),function(el2) { }}
             <option value ="{{=el2.id}}">{{=el2.name}}</option>
             {{ }) }}
-        </select></p>
+        </select><br clear="all" /></p>
     </div>
     {{ }) }}
 </div>

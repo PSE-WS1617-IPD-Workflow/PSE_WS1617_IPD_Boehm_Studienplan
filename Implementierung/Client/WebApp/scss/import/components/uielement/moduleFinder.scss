@@ -7,6 +7,12 @@
     display: flex;
     flex-direction: column;
      -webkit-flex-direction: column;
+    
+    padding: 0 20px;
+    
+    .moduleBox {
+        margin-bottom: 5px;
+    }
 }
 .generationWizardComponent2{
     .moduleFinderWrapper{
@@ -21,11 +27,11 @@
     right:0px;
     width: 100%;
     box-sizing: border-box;
-
     color:$boxColor;
     background-color:$boxBgColor;
     border-bottom:1px solid $boxBorderColor;
-    padding: 20px;
+ 
+    padding: 20px 0;
     
     .filterButton{
         cursor: pointer;
