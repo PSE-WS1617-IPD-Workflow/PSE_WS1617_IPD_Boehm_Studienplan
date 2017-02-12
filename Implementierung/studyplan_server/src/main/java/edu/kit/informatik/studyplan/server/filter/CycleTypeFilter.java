@@ -7,16 +7,14 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Repräsentiert einen Turnus-Auswahlfilter mit Filterung nach Winter-,
- * Sommersemester oder beidem als Wahlmöglichkeiten.
+ * Represents a cycle type list filter to distinguish between winter term, summer term or both.
  */
 public class CycleTypeFilter extends ListFilter<CycleType> {
 	/**
-	 * Erzeugt einen neuen Turnus-Auswahlfilter mit gegebener festgelegter
-	 * Auswahl.
+	 * Creates a new CycleTypeFilter with a given selection.
 	 *
 	 * @param selection
-	 *            die Nummer des ausgewählten Elements
+	 *            the selected cycle type
 	 */
 	public CycleTypeFilter(CycleType selection) {
 		super(selection);

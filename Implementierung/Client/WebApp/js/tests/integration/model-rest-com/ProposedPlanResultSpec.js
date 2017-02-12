@@ -142,7 +142,8 @@ define(["studyplan"], function (client) {
                     }
                 })
             });
-            var realPlan = propPlan.save({newPlan:false});
+            var realPlan = propPlan.getPlan({newPlan:false});
+            //realPlan.save(null, {patch: false});
             expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/P3');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
             var data = jasmine.Ajax.requests.mostRecent().data();
@@ -190,7 +191,7 @@ define(["studyplan"], function (client) {
                     }
                 })
             });
-            var realPlan = propPlan.save({newPlan:true, planName: "toller, lustiger, intelligenter Name"});
+            var realPlan = propPlan.getPlan({newPlan:true, planName: "toller, lustiger, intelligenter Name"});
             expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans');
             expect(jasmine.Ajax.requests.mostRecent().method).toBe('POST');
             jasmine.Ajax.requests.mostRecent().respondWith({

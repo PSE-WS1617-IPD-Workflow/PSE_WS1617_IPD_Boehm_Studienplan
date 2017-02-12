@@ -50,18 +50,23 @@ edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informati
         "use strict";
         if(options.newPlan){
             var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({name: options["planName"]});
+            plan.set('id',undefined);
             var self = this;
             plan.save(null,{
                 success: function () {
                     self.set('name',plan.get('name'));
                     self.set('id', plan.get('id'));
                     plan.attributes = self.attributes;
+                    options["patch"] = false;
+                    plan.save(null,options);
                 }
             });
             
             return plan;
         } else {
-            this.get('parent').attributes = this.attributes;
+            this.get('parent').attributes=_.extend(this.get('parent').attributes,this.attributes);
+            options["patch"]=false;
+            this.get('parent').save(null, options);
             return this.get('parent');
         }
     }

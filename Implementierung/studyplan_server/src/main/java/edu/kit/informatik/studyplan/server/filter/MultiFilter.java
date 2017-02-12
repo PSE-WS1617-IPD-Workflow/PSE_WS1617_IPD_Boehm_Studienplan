@@ -6,26 +6,24 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Bündelt mehrere Filter zu einem einzigen mittels UND-Verknüpfung der
- * Filterbedingungen.
+ * Combines several filters into a single one by folding the filter conditions using the AND operator.
  */
 public class MultiFilter implements Filter {
 	private List<Filter> filters;
 
 	/**
-	 * Erzeugt einen neuen MultiFilter aus gegebenen Unterfiltern.
+	 * Creates a new MultiFilter with given sub-filters.
 	 * 
 	 * @param filters
-	 *            die Unterfilter, die gebündelt werden sollen
+	 *            the filters to combine. Might be empty.
 	 */
 	public MultiFilter(List<Filter> filters) {
 		this.filters = filters;
 	}
 
 	/**
-	 * Gibt alle Filter zurück, die von diesem MultiFilter gebündelt werden.
 	 * 
-	 * @return die gebündelten Filter
+	 * @return the combined sub-filters
 	 */
 	public List<Filter> getFilters() {
 		return filters;
@@ -34,7 +32,7 @@ public class MultiFilter implements Filter {
 	/**
 	 * Gibt eine Liste der Filterbedingungen der gebündelten Filter zurück. Diese ist ggf. leer.
 	 * 
-	 * @return Die Liste der Filterbedingungen
+	 * @return a list of the combined filters' conditions. Might be empty.
 	 */
 	public List<Condition> getConditions() {
 		return filters.stream()

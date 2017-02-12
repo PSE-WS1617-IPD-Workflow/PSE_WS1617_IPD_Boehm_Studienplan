@@ -103,7 +103,9 @@ LM.messages["de"]["signUpTitle2"] = "Beendete Module";
 LM.messages["de"]["signUpExplanation2"] = "Bitte gib an, welche Module du bereits bestanden hast.";
 LM.messages["de"]["discipline"] = "Studienfach:";
 LM.messages["de"]["beginningdate"] = "Studienbeginn:";
-
+LM.messages["de"]["winterterm"] = "Wintersemester ";
+LM.messages["de"]["summerterm"] = "Sommersemester ";
+ 
 // Profile
 LM.messages["de"]["savePlan"] = "Speichern";
 LM.messages["de"]["profileSavedTitle"] = "Profil gespeichert";

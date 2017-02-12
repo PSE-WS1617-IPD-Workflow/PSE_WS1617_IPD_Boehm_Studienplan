@@ -9,16 +9,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Repräsentiert einen Modultyp-Wahlfilter mit den Modultypen als
- * Wahlmöglichkeiten.
+ * Represents a module type list filter with the module types as options.
  */
 public class ModuleTypeFilter extends ListFilter<ModuleType> {
 	/**
-	 * Erzeugt einen neuen Modultyp-Wahlfilter mit gegebener festgelegter
-	 * Auswahl.
+	 * Creates a new ModuleTypeFilter with a given selection.
 	 *
 	 * @param selection
-	 *            die Nummer des ausgewählten Elements
+	 *            the selected module type
 	 */
 	public ModuleTypeFilter(ModuleType selection) {
 		super(selection);

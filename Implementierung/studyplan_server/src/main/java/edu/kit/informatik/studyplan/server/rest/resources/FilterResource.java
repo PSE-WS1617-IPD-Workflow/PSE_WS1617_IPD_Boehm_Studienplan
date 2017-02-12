@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Diese Klasse repräsentiert die Filter-Ressource.
+ * REST resource for /filters.
  */
 @Path("/filters")
 @AuthorizationNeeded
@@ -32,9 +32,9 @@ public class FilterResource {
 	}
 
 	/**
-	 * GET Anfrage: Gibt eine Liste aller vorhandenen Filtern zurück.
+	 * GET request handler.
 	 * 
-	 * @return eine Liste von Filtern.
+	 * @return a list of all available filters as JSON.
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

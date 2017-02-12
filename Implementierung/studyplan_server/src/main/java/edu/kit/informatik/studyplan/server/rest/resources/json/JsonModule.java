@@ -13,6 +13,11 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A JSON representation of a module. The attributes are already described inside the Module class and therefore left
+ * undocumented.
+ * @see edu.kit.informatik.studyplan.server.model.moduledata.Module
+ */
 public class JsonModule {
     @NotNull
     private String id;
@@ -30,8 +35,25 @@ public class JsonModule {
     private String description;
     private List<ModuleConstraint> constraints;
 
+    /**
+     * Creates an empty JsonModule.
+     */
     public JsonModule() { } //for Jackson
 
+    /**
+     * JsonModule constructor.
+     * @param id id
+     * @param name name
+     * @param categories categories
+     * @param semester semester
+     * @param cycleType cycleType
+     * @param creditPoints creditPoints
+     * @param lecturer lecturer
+     * @param preference preference
+     * @param compulsory compulsory
+     * @param description description
+     * @param constraints constraints
+     */
     public JsonModule(String id,
                       String name,
                       List<Category> categories,
@@ -56,12 +78,20 @@ public class JsonModule {
         this.setConstraints(constraints);
     }
 
+    /**
+     * Creates a JsonModule from a Module instance with additionally given semester and preference.
+     * @param module module
+     * @param semester semester
+     * @param preference preference
+     * @return the JsonModule
+     */
     public static JsonModule fromModule(Module module, Integer semester, PreferenceType preference) {
         return new JsonModule(module.getIdentifier(), module.getName(), new ArrayList<>(module.getCategories()),
                 semester, module.getCycleType(), module.getCreditPoints(), module.getModuleDescription().getLecturer(),
                 preference, module.isCompulsory(), module.getModuleDescription().getDescriptionText(),
                 new ArrayList<>(module.getConstraints()));
     }
+
 
     public String getId() {
         return id;

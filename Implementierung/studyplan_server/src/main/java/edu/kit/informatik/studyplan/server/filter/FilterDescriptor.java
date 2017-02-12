@@ -9,38 +9,27 @@ import java.util.Map;
 
 /**
  * Beschreibungen der nach außen sichtbaren Filterklassen für den Client.
+ * Descriptions of the published filter classes for the client.
  */
 public class FilterDescriptor {
-
-	public FilterDescriptor(int id, AttributeFilter defaultFilter, String filterName, String tooltip) {
+	FilterDescriptor(int id, AttributeFilter defaultFilter, String filterName, String tooltip) {
 		this.id = id;
 		this.filterName = filterName;
 		this.tooltip = tooltip;
 		this.defaultFilter = defaultFilter;
 	}
 
-	/**
-	 * 
-	 */
 	private int id;
-	/**
-	 * 
-	 */
+
 	private String filterName;
-	/**
-	 * 
-	 */
+
 	private String tooltip;
-	/**
-	 * 
-	 */
+
 	private AttributeFilter defaultFilter;
 
 	/**
-	 * Liefert eine JSON-Repräsentation des beschriebenen Filters für den
-	 * Client.
 	 * 
-	 * @return eine JSON-Repräsentation des beschriebenen Filters
+	 * @return a JSON representation of the described filter for the client.
 	 */
 	public Map<String, Object> toJson() {
 		Map<String, Object> result = new HashMap<>(5);
@@ -53,36 +42,31 @@ public class FilterDescriptor {
 	};
 
 	/**
-	 * Liefert die ID des Filters.
 	 * 
-	 * @return die ID des Filters
+	 * @return the filter id
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Liefert ein Default-Objekt des beschriebenen Filtertyps.
-	 * 
-	 * @return das Default-Objekt
+	 * @return a default object of the described filter type.
 	 */
 	public AttributeFilter getDefaultFilter() {
 		return defaultFilter;
 	}
 
 	/**
-	 * Liefert den Namen des Filters (für die Benutzeroberfläche).
 	 * 
-	 * @return den Filternamen
+	 * @return the filter name (used for GUI purposes)
 	 */
 	public String getFilterName() {
 		return filterName;
 	}
 
 	/**
-	 * Liefert den zum Filter gehörenden Tooltip (für die Benutzeroberfläche).
 	 * 
-	 * @return das Tooltip zum Filter
+	 * @return a tooltip for the filter (for GUI purposes).
 	 */
 	public String getTooltip() {
 		return tooltip;

@@ -39,8 +39,12 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
                 modules : semesterModules[i]
             },{parse:true, collection: this});
         }
-        var semesterNum = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance()
-            .get('student').get('current-semester');
+        var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance()
+            .get('student');
+        if (student) {
+            var curSem = student.get('current-semester');
+        }
+        var semesterNum = (curSem) ? curSem : 1;
         if(semesters.length<semesterNum){
             for(var i = semesters.length; i<=semesterNum; i++){
                 semesters[i] = new edu.kit.informatik.studyplan.client.model.plans.Semester({

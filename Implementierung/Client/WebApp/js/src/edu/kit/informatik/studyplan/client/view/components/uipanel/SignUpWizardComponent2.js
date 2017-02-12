@@ -9,7 +9,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     
     
     student: null,
-    moduleFinder: null,
+    profilPage: null,
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uipanel/signUpWizardComponent2.html"),
     events: {
         "change select.objectiveFunctionDropDown": "onChange"
@@ -33,10 +33,10 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
                         
                     }
             });
-            this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
-                isDraggable: true,
-                isPreferencable: false,
-                planId: null
+            this.profilPage = new edu.kit.informatik.studyplan.client.view.subview.ProfilPage({
+                plan: this.student.get('passedModules').toPlan(),
+                isSignUp: true
+                
             });
         },
     
@@ -48,8 +48,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
             "use strict";
             this.$el.html(this.template());
             var finder = this.$el.find(".signUpWizardmodules");
-            this.moduleFinder.render();
-            finder.append(this.moduleFinder.$el);
+            this.profilPage.render();
+            finder.append(this.profilPage.$el);
             this.delegateEvents();
         },
     /**

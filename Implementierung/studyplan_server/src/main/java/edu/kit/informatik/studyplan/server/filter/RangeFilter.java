@@ -6,40 +6,42 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Repräsentiert einen Intervall-Beschränkungs-Filter für ganzzahlige Attribute.
+ * Represents an interval range filter for integer attributes.
  */
 public abstract class RangeFilter extends AttributeFilter {
 	/**
-	 * Die untere Schranke des Filters.
+	 * the filter's lower bound
 	 */
 	protected int lower;
 	/**
-	 * Die obere Schranke des Filters.
+	 * the filter's upper bound
 	 */
 	protected int upper;
 	/**
-	 * Die minimale untere Schranke des Filters.
+	 * the filter's minimal lower bound
 	 */
 	protected int min;
 	/**
-	 * Die maximale untere Schranke des Filters.
+	 * the filter's maximal upper bound
 	 */
 	protected int max;
 
 	/**
-	 * Erzeugt einen neuen Intervall-Filter mit gegebenen Schranken.
+	 * Creates a new RangeFilter with given ranges.
+	 * The following conditions must hold:
+	 *  min <= lower, lower <= upper, upper <= max, min <= max
 	 * 
 	 * @param lower
-	 *            untere Schranke des Filters
+	 *            the filter's lower bound
 	 * @param upper
-	 *            obere Schranke des Filters
+	 *            the filter's upper bound
 	 * @param min
-	 *            minimale untere Schranke des Filters
+	 *            the filter's minimal lower bound
 	 * @param max
-	 *            maximale obere Schranke des Filters
+	 *            the filter's maximal upper bound
 	 */
 	protected RangeFilter(int lower, int upper, int min, int max) {
-		if (lower > upper || max > min || lower < min || upper > max) {
+		if (!(min <= lower && lower <= upper && upper <= max && min <= max)) {
 			throw new IllegalArgumentException("RangeFilter must have valid ranges");
 		}
 		this.lower = lower;
@@ -49,10 +51,7 @@ public abstract class RangeFilter extends AttributeFilter {
 	}
 
 	/**
-	 * Liefert eine Filterbedingung, die vom Attributswert das Einhalten der
-	 * festgelegten Intervall-Grenzen fordert.
-	 * 
-	 * @return die Filterbedingung als jOOQ-Condition-Objekt
+	 * @return a list of Condition objects which demands for the attribute to be inside specified range
 	 */
 	public List<Condition> getConditions() {
 		return Collections.singletonList(Condition.createBetween(getAttributeName(), lower, upper));
@@ -63,36 +62,32 @@ public abstract class RangeFilter extends AttributeFilter {
 	}
 
 	/**
-	 * Liefert die festgelegte untere Schranke des Filters.
 	 * 
-	 * @return die untere Schranke
+	 * @return the filter's lower bound
 	 */
 	public int getLower() {
 		return lower;
 	}
 
 	/**
-	 * Liefert die festgelegte obere Schranke des Filters.
 	 * 
-	 * @return die obere Schranke
+	 * @return the filter's upper bound
 	 */
 	public int getUpper() {
 		return upper;
 	}
 
 	/**
-	 * Liefert den Mindestwert der unteren Schranke des Filters.
 	 * 
-	 * @return der Mindestwert der unteren Schranke
+	 * @return the filter's minimum lower bound
 	 */
 	public int getMin() {
 		return min;
 	}
 
 	/**
-	 * Liefert den Maximalwert der oberen Schranke des Filters.
 	 * 
-	 * @return den Maximalwert der oberen Schranke
+	 * @return the filter's maximum upper bound
 	 */
 	public int getMax() {
 		return max;

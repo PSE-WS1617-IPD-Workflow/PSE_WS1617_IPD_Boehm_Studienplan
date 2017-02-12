@@ -59,13 +59,13 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                 if(self.model.get('verificationResult').get('status')=="invalid"){
                     var html = "<ul>";
                     _.each(self.model.get('verificationResult').get('field-violations'), function (field) {
-                        field+="<li>"+field.get('name')+" (min: "+field.get('min-ects')+")</li>";
+                        html+="<li>"+field.get('name')+" (min: "+field.get('min-ects')+")</li>";
                     });
                     _.each(self.model.get('verificationResult').get('rule-group-violations'), function (field) {
-                        field+="<li>"+field.get('name')+" (min: "+field.get('min-ects')+", max: "+field.get('max-ects')+")</li>";
+                        html+="<li>"+field.get('name')+" (min: "+field.get('min-ects')+", max: "+field.get('max-ects')+")</li>";
                     });
                     _.each(self.model.get('verificationResult').get('compulsory-violations'), function (module) {
-                        field+="<li>"+module.get('name')+"</li>";
+                        html+="<li>"+module.get('name')+"</li>";
                     });
                     html+="</ul>";
                     notification = new edu.kit.informatik.studyplan.client.model.system.Notification({

@@ -1,7 +1,16 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
 import edu.kit.informatik.studyplan.server.Utils;
-import edu.kit.informatik.studyplan.server.filter.*;
+import edu.kit.informatik.studyplan.server.filter.CategoryFilter;
+import edu.kit.informatik.studyplan.server.filter.CompulsoryFilter;
+import edu.kit.informatik.studyplan.server.filter.CreditPointsFilter;
+import edu.kit.informatik.studyplan.server.filter.CycleTypeFilter;
+import edu.kit.informatik.studyplan.server.filter.Filter;
+import edu.kit.informatik.studyplan.server.filter.FilterDescriptorProvider;
+import edu.kit.informatik.studyplan.server.filter.ModuleTypeFilter;
+import edu.kit.informatik.studyplan.server.filter.MultiFilter;
+import edu.kit.informatik.studyplan.server.filter.NameFilter;
+import edu.kit.informatik.studyplan.server.filter.TrueFilter;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
@@ -14,7 +23,12 @@ import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonRespons
 
 import javax.inject.Inject;
 import javax.inject.Provider;
-import javax.ws.rs.*;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
@@ -24,7 +38,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Diese Klasse repräsentiert die Modul-Ressource.
+ * REST resource for /modules.
  */
 @Path("/modules")
 public class ModuleResource {
@@ -36,10 +50,11 @@ public class ModuleResource {
 	}
 
 	/**
-	 * GET Anfrage: Gibt eine Liste der JSON-Representationen von Modulen, die
-	 * dem gegebenen Filter entsprechen, zurück.
-	 *
-	 * @return eine Liste der JSON-Representationen von Modulen.
+	 * GET request handler.
+	 * Returns the modules which meet the given filters' conditions.
+	 * @param uriInfo
+	 *            UriInfo object providing access to the GET parameters containing the filter settings.
+	 * @return the JSON representation of the filtered modules.
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -70,12 +85,11 @@ public class ModuleResource {
 	}
 
 	/**
-	 * Get Anfrage: Gibt eine JSON-Representation von dem Modul mit der
-	 * gegebenen ID zurück.
+	 * GET /modules/{moduleId} request handler.
 	 *
 	 * @param moduleId
-	 *            ID des erforderten Modul.
-	 * @return eine JSON-Representation von dem Modul.
+	 *            id of the requested module
+	 * @return the requested module's JSON representation.
 	 */
 	@GET
 	@Path("/{moduleId}")
@@ -92,13 +106,13 @@ public class ModuleResource {
 	}
 
 	/**
-	 * GET-Anfrage: Gibt den angefragten Filter zurück.
+	 * Extracts a filter out of a given GET parameter map containing the specified filter settings.
 	 *
-	 * @param params
-	 *            Anfrage als eine mehrwertige Zuordnung von Strings.
-	 * @return den angefragten Filter.
+	 * @param params the GET parameters to extract the filter from
+	 * @param discipline the discipline of the user (needed for category filtering).
+	 * @return the extracted filter.
 	 */
-	public static Filter getFilterFromRequest(MultivaluedMap<String, String> params, Discipline discipline) {
+	static Filter getFilterFromRequest(MultivaluedMap<String, String> params, Discipline discipline) {
 		if (!params.containsKey("filters")) {
 			return new TrueFilter();
 		} else {
@@ -112,7 +126,7 @@ public class ModuleResource {
 					List<Filter> filters = filterNames.stream()
 							.map(filterName -> {
 								Filter filter = null;
-								switch (filterName) {
+								switch (filterName) {  //TODO use refactored FilterDescriptors, <T>params conversion, dont catch NPE.
 									case "ects":
 										int ectsMin = Integer.parseInt(params.getFirst("ects-min"));
 										int ectsMax = Integer.parseInt(params.getFirst("ects-max"));
@@ -148,7 +162,7 @@ public class ModuleResource {
 							.collect(Collectors.toList());
 					return new MultiFilter(filters);
 				});
-			} catch (IllegalArgumentException | NullPointerException ex) {
+			} catch (IllegalArgumentException ex) {
 				throw new BadRequestException();
 			}
 		}
