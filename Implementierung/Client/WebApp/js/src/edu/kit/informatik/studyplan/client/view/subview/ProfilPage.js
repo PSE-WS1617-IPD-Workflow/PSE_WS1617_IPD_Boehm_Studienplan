@@ -6,10 +6,38 @@
  */
 
 edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik.studyplan.client.view.subview.PlanEditPage.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.ProfilPage.prototype} */{
+    /**
+    * says wheather planHeadBar should be displayed
+    */
+    isSignUp: false,
+    model: null,
+    
+    /**
+    * the main element of the page -> to add passed Modules
+    */
+    planView: null,
+    /*
+    * headbar containing navigation options
+    */
+    planHeadBar: null,
+    /*
+    * modulerFinder that allows to search for modules
+    */
+    moduleFinder: null,
+    
+    /**
+    * Initializes the Plan edit page
+    * possible Parameters are:
+    *   isSignUp: will be set if this page is inside the signupwizzard,
+    *   plan: the plan that should displayed -> passed modules,
+    *   
+    * @param{*} options
+    */
     initialize: function (options) {
         // TODO: isSignUp
-        this.isSignUp = options.isSignUp
+        this.isSignUp = (typeof options.isSignUp !== "undefined")? options.isSignUp : false;
         this.model = options.plan;
+        //Initialize moduleFinder
         this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
             isSidebar:true,
             isPreferencable:false,
@@ -17,20 +45,25 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik
             isPlaced:this.model.containsModule,
             planId: null
         })
+        //Initialize PlanUI-Element
         this.planView = new edu.kit.informatik.studyplan.client.view.components.uielement.Plan({
             plan: this.model,
             isPreferencable: false,
             isPassedPlan: true,
             isAddable: false            
         });
+        
+        //Initialize HeadBar
+        this.planHeadBar = null;
         if(!this.isSignUp){
             this.planHeadBar = new edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar({
                 plan: this.model
             });
-        } else {
-            this.planHeadBar = null;
         }
     },
+    /**
+    * Saves passed modules
+    */
     saveModules: function () {
         this.planHeadBar.savePlan(false);
     }

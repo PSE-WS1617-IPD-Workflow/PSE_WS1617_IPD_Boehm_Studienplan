@@ -35,13 +35,6 @@ public abstract class ContainsFilter extends AttributeFilter {
 	}
 
 	/**
-	 * @return the CONTAINS filter type.
-     */
-	public FilterType getFilterType() {
-		return FilterType.CONTAINS;
-	}
-
-	/**
 	 * 
 	 * @return the substring to search for
 	 */
