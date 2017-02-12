@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 /**
@@ -47,7 +49,7 @@ public enum FilterType {
 			result.put("type", "list");
 			List<String> itemStrings = ((ListFilter<?>) defaultFilter).getItemStrings();
 			List<ListItem> items = IntStream.range(0, itemStrings.size())
-					.mapToObj(i -> new ListItem(0, itemStrings.get(i)))
+					.mapToObj(i -> new ListItem(i, itemStrings.get(i)))
 					.collect(Collectors.toList());
 			result.put("items", items);
 			return result;
@@ -96,7 +98,9 @@ public enum FilterType {
 	 * Represents a JSON list item by id and name.
      */
 	private static class ListItem {
+		@JsonProperty("id")
 		private int id;
+		@JsonProperty("text")
 		private String name;
 
 		ListItem(int id, String name) {

@@ -52,7 +52,7 @@ public class Plan {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "state")
 	@JsonProperty("status")
-	private VerificationState state = VerificationState.NOT_VERIFIED;
+	private VerificationState state;
 
 	@Transient
 	@JsonProperty("creditpoints-sum")
@@ -72,7 +72,7 @@ public class Plan {
 
 	@OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
 	@JsonIgnore
-	private List<ModulePreference> modulePreferences;
+	private List<ModulePreference> modulePreferences = new LinkedList<ModulePreference>();
 
 	/**
 	 * Returns the preference for a given module. Returns <code>null</code> if
@@ -144,7 +144,9 @@ public class Plan {
 	 * @return returns the total credit point sum of this plan
 	 */
 	public double getCreditPoints() {
-		creditPoints = getAllModuleEntries().stream().mapToDouble(entry -> entry.getModule().getCreditPoints()).sum();
+		if (creditPoints == -1) {
+			creditPoints = getAllModuleEntries().stream().mapToDouble(entry -> entry.getModule().getCreditPoints()).sum();
+		}
 		return creditPoints;
 	}
 
