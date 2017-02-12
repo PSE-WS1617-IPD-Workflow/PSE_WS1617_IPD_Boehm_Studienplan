@@ -19,7 +19,8 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik
         this.planView = new edu.kit.informatik.studyplan.client.view.components.uielement.Plan({
             plan: this.model,
             isPreferencable: false,
-            isPassedPlan: true
+            isPassedPlan: true,
+            isAddable: false            
         });
         if(!this.isSignUp){
             this.planHeadBar = new edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar({

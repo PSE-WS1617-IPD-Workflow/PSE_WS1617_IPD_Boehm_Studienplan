@@ -96,9 +96,6 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     buildParam: function () {
     },
     showFilterSettings : function (event){
-        console.log("[ModuleFilter] EVENTS:");
-        console.log(event.target.id);
-
         var tmpVisible = $("#filterId_" + event.target.id).is(":visible")
         
         $(".highlited_FilterButton").removeClass("highlited_FilterButton");        

@@ -12,9 +12,11 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
         "click .addSemesterButton": "addSemester"
     },
     semesterElements : [],
+    isAddable: true,
     isPreferencable: true,
     isPassedPlan: false,
     initialize: function (options) {
+        this.isAddable = (typeof options.isAddable !== "undefined") ? options.isAddable : this.isAddable;
         this.model = options.plan;
         this.isPreferencable = (typeof options.isPreferencable !== "undefined") ? options.isPreferencable : this.isPreferencable;
         this.isPassedPlan = (typeof options.isPassedPlan !== "undefined") ? options.isPassedPlan : this.isPassedPlan;
@@ -39,7 +41,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
     },
     render: function () {
         this.$el.html(this.template({
-            plan: this.model
+            plan: this.model,
+            isAddable: this.isAddable
         }));
         _.each(this.semesterElements, (function (el) {
             el.render();
