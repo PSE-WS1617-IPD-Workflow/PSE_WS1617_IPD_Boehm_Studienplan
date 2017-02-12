@@ -1,12 +1,14 @@
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 
-import java.util.List;
-
+//TODO: javaDoc
 public class PlanWithViolations extends Plan {
     @JsonProperty("violations")
     private List<ModuleConstraint> violations;
