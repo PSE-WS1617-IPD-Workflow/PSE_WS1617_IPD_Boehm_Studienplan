@@ -84,9 +84,7 @@ public class Plan {
 	 *
 	 */
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "plan_entries",
-		joinColumns = @JoinColumn(name = "plan_identifier"),
-		inverseJoinColumns = @JoinColumn(name = "entry_id"))
+	@JoinTable(name = "plan_entries", joinColumns = @JoinColumn(name = "plan_identifier"), inverseJoinColumns = @JoinColumn(name = "entry_id"))
 	@JsonIgnore
 	private List<ModuleEntry> moduleEntries = new LinkedList<ModuleEntry>();
 
@@ -96,7 +94,6 @@ public class Plan {
 	@OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<ModulePreference> modulePreferences;
-
 
 	/**
 	 * Gibt für ein übergebenes Modul die Präferenz zurück. <br>
@@ -108,12 +105,9 @@ public class Plan {
 	 */
 	@JsonIgnore
 	public PreferenceType getPreferenceForModule(Module module) {
-		return modulePreferences.stream()
-		.filter(preference -> preference.getModule().equals(module))
-		.map(preference -> preference.getPreference()).findFirst().orElse(null);
+		return modulePreferences.stream().filter(preference -> preference.getModule().equals(module))
+				.map(ModulePreference::getPreference).findFirst().orElse(null);
 	}
-
-
 
 	/**
 	 *
@@ -172,9 +166,7 @@ public class Plan {
 	 */
 	public double getCreditPoints() {
 		if (creditPoints == -1) {
-			creditPoints =  moduleEntries.stream()
-					.mapToDouble(entry -> entry.getModule().getCreditPoints())
-					.sum();
+			creditPoints = moduleEntries.stream().mapToDouble(entry -> entry.getModule().getCreditPoints()).sum();
 		}
 		return creditPoints;
 	}
@@ -208,39 +200,44 @@ public class Plan {
 	 * 
 	 * @return gibt eine List der Modulpräferenzen zurück
 	 */
+	@JsonIgnore
 	public List<ModulePreference> getPreferences() {
 		return modulePreferences;
 	}
 
-
 	/**
 	 * Only being called by Jackson and/or REST handlers, respectively.
-	 * @return Publishes the module entries inside the plan's JSON representation.
-     */
+	 * 
+	 * @return Publishes the module entries inside the plan's JSON
+	 *         representation.
+	 */
 	@JsonProperty("modules")
 	public List<JsonModule> getJsonModules() {
-		return getModuleEntries().stream()
-				.map(entry -> {
-					JsonModule jsonModule = new JsonModule();
-					jsonModule.setId(entry.getModule().getIdentifier());
-					jsonModule.setName(entry.getModule().getName());
-					jsonModule.setSemester(entry.getSemester());
-					jsonModule.setCreditPoints(entry.getModule().getCreditPoints());
-					jsonModule.setLecturer(entry.getModule().getModuleDescription().getLecturer());
-					jsonModule.setCycleType(entry.getModule().getCycleType());
-					jsonModule.setPreference(getPreferenceForModule(entry.getModule()));
-					return jsonModule;
-				})
-				.collect(Collectors.toList());
+		return getModuleEntries().stream().map(entry -> {
+			JsonModule jsonModule = new JsonModule();
+			jsonModule.setId(entry.getModule().getIdentifier());
+			jsonModule.setName(entry.getModule().getName());
+			jsonModule.setSemester(entry.getSemester());
+			jsonModule.setCreditPoints(entry.getModule().getCreditPoints());
+			jsonModule.setLecturer(entry.getModule().getModuleDescription().getLecturer());
+			jsonModule.setCycleType(entry.getModule().getCycleType());
+			jsonModule.setPreference(getPreferenceForModule(entry.getModule()));
+			return jsonModule;
+		}).collect(Collectors.toList());
 	}
 
 	/**
 	 * Only being called by Jackson and/or REST handlers, respectively.
-	 * @param jsonModules The modules attribute's content from the plan's JSON representation.
-     */
+	 * 
+	 * @param jsonModules
+	 *            The modules attribute's content from the plan's JSON
+	 *            representation.
+	 */
 	@JsonProperty("modules")
 	public void setJsonModules(List<JsonModule> jsonModules) {
-		HashSet<String> placedModulesIds = new HashSet<>(jsonModules.size()); //for finding duplicates
+		HashSet<String> placedModulesIds = new HashSet<>(jsonModules.size()); // for
+																				// finding
+																				// duplicates
 		List<ModuleEntry> moduleEntries = new ArrayList<>(jsonModules.size());
 		List<ModulePreference> preferences = new LinkedList<>();
 		for (JsonModule jsonModule : jsonModules) {
@@ -249,9 +246,10 @@ public class Plan {
 			} else {
 				placedModulesIds.add(jsonModule.getId());
 			}
-//			if (jsonModule.getSemester() < user.getStudyStart().getDistanceToCurrentSemester()) {
-//				throw new BadRequestException();
-//			}
+			// if (jsonModule.getSemester() <
+			// user.getStudyStart().getDistanceToCurrentSemester()) {
+			// throw new BadRequestException();
+			// }
 			Module module = Utils.withModuleDao(dao -> dao.getModuleById(jsonModule.getId()));
 			if (module == null) {
 				throw new NotFoundException();
@@ -267,17 +265,14 @@ public class Plan {
 		this.modulePreferences = preferences;
 	}
 
-
-	
 	public boolean contains(Module module) {
 		return getAllModuleEntries().stream().anyMatch(entry -> entry.getModule().equals(module));
 	}
 
 	@Transient
+	@JsonIgnore
 	public ModuleEntry getEntryFor(Module module) {
-		return getAllModuleEntries().stream()
-				.filter(entry -> entry.getModule().equals(module))
-				.findFirst()
+		return getAllModuleEntries().stream().filter(entry -> entry.getModule().equals(module)).findFirst()
 				.orElse(null);
 	}
 

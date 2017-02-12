@@ -12,7 +12,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/moduleBox.html"),
     isPreferencable: true,
     isDraggable: true,
-    isDeletable: true,
+    isRemovable: true,
     isPassedPlanModule: false,
     events: {
         "click button.deleteButton": "removeModule",
@@ -44,7 +44,11 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     */
     setRedBorder:
         function (setBorder) {
-            "use strict";
+            if(setBorder){
+                this.$el.addClass("invalid");
+            } else {
+                this.$el.removeClass("invalid")
+            }
         },
     
     /**

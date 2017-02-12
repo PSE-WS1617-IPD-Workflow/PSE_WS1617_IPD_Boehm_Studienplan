@@ -80,14 +80,14 @@ LM.messages["de"]["generationExplanation2"] = "Du kannst mit dem Pfeil nach oben
 LM.messages["de"]["generationExplanation3"] = "Hier kannst du noch weitere Einschränkungen für deinen Studienplan machen.";
 LM.messages["de"]["generationEctsQuestion"] = "Wie viele ECTS-Punkte möchtest du mindestestens und maximal pro Semester erreichen?";
 LM.messages["de"]["generationSemesterQuestion"] = "Wie viele Semester möchtest du mindestens und maximal studieren?";
-LM.messages["de"]["generationChooseFunction"] = "Studienziel";
-//ProfilePage
-LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
-LM.messages["de"]["mainMenuButton"] = "Hauptmenü";
+LM.messages["de"]["generationChooseFunction"] = "Studienziel:";
+
 
 //RadioSlider
 LM.messages["de"]["radioSliderMin"] = "min";
 LM.messages["de"]["radioSliderMax"] = "max";
+
+
 
 //Plan
 LM.messages["de"]["notInsertTwiceTitle"] = "Module bereits vorhanden";
@@ -95,8 +95,42 @@ LM.messages["de"]["notInsertTwiceText"] = "Module können nur einmal dem Studien
 
 LM.messages["de"]["sum"] = "Gesamt: ";
 LM.messages["de"]["modules"] = "Module";
-
+//SignupWizard
+LM.messages["de"]["signUpTitle1"] = "Herzlich Willkommen!";
+LM.messages["de"]["signUpExplanation1"] = "Wir benötigen einige Informationen über dich, um dir bei der Studienplanerstellung helfen zu können. Diese kannst du auf den folgenden Seiten angeben.";
+LM.messages["de"]["signUpExplanation2"] = "";
+LM.messages["de"]["signUpTitle2"] = "Beendete Module";
+LM.messages["de"]["signUpExplanation2"] = "Bitte gib an, welche Module du bereits bestanden hast.";
+LM.messages["de"]["discipline"] = "Studienfach:";
+LM.messages["de"]["beginningdate"] = "Studienbeginn:";
+LM.messages["de"]["winterterm"] = "Wintersemester ";
+LM.messages["de"]["summerterm"] = "Sommersemester ";
+ 
 // Profile
 LM.messages["de"]["savePlan"] = "Speichern";
 LM.messages["de"]["profileSavedTitle"] = "Profil gespeichert";
 LM.messages["de"]["profileSavedText"] = "Das Profil wurde erfolgreich gespeichert.";
+
+
+LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
+LM.messages["de"]["mainMenuButton"] = "Hauptmenü";
+
+LM.messages["de"]["deleteUser"] = "Konto Löschen";
+LM.messages["de"]["deleteUserPrompt"] = "Profil wirklich löschen?";
+LM.messages["de"]["deleteUserSuccess"] = "Erfolgreich! Thank you for traveling with StudyPlan!";
+
+// Not Found
+LM.messages["de"]["notFoundTitle"] = "Diese Seite existiert nicht!";
+
+// Proposed plan
+LM.messages["de"]["newNameRequest"] = "Wie soll der neue Plan heißen?";
+LM.messages["de"]["deleteProposal"] = "Plan verwerfen";
+LM.messages["de"]["saveProposal"] = "Plan ersetzen";
+LM.messages["de"]["saveAsProposal"] = "Unter anderem Namen speichern";
+LM.messages["de"]["proposal"] = "Vorschlag";
+
+// Internet connection
+LM.messages["de"]["connectionBackTitle"] = "Verbindung wiederhergestellt";
+LM.messages["de"]["connectionBackText"] = "Sie können nun weiterarbeiten";
+LM.messages["de"]["connectionLostTitle"] = "Verbindung unterbrochen";
+LM.messages["de"]["connectionLostText"] = "Sie können aktuell keine Daten speichern.";

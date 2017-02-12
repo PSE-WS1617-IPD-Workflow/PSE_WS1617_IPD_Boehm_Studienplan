@@ -2,7 +2,7 @@
     .homeSymbol{
         font-size: $subtitleSize;
     }
-    .mainPageNavigation{
+    button{
         height:30px;
         box-sizing: border-box;
         padding: 0px 5px 5px 5px;
@@ -12,4 +12,8 @@
         background-color: transparent;
         cursor: pointer;
     }
+}
+#deleteUser {
+    border-color: $error1;
+    background-color: lighten($error1, 50%); 
 }

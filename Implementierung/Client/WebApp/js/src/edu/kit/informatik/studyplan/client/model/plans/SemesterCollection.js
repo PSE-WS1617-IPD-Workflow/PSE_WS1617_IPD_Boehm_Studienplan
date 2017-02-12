@@ -6,6 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.SemesterCollection
  * @extends {Backbone.Model}
  */
 edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.SemesterCollection.prototype}*/{
+    length: 0,
     planId : null,
     initialize: function (attributes, options) {
         this.plan = options.plan;
@@ -38,6 +39,23 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
                 semesterNum : i,
                 modules : semesterModules[i]
             },{parse:true, collection: this});
+        }
+        var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance()
+            .get('student');
+        if (student) {
+            var curSem = student.get('current-semester');
+        }
+        var semesterNum = (curSem) ? curSem : 1;
+        this.length = semesters.length;
+        if(semesters.length<semesterNum){
+            for(var i = semesters.length; i<=semesterNum; i++){
+                semesters[i] = new edu.kit.informatik.studyplan.client.model.plans.Semester({
+                    planId : this.planId,
+                    semesterNum : i,
+                    modules : []
+                },{parse:true, collection: this})
+                this.length = semesterNum;
+            }
         }
         return semesters;
     },
@@ -82,5 +100,9 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
             },{parse:true, collection: this}));
         }
         this.get(i).push(module);
+    },
+    push : function (semester){
+        this.attributes[this.length + 1] = semester;
+        this.length++;
     }
 });

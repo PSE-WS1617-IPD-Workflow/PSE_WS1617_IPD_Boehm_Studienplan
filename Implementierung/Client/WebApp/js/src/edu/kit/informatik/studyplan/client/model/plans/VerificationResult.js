@@ -35,6 +35,17 @@ edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.inf
                       response["rule-group-violations"][i], {parse: true});
             }
         }
+        var compulsoryViolations = [];
+        if(typeof response["compulsory-violations"] !== "undefined") {
+            for(var i = 0; i<response["compulsory-violations"].length; i++) {
+                compulsoryViolations[i] = new edu.kit.informatik.studyplan.client.model.module.Module({
+                    module: {
+                        id: response["compulsory-violations"][i]["id"],
+                        name: response["compulsory-violations"][i]["name"]
+                    }
+                }, {parse: true});
+            }
+        }
         response["field-violations"] = fieldViolations;
         response["rule-group-violations"] = ruleGroupViolations; 
         result["violations"] = violations;

@@ -9,20 +9,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Repräsentiert einen Kategorie-Wahlfilter mit den Modulkategorien als
- * Wahlmöglichkeiten.
+ * Represents a category list filter. Provides Module categories to choose from.
  */
 public class CategoryFilter extends ListFilter<Category> {
 	private Discipline discipline;
 
 	/**
-	 * Erzeugt einen neuen Kategorie-Wahlfilter mit gegebener festgelegter
-	 * Auswahl.
+	 * Creates a new CategoryFilter with a given selection
 	 *
 	 * @param selection
-	 *            die Nummer des ausgewählten Elements
+	 *            the selected category
 	 * @param discipline
-	 * 			  the discipline of the categories
+	 * 			  the discipline of the categories to choose from
 	 */
 	public CategoryFilter(Category selection, Discipline discipline) {
 		super(selection);
@@ -46,6 +44,9 @@ public class CategoryFilter extends ListFilter<Category> {
 		return ModuleAttributeNames.CATEGORY;
 	}
 
+	/**
+	 * @return the discipline of the categories to choose from
+     */
 	public Discipline getDiscipline() {
 		return discipline;
 	}

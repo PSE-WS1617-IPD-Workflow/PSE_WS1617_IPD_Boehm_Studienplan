@@ -11,8 +11,9 @@ edu.kit.informatik.studyplan.client.config.init = function () {
                     },
                     "study-start":  {
                         "semester-type":    "WS",
-                        "year": 1825
+                        "year": 2015
                     },
+                    "current-semester": 3,
                     "passed-modules": [
                         {
                             id          :   "M5",
@@ -40,5 +41,49 @@ edu.kit.informatik.studyplan.client.config.init = function () {
         Backbone.history.start({pushState: true});
         console.info("[edu.kit.informatik.studyplan.client.config.init] Backbone.History.started:");
         console.info(Backbone.History.started);
+        
+        edu.kit.informatik.studyplan.client.config.init.checkAvailability();
+        window.setInterval(edu.kit.informatik.studyplan.client.config.init.checkAvailability, 20*1000);
     });
 };
+edu.kit.informatik.studyplan.client.config.init.isDown = false;
+edu.kit.informatik.studyplan.client.config.init.checkAvailability = function () {
+    var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
+    var sendAuthentication = function (xhr) {
+        xhr.setRequestHeader("Authorization", "Bearer " + edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('access_token'));
+    }
+    var options = {
+        url: API_DOMAIN+"/",
+        beforeSend: sendAuthentication,
+        "crossDomain" : true
+    };
+    options["success"] = function (data, textStatus, xhr) {
+        if(edu.kit.informatik.studyplan.client.config.init.isDown!=false){
+            edu.kit.informatik.studyplan.client.config.init.isDown=false;
+            edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                .add(
+                    new edu.kit.informatik.studyplan.client.model.system.Notification({
+                        title: LM.getMessage("connectionBackTitle"),
+                        text: LM.getMessage("connectionBackText"),
+                        wasShown: false,
+                        type: "success"
+                    })
+                );
+        }
+    }
+    options["error"] = function (xhr, textStatus, errorThrown) {
+        if(edu.kit.informatik.studyplan.client.config.init.isDown!=true){
+            edu.kit.informatik.studyplan.client.config.init.isDown=true;
+            edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                .add(
+                    new edu.kit.informatik.studyplan.client.model.system.Notification({
+                        title: LM.getMessage("connectionLostTitle"),
+                        text: LM.getMessage("connectionLostText"),
+                        wasShown: false,
+                        type: "error"
+                    })
+                );
+        }
+    }
+    Backbone.ajax(options);
+}

@@ -41,6 +41,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
                 id: response["id"],
                 violations: response["violations"],
                 status: response["status"],
+                "":response["compulsory-violations"],
                 "field-violations": response["field-violations"],
                 "rule-group-violations": response["rule-group-violations"]
             }

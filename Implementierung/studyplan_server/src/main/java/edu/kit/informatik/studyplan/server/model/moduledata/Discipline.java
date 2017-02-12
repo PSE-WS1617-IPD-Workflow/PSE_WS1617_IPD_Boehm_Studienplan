@@ -19,19 +19,20 @@ import edu.kit.informatik.studyplan.server.rest.resources.StudentResource;
 
 /**
  * Class modeling a discipline
+ * 
  * @author NiklasUhl
  * @version 1.0
  */
 @Entity
 @Table(name = "discipline")
 public class Discipline {
-	
+
 	@Id
 	@Column(name = "discipline_id")
 	@JsonProperty("id")
 	@JsonView(StudentResource.Views.StudentClass.class)
 	private int disciplineId = -1;
-	
+
 	@Column(name = "description")
 	@JsonProperty("name")
 	@JsonView(StudentResource.Views.DisciplineClass.class)
@@ -42,9 +43,9 @@ public class Discipline {
 	private List<Field> fields = new LinkedList<Field>();
 
 	@OneToMany(mappedBy = "discipline")
-    @JsonIgnore
+	@JsonIgnore
 	private List<RuleGroup> ruleGroups = new LinkedList<RuleGroup>();
-	
+
 	@OneToMany(mappedBy = "discipline")
 	@Where(clause = "is_compulsory = true")
 	@JsonIgnore

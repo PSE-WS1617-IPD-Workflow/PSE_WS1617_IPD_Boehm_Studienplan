@@ -7,14 +7,14 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.Genera
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent3 = edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent3.prototype}*/{
     
-    plan: null,
+    planId: null,
     information: null,
     
     fieldCollection: null,
     
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uipanel/generationWizardComponent3.html"),
     events: {
-        //"change select.objectiveFunctionDropDown": "onChange"
+        "change select.fieldDropDown": "onChange"
     },
     
     /**
@@ -23,7 +23,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
     initialize:
         function (options) {
             "use strict";
-            this.plan = options.plan;
+            this.planId = options.planId;
             this.information = options.information;
             this.information.set('min-semester-ects', 0);
             this.information.set('max-semester-ects', 60);
@@ -37,10 +37,15 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
                     'min-ects': 50,
                     categories: [{
                                 id: 42,
-                                name: "Meistern von lebensgefährliche n Situationen"
+                                name: "Meistern von lebensgefährlichen Situationen"
+                            },
+                                {
+                                id: 41,
+                                name: "blub"
                             }]
                 }
             ]);
+            this.information.set('fieldCollection',this.fieldCollection);
                 
             /*todo: kram hierdrunter oder so ähnlich wiedereinfügen anstelle des objekts hierdrüber.
             this.fieldCollection.fetch({
@@ -99,10 +104,10 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             this.information.set('min-semester-ects', temp1);
             this.information.set('max-semester-ects', temp2);
         
-            $("#minECTS" + this.information.get('min-semester-ects')).val(ui.values[0]);
-            $("#maxECTS" + this.filter.get('max-semester-ects')).val(ui.values[1]);
+            $("#minECTS").val(ui.values[0]);
+            $("#maxECTS").val(ui.values[1]);
         },
-     /**
+     /**wizardPageContent
     *
     */
     updateVal2:
@@ -113,8 +118,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             this.information.set('min-semesters', temp1);
             this.information.set('max-semesters', temp2);
         
-            $("#minSemester" + this.information.get('min-semesters')).val(ui.values[0]);
-            $("#maxSemester" + this.filter.get('max-semesters')).val(ui.values[1]);
+            $("#minSemester").val(ui.values[0]);
+            $("#maxSemester").val(ui.values[1]);
         },
         
               
@@ -122,8 +127,13 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
     *
     */
     onChange:
-        function () {
+        function (event) {
             "use strict";
+            console.log("generation3")
+            console.log(event);
+            var fieldId = event.currentTarget.getAttribute("data-field-id");
+            var value = event.currentTarget.value;            
+            this.information.get("fieldCollection").get(fieldId).set("curValue", value);               
         }
 
 });

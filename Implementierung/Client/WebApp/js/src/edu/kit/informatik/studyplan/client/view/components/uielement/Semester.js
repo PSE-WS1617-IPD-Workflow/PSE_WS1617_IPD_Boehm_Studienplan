@@ -12,6 +12,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
     moduleElements: [],
     isPassedSemester: false,
     isPassedPlan: false,
+    byId: {},
     events : {
         
     },
@@ -33,9 +34,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         this.moduleElements=[];
         this.model.each(function (el) {
             var removable = true;
-            if(!this.isPassedPlan) {
-                removable = false;
-            }
             if(!this.isPassedPlan&&el.get('passed')){
                 removable = false;
             }
@@ -43,19 +41,17 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
             if(!this.isPassedPlan&&el.get('passed')){
                 draggable = false;
             }
-            console.log("SEMESTER UI");
-            console.log(el);
-            this.moduleElements.push(
-                new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
+            var module = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
                     module: el,
                     isDraggable: draggable,
                     isRemovable: removable,
                     isPreferencable: this.isPreferencable,
                     isPassedPlanModule: this.isPassedPlan
-                })
-            );
+                });
+            this.byId[el.get('id')] = module;
+            module.setRedBorder(false);
+            this.moduleElements.push(module);
         }.bind(this));
-        console.log(this);
         this.render();
     },
     /**
@@ -70,12 +66,15 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         });
         _.each(this.moduleElements, function (element) {
             element.render();
-            console.log(element);
             this.$el.find(".semesterModules").append(element.$el);
         }.bind(this));
-        console.log(this.$el);
         this.delegateEvents();
         return null;
+    },
+    setRedBorder: function (id) {
+        if(this.byId[id]){
+            this.byId[id].setRedBorder(true);
+        }
     },
 /**
 *
@@ -128,13 +127,11 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
             if(!this.isPassedPlan){
                 droppedModel.save(null, {
                     error: function () {
-                        console.log(droppedModel);
                         this.model.remove(droppedModel);
                         if (oldCol!==null) {
                             droppedModel.set('semester', oldSem);
                             oldCol.add(droppedModel);
                         }
-                        console.log(droppedModel);
                     }.bind(this)
                 });
             }

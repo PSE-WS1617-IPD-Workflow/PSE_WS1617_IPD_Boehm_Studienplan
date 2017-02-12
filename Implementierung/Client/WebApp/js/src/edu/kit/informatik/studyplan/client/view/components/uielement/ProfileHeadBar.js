@@ -9,6 +9,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/profileHeadBar.html"),
     model: null,
     events: {
+        "click #deleteUser": "deleteUser",
         "click #save": "savePlan",
         "click button.mainPageNavigation": "goHome"
     },
@@ -25,8 +26,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
     /**
     *
     */
-    savePlan: function () {
+    savePlan: function (pushToServer) {
         "use strict";
+        pushToServer = (typeof pushToServer !== "undefined") ? pushToServer : true;
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar] save");
         var planObject = this.model.toJSON({method:"put",planModule:true});
@@ -36,24 +38,47 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
             .get('student');
         student.get('passedModules')
             .reset(modules);
-        student.save({
-            success: function () {
-                edu.kit.informatik.studyplan.client.router.MainRouter
-                    .getInstance()
-                    .hideLoading();
-                var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
-                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
-                    .add(
+        if(pushToServer){
+            student.save({
+                success: function () {
+                    edu.kit.informatik.studyplan.client.router.MainRouter
+                        .getInstance()
+                        .hideLoading();
+                    var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
+                    edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                        .add(
+                            new edu.kit.informatik.studyplan.client.model.system.Notification({
+                                title: LM.getMessage("profileSavedTitle"),
+                                text: LM.getMessage("profileSavedText"),
+                                wasShown: false,
+                                type: "success"
+                            })
+                        );
+                }
+            });
+        }
+        
+    },
+    deleteUser: function () {
+        var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
+        if(confirm(LM.getMessage("deleteUserPrompt"))){
+            //DELETE USER
+            var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
+            student.destroy({
+                success: function () {
+                        edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
                         new edu.kit.informatik.studyplan.client.model.system.Notification({
-                            title: LM.getMessage("profileSavedTitle"),
-                            text: LM.getMessage("profileSavedText"),
+                            title: LM.getMessage("deleteUser"),
+                            text: LM.getMessage("deleteUserSuccess"),
                             wasShown: false,
                             type: "success"
-                        })
-                    );
-            }
-        });
-        
+                        }));
+                 edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("logout", {trigger: true})
+                   
+                }
+            });
+            
+        }
     },
     goHome: function () {
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/", {trigger: true})

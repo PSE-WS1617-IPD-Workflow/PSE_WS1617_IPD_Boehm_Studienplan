@@ -6,7 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.Genera
  */
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1 = edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1.prototype}*/{
-    plan: null,
+    planId: null,
     information: null,
     objectiveFunctions: null,
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uipanel/generationWizardComponent1.html"),
@@ -21,7 +21,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
     initialize:
             function (options) {
             "use strict";
-            this.plan = options.plan;
+            this.planId = options.planId;
             this.information = options.information;
             this.objectiveFunctions = new edu.kit.informatik.studyplan.client.model.system.ObjectiveFunctionCollection([
                 {
@@ -55,7 +55,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
         function () {
             "use strict";
             var temp = new edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent2({
-                plan: this.plan,
+                planId: this.planId,
                 information: this.information
             });            
             return temp;

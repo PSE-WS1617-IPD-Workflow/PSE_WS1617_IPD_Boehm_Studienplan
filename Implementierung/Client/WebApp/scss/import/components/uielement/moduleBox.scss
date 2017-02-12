@@ -11,6 +11,10 @@
     background-color: $boxBgColor;
     color:$boxColor;
     
+    &.invalid{
+        border: 1px solid $error1;
+        background-color:lighten($error1, 60%);
+    }
     h3.moduleTitle{
         max-width:144px;
         float:left;
@@ -99,6 +103,13 @@
 }
 .rightSided .moduleBox{
     float:right;
+}
+.generationWizardComponent2{
+    .moduleBox{
+        float: left;
+        min-width: 180;
+        max-width: 240px;
+    }
 }
 .semesterModules{
     .moduleBox{

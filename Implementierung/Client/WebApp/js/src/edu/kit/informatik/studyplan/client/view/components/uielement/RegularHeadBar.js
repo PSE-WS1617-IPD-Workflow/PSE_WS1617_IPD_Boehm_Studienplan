@@ -48,7 +48,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
             success: function () {
                 edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
                 var notification = null;
-                if(self.get('verificationResult').get('status')=="valid"){
+                if(self.model.get('verificationResult').get('status')=="valid"){
                     notification = new edu.kit.informatik.studyplan.client.model.system.Notification({
                         title:LM.getMessage("verificationSuccessTitle"),
                         text:LM.getMessage("verificationSuccessText"),
@@ -56,10 +56,21 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                         type:"success"
                     });
                 }
-                if(self.get('verificationResult').get('status')=="invalid"){
+                if(self.model.get('verificationResult').get('status')=="invalid"){
+                    var html = "<ul>";
+                    _.each(self.model.get('verificationResult').get('field-violations'), function (field) {
+                        html+="<li>"+field.get('name')+" (min: "+field.get('min-ects')+")</li>";
+                    });
+                    _.each(self.model.get('verificationResult').get('rule-group-violations'), function (field) {
+                        html+="<li>"+field.get('name')+" (min: "+field.get('min-ects')+", max: "+field.get('max-ects')+")</li>";
+                    });
+                    _.each(self.model.get('verificationResult').get('compulsory-violations'), function (module) {
+                        html+="<li>"+module.get('name')+"</li>";
+                    });
+                    html+="</ul>";
                     notification = new edu.kit.informatik.studyplan.client.model.system.Notification({
                         title:LM.getMessage("verificationFailTitle"),
-                        text:LM.getMessage("verificationFailText"),
+                        text:LM.getMessage("verificationFailText")+html,
                         wasShown:false,
                         type:"error"
                     });
