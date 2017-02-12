@@ -9,6 +9,6 @@ edu.kit.informatik.studyplan.client.view.subview.LoginPage = Backbone.View.exten
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate('resources/templates/subview/loginPage.html'),
     render: function () {
         this.$el.html("");
-        this.$el.html(this.template({}));
+        this.$el.html(this.template({sessionInformation: edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance()}));
     }
 });

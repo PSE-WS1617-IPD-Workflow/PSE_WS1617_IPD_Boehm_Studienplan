@@ -25,6 +25,7 @@ edu.kit.informatik.studyplan.client.model.system.OAuthModel = Backbone.Model.ext
     destroy: function (options) {
         options = options || {};
         options["wait"]=true;
+        options["dataType"]="text";
         Backbone.Model.prototype.destroy.apply(this,[options])
     }
 });

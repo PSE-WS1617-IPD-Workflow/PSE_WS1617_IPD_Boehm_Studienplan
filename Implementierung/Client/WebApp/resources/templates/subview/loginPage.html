@@ -6,6 +6,6 @@
         {{=obj.LM.getMessage('welcomeText')}}
     </div>
     <div class="box">
-        <a href="{{=API_DOMAIN}}/auth/login?api_key={{=API_KEY}}&scope={{=API_SCOPE}}" class="loginButton">{{=obj.LM.getMessage('login')}}</a>
+        <a href="{{=obj.sessionInformation.getLoginUrl()}}" class="loginButton">{{=obj.LM.getMessage('login')}}</a>
     </div>
 </div>

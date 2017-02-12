@@ -17,14 +17,15 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
         this.isRemovable = options.isRemovable;
         this.planId = options.planId;
         this.isPreferencable = options.isPreferencable;
-        this.listenTo(this.moduleCollection, "change", this.onChange);
-        this.listenTo(this.moduleCollection, "all", this.onChange);
+        //this.listenTo(this.moduleCollection, "change", this.onChange);
+        //this.listenTo(this.moduleCollection, "all", this.onChange);
         this.listenTo(this.moduleCollection, "reset", this.onChange);
-        this.listenTo(this.moduleCollection, "add", this.onChange);
+        //this.listenTo(this.moduleCollection, "add", this.onChange);
         this.reload();
     },
     reload: function () {
         this.moduleBoxes = [];
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         var self = this;
         this.moduleCollection.each(function (module) {
             var tmpModuleBox = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
@@ -36,6 +37,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
             });
             self.moduleBoxes.push(tmpModuleBox);
         }.bind(this));
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
         this.render();
     },
     onChange: function (){

@@ -28,12 +28,14 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
             this.beginning(this.date);
             console.log(this.date);
             this.student = options.student;
-            this.disciplines = new edu.kit.informatik.studyplan.client.model.system.DisciplineCollection([
-                {
-                    id: 5,
-                    name: "Aurorenausbildung"
-                }
-            ]);
+            edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+            this.disciplines = new edu.kit.informatik.studyplan.client.model.system.DisciplineCollection();
+            this.disciplines.fetch({
+                success: function () {
+                    this.render();
+                    edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+                }.bind(this)
+            });
                 
             /*todo: kram hierdrunter wiedereinfügen anstelle der discipline hierdrüber.
             this.disciplines.fetch({
@@ -66,6 +68,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     next:
         function () {
             "use strict";
+            this.onChange1();
+            this.onChange2();
             var temp = new edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent2({
                 student: this.student
             });
@@ -77,7 +81,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     onChange1:
         function () {
             "use strict";
-            
+            console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1] semester:")
+            console.log(this.beginningArray[(this.$el.find("select.beginningdateDropDown").val())]);
             this.student.set('studyStartYear', this.beginningArray[(this.$el.find("select.beginningdateDropDown").val())]['year']);
             this.student.set('studyStartCycle', this.beginningArray[this.$el.find("select.beginningdateDropDown").val()]['term']);
             
@@ -89,7 +94,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     onChange2:
         function () {
             "use strict";
-            this.student.set('discipline', this.disciplines.get(this.$el.find("select.disciplineDropDown").val()));            
+            this.student.set('discipline', this.disciplines.get(this.$el.find("select.disciplineDropDown").val()).get('id'));            
         },
     
     /**

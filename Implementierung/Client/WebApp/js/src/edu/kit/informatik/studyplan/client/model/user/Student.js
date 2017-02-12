@@ -15,10 +15,21 @@ edu.kit.informatik.studyplan.client.model.user.Student = edu.kit.informatik.stud
         "use strict";
         response = response["student"];
         if (response !== undefined) {
-            response["studyStartYear"] = response["study-start"]["year"];
-            response["studyStartCycle"] = response["study-start"]["semester-type"];
-            response["discipline"] = response["discipline"]["id"];
-            response["passedModules"] = new edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection({modules: response["passed-modules"]}, {parse: true});
+            if(response["study-start"]){
+                response["studyStartYear"] = response["study-start"]["year"];
+                response["studyStartCycle"] = response["study-start"]["semester-type"];
+            } else {
+                response["studyStartYear"] = null;
+                response["studyStartCycle"] = null;
+            }
+            if(response["discipline"]) {
+                response["discipline"] = response["discipline"]["id"];
+            }
+            if(response["passedModules"]){
+                response["passedModules"] = new edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection({modules: response["passed-modules"]}, {parse: true});
+            } else {
+                response["passedModules"] = new edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection({modules: []}, {parse: true});
+            }
             //Name und Id fehlen noch
             //was ist mit discipline Id?
         }

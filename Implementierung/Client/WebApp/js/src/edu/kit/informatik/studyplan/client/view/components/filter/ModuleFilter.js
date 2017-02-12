@@ -18,16 +18,22 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     initialize: function (options){
         
         //TODO: enable fetch again
-        /*edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         this.filterCollection = new edu.kit.informatik.studyplan.client.model.system.FilterCollection();
         this.filterCollection.fetch({
+            reset: true,
             success: function () {
                 edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
-            }
-        });*/
+            }.bind(this)
+        });
         this.filterCollection = options.filterCollection;
-        
-        
+        //this.listenTo(this.filterCollection, "change", this.reload);
+        //this.listenTo(this.filterCollection, "add", this.reload);
+        //this.listenTo(this.filterCollection, "reset", this.reload);
+        this.listenTo(this.filterCollection, "reset", this.reload);
+        this.reload();
+    },
+    reload: function () {
         this.filterComponents = [];
         
 
@@ -55,6 +61,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
                 _this.filterComponents.push(uiFilter);
             }
         });
+        this.render();
     },
     /**
     * @this {Backbone.View}
@@ -63,15 +70,15 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     render: function () {
         "use strict";
         var filterButtons = [];
-        for(var i = 0; i < this.filterComponents.length; i++){
+        _.each(this.filterComponents, function (tmpFilterComponent) {
 
-            var tmpFilterComponent = this.filterComponents[i];
-            if(tmpFilterComponent.attributes.specification.type !== "contains"){
+            console.log(tmpFilterComponent);
+            if(tmpFilterComponent.filter.get('specification').type !== "contains"){
                 filterButtons.push({ 
                     id: tmpFilterComponent.filter.get("id"),
                     name: tmpFilterComponent.filter.get("name")});
             }
-        }
+        }.bind(this));
         
         this.$el.html(this.template({
             buttons : filterButtons

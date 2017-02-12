@@ -21,6 +21,9 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
     var Constructor = edu.kit.informatik.studyplan.client.model.system.CookieModel.extend({
         // cookie storage name
         url : "edu.kit.informatik.studyplan.client.model.user.SessionInformation.storage",
+        initialize: function () {
+            this.set('student', new edu.kit.informatik.studyplan.client.model.user.Student())
+        },
         /**
         * Method which sets a random value for state
         */
@@ -43,13 +46,16 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
             this.save();
         },
         getLoginUrl : function () {
-            if(!this.has('state')){
-                this.generateState();
-            }
             return API_DOMAIN + "/auth/login?response_type=token&client_id="+API_KEY+"&scope=student&state="+this.get('state');
         },
         isLoggedIn: function () {
             return edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().has('access_token');
+        },
+        toJSON: function () {
+            return {
+                access_token: this.get('access_token'),
+                state: this.get('state')
+            }
         }
     });
     return {
@@ -63,6 +69,12 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
             if (!instance.get('wasLoaded')){
                 instance.fetch({
                     success: function () {
+                        if(!instance.has('state')){
+                            console.log("edu.kit.informatik.studyplan.client.model.user.SessionInformation");
+                            console.log(instance.get('state'));
+                            instance.generateState();
+                            instance.save();
+                        }
                         instance.set('wasLoaded', true);
                     }
                 });

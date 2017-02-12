@@ -6,7 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.module.ModuleCollection"
  * @extends {Backbone.Collection}
  */
 
-edu.kit.informatik.studyplan.client.model.module.ModuleCollection = Backbone.Collection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype}*/{
+edu.kit.informatik.studyplan.client.model.module.ModuleCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype}*/{
     planId : null,
     initialize : function (models, options) {
         "use strict";

@@ -23,19 +23,12 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             "use strict";
             this.planId = options.planId;
             this.information = options.information;
-            this.objectiveFunctions = new edu.kit.informatik.studyplan.client.model.system.ObjectiveFunctionCollection([
-                {
-                    id: 5,
-                    name: "möglichst schneller Studienabschluss"
-                }
-            ]);
-                
-            /*todo: kram hierdrunter wiedereinfügen anstelle des objekts hierdrüber.
+            this.objectiveFunctions = new edu.kit.informatik.studyplan.client.model.system.ObjectiveFunctionCollection();
             this.objectiveFunctions.fetch({
                 success: (function () {
                     this.render();
                 }.bind(this))
-            });*/
+            });
         },
     /**
     *

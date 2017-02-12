@@ -16,7 +16,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     },
     
     //Profilpage einfügen mit parameter isSignUp: true
-    
+    loaded: false,
     /**
     *
     */
@@ -25,19 +25,26 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
             "use strict";
             this.student = objects.student;
             edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
-            this.student.getDistance({
+            this.student.save(null,{
+                success: function () {
+                    this.profilPage = new edu.kit.informatik.studyplan.client.view.subview.ProfilPage({
+                        plan: this.student.get('passedModules').toPlan(),
+                        isSignUp: true
+
+                    });
+                    this.isLoaded = true;
+                    this.render();
+                    //edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+                }.bind(this)
+            });
+            /**this.student.getDistance({
                 success:
                     function () {
                         this.render();
                         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
                         
-                    }
-            });
-            this.profilPage = new edu.kit.informatik.studyplan.client.view.subview.ProfilPage({
-                plan: this.student.get('passedModules').toPlan(),
-                isSignUp: true
-                
-            });
+                    }.bind(this)
+            });*/
         },
     
     /**
@@ -46,11 +53,13 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     render:
         function () {
             "use strict";
-            this.$el.html(this.template());
-            var finder = this.$el.find(".signUpWizardmodules");
-            this.profilPage.render();
-            finder.append(this.profilPage.$el);
-            this.delegateEvents();
+            if (this.isLoaded) {
+                this.$el.html(this.template());
+                var finder = this.$el.find(".signUpWizardmodules");
+                this.profilPage.render();
+                finder.append(this.profilPage.$el);
+                this.delegateEvents();
+            }
         },
     /**
     *@return{edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent}

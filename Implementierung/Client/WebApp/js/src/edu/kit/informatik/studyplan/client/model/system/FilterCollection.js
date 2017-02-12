@@ -21,9 +21,10 @@ edu.kit.informatik.studyplan.client.model.system.FilterCollection = edu.kit.info
     },
     getParams : function () {
         "use strict";
-        var result = {filter : ""};
+        var result = {filters : ""};
         this.each(function (filter) {
-            result.filter += (((result.filter !== "") ? "," : "") + filter.get('name'));
+            console.log(filter);
+            result.filters += (((result.filters !== "") ? "," : "") + filter.get('name'));
             _.extend(result,filter.getParams());
         });
         return result;

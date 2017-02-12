@@ -2,9 +2,6 @@ package edu.kit.informatik.studyplan.server.filter;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleAttributeNames;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Represents a filter for compulsory/non-compulsory modules.
  */
@@ -17,16 +14,6 @@ public class CompulsoryFilter extends ListFilter<Boolean> {
 	 */
 	public CompulsoryFilter(boolean selection) {
 		super(selection);
-	}
-
-	@Override
-	public List<String> getItemStrings() {
-		return Arrays.asList("Pflichtmodule", "Wahlmodule");
-	}
-
-	@Override
-	public List<Boolean> getItemObjects() {
-		return Arrays.asList(true, false);
 	}
 
 	@Override

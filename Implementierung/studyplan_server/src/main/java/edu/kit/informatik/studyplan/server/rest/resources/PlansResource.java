@@ -493,6 +493,12 @@ public class PlansResource {
 			planOut.setViolations(new ArrayList<>(result.getViolations()));
 			planOut.setFieldViolations(new ArrayList<>(result.getFieldViolations()));
 			planOut.setRuleGroupViolations(new ArrayList<>(result.getRuleGroupViolations()));
+			planOut.setCompulsoryViolations(result.getCompulsoryViolations().stream().map(module -> {
+				JsonModule jsonModule = new JsonModule();
+				jsonModule.setId(module.getIdentifier());
+				jsonModule.setName(module.getName());
+				return jsonModule;
+			}).collect(Collectors.toList()));
 			dao.updatePlan(plan);
 			return new PlanInOut(planOut);
 		});
@@ -510,14 +516,17 @@ public class PlansResource {
 	 *            the id of the initial plan
 	 * @param objectiveId
 	 *			  the id of the objective function to use
+	 * @param maxSemesterEcts
+	 * 			  maximum number of credits per semester, as specified by user
 	 * @return the generated plan's JSON representation.
 	 */
 	@GET
 	@Path("/{plan}/proposal/{objectiveId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@AuthorizationNeeded
-	public PlanInOut generatePlan(@PathParam("plan") String planId, @PathParam("objectiveId") String objectiveId,
-								   @Context UriInfo uriInfo) {
+	public PlanInOut generatePlan(@PathParam("plan") String planId,
+								  @PathParam("objectiveId") String objectiveId,
+								  @QueryParam("max-semester-ects") @NotNull Integer maxSemesterEcts,
+								  @Context UriInfo uriInfo) {
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
 			Plan plan = planDao.getPlanById(planId);
 			if (plan == null || !getUser().equals(plan.getUser())) {
@@ -526,9 +535,10 @@ public class PlansResource {
 
 			MultivaluedMap<String, String> parameters = uriInfo.getQueryParameters();
 
+			if (maxSemesterEcts == null) {
+				throw new BadRequestException();
+			}
 			try {
-				int maxSemestersEcts = Integer.parseInt(parameters.getFirst("max-semesters-ects"));
-
 				Map<Field, Category> preferredSubjects = getPreferredSubjectsFromRequest(parameters);
 
 				GenerationManager manager = new GenerationManager();
