@@ -1,4 +1,4 @@
 /**
- * Das Paket enthält Modellklassen für die Datensätze der Nutzer-Datenbank
+ * Contains model classes for representing user data.
  */
 package edu.kit.informatik.studyplan.server.model.userdata;

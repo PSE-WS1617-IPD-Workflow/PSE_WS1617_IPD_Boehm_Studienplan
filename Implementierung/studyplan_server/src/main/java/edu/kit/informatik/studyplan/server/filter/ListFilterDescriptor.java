@@ -1,7 +1,5 @@
 package edu.kit.informatik.studyplan.server.filter;
 
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.core.MultivaluedMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +7,9 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.core.MultivaluedMap;
 
 /**
  * FilterDescriptor for ListFilters.
@@ -49,7 +50,7 @@ public class ListFilterDescriptor<T> extends FilterDescriptor {
         result.put("type", "list");
         List<String> itemStrings = itemStringsSupplier.apply(itemObjectsSupplier.get());
         List<ListItem> items = IntStream.range(0, itemStrings.size())
-                .mapToObj(i -> new ListItem(0, itemStrings.get(i)))
+                .mapToObj(i -> new ListItem(i, itemStrings.get(i)))
                 .collect(Collectors.toList());
         result.put("items", items);
         return result;

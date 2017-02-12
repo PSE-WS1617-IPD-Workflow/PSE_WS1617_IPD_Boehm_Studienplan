@@ -1,5 +1,4 @@
 /**
- * Dieses Paket enthält die benötigten Klassen zur Modellierung von
- * Authentifizierungsdaten.
+ * Contains model classes for authorization data.
  */
 package edu.kit.informatik.studyplan.server.model.userdata.authorization;

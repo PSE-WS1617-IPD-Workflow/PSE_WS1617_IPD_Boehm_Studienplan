@@ -11,10 +11,10 @@ public class SemesterTest {
 	public void winterDistance() {
 		Semester semester1 = new Semester(SemesterType.WINTER_TERM, 2015);
 		Semester semester2 = new Semester(SemesterType.WINTER_TERM, 2016);
-		assertEquals(2, semester1.getDistanceTo(semester2));
-		assertEquals(2, semester2.getDistanceTo(semester2));
+		assertEquals(3, semester1.getDistanceTo(semester2));
+		assertEquals(3, semester2.getDistanceTo(semester1));
 		semester2.setYear(2018);
-		assertEquals(6, semester2.getDistanceTo(semester1));
+		assertEquals(7, semester2.getDistanceTo(semester1));
 	}
 	
 	@Test

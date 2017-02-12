@@ -1,12 +1,13 @@
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
-
-import java.util.List;
 
 /**
  * Only used for serialization of verification results.

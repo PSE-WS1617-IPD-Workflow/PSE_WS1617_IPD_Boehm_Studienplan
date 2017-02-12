@@ -19,7 +19,7 @@
 
 		<!-- Use the C3P0 connection pool. -->  
         <property name="c3p0.min_size">3</property>  
-        <property name="c3p0.max_size">5</property>  
+        <property name="c3p0.max_size">50</property>  
         <property name="c3p0.timeout">1800</property>  
       
         <!-- Disable second-level cache. -->  

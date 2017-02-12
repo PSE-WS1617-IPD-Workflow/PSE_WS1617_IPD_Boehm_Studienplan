@@ -1,6 +1,41 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.HttpMethod;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriInfo;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
@@ -24,44 +59,10 @@ import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.HttpMethod;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.core.UriInfo;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 /**
  * REST resource for /plans.
  */
 @Path("/plans")
-@AuthorizationNeeded
 public class PlansResource {
 	@Inject
 	Provider<AuthorizationContext> context;
@@ -79,10 +80,12 @@ public class PlansResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
+	@AuthorizationNeeded
 	public PlanInOut createPlan(PlanInOut planInput) {
+		planInput.getPlan().setUser(getUser());
 		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getName() == null
 				|| planInput.getPlan().getVerificationState() != null
-				|| planInput.getPlan().getModuleEntries() != null || planInput.getPlan().getPreferences() != null
+				|| !planInput.getPlan().getModuleEntries().isEmpty() || !planInput.getPlan().getPreferences().isEmpty()
 				|| planInput.getPlan().getCreditPoints() != 0) {
 			throw new BadRequestException();
 		}
@@ -91,7 +94,9 @@ public class PlansResource {
 			throw new UnprocessableEntityException();
 		}
 		return Utils.withPlanDao(dao -> {
-			String newId = dao.updatePlan(planInput.getPlan());
+			Plan plan = planInput.getPlan();
+			plan.setVerificationState(VerificationState.NOT_VERIFIED);
+			String newId = dao.updatePlan(plan);
 			if (newId == null) {
 				throw new UnprocessableEntityException();
 			}
@@ -107,15 +112,32 @@ public class PlansResource {
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Map<String, List<Plan>> getPlans() {
-		List<Plan> result = getUser().getPlans().stream()
-				.map(plan -> {
-					plan.getModuleEntries().clear();
-					plan.getPreferences().clear();
-					return plan;
-				})
+	@AuthorizationNeeded
+	public Response getPlans() {
+		List<PlanSummaryDto> result = getUser().getPlans().stream()
+				.map(plan -> new PlanSummaryDto(plan))
 				.collect(Collectors.toList());
-		return SimpleJsonResponse.build("plans", result);
+		return Response.ok(SimpleJsonResponse.build("plans", result)).build();
+	}
+	
+	public class PlanSummaryDto {
+		@JsonProperty
+		String id;
+		@JsonProperty
+		VerificationState status;
+		@JsonProperty("creditpoints-sum")
+		double creditPointsSum;
+		@JsonProperty
+		String name;
+		
+		
+		
+		public PlanSummaryDto(Plan plan) {
+			this.id = plan.getIdentifier();
+			this.status = plan.getVerificationState();
+			this.creditPointsSum = plan.getCreditPoints();
+			this.name = plan.getName();
+		}
 	}
 
 	/**
@@ -132,6 +154,7 @@ public class PlansResource {
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
+	@AuthorizationNeeded
 	public PlanInOut replacePlan(@PathParam("id") String planId, PlanInOut planInput) {
 		if (planInput.getPlan().getModuleEntries() == null || planInput.getPlan().getPreferences() == null
 				|| planInput.getPlan().getName() == null
@@ -159,17 +182,19 @@ public class PlansResource {
 	@GET
 	@Path("/{plan-id}")
 	@Produces(MediaType.APPLICATION_JSON)
+	@AuthorizationNeeded
 	public PlanInOut getPlan(@PathParam("plan-id") String planId) {
 		return Utils.withPlanDao(dao -> {
 			Plan result = dao.getPlanById(planId);
 			if (result == null || !getUser().equals(result.getUser())) {
 				throw new NotFoundException();
 			} else {
+				result.getCreditPoints();
 				return new PlanInOut(result);
 			}
 		});
 	}
-
+	
 	/**
 	 * PATCH plans/{planId} request.
 	 * Renames the plan with the given id.
@@ -184,6 +209,7 @@ public class PlansResource {
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
+	@AuthorizationNeeded
 	public PlanInOut renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
 		if (!Objects.equals(planInput.getPlan().getIdentifier(), planId)
 				|| planInput.getPlan().getVerificationState() != null
@@ -218,6 +244,7 @@ public class PlansResource {
 	 */
 	@DELETE
 	@Path("/{id}")
+	@AuthorizationNeeded
 	public Response deletePlan(@PathParam("id") String planId) {
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
@@ -244,6 +271,7 @@ public class PlansResource {
 	@GET
 	@Path("/{id}/modules")
 	@Produces(MediaType.APPLICATION_JSON)
+	@AuthorizationNeeded
 	public Map<String, List<JsonModule>> getModules(@PathParam("id") String planId, @Context UriInfo uriInfo) {
 		User user = getUser();
 		if (user.getDiscipline() == null) {
@@ -290,6 +318,7 @@ public class PlansResource {
 	@GET
 	@Path("/{plan}/modules/{module}")
 	@Produces(MediaType.APPLICATION_JSON)
+	@AuthorizationNeeded
 	public Map<String, JsonModule> getModule(@PathParam("plan") String planId, @PathParam("module") String moduleId) {
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
             Plan plan = planDao.getPlanById(planId);
@@ -321,6 +350,7 @@ public class PlansResource {
 	@Path("/{plan}/modules/{module}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
+	@AuthorizationNeeded
 	public ModuleInOut putModuleSemester(@PathParam("plan") String planId, @PathParam("module") String moduleId,
 										ModuleInOut moduleInput) {
 		if (!Objects.equals(moduleInput.getModule().getId(), moduleId)
@@ -363,6 +393,7 @@ public class PlansResource {
 	 */
 	@DELETE
 	@Path("/{plan}/modules/{module}")
+	@AuthorizationNeeded
 	public Response removeModuleSemester(@PathParam("plan") String planId, @PathParam("module") String moduleId) {
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
 			Plan plan = planDao.getPlanById(planId);
@@ -399,6 +430,7 @@ public class PlansResource {
 	@Path("/{plan}/modules/{module}/preference")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
+	@AuthorizationNeeded
 	public ModuleInOut setModulePreference(@PathParam("plan") String planId, @PathParam("module") String moduleId,
 										   ModuleInOut moduleInput) {
 		if (!Objects.equals(moduleInput.getModule().getId(), moduleId)) {
@@ -445,6 +477,7 @@ public class PlansResource {
 	@GET
 	@Path("/{plan}/verification")
 	@Produces(MediaType.APPLICATION_JSON)
+	@AuthorizationNeeded
 	public PlanInOut verifyPlan(@PathParam("plan") String planId) {
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
@@ -557,6 +590,7 @@ public class PlansResource {
 	@GET
 	@Path("/{planId}/pdf")
 	@Produces("text/html")
+	@AuthorizationNeeded
 	public Response convertPlanToPDF(@PathParam(value = "planId") String planId,
 			@QueryParam("access-token") String accessToken) {
 		AbstractSecurityProvider provider = AbstractSecurityProvider.getSecurityProviderImpl();

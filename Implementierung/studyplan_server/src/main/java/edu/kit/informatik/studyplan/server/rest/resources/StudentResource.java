@@ -1,17 +1,8 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonView;
-import edu.kit.informatik.studyplan.server.Utils;
-import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
-import edu.kit.informatik.studyplan.server.model.userdata.Semester;
-import edu.kit.informatik.studyplan.server.model.userdata.User;
-import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
-import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
-import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -25,9 +16,20 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import edu.kit.informatik.studyplan.server.Utils;
+import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
+import edu.kit.informatik.studyplan.server.model.userdata.Semester;
+import edu.kit.informatik.studyplan.server.model.userdata.User;
+import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
+import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 
 /**
  * REST resource for /student.
@@ -125,10 +127,16 @@ public class StudentResource {
 			m.setSemester(entry.getSemester());
 			return m;
 		}).collect(Collectors.toList());
+		int distance;
+		if (getUser().getStudyStart() == null) {
+			distance = 0;
+		} else {
+			distance = getUser().getStudyStart().getDistanceToCurrentSemester();
+		}
 		JsonStudent result = new JsonStudent(
 				getUser().getDiscipline(),
 				getUser().getStudyStart(),
-				passedModules, getUser().getStudyStart().getDistanceToCurrentSemester());
+				passedModules, distance);
 		return new StudentInOut(result);
 	}
 
