@@ -103,7 +103,9 @@ LM.messages["de"]["signUpTitle2"] = "Beendete Module";
 LM.messages["de"]["signUpExplanation2"] = "Bitte gib an, welche Module du bereits bestanden hast.";
 LM.messages["de"]["discipline"] = "Studienfach:";
 LM.messages["de"]["beginningdate"] = "Studienbeginn:";
-
+LM.messages["de"]["winterterm"] = "Wintersemester ";
+LM.messages["de"]["summerterm"] = "Sommersemester ";
+ 
 // Profile
 LM.messages["de"]["savePlan"] = "Speichern";
 LM.messages["de"]["profileSavedTitle"] = "Profil gespeichert";
@@ -119,3 +121,10 @@ LM.messages["de"]["deleteUserSuccess"] = "Erfolgreich! Thank you for traveling w
 
 // Not Found
 LM.messages["de"]["notFoundTitle"] = "Diese Seite existiert nicht!";
+
+// Proposed plan
+LM.messages["de"]["newNameRequest"] = "Wie soll der neue Plan heißen?";
+LM.messages["de"]["deleteProposal"] = "Plan verwerfen";
+LM.messages["de"]["saveProposal"] = "Plan ersetzen";
+LM.messages["de"]["saveAsProposal"] = "Unter anderem Namen speichern";
+LM.messages["de"]["proposal"] = "Vorschlag";

@@ -1,20 +1,19 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.util.Properties;
-
+import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 
-import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.Properties;
 
 public class PlanConverter {
 	
 	private StringWriter writer;
 
-	public PlanConverter(Plan plan){
+	public PlanConverter(Plan plan) {
 		VelocityEngine engine = new VelocityEngine();
 		Properties properties = new Properties();
 		try {
@@ -28,7 +27,7 @@ public class PlanConverter {
 		VelocityContext context = new VelocityContext();
 		context.put("plan", displayablePlan);
 		writer = new StringWriter();
-        template.merge( context, writer );
+        template.merge(context, writer);
 	}
 	
 	public StringWriter getWriter() {

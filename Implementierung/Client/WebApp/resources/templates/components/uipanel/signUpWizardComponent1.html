@@ -18,9 +18,13 @@
     <p>
         <label>{{=obj.LM.getMessage('beginningdate') }}</label>
         <select class="beginningdateDropDown" size="1">
-        <option> </option>
+            {{var counter = 0}}
+            {{ _.each(obj.beginningVal,function(el) { }}
+            {{counter ++}}
+            <option value ="{{=counter}}">{{=el["name"] }}</option>
+            {{ }) }}
+            
         </select>
-        //date api
         
     </p>
     </div>

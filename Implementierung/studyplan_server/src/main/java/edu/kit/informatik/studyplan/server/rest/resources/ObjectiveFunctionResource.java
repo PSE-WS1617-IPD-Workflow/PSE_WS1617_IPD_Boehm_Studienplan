@@ -12,32 +12,14 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Diese Klasse repräsentiert die Zielfunktion-Ressource.
+ * REST resource for /objective-functions.
  */
 @Path("/objective-functions")
 public class ObjectiveFunctionResource {
-
 	/**
-	 * Einen
-	 * {@link edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager}
-	 * Instanz um auf den Generierer zugreifen zu können.
-	 */
-	private GenerationManager generationManager; //TODO
-
-	/**
-	 * Gibt den generierungsmanager zurück.
+	 * GET request handler.
 	 * 
-	 * @return der generationManager
-	 */
-	public GenerationManager getGenerationManager() {
-		return generationManager;
-	} //TODO Why???
-
-	/**
-	 * GET-Anfrage: Gibt eine Liste mit allen vorhandenen Zielfunktionen als
-	 * JSON Objekte zurück.
-	 * 
-	 * @return Liste mit allen vorhandenen Zielfunktionen als JSON Objekte.
+	 * @return a list of all available objective functions as JSON.
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

@@ -5,23 +5,20 @@
 package edu.kit.informatik.studyplan.server.filter;
 
 /**
- * Repräsentiert einen Filter für ein bestimmtes Module-Attribut.
+ * Represents a filter for a specific Module attribute.
  */
 public abstract class AttributeFilter implements Filter {
 
 	/**
-	 * Liefert den Namen des Module-Attributs, das durch beschriebenen Filter
-	 * gefiltert werden soll.
 	 *
-	 * @return der Attribut-Name
+	 * @return the name of the Module attribute which is to be filtered by this instance.
 	 */
 	public abstract String getAttributeName();
 
 
 	/**
-	 * Liefert den Filter-Typ des AttributeFilters.
 	 * 
-	 * @return der Filter-Typ
+	 * @return the filter type of the AttributeFilter
 	 */
 	public abstract FilterType getFilterType();
 };

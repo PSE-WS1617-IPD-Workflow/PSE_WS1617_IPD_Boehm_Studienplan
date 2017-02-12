@@ -6,16 +6,14 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Repräsentiert einen Pflicht-/Wahlmodul-Auswahlfilter mit Filterung nach
- * Pflicht-, Wahlmodulen oder beidem als Wahlmöglichkeiten.
+ * Represents a filter for compulsory/non-compulsory modules.
  */
 public class CompulsoryFilter extends ListFilter<Boolean> {
 	/**
-	 * Erzeugt einen neuen Pflicht-/Wahlmodul-Auswahlfilter mit gegebener
-	 * festgelegter Auswahl.
+	 * Creates a new CompulsoryFilter with a given selection.
 	 *
 	 * @param selection
-	 *            die Nummer des ausgewählten Elements
+	 *            if the filtered modules sould be compulsory or not
 	 */
 	public CompulsoryFilter(boolean selection) {
 		super(selection);
