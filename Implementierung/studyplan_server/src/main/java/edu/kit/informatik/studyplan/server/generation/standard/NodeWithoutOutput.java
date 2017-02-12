@@ -35,8 +35,7 @@ public class NodeWithoutOutput extends Node {
 	}
 
 	@Override
-	protected List<Node> fulfillConstraints(NodesList graphNodes, boolean random) {
-		return null;
+	protected void fulfillConstraints(boolean random) {
 	}
 
 }

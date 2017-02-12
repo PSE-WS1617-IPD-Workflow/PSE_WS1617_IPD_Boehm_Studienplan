@@ -33,8 +33,14 @@ public class SimpleGenerator implements Generator {
 	/**
 	 * List of Nodes of the Graph.
 	 */
-	private NodesList nodes;
+	private static NodesList nodes;
 
+	/**
+	 * @return the nodes
+	 */
+	public static NodesList getNodes() {
+		return nodes;
+	}
 	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO,
 			Map<Field, Category> preferredSubjects, int maxECTSperSemester) {
 		Map<Plan, NodesList> planFamily;
@@ -108,7 +114,7 @@ public class SimpleGenerator implements Generator {
 			Node node = new NodeWithOutput(preferredModules.get(it.next()));
 			if (nodes.addToAllNodes(node)) {
 				nodes.getRandomlyAddedNodes().add(node);
-				node.fulfillConstraints(nodes, true);
+				node.fulfillConstraints(true);
 			}
 			creditPoints += node.getModule().getCreditPoints();
 		}
@@ -127,7 +133,7 @@ public class SimpleGenerator implements Generator {
 			Node node = new NodeWithOutput(notEvaluatedModules.get(it.next()));
 			if (nodes.addToAllNodes(node)) {
 				nodes.getRandomlyAddedNodes().add(node);
-				node.fulfillConstraints(nodes, true);
+				node.fulfillConstraints(true);
 			}
 			creditPoints += node.getModule().getCreditPoints();
 		}
@@ -189,7 +195,7 @@ public class SimpleGenerator implements Generator {
 	private void addRuleGroupModules(RuleGroup ruleGroup, Plan plan, Category category, 
 			ModuleDao moduleDAO) {
 		int num = nodes.numNodesInRuleGroup(ruleGroup);
-		if (num >= ruleGroup.getMinNum() && num <= ruleGroup.getMinNum()) {
+		if (num >= ruleGroup.getMaxNum() && num <= ruleGroup.getMinNum()) {
 			return;
 		}
 		List<Module> preferredModules;
@@ -202,13 +208,13 @@ public class SimpleGenerator implements Generator {
 		// to iterate through the set above
 		Iterator<Integer> it = randomNumbers.iterator();
 		while (num > ruleGroup.getMaxNum()) {
-
+			
 		}
 		while (num < ruleGroup.getMinNum() && it.hasNext()) {
 			Node node = new NodeWithOutput(preferredModules.get(it.next()), plan);
 			if (nodes.addToAllNodes(node)) {
 				nodes.getRandomlyAddedNodes().add(node);
-				node.fulfillConstraints(nodes, true);
+				node.fulfillConstraints(true);
 			}
 			num += 1;
 		}
@@ -224,7 +230,7 @@ public class SimpleGenerator implements Generator {
 			Node node = new NodeWithOutput(notEvaluatedModules.get(it.next()), plan);
 			if (nodes.addToAllNodes(node)) {
 				nodes.getRandomlyAddedNodes().add(node);
-				node.fulfillConstraints(nodes, true);
+				node.fulfillConstraints(true);
 			}
 			num += 1;
 		}
@@ -352,7 +358,7 @@ public class SimpleGenerator implements Generator {
 			} else {
 				nodes.add(node);
 			}
-			node.fulfillConstraints(nodes, false);
+			node.fulfillConstraints(false);
 		}
 	}
 
@@ -389,11 +395,11 @@ public class SimpleGenerator implements Generator {
 	 *            the category chosen.
 	 * @return the list of preferred modules.
 	 */
-	private List<Module> getModulesWithPreference(Plan currentPlan, List<Module> listOfModules, Category category,
+	List<Module> getModulesWithPreference(Plan currentPlan, List<Module> listOfModules, Category category,
 			PreferenceType preference, ModuleDao moduleDAO) {
 		List<Module> modules = new ArrayList<Module>();
 		if (category != null) {
-			Filter filter = new CategoryFilter(category.getCategoryId(), currentPlan.getUser().getDiscipline());
+			Filter filter = new CategoryFilter(category, currentPlan.getUser().getDiscipline());
 			for (Module m : moduleDAO.getModulesByFilter(filter, currentPlan.getUser().getDiscipline())) {
 				if ((currentPlan.getPreferenceForModule(m) == preference) && listOfModules.contains(m)) {
 					modules.add(m);

@@ -69,13 +69,11 @@ public abstract class Node {
 	 * If this node's module is passed, this method does nothing and returns
 	 * null.
 	 * 
-	 * @param nodes
-	 *            of the modules in the current graph.
 	 * @param random
 	 *            -true if this node is a randomly added node from the generator
 	 *            -false if not
 	 */
-	protected abstract List<Node> fulfillConstraints(NodesList graphNodes, boolean random);
+	protected abstract void fulfillConstraints(boolean random);
 
 	/**
 	 * If this is a Node with Output, this method returns a list of all nodes,
@@ -129,6 +127,7 @@ public abstract class Node {
 	 *            from which this Node was created.
 	 */
 	protected Node(Module module, Plan plan) {
+		System.out.println("INSTANZ");
 		this.module = module;
 		this.plan = plan;
 		// Check if the module in in the passedModules list of the user
