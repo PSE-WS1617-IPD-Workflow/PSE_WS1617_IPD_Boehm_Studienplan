@@ -27,7 +27,8 @@ edu.kit.informatik.studyplan.client.view.subview.Header = Backbone.View.extend(/
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate('resources/templates/subview/header.html'),
     /**
     * initializes the header
-    * @param{*} options
+    * @this {Backbone.View}
+    * @param{...*} options
     *               parameters:
     *                   sessionInformation -> contains the session Information
     */

@@ -31,7 +31,8 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik
     *   isSignUp: will be set if this page is inside the signupwizzard,
     *   plan: the plan that should displayed -> passed modules,
     *   
-    * @param{*} options
+    * @this {Backbone.View}
+    * @param{...*} options
     */
     initialize: function (options) {
         // TODO: isSignUp
