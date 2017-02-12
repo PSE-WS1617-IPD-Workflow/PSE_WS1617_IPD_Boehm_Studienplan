@@ -34,9 +34,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         this.moduleElements=[];
         this.model.each(function (el) {
             var removable = true;
-            if(!this.isPassedPlan) {
-                removable = false;
-            }
             if(!this.isPassedPlan&&el.get('passed')){
                 removable = false;
             }
