@@ -42,8 +42,22 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
                                 {
                                 id: 41,
                                 name: "blub"
-                            }]
-                }
+                            }
+                                ]
+                },
+                {
+                    id: 6,
+                    name: "Schwerpunkt wählen",
+                    'min-ects': 50,
+                    categories: [{
+                                id: 43,
+                                name: "Praxis der Software-Entwicklung 1"
+                            },
+                                {
+                                id: 44,
+                                name: "medizinisch bildgebende Verfahren in der Elektrotechnik für Informatiker"
+                            }]}
+                                 
             ]);
             this.information.set('fieldCollection',this.fieldCollection);
                 
