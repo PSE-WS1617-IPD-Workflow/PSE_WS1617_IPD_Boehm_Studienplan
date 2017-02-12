@@ -12,7 +12,11 @@
             </tr>
         </thead>
         <tbody class="semesters">
-
         </tbody>
+        {{if(obj.isAddable) { }}
+        <tbody style="" class="addSemesterTBody">
+            <td><button class="addSemesterButton">+</button></td><td style="position:relative;"></td>
+        </tbody>
+        {{ } }}
     </table>
 </div>
