@@ -10,6 +10,7 @@ import edu.kit.informatik.studyplan.server.verification.standard.StandardVerifie
 
 public class VerificationManagerTest {
 	VerificationManager manager;
+
 	@Before
 	public void setUp() throws Exception {
 		manager = new VerificationManager();

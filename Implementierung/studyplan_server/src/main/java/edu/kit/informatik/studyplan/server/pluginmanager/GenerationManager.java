@@ -1,20 +1,19 @@
 package edu.kit.informatik.studyplan.server.pluginmanager;
 
 import edu.kit.informatik.studyplan.server.generation.Generator;
-import edu.kit.informatik.studyplan.server.generation.objectivefunction.ObjectiveFunction;
+import edu.kit.informatik.studyplan.server.generation.objectivefunction.MinimalECTSAtomObjectiveFunction;
+import edu.kit.informatik.studyplan.server.generation.objectivefunction.MinimalSemestersAtomObjectiveFunction;
+import edu.kit.informatik.studyplan.server.generation.objectivefunction.MinimalStandardAverageDeviationECTSAtomObjectiveFunction;
+import edu.kit.informatik.studyplan.server.generation.objectivefunction.ModulePreferencesAtomObjectiveFunction;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
+import edu.kit.informatik.studyplan.server.generation.standard.SimpleGenerator;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-import edu.kit.informatik.studyplan.server.verification.Verifier;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.ServiceLoader;
 
 /**
  * Verwaltet den Zugriff auf das Generierungsplug-in. Das Generierungsplug-in
@@ -27,22 +26,16 @@ public class GenerationManager {
 	 * Erstellt einen GenerationManager.
 	 */
 	public GenerationManager() {
-
+		generator = new SimpleGenerator();
 	}
 
-
+	private Generator generator;
 	/**
 	 * Gibt den Generator zurück.
 	 * 
 	 * @return generator : der Generator
 	 */
 	public Generator getGenerator() {
-		Generator generator = null;
-		ServiceLoader<Generator> loader = ServiceLoader.load(Generator.class);
-		Iterator<Generator> iterator = loader.iterator();
-		if (iterator.hasNext()) {
-			generator = iterator.next();
-		}
 		return generator;
 	}
 
@@ -59,8 +52,9 @@ public class GenerationManager {
 	 * @return ein vollständiger, korrekter und optimierter Studienplan vom Typ
 	 *         Plan.
 	 */
-	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, Map<Field, Category> preferredSubjects) {
-		return getGenerator().generate(objectiveFunction, currentPlan, preferredSubjects);
+	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, 
+			Map<Field, Category> preferredSubjects, int maxECTSperSemester) {
+		return generator.generate(objectiveFunction, currentPlan, preferredSubjects, maxECTSperSemester);
 	}
 
 
@@ -70,13 +64,12 @@ public class GenerationManager {
 	 * @return objectiveFunction : die Liste der Zielfunktionen
 	 */
 	public List<PartialObjectiveFunction> getAllObjectiveFunction() {
-		List<PartialObjectiveFunction> objectiveFunction = new ArrayList<PartialObjectiveFunction>();
-		ServiceLoader<PartialObjectiveFunction> loader = ServiceLoader.load(PartialObjectiveFunction.class);
-		Iterator<PartialObjectiveFunction> iterator = loader.iterator();
-		if (iterator.hasNext()) {
-			objectiveFunction.add(iterator.next());
-		}
-		return objectiveFunction;
+		List<PartialObjectiveFunction> objectiveFunctions = new ArrayList<PartialObjectiveFunction>();
+		objectiveFunctions.add(new ModulePreferencesAtomObjectiveFunction());
+		objectiveFunctions.add(new MinimalSemestersAtomObjectiveFunction());
+		objectiveFunctions.add(new MinimalECTSAtomObjectiveFunction());
+		objectiveFunctions.add(new MinimalStandardAverageDeviationECTSAtomObjectiveFunction());
+		return objectiveFunctions;
 	}
 
 }

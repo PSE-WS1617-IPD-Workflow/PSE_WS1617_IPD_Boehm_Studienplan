@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-import java.util.Stack;
-
 import edu.kit.informatik.studyplan.server.filter.CategoryFilter;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.generation.Generator;
@@ -18,11 +16,12 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
+import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 
 /************************************************************/
 /**
@@ -41,13 +40,13 @@ public class SimpleGenerator implements Generator {
 	private NodesList nodes;
 
 	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan,
-			Map<Field, Category> preferredSubjects) {
+			Map<Field, Category> preferredSubjects, int maxECTSperSemester) {
 		Map<Plan, NodesList> planFamily;
 		Iterator<Plan> it;
 		Plan plan = currentPlan;
 		// first generation of family of plans with change of all randomly added
 		// nodes
-		planFamily = randomlyGeneratedFamilyOfPlans(nodes, plan, preferredSubjects, -1);
+		planFamily = randomlyGeneratedFamilyOfPlans(nodes, plan, preferredSubjects, -1, maxECTSperSemester);
 		it = planFamily.keySet().iterator();
 		plan = new Plan();
 		plan.setUser(currentPlan.getUser());
@@ -64,7 +63,7 @@ public class SimpleGenerator implements Generator {
 		NodesList planNodesList;
 		for (int i = 0; i < 5; i++) {
 			planNodesList = planFamily.get(plan);
-			planFamily = randomlyGeneratedFamilyOfPlans(planNodesList, plan, preferredSubjects, 10);
+			planFamily = randomlyGeneratedFamilyOfPlans(planNodesList, plan, preferredSubjects, 10, maxECTSperSemester);
 			it = planFamily.keySet().iterator();
 			plan = new Plan();
 			plan.setUser(currentPlan.getUser());
@@ -108,7 +107,7 @@ public class SimpleGenerator implements Generator {
 		// add modules from preferred modules in the category chosen
 		while (creditPoints < field.getMinEcts() && it.hasNext()) {
 			Node node = new NodeWithOutput(preferredModules.get(it.next()));
-			if(nodes.addToAllNodes(node)) {
+			if (nodes.addToAllNodes(node)) {
 				nodes.getRandomlyAddedNodes().add(node);
 				node.fulfillConstraints(nodes, true);
 			}
@@ -125,12 +124,12 @@ public class SimpleGenerator implements Generator {
 		 * modules from not evaluated modules in the category chosen
 		 */
 		while (creditPoints < field.getMinEcts() && it.hasNext()) {
-				Node node = new NodeWithOutput(notEvaluatedModules.get(it.next()));
-				if(nodes.addToAllNodes(node)) {
-					nodes.getRandomlyAddedNodes().add(node);
-					node.fulfillConstraints(nodes, true);
-				}
-				creditPoints += node.getModule().getCreditPoints();
+			Node node = new NodeWithOutput(notEvaluatedModules.get(it.next()));
+			if (nodes.addToAllNodes(node)) {
+				nodes.getRandomlyAddedNodes().add(node);
+				node.fulfillConstraints(nodes, true);
+			}
+			creditPoints += node.getModule().getCreditPoints();
 		}
 		if (creditPoints >= field.getMinEcts()) {
 			return;
@@ -144,24 +143,36 @@ public class SimpleGenerator implements Generator {
 
 	/**
 	 * Generates a complete Plan with random Modules
-	 * 
-	 * @param nodes
-	 * @param currentPlan
-	 * @param preferredSubjects
-	 */
 
-	private Plan randomlyGeneratedPlan(Plan currentPlan, Map<Field, Category> preferredSubjects) {
-		//adding modules of the rule groups of the discipline
+	 * @param currentPlan plan from which a new plan is being generated.
+	 * @param preferredSubjects a mapping of the categories chosen for each field
+	 * @param maxECTSperSemester
+	 * @return
+	 */
+	private Plan randomlyGeneratedPlan(Plan currentPlan, Map<Field, Category> preferredSubjects,
+			int maxECTSperSemester) {
+		// adding modules of the rule groups of the discipline
 		List<RuleGroup> ruleGroups = currentPlan.getUser().getDiscipline().getRuleGroups();
 		for (RuleGroup ruleGroup : ruleGroups) {
 			addRuleGroupModules(ruleGroup, currentPlan, preferredSubjects.get(ruleGroup));
 		}
-		//adding modules of the fields of the discipline
+		// adding modules of the fields of the discipline
 		List<Field> fields = currentPlan.getUser().getDiscipline().getFields();
 		for (Field field : fields) {
 			addFieldModules(field, preferredSubjects.get(field), currentPlan);
 		}
-		return parallelize(nodes.sort());
+		List<Node> sorted = nodes.sort();
+		return createPlan(sorted, parallelize(sorted, maxECTSperSemester));
+	}
+
+	private Plan createPlan(List<Node> sorted, int[] bucketAllocation) {
+		Plan plan = new Plan();
+		for (int i = 0; i < sorted.size(); i++) {
+			ModuleEntry entry = new ModuleEntry(sorted.get(i).getModule(), bucketAllocation[i]);
+			plan.getModuleEntries().add(entry);
+			plan.setVerificationState(VerificationState.VALID);
+		}
+		return plan;
 	}
 
 	/**
@@ -188,12 +199,12 @@ public class SimpleGenerator implements Generator {
 		randomNumbers = getRandomNumbers(preferredModules.size(), preferredModules.size());
 		// to iterate through the set above
 		Iterator<Integer> it = randomNumbers.iterator();
-		while(num > ruleGroup.getMaxNum()) {
-			
+		while (num > ruleGroup.getMaxNum()) {
+
 		}
 		while (num < ruleGroup.getMinNum() && it.hasNext()) {
 			Node node = new NodeWithOutput(preferredModules.get(it.next()), plan);
-			if(nodes.addToAllNodes(node)) {
+			if (nodes.addToAllNodes(node)) {
 				nodes.getRandomlyAddedNodes().add(node);
 				node.fulfillConstraints(nodes, true);
 			}
@@ -208,7 +219,7 @@ public class SimpleGenerator implements Generator {
 		 */
 		while (num < ruleGroup.getMinNum() && it.hasNext()) {
 			Node node = new NodeWithOutput(notEvaluatedModules.get(it.next()), plan);
-			if(nodes.addToAllNodes(node)) {
+			if (nodes.addToAllNodes(node)) {
 				nodes.getRandomlyAddedNodes().add(node);
 				node.fulfillConstraints(nodes, true);
 			}
@@ -218,29 +229,71 @@ public class SimpleGenerator implements Generator {
 
 	/**
 	 * Parallelize the sorted stack of nodes given and transform it to a plan.
+	 * That means that it spreads the nodes so that they can fit in respective
+	 * semesters to create a graph.
 	 * 
 	 * @param stack
 	 *            topologically sorted stack of nodes
 	 * @return the new plan
 	 */
-	private Plan parallelize(Stack<Node> stack) {
-		return null;
-	}
-	/**
-	 * Checks if 
-	 * @param node1
-	 * @param node2
-	 * @return
-	 */
-	private boolean checkIfOverlapping(Node node1, Node node2) {
-		for(ModuleConstraint constraint: node1.getModule().getConstraints()) {
-			if(node1.getRemainingModuleFromConstraint(constraint).getIdentifier() == node2.getModule().getIdentifier()) {
-				return true;
+	private int[] parallelize(List<Node> sorted, int maxECTSperSemester) {
+		WeightFunction weight = new WeightFunction();
+		Node node;
+		boolean set;
+		int[] bucketAllocation = new int[nodes.getAllNodes().size()];
+		int[] bucketSum = new int[nodes.size()];
+		int[] minPos = new int[nodes.size()];
+		for (int i = 0; i < minPos.length; i++) {
+			minPos[i] = 1;
+		}
+		for (int i = 0; i < nodes.size(); i++) {
+			node = sorted.get(i);
+			set = false;
+			for (int j = minPos[i]; j < nodes.size(); j++) {
+				if (weight.getWeight(node) + bucketSum[j] <= maxECTSperSemester
+						&& checkIfOverlapping(node, bucketAllocation, sorted, j) && node.fitsInSemester(j)) {
+					bucketAllocation[i] = j;
+					bucketSum[j] += weight.getWeight(node);
+					for (Node child : node.getChildren()) {
+						minPos[sorted.indexOf(child)] = Math.max(j + 1, minPos[i]);
+					}
+					set = true;
+				}
+
+			}
+			if (!set) {
+				throw new IllegalArgumentException(
+						"This node and its inner nodes have too many " + "Credit Pointsfor a single Semester");
 			}
 		}
-		return false;
+		return bucketAllocation;
 	}
-	
+
+	/**
+	 * Checks if there is a node that has a constraint from type overlapping
+	 * with the node given in the semester with the number given.
+	 * 
+	 * @param node
+	 *            the node concerned
+	 * @param bucketAllocation
+	 *            an array containing the number of the semester allocated to
+	 *            each node with index i in the sorted list
+	 * @param sorted
+	 *            the sorted list of nodes
+	 * @param semesterNum
+	 *            number of the semester concerned
+	 * @return -true if there is a node that has a constraint from type
+	 *         overlapping with the node given in the semester with the number
+	 *         given, -false if not.
+	 */
+	private boolean checkIfOverlapping(Node node, int[] bucketAllocation, List<Node> sorted, int semesterNum) {
+		for (Node n : nodes.getOverlappingNodes(node)) {
+			if (bucketAllocation[sorted.indexOf(n)] == semesterNum) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 	/**
 	 * Generates a family of plans with random Modules
@@ -253,16 +306,16 @@ public class SimpleGenerator implements Generator {
 	 *         were generated
 	 */
 	private Map<Plan, NodesList> randomlyGeneratedFamilyOfPlans(NodesList nodes, Plan currentPlan,
-			Map<Field, Category> preferredSubjects, int numberOfNodesToChange) {
+			Map<Field, Category> preferredSubjects, int numberOfNodesToChange, int maxECTSperSemester) {
 		Map<Plan, NodesList> planFamily = new HashMap<Plan, NodesList>();
 		planToGraph(currentPlan);
-		Plan plan = randomlyGeneratedPlan(currentPlan, preferredSubjects);
+		Plan plan = randomlyGeneratedPlan(currentPlan, preferredSubjects, maxECTSperSemester);
 		planFamily.put(plan, nodes);
 		for (int i = 0; i < 9; i++) {
 			if (numberOfNodesToChange == -1) {
 				numberOfNodesToChange = nodes.getRandomlyAddedNodes().size();
 			}
-			plan = randomlyModifiedPlan(numberOfNodesToChange, plan, preferredSubjects);
+			plan = randomlyModifiedPlan(numberOfNodesToChange, plan, preferredSubjects, maxECTSperSemester);
 			planFamily.put(plan, nodes);
 		}
 		return planFamily;
@@ -285,8 +338,7 @@ public class SimpleGenerator implements Generator {
 			Module m = plan.getModuleEntries().get(i).getModule();
 			node = nodes.getFromAllNodes(m);
 			if (nodes.contains(node)) {
-				throw new IllegalArgumentException("Two Module Entries with the same Module in "
-						+ "the Plan");
+				throw new IllegalArgumentException("Two Module Entries with the same Module in " + "the Plan");
 			}
 			if (node == null) {
 				node = new NodeWithOutput(m, plan);
@@ -363,14 +415,15 @@ public class SimpleGenerator implements Generator {
 	 * @param preferredSubjects
 	 * @return the new plan
 	 */
-	private Plan randomlyModifiedPlan(int numberOfNodes, Plan plan, Map<Field, Category> preferredSubjects) {
+	private Plan randomlyModifiedPlan(int numberOfNodes, Plan plan, Map<Field, Category> preferredSubjects,
+			int maxECTSperSemester) {
 		Set<Integer> randomNumbers = getRandomNumbers(nodes.getRandomlyAddedNodes().size(),
 				Math.min(numberOfNodes, nodes.getRandomlyAddedNodes().size()));
 		Iterator<Integer> it = randomNumbers.iterator();
 		while (it.hasNext()) {
 			nodes.removeNode(nodes.getRandomlyAddedNodes().get(it.next()));
 		}
-		return randomlyGeneratedPlan(plan, preferredSubjects);
+		return randomlyGeneratedPlan(plan, preferredSubjects, maxECTSperSemester);
 	}
 
 }

@@ -3,6 +3,7 @@ package edu.kit.informatik.studyplan.server.generation.standard;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ServiceLoader;
 import java.util.Set;
@@ -11,6 +12,8 @@ import java.util.Stack;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
+import edu.kit.informatik.studyplan.server.model.moduledata.constraint.OverlappingModuleConstraintType;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 /**
  * This class represents a list of nodes of a plan.
@@ -25,7 +28,9 @@ public class NodesList extends ArrayList<Node>{
 	 * To avoid unnecessary errors.
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	/**
+	 * The plan that this nodeslist was creates from
+	 */
 	private Plan plan;
 	/**
 	 * Creates a new NodesList and sets its plan. 
@@ -198,8 +203,8 @@ public class NodesList extends ArrayList<Node>{
 	 *            list of nodes
 	 * @return a list of sorted nodes
 	 */
-	protected Stack<Node> sort() {
-		Stack<Node> stack = new Stack<Node>();
+	protected LinkedList<Node> sort() {
+		LinkedList<Node> stack = new LinkedList<Node>();
 		Set<Node> visited = new LinkedHashSet<Node>();
 		for (Node n : getAllNodes()) {
 			if (visited.contains(n)) {
@@ -219,7 +224,7 @@ public class NodesList extends ArrayList<Node>{
 	 * @param visited
 	 *            set of visited nodes
 	 */
-	private void sortUtil(Stack<Node> stack, Node node, Set<Node> visited) {
+	private void sortUtil(LinkedList<Node> stack, Node node, Set<Node> visited) {
 		visited.add(node);
 		ArrayList<Node> children = node.getChildren();
 		int j = 0;
@@ -230,6 +235,28 @@ public class NodesList extends ArrayList<Node>{
 			j++;
 		}
 		stack.push(node);
-
 	}
+	/**
+	 * Returns a list of all nodes in the list that can't be added to the same semester 
+	 * as the node given.
+	 * If the node's constraints are not fulfilled this method returns null.
+	 * 
+	 * @param node the node concerned.
+	 * @return list of all nodes in the list that can't be added to the same semester 
+	 * as the node given.
+	 */
+	protected List<Node> getOverlappingNodes(Node node) {
+		List<Node> result = new ArrayList<Node>();
+		if(!node.constraintsAreFulfilled()) {
+			throw new IllegalArgumentException("This node's constraints are not fulfilled");
+		}
+		for (ModuleConstraint constraint : node.getModule().getConstraints()) {
+			if ((constraint.getConstraintType() instanceof OverlappingModuleConstraintType)) {
+				Node n = getFromAllNodes(node.getRemainingModuleFromConstraint(constraint));
+				result.add(n);
+			}
+		}
+		return result;
+	}
+	
 }

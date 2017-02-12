@@ -1,11 +1,10 @@
 package edu.kit.informatik.studyplan.server.pluginmanager;
 
-import java.util.Iterator;
-import java.util.ServiceLoader;
 
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 import edu.kit.informatik.studyplan.server.verification.Verifier;
+import edu.kit.informatik.studyplan.server.verification.standard.StandardVerifier;
 
 /**
  * Verwaltet den Zugriff auf das Verifizierungsplug-in, das die
@@ -17,8 +16,9 @@ public class VerificationManager {
 	 * Erstellt einen VerificationManager.
 	 */
 	public VerificationManager() {
-		
+		this.verifier = new StandardVerifier();
 	}
+	private Verifier verifier;
 
 	/**
 	 * Gibt den Verifizierer zurück.
@@ -26,15 +26,6 @@ public class VerificationManager {
 	 * @return verifier : der Verifizierer
 	 */
 	public Verifier getVerifier() {
-		Verifier verifier = null;
-		
-		ServiceLoader<Verifier> loader = ServiceLoader.load(Verifier.class);
-		Iterator<Verifier> iterator = loader.iterator();
-		if (iterator.hasNext()) {
-			
-			verifier = iterator.next();
-			
-		}
 		return verifier;
 	}
 
@@ -48,6 +39,7 @@ public class VerificationManager {
 	 *         Verifizierung zurückgegeben.
 	 */
 	public VerificationResult verify(Plan plan) {
-		return getVerifier().verify(plan);
+		return verifier.verify(plan);
+
 	}
 }
