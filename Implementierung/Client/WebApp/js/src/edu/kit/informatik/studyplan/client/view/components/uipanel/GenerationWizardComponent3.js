@@ -30,35 +30,12 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             this.information.set('min-semesters', 2);
             this.information.set('max-semesters', 20);
             
-            this.fieldCollection = new edu.kit.informatik.studyplan.client.model.system.FieldCollection([
-                {
-                    id: 5,
-                    name: "Ergänzungsfach",
-                    'min-ects': 50,
-                    categories: [{
-                                id: 42,
-                                name: "Meistern von lebensgefährlichen Situationen"
-                            },
-                                {
-                                id: 41,
-                                name: "blub"
-                            }
-                                ]
-                },
-                {
-                    id: 6,
-                    name: "Schwerpunkt wählen",
-                    'min-ects': 50,
-                    categories: [{
-                                id: 43,
-                                name: "Praxis der Software-Entwicklung 1"
-                            },
-                                {
-                                id: 44,
-                                name: "medizinisch bildgebende Verfahren in der Elektrotechnik für Informatiker"
-                            }]}
-                                 
-            ]);
+            this.fieldCollection = new edu.kit.informatik.studyplan.client.model.system.FieldCollection();
+            this.fieldCollection.fetch({
+                success: function () {
+                    this.render();
+                }.bind(this)
+            });
             this.information.set('fieldCollection',this.fieldCollection);
                 
             /*todo: kram hierdrunter oder so ähnlich wiedereinfügen anstelle des objekts hierdrüber.

@@ -21,6 +21,9 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
     var Constructor = edu.kit.informatik.studyplan.client.model.system.CookieModel.extend({
         // cookie storage name
         url : "edu.kit.informatik.studyplan.client.model.user.SessionInformation.storage",
+        initialize: function () {
+            this.set('student', new edu.kit.informatik.studyplan.client.model.user.Student())
+        },
         /**
         * Method which sets a random value for state
         */

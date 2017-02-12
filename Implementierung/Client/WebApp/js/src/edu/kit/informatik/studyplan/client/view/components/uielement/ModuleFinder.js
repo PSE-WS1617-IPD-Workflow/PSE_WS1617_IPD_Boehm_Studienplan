@@ -29,151 +29,20 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
         "use strict";
         this.planId = options.planId;
         //TODO: fetchModuleCollection
-        var json = {
-                modules: [
-                    {
-                        id : 0,
-                        name : "Magische Tierwesen",
-                        categories://test,
-                            [{
-                                id: 42,
-                                name: "Meistern von lebensgefährliche n Situationen"
-                            }],
-                        semester: 5,
-                        creditpoints: 18,
-                        "cycle-type": "Mittsommer",
-                        lecturer: "Hagrid",
-                        preference: 1,
-                        description: "Auf Heippogreifen reiten, Schrumpfhörnige Schnarchkackler füttern und beißende Bücher bändigen. Spannung Spaß und Abenteuer im Verbotenen Wald.",
-                        constraints: [{
-                            name: "keine Ahnung wozu der gut ist, ich glaube das sollte lieber ID sein, aber dazu bin ich vielleicht nicht befugt.",
-        
-                            first: {
-                                id : 1
-                            },
-                            second: {
-                                //wie stellt man das klugerweise da ? 
-                                id : 0
-                            },
-                            type: "Himmel und Hölle gleichzeitig zum Ausgleich."
-
-                        }]
-                    },
-                    {
-                        id : 1,
-                        name : "Zaubertränke",
-                        categories:
-                                [{
-                                id: 13,
-                                name: "Mord und Heilung"
-                            }],
-                        semester: 5,
-                        creditpoints:700,
-                        "cycle-type": "Mittsommer",
-                        lecturer: "Snape",
-                        preference: "0",
-                        description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
-                        constraints: [
-                        ]
-                    },
-                    {
-                        id : 2,
-                        name : "Zaubertränke 2",
-                        categories:
-                                [{
-                                id: 13,
-                                name: "Mord und Heilung"
-                            }],
-                        semester: 5,
-                        creditpoints:700,
-                        "cycle-type": "Mittsommer",
-                        lecturer: "Snape",
-                        preference: "0",
-                        description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
-                        constraints: [
-                        ]
-                    },
-                    {
-                        id : 3,
-                        name : "Zaubertränke 3",
-                        categories:
-                                [{
-                                id: 13,
-                                name: "Mord und Heilung"
-                            }],
-                        semester: 5,
-                        creditpoints:700,
-                        "cycle-type": "Mittsommer",
-                        lecturer: "Snape",
-                        preference: "0",
-                        description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
-                        constraints: [
-                        ]
-                    },
-                    {
-                        id : 4,
-                        name : "Zaubertränke 4",
-                        categories:
-                                [{
-                                id: 13,
-                                name: "Mord und Heilung"
-                            }],
-                        semester: 5,
-                        creditpoints:700,
-                        "cycle-type": "Mittsommer",
-                        lecturer: "Snape",
-                        preference: "0",
-                        description: "Flüssiges Glück und dampfender Tot verkorkt. Unter Aufsicht eines epischen Tyrannen.",
-                        constraints: [
-                        ]
-                    }
-                ]
-            };
-        this.moduleCollection = new edu.kit.informatik.studyplan.client.model.system.SearchCollection(json,{
-            parse:true,
-            planId: this.planId
-        });
-        this.filterCollection = new edu.kit.informatik.studyplan.client.model.system.FilterCollection(   {                  filters : [{
-                    id : 0,
-                    name : "Test",
-                    'default-value': {
-                        min : 10,
-                        max : 20
-                    },
-                    tooltip : "Test",
-                    specification: {
-                        type : "range",
-                        min : 0,
-                        max : 200
-                    }
-                }, {
-                    id : 4,
-                    name : "TestList",
-                    'default-value': 1,
-                    tooltip : "Test",
-                    specification: {
-                        type : "list",
-                        items : [{
-                            id: 1,
-                            text:"a"
-                        },{
-                            id: 2,
-                            text:"b"
-                        }, {
-                            id: 3,
-                            text:"c"
-                        }]
-                    }
-                },{
-                    id : 2,
-                    name : "TestContains",
-                    'default-value': "testDefVal",
-                    tooltip : "Test",
-                    specification: {
-                        type : "contains",
-                    }
-                }]}, {parse:true});
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+        this.moduleCollection = new edu.kit.informatik.studyplan.client.model.system.SearchCollection(null, {planId: null});
+        this.filterCollection = new edu.kit.informatik.studyplan.client.model.system.FilterCollection();
         this.moduleCollection.setFilters(this.filterCollection);
+        this.filterCollection.fetch({
+            success: function () {
+                this.moduleCollection.fetch({
+                    success: function () {
+                        this.render();
+                        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+                    }.bind(this)
+                });
+            }.bind(this)
+        });
         this.moduleList = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList( {               
                 isRemovable: false,
                 isDraggable: options.isDraggable,

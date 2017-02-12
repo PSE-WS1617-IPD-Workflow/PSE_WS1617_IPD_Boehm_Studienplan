@@ -33,7 +33,16 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                             this.navigate("/login", {trigger: true});
                         }
                     }
-                });
+                    var student = new edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
+                        student.fetch({
+                            success: function () {
+                                if(student.get('studyStartYear') === null) {
+                                    student.loaded = true;
+                                    this.navigate("/signup", {trigger: true});
+                                }
+                            }.bind(this)
+                        });
+                }.bind(this));
             },
             routes:{
                     "plans/:planId":  "editPage",
@@ -214,13 +223,12 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                     type: "success"
                                 })
                             );
-                        if(console.assert(false)) { //TODO wann eigentlich? / wie sieht die Antwort aus?
-                            student.set('passedModules', new edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection());
+                        if(student.get('studyStartYear') === null) { //TODO wann eigentlich? / wie sieht die Antwort aus?
                             this.navigate("/signup", {trigger: true});
                         } else {
                             this.navigate("/", {trigger: true});
                         }
-                    }
+                    }.bind(this)
                 });
             },
             /**
@@ -257,10 +265,8 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] signUpWizard");
                 this.showLoading();
                 var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
-                student.fetch({
-                    // Callback: student loaded
-                    success: function () {
-                        self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
+                var done = function () {
+                        this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
                             firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1({
                                student: student
                             }),
@@ -277,8 +283,16 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 });
                             }.bind(this)
                         });
-                    }.bind(this)
-                });
+                        this.hideLoading();
+                    }.bind(this);
+                if(student.loaded){
+                    done();
+                }else{
+                    student.fetch({
+                        // Callback: student loaded
+                        success: done
+                    });
+                }
             },
             /**
              * Show not found page

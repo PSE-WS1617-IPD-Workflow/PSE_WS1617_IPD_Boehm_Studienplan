@@ -18,13 +18,13 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     initialize: function (options){
         
         //TODO: enable fetch again
-        /*edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         this.filterCollection = new edu.kit.informatik.studyplan.client.model.system.FilterCollection();
         this.filterCollection.fetch({
             success: function () {
                 edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
             }
-        });*/
+        });
         this.filterCollection = options.filterCollection;
         
         
@@ -66,7 +66,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
         for(var i = 0; i < this.filterComponents.length; i++){
 
             var tmpFilterComponent = this.filterComponents[i];
-            if(tmpFilterComponent.attributes.specification.type !== "contains"){
+            if(tmpFilterComponent.get('specification').type !== "contains"){
                 filterButtons.push({ 
                     id: tmpFilterComponent.filter.get("id"),
                     name: tmpFilterComponent.filter.get("name")});
