@@ -64,6 +64,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                     _.each(self.model.get('verificationResult').get('rule-group-violations'), function (field) {
                         field+="<li>"+field.get('name')+" (min: "+field.get('min-ects')+", max: "+field.get('max-ects')+")</li>";
                     });
+                    _.each(self.model.get('verificationResult').get('compulsory-violations'), function (module) {
+                        field+="<li>"+module.get('name')+"</li>";
+                    });
                     html+="</ul>";
                     notification = new edu.kit.informatik.studyplan.client.model.system.Notification({
                         title:LM.getMessage("verificationFailTitle"),
