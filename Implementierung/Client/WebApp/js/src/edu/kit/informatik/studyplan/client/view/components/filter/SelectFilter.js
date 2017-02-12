@@ -12,5 +12,6 @@ edu.kit.informatik.studyplan.client.view.components.filter.SelectFilter = edu.ki
     },
     dropDownChange: function () {
         this.filter.set("curValue", this.$el.find(".selectFilterDropDown").val());
+        
     }
 });

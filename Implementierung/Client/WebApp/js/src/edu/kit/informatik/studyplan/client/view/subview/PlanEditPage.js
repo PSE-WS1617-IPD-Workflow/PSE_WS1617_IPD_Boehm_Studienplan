@@ -19,6 +19,8 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
         this.proposed = (typeof options.proposed) ? options.proposed : this.proposed;
         this.model = options.plan;
         if(!this.proposed){
+            console.log("[edu.kit.informatik.studyplan.client.view.subview.PlanEditPage] planId")
+            console.log(this.model.get('id'));
             this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
                 isSidebar:true,
                 isPreferencable:true,

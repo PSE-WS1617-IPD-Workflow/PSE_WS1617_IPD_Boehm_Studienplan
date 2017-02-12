@@ -88,8 +88,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
     rename: function () {
         "use strict";
         console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar] rename")
-        this.plan.set('name',this.$el.find("#curPlanName").val());
-        this.plan.save({}, {
+        this.model.set('name',this.$el.find("#curPlanName").val());
+        this.model.save({}, {
             success: function () {
                 edu.kit.informatik.studyplan.client.model.system.NotificationCollection
                         .getInstance().add(

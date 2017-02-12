@@ -72,7 +72,6 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
         var filterButtons = [];
         _.each(this.filterComponents, function (tmpFilterComponent) {
 
-            console.log(tmpFilterComponent);
             if(tmpFilterComponent.filter.get('specification').type !== "contains"){
                 filterButtons.push({ 
                     id: tmpFilterComponent.filter.get("id"),

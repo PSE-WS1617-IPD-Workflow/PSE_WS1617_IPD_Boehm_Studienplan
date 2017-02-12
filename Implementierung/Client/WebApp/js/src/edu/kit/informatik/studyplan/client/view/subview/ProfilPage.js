@@ -55,11 +55,15 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik
         });
         
         //Initialize HeadBar
-        this.planHeadBar = null;
-        if(!this.isSignUp){
-            this.planHeadBar = new edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar({
-                plan: this.model
-            });
+        this.planHeadBar = new edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar({
+            plan: this.model
+        });
+        if(this.isSignUp){
+            this.planHeadBar.render = function () {
+                // do nothing
+                return null;
+            }
+            this.planHeadBar.$el.css({display:"none"});
         }
     },
     /**

@@ -134,3 +134,6 @@ LM.messages["de"]["connectionBackTitle"] = "Verbindung wiederhergestellt";
 LM.messages["de"]["connectionBackText"] = "Sie können nun weiterarbeiten";
 LM.messages["de"]["connectionLostTitle"] = "Verbindung unterbrochen";
 LM.messages["de"]["connectionLostText"] = "Sie können aktuell keine Daten speichern.";
+
+// Search module
+LM.messages["de"]["allValues"] = "Alles";
