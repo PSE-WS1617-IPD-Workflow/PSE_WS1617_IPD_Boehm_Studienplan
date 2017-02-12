@@ -57,17 +57,17 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                     });
                 }
                 if(self.model.get('verificationResult').get('status')=="invalid"){
-                    var html = "<ul>";
+                    var html = "<ol>";
                     _.each(self.model.get('verificationResult').get('field-violations'), function (field) {
-                        html+="<li>"+field.get('name')+" (min: "+field.get('min-ects')+")</li>";
+                        html+="<li>"+field.name+" (min: "+field["min-ects"]+")</li>";
                     });
                     _.each(self.model.get('verificationResult').get('rule-group-violations'), function (field) {
-                        html+="<li>"+field.get('name')+" (min: "+field.get('min-ects')+", max: "+field.get('max-ects')+")</li>";
+                        html+="<li>"+field.name+" (min: "+field["min-num"]+", max: "+field["max-num"]+")</li>";
                     });
                     _.each(self.model.get('verificationResult').get('compulsory-violations'), function (module) {
-                        html+="<li>"+module.get('name')+"</li>";
+                        html+="<li>"+module.name+"</li>";
                     });
-                    html+="</ul>";
+                    html+="</ol>";
                     notification = new edu.kit.informatik.studyplan.client.model.system.Notification({
                         title:LM.getMessage("verificationFailTitle"),
                         text:LM.getMessage("verificationFailText")+html,
