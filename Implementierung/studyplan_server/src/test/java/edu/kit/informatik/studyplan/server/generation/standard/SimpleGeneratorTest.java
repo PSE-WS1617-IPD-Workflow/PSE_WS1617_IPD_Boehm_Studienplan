@@ -156,8 +156,7 @@ public class SimpleGeneratorTest {
 			modlist.add(n.getModule());
 		}
 		modlist.add(la1);
-		Category spy = spy(category);
-		when(spy.getCategoryId()).thenReturn(0);
+//		Category spy = spy(category);
 		Filter filter = null;
 		 ModuleDao dao = mock(ModuleDao.class);
 		 List<Module> byFilter = new ArrayList<Module>();
