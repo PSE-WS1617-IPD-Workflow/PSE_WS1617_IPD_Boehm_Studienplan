@@ -13,8 +13,15 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * REST resource for /disciplines.
+ */
 @Path("/disciplines")
 public class DisciplinesResource {
+    /**
+     * Handler for GET /disciplines
+     * @return a JSON representation of all disciplines available.
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @JsonView(StudentResource.Views.DisciplineClass.class)

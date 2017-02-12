@@ -7,20 +7,20 @@ package edu.kit.informatik.studyplan.server.filter;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleAttributeNames;
 
 /**
- * Repräsentiert einen ECTS-Intervall-Filter.
+ * Represents a credit points interval filter.
  */
 public final class CreditPointsFilter extends RangeFilter {
 	/**
-	 * Erzeugt einen neuen ECTS-Intervall-Filter mit gegebenen Schranken.
+	 * Creates a new CreditPointsFilter with given ranges.
 	 *
 	 * @param lower
-	 *            untere Schranke des Filters
+	 *            lower bound of the filter.
 	 * @param upper
-	 *            obere Schranke des Filters
+	 *            upper bound of the filter
 	 * @param min
-	 *            minimale untere Schranke des Filters
+	 *            minimum lower bound of the filter.
 	 * @param max
-	 *            maximale obere Schranke des Filters
+	 *            maximum upper bound of the filter
 	 */
 	public CreditPointsFilter(int lower, int upper, int min, int max) {
 		super(lower, upper, min, max);

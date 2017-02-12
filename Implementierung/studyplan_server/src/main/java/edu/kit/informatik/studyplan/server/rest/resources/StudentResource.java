@@ -16,7 +16,13 @@ import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.validation.constraints.NotNull;
-import javax.ws.rs.*;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -24,7 +30,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Diese Klasse repräsentiert dir Student-Resource.
+ * REST resource for /student.
  */
 @Path("/student")
 @AuthorizationNeeded
@@ -37,11 +43,12 @@ public class StudentResource {
 	}
 
 	/**
-	 * PUT-Anfrage: Ersetzt Informationen über einen Student und löscht die
-	 * Verifikationsinformationen.
-	 * 
+	 * PUT request handler.
+	 * Replaces the student's information with the given. All plans of the user are being flagged NOT_VERIFIED and
+	 * if passed-modules is set, these modules are removed from all plans in which they occur.
 	 *
-	 * @return Student mit neue Informationen als JSON Objekt.
+	 * @param studentInput the given student's information.
+	 * @return studentInput
 	 */
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -101,9 +108,9 @@ public class StudentResource {
 
 
 	/**
-	 * GET-Anfrage: Gibt die Studentinformationen zurück.
+	 * GET request handler.
 	 * 
-	 * @return die Studentinformationen als JSON Objekt.
+	 * @return the student's information as JSON.
 	 */
 	@GET
 	@JsonView(Views.StudentClass.class)
@@ -126,7 +133,10 @@ public class StudentResource {
 	}
 
 	/**
-	 * DELETE-Anfrage: Löscht den Student.
+	 * DELETE reuest handler.
+	 *
+	 * Deletes the student from the database.
+	 * @return OK 200 if successful.
 	 */
 	@DELETE
 	@JsonView(Views.StudentClass.class)
@@ -137,25 +147,47 @@ public class StudentResource {
 		});
 	}
 
+	/**
+	 * Class for encapsulating a JsonStudent instance.
+     */
 	static class StudentInOut {
 		@NotNull
 		private JsonStudent student;
 
+		/**
+		 * Empty constructor.
+         */
 		public StudentInOut() { }
 
+		/**
+		 * JsonStudent initializer.
+		 * @param student the JsonStudent
+         */
 		public StudentInOut(JsonStudent student) {
 			this.student = student;
 		}
 
+		/**
+		 *
+		 * @return the JsonStudent
+         */
 		public JsonStudent getStudent() {
 			return student;
 		}
 
+		/**
+		 * Sets the JsonStudent
+		 * @param student the JsonStudent
+         */
 		public void setStudent(JsonStudent student) {
 			this.student = student;
 		}
 	}
 
+	/**
+	 * JSON representation of a student's data. The attributes are already described inside the User class and therefore
+	 * left mostly undocumented.
+     */
 	public static class JsonStudent {
 		@JsonProperty("discipline")
 		private Discipline discipline;
@@ -166,9 +198,20 @@ public class StudentResource {
 		@JsonProperty("current-semester")
 		private Integer currentSemester;
 
+		/**
+		 * Empty constructor.
+         */
 		public JsonStudent() { }
 
-		public JsonStudent(Discipline discipline, Semester studyStart, List<JsonModule> passedModules, Integer currentSemester) {
+		/**
+		 * Creates a new JsonStudent with given parameters.
+		 * @param discipline discipline
+		 * @param studyStart studyStart
+		 * @param passedModules passedModules
+         * @param currentSemester currentSemester
+         */
+		public JsonStudent(Discipline discipline, Semester studyStart, List<JsonModule> passedModules,
+						   Integer currentSemester) {
 			this.currentSemester = currentSemester;
 			this.setDiscipline(discipline);
 			this.setStudyStart(studyStart);
@@ -208,8 +251,18 @@ public class StudentResource {
 		}
 	}
 
+	/**
+	 * Internal class for JSON serialization of {@link Discipline}.
+	 * Controls JSON visibility of id and name attributes.
+     */
 	public static class Views {
+		/**
+		 * Denotes the /disciplines handler's view.
+         */
 		public static class DisciplineClass extends StudentClass { }
+		/**
+		 * Denotes the /student handler's view.
+         */
 		public static class StudentClass { }
 	}
 }

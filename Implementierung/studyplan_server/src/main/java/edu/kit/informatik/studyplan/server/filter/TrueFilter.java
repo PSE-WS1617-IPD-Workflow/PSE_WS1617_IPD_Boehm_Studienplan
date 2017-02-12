@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class TrueFilter implements Filter {
 	/**
-	 * Erzeugt einen neuen TrueFilter.
+	 * Creates a new TrueFilter.
 	 */
 	public TrueFilter() {
 	}
 
 	/**
-	 * @return An empty Condition list.
+	 * @return an empty Condition list.
 	 */
 	public List<Condition> getConditions() {
 		return Collections.emptyList();

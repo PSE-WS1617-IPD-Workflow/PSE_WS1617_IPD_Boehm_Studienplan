@@ -3,14 +3,14 @@ package edu.kit.informatik.studyplan.server.filter;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleAttributeNames;
 
 /**
- * Repräsentiert einen Modulnamen-Textsuchfilter.
+ * Represents a module name text search filter.
  */
 public class NameFilter extends ContainsFilter {
 	/**
-	 * Erzeugt einen neuen Modulnamen-Textsuchfilter mit gegebenem Suchstring.
+	 * Creates a new NameFilter with a given substring
 	 * 
 	 * @param substring
-	 *            der Suchstring
+	 *            the substring to search for
 	 */
 	public NameFilter(String substring) {
 		super(substring);

@@ -20,6 +20,9 @@ import java.util.stream.Collectors;
 
 //import com.sun.xml.internal.ws.client.RequestContext;
 
+/**
+ * REST resource for /fields.
+ */
 @Path("/fields")
 @AuthorizationNeeded
 public class FieldsResource {
@@ -31,7 +34,7 @@ public class FieldsResource {
     }
 
     /**
-     *
+     * GET request handler.
      * @return all chooseable fields (for generation wizard)
      */
     @GET
