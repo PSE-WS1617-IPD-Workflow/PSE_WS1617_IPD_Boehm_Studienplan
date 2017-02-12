@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * Class modelling a module description
+ * Class modeling a module description
  * @author NiklasUhl
  * @version 1.0
  */

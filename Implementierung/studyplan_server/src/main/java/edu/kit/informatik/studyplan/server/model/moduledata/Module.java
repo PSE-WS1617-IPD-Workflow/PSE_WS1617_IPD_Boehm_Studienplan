@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -51,8 +50,8 @@ public class Module {
 	@Column(name = "is_compulsory")
 	private boolean compulsory;
 
-	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "description_id")
+	@ManyToOne
 	private ModuleDescription moduleDescription;
 	
 	@ManyToOne
@@ -63,13 +62,13 @@ public class Module {
 	@JoinColumn(name = "field_id")
 	private Field field;
 
-	@OneToMany(mappedBy = "secondModule", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "secondModule")
 	private List<ModuleConstraint> toConstraints = new LinkedList<ModuleConstraint>();
 
-	@OneToMany(mappedBy = "firstModule", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "firstModule")
 	private List<ModuleConstraint> fromConstraints = new LinkedList<ModuleConstraint>();
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany
 	@JoinTable(name = "module_category_assignment",
 		joinColumns = @JoinColumn(name = "module_id"), 
 		inverseJoinColumns = @JoinColumn(name = "category_id"))
@@ -159,28 +158,28 @@ public class Module {
 	}
 
 	/**
-	 * @return the toConstraints
+	 * @return the constraint with this module as second module
 	 */
 	public List<ModuleConstraint> getToConstraints() {
 		return toConstraints;
 	}
 
 	/**
-	 * @return the fromConstraints
+	 * @return the constraint with this module as first module
 	 */
 	public List<ModuleConstraint> getFromConstraints() {
 		return fromConstraints;
 	}
 
 	/**
-	 * @param identifier the identifier to set
+	 * @param identifier the unique identifier to set
 	 */
 	public void setIdentifier(String identifier) {
 		this.identifier = identifier;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name the module name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -201,7 +200,7 @@ public class Module {
 	}
 
 	/**
-	 * @param compulsory the compulsory to set
+	 * @param compulsory module is compulsory
 	 */
 	public void setCompulsory(boolean compulsory) {
 		this.compulsory = compulsory;

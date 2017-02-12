@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import edu.kit.informatik.studyplan.server.rest.resources.StudentResource;
 
-/************************************************************/
 /**
  * Class modeling a discipline
  * @author NiklasUhl
@@ -34,7 +33,7 @@ public class Discipline {
 	private int disciplineId = -1;
 	
 	@Column(name = "description")
-	@JsonProperty("name") // Yes, name; see REST specs.
+	@JsonProperty("name")
 	@JsonView(StudentResource.Views.DisciplineClass.class)
 	private String description;
 
@@ -99,7 +98,7 @@ public class Discipline {
 	}
 
 	/**
-	 * @return the compulsoryModules
+	 * @return returns a list of all compulsory modules for this field
 	 */
 	public List<Module> getCompulsoryModules() {
 		return compulsoryModules;

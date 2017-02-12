@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Class modelling a module type (e.g. lecture, seminar,...)
+ * Class modeling a module type (e.g. lecture, seminar,...)
  * @author NiklasUhl
  * @version 1.0
  */

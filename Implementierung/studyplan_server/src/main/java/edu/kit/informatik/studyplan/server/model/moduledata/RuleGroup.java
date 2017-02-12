@@ -57,35 +57,35 @@ public class RuleGroup {
 	private Discipline discipline;
 
 	/**
-	 * @return the ruleId
+	 * @return the unique rule id
 	 */
 	public int getRuleId() {
 		return ruleId;
 	}
 
 	/**
-	 * @return the name
+	 * @return the rule name
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * @return the minNum
+	 * @return the minimum number of modules for this group
 	 */
 	public int getMinNum() {
 		return minNum;
 	}
 
 	/**
-	 * @return the maxNum
+	 * @return the maximum number of modules for this group
 	 */
 	public int getMaxNum() {
 		return maxNum;
 	}
 
 	/**
-	 * @return the modules
+	 * @return returns a list of modules belonging to this group
 	 */
 	public List<Module> getModules() {
 		return modules;

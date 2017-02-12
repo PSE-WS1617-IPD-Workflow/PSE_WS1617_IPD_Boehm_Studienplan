@@ -3,11 +3,15 @@ package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.context.internal.ManagedSessionContext;
 import org.junit.Test;
 
 import edu.kit.informatik.studyplan.server.filter.CreditPointsFilter;
 import edu.kit.informatik.studyplan.server.filter.Filter;
+import edu.kit.informatik.studyplan.server.filter.TrueFilter;
+import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 
 public class HibernateModuleDaoTest {
 
@@ -56,7 +60,13 @@ public class HibernateModuleDaoTest {
 	
 	public static void main (String[] args) {
 		
-		new HibernateModuleDaoTest().test3();
+		//new HibernateModuleDaoTest().test3();
+		ManagedSessionContext.bind(HibernateUtil.getModuleDataSessionFactory().openSession());
+		HibernateModuleDao dao = new HibernateModuleDao();
+		Discipline discipline = dao.getDisciplineById(1);
+		Module module = dao.getRandomModuleByFilter(new TrueFilter(), discipline);
+		System.out.println(module.getName());
+		HibernateUtil.getModuleDataSessionFactory().getCurrentSession().close();
 	}
 
 }
