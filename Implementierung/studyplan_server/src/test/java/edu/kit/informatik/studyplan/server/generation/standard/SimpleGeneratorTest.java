@@ -24,18 +24,16 @@ public class SimpleGeneratorTest {
 	Generator generator = new SimpleGenerator();
 	Plan plan = new Plan();
 	List<ModuleEntry> moduleEntries;
-//	moduleEnties.add(new ModuleEntry());
+	
 	@Before
 	public void setUp() throws Exception {
-		
 		moduleEntries = new ArrayList<ModuleEntry>();
 		
 	}
 
 	@Test
 	public void test() {
-		Plan spy = spy(plan);
-		when(spy.getModuleEntries()).thenReturn(moduleEntries);
+		
 	}
 
 }

@@ -9,6 +9,7 @@ import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialO
 import edu.kit.informatik.studyplan.server.generation.standard.SimpleGenerator;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 import java.util.ArrayList;
@@ -53,8 +54,8 @@ public class GenerationManager {
 	 *         Plan.
 	 */
 	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, 
-			Map<Field, Category> preferredSubjects, int maxECTSperSemester) {
-		return generator.generate(objectiveFunction, currentPlan, preferredSubjects, maxECTSperSemester);
+			ModuleDao moduleDAO, Map<Field, Category> preferredSubjects, int maxECTSperSemester) {
+		return generator.generate(objectiveFunction, currentPlan, moduleDAO, preferredSubjects, maxECTSperSemester);
 	}
 
 
