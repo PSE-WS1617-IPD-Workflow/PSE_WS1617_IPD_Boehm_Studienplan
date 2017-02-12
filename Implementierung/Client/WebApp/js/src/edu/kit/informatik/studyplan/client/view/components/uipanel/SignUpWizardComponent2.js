@@ -32,9 +32,9 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
                         isSignUp: true
 
                     });
-                    this.loaded = true;
+                    this.isLoaded = true;
                     this.render();
-                    edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+                    //edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
                 }.bind(this)
             });
             /**this.student.getDistance({

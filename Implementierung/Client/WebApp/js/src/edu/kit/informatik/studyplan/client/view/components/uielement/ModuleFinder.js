@@ -29,13 +29,15 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
         "use strict";
         this.planId = options.planId;
         //TODO: fetchModuleCollection
-        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         this.moduleCollection = new edu.kit.informatik.studyplan.client.model.system.SearchCollection(null, {planId: null});
         this.filterCollection = new edu.kit.informatik.studyplan.client.model.system.FilterCollection();
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         this.moduleCollection.setFilters(this.filterCollection);
         this.filterCollection.fetch({
+            reset: true,
             success: function () {
                 this.moduleCollection.fetch({
+                    reset: true,
                     success: function () {
                         this.render();
                         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
@@ -81,6 +83,11 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
     */
     refreshSearchCollection: function () {
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
-        this.moduleCollection.fetch();
+        this.moduleCollection.fetch({
+            reset: true,
+            success: function () {
+                edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+            }
+        });
     }
 });

@@ -41,7 +41,7 @@ edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend
                 name: planName
             }, {collection: this.planCollection});
             var router = edu.kit.informatik.studyplan.client.router.MainRouter.getInstance();
-            newPlan.save({
+            newPlan.save(null,{
                 success: function () {
                     router.hideLoading();
                     router.navigate("plans/"+newPlan.get('id'),{trigger:true});
