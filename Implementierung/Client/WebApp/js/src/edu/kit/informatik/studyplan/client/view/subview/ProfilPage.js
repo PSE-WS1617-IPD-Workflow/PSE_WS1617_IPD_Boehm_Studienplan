@@ -7,6 +7,25 @@
 
 edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik.studyplan.client.view.subview.PlanEditPage.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.ProfilPage.prototype} */{
     /**
+    * says wheather planHeadBar should be displayed
+    */
+    isSignUp: false,
+    model: null,
+    
+    /**
+    * the main element of the page -> to add passed Modules
+    */
+    planView: null,
+    /*
+    * headbar containing navigation options
+    */
+    planHeadBar: null,
+    /*
+    * modulerFinder that allows to search for modules
+    */
+    moduleFinder: null,
+    
+    /**
     * Initializes the Plan edit page
     * possible Parameters are:
     *   isSignUp: will be set if this page is inside the signupwizzard,
