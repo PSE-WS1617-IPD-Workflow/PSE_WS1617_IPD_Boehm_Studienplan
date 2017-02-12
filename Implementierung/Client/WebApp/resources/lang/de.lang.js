@@ -128,6 +128,9 @@ LM.messages["de"]["deleteProposal"] = "Plan verwerfen";
 LM.messages["de"]["saveProposal"] = "Plan ersetzen";
 LM.messages["de"]["saveAsProposal"] = "Unter anderem Namen speichern";
 LM.messages["de"]["proposal"] = "Vorschlag";
+LM.messages["de"]["proposalSidebartitle"] = "Studienplan-Vorschlag";
+LM.messages["de"]["proposalSidebarExplanation"] = "Dies ist der auf Basis deiner Interessen generierte Studienplan.";
+LM.messages["de"]["proposalSidebarAction"] = "Aktionen";
 
 // Internet connection
 LM.messages["de"]["connectionBackTitle"] = "Verbindung wiederhergestellt";
