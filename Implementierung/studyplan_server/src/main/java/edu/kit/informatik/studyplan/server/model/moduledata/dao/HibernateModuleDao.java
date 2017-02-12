@@ -20,9 +20,6 @@ import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
  */
 class HibernateModuleDao implements ModuleDao {
 	
-	@Deprecated
-	private Session session;
-	
 	@Override
 	public Module getModuleById(String id) {
 		if (id == null) {
@@ -40,7 +37,11 @@ class HibernateModuleDao implements ModuleDao {
 		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		ConditionQueryConverter converter = new ConditionQueryConverter(filter.getConditions());
 		session.beginTransaction();
-		String queryString = "from Module m where " + converter.getQueryString() + " and m.discipline = :discipline";
+		String whereClause = converter.getQueryString();
+		if (!whereClause.matches("\\s*")){
+			whereClause += "and ";
+		}
+		String queryString = "from Module m where " + whereClause + "m.discipline = :discipline";
 		Query<Module> query = session.createQuery(queryString, Module.class);
 		converter.setParameters(query);
 		query.setParameter("discipline", discipline);
@@ -143,10 +144,4 @@ class HibernateModuleDao implements ModuleDao {
 		return field;
 	}
 
-	@Override
-	@Deprecated
-	public void cleanUp() {
-		session.close();
-	}
-
-};
+}

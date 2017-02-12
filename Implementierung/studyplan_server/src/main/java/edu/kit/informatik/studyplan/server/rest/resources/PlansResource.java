@@ -53,6 +53,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationConte
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
 import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
 import edu.kit.informatik.studyplan.server.pluginmanager.VerificationManager;
+import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
@@ -62,7 +63,7 @@ import edu.kit.informatik.studyplan.server.verification.VerificationResult;
  * Diese Klasse repräsentiert die Pläne-Ressource.
  */
 @Path("/plans")
-//@AuthorizationNeeded
+@AuthorizationNeeded
 public class PlansResource {
 	@Inject
 	Provider<AuthorizationContext> context;
@@ -108,8 +109,8 @@ public class PlansResource {
 	public Map<String, List<Plan>> getPlans() {
 		List<Plan> result = getUser().getPlans().stream()
 				.map(plan -> {
-					plan.setModuleEntries(null);
-					plan.setModulePreferences(null);
+					plan.getModuleEntries().clear();
+					plan.getPreferences().clear();
 					return plan;
 				})
 				.collect(Collectors.toList());

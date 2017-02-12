@@ -196,19 +196,4 @@ public class AuthorizationContext implements SecurityContext {
 	public String getAuthenticationScheme() {
 		return BASIC_AUTH;
 	}
-	
-	@Deprecated
-	void setProvider(AbstractSecurityProvider provider) {
-		this.provider = provider;
-	}
-	
-	@Deprecated
-	AbstractSecurityProvider getProvider() {
-		return provider;
-	}
-	
-	@Deprecated
-	public void cleanUp() {
-		this.provider.cleanUp();
-	}
 };

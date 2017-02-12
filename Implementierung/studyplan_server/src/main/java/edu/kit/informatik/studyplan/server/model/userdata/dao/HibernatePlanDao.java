@@ -18,25 +18,6 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  * herstellt.
  */
 class HibernatePlanDao implements PlanDao {
-
-	@Deprecated
-	private Session session;
-	@Deprecated
-	private boolean independet;
-	
-	@Deprecated
-	HibernatePlanDao(AuthorizationContext context) {
-		if (context != null) {
-			session = ((SecurityProvider) context.getProvider()).getSession();
-		} else {
-			session = HibernateUtil.getUserDataSessionFactory().openSession();
-			independet = true;
-		}
-	}
-	
-	public HibernatePlanDao() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	@Override
 	public Plan getPlanById(String id) {
@@ -69,14 +50,6 @@ class HibernatePlanDao implements PlanDao {
 		Serializable identifier = session.getIdentifier(plan);
 		session.getTransaction().commit();
 		return (String) identifier;
-	}
-
-	@Override
-	@Deprecated
-	public void cleanUp() {
-		if (independet) {
-			session.close();
-		}
 	}
 
 };

@@ -1,6 +1,13 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Class modelling a module description
@@ -13,6 +20,7 @@ public class ModuleDescription {
 	
 	@Id
 	@Column(name = "description_id")
+	@JsonIgnore
 	private int descriptionId;
 
 	@Column(name = "description_text")

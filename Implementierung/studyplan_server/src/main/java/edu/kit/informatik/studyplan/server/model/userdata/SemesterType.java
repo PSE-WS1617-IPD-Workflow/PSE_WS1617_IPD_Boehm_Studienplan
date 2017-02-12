@@ -4,9 +4,9 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /************************************************************/
 
@@ -34,6 +34,17 @@ public enum SemesterType {
 			return LocalDate.of(0, 4, 1);
 		default:
 			throw new IllegalStateException("Unknown semester type");
+		}
+	}
+
+	public static SemesterType fromString(String string) {
+		switch (string) {
+		case "WT":
+			return SemesterType.WINTER_TERM;
+		case "ST":
+			return SemesterType.SUMMER_TERM;
+		default:
+			return null;
 		}
 	}
 };

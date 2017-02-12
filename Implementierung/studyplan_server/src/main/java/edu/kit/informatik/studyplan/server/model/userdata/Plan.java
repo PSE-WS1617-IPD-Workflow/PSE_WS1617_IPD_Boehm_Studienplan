@@ -4,16 +4,6 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.kit.informatik.studyplan.server.Utils;
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -41,8 +31,8 @@ import org.hibernate.annotations.GenericGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 
 /************************************************************/
@@ -93,7 +83,7 @@ public class Plan {
 	/**
 	 *
 	 */
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "plan_entries",
 		joinColumns = @JoinColumn(name = "plan_identifier"),
 		inverseJoinColumns = @JoinColumn(name = "entry_id"))
@@ -103,7 +93,7 @@ public class Plan {
 	/**
 	 *
 	 */
-	@OneToMany(mappedBy = "plan")
+	@OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<ModulePreference> modulePreferences;
 
@@ -214,14 +204,6 @@ public class Plan {
 		return moduleEntries;
 	}
 
-	public void setModuleEntries(List<ModuleEntry> moduleEntries) {
-		this.moduleEntries = moduleEntries;
-	}
-
-	public void setModulePreferences(List<ModulePreference> modulePreferences) {
-		this.modulePreferences = modulePreferences;
-	}
-
 	/**
 	 * 
 	 * @return gibt eine List der Modulpräferenzen zurück
@@ -286,7 +268,7 @@ public class Plan {
 	}
 
 
-
+	
 	public boolean contains(Module module) {
 		return getAllModuleEntries().stream().anyMatch(entry -> entry.getModule().equals(module));
 	}
@@ -300,6 +282,7 @@ public class Plan {
 	}
 
 	@Transient
+	@JsonIgnore
 	public List<ModuleEntry> getAllModuleEntries() {
 		LinkedList<ModuleEntry> allEntries = new LinkedList<ModuleEntry>(moduleEntries);
 		allEntries.addAll(user.getPassedModules());

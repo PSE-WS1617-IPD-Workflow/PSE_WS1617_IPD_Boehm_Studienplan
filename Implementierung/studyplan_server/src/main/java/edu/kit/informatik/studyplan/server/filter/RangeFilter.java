@@ -1,9 +1,9 @@
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.filter.condition.Condition;
-
 import java.util.Collections;
 import java.util.List;
+
+import edu.kit.informatik.studyplan.server.filter.condition.Condition;
 
 /**
  * Repräsentiert einen Intervall-Beschränkungs-Filter für ganzzahlige Attribute.
@@ -39,7 +39,7 @@ public abstract class RangeFilter extends AttributeFilter {
 	 *            maximale obere Schranke des Filters
 	 */
 	protected RangeFilter(int lower, int upper, int min, int max) {
-		if (lower > upper || max > min || lower < min || upper > max) {
+		if (lower > upper || max < min || lower < min || upper > max) {
 			throw new IllegalArgumentException("RangeFilter must have valid ranges");
 		}
 		this.lower = lower;

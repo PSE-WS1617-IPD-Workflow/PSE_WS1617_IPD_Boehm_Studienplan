@@ -1,6 +1,5 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +11,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Where;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -48,6 +48,7 @@ public class Discipline {
 	
 	@OneToMany(mappedBy = "discipline")
 	@Where(clause = "is_compulsory = true")
+	@JsonIgnore
 	private List<Module> compulsoryModules = new LinkedList<Module>();
 
 	/**

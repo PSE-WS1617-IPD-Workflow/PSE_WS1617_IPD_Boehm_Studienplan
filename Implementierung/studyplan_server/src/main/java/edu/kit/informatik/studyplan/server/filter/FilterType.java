@@ -4,13 +4,13 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 /**
  * Aufzählung der verschiedenen AttributeFilter-Typen.
@@ -72,7 +72,10 @@ public enum FilterType {
 			return "";
 		}
 	};
-
+	
+	private FilterType() {
+		
+	}
 	/**
 	 * Liefert den Spezifikation-Abschnitt der JSON-Repräsentation des
 	 * übergebenen Default-Filters.
