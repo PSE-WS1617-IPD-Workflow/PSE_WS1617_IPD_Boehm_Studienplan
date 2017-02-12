@@ -13,7 +13,6 @@ import edu.kit.informatik.studyplan.server.rest.AuthorizationRequestFilter;
 import edu.kit.informatik.studyplan.server.rest.CorsResponseFilter;
 import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
 import edu.kit.informatik.studyplan.server.rest.OptionsRequestFilter;
-import edu.kit.informatik.studyplan.server.rest.SessionCloseFilter;
 import edu.kit.informatik.studyplan.server.rest.SessionOpenFilter;
 import edu.kit.informatik.studyplan.server.rest.ValidationConfigContextResolver;
 
@@ -42,6 +41,5 @@ public class MainApplication extends ResourceConfig {
 		register(MyObjectMapperProvider.class);
 		register(CorsResponseFilter.class);
 		register(SessionOpenFilter.class);
-		register(SessionCloseFilter.class);
 	}
 };

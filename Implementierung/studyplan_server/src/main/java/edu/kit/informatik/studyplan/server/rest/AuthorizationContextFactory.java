@@ -23,7 +23,7 @@ public class AuthorizationContextFactory implements Factory<AuthorizationContext
 
     @Override
     public void dispose(AuthorizationContext authorizationContext) {
-        authorizationContext.cleanUp();
+    
     }
 
     /**
