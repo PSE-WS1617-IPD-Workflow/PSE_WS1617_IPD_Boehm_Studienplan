@@ -8,6 +8,9 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Plan
 edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.Plan.prototype} */{
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/plan.html"),
     model: null,
+    events: {
+        "click .addSemesterButton": "addSemester"
+    },
     semesterElements : [],
     isPreferencable: true,
     isPassedPlan: false,
@@ -42,13 +45,22 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
             el.render();
             this.$el.find(".semesters").append(el.$el);
         }).bind(this));
-        
+        this.delegateEvents();
     },
     /**
     *
     */
     addSemester: function () {
-            "use strict";
+        "use strict";
+        
+        var newSemester = new edu.kit.informatik.studyplan.client.model.plans.Semester({
+                planId : this.model.get("planId"),
+                semesterNum : this.model.get('semesterCollection').length,
+                modules : []
+        },{parse:true, collection: this.model});
+                                                                                       
+        this.model.get('semesterCollection').push(newSemester);
+        this.reload();
     },
     /**
     *
