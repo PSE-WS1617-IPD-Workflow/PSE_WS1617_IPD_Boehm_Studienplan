@@ -404,6 +404,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] signUpWizard");
                 this.showLoading();
                 var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
+                // TODO: beim zweiten next save!
                 var self = this;
                 /*plan.fetch({
                     success: function () {*/
