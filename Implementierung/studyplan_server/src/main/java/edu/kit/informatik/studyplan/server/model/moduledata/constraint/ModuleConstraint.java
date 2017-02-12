@@ -1,12 +1,19 @@
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
-
-import javax.persistence.*;
 
 /**
  * Class modeling a module constraint
@@ -31,12 +38,12 @@ public class ModuleConstraint {
 
 	@ManyToOne
 	@JoinColumn(name = "module1")
-	@JsonProperty("first")
+	@JsonIgnore
 	private Module firstModule;
 
 	@ManyToOne
 	@JoinColumn(name = "module2")
-	@JsonProperty("second")
+	@JsonIgnore
 	private Module secondModule;
 
 	/**
@@ -55,6 +62,24 @@ public class ModuleConstraint {
 		return secondModule;
 	}
 
+    /**
+     * Only being called by Jackson and/or REST handlers.
+     * @return Serialization getter for first module.
+     */
+	@JsonProperty("first")
+	public String getJsonFirstModule() {
+	    return firstModule.getIdentifier();
+    }
+
+    /**
+     * Only being called by Jackson and/or REST handlers.
+     * @return Serialization getter for second module.
+     */
+    @JsonProperty("second")
+    public String getJsonSecondModule() {
+        return secondModule.getIdentifier();
+    }
+
 	/**
 	 * 
 	 * @return returns the constraint type
@@ -67,21 +92,21 @@ public class ModuleConstraint {
 	/**
 	 * @param constraintType the constraintType to set
 	 */
-	void setConstraintType(ModuleConstraintType constraintType) {
+	public void setConstraintType(ModuleConstraintType constraintType) {
 		this.constraintType = constraintType;
 	}
 
 	/**
 	 * @param firstModule the firstModule to set
 	 */
-	void setFirstModule(Module firstModule) {
+	public void setFirstModule(Module firstModule) {
 		this.firstModule = firstModule;
 	}
 
 	/**
 	 * @param secondModule the secondModule to set
 	 */
-	void setSecondModule(Module secondModule) {
+	public void setSecondModule(Module secondModule) {
 		this.secondModule = secondModule;
 	}
 }

@@ -1,8 +1,11 @@
 package edu.kit.informatik.studyplan.server.rest;
 
+
 import java.io.IOException;
 import java.util.List;
 
+import javax.annotation.Priority;
+import javax.ws.rs.Priorities;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -15,9 +18,11 @@ import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationConte
  * ContainerRequestFiler for authorizing REST resource access
  */
 @AuthorizationNeeded
+@Priority(Priorities.AUTHORIZATION)
 public class AuthorizationRequestFilter implements ContainerRequestFilter {
 
 	private static String accessTokenHeader = "Authorization";
+	private static String originHeader = "Origin";
 	private static String accessTokenPrefix = "Bearer";
 
 	@Override
@@ -39,6 +44,20 @@ public class AuthorizationRequestFilter implements ContainerRequestFilter {
 			AuthorizationContext context = securityProvider.getAuthorizationContext(accessToken);
 			if (context != null) {
 				// invalid access token
+				String originPattern = context.getRestClient().getOrigin();
+				List<String> originHeaderContents = requestContext.getHeaders().get(originHeader);
+				if (originHeaderContents == null) {
+					throw new WebApplicationException(Status.UNAUTHORIZED);
+				} else {
+					if (!originHeaderContents.isEmpty()) {
+						String origin = originHeaderContents.get(0);
+						if (!origin.matches(originPattern)) {
+							throw new WebApplicationException(Status.UNAUTHORIZED);
+						}
+					} else {
+						throw new WebApplicationException(Status.UNAUTHORIZED);
+					}
+				}
 				requestContext.setSecurityContext(context);
 				AuthorizationContextFactory.setContext(requestContext, context);
 			} else {

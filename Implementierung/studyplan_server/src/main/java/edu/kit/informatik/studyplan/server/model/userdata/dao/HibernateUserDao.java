@@ -16,20 +16,10 @@ import edu.kit.informatik.studyplan.server.model.userdata.User;
  */
 class HibernateUserDao implements UserDao {
 	
-	private Session session;
-	private boolean independet;
-	
-	HibernateUserDao(AuthorizationContext authorizationContext) {
-		if (authorizationContext != null) {
-			session = ((SecurityProvider) authorizationContext.getProvider()).getSession();
-		} else {
-			session = HibernateUtil.getUserDataSessionFactory().openSession();
-			independet = true;
-		}
-	}
 	
 	@Override
 	public void deleteUser(User user) {
+		Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(user);
 		session.getTransaction().commit();
@@ -37,6 +27,7 @@ class HibernateUserDao implements UserDao {
 
 	@Override
 	public void updateUser(User user) {
+		Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.saveOrUpdate(user);
 		session.getTransaction().commit();
@@ -44,17 +35,11 @@ class HibernateUserDao implements UserDao {
 
 	@Override
 	public User getUserByName(String name) {
+		Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		User user = session.bySimpleNaturalId(User.class).load(name);
 		session.getTransaction().commit();
 		return user;
-	}
-
-	@Override
-	public void cleanUp() {
-		if (independet) {
-			session.close();
-		}
 	}
 
 };

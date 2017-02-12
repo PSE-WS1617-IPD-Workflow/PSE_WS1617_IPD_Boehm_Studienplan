@@ -1,25 +1,24 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleAttributeNames;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Repräsentiert einen Modultyp-Wahlfilter mit den Modultypen als
- * Wahlmöglichkeiten.
+ * Represents a module type list filter with the module types as options.
  */
 public class ModuleTypeFilter extends ListFilter<ModuleType> {
 	/**
-	 * Erzeugt einen neuen Modultyp-Wahlfilter mit gegebener festgelegter
-	 * Auswahl.
+	 * Creates a new ModuleTypeFilter with a given selection.
 	 *
 	 * @param selection
-	 *            die Nummer des ausgewählten Elements
+	 *            the selected module type
 	 */
-	public ModuleTypeFilter(int selection) {
+	public ModuleTypeFilter(ModuleType selection) {
 		super(selection);
 	}
 
@@ -32,7 +31,7 @@ public class ModuleTypeFilter extends ListFilter<ModuleType> {
 
 	@Override
 	public List<ModuleType> getItemObjects() {
-		return ModuleDaoFactory.getModuleDao().getModuleTypes();
+		return Utils.withModuleDao(ModuleDao::getModuleTypes);
 	}
 
 	@Override

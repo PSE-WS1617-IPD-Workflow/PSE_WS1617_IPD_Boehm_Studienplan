@@ -12,12 +12,11 @@ public class UserDaoFactory {
 
 	/**
 	 * 
-	 * @param authorizationContext 
 	 * @return liefert das für die verwendete Datenbankschnittstelle benötigte
 	 *         DAO zurück
 	 */
-	public static UserDao getUserDao(AuthorizationContext authorizationContext) {
-		return new HibernateUserDao(authorizationContext);
+	public static UserDao getUserDao() {
+		return new HibernateUserDao();
 	}
 	
 };

@@ -1,7 +1,6 @@
 /**
- * Das Filter-Package enthält das Modulfilter-System und bietet Möglichkeiten,
- * nach außen sichtbare Filtertypen aufzuzählen, neue Filter zu erstellen sowie
- * diese anschließend zur Filterung von Modulen anzuwenden.
+ * The filter package contains the module filter system and provides facility for enumerating
+ * published filter types, creating new filters as well as using them later for filtering modules.
  */
 
 package edu.kit.informatik.studyplan.server.filter;

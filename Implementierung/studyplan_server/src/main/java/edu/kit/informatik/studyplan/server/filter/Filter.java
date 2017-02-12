@@ -9,7 +9,7 @@ import edu.kit.informatik.studyplan.server.filter.condition.Condition;
 import java.util.List;
 
 /**
- * Repräsentiert einen Filter für Module über eine Filterbedingung.
+ * Represents a filter for modules by giving a list of filter conditions.
  */
 public interface Filter {
 

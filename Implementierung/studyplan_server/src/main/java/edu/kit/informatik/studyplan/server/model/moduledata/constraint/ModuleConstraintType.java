@@ -1,11 +1,18 @@
 package edu.kit.informatik.studyplan.server.model.moduledata.constraint;
 
-import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
-import javax.persistence.*;
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
 /**
  * Class modeling the type of a module constraint
+ * 
  * @author NiklasUhl
  * @version 1.0
  */
@@ -18,47 +25,41 @@ public abstract class ModuleConstraintType {
 	@Id
 	@Column(name = "type_id")
 	private int id;
-	
+
 	@Column(name = "description", insertable = false, updatable = false)
 	private String description;
-	
+
 	@Column(name = "formal_description")
 	private String formalDescription;
 
 	/**
-	 * Überprüft, ob für zwei gegebene Moduleinträge die Abhängigkeit dieses
-	 * Typs erfüllt ist.
+	 * Checks if two module entries match the conditions of the constraint type
 	 * 
 	 * @param first
-	 *            der erste Moduleintrag (Subjekt des aktuellen
-	 *            Verifikationsschritts)
+	 *            the first module entry
 	 * @param second
-	 *            der zweite Moduleintrag (Zweites zusätzlich geladenes Modul
-	 *            des aktuellen Verifikationsschritts)
+	 *            the second moduly entry
 	 * @param orientation
-	 *            Richtung in die die Relation überprüft werden soll. <br>
-	 *            Jedes Constraint besitzt eine Richtung. Diese ist über die
-	 *            Eintragung der Module in Modul1 und Modul2 gegeben. Wenn nun
-	 *            gilt: first:=Modul1 UND second:=Modul2 so ist die orientation
-	 *            LEFT_TO_RIGHT; Wenn aber gilt: first:=Modul2 UND
-	 *            second:=Modul1 so ist die orientation RIGHT_TO_LEFT<br>
-	 *            Dieses zusätzliche Attribut ist notwendig, da Informationen
-	 *            über zwei gerichtete Relationen übergeben werden müssen:
-	 *            <ol>
-	 *            <li>Welches Modul aktuell untersucht wird und welches "nur"
-	 *            das zweite Modul des Constraints ist</li>
-	 *            <li>Welches Modul im Constraint Modul1 und welches Modul2 ist
-	 *            </li>
-	 *            </ol>
-	 *            1. wird über die Anordnung der Parameter übergeben, 2. über
-	 *            das Parameter orientation.
-	 * @return Ergebnis der Überprüfung
+	 *            Direction the relation needs to be checked for. <br>
+	 *            If Relation -> exists between the modules A and B, the
+	 *            relation can be validated with
+	 *            <code>isValid(A,B,LEFT_TO_RIGHT)</code> or
+	 *            <code>isValid(B,A,RIGHT_TO_LEFT)</code>. <br>
+	 *            If orientation is set to <code>null</code>, LEFT_TO_RIGHT is
+	 *            assumed.<br>
+	 *            If a provided entry is <code>null</code> the method assumes
+	 *            that no entry for this module exists. <br>
+	 *            You can also check entries for passed modules. In this case
+	 *            {@link ModuleEntry#setPassed(boolean)} flag must be set to
+	 *            <code>true</code>.
+	 * 
+	 * @return the result
 	 */
 	public abstract boolean isValid(ModuleEntry first, ModuleEntry second, ModuleOrientation orientation);
 
 	/**
 	 * 
-	 * @return gibt die textuelle Beschreibung der Abhängigkeit zurück
+	 * @return returns the textual description of the constraint
 	 */
 	public String getDescription() {
 		return description;
@@ -67,7 +68,7 @@ public abstract class ModuleConstraintType {
 	/**
 	 * 
 	 * @param description
-	 *            die textuelle Beschreibung
+	 *            the textual descriptions
 	 */
 	void setDescription(String description) {
 		this.description = description;
@@ -75,8 +76,7 @@ public abstract class ModuleConstraintType {
 
 	/**
 	 * 
-	 * @return gibt die Abhängigkeitsbeschreibung in Form eines logischen
-	 *         Ausdrucks zurück
+	 * @return returns the formal description of this constraints
 	 */
 	public String getFormalDescription() {
 		return description;
@@ -85,7 +85,7 @@ public abstract class ModuleConstraintType {
 	/**
 	 * 
 	 * @param formalDescription
-	 *            der logische Ausdruck
+	 *            the formal description
 	 */
 	void setFormalDescription(String formalDescription) {
 		this.formalDescription = formalDescription;

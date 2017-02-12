@@ -26,6 +26,7 @@ import org.hibernate.annotations.NaturalId;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 
 /************************************************************/
 /**
@@ -64,12 +65,19 @@ public class User implements Principal {
 	 * 
 	 */
 	@OneToMany
-	@Cascade(CascadeType.SAVE_UPDATE)
-	@JoinTable(name = "passed_modules", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "entry_id"))
+	@Cascade(CascadeType.ALL)
+	@JoinTable(name = "passed_modules", 
+		joinColumns = @JoinColumn(name = "user_id"), 
+		inverseJoinColumns = @JoinColumn(name = "entry_id"))
 	private List<ModuleEntry> passedModules = new LinkedList<ModuleEntry>();
 
 	@OneToMany(mappedBy = "user")
+	@Cascade(CascadeType.ALL)
 	private List<Plan> plans = new LinkedList<Plan>();
+	
+	@OneToMany(mappedBy = "user")
+	@Cascade(CascadeType.DELETE)
+	private List<AuthorizationContext> contexts = new LinkedList<AuthorizationContext>();
 
 	/**
 	 * 

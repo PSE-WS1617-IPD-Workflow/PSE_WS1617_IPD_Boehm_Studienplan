@@ -1,4 +1,4 @@
 /**
- * Enthält Klassen zum Zugriff auf die Moduldatenbank.
+ * Contains classes for accessing module data.
  */
 package edu.kit.informatik.studyplan.server.model.moduledata.dao;

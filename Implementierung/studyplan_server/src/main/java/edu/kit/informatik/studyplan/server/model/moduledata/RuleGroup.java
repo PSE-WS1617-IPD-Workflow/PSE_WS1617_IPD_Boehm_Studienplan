@@ -1,19 +1,11 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Class representing a rule group, which defines a group of modules
@@ -36,11 +28,11 @@ public class RuleGroup {
 	
 	@Column(name = "min_num")
 	@JsonProperty("min-ects")
-	private int minNum;
+	private int minNum = -1;
 	
 	@Column(name = "max_num")
 	@JsonProperty("max-ects")
-	private int maxNum;
+	private int maxNum = -1;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "rule_module_assignment",
@@ -49,42 +41,43 @@ public class RuleGroup {
 	inverseJoinColumns =
 		@JoinColumn(name = "rule_id"))
 	@JsonIgnore
-	private List<Module> modules;
+	private List<Module> modules = new LinkedList<Module>();
 	
 	@JoinColumn(name = "discipline_id")
 	@ManyToOne
+	@JsonIgnore
 	private Discipline discipline;
 
 	/**
-	 * @return the ruleId
+	 * @return the unique rule id
 	 */
 	public int getRuleId() {
 		return ruleId;
 	}
 
 	/**
-	 * @return the name
+	 * @return the rule name
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * @return the minNum
+	 * @return the minimum number of modules for this group
 	 */
 	public int getMinNum() {
 		return minNum;
 	}
 
 	/**
-	 * @return the maxNum
+	 * @return the maximum number of modules for this group
 	 */
 	public int getMaxNum() {
 		return maxNum;
 	}
 
 	/**
-	 * @return the modules
+	 * @return returns a list of modules belonging to this group
 	 */
 	public List<Module> getModules() {
 		return modules;
@@ -93,36 +86,29 @@ public class RuleGroup {
 	/**
 	 * @param ruleId the ruleId to set
 	 */
-	void setRuleId(int ruleId) {
+	public void setRuleId(int ruleId) {
 		this.ruleId = ruleId;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
-	void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
 	 * @param minNum the minNum to set
 	 */
-	void setMinNum(int minNum) {
+	public void setMinNum(int minNum) {
 		this.minNum = minNum;
 	}
 
 	/**
 	 * @param maxNum the maxNum to set
 	 */
-	void setMaxNum(int maxNum) {
+	public void setMaxNum(int maxNum) {
 		this.maxNum = maxNum;
-	}
-
-	/**
-	 * @param modules the modules to set
-	 */
-	void setModules(List<Module> modules) {
-		this.modules = modules;
 	}
 	
 }

@@ -4,7 +4,13 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.StatusType;
 
+/**
+ * Exception class for 422 Unprocessable Entity response.
+ */
 public class UnprocessableEntityException extends WebApplicationException {
+    /**
+     * Status type of the exception.
+     */
     public static final StatusType STATUS_TYPE = new StatusType() {
         @Override
         public int getStatusCode() {
@@ -22,7 +28,9 @@ public class UnprocessableEntityException extends WebApplicationException {
         }
     };
 
-
+    /**
+     * Creates a new UnprocessableEntityException.
+     */
     public UnprocessableEntityException() {
         super(STATUS_TYPE.getReasonPhrase(), STATUS_TYPE.getStatusCode());
     }

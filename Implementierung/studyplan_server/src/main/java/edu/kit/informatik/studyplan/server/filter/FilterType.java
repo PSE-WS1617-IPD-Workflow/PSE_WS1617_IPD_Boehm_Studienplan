@@ -4,20 +4,20 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
+
 /**
- * Aufzählung der verschiedenen AttributeFilter-Typen.
+ * Enumeration of attribute filter types.
  */
 public enum FilterType {
 	/**
-	 * Repräsentiert den Filtertyp {@link RangeFilter}.
+	 * Represents the filter type {@link RangeFilter}.
 	 */
 	RANGE {
 		@Override
@@ -38,7 +38,7 @@ public enum FilterType {
 		}
 	},
 	/**
-	 * Repräsentiert den Filtertyp {@link ListFilter}.
+	 * Represents the filter type {@link ListFilter}.
 	 */
 	LIST {
 		@Override
@@ -59,7 +59,7 @@ public enum FilterType {
 		}
 	},
 	/**
-	 * Repräsentiert den Filtertyp {@link ContainsFilter}.
+	 * Represents the filter type {@link ContainsFilter}.
 	 */
 	CONTAINS {
 		@Override
@@ -72,49 +72,51 @@ public enum FilterType {
 			return "";
 		}
 	};
-
+	
+	private FilterType() {
+		
+	}
 	/**
-	 * Liefert den Spezifikation-Abschnitt der JSON-Repräsentation des
-	 * übergebenen Default-Filters.
 	 * 
 	 * @param defaultFilter
-	 *            der Default-Filter
-	 * @return die Spezifikation des Filters als JSON-Objekt
+	 *            the default filter object
+	 * @return the `specification` attribute for the JSON representation of the given default filter
 	 */
 	public abstract Map<String, Object> toJsonSpecification(AttributeFilter defaultFilter);
 
 	/**
-	 * Liefert eine JSON-Repräsentation der Werte des übergebenen
-	 * Default-Filters.
 	 * 
 	 * @param defaultFilter
-	 *            das Filter-Objekt mit Default-Werten
-	 * @return die Werte des Default-Filters
+	 *            the filter object containing the default values
+	 * @return a JSON representation of the values of the default filter object
 	 */
 	public abstract Object defaultJsonValue(AttributeFilter defaultFilter);
 
+	/**
+	 * Represents a JSON list item by id and name.
+     */
 	private static class ListItem {
 		private int id;
 		private String name;
 
-		public ListItem(int id, String name) {
+		ListItem(int id, String name) {
 			this.id = id;
 			this.name = name;
 		}
 
-		public int getId() {
+		int getId() {
 			return id;
 		}
 
-		public void setId(int id) {
+		void setId(int id) {
 			this.id = id;
 		}
 
-		public String getName() {
+		String getName() {
 			return name;
 		}
 
-		public void setName(String name) {
+		void setName(String name) {
 			this.name = name;
 		}
 	}

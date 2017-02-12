@@ -6,19 +6,19 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Repräsentiert einen Textsuch-Attribut-Filter.
+ * Represents a text search attribute filter.
  */
 public abstract class ContainsFilter extends AttributeFilter {
 	/**
-	 * Der Suchstring.
+	 * The substring to search for.
 	 */
 	protected String substring;
 
 	/**
-	 * Erzeugt einen neuen Textsuch-Filter mit gegebenem Suchstring.
+	 * Creates a new ContainsFilter with a given substring.
 	 * 
 	 * @param substring
-	 *            der Suchstring
+	 *            the substring.
 	 */
 	protected ContainsFilter(String substring) {
 		if (substring == null) {
@@ -28,23 +28,22 @@ public abstract class ContainsFilter extends AttributeFilter {
 	}
 
 	/**
-	 * Liefert eine Filterbedingung, die das Vorkommen des Substrings im
-	 * Attributswert fordert.
-	 * 
-	 * @return die Filterbedingung als jOOQ-Condition-Objekt
+	 * @return a list of Condition objects which demands for the presence of the given substring
 	 */
 	public List<Condition> getConditions() {
 		return Collections.singletonList(Condition.createContains(getAttributeName(), substring));
 	}
 
+	/**
+	 * @return the CONTAINS filter type.
+     */
 	public FilterType getFilterType() {
 		return FilterType.CONTAINS;
 	}
 
 	/**
-	 * Liefert den Substring, nach welchem gefiltert werden soll.
 	 * 
-	 * @return der Substring
+	 * @return the substring to search for
 	 */
 	public String getSubstring() {
 		return substring;

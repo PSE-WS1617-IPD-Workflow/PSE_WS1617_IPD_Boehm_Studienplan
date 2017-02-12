@@ -6,61 +6,61 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Repräsentiert einen Listenauswahl-Attribut-Filter.
+ * Represents a list selection attribute filter with several options.
+ * @param <T> The type of the options' object representations.
  */
 public abstract class ListFilter<T> extends AttributeFilter {
 	/**
-	 * Die Nummer des ausgewählten Elements.
+	 * The selected element's object representation.
 	 */
-	protected int selection;
+	protected T selection;
 
 	/**
-	 * Erzeugt einen neuen Auswahlfilter mit gegebener festgelegter Auswahl.
+	 * Creates a new ListFilter with a given selected object.
 	 * 
 	 * @param selection
-	 *            die Nummer des ausgewählten Elements
+	 *            the selected object. Must not be null.
 	 */
-	protected ListFilter(int selection) {
-		if (selection >= getItemObjects().size()) {
-			throw new IllegalArgumentException("ListFilter.selection must not be greater than the item list size.");
+	protected ListFilter(T selection) {
+		if (selection == null) {
+			throw new IllegalArgumentException("Filter selection must not be null.");
 		}
 		this.selection = selection;
 	}
 
 	/**
-	 * Liefert eine Filterbedingung, die die Übereinstimmung des untersuchten
-	 * Attributswertes mit der festgelegten Auswahl (selection) fordert.
 	 * 
-	 * @return die Filterbedingung als jOOQ-Condition-Objekt
+	 * @return a list of Condition objects which demands for the module attribute to match the selection.
 	 */
 	public List<Condition> getConditions() {
-		return Collections.singletonList(Condition.createEquals(getAttributeName(), getItemObjects().get(selection)));
+		return Collections.singletonList(Condition.createEquals(getAttributeName(), selection));
 	}
 
+	/**
+	 *
+	 * @return the LIST filter type
+     */
 	public FilterType getFilterType() {
 		return FilterType.LIST;
 	}
 
 	/**
-	 * Liefert die Nummer des selektierten Elements.
 	 * 
-	 * @return die Element-Nummer
+	 * @return the selected element's object.
 	 */
-	public int getSelection() {
+	public T getSelection() {
 		return selection;
 	}
 
 	/**
-	 * Liefert alle Wahlmöglichkeiten dieses Auswahl-Filters als Strings.
 	 * 
-	 * @return die Wahlmöglichkeiten des Auswahl-Filters as Strings
+	 * @return the options of the ListFilter as strings
 	 */
 	public abstract List<String> getItemStrings();
 
 	/**
-	 * Liefert Objekt-Repräsentationen aller Wahlmöglichkeiten dieses Auswahl-Filters.
 	 *
-	 * @return die Wahlmöglichkeiten des Auswahl-Filters als Objekte
+	 * @return the object representations of the ListFilter options
      */
 	public abstract List<T> getItemObjects();
 }
