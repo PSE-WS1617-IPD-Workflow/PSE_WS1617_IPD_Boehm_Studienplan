@@ -1,15 +1,16 @@
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 import jersey.repackaged.com.google.common.collect.ImmutableList;
 
+import javax.ws.rs.BadRequestException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Provides published filter descriptors.
@@ -41,12 +42,25 @@ public final class FilterDescriptorProvider {
     }
 
     /**
+     * Returns the FilterDescriptor with the given uriIdentifier.
+     * @param uriIdentifier GET request URI identifier string
+     * @return the FilterDescriptor
+     * @throws BadRequestException if FilterDescriptor with uriIdentifier doesn't exist
+     */
+    public FilterDescriptor getDescriptorFromUriIdentifier(String uriIdentifier) throws BadRequestException {
+        return values().stream()
+                .filter(descriptor -> descriptor.getFilterUriIdentifier().equals(uriIdentifier))
+                .findFirst().orElseThrow(BadRequestException::new);
+    }
+
+    /**
      *
      * @return the credit points filter descriptor
      */
     public FilterDescriptor CREDIT_POINTS() {
-        return new FilterDescriptor(0, new CreditPointsFilter(0, 30, 0, 30), "ECTS",
-                "Das Intervall, in welchem die ECTS der gefundenen Module liegen sollen");
+        return new RangeFilterDescriptor(0, "ects", "ECTS",
+                "Das Intervall, in welchem die ECTS der gefundenen Module liegen sollen",
+                0, 30, CreditPointsFilter::new);
     };
 
     /**
@@ -54,9 +68,11 @@ public final class FilterDescriptorProvider {
      * @return the category filter descriptor
      */
     public FilterDescriptor CATEGORY() {
-        Category defaultCategory = Utils.withModuleDao(moduleDao -> moduleDao.getCategories(discipline)).get(0);
-        return new FilterDescriptor(1, new CategoryFilter(defaultCategory, discipline), "Kategorie",
-                "Die Kategorie der gefundenen Module");
+        return new ListFilterDescriptor<>(1, "category", "Kategorie",
+                "Die Kategorie der gefundenen Module",
+                () -> ModuleDaoFactory.getModuleDao().getCategories(discipline),
+                items -> items.stream().map(Category::getName).collect(Collectors.toList()),
+                CategoryFilter::new);
     };
 
     /**
@@ -64,8 +80,11 @@ public final class FilterDescriptorProvider {
      * @return the cycle type filter descriptor
      */
     public FilterDescriptor CYCLE_TYPE() {
-        return new FilterDescriptor(2, new CycleTypeFilter(CycleType.BOTH), "Turnus",
-                "Ob die Module im WS, SS oder beidem stattfinden");
+        return new ListFilterDescriptor<>(2, "cycletype", "Turnus",
+                "Ob die Module im WS, SS oder beidem stattfinden",
+                () -> Arrays.asList(CycleType.BOTH, CycleType.WINTER_TERM, CycleType.SUMMER_TERM),
+                items -> Arrays.asList("WS/SS", "WS", "SS"),
+                CycleTypeFilter::new);
     };
 
     /**
@@ -73,18 +92,23 @@ public final class FilterDescriptorProvider {
      * @return the module type filter descriptor
      */
     public FilterDescriptor MODULE_TYPE() {
-        ModuleType defaultModuleType = Utils.withModuleDao(ModuleDao::getModuleTypes).get(0);
-        return new FilterDescriptor(3, new ModuleTypeFilter(defaultModuleType), "Art",
-                "Die Veranstaltungsart der gefundenen Module");
+        return new ListFilterDescriptor<>(3, "type", "Art",
+                "Die Veranstaltungsart der gefundenen Module",
+                () -> ModuleDaoFactory.getModuleDao().getModuleTypes(),
+                items -> items.stream().map(ModuleType::getName).collect(Collectors.toList()),
+                ModuleTypeFilter::new);
     };
 
     /**
-     * the compulsory filter descriptor
-     * @return
+     *
+     * @return the compulsory filter descriptor
      */
     public FilterDescriptor COMPULSORY() {
-        return new FilterDescriptor(4, new CompulsoryFilter(true), "Pflicht/Wahl",
-                "Ob nach Pflicht-, Wahlmodulen oder beidem gesucht werden soll");
+        return new ListFilterDescriptor<>(4, "compulsory", "Pflicht/Wahl",
+                "Ob nach Pflicht-, Wahlmodulen oder beidem gesucht werden soll",
+                () -> Arrays.asList(true, false),
+                items -> Arrays.asList("Pflichtmodule", "Wahlmodule"),
+                CompulsoryFilter::new);
     };
 
     /**
@@ -92,7 +116,8 @@ public final class FilterDescriptorProvider {
      * @return the name filter descriptor
      */
     public FilterDescriptor NAME() {
-        return new FilterDescriptor(5, new NameFilter(""), "Modulname",
-                "Sucht nach Vorkommen des eingegebenen Textes in den Modulnamen");
+        return new ContainsFilterDescriptor(5, "name", "Modulname",
+                "Sucht nach Vorkommen des eingegebenen Textes in den Modulnamen",
+                NameFilter::new);
     };
 }

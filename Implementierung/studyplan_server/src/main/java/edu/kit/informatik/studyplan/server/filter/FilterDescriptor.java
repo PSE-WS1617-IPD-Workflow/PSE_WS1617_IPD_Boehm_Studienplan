@@ -4,28 +4,30 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.core.MultivaluedMap;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Beschreibungen der nach außen sichtbaren Filterklassen für den Client.
- * Descriptions of the published filter classes for the client.
+ * Descriptions of the published filter classes for the client. Offers facility to construct filters from GET request
+ * parameters.
  */
-public class FilterDescriptor {
-	FilterDescriptor(int id, AttributeFilter defaultFilter, String filterName, String tooltip) {
+public abstract class FilterDescriptor {
+	FilterDescriptor(int id, String filterUriIdentifier, String filterName, String tooltip) {
 		this.id = id;
+		this.filterUriIdentifier = filterUriIdentifier;
 		this.filterName = filterName;
 		this.tooltip = tooltip;
-		this.defaultFilter = defaultFilter;
 	}
 
 	private int id;
 
+	private String filterUriIdentifier;
+
 	private String filterName;
 
 	private String tooltip;
-
-	private AttributeFilter defaultFilter;
 
 	/**
 	 * 
@@ -35,9 +37,9 @@ public class FilterDescriptor {
 		Map<String, Object> result = new HashMap<>(5);
 		result.put("id", getId());
 		result.put("name", getFilterName());
-		result.put("default-value", getDefaultFilter().getFilterType().defaultJsonValue(getDefaultFilter()));
+		result.put("default-value", getDefaultJsonValue());
 		result.put("tooltip", getTooltip());
-		result.put("specification", getDefaultFilter().getFilterType().toJsonSpecification(getDefaultFilter()));
+		result.put("specification", getJsonSpecification());
 		return result;
 	};
 
@@ -50,11 +52,25 @@ public class FilterDescriptor {
 	}
 
 	/**
-	 * @return a default object of the described filter type.
+	 * @return a JSON representation of the default values of the described filter
 	 */
-	public AttributeFilter getDefaultFilter() {
-		return defaultFilter;
-	}
+	public abstract Object getDefaultJsonValue();
+
+	/**
+	 *
+	 * @return the `specification` attribute for the JSON representation of the described filter
+     */
+	public abstract Map<String, Object> getJsonSpecification();
+
+	/**
+	 * Constructs a filter from a GET request parameter table.
+	 * @param parameters the GET parameters
+	 * @return the constructed filter
+	 * @throws BadRequestException if the needed GET parameters are invalid
+     */
+
+	public abstract AttributeFilter getFilterFromRequest(MultivaluedMap<String, String> parameters)
+			throws BadRequestException;
 
 	/**
 	 * 
@@ -70,5 +86,13 @@ public class FilterDescriptor {
 	 */
 	public String getTooltip() {
 		return tooltip;
+	}
+
+	/**
+	 *
+	 * @return the filter identifier used in GET requests.
+     */
+	public String getFilterUriIdentifier() {
+		return filterUriIdentifier;
 	}
 };

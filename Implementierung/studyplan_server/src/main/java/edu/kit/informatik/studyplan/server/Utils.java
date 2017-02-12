@@ -13,7 +13,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
- * Utility class for severak helper methods.
+ * Utility class for several helper methods.
  */
 public class Utils {
     /**
@@ -44,9 +44,7 @@ public class Utils {
      */
     public static <T> T withModuleDao(Function<ModuleDao, T> code) {
         ModuleDao dao = ModuleDaoFactory.getModuleDao();
-        T result;
-        result = code.apply(dao);
-        return result;
+        return code.apply(dao);
     }
 
     /**
@@ -65,9 +63,7 @@ public class Utils {
      */
     public static <T> T withPlanDao(Function<PlanDao, T> code) {
         PlanDao dao = PlanDaoFactory.getPlanDao();
-        T result;
-        result = code.apply(dao);
-        return result;
+        return code.apply(dao);
     }
 
     /**
@@ -86,9 +82,7 @@ public class Utils {
      */
     public static <T> T withUserDao(Function<UserDao, T> code) {
         UserDao dao = UserDaoFactory.getUserDao();
-        T result;
-        result = code.apply(dao);
-        return result;
+        return code.apply(dao);
     }
 
     /**

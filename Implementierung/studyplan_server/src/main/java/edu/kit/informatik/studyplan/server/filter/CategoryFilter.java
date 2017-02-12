@@ -19,35 +19,16 @@ public class CategoryFilter extends ListFilter<Category> {
 	 *
 	 * @param selection
 	 *            the selected category
-	 * @param discipline
-	 * 			  the discipline of the categories to choose from
 	 */
-	public CategoryFilter(Category selection, Discipline discipline) {
+	public CategoryFilter(Category selection) {
 		super(selection);
-		this.discipline = discipline;
 	}
 
-	@Override
-	public List<String> getItemStrings() {
-		return getItemObjects().stream()
-			.map(Category::getName)
-			.collect(Collectors.toList());
-	}
 
-	@Override
-	public List<Category> getItemObjects() {
-		return Utils.withModuleDao(moduleDao -> moduleDao.getCategories(discipline));
-	}
 
 	@Override
 	public String getAttributeName() {
 		return ModuleAttributeNames.CATEGORY;
 	}
 
-	/**
-	 * @return the discipline of the categories to choose from
-     */
-	public Discipline getDiscipline() {
-		return discipline;
-	}
 }
