@@ -35,19 +35,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     }
                 });
             },
-            routes:
-            /**
-            *todo: server wiedereinschalten (hierdrunter derzeit auskommentiert.)
-            */
-            /*function () {
-                console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] building route hash");
-                /if (!edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().isLoggedIn()) {
-                    return {
-                        "processLogin": "handleLogin",
-                        "*notFound": "loginPage"
-                    };
-                }
-                return */{
+            routes:{
                     "plans/:planId":  "editPage",
                     "compare/:planId1/:planId2": "comparisonPage",
                     "plans/:planId/generate": "generationWizard",
@@ -59,263 +47,103 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     "/":     "mainPage",
                     "logout": "logoutPage",
                     "*notFound": "notFound"
-                }/*;
-            }*/,
+                },
+            /**
+             * Loading plan collection (main page)
+             * @url /
+             */
             mainPage: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] mainPage");
                 this.showLoading();
-                /*var planCollection = new edu.kit.informatik.studyplan.client.model.plans.PlanCollection({
-                    plans   :   [
-                        {
-                            id  :   'P1',
-                            name:   'Hermines Studienplan',
-                            status: 'valid',
-                            'creditpoints-sum'  :   9000
-                        },
-                        {
-                            id  :   'P2',
-                            name:   'Harrys Studienplan',
-                            status: 'not-verified',
-                            'creditpoints-sum': 180
-                        }, {
-                            id  :   'P3',
-                            name:   'Rons Studienplan',
-                            status: 'invalid',
-                            'creditpoints-sum': 100
-                        }
-                    ]
-                }, {parse: true});
-                this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.MainPage,
-                    {
-                        planCollection: planCollection
-                    });
-                this.view.render();
-                this.hideLoading();
-                */
                 var planCollection = new edu.kit.informatik.studyplan.client.model.plans.PlanCollection();
-                var self = this;
                 planCollection.fetch({
                     success: function () {
-                        self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.MainPage,
+                        this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.MainPage,
                             {
                                 planCollection: planCollection
                             });
-                        self.view.render();
-                        self.hideLoading();
-                    }
+                        this.view.render();
+                        this.hideLoading();
+                    }.bind(this)
                 });
                 
             },
+            /**
+             * Loading single plan (edit page)
+             * @url /plans/:planId
+             */
             editPage: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] editPage");
                 this.showLoading();
-                var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({
-                    plan    :   {
-                        id  :   'P3',
-                        name:   'Rons Studienplan',
-                        status: 'invalid',
-                        'creditpoints-sum': 100,
-                        modules :   [
-                            {
-                                id          :   "M1",
-                                name        :   "Bayrisch",
-                                creditpoints:   7,
-                                lecturer    :   "Aloisius",
-                                preference  :   "positive",
-                                semester    :   3
-                            },
-                            {
-                                id          :   "M2",
-                                name        :   "Schwäbisch",
-                                creditpoints:   5,
-                                lecturer    :   "Maultaschius",
-                                preference  :   "negative",
-                                semester    :   5
-                            },
-                            {
-                                id : 22,
-                                semester : 4,
-                                name : "Magische Tierwesen",
-                                creditpoints: 18,
-                                preference  :   "negative",
-                                lecturer: "Hagrid",
-                            },
-                            {
-                                id : 21,
-                                name : "Zaubertränke",
-                                semester : 4,
-                                creditpoints:700,
-                                preference  :   "negative",
-                                lecturer: "Snape",
-                            },
-                            {
-                                id : 20,
-                                name : "Zaubertränke 2",
-                                semester: 4,
-                                creditpoints:700,
-                                preference  :   "negative",
-                                lecturer: "Snape"
-                            },
-                            {
-                                id : 30,
-                                name : "Zaubertränke 3",
-                                semester: 4,
-                                creditpoints:700,
-                                preference  :   "negative",
-                                lecturer: "Snape",
-                            },
-                            {
-                                id : 40,
-                                name : "Zaubertränke 4",
-                                semester: 4,
-                                creditpoints:700,
-                                preference  :   "negative",
-                                lecturer: "Snape",
-                            }
-                        ],
-                        violations: [
-                            {
-                                name: "test",
-                                first: {id: 40},
-                                second: {id: 30},
-                                type: "type"
-                            }
-                        ]
-                    }
-                }, {parse: true});/*{
-                    id: planId,
-                    
-                });*/
-                /*plan.fetch({
-                    success: function () {*/
+                var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({id: planId});
+                plan.fetch({
+                    success: function () {
                         this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.PlanEditPage, {
                             plan:  plan
                         });
                         this.hideLoading();
-                    /*}
-                });*/
+                    }.bind(this)
+                });
             },
+            /**
+             * Loading 2 plans (comparison page)
+             * @url /compare/:plan1/:plan2
+             */
             comparisonPage: function (planId1, planId2) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] comparisonPage");
                 this.showLoading();
-                // Do stuff here
                 this.hideLoading();
+                throw new Error("Not implemented");
             },
+            /**
+             * Initalising generation wizard
+             * @url /plans/:planId/generate
+             */
             generationWizard: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] generationWizard");
                 this.showLoading();
                 var info = new edu.kit.informatik.studyplan.client.model.system.ProposalInformation();
-                var self = this;
-                var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({
-                    plan    : {
-                        
-                        id  :   'P3',
-                        name:   'Rons Studienplan',
-                        status: 'invalid',
-                        'creditpoints-sum': 100,
-                        modules :   [
-                            {
-                                id          :   "M1",
-                                name        :   "Bayrisch",
-                                creditpoints:   7,
-                                lecturer    :   "Aloisius",
-                                preference  :   "positive",
-                                semester    :   3
-                            },
-                            {
-                                id          :   "M2",
-                                name        :   "Schwäbisch",
-                                creditpoints:   5,
-                                lecturer    :   "Maultaschius",
-                                preference  :   "negative",
-                                semester    :   5
-                            },
-                            {
-                                id : 22,
-                                semester : 4,
-                                name : "Magische Tierwesen",
-                                creditpoints: 18,
-                                preference  :   "negative",
-                                lecturer: "Hagrid",
-                            },
-                            {
-                                id : 21,
-                                name : "Zaubertränke",
-                                semester : 4,
-                                creditpoints:700,
-                                preference  :   "negative",
-                                lecturer: "Snape",
-                            },
-                            {
-                                id : 20,
-                                name : "Zaubertränke 2",
-                                semester: 4,
-                                creditpoints:700,
-                                preference  :   "negative",
-                                lecturer: "Snape"
-                            },
-                            {
-                                id : 30,
-                                name : "Zaubertränke 3",
-                                semester: 4,
-                                creditpoints:700,
-                                preference  :   "negative",
-                                lecturer: "Snape",
-                            },
-                            {
-                                id : 40,
-                                name : "Zaubertränke 4",
-                                semester: 4,
-                                creditpoints:700,
-                                preference  :   "negative",
-                                lecturer: "Snape",
-                            }
-                        ]
-                    }
-                }, {parse:true});
-                /*
+                var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({id: planId});
                 plan.fetch({
-                    success: function () {*/
-                        self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
+                    // Callback: Original plan loaded
+                    success: function () {
+                        this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
                             firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1({
                                 plan: planId,
                                 information: info
                             }),
+                            // Callback: Generation wizard completed
                             onFinish: function (lastView) {
                                 this.showLoading();
                                 var proposedPlan = plan.retrieveProposedPlan();
                                 proposedPlan.setInfo(info);
-                                // TODO: remove the following line
-                                proposedPlan.attributes.parent.attributes.parent=proposedPlan.attributes.parent;
-                                /*proposedPlan.fetch({
-                                    success: function () {*/
+                                proposedPlan.fetch({
+                                    // Callback: Generated plan loaded
+                                    success: function () {
                                         this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.PlanEditPage, {
-                                            plan:  proposedPlan.attributes.parent,//TODO: change back to proposedPlan
+                                            plan:  proposedPlan,
                                             proposed: true,
                                             isAddable: false 
                                         });
                                         this.hideLoading();
-                                    /*}
-                                });*/
-                                /*
-                                *todo:
-                                *Generierungsaufruf
-                                */
+                                    }.bind(this)
+                                });
                             }.bind(this)
                         });
-                    // Do stuff here
-                        self.hideLoading();
-                    /*}
-                });*/
+                        this.hideLoading();
+                    }.bind(this)
+                });
             },
+            /**
+             * Handling login response from API
+             * @url /processLogin
+             */
             handleLogin: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] handleLogin");
                 this.showLoading();
                 var redirectData = this.processData(window.location.hash.substr(1));
-                console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] redirectData:");
-                console.info(redirectData);
                 var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
-                var self = this;
+                // If invalid state, return error notification and stop
                 if (redirectData["state"] !== edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('state')) {
                     edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
                         .add(
@@ -329,6 +157,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     this.navigate("/login", {trigger: true});
                     return;
                 }
+                // If api returned error, return error notification and stop
                 if (redirectData["error"]) {
                     edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
                         .add(
@@ -342,6 +171,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     this.navigate("/login", {trigger: true});
                     return;
                 }
+                // This actually seems to be a legit request...
                 var info = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance();
                 info.set('access_token',redirectData["access_token"]);
                 info.save();
@@ -359,7 +189,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 window.setTimeout(function () {
                     info.set('access_token', undefined);
                     info.save();
-                    self.navigate("/login", {trigger: true});
+                    this.navigate("/login", {trigger: true});
                     edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
                         .add(
                             new edu.kit.informatik.studyplan.client.model.system.Notification({
@@ -369,25 +199,44 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 type: "error"
                             })
                         );
-                },redirectData["expires_in"]*1000);
+                }.bind(this),redirectData["expires_in"]*1000);
                 console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] authentication successful");
-                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
-                    .add(
-                        new edu.kit.informatik.studyplan.client.model.system.Notification({
-                            title: LM.getMessage("loginSuccessfulTitle"),
-                            text: LM.getMessage("loginSuccessfulText"),
-                            wasShown: false,
-                            type: "success"
-                        })
-                    );
-                this.navigate("/", {trigger: true});
+                info.set('student', new edu.kit.informatik.studyplan.client.model.user.Student());
+                var student = info.get('student');
+                student.fetch({
+                    success: function () {
+                        edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                            .add(
+                                new edu.kit.informatik.studyplan.client.model.system.Notification({
+                                    title: LM.getMessage("loginSuccessfulTitle"),
+                                    text: LM.getMessage("loginSuccessfulText"),
+                                    wasShown: false,
+                                    type: "success"
+                                })
+                            );
+                        if(console.assert(false)) { //TODO wann eigentlich? / wie sieht die Antwort aus?
+                            student.set('passedModules', new edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection());
+                            this.navigate("/signup", {trigger: true});
+                        } else {
+                            this.navigate("/", {trigger: true});
+                        }
+                    }
+                });
             },
+            /**
+             * Show login page
+             * @url /login
+             */
             loginPage: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] loginPage");
                 this.showLoading();
                 this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.LoginPage, {});
                 this.hideLoading();
             },
+            /**
+             * Show profile page
+             * @url /profile
+             */
             showProfile: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] showProfile");
                 this.showLoading();
@@ -400,41 +249,51 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 // Do stuff heresignUpWizard
                 this.hideLoading();
             },
+            /**
+             * Initalize signup wizard
+             * @url /signup
+             */
             signUpWizard: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] signUpWizard");
                 this.showLoading();
                 var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
-                // TODO: beim zweiten next save!
-                var self = this;
-                /*plan.fetch({
-                    success: function () {*/
+                student.fetch({
+                    // Callback: student loaded
+                    success: function () {
                         self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
                             firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1({
                                student: student
                             }),
+                            // Callback: wizard finished
                             onFinish: function (lastView) {
-                                self.showLoading();
-                                lastView['student'].save(null,{
+                                this.showLoading();
+                                student.save(null,{
+                                    // Callback student saved
                                     success:
-                                        function(){                                            
-                                            self.navigate("/", {trigger:true});
-                                        }
+                                        function(){   
+                                            this.hideLoading();
+                                            this.navigate("/", {trigger:true});
+                                        }.bind(this)
                                 });
-                                /*
-                                *todo:
-                                *Weiterleiten auf Hauptseite
-                                */
-                            }
+                            }.bind(this)
                         });
-                // Do stuff here
-                this.hideLoading();
+                    }.bind(this)
+                });
             },
+            /**
+             * Show not found page
+             * /[non existent url]
+             */
             notFound: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] notFound");
                 this.showLoading();
                 this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.NotFoundPage, {});
                 this.hideLoading();
             },
+            /**
+             * logsout user and redirects to /login
+             * @url /logout
+             */
             logoutPage: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] logoutPage");
                 this.showLoading();
@@ -453,9 +312,15 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 this.hideLoading();
                 this.navigate("/login", {trigger: true});
             },
+            /**
+             * Show loading screen
+             */
             showLoading: function () {
                 this.view.showLoading();
             },
+            /**
+             * Hide loading screen
+             */
             hideLoading: function () {
                 this.view.hideLoading();
             },

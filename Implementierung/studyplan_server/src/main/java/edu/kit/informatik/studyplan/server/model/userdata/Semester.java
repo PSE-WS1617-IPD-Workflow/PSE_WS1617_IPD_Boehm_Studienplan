@@ -4,16 +4,19 @@
 
 package edu.kit.informatik.studyplan.server.model.userdata;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDate;
+import java.time.Period;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
-import java.time.Period;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.QueryParam;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /************************************************************/
 /**
@@ -29,12 +32,14 @@ public class Semester implements Comparable<Semester> {
 	@Enumerated(EnumType.STRING)
 	@JsonProperty("semester-type")
 	@NotNull
+	@QueryParam("semester-type")
 	private SemesterType semesterType;
 	/**
 	 * 
 	 */
 	@Column(name = "year")
 	@JsonProperty("year")
+	@DefaultValue("-1") @QueryParam("year")
 	private int year = -1;
 	
 	public Semester() {

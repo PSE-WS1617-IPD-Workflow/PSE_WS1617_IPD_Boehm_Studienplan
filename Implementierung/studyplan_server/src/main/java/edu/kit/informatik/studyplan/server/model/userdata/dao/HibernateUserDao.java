@@ -16,24 +16,6 @@ import edu.kit.informatik.studyplan.server.model.userdata.User;
  */
 class HibernateUserDao implements UserDao {
 	
-	@Deprecated
-	private Session session;
-	@Deprecated
-	private boolean independet;
-	
-	@Deprecated
-	HibernateUserDao(AuthorizationContext authorizationContext) {
-		if (authorizationContext != null) {
-			session = ((SecurityProvider) authorizationContext.getProvider()).getSession();
-		} else {
-			session = HibernateUtil.getUserDataSessionFactory().openSession();
-			independet = true;
-		}
-	}
-	
-	HibernateUserDao() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	@Override
 	public void deleteUser(User user) {
@@ -58,14 +40,6 @@ class HibernateUserDao implements UserDao {
 		User user = session.bySimpleNaturalId(User.class).load(name);
 		session.getTransaction().commit();
 		return user;
-	}
-
-	@Override
-	@Deprecated
-	public void cleanUp() {
-		if (independet) {
-			session.close();
-		}
 	}
 
 };

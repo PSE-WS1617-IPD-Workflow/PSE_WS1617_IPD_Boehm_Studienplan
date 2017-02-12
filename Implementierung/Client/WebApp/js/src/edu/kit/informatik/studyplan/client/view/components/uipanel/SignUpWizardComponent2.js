@@ -58,6 +58,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     next:
         function () {
             "use strict";
+            this.profilPage.saveModules();
             return null;
         },
     /**

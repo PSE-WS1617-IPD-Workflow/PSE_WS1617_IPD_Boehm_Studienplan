@@ -1,6 +1,3 @@
-/**
- * 
- */
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
 import java.util.LinkedList;
@@ -70,7 +67,7 @@ public class Field {
 	}
 
 	/**
-	 * @return the name
+	 * @return the field name
 	 */
 	public String getName() {
 		return name;
@@ -85,7 +82,7 @@ public class Field {
 	}
 
 	/**
-	 * @return the discipline
+	 * @return the discipline the field belongs to
 	 */
 	public Discipline getDiscipline() {
 		return discipline;
@@ -108,7 +105,7 @@ public class Field {
 
 	/**
 	 * @param minEcts
-	 *            the minEcts to set
+	 *            the minium value of credit points for the field
 	 */
 	public void setMinEcts(double minEcts) {
 		this.minEcts = minEcts;

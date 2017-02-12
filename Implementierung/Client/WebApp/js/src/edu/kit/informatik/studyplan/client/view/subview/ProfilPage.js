@@ -30,5 +30,8 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik
         } else {
             this.planHeadBar = null;
         }
+    },
+    saveModules: function () {
+        this.planHeadBar.savePlan(false);
     }
 });

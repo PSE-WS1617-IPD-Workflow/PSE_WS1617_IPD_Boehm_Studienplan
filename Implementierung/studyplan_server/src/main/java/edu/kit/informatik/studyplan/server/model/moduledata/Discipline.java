@@ -1,33 +1,40 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonView;
-import edu.kit.informatik.studyplan.server.rest.resources.StudentResource;
-import org.hibernate.annotations.Where;
-
-import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
 
-/************************************************************/
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Where;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import edu.kit.informatik.studyplan.server.rest.resources.StudentResource;
+
 /**
  * Class modeling a discipline
+ * 
  * @author NiklasUhl
  * @version 1.0
  */
 @Entity
 @Table(name = "discipline")
 public class Discipline {
-	
+
 	@Id
 	@Column(name = "discipline_id")
 	@JsonProperty("id")
 	@JsonView(StudentResource.Views.StudentClass.class)
 	private int disciplineId = -1;
-	
+
 	@Column(name = "description")
-	@JsonProperty("name") // Yes, name; see REST specs.
+	@JsonProperty("name")
 	@JsonView(StudentResource.Views.DisciplineClass.class)
 	private String description;
 
@@ -36,9 +43,9 @@ public class Discipline {
 	private List<Field> fields = new LinkedList<Field>();
 
 	@OneToMany(mappedBy = "discipline")
-    @JsonIgnore
+	@JsonIgnore
 	private List<RuleGroup> ruleGroups = new LinkedList<RuleGroup>();
-	
+
 	@OneToMany(mappedBy = "discipline")
 	@Where(clause = "is_compulsory = true")
 	@JsonIgnore
@@ -92,7 +99,7 @@ public class Discipline {
 	}
 
 	/**
-	 * @return the compulsoryModules
+	 * @return returns a list of all compulsory modules for this field
 	 */
 	public List<Module> getCompulsoryModules() {
 		return compulsoryModules;

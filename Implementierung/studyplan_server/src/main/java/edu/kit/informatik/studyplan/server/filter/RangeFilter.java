@@ -1,9 +1,9 @@
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.filter.condition.Condition;
-
 import java.util.Collections;
 import java.util.List;
+
+import edu.kit.informatik.studyplan.server.filter.condition.Condition;
 
 /**
  * Represents an interval range filter for integer attributes.
@@ -27,9 +27,8 @@ public abstract class RangeFilter extends AttributeFilter {
 	protected int max;
 
 	/**
-	 * Creates a new RangeFilter with given ranges.
-	 * The following conditions must hold:
-	 *  min <= lower, lower <= upper, upper <= max, min <= max
+	 * Creates a new RangeFilter with given ranges. The following conditions
+	 * must hold: min <= lower, lower <= upper, upper <= max, min <= max
 	 * 
 	 * @param lower
 	 *            the filter's lower bound
@@ -51,7 +50,8 @@ public abstract class RangeFilter extends AttributeFilter {
 	}
 
 	/**
-	 * @return a list of Condition objects which demands for the attribute to be inside specified range
+	 * @return a list of Condition objects which demands for the attribute to be
+	 *         inside specified range
 	 */
 	public List<Condition> getConditions() {
 		return Collections.singletonList(Condition.createBetween(getAttributeName(), lower, upper));

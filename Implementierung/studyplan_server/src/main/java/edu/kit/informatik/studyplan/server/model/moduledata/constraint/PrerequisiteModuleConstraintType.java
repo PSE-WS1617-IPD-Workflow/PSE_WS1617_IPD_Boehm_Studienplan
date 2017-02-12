@@ -9,10 +9,9 @@ import javax.persistence.Entity;
 
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 
-/************************************************************/
 /**
- * Modelliert eine Voraussetzungsabhängigkeit zwischen Modulen:<br>
- * Das erste Modul ist Voraussetzung für das zweite Modul.
+ * Models a prerequisite constraint between two modules. The second module
+ * requires the first module.
  */
 @Entity
 @DiscriminatorValue(value = "prerequisite")
@@ -32,7 +31,7 @@ public class PrerequisiteModuleConstraintType extends ModuleConstraintType {
 	}
 
 	private boolean check(ModuleEntry first, ModuleEntry second) {
-		//TODO: first isPassed always true?
+		// TODO: first isPassed always true?
 		if (second == null) {
 			return true;
 		}

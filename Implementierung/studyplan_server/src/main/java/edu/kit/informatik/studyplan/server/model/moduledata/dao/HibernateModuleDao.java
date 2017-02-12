@@ -14,15 +14,10 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
 
 /**
- * Ein konkretes ModulDao, welches die Datenbankverbindung über Hibernate
- * herstellt. Es kann nur auf Module, Kategorien und Vertiefungsfächer des im
- * Konstruktur angebenen Studiengangs zugreifen
+ * ModuleDao implementation using Hibernate
  */
 class HibernateModuleDao implements ModuleDao {
-	
-	@Deprecated
-	private Session session;
-	
+
 	@Override
 	public Module getModuleById(String id) {
 		if (id == null) {
@@ -40,7 +35,11 @@ class HibernateModuleDao implements ModuleDao {
 		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		ConditionQueryConverter converter = new ConditionQueryConverter(filter.getConditions());
 		session.beginTransaction();
-		String queryString = "from Module m where " + converter.getQueryString() + " and m.discipline = :discipline";
+		String whereClause = converter.getQueryString();
+		if (!whereClause.matches("\\s*")) {
+			whereClause += "and ";
+		}
+		String queryString = "from Module m where " + whereClause + "m.discipline = :discipline";
 		Query<Module> query = session.createQuery(queryString, Module.class);
 		converter.setParameters(query);
 		query.setParameter("discipline", discipline);
@@ -52,6 +51,9 @@ class HibernateModuleDao implements ModuleDao {
 	@Override
 	public Module getRandomModuleByFilter(Filter filter, Discipline discipline) {
 		List<Module> modulesByFilter = getModulesByFilter(filter, discipline);
+		if (modulesByFilter.size() == 0) {
+			return null;
+		}
 		int randomIndex = (int) (Math.random() * modulesByFilter.size());
 		return modulesByFilter.get(randomIndex);
 	}
@@ -68,10 +70,8 @@ class HibernateModuleDao implements ModuleDao {
 	@Override
 	public List<Category> getCategories(Discipline discipline) {
 		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
-		String queryString = "select distinct category "
-				+ "from Module as module  "
-				+ "join module.categories as category "
-				+ "where module.discipline = :discipline";
+		String queryString = "select distinct category " + "from Module as module  "
+				+ "join module.categories as category " + "where module.discipline = :discipline";
 		session.beginTransaction();
 		Query<Category> query = session.createQuery(queryString, Category.class);
 		query.setParameter("discipline", discipline);
@@ -109,16 +109,13 @@ class HibernateModuleDao implements ModuleDao {
 		session.getTransaction().commit();
 		return resultList;
 	}
-	
+
 	@Override
 	public List<Category> getSubjects(Field field) {
 		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		Query<Category> query = session.createQuery("select distinct category "
-				+ "from Field as field  "
-				+ "join field.modules as module "
-				+ "join module.categories as category "
-				+ "where field.fieldId = :id "
+		Query<Category> query = session.createQuery("select distinct category " + "from Field as field  "
+				+ "join field.modules as module " + "join module.categories as category " + "where field.fieldId = :id "
 				+ "and category.isSubject = true", Category.class);
 		List<Category> result = query.setParameter("id", field.getFieldId()).getResultList();
 		session.getTransaction().commit();
@@ -143,10 +140,4 @@ class HibernateModuleDao implements ModuleDao {
 		return field;
 	}
 
-	@Override
-	@Deprecated
-	public void cleanUp() {
-		session.close();
-	}
-
-};
+}

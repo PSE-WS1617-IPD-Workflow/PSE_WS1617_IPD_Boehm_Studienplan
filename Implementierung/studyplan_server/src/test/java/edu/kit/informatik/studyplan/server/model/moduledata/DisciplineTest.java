@@ -39,7 +39,6 @@ public class DisciplineTest {
 		ModuleDao dao = ModuleDaoFactory.getModuleDao();
 		Discipline discipline = dao.getDisciplineById(1);
 		discipline.getCompulsoryModules().stream().map(module -> module.isCompulsory()).forEach(Assert::assertTrue);
-		dao.cleanUp();
 	}
 
 }

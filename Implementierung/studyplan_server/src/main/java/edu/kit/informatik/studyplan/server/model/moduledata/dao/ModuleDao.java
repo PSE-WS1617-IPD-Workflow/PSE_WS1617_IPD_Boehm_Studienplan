@@ -4,110 +4,117 @@
 
 package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 
-import edu.kit.informatik.studyplan.server.filter.Filter;
-import edu.kit.informatik.studyplan.server.model.Dao;
-import edu.kit.informatik.studyplan.server.model.moduledata.*;
-
 import java.util.List;
+
+import edu.kit.informatik.studyplan.server.filter.Filter;
+import edu.kit.informatik.studyplan.server.model.moduledata.Category;
+import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
 
 /************************************************************/
 /**
- * DataAccessObject zum Zugriff auf die Modul-Datenbank
+ * DataAccessObject for accessing modules
  */
-public interface ModuleDao extends Dao {
+public interface ModuleDao {
 
 	/**
 	 * 
 	 * @param id
-	 *            der String-Identifier des zu suchenden Moduls
-	 * @return das Modul mit dem entsprechenden Identifier, <code>null</code>
-	 *         wenn kein Modul gefunden
+	 *            the identifier of the module
+	 * @return the module or <code>null</code> if not found
 	 */
 	Module getModuleById(String id);
 
 	/**
-	 * Sucht alle Module die den angegebenen Filterkritierien entsprechen und
-	 * gibt diese zurück
+	 * Searches for all modules matching the given filter criteria.
 	 * 
-	 * @return die Modulliste
+	 * @return the module list
+	 * 
 	 * @param filter
-	 *            der Modulfilter
+	 *            the module filter
 	 * @param discipline
-	 *            der Studiengang, in welchem gefiltert werden soll
+	 *            the discipline for filtering
 	 */
 
 	List<Module> getModulesByFilter(Filter filter, Discipline discipline);
 
 	/**
-	 * Gibt ein zufälliges Modul, welches den angebenen Filterkriterien
-	 * entspricht, zurück
+	 * Searches a random module matching the given filter criteria.
 	 * 
 	 * @param filter
-	 *            der Modulfilter
+	 *            the module filter
 	 * @param discipline
-	 *            der Studiengang, aus welchem das Modul gefischt werden soll
-	 * @return das Modul
+	 *            the discipline for filtering
+	 * @return returns a random module or <code>null</code> if no matching
+	 *         module is found
 	 */
 	Module getRandomModuleByFilter(Filter filter, Discipline discipline);
 
 	/**
 	 *
-	 * @return gibt eine Liste der verfügbaren Studiengänge zurück
+	 * @return returns a list of all available disciplines
 	 */
 	List<Discipline> getDisciplines();
 
-    /**
-     *
-     * @param disciplineId
-     *            the unique ID of a discipline
-     * @return returns the discipline with the specific ID, if not found
-     *         <code>null</code>
-     */
-    Discipline getDisciplineById(int disciplineId);
+	/**
+	 *
+	 * @param disciplineId
+	 *            the unique ID of a discipline
+	 * @return returns the discipline with the specific ID, if not found
+	 *         <code>null</code>
+	 */
+	Discipline getDisciplineById(int disciplineId);
 
-
-    /**
+	/**
 	 * @param discipline
-	 *            der die Kategorien enthaltende Studiengang
-	 * @return gibt eine Liste der zum Studiengang gehörenden verfügbaren
-	 *         Kategorien zurück
+	 *            a discipline
+	 *
+	 * @return a list of all categories belonging to that discipline
 	 */
 
 	List<Category> getCategories(Discipline discipline);
 
 	/**
+	 * 
+	 * @param id
+	 *            a unique category identifier
 	 *
-	 *  @return the discipline's category with given ID or null if not found
+	 * @return the discipline's category with given ID or <code>null</code> if
+	 *         not found
 	 *
 	 */
 	Category getCategoryById(int id);
 
-    /**
+	/**
+	 * 
 	 * @param discipline
-	 *            der die Bereiche enthaltende Studiengang
-	 * @return gibt eine Liste der zum Studiengang gehörenden verfügbaren
-	 *         Bereiche zurück
+	 *            a discipline
+	 * @return a list of all field for that discipline
 	 */
 	List<Field> getFields(Discipline discipline);
 
-    /**
-     *
-     *  @return the discipline's field with given ID or null if not found
-     *
-     */
-    Field getFieldById(int id);
-    
-    /**
-     * 
-     * @return
-     */
-    List<ModuleType> getModuleTypes();
+	/**
+	 *
+	 * @param id
+	 *            the field id
+	 * @return field with given ID or <code>null</code> if not found
+	 *
+	 */
+	Field getFieldById(int id);
 
-    
-    /**
-     * 
-     * @param field
-     * @return
-     */
-    List<Category> getSubjects(Field field);
+	/**
+	 * 
+	 * @return returns a list of all module types
+	 */
+	List<ModuleType> getModuleTypes();
+
+	/**
+	 * 
+	 * @param field
+	 *            the field
+	 * @return returns a list of all subjects for a given field
+	 */
+	List<Category> getSubjects(Field field);
 };

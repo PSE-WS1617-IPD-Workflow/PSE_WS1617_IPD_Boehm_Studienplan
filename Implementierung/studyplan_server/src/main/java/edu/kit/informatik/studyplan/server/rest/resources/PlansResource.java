@@ -110,8 +110,8 @@ public class PlansResource {
 	public Map<String, List<Plan>> getPlans() {
 		List<Plan> result = getUser().getPlans().stream()
 				.map(plan -> {
-					plan.setModuleEntries(null);
-					plan.setModulePreferences(null);
+					plan.getModuleEntries().clear();
+					plan.getPreferences().clear();
 					return plan;
 				})
 				.collect(Collectors.toList());
