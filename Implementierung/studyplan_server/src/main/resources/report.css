@@ -1,0 +1,61 @@
+body{
+    margin:0px;
+    padding:30px;
+    font-family:Arial, sans-serif;
+    color:#555555;
+}
+h1{
+    font-size:30px;
+    margin:0px;
+}
+p.totalCredits{
+    margin:5px 0px 0px 0px;
+    display:inline-block;
+}
+p.totalCredits:before{
+    content: "Gesamt: ";
+}
+p.totalCredits:after{
+    content:" ECTS";
+}
+table{
+    margin-top:30px;
+    width:100%;
+}
+table td{
+    min-height:91px;
+    padding:10px;
+    vertical-align:top;
+    border-bottom:1px solid #AAAAAA;
+}
+table tr:last-child td{
+    border-bottom:0px solid transparent;
+}
+table td:nth-child(1){
+    min-width:140px;
+    text-align:right;
+    border-right:1px solid #AAAAAA;
+}
+table td:nth-child(1) h2{
+    font-size:22px;
+    margin:0px;
+}
+table td:nth-child(1) p{
+    margin:5px 0px 0px 0px;
+}
+table td:nth-child(2) .module{
+    width:220px;
+    height:70px;
+    margin:5px;
+    border:1px solid #AAAAAA;
+    float:left;
+    padding:5px;
+}
+table td:nth-child(2) .module h2{
+    font-size:15px;
+    margin:0px;
+}
+table td:nth-child(2) .module p{
+    margin:5px 0px 0px 0px;
+    text-align:right;
+}
