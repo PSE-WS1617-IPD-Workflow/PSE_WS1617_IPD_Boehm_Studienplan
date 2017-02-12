@@ -75,7 +75,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             editPage: function (planId) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] editPage");
                 this.showLoading();
-                var plan = edu.kit.informatik.studyplan.client.model.plans.Plan({id: planId});
+                var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({id: planId});
                 plan.fetch({
                     success: function () {
                         this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.PlanEditPage, {
@@ -92,8 +92,8 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             comparisonPage: function (planId1, planId2) {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] comparisonPage");
                 this.showLoading();
-                throw new Error("Not implemented");
                 this.hideLoading();
+                throw new Error("Not implemented");
             },
             /**
              * Initalising generation wizard
@@ -103,7 +103,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] generationWizard");
                 this.showLoading();
                 var info = new edu.kit.informatik.studyplan.client.model.system.ProposalInformation();
-                var plan = edu.kit.informatik.studyplan.client.model.plans.Plan({id: planId});
+                var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({id: planId});
                 plan.fetch({
                     // Callback: Original plan loaded
                     success: function () {
@@ -131,7 +131,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                             }.bind(this)
                         });
                         this.hideLoading();
-                    }.bind(this);
+                    }.bind(this)
                 });
             },
             /**
@@ -201,23 +201,42 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                         );
                 }.bind(this),redirectData["expires_in"]*1000);
                 console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] authentication successful");
-                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
-                    .add(
-                        new edu.kit.informatik.studyplan.client.model.system.Notification({
-                            title: LM.getMessage("loginSuccessfulTitle"),
-                            text: LM.getMessage("loginSuccessfulText"),
-                            wasShown: false,
-                            type: "success"
-                        })
-                    );
-                this.navigate("/", {trigger: true});
+                info.set('student', new edu.kit.informatik.studyplan.client.model.user.Student());
+                var student = info.get('student');
+                student.fetch({
+                    success: function () {
+                        edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                            .add(
+                                new edu.kit.informatik.studyplan.client.model.system.Notification({
+                                    title: LM.getMessage("loginSuccessfulTitle"),
+                                    text: LM.getMessage("loginSuccessfulText"),
+                                    wasShown: false,
+                                    type: "success"
+                                })
+                            );
+                        if(console.assert(false)) { //TODO wann eigentlich? / wie sieht die Antwort aus?
+                            student.set('passedModules', new edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection());
+                            this.navigate("/signup", {trigger: true});
+                        } else {
+                            this.navigate("/", {trigger: true});
+                        }
+                    }
+                });
             },
+            /**
+             * Show login page
+             * @url /login
+             */
             loginPage: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] loginPage");
                 this.showLoading();
                 this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.LoginPage, {});
                 this.hideLoading();
             },
+            /**
+             * Show profile page
+             * @url /profile
+             */
             showProfile: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] showProfile");
                 this.showLoading();
@@ -230,41 +249,51 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 // Do stuff heresignUpWizard
                 this.hideLoading();
             },
+            /**
+             * Initalize signup wizard
+             * @url /signup
+             */
             signUpWizard: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] signUpWizard");
                 this.showLoading();
                 var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
-                // TODO: beim zweiten next save!
-                var self = this;
-                /*plan.fetch({
-                    success: function () {*/
+                student.fetch({
+                    // Callback: student loaded
+                    success: function () {
                         self.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
                             firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1({
                                student: student
                             }),
+                            // Callback: wizard finished
                             onFinish: function (lastView) {
-                                self.showLoading();
-                                lastView['student'].save(null,{
+                                this.showLoading();
+                                student.save(null,{
+                                    // Callback student saved
                                     success:
-                                        function(){                                            
-                                            self.navigate("/", {trigger:true});
-                                        }
+                                        function(){   
+                                            this.hideLoading();
+                                            this.navigate("/", {trigger:true});
+                                        }.bind(this)
                                 });
-                                /*
-                                *todo:
-                                *Weiterleiten auf Hauptseite
-                                */
-                            }
+                            }.bind(this)
                         });
-                // Do stuff here
-                this.hideLoading();
+                    }.bind(this)
+                });
             },
+            /**
+             * Show not found page
+             * /[non existent url]
+             */
             notFound: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] notFound");
                 this.showLoading();
                 this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.NotFoundPage, {});
                 this.hideLoading();
             },
+            /**
+             * logsout user and redirects to /login
+             * @url /logout
+             */
             logoutPage: function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] logoutPage");
                 this.showLoading();
@@ -283,9 +312,15 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 this.hideLoading();
                 this.navigate("/login", {trigger: true});
             },
+            /**
+             * Show loading screen
+             */
             showLoading: function () {
                 this.view.showLoading();
             },
+            /**
+             * Hide loading screen
+             */
             hideLoading: function () {
                 this.view.hideLoading();
             },

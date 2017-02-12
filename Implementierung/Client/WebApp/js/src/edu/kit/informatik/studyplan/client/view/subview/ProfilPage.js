@@ -1,6 +1,7 @@
  goog.provide("edu.kit.informatik.studyplan.client.view.subview.ProfilPage");
 /**
  * @constructor
+ * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.view.subview.PlanEditPage}
  */
 
@@ -29,5 +30,8 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik
         } else {
             this.planHeadBar = null;
         }
+    },
+    saveModules: function () {
+        this.planHeadBar.savePlan(false);
     }
 });
