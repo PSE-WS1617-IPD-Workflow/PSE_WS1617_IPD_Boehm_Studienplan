@@ -60,6 +60,9 @@ public class RangeFilterDescriptor extends FilterDescriptor {
         try {
             int lower = Integer.parseInt(minString);
             int upper = Integer.parseInt(maxString);
+            if (!(min <= lower && upper <= max && lower <= upper && min <= max)) {
+                throw new BadRequestException();
+            }
             return constructor.apply(lower, upper);
         } catch (NumberFormatException ex) {
             throw new BadRequestException();

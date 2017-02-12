@@ -63,6 +63,9 @@ public class ListFilterDescriptor<T> extends FilterDescriptor {
         }
         try {
             int selectionNumber = Integer.parseInt(selectionString);
+            if (selectionNumber < 0 || selectionNumber >= itemObjectsSupplier.get().size()) {
+                throw new BadRequestException();
+            }
             return constructor.apply(itemObjectsSupplier.get().get(selectionNumber));
         } catch (NumberFormatException ex) {
             throw new BadRequestException();
