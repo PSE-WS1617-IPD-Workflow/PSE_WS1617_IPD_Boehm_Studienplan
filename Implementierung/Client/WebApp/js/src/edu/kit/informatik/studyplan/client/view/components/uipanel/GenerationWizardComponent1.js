@@ -52,6 +52,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
     next:
         function () {
             "use strict";
+            this.onChange();
             var temp = new edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent2({
                 planId: this.planId,
                 information: this.information
