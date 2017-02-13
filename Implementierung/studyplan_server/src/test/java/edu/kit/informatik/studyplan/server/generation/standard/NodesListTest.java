@@ -15,6 +15,7 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 public class NodesListTest {
+	SimpleGenerator generator;
 	NodesList nodes;
 	Plan plan;
 	Module gbi;
@@ -28,7 +29,7 @@ public class NodesListTest {
 	@Before
 	public void setUp() throws Exception {
 		// creating modules
-		
+		generator = new SimpleGenerator();
 		gbi= new Module();
 		gbi.setIdentifier("GBI");
 		gbi.setCycleType(CycleType.BOTH);
@@ -73,14 +74,14 @@ public class NodesListTest {
 
 		//adding nodes to list
 		plan = mock(Plan.class);
-		nodes = new NodesList(plan);
-		Node pseNode = new NodeWithOutput(pse);
-		Node tseNode = new NodeWithOutput(tse);
-		Node gbiNode = new NodeWithOutput(gbi);
-		Node progNode = new NodeWithOutput(prog);
-		Node swtNode = new NodeWithOutput(swt);
-		Node la1Node = new NodeWithOutput(la1);
-		Node la2Node = new NodeWithOutput(la2);
+		nodes = new NodesList(plan, generator);
+		Node pseNode = new NodeWithOutput(pse, generator);
+		Node tseNode = new NodeWithOutput(tse, generator);
+		Node gbiNode = new NodeWithOutput(gbi, generator);
+		Node progNode = new NodeWithOutput(prog, generator);
+		Node swtNode = new NodeWithOutput(swt, generator);
+		Node la1Node = new NodeWithOutput(la1, generator);
+		Node la2Node = new NodeWithOutput(la2, generator);
 		
 		progNode.addChild(gbiNode);
 		gbiNode.addChild(swtNode);
