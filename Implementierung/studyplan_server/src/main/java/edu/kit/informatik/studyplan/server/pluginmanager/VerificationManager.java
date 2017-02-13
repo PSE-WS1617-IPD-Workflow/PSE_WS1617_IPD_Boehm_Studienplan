@@ -15,7 +15,7 @@ public class VerificationManager {
 	 * Erstellt einen VerificationManager.
 	 */
 	public VerificationManager() {
-
+		this.verifier = new StandardVerifier();
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class VerificationManager {
 	 *         Verifizierung zurückgegeben.
 	 */
 	public VerificationResult verify(Plan plan) {
-		return new StandardVerifier().verify(plan);
+		return verifier.verify(plan);
 
 	}
 }

@@ -18,7 +18,8 @@ public class AverageObjectiveFunction extends ObjectiveFunction {
 	 */
 	@Override
 	public double evaluate(final Plan plan) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getSubFunctions().stream()
+				.mapToDouble(function -> function.evaluate(plan))
+				.average().orElse(0);
 	}
 };
