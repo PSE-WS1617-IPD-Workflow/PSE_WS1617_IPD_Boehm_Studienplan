@@ -229,7 +229,7 @@ public class Module {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Module) {
+		if (!(obj instanceof Module)) {
 			return false;
 		} else {
 			return ((Module) obj).getIdentifier().equals(this.getIdentifier());
