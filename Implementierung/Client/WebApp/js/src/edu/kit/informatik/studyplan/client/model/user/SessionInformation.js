@@ -54,6 +54,7 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
         toJSON: function () {
             return {
                 access_token: this.get('access_token'),
+                expires_in: this.get('expires_in'),
                 state: this.get('state')
             }
         }

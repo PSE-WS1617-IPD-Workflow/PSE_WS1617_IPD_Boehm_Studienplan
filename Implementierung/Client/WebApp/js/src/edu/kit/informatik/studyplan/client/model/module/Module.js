@@ -44,6 +44,8 @@ edu.kit.informatik.studyplan.client.model.module.Module = edu.kit.informatik.stu
             module : this,
             preference : response["module"]["preference"]
         }
+        console.log("[edu.kit.informatik.studyplan.client.model.module.Module] preference")
+        console.log(preferenceInfo);
         result["preference"]= new edu.kit.informatik.studyplan.client.model.module.Preference(preferenceInfo);
         
         return result;
