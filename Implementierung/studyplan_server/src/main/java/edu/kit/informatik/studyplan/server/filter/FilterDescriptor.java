@@ -4,10 +4,11 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.core.MultivaluedMap;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.core.MultivaluedMap;
 
 /**
  * Descriptions of the published filter classes for the client. Offers facility to construct filters from GET request
@@ -37,6 +38,7 @@ public abstract class FilterDescriptor {
 		Map<String, Object> result = new HashMap<>(5);
 		result.put("id", getId());
 		result.put("name", getFilterName());
+		result.put("uri-name", getFilterUriIdentifier());
 		result.put("default-value", getDefaultJsonValue());
 		result.put("tooltip", getTooltip());
 		result.put("specification", getJsonSpecification());

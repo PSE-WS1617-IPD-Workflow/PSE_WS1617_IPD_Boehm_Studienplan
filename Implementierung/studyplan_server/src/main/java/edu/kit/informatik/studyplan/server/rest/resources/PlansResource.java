@@ -4,7 +4,6 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -45,12 +44,12 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-import edu.kit.informatik.studyplan.server.model.userdata.PlanWithViolations;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
+import edu.kit.informatik.studyplan.server.model.userdata.dto.PlanDto;
 import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
 import edu.kit.informatik.studyplan.server.pluginmanager.VerificationManager;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
@@ -85,8 +84,7 @@ public class PlansResource {
 		planInput.getPlan().setUser(getUser());
 		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getName() == null
 				|| planInput.getPlan().getVerificationState() != null
-				|| !planInput.getPlan().getModuleEntries().isEmpty() || !planInput.getPlan().getPreferences().isEmpty()
-				|| planInput.getPlan().getCreditPoints() != 0) {
+				|| !planInput.getPlan().getModuleEntries().isEmpty() || !planInput.getPlan().getPreferences().isEmpty()) {
 			throw new BadRequestException();
 		}
 		if (getUser().getPlans().stream()
@@ -95,6 +93,7 @@ public class PlansResource {
 		}
 		return Utils.withPlanDao(dao -> {
 			Plan plan = planInput.getPlan();
+			plan.getCreditPoints();
 			plan.setVerificationState(VerificationState.NOT_VERIFIED);
 			String newId = dao.updatePlan(plan);
 			if (newId == null) {
@@ -183,14 +182,13 @@ public class PlansResource {
 	@Path("/{plan-id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
-	public PlanInOut getPlan(@PathParam("plan-id") String planId) {
+	public Map<String, PlanDto> getPlan(@PathParam("plan-id") String planId) {
 		return Utils.withPlanDao(dao -> {
 			Plan result = dao.getPlanById(planId);
 			if (result == null || !getUser().equals(result.getUser())) {
 				throw new NotFoundException();
 			} else {
-				result.getCreditPoints();
-				return new PlanInOut(result);
+				return SimpleJsonResponse.build("plan", new PlanDto(result));
 			}
 		});
 	}
@@ -455,7 +453,7 @@ public class PlansResource {
 				if (preferences.stream().anyMatch(preference -> preference.getModule().equals(module))) {
 					throw new UnprocessableEntityException();
 				}
-				preferences.add(new ModulePreference(module, moduleInput.getModule().getPreference()));
+				preferences.add(new ModulePreference(module, moduleInput.getModule().getPreference(), plan));
 			}
 			planDao.updatePlan(plan);
 			return moduleInput;
@@ -478,7 +476,7 @@ public class PlansResource {
 	@Path("/{plan}/verification")
 	@Produces(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
-	public PlanInOut verifyPlan(@PathParam("plan") String planId) {
+	public Map<String, VerificationResult> verifyPlan(@PathParam("plan") String planId) {
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
 			if (plan == null || !getUser().equals(plan.getUser())) {
@@ -486,21 +484,9 @@ public class PlansResource {
 			}
 			VerificationManager manager = new VerificationManager();
 			VerificationResult result = manager.verify(plan);
-			PlanWithViolations planOut = new PlanWithViolations();
-			planOut.setIdentifier(planId);
 			plan.setVerificationState(result.isCorrect() ? VerificationState.VALID : VerificationState.INVALID);
-			planOut.setVerificationState(plan.getVerificationState());
-			planOut.setViolations(new ArrayList<>(result.getViolations()));
-			planOut.setFieldViolations(new ArrayList<>(result.getFieldViolations()));
-			planOut.setRuleGroupViolations(new ArrayList<>(result.getRuleGroupViolations()));
-			planOut.setCompulsoryViolations(result.getCompulsoryViolations().stream().map(module -> {
-				JsonModule jsonModule = new JsonModule();
-				jsonModule.setId(module.getIdentifier());
-				jsonModule.setName(module.getName());
-				return jsonModule;
-			}).collect(Collectors.toList()));
 			dao.updatePlan(plan);
-			return new PlanInOut(planOut);
+			return SimpleJsonResponse.build("plan", result);
 		});
 	}
 
@@ -661,6 +647,8 @@ public class PlansResource {
          */
 		public PlanInOut(Plan plan) {
 			this.plan = plan;
+			plan.getPreferences();
+			plan.getCreditPoints();
 		}
 
 		/**
