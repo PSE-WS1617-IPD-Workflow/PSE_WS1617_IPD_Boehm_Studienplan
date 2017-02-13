@@ -25,7 +25,7 @@ edu.kit.informatik.studyplan.client.model.user.Student = edu.kit.informatik.stud
             if(response["discipline"]) {
                 response["discipline"] = response["discipline"]["id"];
             }
-            if(response["passedModules"]){
+            if(response["passed-modules"]){
                 response["passedModules"] = new edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection({modules: response["passed-modules"]}, {parse: true});
             } else {
                 response["passedModules"] = new edu.kit.informatik.studyplan.client.model.user.PassedModuleCollection({modules: []}, {parse: true});

@@ -51,6 +51,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
         var self = this;
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         this.plan.fetch({
+            // TODO: zurück stellen, wenn nicht erfolgreich
             success: function () {
                 var attributes = _.clone(self.plan.attributes);
                 delete attributes["id"];

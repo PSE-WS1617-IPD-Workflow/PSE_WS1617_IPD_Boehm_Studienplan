@@ -2,23 +2,32 @@ goog.provide("edu.kit.informatik.studyplan.client.view.subview.PlanEditPage");
 /**
  * @constructor
  * @extends {Backbone.View}
+ * 
  */
 
 edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.PlanEditPage.prototype} */{
+    //filter and module view
     moduleFinder: null,
+    //currentPlan
     planView: null,
+    //information, where you are.
     planHeadBar: null,
+    //
     tagName: "div",
     /**
      * @type {edu.kit.informatik.studyplan.client.model.plans.Plan}
      */
     model: null,
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/subview/planEditPage.html"),
+    //is it a generated plan?
     proposed: false,
     initialize: function (options) {
         this.proposed = (typeof options.proposed) ? options.proposed : this.proposed;
         this.model = options.plan;
         if(!this.proposed){
+            console.log("[edu.kit.informatik.studyplan.client.view.subview.PlanEditPage] planId")
+            console.log(this.model.get('id'));
+            //moduleFinder should allow to drop some modules and put them in the plan, should allow to set preferences, is just a sidebar, because theres the plan too, has a planId.
             this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
                 isSidebar:true,
                 isPreferencable:true,
@@ -27,6 +36,7 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
                 planId: this.model.get('id')
             })
         } else {
+            //you cant change a generated plan. First you have to decide to save it (or delete).
             this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uipanel.ProposalSidebar({
                 plan: this.model
             });
@@ -34,6 +44,7 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
         this.planView = new edu.kit.informatik.studyplan.client.view.components.uielement.Plan({
             plan: this.model
         });
+        //adding a HeadBar
         if(!this.proposed){
             this.planHeadBar = new edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar({
                 plan: this.model
@@ -44,6 +55,9 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
             });
         }
     },
+    /**
+    *renders all named parts: headbar, sidebar(moduleFinder), plan 
+    */
     render: function () {
         this.$el.html(this.template({
             plan: this.model
@@ -61,12 +75,13 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
     },
     /**
     *@param{edu.kit.informatik.studyplan.client.model.module.Module} module
+    * load ModuleDetails and show them at the sidebar.  
     */
     showModuleDetails: function (module) {
         "use strict";
     },
     /**
-    *
+    *hide ModuleDetails and shows last Sidebar.
     */
     hideModuleDetails: function () {
         "use strict";

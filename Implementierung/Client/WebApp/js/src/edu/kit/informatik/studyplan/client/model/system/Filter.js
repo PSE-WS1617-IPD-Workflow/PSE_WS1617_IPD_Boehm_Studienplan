@@ -14,6 +14,9 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
     parse : function (response, options) {
         "use strict";
         response["curValue"] = response["default-value"];
+        if(response["specification"]["type"]==="list"){
+            response["curValue"] = "none";
+        }
         return response;
     },
     filterTypeHandler : {
@@ -23,8 +26,8 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
         "range" : function () {
             "use strict";
             var result = {};
-            result[this.get('name') + "-min"] = this.get('curValue').min;
-            result[this.get('name') + "-max"] = this.get('curValue').max;
+            result[this.get('uri-name') + "-min"] = this.get('curValue').min;
+            result[this.get('uri-name') + "-max"] = this.get('curValue').max;
             return result;
         },
         /**
@@ -33,7 +36,7 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
         "list" : function () {
             "use strict";
             var result = {};
-            result[this.get('name')] = this.get('curValue');
+            result[this.get('uri-name')] = this.get('curValue');
             return result;
         },
         /**
@@ -42,12 +45,16 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
         "contains" : function () {
             "use strict";
             var result = {};
-            result[this.get('name')] = this.get('curValue');
+            result[this.get('uri-name')] = this.get('curValue');
             return result;
         }
     },
     getParams : function () {
         "use strict";
-        return this.filterTypeHandler[this.get('specification').type].apply(this);
+        if(this.get('curValue')!="none"){
+            return this.filterTypeHandler[this.get('specification').type].apply(this);
+        } else {
+            return null;
+        }
     }
 });

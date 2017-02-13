@@ -4,9 +4,14 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.ProposedPlan");
  * @param {Object=} attributes
  * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.model.plans.PlanCollection}
+ * It's the result of generation.
  */
 
 edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informatik.studyplan.client.model.plans.Plan.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.ProposedPlan.prototype}*/{
+    
+    /**
+    *
+    */
     url: function () {
         if (!this.proposalInfo) {
             throw new Error("[edu.kit.informatik.studyplan.client.model.plans.ProposedPlan] no proposal information");
@@ -19,10 +24,14 @@ edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informati
     proposalInfo : null,
     /**
      * @param {edu.kit.informatik.studyplan.client.model.system.ProposalInformation} info
+     * set proposedInformationn (used in Generationwizzard, to collect the information for generating a plan.)
      */
     setInfo : function (info) {
         this.proposalInfo = info;
     },
+    /**
+    *
+    */
     fetch : function (options) {
         if(typeof options === "undefined"){
             options = {};
@@ -49,6 +58,7 @@ edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informati
     getPlan : function (options) {
         "use strict";
         if(options.newPlan){
+            //new plan mighed be initialized and saved.
             var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({name: options["planName"]});
             plan.set('id',undefined);
             var self = this;
@@ -64,6 +74,7 @@ edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informati
             
             return plan;
         } else {
+            //
             this.get('parent').attributes=_.extend(this.get('parent').attributes,this.attributes);
             options["patch"]=false;
             this.get('parent').save(null, options);
