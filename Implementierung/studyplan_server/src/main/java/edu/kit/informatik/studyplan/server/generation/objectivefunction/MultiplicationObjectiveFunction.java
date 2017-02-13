@@ -16,8 +16,12 @@ public class MultiplicationObjectiveFunction extends ObjectiveFunction {
 	 */
 	@Override
 	public double evaluate(final Plan plan) {
-		// TODO Auto-generated method stub
-		return 0;
+		double[] values =  this.getSubFunctions().stream().mapToDouble(function -> function.evaluate(plan)).toArray();
+		double product = 1;
+		for(int i = 0; i<values.length; i++){
+			product *= values[i];
+		}
+		return product;
 	}
 
 }

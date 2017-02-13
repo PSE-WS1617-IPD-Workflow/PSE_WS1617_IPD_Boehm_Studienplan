@@ -2,6 +2,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.subview.MainPage");
 /**
  * @constructor
  * @extends {Backbone.View}
+ * side you always see. Includes head, logo, 
  */
 
 edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.MainPage.prototype} */{

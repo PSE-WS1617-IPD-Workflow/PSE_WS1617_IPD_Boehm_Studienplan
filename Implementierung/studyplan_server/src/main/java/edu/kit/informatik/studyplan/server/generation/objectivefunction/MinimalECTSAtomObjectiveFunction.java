@@ -14,32 +14,20 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  * die Bestnote erhalten.
  */
 public class MinimalECTSAtomObjectiveFunction extends AtomObjectiveFunction {
-	private final int threshold;
-
-	/**
-	 * Setzt den Schwellwert auf 0, der Studienplan mit den wenigsten ECTS wird
-	 * somit immer am besten bewertet.
-	 */
-	public MinimalECTSAtomObjectiveFunction() {
-		threshold = 0;
-	}
-
-	/**
-	 * @param minimalECTS
-	 *            ist die Menge an ECTS ab der diese Funktion den Bestwert
-	 *            zurückgibt - niedrieger bringt also in diesem Fall dann
-	 *            nichts.
-	 */
-	public MinimalECTSAtomObjectiveFunction(final int threshold) {
-		this.threshold = threshold;
-	}
-
+	
+	private static double quotient = 1.0 / 1.03;
+	
 	/*
 	 * {@inheritDoc}
 	 */
 	@Override
 	public double evaluate(final Plan plan) {
-		// TODO Auto-generated method stub
-		return 0;
+		int threshold = (int) plan.getUser().getDiscipline().getFields()
+				.stream().mapToDouble(field -> field.getMinEcts()).sum();
+		int exponent = (int) plan.getCreditPoints() - threshold;
+		if (exponent < 0) {
+			exponent = 0;
+		}
+		return Math.pow(quotient, exponent);
 	}
 };

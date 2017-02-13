@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,6 +26,7 @@ import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory
 public class ModulePreference {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "preference_id")
 	private int preferenceId;
 
@@ -59,8 +62,9 @@ public class ModulePreference {
 	 * @param preference
 	 *            the preference to assign
 	 */
-	public ModulePreference(Module module, PreferenceType preference) {
-		this.module = module;
+	public ModulePreference(Module module, PreferenceType preference, Plan plan) {
+		this.plan = plan;
+		setModule(module);
 		this.type = preference;
 	}
 
@@ -100,5 +104,19 @@ public class ModulePreference {
 	 *            the preference type to set
 	 */
 	public void setPreference(PreferenceType preferenceType) {
+	}
+
+	/**
+	 * @return the plan
+	 */
+	public Plan getPlan() {
+		return plan;
+	}
+
+	/**
+	 * @param plan the plan to set
+	 */
+	public void setPlan(Plan plan) {
+		this.plan = plan;
 	}
 };

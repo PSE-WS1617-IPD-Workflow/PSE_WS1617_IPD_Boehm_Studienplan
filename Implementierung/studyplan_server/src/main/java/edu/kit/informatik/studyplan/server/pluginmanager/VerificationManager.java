@@ -3,6 +3,7 @@ package edu.kit.informatik.studyplan.server.pluginmanager;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 import edu.kit.informatik.studyplan.server.verification.Verifier;
+import edu.kit.informatik.studyplan.server.verification.standard.StandardVerifier;
 
 /**
  * Verwaltet den Zugriff auf das Verifizierungsplug-in, das die
@@ -14,7 +15,7 @@ public class VerificationManager {
 	 * Erstellt einen VerificationManager.
 	 */
 	public VerificationManager() {
-
+		this.verifier = new StandardVerifier();
 	}
 
 	/**
@@ -43,7 +44,7 @@ public class VerificationManager {
 	 *         Verifizierung zurückgegeben.
 	 */
 	public VerificationResult verify(Plan plan) {
-		return null;
+		return verifier.verify(plan);
 
 	}
 }

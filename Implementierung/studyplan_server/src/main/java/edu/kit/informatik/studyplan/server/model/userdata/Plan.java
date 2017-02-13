@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -63,7 +64,7 @@ public class Plan {
 	@JsonIgnore
 	private User user;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name = "plan_entries", 
 		joinColumns = @JoinColumn(name = "plan_identifier"), 
 		inverseJoinColumns = @JoinColumn(name = "entry_id"))
@@ -236,7 +237,7 @@ public class Plan {
 			ModuleEntry entry = new ModuleEntry(module, jsonModule.getSemester());
 			moduleEntries.add(entry);
 			if (jsonModule.getPreference() != null) {
-				ModulePreference preference = new ModulePreference(module, jsonModule.getPreference());
+				ModulePreference preference = new ModulePreference(module, jsonModule.getPreference(), this);
 				preferences.add(preference);
 			}
 		}

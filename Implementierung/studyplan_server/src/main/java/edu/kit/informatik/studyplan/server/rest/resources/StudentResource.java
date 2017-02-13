@@ -81,7 +81,7 @@ public class StudentResource {
 							if (jsonModule.getSemester() == null) {
 								throw new BadRequestException();
 							}
-							if (jsonModule.getSemester() >= thisStudent.getStudyStart().getDistanceToCurrentSemester()) {
+							if (jsonModule.getSemester() > thisStudent.getStudyStart().getDistanceToCurrentSemester()) {
 								throw new BadRequestException();
 							}
 							return entry;
@@ -103,7 +103,7 @@ public class StudentResource {
 				});
 			}
 			userDao.updateUser(thisStudent);
-			return studentInput; //hasn't changed
+			return getInformation();
 		})));
 	}
 

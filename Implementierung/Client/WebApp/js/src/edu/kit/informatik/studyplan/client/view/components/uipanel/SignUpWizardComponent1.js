@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.SignUp
  * @constructor
  * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent}
+ * saves beginning date and discipline.
  */
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1 = edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1.prototype}*/{

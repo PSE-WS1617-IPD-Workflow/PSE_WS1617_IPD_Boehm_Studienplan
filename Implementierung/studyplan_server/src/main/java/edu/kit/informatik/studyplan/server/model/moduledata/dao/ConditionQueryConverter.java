@@ -67,10 +67,6 @@ public class ConditionQueryConverter {
 			case BETWEEN:
 				Object value1 = condition.getRhsValues()[0];
 				Object value2 = condition.getRhsValues()[1];
-				if (condition.getLhsName().equals(ModuleAttributeNames.CREDIT_POINTS)) {
-					value1 = ((Integer) value1).doubleValue();
-					value2 = ((Integer) value2).doubleValue();
-				}
 				conditionBuilder.append("m." + condition.getLhsName());
 				conditionBuilder.append(" between ");
 				conditionBuilder.append(":" + paramPrefix + parameters.size() + " and ");
@@ -85,7 +81,7 @@ public class ConditionQueryConverter {
 				parameters.add("%" + condition.getRhsValues()[0] + "%");
 				break;
 			case EQUALS:
-				conditionBuilder.append("m. " + condition.getLhsName());
+				conditionBuilder.append("m." + condition.getLhsName());
 				conditionBuilder.append(" = ");
 				conditionBuilder.append(":" + paramPrefix + parameters.size());
 				parameters.add(condition.getRhsValues()[0]);

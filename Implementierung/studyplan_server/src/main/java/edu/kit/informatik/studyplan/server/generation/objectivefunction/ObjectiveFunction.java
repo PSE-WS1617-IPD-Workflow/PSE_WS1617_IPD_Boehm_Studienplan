@@ -4,9 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
-import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-
 import java.util.Collection;
+import java.util.LinkedList;
+
+import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
@@ -17,7 +18,7 @@ public abstract class ObjectiveFunction implements PartialObjectiveFunction {
 	private Collection<PartialObjectiveFunction> subFunctions;
 
 	public ObjectiveFunction() {
-		// TODO Auto-generated constructor stub
+		this.subFunctions = new LinkedList();
 	}
 
 	/*
@@ -44,7 +45,7 @@ public abstract class ObjectiveFunction implements PartialObjectiveFunction {
 	 *            die hinzuzufügende Teilzielfunktion
 	 */
 	public void add(final PartialObjectiveFunction objective) {
-		// TODO Auto-generated method stub
+		subFunctions.add(objective);
 	}
 
 	/**
@@ -54,8 +55,7 @@ public abstract class ObjectiveFunction implements PartialObjectiveFunction {
 	 *            die zu entfernende Zielfunktion
 	 * @return die entfernte Zielfunktion
 	 */
-	public PartialObjectiveFunction remove(final PartialObjectiveFunction objective) {
-		// TODO Auto-generated method stub
-		return null;
+	public void remove(final PartialObjectiveFunction objective) {
+		subFunctions.remove(objective);
 	}
 };

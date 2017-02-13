@@ -1,16 +1,17 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.ws.rs.BadRequestException;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 import jersey.repackaged.com.google.common.collect.ImmutableList;
-
-import javax.ws.rs.BadRequestException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Provides published filter descriptors.
@@ -82,8 +83,8 @@ public final class FilterDescriptorProvider {
     public FilterDescriptor CYCLE_TYPE() {
         return new ListFilterDescriptor<>(2, "cycletype", "Turnus",
                 "Ob die Module im WS, SS oder beidem stattfinden",
-                () -> Arrays.asList(CycleType.BOTH, CycleType.WINTER_TERM, CycleType.SUMMER_TERM),
-                items -> Arrays.asList("WS/SS", "WS", "SS"),
+                () -> Arrays.asList(CycleType.WINTER_TERM, CycleType.SUMMER_TERM),
+                items -> Arrays.asList("WS", "SS"),
                 CycleTypeFilter::new);
     };
 

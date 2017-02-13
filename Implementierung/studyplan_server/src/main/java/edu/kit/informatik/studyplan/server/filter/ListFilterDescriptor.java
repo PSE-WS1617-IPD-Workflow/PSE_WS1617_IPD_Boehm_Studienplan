@@ -11,6 +11,8 @@ import java.util.stream.IntStream;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.core.MultivaluedMap;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * FilterDescriptor for ListFilters.
  * @param <T> the type of the ListFilter's options
@@ -77,28 +79,30 @@ public class ListFilterDescriptor<T> extends FilterDescriptor {
      * Represents a JSON list item by id and name.
      */
     private static class ListItem {
+    	@JsonProperty
         private int id;
-        private String name;
+    	@JsonProperty
+        private String text;
 
         ListItem(int id, String name) {
             this.id = id;
-            this.name = name;
+            this.text = name;
         }
 
-        int getId() {
+        public int getId() {
             return id;
         }
 
-        void setId(int id) {
+        public void setId(int id) {
             this.id = id;
         }
 
-        String getName() {
-            return name;
+        public String getText() {
+            return text;
         }
 
-        void setName(String name) {
-            this.name = name;
+        public void setText(String text) {
+            this.text = text;
         }
     }
 }
