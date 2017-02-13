@@ -20,7 +20,7 @@ public class CategoryTest {
 	@Test
 	public void testGettersAndSetters() {
 		Category category = new Category();
-		assertEquals(0, category.getCategoryId());
+		assertEquals(-1, category.getCategoryId());
 		assertEquals(null, category.getName());
 		assertTrue(!category.isSubject());
 		category.setCategoryId(42);

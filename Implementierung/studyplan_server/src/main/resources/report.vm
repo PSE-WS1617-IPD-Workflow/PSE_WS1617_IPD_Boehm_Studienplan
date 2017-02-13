@@ -1,0 +1,32 @@
+<!DOCTPYE html>
+<html>
+	<head>
+		<title>Report</title>
+	</head>
+	<body>
+		<h1>$plan.getName()</h1>
+		<p class="totalCredits">$plan.formatCreditPoints($plan.getTotalCredits())</p>
+		<table>
+			<tbody>
+				#foreach ($semester in $plan.getSemesters())
+				<tr>
+					<td>
+						<div class = "semester">
+						<h2>Semester $semester.getNumber()</h2>
+						<p>$plan.formatCreditPoints($semester.getTotalCredits()) ECTS</p>
+						</div>
+					</td>
+					<td>
+						#foreach ($module in $semester.getModules())
+						<div class = "module">
+							<h2>$module.getName()</h2>
+							<p>$plan.formatCreditPoints($module.getCreditPoints()) ECTS</p>
+						</div>
+						#end
+					</td>
+				</tr>
+				#end
+			</tbody>
+		</table>
+	</body>
+</html>
