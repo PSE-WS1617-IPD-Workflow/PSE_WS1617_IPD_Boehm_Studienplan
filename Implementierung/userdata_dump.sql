@@ -37,18 +37,8 @@ CREATE TABLE `authorization_context` (
   KEY `authorization_context_rest_client_client_id_fk` (`client_id`),
   CONSTRAINT `authorization_context_rest_client_client_id_fk` FOREIGN KEY (`client_id`) REFERENCES `rest_client` (`client_id`),
   CONSTRAINT `authorization_context_user_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `authorization_context`
---
-
-LOCK TABLES `authorization_context` WRITE;
-/*!40000 ALTER TABLE `authorization_context` DISABLE KEYS */;
-INSERT INTO `authorization_context` VALUES (1,'admin123','2040-01-17 12:04:22','STUDENT',NULL,1,1);
-/*!40000 ALTER TABLE `authorization_context` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `client_scope_assignment`
@@ -69,16 +59,6 @@ CREATE TABLE `client_scope_assignment` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `client_scope_assignment`
---
-
-LOCK TABLES `client_scope_assignment` WRITE;
-/*!40000 ALTER TABLE `client_scope_assignment` DISABLE KEYS */;
-INSERT INTO `client_scope_assignment` VALUES (1,'STUDENT',1);
-/*!40000 ALTER TABLE `client_scope_assignment` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `module_entry`
 --
 
@@ -91,17 +71,8 @@ CREATE TABLE `module_entry` (
   `module_id` varchar(100) NOT NULL,
   PRIMARY KEY (`entry_id`),
   UNIQUE KEY `module_entry_entry_id_uindex` (`entry_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `module_entry`
---
-
-LOCK TABLES `module_entry` WRITE;
-/*!40000 ALTER TABLE `module_entry` DISABLE KEYS */;
-/*!40000 ALTER TABLE `module_entry` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `module_preference`
@@ -113,23 +84,14 @@ DROP TABLE IF EXISTS `module_preference`;
 CREATE TABLE `module_preference` (
   `preference_id` int(11) NOT NULL AUTO_INCREMENT,
   `preference_type` enum('POSITIVE','NEGATIVE') NOT NULL,
-  `module_id` int(11) NOT NULL,
-  `plan_id` int(11) NOT NULL,
+  `module_id` varchar(100) NOT NULL,
+  `plan_identifier` varchar(100) NOT NULL,
   PRIMARY KEY (`preference_id`),
   UNIQUE KEY `module_preference_preference_id_uindex` (`preference_id`),
-  KEY `module_preference_plan_plan_id_fk` (`plan_id`),
-  CONSTRAINT `module_preference_plan_plan_id_fk` FOREIGN KEY (`plan_id`) REFERENCES `plan` (`plan_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `module_preference_plan_identifier_fk` (`plan_identifier`),
+  CONSTRAINT `module_preference_plan_identifier_fk` FOREIGN KEY (`plan_identifier`) REFERENCES `plan` (`identifier`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `module_preference`
---
-
-LOCK TABLES `module_preference` WRITE;
-/*!40000 ALTER TABLE `module_preference` DISABLE KEYS */;
-/*!40000 ALTER TABLE `module_preference` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `passed_modules`
@@ -149,15 +111,6 @@ CREATE TABLE `passed_modules` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `passed_modules`
---
-
-LOCK TABLES `passed_modules` WRITE;
-/*!40000 ALTER TABLE `passed_modules` DISABLE KEYS */;
-/*!40000 ALTER TABLE `passed_modules` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `plan`
 --
 
@@ -175,17 +128,8 @@ CREATE TABLE `plan` (
   UNIQUE KEY `plan_identifier_uindex` (`identifier`),
   KEY `plan_user_user_id_fk` (`user_id`),
   CONSTRAINT `plan_user_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `plan`
---
-
-LOCK TABLES `plan` WRITE;
-/*!40000 ALTER TABLE `plan` DISABLE KEYS */;
-/*!40000 ALTER TABLE `plan` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `plan_entries`
@@ -195,23 +139,14 @@ DROP TABLE IF EXISTS `plan_entries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `plan_entries` (
-  `plan_id` int(11) NOT NULL,
+  `plan_identifier` varchar(100) NOT NULL,
   `entry_id` int(11) NOT NULL,
-  PRIMARY KEY (`plan_id`,`entry_id`),
+  PRIMARY KEY (`plan_identifier`,`entry_id`),
   KEY `plan_entries_module_entry_entry_id_fk` (`entry_id`),
-  CONSTRAINT `plan_entries_module_entry_entry_id_fk` FOREIGN KEY (`entry_id`) REFERENCES `module_entry` (`entry_id`),
-  CONSTRAINT `plan_entries_plan_plan_id_fk` FOREIGN KEY (`plan_id`) REFERENCES `plan` (`plan_id`)
+  CONSTRAINT `plan_entries_module_entry_entry_id_fk` FOREIGN KEY (`entry_id`) REFERENCES `module_entry` (`entry_id`) ON DELETE CASCADE,
+  CONSTRAINT `plan_entries_plan_identifier_fk` FOREIGN KEY (`plan_identifier`) REFERENCES `plan` (`identifier`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `plan_entries`
---
-
-LOCK TABLES `plan_entries` WRITE;
-/*!40000 ALTER TABLE `plan_entries` DISABLE KEYS */;
-/*!40000 ALTER TABLE `plan_entries` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `rest_client`
@@ -232,16 +167,6 @@ CREATE TABLE `rest_client` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `rest_client`
---
-
-LOCK TABLES `rest_client` WRITE;
-/*!40000 ALTER TABLE `rest_client` DISABLE KEYS */;
-INSERT INTO `rest_client` VALUES (1,'key-26hg02lsa','secret-jg921tjg0','*',NULL);
-/*!40000 ALTER TABLE `rest_client` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user`
 --
 
@@ -252,23 +177,13 @@ CREATE TABLE `user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `discipline_id` int(11) DEFAULT NULL,
-  `year` int(11) NOT NULL,
-  `semester_type` enum('WINTER_TERM','SUMMER_TERM') NOT NULL,
+  `year` int(11) DEFAULT NULL,
+  `semester_type` enum('WINTER_TERM','SUMMER_TERM') DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_user_id_uindex` (`user_id`),
   UNIQUE KEY `user_name_uindex` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin',2,2015,'WINTER_TERM');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -279,4 +194,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-04 19:07:05
+-- Dump completed on 2017-02-14  0:21:57
