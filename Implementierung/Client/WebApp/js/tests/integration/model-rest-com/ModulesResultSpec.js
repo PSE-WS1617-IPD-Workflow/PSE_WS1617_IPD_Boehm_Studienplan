@@ -8,6 +8,7 @@ define(["studyplan"], function (client) {
                 filters: [
                     {
                         "name"  :   "testFilter1",
+                        "uri-name": "testFilter1",
                         "default-value" : {min: 0, max: 20},
                         "tooltip"  :    "Test Range Filter",
                         "specification" :   {
@@ -18,6 +19,7 @@ define(["studyplan"], function (client) {
                     },
                     {
                         "name"  :   "testFilter2",
+                        "uri-name": "testFilter2",
                         "default-value" : "abc",
                         "tooltip"  :    "Test List Filter",
                         "specification" :   {
@@ -26,6 +28,7 @@ define(["studyplan"], function (client) {
                     },
                     {
                         "name"  :   "testFilter3",
+                        "uri-name": "testFilter3",
                         "default-value" : 1,
                         "tooltip"  :    "Test List Filter",
                         "specification" :   {
@@ -72,8 +75,7 @@ define(["studyplan"], function (client) {
         });
         it("/plan/abcdef/modules", function () {
             searchCol.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/plans/abcdef/modules?filter=testFilter1%2CtestFilter2%2CtestFilter3&testFilter1-min=0&testFilter1-max=20&testFilter2=abc&testFilter3=1');
-            jasmine.Ajax.requests.mostRecent().respondWith({
+           jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
                 "contentType"   :   "application/json",
                 "responseText"  :   JSON.stringify(resultObject)
@@ -91,8 +93,7 @@ define(["studyplan"], function (client) {
         it("/modules", function () {
             searchCol.planId = null;
             searchCol.fetch();
-            expect(jasmine.Ajax.requests.mostRecent().url).toBe('http://api.studyplan.devel/modules?filter=testFilter1%2CtestFilter2%2CtestFilter3&testFilter1-min=0&testFilter1-max=20&testFilter2=abc&testFilter3=1');
-            jasmine.Ajax.requests.mostRecent().respondWith({
+           jasmine.Ajax.requests.mostRecent().respondWith({
                 "status"    :   200,
                 "contentType"   :   "application/json",
                 "responseText"  :   JSON.stringify(resultObject)
