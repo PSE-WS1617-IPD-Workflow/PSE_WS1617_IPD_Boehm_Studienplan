@@ -9,7 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 
 /**
  * @author NiklasUhl

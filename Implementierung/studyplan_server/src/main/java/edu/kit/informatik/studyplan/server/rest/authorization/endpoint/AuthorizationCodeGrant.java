@@ -1,8 +1,8 @@
 package edu.kit.informatik.studyplan.server.rest.authorization.endpoint;
 
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationScope;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClient;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.util.List;

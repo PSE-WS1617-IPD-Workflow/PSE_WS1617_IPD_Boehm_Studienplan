@@ -1,4 +1,4 @@
-package edu.kit.informatik.studyplan.server.model.userdata.dto;
+package edu.kit.informatik.studyplan.server.rest.resources.json;
 
 import java.util.List;
 import java.util.stream.Collectors;

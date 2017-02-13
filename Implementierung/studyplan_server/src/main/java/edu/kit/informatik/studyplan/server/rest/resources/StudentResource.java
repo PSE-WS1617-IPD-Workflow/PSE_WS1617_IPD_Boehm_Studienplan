@@ -27,7 +27,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Semester;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 

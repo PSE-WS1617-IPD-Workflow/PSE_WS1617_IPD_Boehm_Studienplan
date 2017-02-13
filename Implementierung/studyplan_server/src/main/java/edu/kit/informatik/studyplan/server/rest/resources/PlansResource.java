@@ -48,16 +48,16 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
-import edu.kit.informatik.studyplan.server.model.userdata.dto.PlanDto;
 import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
 import edu.kit.informatik.studyplan.server.pluginmanager.VerificationManager;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import edu.kit.informatik.studyplan.server.rest.resources.json.ModuleDto;
+import edu.kit.informatik.studyplan.server.rest.resources.json.PlanDto;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 

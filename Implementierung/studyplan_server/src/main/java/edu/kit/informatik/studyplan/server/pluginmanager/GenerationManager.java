@@ -27,7 +27,8 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  * Klasse adaptiert.
  */
 public class GenerationManager {
-	private static final double threshold = 0.5;
+	
+	private static final double THRESHOLD = 0.5;
 
 	/**
 	 * Liste der Zielfunktionen.
@@ -82,7 +83,7 @@ public class GenerationManager {
 	 */
 	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO, Map<Field, Category>preferredSubjects, int maxECTSperSemester) {
 		initWrapper();
-		ThresholdObjectiveFunction thresholdObjectiveFunction = new ThresholdObjectiveFunction(threshold);
+		ThresholdObjectiveFunction thresholdObjectiveFunction = new ThresholdObjectiveFunction(THRESHOLD);
 		thresholdObjectiveFunction.add(objectiveFunction);
 		wrapper.add(thresholdObjectiveFunction);
 		return generator.generate(wrapper, currentPlan, moduleDAO, preferredSubjects, maxECTSperSemester);

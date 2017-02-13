@@ -7,10 +7,10 @@ import javax.ws.rs.core.MultivaluedMap;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import edu.kit.informatik.studyplan.server.model.userdata.User;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationScope;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClient;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDao;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDaoFactory;
 
