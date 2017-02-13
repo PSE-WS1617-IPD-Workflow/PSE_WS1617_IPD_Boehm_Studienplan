@@ -37,6 +37,17 @@ edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend
             if (planName===null){
                 return;
             }
+            if (planName.length>100) {
+                edu.kit.informatik.studyplan.client.model.system.NotificationCollection
+                            .getInstance().add(
+                        new edu.kit.informatik.studyplan.client.model.system.Notification({
+                            title:LM.getMessage("nameTooLongTitle"),
+                            text:LM.getMessage("nameTooLongText"),
+                            wasShown:false,
+                            type:"success"
+                        })
+                    );
+            }
             var newPlan = new edu.kit.informatik.studyplan.client.model.plans.Plan({
                 name: planName
             }, {collection: this.planCollection});

@@ -15,6 +15,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     isRemovable: true,
     isPassedPlanModule: false,
     events: {
+        "click .moduleBoxLink" : "click",
         "click button.deleteButton": "removeModule",
         "click button.preferenceButtonUp": "voteUp",
         "click button.preferenceButtonDown": "voteDown"
@@ -25,6 +26,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
         this.isDraggable = (typeof options.isDraggable !== "undefined") ? options.isDraggable : this.isDraggable;
         this.isPreferencable = (typeof options.isPreferencable !== "undefined") ? options.isPreferencable : this.isPreferencable;
         this.isPassedPlanModule = (typeof options.isPassedPlanModule !== "undefined") ? options.isPassedPlanModule : this.isPassedPlanModule;
+        this.listenTo(this.model, "change", this.render);
     },
     voteUp: function () {
         "use strict";
@@ -70,8 +72,11 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     *
     */
     click:
-        function () {
+        function (event) {
             "use strict";
+            event.preventDefault();
+            var eventBus = edu.kit.informatik.studyplan.client.model.system.EventBus;
+            eventBus.trigger("showModuleInfo",this.model)
         },
     /**
     *

@@ -20,13 +20,19 @@ edu.kit.informatik.studyplan.client.model.module.Preference = edu.kit.informatik
         "use strict";
         return _.result(this.get('module'), 'url') + "/preference";
     },
-    /*parse : function (response, options) {
+    parse : function (response, options) {
         "use strict";
-        var result = ({planId: response["planId"], value: response["preference"], moduleId: response["id"]});
+        //var result = ({planId: response["planId"], value: response["preference"], moduleId: response["id"]});
+        var result = response;
+        if(this.has('module')){
+            result.module = this.get('module');
+        }
+        
         return result;
-    },*/
+    },
     toJSON : function (options) {
         "use strict";
+        console.log(this);
         return {
             module : {
                 id  :   this.get('module').get('id'),

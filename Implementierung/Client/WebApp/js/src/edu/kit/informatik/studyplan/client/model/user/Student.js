@@ -48,7 +48,7 @@ edu.kit.informatik.studyplan.client.model.user.Student = edu.kit.informatik.stud
         result["passed-modules"] = this.get("passedModules").toJSON(options)["modules"];
         return {student: result};
     },
-    getDistance: function (options) {
+    /*getDistance: function (options) {
         // Using micro service to calculate distance on powerful Java Server
         var sendAuthentication = function (xhr) {
             xhr.setRequestHeader("Authorization", "Bearer " + edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('access_token'));
@@ -72,7 +72,7 @@ edu.kit.informatik.studyplan.client.model.user.Student = edu.kit.informatik.stud
             if(errorCallback) errorCallback.call(options.context, xhr, textStatus, errorThrown)
         }
         Backbone.ajax(options);
-    },
+    },*/
     isNew: function () {
         return false;
     }

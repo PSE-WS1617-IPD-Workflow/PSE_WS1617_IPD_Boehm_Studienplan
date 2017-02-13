@@ -25,6 +25,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
         this.reload();
     },
     reload: function () {
+        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.Plan] plan is being reloaded, plan:")
+        console.log(this.model);
         var semesterCol = this.model.get('semesterCollection');
         this.semesterElements = [];
         semesterCol.each((function (semester) {

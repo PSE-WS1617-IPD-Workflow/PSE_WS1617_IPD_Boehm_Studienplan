@@ -36,7 +36,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/", {trigger: true})
     },
     /**
-    *
+    * @suppress {missingProperties}
     */
     verify: function () {
         "use strict";
@@ -57,23 +57,45 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                     });
                 }
                 if(self.model.get('verificationResult').get('status')=="invalid"){
-                    var html = "<ol>";
+                    var html = "<div>";
+                    html +=LM.getMessage("verificationFailText")
+                    html += "<ul>";
                     _.each(self.model.get('verificationResult').get('field-violations'), function (field) {
-                        html+="<li>"+field.name+" (min: "+field["min-ects"]+")</li>";
+                        html+="<li>"+field.name+" (min: "+field["min-ects"]+" ECTS)</li>";
                     });
-                    _.each(self.model.get('verificationResult').get('rule-group-violations'), function (field) {
-                        html+="<li>"+field.name+" (min: "+field["min-num"]+", max: "+field["max-num"]+")</li>";
+                    _.each(self.model.get('verificationResult').get('rule-group-violations'), function (ruleGroup) {
+                        html+="<li>"+ruleGroup.name+" ("+
+                            ((ruleGroup["min-num"]!=-1)?
+                                "min: "+ruleGroup["min-num"]+""
+                                : "")+
+                            ((ruleGroup["max-num"]!=-1&&ruleGroup["min-num"]!=-1)?
+                                ","
+                                :"")+
+                            ((ruleGroup["max-num"]!=-1)?
+                                "max: "+ruleGroup["max-num"]+""
+                                : "")
+                            +")</li>";
                     });
                     _.each(self.model.get('verificationResult').get('compulsory-violations'), function (module) {
                         html+="<li>"+module.name+"</li>";
                     });
-                    html+="</ol>";
-                    notification = new edu.kit.informatik.studyplan.client.model.system.Notification({
-                        title:LM.getMessage("verificationFailTitle"),
-                        text:LM.getMessage("verificationFailText")+html,
-                        wasShown:false,
-                        type:"error"
-                    });
+                    html+="</ul>";
+                    html+="</div>";
+                    var options = {
+                        title: LM.getMessage("verificationFailTitle"),
+                        resizable: false,
+                        height: "auto",
+                        minWidth: 400,
+                        minHeight:300,
+                        modal: false,
+                        draggable: true,
+                        buttons: {}
+                    }
+                    options["buttons"][LM.getMessage('OK')]=  function() {
+                        $( this ).dialog( "close" );
+                    }
+                    var dialog = $(html).dialog(options);
+                    dialog.show();
                 }
                 if(notification!==null){
                     edu.kit.informatik.studyplan.client.model.system.NotificationCollection
@@ -88,8 +110,20 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
     rename: function () {
         "use strict";
         console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar] rename")
-        this.model.set('name',this.$el.find("#curPlanName").val());
-        this.model.save({}, {
+        var name = this.$el.find("#curPlanName").val();
+        if (name.length>100) {
+            edu.kit.informatik.studyplan.client.model.system.NotificationCollection
+                        .getInstance().add(
+                    new edu.kit.informatik.studyplan.client.model.system.Notification({
+                        title:LM.getMessage("nameTooLongTitle"),
+                        text:LM.getMessage("nameTooLongText"),
+                        wasShown:false,
+                        type:"success"
+                    })
+                );
+        }
+        this.model.set('name',name);
+        this.model.save(null, {
             success: function () {
                 edu.kit.informatik.studyplan.client.model.system.NotificationCollection
                         .getInstance().add(

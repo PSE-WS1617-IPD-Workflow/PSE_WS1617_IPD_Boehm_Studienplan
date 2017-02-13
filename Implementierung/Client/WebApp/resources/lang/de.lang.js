@@ -52,8 +52,12 @@ LM.messages["de"]["verificationSuccessTitle"] = "Verifikation erfolgreich!";
 LM.messages["de"]["verificationSuccessText"] = "Der Studienplan wurde erfolgreich überprüft und ist korrekt!";
 LM.messages["de"]["verificationFailTitle"] = "Verifikation fehlgeschlagen!";
 LM.messages["de"]["verificationFailText"] = "Der Studienplan wurde überprüft und ist nicht korrekt!";
+LM.messages["de"]["OK"] = "OK";
 LM.messages["de"]["changeSavedTitle"] = "Änderung gespeichert";
 LM.messages["de"]["changeSavedText"] = "Die Änderung wurde erfolgreich gespeichert";
+LM.messages["de"]["nameTooLongTitle"] = "Name zu lang";
+LM.messages["de"]["nameTooLongText"] = "Der Name darf höchstens 100 Zeichen lang sein.";
+
 
 LM.messages["de"]["invalidStateTitle"] = "Authentifizierungsfehler";
 LM.messages["de"]["invalidStateText"] = "Bitte versuchen Sie die Anmeldung erneut!";
@@ -140,3 +144,16 @@ LM.messages["de"]["connectionLostText"] = "Sie können aktuell keine Daten speic
 
 // Search module
 LM.messages["de"]["allValues"] = "Alles";
+
+// Module Info Sidebar
+LM.messages["de"]["lecturer"] = "";
+LM.messages["de"]["ECTS"] = "ECTS";
+LM.messages["de"]["description"] = "Beschreibung"
+LM.messages["de"]["constraints"] = "Bedingungen";
+LM.messages["de"][""] = "";
+
+// Module Constraint types
+LM.messages["de"]["constraintType_prerequisite"] = "Voraussetzungen";
+LM.messages["de"]["constraintType_overlapping"] = "Überlappungen";
+LM.messages["de"]["constraintType_semester_link"] = "Zusammengehörend (im selben Semester)";
+LM.messages["de"]["constraintType_plan_link"] = "Zusammengehörend";
