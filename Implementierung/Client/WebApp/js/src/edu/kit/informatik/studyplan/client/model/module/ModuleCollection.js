@@ -5,6 +5,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.module.ModuleCollection"
  * @param {Object=} options
  * @extends {Backbone.Collection}
  * Builds a collection of Modules. For initialization you can give a planId, but don't have to.
+ * Semestercollection extends that.
  */
 
 edu.kit.informatik.studyplan.client.model.module.ModuleCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype}*/{

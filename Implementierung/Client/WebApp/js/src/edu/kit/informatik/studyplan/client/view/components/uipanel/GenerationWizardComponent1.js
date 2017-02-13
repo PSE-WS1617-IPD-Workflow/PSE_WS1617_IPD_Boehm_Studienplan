@@ -7,16 +7,19 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.Genera
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1 = edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1.prototype}*/{
     planId: null,
+    //proposalInformation --> every Component will add something.
     information: null,
+    //collection, input with fetch
     objectiveFunctions: null,
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uipanel/generationWizardComponent1.html"),
+    //Dropdown to choose an objective function.
     events: {
         "change select.objectiveFunctionDropDown": "onChange"
     },
     
     
     /**
-    *
+    *needs a proposalInformation and a plan. Gets the current ObjectiveFunctions from the server.
     */
     initialize:
             function (options) {
@@ -31,11 +34,12 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             });
         },
     /**
-    *
+    *renders the component.
     */
     render:
             function () {
             "use strict";
+                //parameter: the ObjectiveFunctionsCollection, so the user can choose one in a dropdownmenue
             this.$el.html(this.template({
                 functions: this.objectiveFunctions
             }));
@@ -43,6 +47,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
         },
     /**
     *@return{edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent}
+    * returnes the next WizardComponent: GenerationWizardComponent2 with the current plan and all information, we getted at this (first) wizard: the objective function, which should used for generation.
     */
     next:
         function () {
@@ -55,7 +60,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
         },
         
     /**
-    *
+    *saving the choosen objective function at the proposalInformation.
     */
     onChange:
         function () {
