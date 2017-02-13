@@ -50,6 +50,9 @@ public class SimpleGenerator implements Generator {
 		Plan plan = currentPlan;
 		// first generation of family of plans with change of all randomly added
 		// nodes
+		planToGraph(currentPlan);
+		if (randomlyGeneratedFamilyOfPlans(nodes, plan, preferredSubjects, -1, maxECTSperSemester, moduleDAO) == null)
+			System.out.println("Null list");
 		planFamily = randomlyGeneratedFamilyOfPlans(nodes, plan, preferredSubjects, -1, maxECTSperSemester, moduleDAO);
 		it = planFamily.keySet().iterator();
 		plan = new Plan();
@@ -158,7 +161,7 @@ public class SimpleGenerator implements Generator {
 	 * @param maxECTSperSemester
 	 * @return
 	 */
-	private Plan randomlyGeneratedPlan(Plan currentPlan, Map<Field, Category> preferredSubjects, int maxECTSperSemester,
+	private Map<Plan, NodesList> randomlyGeneratedPlan(NodesList nodes, Plan currentPlan, Map<Field, Category> preferredSubjects, int maxECTSperSemester,
 			ModuleDao moduleDAO) {
 		// adding modules of the rule groups of the discipline
 		List<RuleGroup> ruleGroups = currentPlan.getUser().getDiscipline().getRuleGroups();
@@ -171,10 +174,12 @@ public class SimpleGenerator implements Generator {
 			addFieldModules(field, preferredSubjects.get(field), currentPlan, moduleDAO);
 		}
 		List<Node> sorted = nodes.sort();
-		return createPlan(sorted, parallelize(sorted, maxECTSperSemester));
+		Map<Plan, NodesList> result = new HashMap<Plan, NodesList>();
+		result.put(createPlan(sorted, parallelize(sorted, maxECTSperSemester), currentPlan), nodes);
+		return result;
 	}
 
-	Plan createPlan(List<Node> sorted, int[] bucketAllocation) {
+	Plan createPlan(List<Node> sorted, int[] bucketAllocation, Plan currentPlan) {
 		Plan plan = new Plan();
 		for (int i = 0; i < sorted.size(); i++) {
 			ModuleEntry entry = new ModuleEntry(sorted.get(i).getModule(), bucketAllocation[i]);
@@ -193,6 +198,7 @@ public class SimpleGenerator implements Generator {
 			}
 			
 		}
+		plan.setUser(currentPlan.getUser());
 		plan.setVerificationState(VerificationState.VALID);
 		return plan;
 	}
@@ -353,19 +359,18 @@ public class SimpleGenerator implements Generator {
 	 * @return a mapping of the generated plan and the nodes from which they
 	 *         were generated
 	 */
-	private Map<Plan, NodesList> randomlyGeneratedFamilyOfPlans(NodesList nodes, Plan currentPlan,
+	Map<Plan, NodesList> randomlyGeneratedFamilyOfPlans(NodesList nodes, Plan currentPlan,
 			Map<Field, Category> preferredSubjects, int numberOfNodesToChange, int maxECTSperSemester,
 			ModuleDao moduleDAO) {
 		Map<Plan, NodesList> planFamily = new HashMap<Plan, NodesList>();
-		planToGraph(currentPlan);
-		Plan plan = randomlyGeneratedPlan(currentPlan, preferredSubjects, maxECTSperSemester, moduleDAO);
-		planFamily.put(plan, nodes);
+		Map<Plan, NodesList> plan = randomlyGeneratedPlan(nodes, currentPlan, preferredSubjects, maxECTSperSemester, moduleDAO);
+		planFamily.putAll(plan);
 		for (int i = 0; i < 9; i++) {
 			if (numberOfNodesToChange == -1) {
 				numberOfNodesToChange = nodes.getRandomlyAddedNodes().size();
 			}
 			plan = randomlyModifiedPlan(numberOfNodesToChange, plan, preferredSubjects, maxECTSperSemester, moduleDAO);
-			planFamily.put(plan, nodes);
+			planFamily.putAll(plan);
 		}
 		return planFamily;
 	}
@@ -459,20 +464,24 @@ public class SimpleGenerator implements Generator {
 	 * 
 	 * @param numberOfNodes
 	 *            number of nodes to change
-	 * @param plan
+	 * @param map a map of the plan and its Nodeslist
 	 *            the plan to modify
 	 * @param preferredSubjects
 	 * @return the new plan
 	 */
-	private Plan randomlyModifiedPlan(int numberOfNodes, Plan plan, Map<Field, Category> preferredSubjects,
+	private Map<Plan, NodesList> randomlyModifiedPlan(int numberOfNodes, Map<Plan, NodesList> map, Map<Field, Category> preferredSubjects,
 			int maxECTSperSemester, ModuleDao moduleDAO) {
+		
+		Iterator<Plan> i = map.keySet().iterator();
+		Plan plan = i.next();
+		NodesList nodes = map.get(plan);
 		Set<Integer> randomNumbers = getRandomNumbers(nodes.getRandomlyAddedNodes().size(),
 				Math.min(numberOfNodes, nodes.getRandomlyAddedNodes().size()));
 		Iterator<Integer> it = randomNumbers.iterator();
 		while (it.hasNext()) {
 			nodes.removeNode(nodes.getRandomlyAddedNodes().get(it.next()));
 		}
-		return randomlyGeneratedPlan(plan, preferredSubjects, maxECTSperSemester, moduleDAO);
+		return randomlyGeneratedPlan(nodes, plan, preferredSubjects, maxECTSperSemester, moduleDAO);
 	}
 
 }

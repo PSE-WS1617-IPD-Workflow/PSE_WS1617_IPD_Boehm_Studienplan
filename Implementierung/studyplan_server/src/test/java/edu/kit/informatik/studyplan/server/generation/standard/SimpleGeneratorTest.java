@@ -303,7 +303,7 @@ public class SimpleGeneratorTest {
 		generator.planToGraph(plan);
 		generator.parallelize(generator.getNodes().sort(), 4);
 		Plan newPlan = generator.createPlan(generator.getNodes().sort(),
-				generator.parallelize(generator.getNodes().sort(), 4));
+				generator.parallelize(generator.getNodes().sort(), 4), plan);
 		Plan compareTo = new Plan();
 		ModuleEntry entry1 = new ModuleEntry(prog, 1);
 		ModuleEntry entry2 = new ModuleEntry(gbi, 1);
@@ -319,6 +319,24 @@ public class SimpleGeneratorTest {
 	}
 
 	@Test
+	public void testRandomlyGeneratedFamilyOfPlans() {
+		Field field = new Field();
+		field.getModules().add(ph);
+		field.setMinEcts(2.0);
+		RuleGroup rule = new RuleGroup();
+		rule.getModules().add(la1);
+		rule.setMinNum(1);
+		rule.setMaxNum(2);
+		Map<Field, Category> map = new HashMap<Field, Category>();
+		map.put(field, category);
+		generator.planToGraph(plan);
+		assertTrue(generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(), 
+				plan, map, -1, 4,dao).size() == 10);
+		
+		
+	}
+	
+	@Test
 	public void testGenerate() {
 		Field field = new Field();
 		field.getModules().add(ph);
@@ -332,4 +350,6 @@ public class SimpleGeneratorTest {
 		PartialObjectiveFunction obFunction = new MinimalECTSAtomObjectiveFunction();
 		generator.generate(obFunction, plan, dao, map, 4);
 	}
+	
 }
+
