@@ -21,6 +21,7 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/subview/planEditPage.html"),
     //is it a generated plan?
     proposed: false,
+    standardModuleFinder: null,
     initialize: function (options) {
         this.proposed = (typeof options.proposed) ? options.proposed : this.proposed;
         this.model = options.plan;
@@ -54,11 +55,14 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
                 plan: this.model
             });
         }
+        edu.kit.informatik.studyplan.client.model.system.EventBus.on("showModuleInfo", this.showModuleDetails.bind(this));
+        edu.kit.informatik.studyplan.client.model.system.EventBus.on("hideModuleInfo", this.hideModuleDetails.bind(this));
     },
     /**
     *renders all named parts: headbar, sidebar(moduleFinder), plan 
     */
     render: function () {
+        this.$el.css({"min-width":this.$el.innerWidth()});
         this.$el.html(this.template({
             plan: this.model
         }));
@@ -72,6 +76,7 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
         
         this.moduleFinder.render();
         this.$el.find(".planEditModuleFinderWrapper").append(this.moduleFinder.$el);
+        this.$el.css({"min-width":"auto"});
     },
     /**
     *@param{edu.kit.informatik.studyplan.client.model.module.Module} module
@@ -79,11 +84,30 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
     */
     showModuleDetails: function (module) {
         "use strict";
+        console.info("[edu.kit.informatik.studyplan.client.view.subview.PlanEditPage] showModuleDetails");
+        if (this.standardModuleFinder===null) {
+            this.standardModuleFinder = this.moduleFinder;
+        }
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+        module.fetch({
+            success: function () {
+                this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar({
+                    module: module
+                });
+                this.render();
+                edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+            }.bind(this),
+            error: function () {
+                this.standardModuleFinder = null;
+            }.bind(this)
+        });
     },
     /**
     *hide ModuleDetails and shows last Sidebar.
     */
     hideModuleDetails: function () {
         "use strict";
+        this.moduleFinder = this.standardModuleFinder;
+        this.render();
     }
 });

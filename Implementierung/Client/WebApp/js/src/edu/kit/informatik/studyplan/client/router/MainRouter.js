@@ -124,7 +124,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     success: function () {
                         this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
                             firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1({
-                                plan: planId,
+                                planId: plan.get('id'),
                                 information: info
                             }),
                             // Callback: Generation wizard completed

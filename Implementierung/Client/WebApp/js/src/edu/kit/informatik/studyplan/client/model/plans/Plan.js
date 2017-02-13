@@ -56,7 +56,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
                 "field-violations": response["field-violations"],
                 "rule-group-violations": response["rule-group-violations"]
             }
-        },{parse: true});
+        },{parse: true, plan: this});
         
         return response;
     },
@@ -99,8 +99,10 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     * with option "post or patch it includes just the name, else id, name and modulecollection.
     */
     toJSON : function (options) {
-        if(options.method==="post" || options.method==="patch"){
+        if(options.method==="post"){
             return {plan:{name : this.get('name')}};
+        } else if (options.method==="patch") {
+            return {plan:{id: this.get('id'), name : this.get('name')}};
         } else {
             var result = {
                 id: this.id,

@@ -1,21 +1,17 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.system.EventBus");
 /**
- * @constructor
+ * @extends {Backbone.Event}
  */
+edu.kit.informatik.studyplan.client.model.system.EventBus = {};
+/**
+ * @param {string} key
+ * @param {...*} options
+ */
+edu.kit.informatik.studyplan.client.model.system.EventBus.trigger = function (key, options) {};
+/** 
+ * @param {string} key
+ * @param {function(this:*,...*):*} callback
+ */
+edu.kit.informatik.studyplan.client.model.system.EventBus.on = function (key, callback) {};
 
-edu.kit.informatik.studyplan.client.model.system.EventBus = (function () {
-    "use strict";
-    /**
-     * @type {Backbone.Events}
-     */
-    var instance = {};
-    _.extend(instance, Backbone.Events);
-    return {
-        /**
-        * @return {Backbone.Events}
-        */
-        getInstance : function () {
-            return instance;
-        }
-    };
-}());
+_.extend(edu.kit.informatik.studyplan.client.model.system.EventBus, Backbone.Events);

@@ -1,11 +1,13 @@
-<h3 class="moduleTitle">{{=obj.module.get('name')}}</h3>
-{{ if(obj.module.get('passed')) { }}
-    <div class="passed">
+<a href="#" class="moduleBoxLink">
+    <h3 class="moduleTitle">{{=obj.module.get('name')}}</h3>
+    {{ if(obj.module.get('passed')) { }}
+        <div class="passed">
 
-    </div>
-{{ } }}
-<p>{{=obj.module.get('lecturer')}}</p>
-<p>{{=obj.module.get('creditpoints')}} ECTS</p>
+        </div>
+    {{ } }}
+    <p>{{=obj.module.get('lecturer')}}</p>
+    <p>{{=obj.module.get('creditpoints')}} ECTS</p>
+</a>
 <div class="buttons">
     {{ if(obj.isRemovable) { }}
     <button class="deleteButton"></button>
