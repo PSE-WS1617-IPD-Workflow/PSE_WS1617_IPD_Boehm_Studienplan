@@ -1,11 +1,6 @@
 package edu.kit.informatik.studyplan.server.generation.standard;
 
 
-import java.util.List;
-
-import edu.kit.informatik.studyplan.server.generation.Generator;
-import edu.kit.informatik.studyplan.server.generation.standard.Node;
-import edu.kit.informatik.studyplan.server.generation.standard.NodeWithOutput;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 
 /************************************************************/

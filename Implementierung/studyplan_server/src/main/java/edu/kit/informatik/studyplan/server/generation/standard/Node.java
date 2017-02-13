@@ -1,17 +1,14 @@
 package edu.kit.informatik.studyplan.server.generation.standard;
 
-import edu.kit.informatik.studyplan.server.generation.Generator;
+import java.util.ArrayList;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.OverlappingModuleConstraintType;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.PrerequisiteModuleConstraintType;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
-
-import java.util.ArrayList;
-import java.util.List;
 
 // TODO all collections to lists and initialize!!
 /**

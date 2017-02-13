@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /**
@@ -9,6 +11,8 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  */
 public class MultiplicationObjectiveFunction extends ObjectiveFunction {
 
+	@JsonProperty
+	private String descriptor;
 	/*
 	 * (non-Javadoc) Alle Zielfunktionen werden aufmultipliziert, eine
 	 * Zielfunktion vom Wert 0 sorgt also automatisch dafür, dass die gesamte
@@ -22,6 +26,16 @@ public class MultiplicationObjectiveFunction extends ObjectiveFunction {
 			product *= values[i];
 		}
 		return product;
+	}
+	
+	@Override
+	public String getDescriptor() {
+		return descriptor;
+	}
+
+	@Override
+	public void setDescriptor(String descriptor) {
+		this.descriptor = descriptor;
 	}
 
 }

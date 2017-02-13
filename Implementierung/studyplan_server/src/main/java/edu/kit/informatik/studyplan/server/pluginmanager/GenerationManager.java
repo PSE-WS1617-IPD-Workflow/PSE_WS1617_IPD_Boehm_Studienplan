@@ -1,7 +1,7 @@
 package edu.kit.informatik.studyplan.server.pluginmanager;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import edu.kit.informatik.studyplan.server.generation.Generator;
@@ -34,7 +34,7 @@ public class GenerationManager {
 	 * 
 	 * @see edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction
 	 */
-	private Collection<PartialObjectiveFunction> objectiveFunctions;
+	private List<PartialObjectiveFunction> objectiveFunctions;
 	
 	private ObjectiveFunction wrapper;
 
@@ -101,7 +101,7 @@ public class GenerationManager {
 	 * 
 	 * @return objectiveFunction : die Liste der Zielfunktionen
 	 */
-	public Collection<PartialObjectiveFunction> getAllObjectiveFunctions() {
+	public List<PartialObjectiveFunction> getAllObjectiveFunctions() {
 		return objectiveFunctions;
 	}
 

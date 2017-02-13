@@ -226,4 +226,13 @@ public class Module {
 	public void setField(Field field) {
 		this.field = field;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Module) {
+			return false;
+		} else {
+			return ((Module) obj).getIdentifier().equals(this.getIdentifier());
+		}
+	}
 }

@@ -125,7 +125,7 @@ class HibernateModuleDao implements ModuleDao {
 	@Override
 	public Category getCategoryById(int id) {
 		Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
-		session.beginTransaction().commit();
+		session.beginTransaction();
 		Category category = session.byId(Category.class).load(id);
 		session.getTransaction().commit();
 		return category;

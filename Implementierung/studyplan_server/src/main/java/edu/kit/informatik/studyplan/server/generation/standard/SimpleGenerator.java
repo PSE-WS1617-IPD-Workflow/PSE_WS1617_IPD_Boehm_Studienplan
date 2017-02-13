@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import edu.kit.informatik.studyplan.server.filter.CategoryFilter;
 import edu.kit.informatik.studyplan.server.filter.Filter;
@@ -110,8 +111,12 @@ public class SimpleGenerator implements Generator {
 		// set of random numbers to choose modules randomly from the list
 		Set<Integer> randomNumbers;
 		// to iterate through the set above
-		preferredModules = getModulesWithPreference(currentPlan, field.getModules(), category, PreferenceType.POSITIVE,
-				moduleDAO);
+		if (category != null) {
+			preferredModules = getModulesWithPreference(currentPlan, field.getModules(), category, PreferenceType.POSITIVE,
+					moduleDAO);
+		} else {
+			preferredModules = field.getModules();
+		}
 		randomNumbers = getRandomNumbers(preferredModules.size(), preferredModules.size());
 		// Iterator to iterate through the set above
 		Iterator<Integer> it = randomNumbers.iterator();
@@ -143,6 +148,22 @@ public class SimpleGenerator implements Generator {
 			}
 			creditPoints += node.getModule().getCreditPoints();
 		}
+		notEvaluatedModules = field.getModules();
+		randomNumbers = getRandomNumbers(notEvaluatedModules.size(), notEvaluatedModules.size());
+		it = randomNumbers.iterator();
+		/*
+		 * if preferred modules do not reach the credit points needed add
+		 * modules from not evaluated modules in the category chosen
+		 */
+		while (creditPoints < field.getMinEcts() && it.hasNext()) {
+			Node node = new NodeWithOutput(notEvaluatedModules.get(it.next()), this);
+			if (nodes.addToAllNodes(node)) {
+				nodes.getRandomlyAddedNodes().add(node);
+				node.fulfillConstraints(true);
+			}
+			creditPoints += node.getModule().getCreditPoints();
+		}
+		
 		if (creditPoints >= field.getMinEcts()) {
 			return;
 		}
@@ -238,8 +259,12 @@ public class SimpleGenerator implements Generator {
 			randomNumbers = getRandomNumbers(num, num);
 			it = randomNumbers.iterator();
 		}
-		while (num > ruleGroup.getMaxNum()) {
-			nodes.removeNode(nodes.nodesInRuleGroup(ruleGroup).get(0));
+		if (ruleGroup.getMaxNum() != -1) {
+			while (num > ruleGroup.getMaxNum()) {
+				if (!nodes.nodesInRuleGroup(ruleGroup).isEmpty()){
+					nodes.removeNode(nodes.nodesInRuleGroup(ruleGroup).get(0));
+				}
+			}
 		}
 		randomNumbers = getRandomNumbers(preferredModules.size(), preferredModules.size());
 		it = randomNumbers.iterator();
@@ -446,7 +471,7 @@ public class SimpleGenerator implements Generator {
 		if (category != null) {
 			Filter filter = new CategoryFilter(category);
 			for (Module m : moduleDAO.getModulesByFilter(filter, currentPlan.getUser().getDiscipline())) {
-				if ((currentPlan.getPreferenceForModule(m) == preference) && listOfModules.contains(m)) {
+				if (((currentPlan.getPreferenceForModule(m) == preference) && listOfModules.contains(m))||(preference == null && listOfModules.contains(m))) {
 					modules.add(m);
 				}
 			}
