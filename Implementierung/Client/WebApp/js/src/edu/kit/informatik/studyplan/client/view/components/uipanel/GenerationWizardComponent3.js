@@ -92,6 +92,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
     next:
         function () {
             "use strict";
+            $("select.fieldDropDown").trigger("change");
             return null;
         },
     /**
