@@ -218,9 +218,7 @@ public class SimpleGenerator implements Generator {
 	 */
 	void addRuleGroupModules(RuleGroup ruleGroup, Plan plan, Category category, ModuleDao moduleDAO) {
 		int num = nodes.nodesInRuleGroup(ruleGroup).size();
-		System.out.println("addRuleGroup num = " + num);
 		if (num >= ruleGroup.getMinNum() && num <= ruleGroup.getMaxNum()) {
-			System.out.println("WHAT if");
 			return;
 		}
 		List<Module> preferredModules;
@@ -229,9 +227,6 @@ public class SimpleGenerator implements Generator {
 		// to iterate through the set above
 		preferredModules = getModulesWithPreference(plan, ruleGroup.getModules(), category, PreferenceType.POSITIVE,
 				moduleDAO);
-		for (Module m : preferredModules) {
-			System.out.println(m.getIdentifier());
-		}
 		// to iterate through the set above
 		Iterator<Integer> it;
 		if (num > ruleGroup.getMaxNum()) {
@@ -244,7 +239,6 @@ public class SimpleGenerator implements Generator {
 		randomNumbers = getRandomNumbers(preferredModules.size(), preferredModules.size());
 		it = randomNumbers.iterator();
 		while (num < ruleGroup.getMinNum() && it.hasNext()) {
-			System.out.println("while");
 			Node node = new NodeWithOutput(preferredModules.get(it.next()), plan, this);
 			if (nodes.addToAllNodes(node)) {
 				nodes.getRandomlyAddedNodes().add(node);
@@ -280,10 +274,6 @@ public class SimpleGenerator implements Generator {
 	 * @return the new plan
 	 */
 	int[] parallelize(List<Node> sorted, int maxECTSperSemester) {
-		System.out.println(sorted.size() + "__" + nodes.getAllNodes().size());
-		for(Node n : sorted){
-			System.out.println(n.getModule().getIdentifier());
-		}
 		WeightFunction weight = new WeightFunction();
 		Node node;
 		boolean set;
@@ -296,15 +286,12 @@ public class SimpleGenerator implements Generator {
 		for (int i = 0; i < sorted.size(); i++) {
 			node = sorted.get(i);
 			set = false;
-			System.out.println(node.getModule().getIdentifier() + " minpos[i] " + minPos[i]);
 			for (int j = minPos[i]; j < sorted.size(); j++) {
-				System.out.println("FOR j " + j + "  " + (weight.getWeight(node) + bucketSum[j]));
 				if (weight.getWeight(node) + bucketSum[j] <= maxECTSperSemester
 						&& checkIfOverlapping(node, bucketAllocation, sorted, j) && node.fitsInSemester(j)) {
 					bucketAllocation[i] = j;
 					bucketSum[j] += weight.getWeight(node);
 					for (Node child : node.getChildren()) {
-						System.out.println(node.getModule().getIdentifier()+"  "+child.getModule().getIdentifier());
 						if ((node.getConstraint(child) != null) && (node.getConstraint(child)
 								.getConstraintType() instanceof PrerequisiteModuleConstraintType)
 								&& sorted.contains(child)) {
@@ -312,7 +299,6 @@ public class SimpleGenerator implements Generator {
 						}
 					}
 					set = true;
-					System.out.println(node.getModule().getIdentifier() + bucketAllocation[i]);
 					break;
 				}
 
