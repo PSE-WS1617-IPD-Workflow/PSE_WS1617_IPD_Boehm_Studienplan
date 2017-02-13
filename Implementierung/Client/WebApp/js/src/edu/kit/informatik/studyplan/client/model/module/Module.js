@@ -11,7 +11,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.module.Module");
 edu.kit.informatik.studyplan.client.model.module.Module = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.Module.prototype}*/{
     
     /**
-    *Parses a JSon (response) from the server to a Javascript-Object to use it in different views. The method starts the parse-Method included  data classes ( constraints) , and changes categorie to a parameter, because the client just needs the name of a categorie.
+    *Parses a JSon (response) from the server to a Javascript-Object to use it in different views. The method starts the parse-Method of included  data classes ( constraints) , and changes categorie to a parameter, because the client just needs the name of a categorie. It builds an Object of Preference with the given information. Attributes which aren't named, the standard parse-method parses.
     *
     */
     parse : function (response, options) {

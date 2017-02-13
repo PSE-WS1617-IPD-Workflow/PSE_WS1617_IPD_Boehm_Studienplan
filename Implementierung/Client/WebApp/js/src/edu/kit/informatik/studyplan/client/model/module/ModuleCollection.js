@@ -4,10 +4,17 @@ goog.provide("edu.kit.informatik.studyplan.client.model.module.ModuleCollection"
  * @param {Object=} response
  * @param {Object=} options
  * @extends {Backbone.Collection}
+ * Builds a collection of Modules. For initialization you can give a planId, but don't have to.
  */
 
 edu.kit.informatik.studyplan.client.model.module.ModuleCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype}*/{
+    
+    //the plan that includes this ModuleCollection.
     planId : null,
+    
+    /**
+    *
+    */
     initialize : function (models, options) {
         "use strict";
         if (typeof options !== "undefined" && typeof options.planId !== "undefined") {
@@ -17,14 +24,16 @@ edu.kit.informatik.studyplan.client.model.module.ModuleCollection = edu.kit.info
     model : edu.kit.informatik.studyplan.client.model.module.Module,
     
     /**
+    * isn't useable, throws just an error, because we don't need it.
     * @return {string}
     */
     url : function () {
         "use strict";
         throw new Error("[edu.kit.informatik.studyplan.client.model.module.ModuleCollection] The object does not implement the url method.");
     },
+    
     /**
-    *
+    *parses a JSon (response) from the server to a Javascript-Object to use it in different views. The method starts the parse-Method of included  data classes (modules). 
     */
     parse : function (response, options) {
         "use strict";
@@ -39,6 +48,10 @@ edu.kit.informatik.studyplan.client.model.module.ModuleCollection = edu.kit.info
         }
         return result;
     },
+    
+    /**
+    *toJson converts the Javascript Object ModuleCollection to a Json which can send to the server and can be read by the server. For that it uses the toJSON-method of Module on every included module.
+    */
     toJSON : function (options) {
         var res = [];
         this.each(function (el) {
@@ -47,6 +60,8 @@ edu.kit.informatik.studyplan.client.model.module.ModuleCollection = edu.kit.info
         return {modules: res};
     },
     /**
+    * The method shows us wheater the moduleCollection includes the module with the given moduleId.
+    * If it does, the method  return true.
     * @param {number} moduleId
     * @return {boolean}
     */
