@@ -4,6 +4,8 @@
 
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
+import java.util.Collections;
+
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
@@ -13,12 +15,17 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  */
 public class MinimalSemestersAtomObjectiveFunction extends AtomObjectiveFunction {
 
+	private static double quotient = 0.965;
+	
 	/*
 	 * {@inheritDoc}
 	 */
 	@Override
 	public double evaluate(final Plan plan) {
-		// TODO Auto-generated method stub
-		return 0;
+		int maxSemester = Collections.max(plan.getAllModuleEntries()).getSemester();
+		if (maxSemester < 1) {
+			maxSemester = 1;
+		}
+		return Math.pow(quotient, maxSemester - 1);
 	}
 };

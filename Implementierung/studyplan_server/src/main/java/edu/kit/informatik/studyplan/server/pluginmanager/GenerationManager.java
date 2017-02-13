@@ -1,11 +1,17 @@
 package edu.kit.informatik.studyplan.server.pluginmanager;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
+
 import edu.kit.informatik.studyplan.server.generation.Generator;
+import edu.kit.informatik.studyplan.server.generation.objectivefunction.AverageObjectiveFunction;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
+import edu.kit.informatik.studyplan.server.generation.standard.SimpleGenerator;
+import edu.kit.informatik.studyplan.server.model.moduledata.Category;
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-
-import java.util.Collection;
 
 /**
  * Verwaltet den Zugriff auf das Generierungsplug-in. Das Generierungsplug-in
@@ -15,11 +21,11 @@ import java.util.Collection;
  */
 public class GenerationManager {
 	/**
-	 * Erstellt einen GenerationManager.
+	 * Liste der Zielfunktionen.
+	 * 
+	 * @see edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction
 	 */
-	public GenerationManager() {
-
-	}
+	private Collection<PartialObjectiveFunction> objectiveFunctions;
 
 	/**
 	 * Der Generierer.
@@ -27,6 +33,16 @@ public class GenerationManager {
 	 * @see edu.kit.informatik.studyplan.server.generation.Generator
 	 */
 	private Generator generator;
+
+	/**
+	 * Erstellt einen GenerationManager.
+	 */
+	public GenerationManager() {
+		generator = new SimpleGenerator();
+		objectiveFunctions = new ArrayList<PartialObjectiveFunction>();
+		objectiveFunctions.add(new AverageObjectiveFunction());
+		//TODO: stuff
+	}
 
 	/**
 	 * Gibt den Generator zurück.
@@ -50,16 +66,9 @@ public class GenerationManager {
 	 * @return ein vollständiger, korrekter und optimierter Studienplan vom Typ
 	 *         Plan.
 	 */
-	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO) {
-		return null;
+	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO, Map<Field, Category>preferredSubjects, int maxECTSperSemester) {
+		return generator.generate(objectiveFunction, currentPlan, moduleDAO, preferredSubjects, maxECTSperSemester);
 	}
-
-	/**
-	 * Liste der Zielfunktionen.
-	 * 
-	 * @see edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction
-	 */
-	private Collection<PartialObjectiveFunction> objectiveFunction;
 
 	/**
 	 * Gibt die Liste der Zielfunktionen zurück.
@@ -67,19 +76,7 @@ public class GenerationManager {
 	 * @return objectiveFunction : die Liste der Zielfunktionen
 	 */
 	public Collection<PartialObjectiveFunction> getAllObjectiveFunctions() {
-		return objectiveFunction;
-	}
-
-	/**
-	 * Diese Methode ruft die evaluate Methode der
-	 * {@link edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction}.
-	 * 
-	 * @return Wert zwischen 0 und 1 der den Plan evaluiert.
-	 * @param plan
-	 *            der zu bewertende Plan.
-	 */
-	public double evaluate(Plan plan) {
-		return 0;
+		return objectiveFunctions;
 	}
 
 }

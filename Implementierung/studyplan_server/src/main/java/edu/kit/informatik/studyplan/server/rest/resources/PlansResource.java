@@ -364,14 +364,11 @@ public class PlansResource {
 			if (module == null) {
 				throw new NotFoundException();
 			}
-			if (plan.getModuleEntries().stream().anyMatch(entry ->
-					entry.getModule().getIdentifier().equals(module.getIdentifier()))
-//					|| moduleInput.getModule().getSemester()
-//						< getUser().getStudyStart().getDistanceToCurrentSemester()
-					) {
-				throw new UnprocessableEntityException();
+			if (plan.getEntryFor(module) != null) {
+				plan.getEntryFor(module).setSemester(moduleInput.getModule().getSemester());
+			} else {
+				plan.getModuleEntries().add(new ModuleEntry(module, moduleInput.getModule().getSemester()));
 			}
-			plan.getModuleEntries().add(new ModuleEntry(module, moduleInput.getModule().getSemester()));
 			plan.setVerificationState(VerificationState.NOT_VERIFIED);
 			planDao.updatePlan(plan);
 			return moduleInput;
@@ -532,7 +529,7 @@ public class PlansResource {
 						.filter(fn -> false  //TODO:  fn.getId() == objectiveId
 						).findFirst().orElseThrow(NotFoundException::new);
 
-				Plan result = manager.generate(objective, plan, moduleDao);  //TODO incorporate int & preferredSubs
+				Plan result = manager.generate(objective, plan, moduleDao, preferredSubjects, maxSemesterEcts);  //TODO incorporate int & preferredSubs
 
 				return new PlanInOut(result); //TODO Check serialization of `result` inside generator
 			} catch (IllegalArgumentException ex) {
@@ -576,7 +573,6 @@ public class PlansResource {
 	@GET
 	@Path("/{planId}/pdf")
 	@Produces("text/html")
-	@AuthorizationNeeded
 	public Response convertPlanToPDF(@PathParam(value = "planId") String planId,
 			@QueryParam("access-token") String accessToken) {
 		AbstractSecurityProvider provider = AbstractSecurityProvider.getSecurityProviderImpl();
