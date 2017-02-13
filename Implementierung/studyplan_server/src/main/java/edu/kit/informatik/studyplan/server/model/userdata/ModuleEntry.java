@@ -17,7 +17,7 @@ import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory
  */
 @Entity
 @Table(name = "module_entry")
-public class ModuleEntry {
+public class ModuleEntry implements Comparable<ModuleEntry> {
 	/**
 	 * 
 	 */
@@ -120,5 +120,10 @@ public class ModuleEntry {
 	 */
 	public void setPassed(boolean isPassed) {
 		this.isPassed = isPassed;
+	}
+
+	@Override
+	public int compareTo(ModuleEntry o) {
+		return this.semester - o.semester;
 	}
 };

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+
 import edu.kit.informatik.studyplan.server.filter.CategoryFilter;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.generation.Generator;
@@ -43,17 +44,17 @@ public class SimpleGenerator implements Generator {
 		return nodes;
 	}
 
-	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO,
-			Map<Field, Category> preferredSubjects, int maxECTSperSemester) {
+	public Plan generate(PartialObjectiveFunction objectiveFunction, final Plan currentPlan, ModuleDao moduleDAO,
+			Map<Field, Category> preferredSubjects, int maxSemesterEcts) {
 		Map<Plan, NodesList> planFamily;
 		Iterator<Plan> it;
 		Plan plan = currentPlan;
 		// first generation of family of plans with change of all randomly added
 		// nodes
 		planToGraph(currentPlan);
-		if (randomlyGeneratedFamilyOfPlans(nodes, plan, preferredSubjects, -1, maxECTSperSemester, moduleDAO) == null)
+		if (randomlyGeneratedFamilyOfPlans(nodes, plan, preferredSubjects, -1, maxSemesterEcts, moduleDAO) == null)
 			System.out.println("Null list");
-		planFamily = randomlyGeneratedFamilyOfPlans(nodes, plan, preferredSubjects, -1, maxECTSperSemester, moduleDAO);
+		planFamily = randomlyGeneratedFamilyOfPlans(nodes, plan, preferredSubjects, -1, maxSemesterEcts, moduleDAO);
 		it = planFamily.keySet().iterator();
 		plan = new Plan();
 		plan.setUser(currentPlan.getUser());
@@ -70,7 +71,7 @@ public class SimpleGenerator implements Generator {
 		NodesList planNodesList;
 		for (int i = 0; i < 5; i++) {
 			planNodesList = planFamily.get(plan);
-			planFamily = randomlyGeneratedFamilyOfPlans(planNodesList, plan, preferredSubjects, 10, maxECTSperSemester,
+			planFamily = randomlyGeneratedFamilyOfPlans(planNodesList, plan, preferredSubjects, 10, maxSemesterEcts,
 					moduleDAO);
 			it = planFamily.keySet().iterator();
 			plan = new Plan();
@@ -85,7 +86,8 @@ public class SimpleGenerator implements Generator {
 				}
 			}
 		}
-		return currentPlan;
+		plan.getPreferences().addAll(currentPlan.getPreferences());
+		return plan;
 	}
 
 	/**

@@ -37,7 +37,7 @@ class HibernateModuleDao implements ModuleDao {
 		session.beginTransaction();
 		String whereClause = converter.getQueryString();
 		if (!whereClause.matches("\\s*")) {
-			whereClause += "and ";
+			whereClause += " and ";
 		}
 		String queryString = "from Module m where " + whereClause + "m.discipline = :discipline";
 		Query<Module> query = session.createQuery(queryString, Module.class);

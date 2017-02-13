@@ -4,6 +4,8 @@
 
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
@@ -19,7 +21,17 @@ public class ModulePreferencesAtomObjectiveFunction extends AtomObjectiveFunctio
 	 */
 	@Override
 	public double evaluate(final Plan plan) {
-		// TODO Auto-generated method stub
-		return 0;
+		int numberOfPreferences = plan.getPreferences().size();
+		if (numberOfPreferences < 1) {
+			return 1;
+		}
+		int fulfilledPreferences = 0;
+		for (ModulePreference preference : plan.getPreferences()) {
+			Module module = preference.getModule();
+			if (plan.getPreferenceForModule(module) != null) {
+				fulfilledPreferences++;
+			}
+		}
+		return ((double) fulfilledPreferences)/((double) numberOfPreferences);
 	}
 };

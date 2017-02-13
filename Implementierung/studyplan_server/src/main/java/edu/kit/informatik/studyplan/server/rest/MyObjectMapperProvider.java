@@ -2,6 +2,12 @@ package edu.kit.informatik.studyplan.server.rest;
 
 
 
+import java.io.IOException;
+import java.util.Objects;
+
+import javax.ws.rs.ext.ContextResolver;
+import javax.ws.rs.ext.Provider;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
@@ -13,13 +19,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraintType;
 import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
-
-import javax.ws.rs.ext.ContextResolver;
-import javax.ws.rs.ext.Provider;
-import java.io.IOException;
-import java.util.Objects;
 
 /**
  * Provider for a customized ObjectMapper.

@@ -12,7 +12,8 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  * Mittelmäßige Studienpläne können so auf sehr schlechte Werte gesetzt werden.
  * Bessere Studienpläne heben sich so stärker heraus.
  */
-public class ThresholdObjectiveFunction extends ObjectiveFunction {
+public class ThresholdObjectiveFunction extends AverageObjectiveFunction {
+	
 	private final double threshold;
 
 	/**
@@ -27,9 +28,10 @@ public class ThresholdObjectiveFunction extends ObjectiveFunction {
 	 * 
 	 * @param threshold
 	 */
-	public ThresholdObjectiveFunction(final int threshold) {
+	public ThresholdObjectiveFunction(final double threshold) {
 		this.threshold = threshold;
 	}
+	
 
 	/*
 	 * Alle Zielfunktionen werden, wenn sie unter einem Schwellwert sind als
@@ -37,7 +39,10 @@ public class ThresholdObjectiveFunction extends ObjectiveFunction {
 	 */
 	@Override
 	public double evaluate(final Plan plan) {
-		// TODO Auto-generated method stub
-		return 0;
+		double val = super.evaluate(plan);
+		if(val<this.threshold){
+			val = 0;
+		}
+		return val;
 	}
 };

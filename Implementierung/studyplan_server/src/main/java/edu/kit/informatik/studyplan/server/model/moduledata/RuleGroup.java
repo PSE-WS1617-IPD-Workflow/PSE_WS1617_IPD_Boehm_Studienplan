@@ -1,11 +1,20 @@
 package edu.kit.informatik.studyplan.server.model.moduledata;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Class representing a rule group, which defines a group of modules
@@ -27,19 +36,19 @@ public class RuleGroup {
 	private String name;
 	
 	@Column(name = "min_num")
-	@JsonProperty("min-ects")
+	@JsonProperty("min-num")
 	private int minNum = -1;
 	
 	@Column(name = "max_num")
-	@JsonProperty("max-ects")
+	@JsonProperty("max-num")
 	private int maxNum = -1;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "rule_module_assignment",
 	joinColumns = 
-		@JoinColumn(name = "module_id"),
+		@JoinColumn(name = "rule_id"),
 	inverseJoinColumns =
-		@JoinColumn(name = "rule_id"))
+		@JoinColumn(name = "module_id"))
 	@JsonIgnore
 	private List<Module> modules = new LinkedList<Module>();
 	

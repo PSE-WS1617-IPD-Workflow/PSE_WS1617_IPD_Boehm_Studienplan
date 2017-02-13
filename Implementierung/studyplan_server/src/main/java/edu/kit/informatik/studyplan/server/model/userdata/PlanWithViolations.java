@@ -13,7 +13,7 @@ import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
  * Only used for serialization of verification results.
  * Extends a Plan with violations attributes.
  */
-public class PlanWithViolations extends Plan {
+public class PlanWithViolations {
     @JsonProperty("violations")
     private List<ModuleConstraint> violations;
 
@@ -89,4 +89,5 @@ public class PlanWithViolations extends Plan {
     public void setCompulsoryViolations(List<JsonModule> compulsoryViolations) {
         this.compulsoryViolations = compulsoryViolations;
     }
+    
 }

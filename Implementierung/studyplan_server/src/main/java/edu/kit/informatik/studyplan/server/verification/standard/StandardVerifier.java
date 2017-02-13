@@ -89,7 +89,6 @@ public class StandardVerifier implements Verifier {
 	private void findConstraintViolations(Plan plan) {
 		for (ModuleEntry moduleEntry : plan.getAllModuleEntries()) {
 			for (ModuleConstraint constraint : moduleEntry.getModule().getConstraints()) {
-				ModuleOrientation orientation;
 //				if (constraint.getFirstModule().equals(moduleEntry.getModule())) {
 //					orientation = ModuleOrientation.LEFT_TO_RIGHT;
 //				} else {

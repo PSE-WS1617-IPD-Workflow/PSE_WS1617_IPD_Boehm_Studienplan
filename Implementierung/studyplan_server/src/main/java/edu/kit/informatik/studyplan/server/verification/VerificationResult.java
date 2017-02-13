@@ -7,11 +7,18 @@ package edu.kit.informatik.studyplan.server.verification;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
+import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 
 /************************************************************/
 /**
@@ -22,10 +29,15 @@ public class VerificationResult {
 	 * VerificationResult enthält ein Array violations vom Typ ModuleConstraint.
 	 * In diesem werden verletzte Modulconstraints gespeichert.
 	 */
+	@JsonProperty("violations")
 	private Collection<ModuleConstraint> violations;
+	@JsonIgnore
 	private Collection<Field> fieldViolations;
+	@JsonProperty("rule-group-violations")
 	private Collection<RuleGroup> ruleGroupViolations;
+	@JsonIgnore
 	private Collection<Module> compulsoryViolations;
+	@JsonIgnore
 	private boolean correct;
 	
 	public VerificationResult () {
@@ -72,5 +84,42 @@ public class VerificationResult {
 	
 	public void setCorrect(boolean isCorrect) {
 		correct = isCorrect;
+	}
+	
+	@JsonProperty("status")
+	public VerificationState getVerificationState() {
+		return isCorrect() ? VerificationState.VALID : VerificationState.INVALID;
+	}
+	
+	@JsonProperty("compulsory-violations")
+	public List<JsonModule> getCompulsoryViolationsForJson() {
+		return getCompulsoryViolations().stream()
+				.map(module -> {
+					JsonModule jsonModule = new JsonModule();
+					jsonModule.setName(module.getName());
+					return jsonModule;
+				}).collect(Collectors.toList());
+	}
+	
+	@JsonProperty("field-violations")
+	public List<FieldSummaryDto> getFieldViolationsForJson() {
+		return getFieldViolations().stream()
+				.map(field -> new FieldSummaryDto(field))
+				.collect(Collectors.toList());
+	}
+	
+	
+	public class FieldSummaryDto {
+		
+		@JsonProperty
+		String name;
+		
+		@JsonProperty("min-ects")
+		double minEcts;
+		
+		public FieldSummaryDto(Field field) {
+			this.name = field.getName();
+			this.minEcts = field.getMinEcts();
+		}
 	}
 };

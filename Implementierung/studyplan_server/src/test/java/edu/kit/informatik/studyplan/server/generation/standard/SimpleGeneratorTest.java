@@ -3,22 +3,21 @@
  */
 package edu.kit.informatik.studyplan.server.generation.standard;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import edu.kit.informatik.studyplan.server.filter.CategoryFilter;
+import org.junit.Before;
+import org.junit.Test;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+
 import edu.kit.informatik.studyplan.server.filter.Filter;
-import edu.kit.informatik.studyplan.server.generation.objectivefunction.AverageObjectiveFunction;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.MinimalECTSAtomObjectiveFunction;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
@@ -178,7 +177,7 @@ public class SimpleGeneratorTest {
 
 		// plan.setUser(user);
 		when(plan.getUser()).thenReturn(user);
-		ModulePreference modPref = new ModulePreference(la1, PreferenceType.POSITIVE);
+		ModulePreference modPref = new ModulePreference(la1, PreferenceType.POSITIVE, plan);
 		modPreferences = new ArrayList<ModulePreference>();
 		modPreferences.add(modPref);
 		when(plan.getPreferences()).thenReturn(modPreferences);

@@ -1,5 +1,23 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.UriInfo;
+
 import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.filter.FilterDescriptorProvider;
@@ -13,17 +31,6 @@ import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
-
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.UriInfo;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * REST resource for /modules.
@@ -104,7 +111,7 @@ public class ModuleResource {
 		if (!params.containsKey("filters")) {
 			return new TrueFilter();
 		} else {
-			List<String> filterNames = params.get("filters");
+			List<String> filterNames = Arrays.asList(params.getFirst("filters").split(","));
 			if (Utils.hasDuplicates(filterNames)) {
 				throw new BadRequestException();
 			}
