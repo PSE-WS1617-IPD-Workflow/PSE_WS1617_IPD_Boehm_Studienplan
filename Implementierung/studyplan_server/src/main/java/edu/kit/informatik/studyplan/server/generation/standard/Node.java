@@ -10,6 +10,9 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
 
+
+
+
 // TODO all collections to lists and initialize!!
 /**
  * Die abstrakte Klasse Node stellt Knoten des Graphen da.
@@ -131,7 +134,6 @@ public abstract class Node {
 	 */
 	protected Node(Module module, Plan plan, SimpleGenerator generator) {
 		this.generator = generator;
-		System.out.println("INSTANZ");
 		this.module = module;
 		this.plan = plan;
 		// Check if the module in in the passedModules list of the user
@@ -412,8 +414,6 @@ public abstract class Node {
 	 */
 	protected ModuleConstraint getConstraint(Node node) {
 		for (ModuleConstraint c : getModule().getConstraints()) {
-			System.out.println("in get constraint"+getRemainingModuleFromConstraint(c).getIdentifier()
-					+"___" + node.getModule().getIdentifier());
 			if (getRemainingModuleFromConstraint(c).getIdentifier() == node.getModule().getIdentifier()) {
 				return c;
 			}

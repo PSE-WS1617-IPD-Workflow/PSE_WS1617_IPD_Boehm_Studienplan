@@ -46,7 +46,6 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
             var curSem = student.get('current-semester');
         }
         var semesterNum = (curSem) ? curSem : 1;
-        this.length = semesters.length;
         while(semesters.length<=semesterNum){
             semesters[semesters.length] = new edu.kit.informatik.studyplan.client.model.plans.Semester({
                     planId : this.planId,
@@ -55,6 +54,7 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
             },{parse:true, collection: this})
             this.length = semesterNum;
         }
+        this.length = semesters.length;
         if(semesters.length<semesterNum){
             for(var i = (semesters.length+1); i<=semesterNum; i++){
                 

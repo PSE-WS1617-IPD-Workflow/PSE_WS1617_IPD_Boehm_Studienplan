@@ -1,0 +1,33 @@
+<div>
+    <h2><button class="close">x</button>{{obj.module.get('name')}}</h2>
+    <table>
+        <tr>
+            <td>{{=obj.LM.getMessage('lecturer')}}</td>
+            <td>{{=obj.module.get('lecturer')}}</td>
+        </tr>
+        <tr>
+            <td>{{=obj.LM.getMessage('ECTS')}}</td>
+            <td>{{=obj.module.get('ECTS')}}</td>
+        </tr>
+    </table>
+    <h3>{{=obj.LM.getMessage('description')}}</h3>
+    <p>{{=obj.module.get('description')}}</p>
+    <h3>{{=obj.LM.getMessage('constraints')}}</h3>
+    <div class="constraints">
+        <h4>{{=obj.LM.getMessage('constraintType_prerequisite')}}</h4>
+        <div class="prerequisiteConstraints">
+        </div>
+        <h4>{{=obj.LM.getMessage('constraintType_overlapping')}}</h4>
+        <div class="overlappingConstraints">
+        
+        </div>
+        <h4>{{=obj.LM.getMessage('constraintType_semester_link')}}</h4>
+        <div class="semester_linkConstraints">
+        
+        </div>
+        <h4>{{=obj.LM.getMessage('constraintType_plan_link')}}</h4>
+        <div class="plan_linkConstraints">
+            
+        </div>
+    </div>
+</div>

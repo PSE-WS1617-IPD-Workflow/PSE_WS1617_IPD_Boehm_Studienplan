@@ -124,7 +124,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     success: function () {
                         this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.WizardPage, {
                             firstPage: new edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1({
-                                plan: planId,
+                                planId: plan.get('id'),
                                 information: info
                             }),
                             // Callback: Generation wizard completed
@@ -189,6 +189,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 // This actually seems to be a legit request...
                 var info = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance();
                 info.set('access_token',redirectData["access_token"]);
+                info.set('expires_in',redirectData["expires_in"]);
                 info.save();
                 window.setTimeout(function () {
                     edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()

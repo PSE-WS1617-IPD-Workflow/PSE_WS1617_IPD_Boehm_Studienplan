@@ -7,6 +7,14 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.VerificationResult
  */
 
 edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.VerificationResult.prototype}*/{
+    plan: null,
+    initialize: function (attributes, options) {
+        this.plan = options.plan;
+        this.listenTo(this.model, "change", this.onChange);
+    },
+    onChange: function () {
+        this.plan.trigger("change");
+    },
     url : function () {
         "use strict";
         return API_DOMAIN + "/plans/" + this.get('id') + '/verification';

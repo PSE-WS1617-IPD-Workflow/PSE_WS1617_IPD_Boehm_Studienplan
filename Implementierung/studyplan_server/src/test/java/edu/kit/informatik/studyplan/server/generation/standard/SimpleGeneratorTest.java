@@ -1,6 +1,3 @@
-/**
- * 
- */
 package edu.kit.informatik.studyplan.server.generation.standard;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -200,22 +197,11 @@ public class SimpleGeneratorTest {
 		nodesToCompareTo.add(new NodeWithOutput(prog, generator));
 		nodesToCompareTo.add(new NodeWithOutput(swt, generator));
 
-		System.out.println("end set up");
-		// System.out.println(plan.getPreferences().get(0).getModule().getIdentifier()
-		// + "Hillow");
-		// category.setName("Math");
 	}
 
 	@Test
 	public void testPlanToGraph() {
-		System.out.println("plan to graph");
 		generator.planToGraph(plan);
-		for (Node n : generator.getNodes().getAllNodes()) {
-			System.out.println("generated" + n.getModule().getIdentifier());
-		}
-		for (Node n : nodesToCompareTo) {
-			System.out.println(n.getModule().getIdentifier());
-		}
 		assertTrue(generator.getNodes().getAllNodes().containsAll(nodesToCompareTo));
 	}
 
@@ -235,12 +221,7 @@ public class SimpleGeneratorTest {
 
 			}
 		}
-		for (ModulePreference pref : plan.getPreferences()) {
-			System.out.println(pref.getModule().getIdentifier());
-		}
 
-		if (category == null)
-			System.out.println("Hillow");
 		assertTrue(generator.getModulesWithPreference(plan, modlist, category, PreferenceType.POSITIVE, dao)
 				.containsAll(byFilter));
 	}
@@ -255,46 +236,27 @@ public class SimpleGeneratorTest {
 		generator.addRuleGroupModules(rule, plan, category, dao);
 		nodesToCompareTo.add(new NodeWithOutput(la1, generator));
 		nodesToCompareTo.add(new NodeWithOutput(la2, generator));
-		for (Node n : generator.getNodes().getAllNodes()) {
-			System.out.println("generated rule group" + n.getModule().getIdentifier());
-		}
-		for (Node n : nodesToCompareTo) {
-			System.out.println(n.getModule().getIdentifier());
-		}
 		assertTrue(generator.getNodes().getAllNodes().containsAll(nodesToCompareTo));
 
 	}
 
 	@Test
 	public void testAddFieldModules() {
-		System.out.println("FIIIEEELD");
 		Field field = new Field();
 		field.getModules().add(ph);
 		field.setMinEcts(2.0);
 		generator.planToGraph(plan);
 		generator.addFieldModules(field, category, plan, dao);
 		nodesToCompareTo.add(new NodeWithOutput(ph, generator));
-		for (Node n : generator.getNodes().getAllNodes()) {
-			System.out.println("generated FIELD" + n.getModule().getIdentifier());
-		}
-		for (Node n : nodesToCompareTo) {
-			System.out.println(n.getModule().getIdentifier());
-		}
 		assertTrue(generator.getNodes().getAllNodes().containsAll(nodesToCompareTo));
 	}
 
 	@Test
 	public void testParallelize() {
-		System.out.println("PARALLELISE");
 		generator.planToGraph(plan);
 		int[] result = generator.parallelize(generator.getNodes().sort(), 4);
-		for (int i = 0; i < result.length; i++) {
-			System.out.println(result[i]);
-		}
 		int[] compareTo = new int[] { 1, 1, 2, 3 };
-		for (int i : compareTo) {
-			assertArrayEquals(compareTo, result);
-		}
+		assertArrayEquals(compareTo, result);
 	}
 
 	@Test
@@ -329,12 +291,10 @@ public class SimpleGeneratorTest {
 		Map<Field, Category> map = new HashMap<Field, Category>();
 		map.put(field, category);
 		generator.planToGraph(plan);
-		assertTrue(generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(), 
-				plan, map, -1, 4,dao).size() == 10);
-		
-		
+		assertTrue(generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(), plan, map, -1, 4, dao).size() == 10);
+
 	}
-	
+
 	@Test
 	public void testGenerate() {
 		Field field = new Field();
@@ -349,6 +309,5 @@ public class SimpleGeneratorTest {
 		PartialObjectiveFunction obFunction = new MinimalECTSAtomObjectiveFunction();
 		generator.generate(obFunction, plan, dao, map, 4);
 	}
-	
-}
 
+}
