@@ -85,12 +85,18 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] editPage");
                 this.showLoading();
                 var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({id: planId});
-                plan.fetch({
+                var info = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance();
+                var student = info.get('student');
+                student.fetch({
                     success: function () {
-                        this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.PlanEditPage, {
-                            plan:  plan
+                        plan.fetch({
+                            success: function () {
+                                this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.PlanEditPage, {
+                                    plan:  plan
+                                });
+                                this.hideLoading();
+                            }.bind(this)
                         });
-                        this.hideLoading();
                     }.bind(this)
                 });
             },
@@ -249,13 +255,17 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                 console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] showProfile");
                 this.showLoading();
                 var student = new edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
-                var plan = student.get('passedModules').toPlan();
-                this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.ProfilPage, {
-                    plan: plan
+                student.fetch({
+                    success: function () {
+                        var plan = student.get('passedModules').toPlan();
+                        this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.ProfilPage, {
+                            plan: plan
+                        });
+                        this.view.render();
+                        // Do stuff heresignUpWizard
+                        this.hideLoading();
+                    }.bind(this)
                 });
-                this.view.render();
-                // Do stuff heresignUpWizard
-                this.hideLoading();
             },
             /**
              * Initalize signup wizard

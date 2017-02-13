@@ -6,7 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.module.Preference");
  * @extends {Backbone.Model}
  */
 
-edu.kit.informatik.studyplan.client.model.module.Preference = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.Preference.prototype}*/{
+edu.kit.informatik.studyplan.client.model.module.Preference = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.module.Preference.prototype}*/{
     initialize: function () {
         this.listenTo(this, "change", this.onChange);
     },

@@ -23,9 +23,11 @@ edu.kit.informatik.studyplan.client.model.system.FilterCollection = edu.kit.info
         "use strict";
         var result = {filters : ""};
         this.each(function (filter) {
-            console.log(filter);
-            result.filters += (((result.filters !== "") ? "," : "") + filter.get('name'));
-            _.extend(result,filter.getParams());
+            var params = filter.getParams();
+            if(params!==null) {
+                result.filters += (((result.filters !== "") ? "," : "") + filter.get('uri-name'));
+                _.extend(result, params);
+            }
         });
         return result;
     }
