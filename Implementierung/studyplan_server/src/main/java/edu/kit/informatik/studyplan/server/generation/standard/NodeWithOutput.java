@@ -4,6 +4,7 @@ package edu.kit.informatik.studyplan.server.generation.standard;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.kit.informatik.studyplan.server.generation.Generator;
 import edu.kit.informatik.studyplan.server.generation.standard.Node;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
@@ -20,12 +21,12 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  */
 public class NodeWithOutput extends Node {
 
-	protected NodeWithOutput(Module module) {
-		super(module);
+	protected NodeWithOutput(Module module, SimpleGenerator generator) {
+		super(module, generator);
 	}	
 
-	protected NodeWithOutput(Module module, Plan plan) {
-		super(module, plan);
+	protected NodeWithOutput(Module module, Plan plan, SimpleGenerator generator) {
+		super(module, plan, generator);
 	}
 	/**
 	 * Die Liste children vom Typ Node enthält alle Knoten, zu denen der Knoten
@@ -56,26 +57,28 @@ public class NodeWithOutput extends Node {
 			System.out.println("founf constraint with " + module.getIdentifier());
 			// Check if a node with this module already exists in the list of
 			// nodes of the current plan
-			newNode = SimpleGenerator.getNodes().getFromAllNodes(module);
+			newNode = getGenerator().getNodes().getFromAllNodes(module);
 			if (newNode == null) {
 				y = false;
 				System.out.println("didn't find node in list " + module.getIdentifier());
-				newNode = new NodeWithOutput(module);
+				newNode = new NodeWithOutput(module, getGenerator());
 				newNode.setPlan(this.getPlan());
 				if(random) {
-					SimpleGenerator.getNodes().getRandomlyAddedNodes().add(newNode);
+					getGenerator().getNodes().getRandomlyAddedNodes().add(newNode);
 				}
 			}
 			if (c.getConstraintType() instanceof PrerequisiteModuleConstraintType) {
 				addParent(newNode);
-				SimpleGenerator.getNodes().addToAllNodes(newNode);
+				System.out.println("added parent " +newNode.getModule().getIdentifier()
+						+ " to node " + this.getModule().getIdentifier());
+				getGenerator().getNodes().addToAllNodes(newNode);
 			} else if (c.getConstraintType() instanceof PlanLinkModuleConstraintType) {
 				addChild(newNode);
-				SimpleGenerator.getNodes().addToAllNodes(newNode);
+				getGenerator().getNodes().addToAllNodes(newNode);
 			} else if (c.getConstraintType() instanceof SemesterLinkModuleConstraintType) {
 				System.out.println("semesterLink" + newNode.getModule().getIdentifier());
 				addInnerNode(newNode);
-				SimpleGenerator.getNodes().addToAllNodes(newNode);
+				getGenerator().getNodes().addToAllNodes(newNode);
 			}
 			if (!y) {
 				newNode.fulfillConstraints(random);				

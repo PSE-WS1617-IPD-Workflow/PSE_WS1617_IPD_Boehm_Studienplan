@@ -37,30 +37,10 @@ public abstract class ListFilter<T> extends AttributeFilter {
 	}
 
 	/**
-	 *
-	 * @return the LIST filter type
-     */
-	public FilterType getFilterType() {
-		return FilterType.LIST;
-	}
-
-	/**
 	 * 
 	 * @return the selected element's object.
 	 */
 	public T getSelection() {
 		return selection;
 	}
-
-	/**
-	 * 
-	 * @return the options of the ListFilter as strings
-	 */
-	public abstract List<String> getItemStrings();
-
-	/**
-	 *
-	 * @return the object representations of the ListFilter options
-     */
-	public abstract List<T> getItemObjects();
 }

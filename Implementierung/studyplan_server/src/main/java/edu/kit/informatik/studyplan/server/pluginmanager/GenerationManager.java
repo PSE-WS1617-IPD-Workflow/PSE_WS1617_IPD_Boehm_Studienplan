@@ -1,20 +1,11 @@
 package edu.kit.informatik.studyplan.server.pluginmanager;
 
 import edu.kit.informatik.studyplan.server.generation.Generator;
-import edu.kit.informatik.studyplan.server.generation.objectivefunction.MinimalECTSAtomObjectiveFunction;
-import edu.kit.informatik.studyplan.server.generation.objectivefunction.MinimalSemestersAtomObjectiveFunction;
-import edu.kit.informatik.studyplan.server.generation.objectivefunction.MinimalStandardAverageDeviationECTSAtomObjectiveFunction;
-import edu.kit.informatik.studyplan.server.generation.objectivefunction.ModulePreferencesAtomObjectiveFunction;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
-import edu.kit.informatik.studyplan.server.generation.standard.SimpleGenerator;
-import edu.kit.informatik.studyplan.server.model.moduledata.Category;
-import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.Collection;
 
 /**
  * Verwaltet den Zugriff auf das Generierungsplug-in. Das Generierungsplug-in
@@ -27,10 +18,16 @@ public class GenerationManager {
 	 * Erstellt einen GenerationManager.
 	 */
 	public GenerationManager() {
-		generator = new SimpleGenerator();
+
 	}
 
+	/**
+	 * Der Generierer.
+	 * 
+	 * @see edu.kit.informatik.studyplan.server.generation.Generator
+	 */
 	private Generator generator;
+
 	/**
 	 * Gibt den Generator zurück.
 	 * 
@@ -53,24 +50,36 @@ public class GenerationManager {
 	 * @return ein vollständiger, korrekter und optimierter Studienplan vom Typ
 	 *         Plan.
 	 */
-	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, 
-			ModuleDao moduleDAO, Map<Field, Category> preferredSubjects, int maxECTSperSemester) {
-		return generator.generate(objectiveFunction, currentPlan, moduleDAO, preferredSubjects, maxECTSperSemester);
+	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO) {
+		return null;
 	}
 
+	/**
+	 * Liste der Zielfunktionen.
+	 * 
+	 * @see edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction
+	 */
+	private Collection<PartialObjectiveFunction> objectiveFunction;
 
 	/**
 	 * Gibt die Liste der Zielfunktionen zurück.
 	 * 
 	 * @return objectiveFunction : die Liste der Zielfunktionen
 	 */
-	public List<PartialObjectiveFunction> getAllObjectiveFunction() {
-		List<PartialObjectiveFunction> objectiveFunctions = new ArrayList<PartialObjectiveFunction>();
-		objectiveFunctions.add(new ModulePreferencesAtomObjectiveFunction());
-		objectiveFunctions.add(new MinimalSemestersAtomObjectiveFunction());
-		objectiveFunctions.add(new MinimalECTSAtomObjectiveFunction());
-		objectiveFunctions.add(new MinimalStandardAverageDeviationECTSAtomObjectiveFunction());
-		return objectiveFunctions;
+	public Collection<PartialObjectiveFunction> getAllObjectiveFunctions() {
+		return objectiveFunction;
+	}
+
+	/**
+	 * Diese Methode ruft die evaluate Methode der
+	 * {@link edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction}.
+	 * 
+	 * @return Wert zwischen 0 und 1 der den Plan evaluiert.
+	 * @param plan
+	 *            der zu bewertende Plan.
+	 */
+	public double evaluate(Plan plan) {
+		return 0;
 	}
 
 }

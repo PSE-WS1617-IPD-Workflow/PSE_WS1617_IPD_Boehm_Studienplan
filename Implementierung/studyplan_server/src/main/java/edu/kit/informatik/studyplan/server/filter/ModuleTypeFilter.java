@@ -23,18 +23,6 @@ public class ModuleTypeFilter extends ListFilter<ModuleType> {
 	}
 
 	@Override
-	public List<String> getItemStrings() {
-		return getItemObjects().stream()
-				.map(ModuleType::getName)
-				.collect(Collectors.toList());
-	}
-
-	@Override
-	public List<ModuleType> getItemObjects() {
-		return Utils.withModuleDao(ModuleDao::getModuleTypes);
-	}
-
-	@Override
 	public String getAttributeName() {
 		return ModuleAttributeNames.MODULE_TYPE;
 	}

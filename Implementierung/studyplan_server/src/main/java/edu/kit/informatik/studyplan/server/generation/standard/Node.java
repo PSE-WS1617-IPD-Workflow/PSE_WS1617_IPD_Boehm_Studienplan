@@ -1,5 +1,6 @@
 package edu.kit.informatik.studyplan.server.generation.standard;
 
+import edu.kit.informatik.studyplan.server.generation.Generator;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
@@ -17,6 +18,10 @@ import java.util.List;
  * Die abstrakte Klasse Node stellt Knoten des Graphen da.
  */
 public abstract class Node {
+	/**
+	 * The generator that generated this node.
+	 */
+	private SimpleGenerator generator;
 	/**
 	 * Ein Knoten beinhaltet ein Module module, welches er darstellt.
 	 */
@@ -114,7 +119,8 @@ public abstract class Node {
 	 * @param module
 	 *            of this Node.
 	 */
-	protected Node(Module module) {
+	protected Node(Module module, SimpleGenerator generator) {
+		this.generator = generator;
 		this.module = module;
 	}
 
@@ -126,7 +132,8 @@ public abstract class Node {
 	 * @param plan
 	 *            from which this Node was created.
 	 */
-	protected Node(Module module, Plan plan) {
+	protected Node(Module module, Plan plan, SimpleGenerator generator) {
+		this.generator = generator;
 		System.out.println("INSTANZ");
 		this.module = module;
 		this.plan = plan;
@@ -399,6 +406,30 @@ public abstract class Node {
 	}
 
 	/**
+	 * Returns the constraint of this node's module with the module of the node
+	 * given if it exists.
+	 * 
+	 * @param node
+	 * @return the constraint of this node's module with the module of the node
+	 *         given if it exists, and null if it doesn't.
+	 */
+	protected ModuleConstraint getConstraint(Node node) {
+		for (ModuleConstraint c : getModule().getConstraints()) {
+			System.out.println("in get constraint"+getRemainingModuleFromConstraint(c).getIdentifier()
+					+"___" + node.getModule().getIdentifier());
+			if (getRemainingModuleFromConstraint(c).getIdentifier() == node.getModule().getIdentifier()) {
+				return c;
+			}
+		}
+		for (ModuleConstraint c : node.getModule().getConstraints()) {
+			if (getRemainingModuleFromConstraint(c).getIdentifier() == getModule().getIdentifier()) {
+				return c;
+			}
+		}
+		return null;
+	}
+
+	/**
 	 * Checks if this node can be added to the semester with number given
 	 * respecting its cycle type
 	 * 
@@ -439,5 +470,13 @@ public abstract class Node {
 		}
 		return true;
 	}
+
+	/**
+	 * @return the generator that created this node
+	 */
+	public SimpleGenerator getGenerator() {
+		return generator;
+	}
+
 
 }

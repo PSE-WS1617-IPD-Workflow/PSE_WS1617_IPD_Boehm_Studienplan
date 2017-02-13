@@ -11,19 +11,15 @@ import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleAttributeN
  */
 public final class CreditPointsFilter extends RangeFilter {
 	/**
-	 * Creates a new CreditPointsFilter with given ranges.
+	 * Creates a new CreditPointsFilter with given range.
 	 *
 	 * @param lower
 	 *            lower bound of the filter.
 	 * @param upper
 	 *            upper bound of the filter
-	 * @param min
-	 *            minimum lower bound of the filter.
-	 * @param max
-	 *            maximum upper bound of the filter
 	 */
-	public CreditPointsFilter(int lower, int upper, int min, int max) {
-		super(lower, upper, min, max);
+	public CreditPointsFilter(int lower, int upper) {
+		super(lower, upper);
 	}
 
 	@Override

@@ -1,12 +1,8 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
-import edu.kit.informatik.studyplan.server.filter.FilterDescriptorProvider;
-import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
-import edu.kit.informatik.studyplan.server.model.userdata.User;
-import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
-import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -14,9 +10,15 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+
+import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
+import edu.kit.informatik.studyplan.server.filter.FilterDescriptorProvider;
+import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
+import edu.kit.informatik.studyplan.server.model.userdata.User;
+import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
+import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
+import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 /**
  * REST resource for /filters.
@@ -38,13 +40,14 @@ public class FilterResource {
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Map<String, Object>> getAllFilters() {
+	public Map<String,List<Map<String,Object>>> getAllFilters() {
 		Discipline discipline = getUser().getDiscipline();
 		if (discipline == null) {
 			throw new UnprocessableEntityException();
 		}
-		return new FilterDescriptorProvider(discipline).values().stream()
+		List<Map<String, Object>> result = new FilterDescriptorProvider(discipline).values().stream()
 				.map(FilterDescriptor::toJson)
 				.collect(Collectors.toList());
+		return SimpleJsonResponse.build("filters", result);
 	}
 };

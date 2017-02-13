@@ -18,6 +18,6 @@ public class MainResource {
 	 */
 	@GET
 	public Response isServiceAlive() {
-		return Response.ok().build();
+		return Response.ok("Service running ...").build();
 	}
 }

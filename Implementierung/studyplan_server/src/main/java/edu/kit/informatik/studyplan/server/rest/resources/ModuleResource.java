@@ -1,17 +1,10 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
 import edu.kit.informatik.studyplan.server.Utils;
-import edu.kit.informatik.studyplan.server.filter.CategoryFilter;
-import edu.kit.informatik.studyplan.server.filter.CompulsoryFilter;
-import edu.kit.informatik.studyplan.server.filter.CreditPointsFilter;
-import edu.kit.informatik.studyplan.server.filter.CycleTypeFilter;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.filter.FilterDescriptorProvider;
-import edu.kit.informatik.studyplan.server.filter.ModuleTypeFilter;
 import edu.kit.informatik.studyplan.server.filter.MultiFilter;
-import edu.kit.informatik.studyplan.server.filter.NameFilter;
 import edu.kit.informatik.studyplan.server.filter.TrueFilter;
-import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
@@ -23,12 +16,7 @@ import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonRespons
 
 import javax.inject.Inject;
 import javax.inject.Provider;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.GET;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
@@ -120,51 +108,14 @@ public class ModuleResource {
 			if (Utils.hasDuplicates(filterNames)) {
 				throw new BadRequestException();
 			}
-			try {
-				return Utils.withModuleDao(dao -> {
-					FilterDescriptorProvider descriptors = new FilterDescriptorProvider(discipline);
-					List<Filter> filters = filterNames.stream()
-							.map(filterName -> {
-								Filter filter = null;
-								switch (filterName) {  //TODO use refactored FilterDescriptors, <T>params conversion, dont catch NPE.
-									case "ects":
-										int ectsMin = Integer.parseInt(params.getFirst("ects-min"));
-										int ectsMax = Integer.parseInt(params.getFirst("ects-max"));
-										filter = new CreditPointsFilter(ectsMin, ectsMax, 0, 30);
-										break;
-									case "category":
-										int category = Integer.parseInt(params.getFirst("category"));
-										filter = new CategoryFilter(dao.getCategoryById(category), discipline);
-										break;
-									case "type":
-										int type = Integer.parseInt(params.getFirst("type"));
-										filter = new ModuleTypeFilter(dao.getModuleTypes().get(type));
-										break;
-									case "compulsory":
-										int compulsory = Integer.parseInt(params.getFirst("compulsory"));
-										filter = new CompulsoryFilter(compulsory == 0);
-										break;
-									case "cycletype":
-										int cycletype = Integer.parseInt(params.getFirst("cycletype"));
-										CycleType defaultCycleType = ((CycleTypeFilter) descriptors.CYCLE_TYPE()
-												.getDefaultFilter()).getItemObjects().get(0);
-										filter = new CycleTypeFilter(defaultCycleType);
-										break;
-									case "name":
-										String name = params.getFirst("name");
-										filter = new NameFilter(name);
-										break;
-									default:
-										throw new BadRequestException();
-								}
-								return filter;
-							})
-							.collect(Collectors.toList());
-					return new MultiFilter(filters);
-				});
-			} catch (IllegalArgumentException ex) {
-				throw new BadRequestException();
-			}
+			return Utils.withModuleDao(dao -> {
+				FilterDescriptorProvider descriptors = new FilterDescriptorProvider(discipline);
+				List<Filter> filters = filterNames.stream()
+						.map(filterName ->
+							descriptors.getDescriptorFromUriIdentifier(filterName).getFilterFromRequest(params))
+						.collect(Collectors.toList());
+				return new MultiFilter(filters);
+			});
 		}
 	}
 }

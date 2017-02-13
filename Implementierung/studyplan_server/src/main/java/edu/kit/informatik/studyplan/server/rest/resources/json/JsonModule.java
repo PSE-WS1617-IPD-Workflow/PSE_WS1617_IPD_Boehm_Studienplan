@@ -1,17 +1,20 @@
 package edu.kit.informatik.studyplan.server.rest.resources.json;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
 import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
-
-import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A JSON representation of a module. The attributes are already described inside the Module class and therefore left
@@ -24,7 +27,9 @@ public class JsonModule {
     private String name;
     private List<Category> categories;
     private Integer semester;
+    @JsonProperty("cycle-type")
     private CycleType cycleType;
+    @JsonProperty("creditpoints")
     private Double creditPoints;
     private String lecturer;
 //		@JsonInclude(JsonInclude.Include.ALWAYS)

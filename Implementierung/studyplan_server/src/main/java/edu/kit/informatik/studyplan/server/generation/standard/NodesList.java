@@ -9,6 +9,7 @@ import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.Stack;
 
+import edu.kit.informatik.studyplan.server.generation.Generator;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
@@ -29,6 +30,10 @@ public class NodesList extends ArrayList<Node>{
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
+	 * The generator that created this list.
+	 */
+	private SimpleGenerator generator;
+	/**
 	 * The plan that this nodeslist was creates from
 	 */
 	private Plan plan;
@@ -36,8 +41,9 @@ public class NodesList extends ArrayList<Node>{
 	 * Creates a new NodesList and sets its plan. 
 	 * @param plan to set.
 	 */
-	public NodesList(Plan plan){
+	public NodesList(Plan plan, SimpleGenerator generator){
 		this.plan = plan;
+		this.generator = generator;
 	}
 	/**
 	 * A list of all nodes in the list along each node's parents, children and inner nodes.
@@ -48,6 +54,14 @@ public class NodesList extends ArrayList<Node>{
 	 * generation process.
 	 */
 	private List<Node> randomlyAddedNodes = new ArrayList<Node>(); 
+	/**
+	 * Auxiliary attribute: stores result while sorting the list.
+	 */
+	private LinkedList<Node> stack = new LinkedList<Node>();
+	/**
+	 * Auxiliary attribute: stores visited nodes while sorting the list.
+	 */
+	Set<Node> visited = new LinkedHashSet<Node>();
 	/**
 	 * Adds a node to the actual list of nodes and not only to the allNodes list.
 	 * This method is used to add the original nodes that were created from the module entries of 
@@ -98,7 +112,7 @@ public class NodesList extends ArrayList<Node>{
 				return null;
 			}
 		}
-		Node node = new NodeWithOutput(m, plan);
+		Node node = new NodeWithOutput(m, plan, generator);
 		allNodes.add(node);
 		return node;
 	}
@@ -183,54 +197,67 @@ public class NodesList extends ArrayList<Node>{
 		return creditPoints;
 	}
 	/**
-	 * Returns the number of nodes whose modules that belong to the given field.
-	 * @param field to
-	 * @return
+	 * Returns a list of the nodes whose modules that belong to the given ruleGroup.
+	 * @param ruleGroup concerned
+	 * @return a list of the nodes whose modules that belong to the given ruleGroup.
 	 */
-	protected int numNodesInRuleGroup(RuleGroup ruleGroup) {
-		int num = 0;
+	protected List<Node> nodesInRuleGroup(RuleGroup ruleGroup) {
+		List<Node> result = new ArrayList<Node>();
 		for(Node n : getAllNodes()) {
 			if (ruleGroup.getModules().contains(n.getModule())) {
-				num += 1;
+				result.add(n);
 			}
 		}
-		return num;
+		return result;
 	}
 	/**
-	 * Returns a sorted list of the nodes of the list given
-	 * 
+	 * Returns a topologically sorted list of the nodes of the list given.
+	 * This method considers a node and its inner nodes as one so that the result stack 
+	 * only has one node of the whole list.
 	 * @param nodes
 	 *            list of nodes
 	 * @return a list of sorted nodes
 	 */
 	protected LinkedList<Node> sort() {
-		LinkedList<Node> stack = new LinkedList<Node>();
-		Set<Node> visited = new LinkedHashSet<Node>();
+		visited.clear();
+		stack.clear();
 		for (Node n : getAllNodes()) {
-			if (visited.contains(n)) {
-				sortUtil(stack, n, visited);
+			if (!visited.contains(n)) {
+				System.out.println("SORT" + n.getModule().getIdentifier());
+				sortUtil(n, visited);
 			}
 		}
 		return stack;
 	}
 
 	/**
-	 * Adds a child to the stack recursively
+	 * Adds a node to the stack recursively so that the stack always stays topologically 
+	 * sorted.
+	 * This method considers a node and its inner nodes as one so that the result stack only has 
+	 * one node of the whole list.
 	 * 
-	 * @param stack
-	 *            the stack
 	 * @param node
 	 *            the node to begin with
 	 * @param visited
 	 *            set of visited nodes
 	 */
-	private void sortUtil(LinkedList<Node> stack, Node node, Set<Node> visited) {
+	private void sortUtil(Node node, Set<Node> visited) {
 		visited.add(node);
+		Node n = node;
+		while(n.hasInnerNode()) {
+			n = node.getInnerNode();
+			visited.add(n);
+		}
+		n = node;
+		while(n.hasOuterNode()) {
+			n = node.getOuterNode();
+			visited.add(n);
+		}
 		ArrayList<Node> children = node.getChildren();
 		int j = 0;
 		while (j < children.size()) {
 			if (!visited.contains(children.get(j))) {
-				sortUtil(stack, children.get(j), visited);
+				sortUtil(children.get(j), visited);
 			}
 			j++;
 		}
