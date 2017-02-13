@@ -2,10 +2,7 @@ package edu.kit.informatik.studyplan.server.generation.standard;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
-import edu.kit.informatik.studyplan.server.generation.Generator;
-import edu.kit.informatik.studyplan.server.generation.standard.Node;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.PlanLinkModuleConstraintType;
@@ -39,12 +36,10 @@ public class NodeWithOutput extends Node {
 	}
 	
 	protected void fulfillConstraints(boolean random) {
-		System.out.println("fulfilling constraints for " + getModule().getIdentifier());
 		if(this.isPassed()) {
 			return;
 		}
 		if(this.constraintsAreFulfilled()){
-			System.out.println("const fulfilled " + getModule().getIdentifier());
 			return;
 		}
 		Node newNode;
@@ -54,13 +49,11 @@ public class NodeWithOutput extends Node {
 		boolean y = true;
 		for (ModuleConstraint c : this.getModule().getConstraints()) {
 			module = getRemainingModuleFromConstraint(c);
-			System.out.println("founf constraint with " + module.getIdentifier());
 			// Check if a node with this module already exists in the list of
 			// nodes of the current plan
 			newNode = getGenerator().getNodes().getFromAllNodes(module);
 			if (newNode == null) {
 				y = false;
-				System.out.println("didn't find node in list " + module.getIdentifier());
 				newNode = new NodeWithOutput(module, getGenerator());
 				newNode.setPlan(this.getPlan());
 				if(random) {
@@ -69,21 +62,17 @@ public class NodeWithOutput extends Node {
 			}
 			if (c.getConstraintType() instanceof PrerequisiteModuleConstraintType) {
 				addParent(newNode);
-				System.out.println("added parent " +newNode.getModule().getIdentifier()
-						+ " to node " + this.getModule().getIdentifier());
 				getGenerator().getNodes().addToAllNodes(newNode);
 			} else if (c.getConstraintType() instanceof PlanLinkModuleConstraintType) {
 				addChild(newNode);
 				getGenerator().getNodes().addToAllNodes(newNode);
 			} else if (c.getConstraintType() instanceof SemesterLinkModuleConstraintType) {
-				System.out.println("semesterLink" + newNode.getModule().getIdentifier());
 				addInnerNode(newNode);
 				getGenerator().getNodes().addToAllNodes(newNode);
 			}
 			if (!y) {
 				newNode.fulfillConstraints(random);				
 			}
-			System.out.println("fulfilled constraints for " + getModule().getIdentifier());
 			setConstraintsFulfilled(true);
 		}
 	}

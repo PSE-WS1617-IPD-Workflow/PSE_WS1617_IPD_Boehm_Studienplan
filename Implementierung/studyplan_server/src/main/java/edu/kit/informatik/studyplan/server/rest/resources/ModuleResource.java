@@ -30,6 +30,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationConte
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
+import edu.kit.informatik.studyplan.server.rest.resources.json.ModuleDto;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 /**
@@ -89,13 +90,13 @@ public class ModuleResource {
 	@GET
 	@Path("/{moduleId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Map<String, JsonModule> getModule(@PathParam("moduleId") String moduleId) {
+	public Map<String, ModuleDto> getModule(@PathParam("moduleId") String moduleId) {
 		return Utils.withModuleDao(dao -> {
 			Module module = dao.getModuleById(moduleId);
 			if (module == null) {
 				throw new NotFoundException();
 			}
-			JsonModule result = JsonModule.fromModule(module, null, null);
+			ModuleDto result = new ModuleDto(module);
 			return SimpleJsonResponse.build("module", result);
 		});
 	}

@@ -279,7 +279,9 @@ public class Plan {
 	@JsonIgnore
 	public List<ModuleEntry> getAllModuleEntries() {
 		LinkedList<ModuleEntry> allEntries = new LinkedList<ModuleEntry>(moduleEntries);
-		allEntries.addAll(user.getPassedModules());
+		if (user != null){
+			allEntries.addAll(user.getPassedModules());
+		}
 		return allEntries;
 	}
 };

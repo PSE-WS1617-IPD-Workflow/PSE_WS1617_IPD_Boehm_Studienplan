@@ -1,27 +1,43 @@
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /**
- * Multipliziert die Ergebnise der Auswertung Teilzielfunktionen aufeinander
- * auf.
+ * This Objective Function multiplies the results evaluated with one another.
  *
  */
 public class MultiplicationObjectiveFunction extends ObjectiveFunction {
 
-	/*
-	 * (non-Javadoc) Alle Zielfunktionen werden aufmultipliziert, eine
-	 * Zielfunktion vom Wert 0 sorgt also automatisch dafür, dass die gesamte
-	 * Zielfunktion den Wert 0 annimmt.
+	@JsonProperty
+	private String descriptor;
+
+	/**
+	 * This method calls all evaluate methods of the sub-functions and multiplies them.
+	 * When one objective function returns the value 0, this method returns 0.
+	 * 
+	 * @param plan
+	 *            the plan to evaluate
 	 */
 	@Override
 	public double evaluate(final Plan plan) {
-		double[] values =  this.getSubFunctions().stream().mapToDouble(function -> function.evaluate(plan)).toArray();
+		double[] values = this.getSubFunctions().stream().mapToDouble(function -> function.evaluate(plan)).toArray();
 		double product = 1;
-		for(int i = 0; i<values.length; i++){
+		for (int i = 0; i < values.length; i++) {
 			product *= values[i];
 		}
 		return product;
+	}
+	
+	@Override
+	public String getDescriptor() {
+		return descriptor;
+	}
+
+	@Override
+	public void setDescriptor(String descriptor) {
+		this.descriptor = descriptor;
 	}
 
 }

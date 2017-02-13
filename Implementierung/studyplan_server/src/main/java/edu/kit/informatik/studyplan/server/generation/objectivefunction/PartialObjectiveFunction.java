@@ -4,6 +4,8 @@
 
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
@@ -13,7 +15,19 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  * Teilzielfunktion.
  */
 public interface PartialObjectiveFunction {
+	
 
+	/**
+	 * @return the descriptor
+	 */
+	@JsonProperty
+	public String getDescriptor();
+
+	/**
+	 * @param descriptor the descriptor to set
+	 */
+	public void setDescriptor(String descriptor);
+	
 	/**
 	 * Evaluate wertet einen Studienplan aus und gibt dementsprechend eine Zahl
 	 * zwischen 0 und 1 zurück.

@@ -25,7 +25,7 @@ public class PlanDto {
 	double creditPoints;
 	
 	@JsonProperty
-	List<ModuleDto> modules;
+	List<ModuleEntryDto> modules;
 	
 	public PlanDto(Plan plan) {
 		this.id = plan.getIdentifier();
@@ -33,12 +33,12 @@ public class PlanDto {
 		this.status = plan.getVerificationState();
 		this.creditPoints = plan.getCreditPoints();
 		modules = plan.getModuleEntries().stream()
-			.map(entry -> new ModuleDto(entry, plan.getPreferenceForModule(entry.getModule())))
+			.map(entry -> new ModuleEntryDto(entry, plan.getPreferenceForModule(entry.getModule())))
 			.collect(Collectors.toList());
 	}
 	
 	
-	public class ModuleDto {
+	public class ModuleEntryDto {
 		
 		@JsonProperty
 		String id;
@@ -58,7 +58,7 @@ public class PlanDto {
 		@JsonProperty
 		PreferenceType preference;
 		
-		public ModuleDto (ModuleEntry entry, PreferenceType preference) {
+		public ModuleEntryDto (ModuleEntry entry, PreferenceType preference) {
 			this.id = entry.getModule().getIdentifier();
 			this.name = entry.getModule().getName();
 			this.semester = entry.getSemester();
@@ -68,6 +68,5 @@ public class PlanDto {
 			}
 			this.preference = preference;
 		}
-	}
-	
+	}	
 }
