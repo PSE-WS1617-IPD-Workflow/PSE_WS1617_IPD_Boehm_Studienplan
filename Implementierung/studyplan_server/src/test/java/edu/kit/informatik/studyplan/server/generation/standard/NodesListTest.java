@@ -2,9 +2,6 @@ package edu.kit.informatik.studyplan.server.generation.standard;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Before;
@@ -104,9 +101,6 @@ public class NodesListTest {
 	@Test
 	public void testSort() {
 		List<Node> result = nodes.sort();
-		System.out.println("Hillow");
-		for(int i = 0; i < result.size(); i++) 
-		System.out.println(result.get(i).getModule().getIdentifier());
 		assertFalse(result.containsAll(nodes.getAllNodes()));
 		for(int i = 0; i < result.size(); i++) {
 			for(int j = i + 1; j < result.size(); j++) {

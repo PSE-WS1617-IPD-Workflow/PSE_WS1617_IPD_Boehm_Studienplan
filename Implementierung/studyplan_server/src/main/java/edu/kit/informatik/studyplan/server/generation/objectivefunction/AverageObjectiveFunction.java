@@ -4,6 +4,8 @@
 
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
@@ -12,7 +14,9 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  * genomen.
  */
 public class AverageObjectiveFunction extends ObjectiveFunction {
-
+	
+	@JsonProperty
+	private String descriptor;
 	/*
 	 * Nimmt die durchschnittliche Bewertungen der Teilzielfunktionen.
 	 */
@@ -21,5 +25,15 @@ public class AverageObjectiveFunction extends ObjectiveFunction {
 		return this.getSubFunctions().stream()
 				.mapToDouble(function -> function.evaluate(plan))
 				.average().orElse(0);
+	}
+
+	@Override
+	public String getDescriptor() {
+		return descriptor;
+	}
+
+	@Override
+	public void setDescriptor(String descriptor) {
+		this.descriptor = descriptor;
 	}
 };

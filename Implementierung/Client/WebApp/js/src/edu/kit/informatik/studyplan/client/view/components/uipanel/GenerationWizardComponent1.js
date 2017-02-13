@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.Genera
  * @constructor
  * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent}
+ * the first generationWizard: it adds the empty proposal information an objective function
  */
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1 = edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent1.prototype}*/{
@@ -52,6 +53,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
     next:
         function () {
             "use strict";
+            this.onChange();
             var temp = new edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent2({
                 planId: this.planId,
                 information: this.information

@@ -105,7 +105,6 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
             return {plan:{id: this.get('id'), name : this.get('name')}};
         } else {
             var result = {
-                id: this.id,
                 name: this.get('name'),
             };
             if(this.get('semesterCollection')){

@@ -17,6 +17,10 @@ public class MinimalSemestersAtomObjectiveFunction extends AtomObjectiveFunction
 
 	private static double quotient = 0.965;
 	
+	public MinimalSemestersAtomObjectiveFunction() {
+		setDescriptor("minimale Semesterzahl");
+	}
+	
 	/*
 	 * {@inheritDoc}
 	 */

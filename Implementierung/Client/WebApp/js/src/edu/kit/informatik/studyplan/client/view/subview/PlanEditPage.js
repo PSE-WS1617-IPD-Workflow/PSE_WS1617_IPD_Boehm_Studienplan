@@ -22,6 +22,7 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
     //is it a generated plan?
     proposed: false,
     standardModuleFinder: null,
+    isPreferencable: true,
     initialize: function (options) {
         this.proposed = (typeof options.proposed) ? options.proposed : this.proposed;
         this.model = options.plan;
@@ -92,7 +93,8 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
         module.fetch({
             success: function () {
                 this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar({
-                    module: module
+                    module: module,
+                    isPreferencable: this.isPreferencable
                 });
                 this.render();
                 edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();

@@ -1,5 +1,6 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
+import java.io.IOException;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -26,6 +27,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.ServiceUnavailableException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
@@ -55,6 +57,7 @@ import edu.kit.informatik.studyplan.server.pluginmanager.VerificationManager;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
+import edu.kit.informatik.studyplan.server.rest.resources.json.ModuleDto;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 
@@ -73,7 +76,8 @@ public class PlansResource {
 	/**
 	 * POST request handler. Creates a new Plan by a given Plan[name] object.
 	 *
-	 * @param planInput the given plan.
+	 * @param planInput
+	 *            the given plan.
 	 * @return the created plan as Plan[id, name]
 	 */
 	@POST
@@ -84,7 +88,8 @@ public class PlansResource {
 		planInput.getPlan().setUser(getUser());
 		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getName() == null
 				|| planInput.getPlan().getVerificationState() != null
-				|| !planInput.getPlan().getModuleEntries().isEmpty() || !planInput.getPlan().getPreferences().isEmpty()) {
+				|| !planInput.getPlan().getModuleEntries().isEmpty()
+				|| !planInput.getPlan().getPreferences().isEmpty()) {
 			throw new BadRequestException();
 		}
 		if (getUser().getPlans().stream()
@@ -106,7 +111,7 @@ public class PlansResource {
 
 	/**
 	 * GET request handler.
-
+	 * 
 	 * @return a list of all plans as JSON representation.
 	 */
 	@GET
@@ -118,7 +123,7 @@ public class PlansResource {
 				.collect(Collectors.toList());
 		return Response.ok(SimpleJsonResponse.build("plans", result)).build();
 	}
-	
+
 	public class PlanSummaryDto {
 		@JsonProperty
 		String id;
@@ -128,9 +133,7 @@ public class PlansResource {
 		double creditPointsSum;
 		@JsonProperty
 		String name;
-		
-		
-		
+
 		public PlanSummaryDto(Plan plan) {
 			this.id = plan.getIdentifier();
 			this.status = plan.getVerificationState();
@@ -140,11 +143,11 @@ public class PlansResource {
 	}
 
 	/**
-	 * PUT plans/{planId} request handler.
-	 * Replaces a plan with a given JSON object. The plan is characterized as NOT_VERIFIED.
+	 * PUT plans/{planId} request handler. Replaces a plan with a given JSON
+	 * object. The plan is characterized as NOT_VERIFIED.
 	 *
 	 * @param planId
-	 *			the old plan's id
+	 *            the old plan's id
 	 * @param planInput
 	 *            the new Plan object to replace the old one.
 	 * @return the new plan
@@ -165,6 +168,7 @@ public class PlansResource {
 			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
 			}
+			planInput.getPlan().setIdentifier(null);
 			planInput.getPlan().setVerificationState(VerificationState.NOT_VERIFIED);
 			dao.updatePlan(planInput.getPlan());
 			return planInput;
@@ -192,10 +196,9 @@ public class PlansResource {
 			}
 		});
 	}
-	
+
 	/**
-	 * PATCH plans/{planId} request.
-	 * Renames the plan with the given id.
+	 * PATCH plans/{planId} request. Renames the plan with the given id.
 	 * 
 	 * @param planId
 	 *            the id of the plan to rename
@@ -211,7 +214,7 @@ public class PlansResource {
 	public PlanInOut renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
 		if (!Objects.equals(planInput.getPlan().getIdentifier(), planId)
 				|| planInput.getPlan().getVerificationState() != null
-				|| planInput.getPlan().getModuleEntries() != null || planInput.getPlan().getPreferences() != null
+				|| !planInput.getPlan().getModuleEntries().isEmpty() || !planInput.getPlan().getPreferences().isEmpty()
 				|| planInput.getPlan().getCreditPoints() != 0) {
 			throw new BadRequestException();
 		}
@@ -257,13 +260,15 @@ public class PlansResource {
 	/* ******************************  /{id}/modules  ******************************** */
 
 	/**
-	 * GET plans/{planId}/modules request handler.
-	 * Returns the modules which meet the given filters' conditions.
-	 * The modules' preferences are also returned which requires the plan to be known.
+	 * GET plans/{planId}/modules request handler. Returns the modules which
+	 * meet the given filters' conditions. The modules' preferences are also
+	 * returned which requires the plan to be known.
+	 * 
 	 * @param planId
 	 *            the plan's id
 	 * @param uriInfo
-	 *            UriInfo object providing access to the GET parameters containing the filter settings.
+	 *            UriInfo object providing access to the GET parameters
+	 *            containing the filter settings.
 	 * @return the JSON representation of the filtered modules.
 	 */
 	@GET
@@ -285,19 +290,16 @@ public class PlansResource {
 				throw new BadRequestException();
 			}
 			return Utils.withModuleDao(moduleDao -> {
-				List<JsonModule> result = moduleDao
-						.getModulesByFilter(filter, user.getDiscipline())
-						.stream().map(m -> {
-							JsonModule newModule = new JsonModule();
-							newModule.setId(m.getIdentifier());
-							newModule.setName(m.getName());
-							newModule.setCreditPoints(m.getCreditPoints());
-							newModule.setLecturer(m.getModuleDescription().getLecturer());
-							newModule.setCycleType(m.getCycleType());
-							newModule.setPreference(plan.getPreferenceForModule(m));
-							return newModule;
-						})
-						.collect(Collectors.toList());
+				List<JsonModule> result = moduleDao.getModulesByFilter(filter, user.getDiscipline()).stream().map(m -> {
+					JsonModule newModule = new JsonModule();
+					newModule.setId(m.getIdentifier());
+					newModule.setName(m.getName());
+					newModule.setCreditPoints(m.getCreditPoints());
+					newModule.setLecturer(m.getModuleDescription().getLecturer());
+					newModule.setCycleType(m.getCycleType());
+					newModule.setPreference(plan.getPreferenceForModule(m));
+					return newModule;
+				}).collect(Collectors.toList());
 				return SimpleJsonResponse.build("modules", result);
 			});
 		});
@@ -310,31 +312,31 @@ public class PlansResource {
 	 *            id of the current plan
 	 * @param moduleId
 	 *            id of the requested module
-	 * @return the requested module's JSON representation. (PlanId is needed for determining the preference status of
-	 * the module.)
+	 * @return the requested module's JSON representation. (PlanId is needed for
+	 *         determining the preference status of the module.)
 	 */
 	@GET
 	@Path("/{plan}/modules/{module}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
-	public Map<String, JsonModule> getModule(@PathParam("plan") String planId, @PathParam("module") String moduleId) {
+	public Map<String, ModuleDto> getModule(@PathParam("plan") String planId, @PathParam("module") String moduleId) {
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
-            Plan plan = planDao.getPlanById(planId);
-            if (plan == null || !getUser().equals(plan.getUser())) {
-                throw new NotFoundException();
-            }
-            Module module = moduleDao.getModuleById(moduleId);
-            if (module == null) {
-                throw new NotFoundException();
-            }
-            JsonModule result = JsonModule.fromModule(module, null, plan.getPreferenceForModule(module));
-            return SimpleJsonResponse.build("module", result);
-        }));
+			Plan plan = planDao.getPlanById(planId);
+			if (plan == null || !getUser().equals(plan.getUser())) {
+				throw new NotFoundException();
+			}
+			Module module = moduleDao.getModuleById(moduleId);
+			if (module == null) {
+				throw new NotFoundException();
+			}
+			ModuleDto result = new ModuleDto(module);
+			return SimpleJsonResponse.build("module", result);
+		}));
 	}
 
 	/**
-	 * PUT /plans/{plan}/modules/{module} request handler.
-	 * Inserts module into given plan at given position (= semester row).
+	 * PUT /plans/{plan}/modules/{module} request handler. Inserts module into
+	 * given plan at given position (= semester row).
 	 *
 	 * @param planId
 	 *            the plan id
@@ -350,7 +352,7 @@ public class PlansResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
 	public ModuleInOut putModuleSemester(@PathParam("plan") String planId, @PathParam("module") String moduleId,
-										ModuleInOut moduleInput) {
+			ModuleInOut moduleInput) {
 		if (!Objects.equals(moduleInput.getModule().getId(), moduleId)
 				|| moduleInput.getModule().getSemester() == null) {
 			throw new BadRequestException();
@@ -410,8 +412,8 @@ public class PlansResource {
 	}
 
 	/**
-	 * PUT /plans/{plan}/modules/{module}/preference request handler.
-	 * Sets a preference for the given module in context of the given plan.
+	 * PUT /plans/{plan}/modules/{module}/preference request handler. Sets a
+	 * preference for the given module in context of the given plan.
 	 *
 	 * @param planId
 	 *            the plan id
@@ -427,7 +429,7 @@ public class PlansResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
 	public ModuleInOut setModulePreference(@PathParam("plan") String planId, @PathParam("module") String moduleId,
-										   ModuleInOut moduleInput) {
+			ModuleInOut moduleInput) {
 		if (!Objects.equals(moduleInput.getModule().getId(), moduleId)) {
 			throw new BadRequestException();
 		}
@@ -461,9 +463,10 @@ public class PlansResource {
 	/* ******************************  /{plan}/verification  ******************************** */
 
 	/**
-	 * GET plans/{plan}/verification request handler.
-	 * Verifies the plan with the given id, saves its new verification state into the database and returns it along
-	 * with violations, field-violations and group-violations, if the plan is incorrect.
+	 * GET plans/{plan}/verification request handler. Verifies the plan with the
+	 * given id, saves its new verification state into the database and returns
+	 * it along with violations, field-violations and group-violations, if the
+	 * plan is incorrect.
 	 *
 	 * @param planId
 	 *            the planId
@@ -491,25 +494,26 @@ public class PlansResource {
 
 
 	/**
-	 * GET /plans/{plan}/proposal/{objectiveId}
-	 * Generates a proposal for the given plan by following given GET parameters and maximizing the given objective
-	 * function.
+	 * GET /plans/{plan}/proposal/{objectiveId} Generates a proposal for the
+	 * given plan by following given GET parameters and maximizing the given
+	 * objective function.
 	 *
 	 * @param planId
 	 *            the id of the initial plan
 	 * @param objectiveId
-	 *			  the id of the objective function to use
+	 *            the id of the objective function to use
 	 * @param maxSemesterEcts
-	 * 			  maximum number of credits per semester, as specified by user
+	 *            maximum number of credits per semester, as specified by user
 	 * @return the generated plan's JSON representation.
 	 */
 	@GET
 	@Path("/{plan}/proposal/{objectiveId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public PlanInOut generatePlan(@PathParam("plan") String planId,
-								  @PathParam("objectiveId") String objectiveId,
-								  @QueryParam("max-semester-ects") @NotNull Integer maxSemesterEcts,
-								  @Context UriInfo uriInfo) {
+	@AuthorizationNeeded
+	public PlanInOut generatePlan(@PathParam("plan") String planId, 
+			@PathParam("objectiveId") int objectiveId,
+			@QueryParam("max-semester-ects") @NotNull Integer maxSemesterEcts, 
+			@Context UriInfo uriInfo) {
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
 			Plan plan = planDao.getPlanById(planId);
 			if (plan == null || !getUser().equals(plan.getUser())) {
@@ -525,14 +529,20 @@ public class PlansResource {
 				Map<Field, Category> preferredSubjects = getPreferredSubjectsFromRequest(parameters);
 
 				GenerationManager manager = new GenerationManager();
-				PartialObjectiveFunction objective = manager.getAllObjectiveFunctions().stream()
-						.filter(fn -> false  //TODO:  fn.getId() == objectiveId
-						).findFirst().orElseThrow(NotFoundException::new);
+				PartialObjectiveFunction function = manager.getAllObjectiveFunctions().get(objectiveId);
+				if (function == null) {
+					throw new NotFoundException();
+				}
+				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, maxSemesterEcts); // TODO
+																												// incorporate
+																												// int
+																												// &
+																												// preferredSubs
 
-				Plan result = manager.generate(objective, plan, moduleDao, preferredSubjects, maxSemesterEcts);  //TODO incorporate int & preferredSubs
-
-				return new PlanInOut(result); //TODO Check serialization of `result` inside generator
+				return new PlanInOut(result); // TODO Check serialization of
+												// `result` inside generator
 			} catch (IllegalArgumentException ex) {
+				ex.printStackTrace();
 				throw new BadRequestException();
 			}
 		}));
@@ -547,9 +557,8 @@ public class PlansResource {
 			Utils.useModuleDao(moduleDao -> {
 				Arrays.stream(parameters.getFirst("fields").split(",")).forEach(fieldIdStr -> {
 					Field key = moduleDao.getFieldById(Integer.parseInt(fieldIdStr));
-					Category value = moduleDao.getCategoryById(Integer.parseInt(
-							parameters.getFirst("field-" + fieldIdStr)
-					));
+					Category value = moduleDao
+							.getCategoryById(Integer.parseInt(parameters.getFirst("field-" + fieldIdStr)));
 					result.put(key, value);
 				});
 			});
@@ -581,14 +590,20 @@ public class PlansResource {
 		if (context == null || !context.getUser().equals(plan.getUser())) {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
-		PlanConverter converter = new PlanConverter(plan);
+		PlanConverter converter;
+		try {
+			converter = new PlanConverter(plan);
+		} catch (IOException e) {
+			throw new ServiceUnavailableException();
+		}
 		converter.getWriter().flush();
 		return Response.ok(converter.getWriter().toString()).build();
 	}
 
 	/**
-	 * Class for encapsulating a single JsonModule. Used for JSON de-/serialization.
-     */
+	 * Class for encapsulating a single JsonModule. Used for JSON
+	 * de-/serialization.
+	 */
 	static class ModuleInOut {
 		@JsonProperty("module")
 		@NotNull
@@ -596,13 +611,16 @@ public class PlansResource {
 
 		/**
 		 * Creates an empty ModuleInOut.
-         */
-		public ModuleInOut() { }
+		 */
+		public ModuleInOut() {
+		}
 
 		/**
 		 * Creates a ModuleInOut with a given JsonModule.
-		 * @param module the JsonModule instance
-         */
+		 * 
+		 * @param module
+		 *            the JsonModule instance
+		 */
 		public ModuleInOut(JsonModule module) {
 			this.module = module;
 		}
@@ -610,15 +628,17 @@ public class PlansResource {
 		/**
 		 *
 		 * @return the JsonModule
-         */
+		 */
 		public JsonModule getModule() {
 			return module;
 		}
 
 		/**
 		 * Sets the JsonModule
-		 * @param module the JsonModule
-         */
+		 * 
+		 * @param module
+		 *            the JsonModule
+		 */
 		public void setModule(JsonModule module) {
 			this.module = module;
 		}
@@ -626,7 +646,7 @@ public class PlansResource {
 
 	/**
 	 * Class for encapsulating a single Plan. Used for JSON de-/serialization.
-     */
+	 */
 	static class PlanInOut {
 		@JsonProperty("plan")
 		@NotNull
@@ -634,13 +654,16 @@ public class PlansResource {
 
 		/**
 		 * Empty constructor.
-         */
-		public PlanInOut() { }
+		 */
+		public PlanInOut() {
+		}
 
 		/**
 		 * Constructor with a plan parameter.
-		 * @param plan the plan
-         */
+		 * 
+		 * @param plan
+		 *            the plan
+		 */
 		public PlanInOut(Plan plan) {
 			this.plan = plan;
 			plan.getPreferences();
@@ -650,24 +673,49 @@ public class PlansResource {
 		/**
 		 *
 		 * @return the plan
-         */
+		 */
 		public Plan getPlan() {
 			return plan;
 		}
 
 		/**
 		 * Sets the plan
-		 * @param plan the plan
-         */
+		 * 
+		 * @param plan
+		 *            the plan
+		 */
 		public void setPlan(Plan plan) {
 			this.plan = plan;
 		}
 	}
 
+	public class PlanRenameDto {
+
+		@JsonProperty
+		PlanRenameDtoElement plan;
+
+		public PlanRenameDto(PlanRenameDtoElement plan) {
+			this.plan = plan;
+		}
+
+		public class PlanRenameDtoElement {
+			@JsonProperty
+			public String id;
+
+			@JsonProperty
+			public String name;
+
+			public PlanRenameDtoElement(String id, String name) {
+				this.id = id;
+				this.name = name;
+			}
+		}
+	}
+
 	/**
 	 * Annotation for denoting PATCH requests.
-     */
-	@Target({ElementType.METHOD})
+	 */
+	@Target({ ElementType.METHOD })
 	@Retention(RetentionPolicy.RUNTIME)
 	@HttpMethod("PATCH")
 	@interface PATCH {

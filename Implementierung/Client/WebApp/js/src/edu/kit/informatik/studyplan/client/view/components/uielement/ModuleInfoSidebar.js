@@ -10,6 +10,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar 
     className: "moduleInfo",
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/moduleInfoSidebar.html"),
     moduleBoxes:{},
+    events: {
+        "button button.close": "close"
+    },
     isPreferencable: true,
     initialize: function (options) {
         this.model = options.module;
@@ -61,6 +64,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar 
                 throw new Error("No constraint div of class ."+constraintTypes[0]+"Constraints")
             }
         }.bind(this));
+        this.delegateEvents();
     },
     /**
     *

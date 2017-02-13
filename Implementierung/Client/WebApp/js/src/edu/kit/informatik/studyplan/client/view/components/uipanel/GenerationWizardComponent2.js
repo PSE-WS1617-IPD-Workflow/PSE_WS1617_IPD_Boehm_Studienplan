@@ -3,20 +3,23 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.Genera
  * @constructor
  * @param {Object=} options
  *@extends {edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent}
+ * the second generation wizard: it adds preferences to modules which will be saved for the plan and used for generation.
  */
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent2 = edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComponent2.prototype}*/{
     planId: null,
+    //proposalInformation --> every generationWizard adds something.
     information: null,
+    //implements the moduleFInder, which shows modules and filters and allows to set preferences.
     moduleFinder: null,
     
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uipanel/generationWizardComponent2.html"),
+    // no events, because the ModuleFinder saves the changes.
     events: {
-        //"change select.objectiveFunctionDropDown": "onChange"
     },
     
     /**
-    *
+    *constuctor: gets the planId and proposalInformation of GenerationWizardCompoinent1 and initialize a modulefinder which isn't draggable (here you don't want to insert modules in a plan), isnt shown as a sidebar (you don't need the current plan for that) but is preferencable (it's the purpose for that we use the moduleFinder)
     */
     initialize:
         function (options) {
@@ -33,6 +36,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
 
     
     /**
+    *initialize a GenerationWizardComponent3 with the current proposalInformation and the planId of the plan which should be completed with the generation we actually prepare and returnes the component.
     *@return{edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent}
     */
     next:
@@ -46,7 +50,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
         },
     
     /**
-    *
+    *renders all included parts: just the moduleFinder and the general template
     */
     render:
         function () {
@@ -58,7 +62,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             finder.append(this.moduleFinder.$el);
         },
     /**
-    *
+    *not used, because the moduleFinder does all we need.
     */
     onChange:
         function () {

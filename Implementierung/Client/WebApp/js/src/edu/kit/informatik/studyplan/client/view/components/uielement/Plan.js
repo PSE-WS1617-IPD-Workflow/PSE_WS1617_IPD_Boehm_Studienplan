@@ -63,9 +63,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
     */
     addSemester: function () {
         "use strict";
-        
         var newSemester = new edu.kit.informatik.studyplan.client.model.plans.Semester({
-                planId : this.model.get("planId"),
+                planId : this.model.get("id"),
                 semesterNum : this.model.get('semesterCollection').length,
                 modules : []
         },{parse:true, collection: this.model});
