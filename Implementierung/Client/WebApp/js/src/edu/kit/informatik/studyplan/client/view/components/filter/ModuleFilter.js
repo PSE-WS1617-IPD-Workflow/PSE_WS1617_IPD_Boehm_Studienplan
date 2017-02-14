@@ -6,18 +6,27 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.filter.ModuleF
  */
 
 edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter.prototype} */{
+    /**
+    * html template for this element
+    */
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/filter/moduleFilter.html"),
+    /**
+    * the tag name of the described html element in the template
+    */
     tag: "ul",
+    /** ui filter elements */
     filterComponents: null,
+    /** pointer to model */
     filterCollection: null,
+    /**
+    * events triggered by HTML
+    */
     events: {
         "click .filterMenuButton": "showFilterSettings",
         "click .filterMenuButton_highlited_FilterButton": "showFilterSettings", 
         "change .filterButton": "onChange"
     },
     initialize: function (options){
-        
-        //TODO: enable fetch again
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         this.filterCollection = new edu.kit.informatik.studyplan.client.model.system.FilterCollection();
         this.filterCollection.fetch({
@@ -33,6 +42,9 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
         this.listenTo(this.filterCollection, "reset", this.reload);
         this.reload();
     },
+    /**
+    * renders this page
+    */
     reload: function () {
         this.filterComponents = [];
         
@@ -93,7 +105,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     },
     
     /**
-    *
+    * triggered by changeEvent
     */
     onChange: function () {
         "use strict";
@@ -101,6 +113,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     },
     buildParam: function () {
     },
+    /** displays the filter's settings in HTML*/
     showFilterSettings : function (event){
         var tmpVisible = $("#filterId_" + event.target.id).is(":visible")
         
