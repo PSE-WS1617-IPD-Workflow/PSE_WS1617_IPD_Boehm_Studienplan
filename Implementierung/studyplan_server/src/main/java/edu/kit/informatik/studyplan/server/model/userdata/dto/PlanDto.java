@@ -12,6 +12,9 @@ import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * DTO for Plan
+ */
 public class PlanDto {
 	
 	@JsonProperty
@@ -28,7 +31,11 @@ public class PlanDto {
 	
 	@JsonProperty
 	List<ModuleEntryDto> modules;
-	
+
+	/**
+	 * Creates a PlanDto from a Plan
+	 * @param plan plan
+     */
 	public PlanDto(Plan plan) {
 		this.id = plan.getIdentifier();
 		this.name = plan.getName();
@@ -38,8 +45,10 @@ public class PlanDto {
 			.map(entry -> new ModuleEntryDto(entry, plan.getPreferenceForModule(entry.getModule())))
 			.collect(Collectors.toList());
 	}
-	
-	
+
+	/**
+	 * DTO for ModuleEntry
+     */
 	public class ModuleEntryDto {
 		
 		@JsonProperty
@@ -61,7 +70,12 @@ public class PlanDto {
 		@JsonSerialize(using = MyObjectMapperProvider.CustomSerializerModule.PreferenceTypeSerializer.class)
 		@JsonDeserialize(using = MyObjectMapperProvider.CustomSerializerModule.PreferenceTypeDeserializer.class)
 		PreferenceType preference;
-		
+
+		/**
+		 * Creates a ModuleEntryDto from a ModuleEntry and a Preference
+		 * @param entry the entry
+		 * @param preference the preference
+         */
 		public ModuleEntryDto (ModuleEntry entry, PreferenceType preference) {
 			this.id = entry.getModule().getIdentifier();
 			this.name = entry.getModule().getName();
