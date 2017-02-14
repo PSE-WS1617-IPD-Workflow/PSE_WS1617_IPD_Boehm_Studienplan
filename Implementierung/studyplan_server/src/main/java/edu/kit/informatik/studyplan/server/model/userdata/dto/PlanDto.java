@@ -1,14 +1,16 @@
 package edu.kit.informatik.studyplan.server.model.userdata.dto;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class PlanDto {
 	
@@ -56,6 +58,8 @@ public class PlanDto {
 		String lecturer;
 		
 		@JsonProperty
+		@JsonSerialize(using = MyObjectMapperProvider.CustomSerializerModule.PreferenceTypeSerializer.class)
+		@JsonDeserialize(using = MyObjectMapperProvider.CustomSerializerModule.PreferenceTypeDeserializer.class)
 		PreferenceType preference;
 		
 		public ModuleEntryDto (ModuleEntry entry, PreferenceType preference) {

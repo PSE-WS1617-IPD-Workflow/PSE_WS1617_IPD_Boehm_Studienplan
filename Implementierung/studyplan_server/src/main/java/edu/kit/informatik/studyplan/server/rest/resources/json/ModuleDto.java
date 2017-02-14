@@ -1,14 +1,16 @@
 package edu.kit.informatik.studyplan.server.rest.resources.json;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
+import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ModuleDto {
 	
@@ -25,6 +27,8 @@ public class ModuleDto {
 	@JsonProperty
 	String lecturer;
 	@JsonProperty
+	@JsonSerialize(using = MyObjectMapperProvider.CustomSerializerModule.PreferenceTypeSerializer.class)
+	@JsonDeserialize(using = MyObjectMapperProvider.CustomSerializerModule.PreferenceTypeDeserializer.class)
 	PreferenceType preference;
 	@JsonProperty
 	String description;

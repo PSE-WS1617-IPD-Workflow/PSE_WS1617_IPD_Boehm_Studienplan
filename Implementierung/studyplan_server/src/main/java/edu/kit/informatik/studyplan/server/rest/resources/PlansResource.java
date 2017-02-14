@@ -1,53 +1,13 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import java.io.IOException;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.HttpMethod;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.ServiceUnavailableException;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.core.UriInfo;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
-import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
-import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-import edu.kit.informatik.studyplan.server.model.userdata.User;
-import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+import edu.kit.informatik.studyplan.server.model.userdata.*;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
@@ -60,6 +20,20 @@ import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import edu.kit.informatik.studyplan.server.rest.resources.json.ModuleDto;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
+import javax.ws.rs.core.Response.Status;
+import java.io.IOException;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * REST resource for /plans.
@@ -119,7 +93,7 @@ public class PlansResource {
 	@AuthorizationNeeded
 	public Response getPlans() {
 		List<PlanSummaryDto> result = getUser().getPlans().stream()
-				.map(plan -> new PlanSummaryDto(plan))
+				.map(PlanSummaryDto::new)
 				.collect(Collectors.toList());
 		return Response.ok(SimpleJsonResponse.build("plans", result)).build();
 	}
@@ -504,6 +478,8 @@ public class PlansResource {
 	 *            the id of the objective function to use
 	 * @param maxSemesterEcts
 	 *            maximum number of credits per semester, as specified by user
+	 * @param uriInfo
+	 * 			  contains given GET parameters
 	 * @return the generated plan's JSON representation.
 	 */
 	@GET
@@ -533,14 +509,9 @@ public class PlansResource {
 				if (function == null) {
 					throw new NotFoundException();
 				}
-				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, maxSemesterEcts); // TODO
-																												// incorporate
-																												// int
-																												// &
-																												// preferredSubs
-
-				return new PlanInOut(result); // TODO Check serialization of
-												// `result` inside generator
+				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, maxSemesterEcts);
+				return new PlanInOut(result);
+				// TODO Check serialization of `result` inside generator
 			} catch (IllegalArgumentException ex) {
 				ex.printStackTrace();
 				throw new BadRequestException();

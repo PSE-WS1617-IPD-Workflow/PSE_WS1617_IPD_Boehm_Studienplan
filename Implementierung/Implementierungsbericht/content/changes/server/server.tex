@@ -1,0 +1,53 @@
+\subsubsection{Model-Paket}
+
+\paragraph{Paket moduledata.*} Es wurden die Klassen Field und RuleGroup hinzugefügt, um die Modelländerungen abzubilden. Im ModuleDao-Interface wurden einige Bequemlichkeitsmethoden zum Finden von Kategorien, Bereichen, Vertiefungsfächern u. ä. hinzugefügt. Eine ConditionQueryConverter-Klasse unterstützt nun die Umwandlung von Condition-Objekten in SQL"=Statements, die dann mit Hibernate an die Datenbank geschickt werden können.
+
+
+
+\subsubsection{Filter-Paket}
+
+Das Filter-Paket wurde grundlegend umgestaltet: Ein Filter enthält mittlerweile nur die Daten, die zum Filtern benötigt werden (wie z.B. konkret selektierte Elemente). Client-bezogene Daten (wie beispielsweise zulässige Intervallschranken oder eine Liste aller Auswahlelemente) liegen ausschließlich in den Filter-Deskriptoren. Diese kümmern sich auch um De- und Serialisierung von Filtern bei Anfragen.
+
+\paragraph{Paket condition} Da sich die jOOQ-Condition-Klasse als nicht sonderlich weiterverwertbar bzw. handhabbar erwies, wurde sie durch eine eigene Condition-Klasse ersetzt, welche die drei nötigen Bedingungstypen als Binäroperatoren modelliert. Jeder Filter liefert nun eine Liste von Conditions zurück. Dadurch lassen sich SQL-Statements einfacher aus den Condition-Objekten zusammenbauen.
+
+
+\subsubsection{Generation-Paket}
+
+Die NodeWithoutOutput-Klasse wurde entfernt (da wir zwischen den Knoten mit und ohne Kindern nicht zu unterscheiden brauchen). 
+Dafür wurde die Klasse NodesList hinzugefügt (zur Speicherung der Knoten).
+
+
+\subsubsection{Pluginmanager-Paket}
+
+Auf Implementierung eines Plugin-Systems wurde verzichtet.
+Standard-Generierer und -Verifizierer sind somit fest in die Software eingebaut (können aber nach wie vor später durch Black-Boxes ersetzt werden). GenerationManager und VerificationManager enthalten also fest verdrahtet unsere Nachbildungen.
+
+
+\subsubsection{Verification-Paket}
+
+Durch die sich geänderten Anforderungen wegen der Modelländerungen wurde VerificationResult um Attribute zum Festhalten von Field-, Rule-Group- und Compulsory-Violations erweitert und die Verifizierung entsprechend angepasst.
+
+
+\subsubsection{REST-Paket}
+
+Zur Verwaltung von Datenbank-Verbindungen wurden die Klassen SessionOpenFilter und SessionCloseFilter hinzugefügt, welche bei ankommender Anfrage bzw. vor abgeschickter Antwort eine Datenbank-Session erstellen bzw. wieder schließen. Damit ist gewährleistet, dass während der Verarbeitung einer Anfrage stets auf die Datenbank zugegriffen werden kann und DAOs stets verfügbar und einsatzbereit sind.
+
+Ferner wurde die Annotation @AuthorizationNeeded hinzugefügt, die eine REST-Ressourcenklasse bzw. deren Methoden derart markiert, dass Jersey beim Verarbeiten einer Anfrage mithilfe des AuthorizationRequestFilters User-Informationen bereitstellen kann, die zur Abwicklung einer solchen Anfrage notwendig sind. Eine AuthorizationContextFactory-Klasse hilft dabei beim Injizieren eines AuthorizationContexts in die Ressource.
+
+Die Klasse MyObjectMapperProvider konfiguriert einen ObjectMapper, der die De-/Serialisierung abwickelt. ValidationConfigContextResolver aktiviert BeanValidation, welche die Überprüfung speziell annotierter Attribute beim Deserialisieren von JSON-Objekten veranlasst.
+
+
+\paragraph{Paket authorization.endpoint} Die Klasse GrantTypeFactory dient nun als Multiplexer für die verschiedenen GrantTypes.
+
+
+\paragraph{Paket resources.*} In diesem Paket liegen die REST-Ressourcen-Klassen. Mehrere Ressourcen-Klassen wurden aus technischen Gründen als Sub-Ressourcen in Oberklassen eingegliedert, bspw. PlanVerificationResource in PlansResource. Es sind -- in Zusammenhang mit den Änderungen in \ref{subsec:changes_rest} -- neue Ressourcen-Klassen hinzugekommen, welche auf neue Anfragen reagieren, wie z.~B. FieldsResource oder MainResource. \newline
+Im Sub-Paket „json“ befinden sich Klassen zur De- und Serialisierung von JSON-Datenklassen, sogenannte Data-Transfer-Objects (DTOs). Diese dienen der korrekten Einhaltung der JSON-Spezifikationen und ermöglichen eine reibungslose Umwandlung von bzw. zu ihren Modell-Gegenstücken. \newline
+Da der PDF-Export einer HTML-Generierung gewichen ist, wurde hierfür die Klassen DisplayablePlan und PlanConverter angelegt, welche mithilfe der Apache VelocityEngine und einem Report-Template die HTML- und CSS-Ausgabe generieren.
+
+
+
+\subsubsection{Sonstiges}
+
+Die Klassen HibernateSessionFactoryListener und SessionCloseListener wurden hinzugefügt, um beim Starten bzw. Beenden des Webservices die Datenbankverbindung einmalig herzustellen bzw. zu beenden.
+
+In der Klasse Utils befinden sich einige Hilfsmethoden, u.a. zur kontrollierten DAO-Nutzung.
