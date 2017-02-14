@@ -1,0 +1,6 @@
+\paragraph{Uipanel-Paket} 
+\begin{itemize}
+\item In GenerationWizardComponent2 und in SignUpWizardComponent2 werden die onChange()-Methoden nicht gebraucht, da die fertigen Seiten moduleFinder beziehungsweise ProfilPage nutzen, und diese selbstständig triggern und speichern. 
+\item GenerationWizardComponent3 nutzt die eingeführte FieldCollection (siehe 2.7.1) und benötigt neben onChange() zwei weitere Methoden um auf das Betätigen der Slider zu reagieren.
+\item Die Klasse SignUpWizardComponent1 benötigt eine weitere onChange-Methode, da sie zwei Events enthält und eine Methode beginning() zur gekapselten Erstellung der Studienstart-Auswahl-Daten.
+\end{itemize}

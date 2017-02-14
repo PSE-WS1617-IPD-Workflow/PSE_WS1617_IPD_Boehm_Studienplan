@@ -1,40 +1,6 @@
-In der gesamten Client-Implementierung wurden Attributnamen den JSON-Definitionen angepasst, um die Standard-parse- und toJSON-Methoden nutzen zu können und Übersichtlichkeit durch Einheitlichkeit herzustellen.
-\subsubsection{Model-Paket}
-\paragraph{Paket modules.*} 
-\begin{itemize} [nosep]
-\item In der Klasse ModuleCollection wurde die Methode containsModule(moduleId) eingefügt, um testen zu können, ob ein Modul bereits in einer Modulcollection enthalten ist. 
-\item Der Klasse Preferences wurde die Methode onChange angefügt, um auf Änderungen der Preferenz reagieren zu können.
-\end  {itemize}
-\paragraph{Paket plans.*} In der Klasse Plan wurden einige Methoden hinzugefügt:  retrieveProposedPlan() um generierten Plan zu erhalten, getEctsSum() und  addModule() um einer SemesterCollection ein neues Modul hinzuzufügen. Auf loadVerification() wurde hingegen verzichtet, da diese Information permanent im zugehörigen VerificationRecult gespeichert ist, und bei Änderung eine neuer Speicherung und neues endering ausgelößt wird.
+In der gesamten Client-Implementierung wurden Attributnamen den JSON-Definitionen angepasst, um die Standard-parse- und toJSON-Methoden nutzen zu kÃ¶nnen und Ãœbersichtlichkeit durch Einheitlichkeit herzustellen.
 
-\paragraph{System-Paket}
-\begin{itemize}
-\item Klasse Field wurde eingefügt, um eine Option, die der Nutzer zur besseren Generierung auswählen kann, zu repräsentieren.
-\item Klasse FieldCollection, welche alle existenten Optionen zur Generierung enthält, wurde eingefügt.
-\end{itemize}
-
-\paragraph{User-Paket}
-
-\subsubsection{Router-Paket}
-
-\subsubsection{Storage-Paket}
-\subsubsection{View-Paket}
-
-\paragraph{Filter-Paket}
-
-\paragraph{Uielement-Paket}
-
-\paragraph{Uipanel-Paket} 
-\begin{itemize}
-\item In GenerationWizardComponent2 und in SignUpWizardComponent2 werden die onChange()-Methoden nicht gebraucht, da die fertigen Seiten moduleFinder beziehungsweise ProfilPage nutzen, und diese selbstständig triggern und speichern. 
-\item GenerationWizardComponent3 nutzt die eingeführte FieldCollection (siehe 2.7.1) und benötigt neben onChange() zwei weitere Methoden um auf das Betätigen der Slider zu reagieren.
-\item Die Klasse SignUpWizardComponent1 benötigt eine weitere onChange-Methode, da sie zwei Events enthält und eine Methode beginning() zur gekapselten Erstellung der Studienstart-Auswahl-Daten.
-\end{itemize}
-
-\paragraph{subview}
-\begin{itemize}
-\item NotFoundPage eingefügt
-\end{itemize}
+\input{content/changes/client/importClientChanges.tex}
 
 
 
