@@ -4,6 +4,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.user.Student");
  * @param {Object=} attributes
  * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.model.system.OAuthModel}
+ * Class which represents a student
  */
 
 edu.kit.informatik.studyplan.client.model.user.Student = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.user.Student.prototype}*/{
@@ -48,31 +49,6 @@ edu.kit.informatik.studyplan.client.model.user.Student = edu.kit.informatik.stud
         result["passed-modules"] = this.get("passedModules").toJSON(options)["modules"];
         return {student: result};
     },
-    /*getDistance: function (options) {
-        // Using micro service to calculate distance on powerful Java Server
-        var sendAuthentication = function (xhr) {
-            xhr.setRequestHeader("Authorization", "Bearer " + edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('access_token'));
-        }
-        _.extend(options, {
-            url: API_DOMAIN+"/util/distance",
-            data: {
-                "semester-type":this.get('studyStartCycle'),
-                year:this.get('studyStartYear'),
-            },
-            beforeSend: sendAuthentication,
-            "crossDomain" : true
-        });
-        var successCB = options.success;
-        options["success"] = function (data, textStatus, xhr) {
-            if(successCB) successCB(data, textStatus, xhr);
-        }
-        var errorCallback = options["error"];
-        options["error"] = function (xhr, textStatus, errorThrown) {
-            edu.kit.informatik.studyplan.client.storage.OAuthSync.errorCallback(xhr, textStatus, errorThrown);
-            if(errorCallback) errorCallback.call(options.context, xhr, textStatus, errorThrown)
-        }
-        Backbone.ajax(options);
-    },*/
     isNew: function () {
         return false;
     }

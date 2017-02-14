@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.user.SessionInformation"
  * @class
  * @name edu.kit.informatik.studyplan.client.model.user.SessionInformation
  * @extends {edu.kit.informatik.studyplan.client.model.system.CookieModel}
+ * Singleton which represents all relevant information of the current session
  */
 
 edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function () {
@@ -45,9 +46,15 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
             this.set('state', random.substr(0,30));
             this.save();
         },
+        /**
+         * Method for retrieval of the Login URL
+         */
         getLoginUrl : function () {
             return API_DOMAIN + "/auth/login?response_type=token&client_id="+API_KEY+"&scope=student&state="+this.get('state');
         },
+        /**
+         * Method which checks if the user is logged in
+         */
         isLoggedIn: function () {
             return edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().has('access_token');
         },
