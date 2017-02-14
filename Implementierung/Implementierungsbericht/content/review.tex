@@ -10,6 +10,10 @@ Die Einrichtung der Entwicklungsumgebung lief ohne Probleme. Die Umsetzung von D
  \include{diagrams/server_gantt}
  
  \subsubsection{Client}
+ Auf Grund der heterogenen Struktur von Entwicklungsumgebungen im Javascript-Umfeld, stellte sich zunächst die Einrichtung der Test- und Entwicklungsumgebung als eine größere Herausforderung heraus als zunächst angenommen. Dies verzögerte den Entwicklungsprozess um 2 Tage. 
+ Auf Grund der steilen Lernkurve beim erlernen von JavaScript verzögerte sich dann auch die erste Phase, in welcher die Model-Klassen implementiert wurden um ca.4-5 Tage. Es erwies sich hierbei als hilfreich, für den Client bereits zu diesem Zeitpunkt Integrationstests mit einem REST-Webservice-Mock zu schreiben, um so sicherstellen zu können, dass die Model-Klassen der Spezifikation entsprechen. Dies führte zu einer deutlich höheren Stabilität des Models, beanspruchte allerdings gleichzeitig zwei weitere Tage.\\
+ Da allerdings die Views trotz vorhandener Schnittstellen nicht ohne funktionierende Model-Klassen getestet werden konnten, konnte mit diesen  insgesamt erst ca. 7 Tage später begonnen werden. Dank der guten Einarbeitung während der Model-Implementierung war es jedoch trotzdem möglich den Zeitplan einzuhalten und den View rechtzeitig fertigzustellen. Bei der Implementierung des Views zeigte sich, dass es sinnvoller ist nach der \enquote{Top-Down}-Methode zu entwickeln und die Implementierung mit dem MainRouter sowie den Subviews zu beginnen. Durch diese Veränderung im Implementierungsplan ließen sich die View-Komponenten von Anfang an exzellent testen.\\
+ Insgesamt wurde das Projekt rechtzeitig und erfolgreich fertiggestellt - nicht zuletzt durch den Test der Kommunikation zwischen Client und Server, welcher in den letzten 4 Tagen der Implementierungsphase durchgeführt wurde, um eine grundlegende Stabilität des Systems zu sichern.
  \include{diagrams/client_gantt}
  
  
