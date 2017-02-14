@@ -50,13 +50,14 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
             var curSem = student.get('current-semester');
         }
         var semesterNum = (curSem) ? curSem : 1;
-        while(semesters.length<=semesterNum){
-            semesters[semesters.length+1] = new edu.kit.informatik.studyplan.client.model.plans.Semester({
+        var currentSemesterNum = semesters.length;
+        while(currentSemesterNum<semesterNum){
+            currentSemesterNum++;
+            semesters[currentSemesterNum] = new edu.kit.informatik.studyplan.client.model.plans.Semester({
                     planId : this.planId,
-                    semesterNum : (semesters.length+1),
+                    semesterNum : currentSemesterNum,
                     modules : []
             },{parse:true, collection: this})
-            this.length = semesterNum;
         }
         this.length = semesters.length;
         if(semesters.length<semesterNum){

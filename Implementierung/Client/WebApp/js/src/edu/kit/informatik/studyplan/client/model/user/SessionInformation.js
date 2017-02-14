@@ -59,7 +59,7 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
             if(edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().has('access_token')){
                 var accessToken = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('access_token');
                 if(accessToken!==null&&accessToken!=undefined){
-                    return null
+                    return true;
                 }
             }
             return false;
