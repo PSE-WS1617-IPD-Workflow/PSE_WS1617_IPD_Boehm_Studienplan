@@ -21,7 +21,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  * @version 1.0
  *
  */
-public class NodesList extends ArrayList<Node>{
+public class NodesList extends ArrayList<Node> {
 	/**
 	 * To avoid unnecessary errors.
 	 */
@@ -38,7 +38,7 @@ public class NodesList extends ArrayList<Node>{
 	 * Creates a new NodesList and sets its plan. 
 	 * @param plan to set.
 	 */
-	public NodesList(Plan plan, SimpleGenerator generator){
+	public NodesList(Plan plan, SimpleGenerator generator) {
 		this.plan = plan;
 		this.generator = generator;
 	}
@@ -65,8 +65,8 @@ public class NodesList extends ArrayList<Node>{
 	 * the plan given to the generator as parameter.
 	 * @param node to add.
 	 */
-	public void addNode(Node node){
-		if(addToAllNodes(node)) {
+	public void addNode(Node node) {
+		if (addToAllNodes(node)) {
 			add(node);
 		}
 		
@@ -77,7 +77,7 @@ public class NodesList extends ArrayList<Node>{
 	 * @return true if this list contains the node given, false if it doesn't.
 	 */
 	public boolean hasNode(Node node) {
-		for(Node n : allNodes){
+		for (Node n : allNodes) {
 			if (n.equals(node)) {
 				return true;
 			}
@@ -90,8 +90,8 @@ public class NodesList extends ArrayList<Node>{
 	 * @return the Node added if add was successful, null if node already exist.
 	 */
 	public boolean addToAllNodes(Node node) {
-		for(Node n: allNodes) {
-			if(node.equals(n)) {
+		for (Node n: allNodes) {
+			if (node.equals(n)) {
 				return false;
 			}
 		}
@@ -104,8 +104,8 @@ public class NodesList extends ArrayList<Node>{
 	 * @return the Node added if add was successful, null if node already exist.
 	 */
 	public Node addToAllNodes(Module m) {
-		for(Node n: allNodes) {
-			if(m.getIdentifier() == n.getModule().getIdentifier()) {
+		for (Node n: allNodes) {
+			if (m.getIdentifier() == n.getModule().getIdentifier()) {
 				return null;
 			}
 		}
@@ -120,8 +120,8 @@ public class NodesList extends ArrayList<Node>{
 	 * 			-null if it doesn't.
 	 */
 	public Node getFromAllNodes(Module m) {
-		for(Node n: allNodes) {
-			if(m.getIdentifier() == n.getModule().getIdentifier()) {
+		for (Node n: allNodes) {
+			if (m.getIdentifier() == n.getModule().getIdentifier()) {
 				return n;
 			}
 		}
@@ -137,9 +137,9 @@ public class NodesList extends ArrayList<Node>{
 	 * Returns the sum of the Credit Points of all modules which have nodes in the list.
 	 * @return Sum of Credit Points
 	 */
-	public double getSumCreditPoints(){
+	public double getSumCreditPoints() {
 		int r = 0;
-		for(Node n : allNodes) {
+		for (Node n : allNodes) {
 			r += n.getModule().getCreditPoints();
 		}
 		return r;
@@ -156,16 +156,16 @@ public class NodesList extends ArrayList<Node>{
 	 * @param n node to remove
 	 */
 	protected void removeNode(Node n) {
-		for(Node nodeBefRem : allNodes) { // check if node n exists in nodeslist
+		for (Node nodeBefRem : allNodes) { // check if node n exists in nodeslist
 			if (nodeBefRem.equals(n)) {
-				for(Node childNode : nodeBefRem.getChildren()) { //remove children of the node recursively
+				for (Node childNode : nodeBefRem.getChildren()) { //remove children of the node recursively
 					removeNode(childNode);
 				}
 				//remove all semester-linked nodes with the node recursively
-				while(nodeBefRem.getInnermostNode() != nodeBefRem) {
+				while (nodeBefRem.getInnermostNode() != nodeBefRem) {
 					removeNode(nodeBefRem.getInnermostNode());
 				}
-				while(nodeBefRem.getOutermostNode() != nodeBefRem) {
+				while (nodeBefRem.getOutermostNode() != nodeBefRem) {
 					removeNode(nodeBefRem.getOutermostNode());
 				}
 				//remove the node itself
@@ -173,7 +173,7 @@ public class NodesList extends ArrayList<Node>{
 				allNodes.remove(nodeBefRem);
 				remove(nodeBefRem);
 				// remove this node from the child list of the remaining nodes
-				for(Node nodeAfRem : allNodes) {
+				for (Node nodeAfRem : allNodes) {
 					nodeAfRem.removeChild(n);
 				}
 			}
@@ -186,7 +186,7 @@ public class NodesList extends ArrayList<Node>{
 	 */
 	protected int getCreditPoints(Field field) {
 		int creditPoints = 0;
-		for(Node n : getAllNodes()) {
+		for (Node n : getAllNodes()) {
 			if (field.equals(n.getModule().getField())) {
 				creditPoints += n.getModule().getCreditPoints();
 			}
@@ -200,7 +200,7 @@ public class NodesList extends ArrayList<Node>{
 	 */
 	protected List<Node> nodesInRuleGroup(RuleGroup ruleGroup) {
 		List<Node> result = new ArrayList<Node>();
-		for(Node n : getAllNodes()) {
+		for (Node n : getAllNodes()) {
 			if (ruleGroup.getModules().contains(n.getModule())) {
 				result.add(n);
 			}
@@ -241,12 +241,12 @@ public class NodesList extends ArrayList<Node>{
 	private void sortUtil(Node node, Set<Node> visited) {
 		visited.add(node);
 		Node n = node;
-		while(n.hasInnerNode()) {
+		while (n.hasInnerNode()) {
 			n = node.getInnerNode();
 			visited.add(n);
 		}
 		n = node;
-		while(n.hasOuterNode()) {
+		while (n.hasOuterNode()) {
 			n = node.getOuterNode();
 			visited.add(n);
 		}
@@ -271,7 +271,7 @@ public class NodesList extends ArrayList<Node>{
 	 */
 	protected List<Node> getOverlappingNodes(Node node) {
 		List<Node> result = new ArrayList<Node>();
-		if(!node.constraintsAreFulfilled()) {
+		if (!node.constraintsAreFulfilled()) {
 			throw new IllegalArgumentException("This node's constraints are not fulfilled");
 		}
 		for (ModuleConstraint constraint : node.getModule().getConstraints()) {

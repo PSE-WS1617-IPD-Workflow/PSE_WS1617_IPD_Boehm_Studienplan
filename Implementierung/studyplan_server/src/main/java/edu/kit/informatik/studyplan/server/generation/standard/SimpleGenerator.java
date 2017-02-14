@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import edu.kit.informatik.studyplan.server.filter.CategoryFilter;
 import edu.kit.informatik.studyplan.server.filter.Filter;
@@ -114,7 +113,8 @@ public class SimpleGenerator implements Generator {
 		Set<Integer> randomNumbers;
 		// to iterate through the set above
 		if (category != null) {
-			preferredModules = getModulesWithPreference(currentPlan, field.getModules(), category, PreferenceType.POSITIVE,
+			preferredModules = getModulesWithPreference(currentPlan, 
+					field.getModules(), category, PreferenceType.POSITIVE,
 					moduleDAO);
 		} else {
 			preferredModules = field.getModules();
@@ -265,7 +265,7 @@ public class SimpleGenerator implements Generator {
 		}
 		if (ruleGroup.getMaxNum() != -1) {
 			while (num > ruleGroup.getMaxNum()) {
-				if (!nodes.nodesInRuleGroup(ruleGroup).isEmpty()){
+				if (!nodes.nodesInRuleGroup(ruleGroup).isEmpty()) {
 					nodes.removeNode(nodes.nodesInRuleGroup(ruleGroup).get(0));
 				}
 			}
@@ -477,7 +477,9 @@ public class SimpleGenerator implements Generator {
 		if (category != null) {
 			Filter filter = new CategoryFilter(category);
 			for (Module m : moduleDAO.getModulesByFilter(filter, currentPlan.getUser().getDiscipline())) {
-				if (((currentPlan.getPreferenceForModule(m) == preference) && listOfModules.contains(m))||(preference == null && listOfModules.contains(m))) {
+				if (((currentPlan.getPreferenceForModule(m) == preference) 
+						&& listOfModules.contains(m)) 
+						|| (preference == null && listOfModules.contains(m))) {
 					modules.add(m);
 				}
 			}

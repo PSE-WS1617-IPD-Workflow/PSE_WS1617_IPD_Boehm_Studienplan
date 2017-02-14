@@ -15,6 +15,13 @@ import javax.ws.rs.core.MultivaluedMap;
  * parameters.
  */
 public abstract class FilterDescriptor {
+	/**
+	 * Creates a new instance of the given filter with the given parameters
+	 * @param id the filter id
+	 * @param filterUriIdentifier the filter identifier used by the client
+	 * @param filterName the displayable filter name
+	 * @param tooltip the filter tooltip
+	 */
 	FilterDescriptor(int id, String filterUriIdentifier, String filterName, String tooltip) {
 		this.id = id;
 		this.filterUriIdentifier = filterUriIdentifier;

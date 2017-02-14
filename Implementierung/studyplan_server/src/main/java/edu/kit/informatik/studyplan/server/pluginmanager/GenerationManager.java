@@ -81,7 +81,11 @@ public class GenerationManager {
 	 *            the ModuleDao to fetch the modules from the database.
 	 * @return a complete correct and optimized study plan from Type Plan 
 	 */
-	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO, Map<Field, Category>preferredSubjects, int maxECTSperSemester) {
+	public Plan generate(PartialObjectiveFunction objectiveFunction, 
+			Plan currentPlan, 
+			ModuleDao moduleDAO, 
+			Map<Field, Category>preferredSubjects, 
+			int maxECTSperSemester) {
 		initWrapper();
 		ThresholdObjectiveFunction thresholdObjectiveFunction = new ThresholdObjectiveFunction(THRESHOLD);
 		thresholdObjectiveFunction.add(objectiveFunction);

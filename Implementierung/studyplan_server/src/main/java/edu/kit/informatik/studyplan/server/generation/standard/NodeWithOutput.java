@@ -38,10 +38,10 @@ public class NodeWithOutput extends Node {
 	}
 	
 	protected void fulfillConstraints(boolean random) {
-		if(this.isPassed()) {
+		if (this.isPassed()) {
 			return;
 		}
-		if(this.constraintsAreFulfilled()){
+		if (this.constraintsAreFulfilled()) {
 			return;
 		}
 		Node newNode;
@@ -58,7 +58,7 @@ public class NodeWithOutput extends Node {
 				y = false;
 				newNode = new NodeWithOutput(module, getGenerator());
 				newNode.setPlan(this.getPlan());
-				if(random) {
+				if (random) {
 					getGenerator().getNodes().getRandomlyAddedNodes().add(newNode);
 				}
 			}
@@ -80,7 +80,7 @@ public class NodeWithOutput extends Node {
 	}
 	@Override
 	protected void addChild(Node node) {
-		if (!children.contains(node) && !getParents().contains(node)){
+		if (!children.contains(node) && !getParents().contains(node)) {
 			node.setPlan(getPlan());
 			children.add(node);
 			node.addParent(this);

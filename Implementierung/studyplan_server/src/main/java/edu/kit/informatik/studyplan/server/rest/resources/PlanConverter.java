@@ -12,10 +12,20 @@ import org.apache.velocity.app.VelocityEngine;
 
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
+/**
+ * Class for converting plans to HTML output
+ * @author NiklasUhl
+ *
+ */
 public class PlanConverter {
 	
 	private StringWriter writer;
-
+	
+	/**
+	 * creates a new instance from the given plan
+	 * @param plan the plan
+	 * @throws IOException if an error occurred reading the template files
+	 */
 	public PlanConverter(Plan plan) throws IOException {
 		VelocityEngine engine = new VelocityEngine();
 		Properties properties = new Properties();
@@ -41,6 +51,10 @@ public class PlanConverter {
         template.merge(context, writer);
 	}
 	
+	/**
+	 * 
+	 * @return a StringWriter containing the generated HTML as String
+	 */
 	public StringWriter getWriter() {
 		return writer;
 	}

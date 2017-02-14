@@ -4,8 +4,6 @@
 
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
-import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-
 /************************************************************/
 /**
  * The AtomObjectiveFunction is a partial objective function, that considers only one 
@@ -15,10 +13,6 @@ public abstract class AtomObjectiveFunction implements PartialObjectiveFunction 
 	
 	private String descriptor;
 	
-	/*
-	 * {@inheritDoc}
-	 */
-	public abstract double evaluate(Plan plan);
 
 	/**
 	 * @return the descriptor
