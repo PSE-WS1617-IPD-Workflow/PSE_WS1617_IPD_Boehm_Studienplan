@@ -5,4 +5,5 @@ goog.provide("edu.kit.informatik.studyplan.client.view.subview.ComparisonPage");
  */
 
 edu.kit.informatik.studyplan.client.view.subview.ComparisonPage = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.ComparisonPage} */{
+    //TODO: implement
 });

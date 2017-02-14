@@ -3,53 +3,105 @@
 	\item NotFoundPage eingefügt
 \end{itemize}
 
-\begin{itemize}
-	\item PlanEditPage
+ComparisonPage
+	\begin{itemize}
+		\item aus zeitlichen Gründen entfernt
+	\end{itemize}
+Header
+	\begin{itemize}
+		\item Attribute		
+			\begin{itemize}
+				\item hinzugefügt
+					\subitem tagName
+					\subitem events
+					\subitem template
+			\end{itemize}
+		\item Methoden
+			\begin{itemize}
+				\item hinzugefügt
+					\subitem initialize
+					\subitem render
+					\subitem goHome
+					\subitem showProfile
+					\subitem logoutUser
+			\end{itemize}
+	\end{itemize}
+LoginPage
+	\begin{itemize}
+		\item Attribute
 		\begin{itemize}
-			\item Attribute
-				\begin{itemize}
-					\item hinzugefügt
-						\subitem planHeadBar
-						\subitem planView
-						\subitem isSignUp
-					\item umbenannt
-						\subitem sidebar -> moduleFinder
-						\subitem passedModules -> model					
-				\end{itemize}
-			\item Methoden
-				\begin{itemize}
-					\item hinzugefügt
-						\subitem planHeadBar
-						\subitem planView
-						\subitem isSignUp
-					\item entfernt
-						\subitem hideModuleDetails
-						\subitem showModuleDetails
-						\subitem close	
-				\end{itemize}
+			\item hinzugefügt
+				\subitem tagName
+				\subitem template	
 		\end{itemize}
-	\item ComparisonPage
+	\end{itemize}
+MainPage
+	\begin{itemize}
+		\item Attribute
 		\begin{itemize}
-			\item aus zeitlichen Gründen entfernt
+			\item hinzugefügt
+				\subitem planCollection
+				\subitem tagName
+				\subitem template
+				\subitem events 	
 		\end{itemize}
-	\item Header
+		\item Methoden
 		\begin{itemize}
-			\item Attribute		
-				\begin{itemize}
-					\item hinzugefügt
-						\subitem tagName
-						\subitem events
-						\subitem template
-				\end{itemize}
-			\item Methoden
-				\begin{itemize}
-					\item hinzugefügt
-						\subitem initialize
-						\subitem render
-						\subitem goHome
-						\subitem showProfile
-						\subitem logoutUser
-				\end{itemize}
+			\item hinzugefügt
+				\subitem initialize
 		\end{itemize}
-\end{itemize}
+	\end{itemize}
+PlanEditPage
+	\begin{itemize}
+		\item Attribute
+		\begin{itemize}
+			\item hinzugefügt
+			\subitem planHeadBar
+			\subitem planView
+			\subitem isSignUp
+			\item umbenannt
+			\subitem sidebar -> moduleFinder
+			\subitem passedModules -> model					
+		\end{itemize}
+		\item Methoden
+		\begin{itemize}
+			\item hinzugefügt
+			\subitem planHeadBar
+			\subitem planView
+			\subitem isSignUp
+			\item entfernt
+			\subitem hideModuleDetails
+			\subitem showModuleDetails
+			\subitem close	
+		\end{itemize}
+	\end{itemize}
+ProfilPage
+	\begin{itemize}
+		\item Attribute
+		\begin{itemize}
+			\item hinzugefügt
+			\subitem isSidebar
+			\subitem model
+			\subitem planHeadBar
+			\subitem isPreferencable	
+		\end{itemize}
+		\item Methoden
+		\begin{itemize}
+			\item hinzugefügt
+			\subitem saveModules
+		\end{itemize}
+	\end{itemize}
+WizardPage
+	\begin{itemize}
+		\item Attribute
+		\begin{itemize}
+			\item hinzugefügt
+			\subitem events			
+		\end{itemize}
+		\item Methoden
+		\begin{itemize}
+			\item hinzugefügt
+			\subitem onFinish
+		\end{itemize}
+	\end{itemize}
 
