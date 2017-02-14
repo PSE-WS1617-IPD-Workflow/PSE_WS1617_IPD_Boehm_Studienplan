@@ -16,7 +16,6 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     profilPage: null,
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uipanel/signUpWizardComponent2.html"),
     events: {
-        "change select.objectiveFunctionDropDown": "onChange"
     },
     
     //Profilpage einfügen mit parameter isSignUp: true
