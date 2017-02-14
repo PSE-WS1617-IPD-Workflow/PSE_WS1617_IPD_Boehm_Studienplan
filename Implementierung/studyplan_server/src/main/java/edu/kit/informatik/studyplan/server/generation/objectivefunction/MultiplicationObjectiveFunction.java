@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /**
@@ -7,6 +9,9 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  *
  */
 public class MultiplicationObjectiveFunction extends ObjectiveFunction {
+
+	@JsonProperty
+	private String descriptor;
 
 	/**
 	 * This method calls all evaluate methods of the sub-functions and multiplies them.
@@ -23,6 +28,16 @@ public class MultiplicationObjectiveFunction extends ObjectiveFunction {
 			product *= values[i];
 		}
 		return product;
+	}
+	
+	@Override
+	public String getDescriptor() {
+		return descriptor;
+	}
+
+	@Override
+	public void setDescriptor(String descriptor) {
+		this.descriptor = descriptor;
 	}
 
 }

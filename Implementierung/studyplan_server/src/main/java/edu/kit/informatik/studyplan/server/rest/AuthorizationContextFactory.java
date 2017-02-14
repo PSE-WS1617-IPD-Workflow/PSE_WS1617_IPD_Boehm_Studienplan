@@ -5,7 +5,7 @@ import javax.ws.rs.container.ContainerRequestContext;
 
 import org.glassfish.hk2.api.Factory;
 
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 
 /**
  * Factory for injection of AuthorizationContext instances into the REST

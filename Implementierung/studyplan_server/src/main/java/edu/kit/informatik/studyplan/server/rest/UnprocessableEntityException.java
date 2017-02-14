@@ -9,6 +9,10 @@ import javax.ws.rs.core.Response.StatusType;
  */
 public class UnprocessableEntityException extends WebApplicationException {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8549728633437465089L;
+	/**
      * Status type of the exception.
      */
     public static final StatusType STATUS_TYPE = new StatusType() {

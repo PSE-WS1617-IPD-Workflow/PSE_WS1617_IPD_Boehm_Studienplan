@@ -14,6 +14,11 @@ import org.hibernate.context.internal.ManagedSessionContext;
 
 import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 
+/**
+ * Closes the hibernate sessions after every request
+ * @author NiklasUhl
+ *
+ */
 @Priority(Priorities.AUTHENTICATION)
 public class SessionCloseFilter implements ContainerResponseFilter {
 	
@@ -25,12 +30,13 @@ public class SessionCloseFilter implements ContainerResponseFilter {
 		if (ManagedSessionContext.hasBind(HibernateUtil.getModuleDataSessionFactory())) {
 			Session session = HibernateUtil.getModuleDataSessionFactory().getCurrentSession();
 			session.close();
-			logger.info("Session "+ session.hashCode() + " closed.");
+			logger.info("Session " + session.hashCode() + " closed.");
 		}
+		
 		if (ManagedSessionContext.hasBind(HibernateUtil.getUserDataSessionFactory())) {
 			Session session = HibernateUtil.getUserDataSessionFactory().getCurrentSession();
 			session.close();
-			logger.info("Session "+ session.hashCode() + " closed.");
+			logger.info("Session " + session.hashCode() + " closed.");
 		}
 	}
 

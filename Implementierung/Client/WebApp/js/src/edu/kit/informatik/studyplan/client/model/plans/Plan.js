@@ -12,7 +12,8 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     urlRoot : API_DOMAIN + "/plans",
     
     /**
-    *parses a plan-JSON and uses for that the parse-methods of SemesterCollection and verification result. Constraints parsed Module.
+    * parses a plan-JSON and uses for that the parse-methods of SemesterCollection and verification result.
+    * Constraints parsed Module.
     */
     parse : function (response, options) {
         "use strict";
@@ -105,7 +106,6 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
             return {plan:{id: this.get('id'), name : this.get('name')}};
         } else {
             var result = {
-                id: this.id,
                 name: this.get('name'),
             };
             if(this.get('semesterCollection')){

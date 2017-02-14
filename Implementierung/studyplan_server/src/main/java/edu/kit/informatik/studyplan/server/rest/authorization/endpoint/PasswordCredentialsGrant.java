@@ -4,24 +4,15 @@ import java.util.List;
 
 import javax.ws.rs.core.MultivaluedMap;
 
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationScope;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClient;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 
 /**
- * Diese Klasse repräsentiert einen PasswordCredentialsGrant { @see RFC 6749
- * Kapitel 1.3.3}. PasswordCredentialsGrant wird in der ersten Version des
- * Systems nicht benötigt aber zur möglichen Erweiterungen vorgesehen. * Bei dem
- * Versuch, eine Authentifizierung mittels diese Klasse durchzuführen wird eine
- * Fehlermeldung zurückgegeben.
+ * Represents PasswordCredentialsGrant { @see RFC 6749
+ * chapter 1.3.3}. Not supported by this system, calls to this will fail
  */
 public class PasswordCredentialsGrant implements GrantType {
-	/**
-	 * Erstellt einen PasswordCredentialsGrant.
-	 */
-	public PasswordCredentialsGrant() {
-
-	}
 
 	@Override
 	public AuthorizationContext getLogin(RESTClient client, AuthorizationScope scope,
@@ -31,7 +22,6 @@ public class PasswordCredentialsGrant implements GrantType {
 
 	@Override
 	public void postToken(MultivaluedMap<String, String> params) {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -3,6 +3,7 @@ define(["studyplan"], function (client) {
     describe("Proposed Plan", function () {
         var plan, propPlan, propInfo;
         beforeEach(function () {
+            client.config.init();
             jasmine.Ajax.install();
             var resultObject = {
                 plan    :   {

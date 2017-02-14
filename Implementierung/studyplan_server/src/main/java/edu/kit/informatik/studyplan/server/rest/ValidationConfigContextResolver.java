@@ -8,6 +8,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;
 
+/**
+ * Class enabling BeanValidation.
+ */
+// Seriously, I'm not sure if this is needed at all but I'm not confident removing it. Better you don't touch it unless
+// you know better. :)
 @Provider
 public class ValidationConfigContextResolver implements ContextResolver<ValidationConfig> {
 

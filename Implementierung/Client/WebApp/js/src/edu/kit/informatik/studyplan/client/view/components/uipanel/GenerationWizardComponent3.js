@@ -127,7 +127,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
               
     /**
     *that method will be triggered if one of the field-drowndown-menues will be changed.
-    * the value will be saved in the fieldcollection of the current  proposalInformation
+    * the value will be saved in the fieldcollection of the current  proposalInformation.
     */
     onChange:
         function (event) {

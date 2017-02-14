@@ -80,4 +80,13 @@ public class Category {
 	void setSubject(boolean isSubject) {
 		this.isSubject = isSubject;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Category)) {
+			return false;
+		} else {
+			return ((Category) obj).getCategoryId() == this.getCategoryId();
+		}
+	}
 };

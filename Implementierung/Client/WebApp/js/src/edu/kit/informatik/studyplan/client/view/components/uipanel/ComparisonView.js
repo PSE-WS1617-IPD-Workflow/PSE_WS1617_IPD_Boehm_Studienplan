@@ -2,6 +2,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.Compar
 /**
  * @constructor
  * @extends {Backbone.View}
+ * isn't implemented so no useable comment
  */
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.ComparisonView = Backbone.View.extend(

@@ -13,6 +13,11 @@ import org.hibernate.context.internal.ManagedSessionContext;
 
 import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 
+/**
+ * Opens the hibernate sessions before every request
+ * @author NiklasUhl
+ *
+ */
 @Priority(Priorities.AUTHENTICATION)
 public class SessionOpenFilter implements ContainerRequestFilter {
 	
@@ -20,12 +25,15 @@ public class SessionOpenFilter implements ContainerRequestFilter {
 
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
+		
 		Session moduleSession = HibernateUtil.getModuleDataSessionFactory().openSession();
-		logger.info("Session "+ moduleSession.hashCode() + " openend.");
+		logger.info("Session " + moduleSession.hashCode() + " openend.");
 		ManagedSessionContext.bind(moduleSession);
+		
 		Session userSession = HibernateUtil.getUserDataSessionFactory().openSession();
-		logger.info("Session "+ userSession.hashCode() + " openend.");
+		logger.info("Session " + userSession.hashCode() + " openend.");
 		ManagedSessionContext.bind(userSession);
+		
 	}
 
 }

@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.generation.standard;
 
+import java.util.ArrayList;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
@@ -8,7 +10,8 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
 
-import java.util.ArrayList;
+
+
 
 /**
  * The abstract class Node represents a module in a Graph.

@@ -13,6 +13,11 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  */
 public class ModulePreferencesAtomObjectiveFunction extends AtomObjectiveFunction {
 
+	
+	public ModulePreferencesAtomObjectiveFunction() {
+		setDescriptor("Präferenzen berücksichten");
+	}
+	
 	/*
 	 * {@inheritDoc}
 	 */

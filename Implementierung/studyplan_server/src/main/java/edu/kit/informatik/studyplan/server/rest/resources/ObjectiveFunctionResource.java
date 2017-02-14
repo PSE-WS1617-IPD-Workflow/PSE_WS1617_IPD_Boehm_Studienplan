@@ -1,15 +1,19 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
-import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
-import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.Collection;
-import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
+import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
+import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 /**
  * REST resource for /objective-functions.
@@ -23,8 +27,26 @@ public class ObjectiveFunctionResource {
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Map<String, Collection<PartialObjectiveFunction>> getAllObjectiveFunctions() {
-		//TODO @annotate (Partial?)ObjectiveFunction; add its missing attributes. (Wait for Nada)
-		return SimpleJsonResponse.build("functions", new GenerationManager().getAllObjectiveFunctions());
+	public Map<String, List<FunctionDto>> getAllObjectiveFunctions() {
+		List<PartialObjectiveFunction> objectiveFunctions = new GenerationManager().getAllObjectiveFunctions();
+		List<FunctionDto> result = objectiveFunctions.stream()
+			.map(function -> new FunctionDto(objectiveFunctions.indexOf(function), function))
+			.collect(Collectors.toList());
+		return SimpleJsonResponse.build("functions", result);
+	}
+	
+	public class FunctionDto {
+		
+		@JsonProperty
+		int id;
+		
+		@JsonProperty
+		String name;
+		
+		public FunctionDto(int id, PartialObjectiveFunction function) {
+			this.id = id;
+			this.name = function.getDescriptor();
+		}
+		
 	}
 }

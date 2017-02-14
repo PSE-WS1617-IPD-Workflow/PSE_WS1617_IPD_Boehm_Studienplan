@@ -1,5 +1,7 @@
 package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /**
@@ -8,9 +10,21 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  * objective function is a partial objective function.
  */
 public interface PartialObjectiveFunction {
+	
 
 	/**
-	 * Evaluates a plan and according to that evaluation returns a value between 0 and 1.
+	 * @return the descriptor
+	 */
+	@JsonProperty
+	public String getDescriptor();
+
+	/**
+	 * @param descriptor the descriptor to set
+	 */
+	public void setDescriptor(String descriptor);
+	
+	/**
+	  * Evaluates a plan and according to that evaluation returns a value between 0 and 1.
 	 * 
 	 * @return a value between 0 and 1 that evaluates a plan.
 	 * 			A plan with the evaluation 1 is an ideal plan.
