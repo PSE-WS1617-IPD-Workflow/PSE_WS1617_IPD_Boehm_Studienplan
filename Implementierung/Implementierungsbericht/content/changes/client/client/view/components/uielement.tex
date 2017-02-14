@@ -3,14 +3,14 @@ In der Klasse ModuleBox wurde folgendes geändert:
 \begin{itemize}
 	\item voteUp() wurde als Listener für das Ereignis einer positiven Präferenz hinzugefügt
 	\item voteDown() wurde als Listener für das Ereignis einer negativen Präferenz hinzugefügt
-	\item isPreferencable gibt an ob das Modul \enquote{präferierbar} ist
-	\item isDraggable gibt an ob das Module in ein Semester gezogen werden kann
-	\item isPassedPlanModule gibt an ob das Modul in einem Plan liegt, welcher bestandene Module anzeigt. dies hat zur Folge, dass bestandene Module ebenfalls gezogen oder gelöscht werden können.
+	\item isPreferencable gibt an, ob das Modul \enquote{präferierbar} ist
+	\item isDraggable gibt an, ob das Modul in ein Semester gezogen werden kann
+	\item isPassedPlanModule gibt an, ob das Modul in einem Plan liegt, welcher bestandene Module anzeigt. Dies hat zur Folge, dass bestandene Module ebenfalls gezogen oder gelöscht werden können.
 \end{itemize}
 In der Klasse ModuleFinder wurde folgendes geändert:
 \begin{itemize}
-	\item isPlaced wurde entfernt, da die Funktion Module, welche im Plan vorhanden sind auszublenden aktuell nicht vorhanden ist.
-	\item isSidebar wurde entfernt, da die Frage, ob der ModuleFinder eine Sidebar oder nicht ist nun ausschließlich über CSS gelöst wird und der Javascript-Code des ModuleFinders hierauf keinen Einfluss nimmt
+	\item isPlaced wurde entfernt, da die Funktion "Module, welche im Plan vorhanden sind auszublenden" aktuell nicht vorhanden ist.
+	\item isSidebar wurde entfernt, da die Frage, ob der ModuleFinder eine Sidebar ist oder nicht, nun ausschließlich über CSS gelöst wird und der Javascript-Code des ModuleFinders hierauf keinen Einfluss nimmt
 \end{itemize}
 In der Klasse ModuleInfoSidebar wurde folgendes geändert
 \begin{itemize}
@@ -25,7 +25,7 @@ In der Klasse ModuleList wurde folgendes geändert:
 \end{itemize}
 In der Klasse NotificationBox wurde folgendes geändert:
 \begin{itemize}
-	\item blurOut() wurde entfernt, da die Funktionalität onClose() bereits implementiert
+	\item blurOut() wurde entfernt, da die onClose() die Funktionalität bereits implementiert
 \end{itemize}
 Die Klasse PassedModulePlan ist nicht länger notwendig.\\
 In der Klasse Plan wurde folgendes geändert:
@@ -34,14 +34,14 @@ In der Klasse Plan wurde folgendes geändert:
 	\item onChange() wurde in reload() umbenannt
 	\item isAddable wurde hinzugefügt (ob dem Plan semester hinzugefügt wurden)
 	\item isPreferencable wurde dem Plan hinzugefügt (ob Module präferiert werden dürfen)
-	\item isPassedPlan wurde dem Plan hinzugefügt (ob dies ein Plan von bestanden Modulen ist)
+	\item isPassedPlan wurde dem Plan hinzugefügt (ob dies ein Plan aus bestandenen Modulen ist)
 \end{itemize}
 
 In der Klasse PlanListElement wurde folgendes geändert:
 \begin{itemize}
-	\item setChecked(:string) zum setzten des Checkbox-Werts hinzugefügt
-	\item isChecked():boolean zum erhalten des Checkbox-Werts hinzugefügt
-	\item delete() heißt nun deletePlan() (delete ist in Javascript in Keyword)
+	\item setChecked(:string) zum Setzen des Checkbox-Werts hinzugefügt
+	\item isChecked():boolean zum Erhalten des Checkbox-Werts hinzugefügt
+	\item delete() heißt nun deletePlan() (delete ist in Javascript ein Keyword)
 	\item duplicate() heißt nun duplicatePlan()
 	\item export() heißt nun exportPlan()
 	\item show() heißt nun showPlan()
@@ -56,7 +56,7 @@ Es wurde die Klasse ProfileHeadBar hinzugefügt, welche die folgenden Methoden h
 
 In der Klasse Semester wurde folgendes geändert:
 \begin{itemize}
-	\item isPassedSemester besagt ob das Semester bereits vergangen ist
-	\item isPassedPlan besagt ob der Plan ein Plan mit ausschließlich bestandenen Modulen ist
-	\item isPreferencable besagt ob die Module präferenzierbar sind
+	\item isPassedSemester besagt, ob das Semester bereits vergangen ist
+	\item isPassedPlan besagt, ob der Plan ein Plan mit ausschließlich bestandenen Modulen ist
+	\item isPreferencable besagt, ob die Module präferierbar sind
 \end{itemize}

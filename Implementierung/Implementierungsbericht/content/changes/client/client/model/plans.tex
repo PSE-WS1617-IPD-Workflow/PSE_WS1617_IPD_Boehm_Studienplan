@@ -4,7 +4,7 @@ In der Klasse Plan wurden einige Methoden hinzugefügt:
 	\item retrieveProposedPlan() um generierten Plan zu erhalten
 	\item getEctsSum() zur Berechnung der ECTS Punkte im Plan
 	\item addModule() um einem Semester ein neues Modul hinzuzufügen.
-	\item Auf loadVerification() wurde hingegen verzichtet, da diese Information permanent im zugehörigen VerificationResult gespeichert ist, und bei Änderung in diesem Objekt neu geladen wird. Der "change" Event von VerificationResult wird dann ebenfalls an Plan weitergeleitet.
+	\item Auf loadVerification() wurde hingegen verzichtet, da diese Information permanent im zugehörigen VerificationResult gespeichert ist, und bei Änderung in diesem Objekt neu geladen wird. Die Änderung des Change-Events von VerificationResult wird ebenfalls an Plan weitergeleitet.
 \end{itemize}
 
 In der Klasse ProposedPlan wurde hinzugefügt:
@@ -17,7 +17,7 @@ Es wurde die Klasse RuleGroup neu hinzugefügt, die eine rule-group kapselt, die
 In der Klasse Semester wurde hinzugefügt:
 \begin{itemize}
 	\item getEctsSum() zur Berechnung der ECTS-Summe in einem Semester
-	\item onChange() Zur Weiterleitung des "change"-Events an SemesterCollection und Plan
+	\item onChange() Zur Weiterleitung des \glqq change\grqq-Events an SemesterCollection und Plan
 \end{itemize}
 
 In der Klasse SemesterCollection wurde hinzugefügt:
