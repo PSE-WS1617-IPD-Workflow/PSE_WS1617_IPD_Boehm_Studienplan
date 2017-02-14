@@ -14,6 +14,12 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
         "change #checkAllCheckbox": "checkAllCheckboxChange",
         "click button.planListActionExecution": "onActionSelection"
     },
+    /**
+    * initializes this class
+    * @this {Backbone.View}
+    * @param{...*} options
+    *               planCollection -> connection to the model
+    */
     initialize: function (options) {
         "use strict";
         this.planCollection = options.planCollection;
@@ -24,6 +30,9 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
         this.listenTo(this.planCollection, "all", this.reload);
         this.reload();
     },
+    /**
+    * updates date and rerenders ui
+    */
     reload: function () {
         console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] reload");
         this.planListElements = [];
@@ -35,6 +44,9 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
         });
         this.render();
     },
+    /**
+    *renders the template and the inserted profilepage
+    */
     render: function () {
         "use strict";
         this.$el.html(this.template());
@@ -46,7 +58,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
         this.delegateEvents();
     },
     /**
-    *
+    * updates data after an action is selected
     */
     onActionSelection: function () {
         "use strict";
@@ -59,6 +71,11 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
         })
         this[select.val()](planListEls);
     },
+    /**
+    * loads page to compare plans
+    * @param{..*} planListEls
+                    list of plans
+    */
     comparePlans: function (planListEls) {
         console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] comparePlans");
         console.log(planListEls);
@@ -78,6 +95,11 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
             {trigger: true}
         )
     },
+    /**
+    * sends a deleterequest for a plan
+    * @param{..*} planListEls
+                    list of plans
+    */
     deletePlans: function (planListEls) {
         console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] deletePlans");
         console.log(planListEls);
@@ -91,6 +113,9 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
     onChange: function () {
         "use strict";
     },
+    /**
+    * updates all checkboxxes according to the select all box
+    */
     checkAllCheckboxChange: function () {
         var isChecked = this.$el.find("#checkAllCheckbox").prop('checked');
         console.log(this.planListElements);
