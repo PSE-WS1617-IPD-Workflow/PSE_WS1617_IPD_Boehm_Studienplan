@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Modu
  * @constructor
  * @param {Object=} options
  * @extends {Backbone.View}
+ * Object which represents a Module Box
  */
 
 edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox.prototype} */{
@@ -14,6 +15,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     isDraggable: true,
     isRemovable: true,
     isPassedPlanModule: false,
+    /**
+     * events which are listened to and their handlers
+     */
     events: {
         "click .moduleBoxLink" : "click",
         "click button.deleteButton": "removeModule",
@@ -28,6 +32,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
         this.isPassedPlanModule = (typeof options.isPassedPlanModule !== "undefined") ? options.isPassedPlanModule : this.isPassedPlanModule;
         this.listenTo(this.model, "change", this.render);
     },
+    /**
+     * Method called when upvoted
+     */
     voteUp: function () {
         "use strict";
         console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteUp");
@@ -35,6 +42,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
         preference.set('preference','positive');
         preference.save();
     },
+    /** 
+     * Method called when downvoted
+     */
     voteDown: function () {
         console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteDown");
         var preference = this.model.get('preference');
@@ -42,7 +52,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
         preference.save();
     },
     /**
-    *@param{boolean} setBorder
+    * Method which sets a red border to the object (for verification result)
+    * @param {boolean} setBorder Whether or not the border should be set
     */
     setRedBorder:
         function (setBorder) {
@@ -54,7 +65,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
         },
     
     /**
-    *
+    * Method which removes the module from the current collection
     */
     removeModule:
         function () {
@@ -69,7 +80,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
             }
         },
     /**
-    *
+    * Method which is executed once someone clicks on the module
     */
     click:
         function (event) {
@@ -78,9 +89,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
             var eventBus = edu.kit.informatik.studyplan.client.model.system.EventBus;
             eventBus.trigger("showModuleInfo",this.model)
         },
-    /**
-    *
-    */
     render: function () {
         this.$el.addClass((this.isDraggable) ? 'draggable' : '');
         this.$el.html(this.template({

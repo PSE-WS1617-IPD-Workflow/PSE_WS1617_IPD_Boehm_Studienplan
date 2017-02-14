@@ -1,5 +1,6 @@
 goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.PassedModulePlan");
 /**
+ * @deprecated
  * @constructor
  * @extends {Backbone.View}
  */

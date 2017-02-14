@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Modu
  * @constructor
  * @param {Object=} options
  * @extends {Backbone.View}
+ * Class which represents a sidebar showing relevant information for each module
  */
 
 edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar.prototype} */{
@@ -20,6 +21,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar 
         this.listenTo(this.model, "change", this.reload);
         this.reload();
     },
+    /**
+     * Method which reloads and then renders the internal collections of view elements once the model is changed
+     */
     reload: function () {
         console.info(this.model.get('constraints'));
         _.each(this.model.get('constraints'), function (constraint) {
@@ -67,14 +71,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar 
         this.delegateEvents();
     },
     /**
-    *
-    */
-    onChange:
-        function () {
-            "use strict";
-        },
-    /**
-    *
+    * Method which is called when the ModuleInfoSidebar should be closed
     */
     onClose:
         function () {

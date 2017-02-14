@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Modu
  * @constructor
  * @param {Object=} options
  * @extends {Backbone.View}
+ * Method which represents a list of modules in the module finder
  */
 
 edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList.prototype} */{
@@ -20,10 +21,13 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
         this.isPreferencable = options.isPreferencable;
         //this.listenTo(this.moduleCollection, "change", this.onChange);
         //this.listenTo(this.moduleCollection, "all", this.onChange);
-        this.listenTo(this.moduleCollection, "reset", this.onChange);
+        this.listenTo(this.moduleCollection, "reset", this.reload);
         //this.listenTo(this.moduleCollection, "add", this.onChange);
         this.reload();
     },
+    /**
+     * Method which reloads the internal collection of view elements once the moduleCollection changes
+     */
     reload: function () {
         this.moduleBoxes = [];
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
@@ -40,9 +44,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
         }.bind(this));
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
         this.render();
-    },
-    onChange: function (){
-        this.reload();
     },
     render: function () {
         this.$el.html(this.template());
