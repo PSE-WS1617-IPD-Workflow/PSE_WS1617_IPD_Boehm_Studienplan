@@ -20,7 +20,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.ProposalSidebar = Ba
         this.$el.html(this.template());
     },
     /**
-    *
+    * delete the plan
     */
     deletePlan:
         function () {
@@ -28,7 +28,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.ProposalSidebar = Ba
             edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate('/plans/'+this.model, {trigger: true});
         },
     /**
-    *
+    * saves the
     */
     save:
         function () {
@@ -43,7 +43,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.ProposalSidebar = Ba
             });
         },
     /**
-    *
+    * saves propsal under a different name
     */
     saveAs:
         function () {
