@@ -2,6 +2,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.Filter");
 /**
  * @constructor
  * @extends {edu.kit.informatik.studyplan.client.model.system.OAuthModel}
+ * This class represents a filter which might be activated and used for filtering modules
  */
 
 edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.Filter.prototype}*/{
@@ -19,6 +20,9 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
         }
         return response;
     },
+    /**
+     * This object contains query parameter builders for various filter types
+     */
     filterTypeHandler : {
         /**
          * @this {edu.kit.informatik.studyplan.client.model.system.Filter}
@@ -49,6 +53,10 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
             return result;
         }
     },
+    /**
+     * Method for retrieving query parameters of a filter
+     * @return {Object|null} containing the values of the query 
+     */
     getParams : function () {
         "use strict";
         if(this.get('curValue')!="none"){

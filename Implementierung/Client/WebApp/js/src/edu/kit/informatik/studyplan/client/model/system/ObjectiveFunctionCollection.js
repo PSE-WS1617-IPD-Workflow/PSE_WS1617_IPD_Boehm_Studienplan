@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.ObjectiveFunction
  * @constructor
  * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.model.system.OAuthCollection}
+ * Object which represents a collection of objective functions, which may be selected during Generation Wizard
  */
 
 edu.kit.informatik.studyplan.client.model.system.ObjectiveFunctionCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.ObjectiveFunctionCollection.prototype}*/{

@@ -1,1 +1,30 @@
-\paragraph{Paket plans.*} In der Klasse Plan wurden einige Methoden hinzugefügt:  retrieveProposedPlan() um generierten Plan zu erhalten, getEctsSum() und  addModule() um einer SemesterCollection ein neues Modul hinzuzufügen. Auf loadVerification() wurde hingegen verzichtet, da diese Information permanent im zugehörigen VerificationResult gespeichert ist, und bei Änderung in diesem Objekt neu geladen wird. Der "change" Event von VerificationResult wird dann ebenfalls an Plan weitergeleitet.
+\paragraph{Paket plans.*}
+In der Klasse Plan wurden einige Methoden hinzugefügt:
+\begin{itemize}
+	\item retrieveProposedPlan() um generierten Plan zu erhalten
+	\item getEctsSum() zur Berechnung der ECTS Punkte im Plan
+	\item addModule() um einem Semester ein neues Modul hinzuzufügen.
+	\item Auf loadVerification() wurde hingegen verzichtet, da diese Information permanent im zugehörigen VerificationResult gespeichert ist, und bei Änderung in diesem Objekt neu geladen wird. Der "change" Event von VerificationResult wird dann ebenfalls an Plan weitergeleitet.
+\end{itemize}
+
+In der Klasse ProposedPlan wurde hinzugefügt:
+\begin{itemize}
+	\item setInfo() zum setzten eines Objekts vom Typ ProposalInformation, das die Informationen über die Wünsche eines Nutzers bei der Generierung kapselt
+\end{itemize}
+
+Es wurde die Klasse RuleGroup neu hinzugefügt, die eine rule-group kapselt, die bei der Verifizierung überprüft wird.
+
+In der Klasse Semester wurde hinzugefügt:
+\begin{itemize}
+	\item getEctsSum() zur Berechnung der ECTS-Summe in einem Semester
+	\item onChange() Zur Weiterleitung des "change"-Events an SemesterCollection und Plan
+\end{itemize}
+
+In der Klasse SemesterCollection wurde hinzugefügt:
+\begin{itemize}
+	\item addModule(m:Module) fügt dem Semester m.get('semester') das Modul m hinzu
+	\item push(:Semester) fügt der SemesterCollection ein neues Semester hinzu.
+	\item getEctsSum() berechnet die Summe der ECTS-Punkte aller Semester
+\end{itemize}
+
+Wie oben erwähnt wurde ebenfalls die neue Klasse VerificationResult eingefüht, die die Antwort einer Verifikations-Anfrage an den Server kapselt.

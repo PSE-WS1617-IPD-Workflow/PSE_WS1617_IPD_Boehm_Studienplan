@@ -22,7 +22,7 @@ public abstract class ObjectiveFunction implements PartialObjectiveFunction {
 	/**
 	 * Getter for the subFunctions.
 	 * 
-	 * @return the collection of sub-Functions from tyme PartialObjectiveFunction.
+	 * @return the collection of sub-Functions from type PartialObjectiveFunction.
 	 */
 	public Collection<PartialObjectiveFunction> getSubFunctions() {
 		return subFunctions;

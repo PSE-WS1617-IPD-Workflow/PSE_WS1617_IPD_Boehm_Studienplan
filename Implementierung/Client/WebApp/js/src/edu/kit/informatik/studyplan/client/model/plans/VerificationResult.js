@@ -4,6 +4,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.VerificationResult
  * @param {Object=} attributes
  * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.model.system.OAuthModel}
+ * Represents the verification result of a plan
  */
 
 edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.VerificationResult.prototype}*/{
@@ -12,6 +13,9 @@ edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.inf
         this.plan = options.plan;
         this.listenTo(this.model, "change", this.onChange);
     },
+    /**
+     * Transfer the "change" event to the plan
+     */
     onChange: function () {
         this.plan.trigger("change");
     },

@@ -2,18 +2,21 @@ package edu.kit.informatik.studyplan.server.generation.standard;
 
 /************************************************************/
 /**
- * Die Klasse Weightfunction enthält eine Methode, welche die Anzahl an
- * Creditpoints eines Knotens und aller seiner innerer Knoten bestimmt.
+ * The class weight function contains a method, that the amount of credit points 
+ * of a node and all its inner and outer nodes. 
+ * 
+ * @author Nada_Chatti
+ * @version 1.0
  */
 public class WeightFunction {
 	/**
-	 * Die Methode getWeight errechnet die Punktanzahl eines Knoten (Node) und
-	 * aller innerer Knoten dieses Knotens, addiert sie und gibt diese double-Zahl
-	 * zurück.
+	 * The getWeight method calculates the credit points of a node and all its inner 
+	 * nodes, adds it, and returns that double number.
 	 * 
 	 * @param node
-	 *            der Knoten, dessen Creditpoint-Anzahl bestimmt werden soll.
-	 * @return die Gesamtanzahl an Creditpoints des Knotens.
+	 * 			the node whose weight is to be determined.
+	 * @return the sum of the credit points of this node and all its inner 
+	 * and outer nodes.
 	 */
 	public double getWeight(Node node) {
 		double r = node.getModule().getCreditPoints();

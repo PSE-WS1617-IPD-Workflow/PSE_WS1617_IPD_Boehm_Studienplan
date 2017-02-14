@@ -21,33 +21,34 @@ import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /**
- * Verwaltet den Zugriff auf das Generierungsplug-in. Das Generierungsplug-in
- * umfasst sowohl die Generierer-Schnittstelle als auch die
- * Zielfunktionen-Schnittstelle. Beide Schnittstellen werden mittels diese
- * Klasse adaptiert.
+ * Manages the access to the generation plug-in. The generation plug-in includes both 
+ * the generator interface and the target function interface.
  */
 public class GenerationManager {
 	
 	private static final double THRESHOLD = 0.5;
 
 	/**
-	 * Liste der Zielfunktionen.
+	 * List of objective functions.
 	 * 
 	 * @see edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction
 	 */
 	private List<PartialObjectiveFunction> objectiveFunctions;
-	
+	/**
+	 * An objective function that sums all objective fuction given by the user in one that
+	 * would be given to the generator. 
+	 */
 	private ObjectiveFunction wrapper;
 
 	/**
-	 * Der Generierer.
+	 * The generator.
 	 * 
 	 * @see edu.kit.informatik.studyplan.server.generation.Generator
 	 */
 	private Generator generator;
 
 	/**
-	 * Erstellt einen GenerationManager.
+	 * Creates a generation Manager.
 	 */
 	public GenerationManager() {
 		generator = new SimpleGenerator();
@@ -60,26 +61,25 @@ public class GenerationManager {
 	}
 
 	/**
-	 * Gibt den Generator zurück.
+	 * Returns the generator
 	 * 
-	 * @return generator : der Generator
+	 * @return the generator 
 	 */
 	public Generator getGenerator() {
 		return generator;
 	}
 
 	/**
-	 * Diese Methode ruft die generate Methode des
-	 * {@link edu.kit.informatik.studyplan.server.generation.Generator }.
-	 * 
+	 * This method calls the generate method of the Generator Interface after 
+	 * initialising tha wrapper objective function to pass it as a parameter.
 	 * @param objectiveFunction
-	 *            Die Zielfunktion, anhand der optimiert werden soll
+	 *            the objective function according to which the plan would be 
+	 *            evaluated and optimized.
 	 * @param currentPlan
-	 *            der bereits bestehende Plan
+	 *            the already existing plan.
 	 * @param moduleDAO
-	 *            die Module
-	 * @return ein vollständiger, korrekter und optimierter Studienplan vom Typ
-	 *         Plan.
+	 *            the ModuleDao to fetch the modules from the database.
+	 * @return a complete correct and optimized study plan from Type Plan 
 	 */
 	public Plan generate(PartialObjectiveFunction objectiveFunction, 
 			Plan currentPlan, 
@@ -92,7 +92,10 @@ public class GenerationManager {
 		wrapper.add(thresholdObjectiveFunction);
 		return generator.generate(wrapper, currentPlan, moduleDAO, preferredSubjects, maxECTSperSemester);
 	}
-
+	/**
+	 * Initializes the wrapper with adding the average of all objective functions to its 
+	 * sub-functions list.  
+	 */
 	private void initWrapper() {
 		wrapper = new MultiplicationObjectiveFunction();
 		ObjectiveFunction average = new AverageObjectiveFunction();
@@ -102,9 +105,7 @@ public class GenerationManager {
 	}
 
 	/**
-	 * Gibt die Liste der Zielfunktionen zurück.
-	 * 
-	 * @return objectiveFunction : die Liste der Zielfunktionen
+	 * @returns the objectiveFunction
 	 */
 	public List<PartialObjectiveFunction> getAllObjectiveFunctions() {
 		return objectiveFunctions;

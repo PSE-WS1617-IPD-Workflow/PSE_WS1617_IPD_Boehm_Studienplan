@@ -6,8 +6,8 @@ package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 
 /************************************************************/
 /**
- * AtomObjectiveFunction ist eine Teilzielfunktion, die nur eine Eigenschaft
- * berücksichtigt.
+ * The AtomObjectiveFunction is a partial objective function, that considers only one 
+ * characteristic.
  */
 public abstract class AtomObjectiveFunction implements PartialObjectiveFunction {
 	
