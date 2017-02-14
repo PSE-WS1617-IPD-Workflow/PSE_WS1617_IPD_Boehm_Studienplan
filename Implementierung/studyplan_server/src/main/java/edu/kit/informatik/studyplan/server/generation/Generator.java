@@ -1,12 +1,12 @@
 package edu.kit.informatik.studyplan.server.generation;
 
-import java.util.Map;
-
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+
+import java.util.Map;
 
 /************************************************************/
 /**
@@ -21,13 +21,19 @@ public interface Generator {
 	 * modules, and then optimizes it with the aid of the given objective
 	 * function. The required modules are reached via moduleDao.
 	 * 
-	 * 
-	 * @return a complete, optimized and correct study plan from type plan.
+	 *
 	 * @param objectiveFunction
-	 *            the objective function, according to which the plan would be
-	 *            optimized.
+	 *            the objective function according to which the plan would be
+	 *            evaluated and optimized.
 	 * @param currentPlan
-	 *            the already existing plan
+	 *            the already existing plan.
+	 * @param moduleDAO
+	 *            the ModuleDao to fetch the modules from the database.
+	 * @param preferredSubjects
+	 * 			  the preferred subjects per field (for the Generator to choose modules from)
+	 * @param maxECTSperSemester
+	 * 			  the maximum number of credit points per semester
+	 * @return a complete, correct and optimized study plan with type `Plan`
 	 */
 	Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, 
 			ModuleDao moduleDAO, Map<Field, Category> preferredSubjects, int maxECTSperSemester);

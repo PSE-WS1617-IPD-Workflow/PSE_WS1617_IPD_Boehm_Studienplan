@@ -31,7 +31,7 @@ Durch die sich geänderten Anforderungen wegen der Modelländerungen wurde Verif
 
 \subsubsection{REST-Paket}
 
-Zur Verwaltung von Datenbank-Verbindungen wurden die Klassen SessionOpenFilter und SessionCloseFilter hinzugefügt, welche bei ankommender Anfrage bzw. vor abgeschickter Antwort eine Datenbank-Session erstellen bzw. wieder schließen. Damit ist gewährleistet, dass während der Verarbeitung einer Anfrage stets auf die Datenbank zugegriffen werden kann und DAOs stets verfügbar und einsatzbereit sind.
+Zur Verwaltung von Datenbank-Sessions wurden die Klassen SessionOpenFilter und SessionCloseFilter hinzugefügt, welche bei ankommender Anfrage bzw. vor abgeschickter Antwort eine Datenbank-Session eröffnen bzw. wieder schließen. Damit ist gewährleistet, dass während der Verarbeitung einer Anfrage stets auf die Datenbank zugegriffen werden kann und DAOs stets verfügbar und einsatzbereit sind.
 
 Ferner wurde die Annotation @AuthorizationNeeded hinzugefügt, die eine REST-Ressourcenklasse bzw. deren Methoden derart markiert, dass Jersey beim Verarbeiten einer Anfrage mithilfe des AuthorizationRequestFilters User-Informationen bereitstellen kann, die zur Abwicklung einer solchen Anfrage notwendig sind. Eine AuthorizationContextFactory-Klasse hilft dabei beim Injizieren eines AuthorizationContexts in die Ressource.
 
@@ -43,7 +43,7 @@ Die Klasse MyObjectMapperProvider konfiguriert einen ObjectMapper, der die De-/S
 
 \paragraph{Paket resources.*} In diesem Paket liegen die REST-Ressourcen-Klassen. Mehrere Ressourcen-Klassen wurden aus technischen Gründen als Sub-Ressourcen in Oberklassen eingegliedert, bspw. PlanVerificationResource in PlansResource. Es sind -- in Zusammenhang mit den Änderungen in \ref{subsec:changes_rest} -- neue Ressourcen-Klassen hinzugekommen, welche auf neue Anfragen reagieren, wie z.~B. FieldsResource oder MainResource. \newline
 Im Sub-Paket „json“ befinden sich Klassen zur De- und Serialisierung von JSON-Datenklassen, sogenannte Data-Transfer-Objects (DTOs). Diese dienen der korrekten Einhaltung der JSON-Spezifikationen und ermöglichen eine reibungslose Umwandlung von bzw. zu ihren Modell-Gegenstücken. \newline
-Da der PDF-Export einer HTML-Generierung gewichen ist, wurde hierfür die Klassen DisplayablePlan und PlanConverter angelegt, welche mithilfe der Apache VelocityEngine und einem Report-Template die HTML- und CSS-Ausgabe generieren.
+Da der PDF-Export einer HTML-Generierung gewichen ist, wurden hierfür die Klassen DisplayablePlan und PlanConverter angelegt, welche mithilfe der Apache VelocityEngine und einem Report-Template die HTML- und CSS-Ausgabe generieren.
 
 
 
