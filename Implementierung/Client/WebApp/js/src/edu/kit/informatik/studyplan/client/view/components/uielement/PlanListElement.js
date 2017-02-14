@@ -64,7 +64,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
                 // Send POST request
                 newPlan.save({},{
                     success: function () {
-                        this.plan.
                         // Send PUT request
                         newPlan.save({}, {
                             success: function () {
@@ -82,8 +81,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
                         });
                     }.bind(this)
                 });
-            }
-        }.bind(this));
+            }.bind(this)
+        });
     },
     /**
     *

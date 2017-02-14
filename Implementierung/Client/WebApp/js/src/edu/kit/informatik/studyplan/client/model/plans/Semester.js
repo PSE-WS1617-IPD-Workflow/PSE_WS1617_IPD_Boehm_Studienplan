@@ -4,6 +4,8 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.Semester");
  * @param {Object=} attributes
  * @param {Object=} options
  * @extends {Backbone.Collection}
+ * This class represents a semester of a plan.
+ * (This class is great, believe me: It's great. It's one of the best classes I've ever seen.)
  */
 
 edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.studyplan.client.model.module.ModuleCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.Semester.prototype}*/{
@@ -13,6 +15,12 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
      * @type {edu.kit.informatik.studyplan.client.model.plans.SemesterCollection}
      */
     collection: null,
+    /** 
+     * Method which initializes the object
+     * @param {Object=} attributes
+     * @param {Object=} options configuration details like
+     *                      - Object collection: The collection which the semester belongs to
+     */
     initialize: function (attributes, options) {
         this.collection = options.collection;
         this.listenTo(this, "destroy", this.onChange);
@@ -21,12 +29,25 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
         this.listenTo(this, "add", this.onChange);
         this.listenTo(this, "reset", this.onChange);
     },
+    /**
+     * This method makes sure the semester collection (and plan) is being notified, when the semester changes
+     * @return {string}
+     */
     onChange: function () {
         this.collection.trigger("change");
     },
+    /**
+     * This method computes the url of the model
+     */
     url : function () {
         return API_DOMAIN + "/plans/"+this.planId+"/modules"
     },
+    /**
+     * This method parses the content of a semesterCollection
+     * @param {Object} response The input for parsing
+     * @param {Object=} options Other configuration details
+     * @return {Array<Object>}
+     */
     parse : function (response, options) {
         "use strict";
         this.planId = response["planId"];
@@ -39,6 +60,11 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
         //console.log(response["modules"]);
         return edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype.parse.apply(this,[response,options]);
     },
+    /**
+     * Method which converts the model to a serializable JSON object
+     * @param {Object=} options Any options for serialization
+     * @return {Object} The serializable object
+     */
     toJSON: function (options) {
         var modules = [];
         var passedModules = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student').get('passedModules');
@@ -51,6 +77,10 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
             modules: modules
         }
     },
+    /**
+     * Method for retrieving the sum of ECTS in this semester
+     * @return {number} The sum of creditpoints
+     */
     getEctsSum: function () {
         var sum = 0;
         this.each(function (module) {

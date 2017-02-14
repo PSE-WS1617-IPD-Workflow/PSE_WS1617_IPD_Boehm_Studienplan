@@ -4,6 +4,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.SemesterCollection
  * @param {Object=} attributes
  * @param {Object=} options
  * @extends {Backbone.Model}
+ * This class represents a collection of semesters
  */
 edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.SemesterCollection.prototype}*/{
     length: 0,
@@ -12,6 +13,9 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
         this.plan = options.plan;
         this.listenTo(this, "change", this.onChange);
     },
+    /**
+     * Transfers the "change" event to the plan
+     */
     onChange: function () {
         this.plan.trigger("change");
     },
@@ -83,9 +87,15 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
         } );
         return contained;
     },
+    /**
+     * executes a given method on all elements of the collection
+     */
     each: function (method) {
         _.each(this.attributes, method);
     },
+    /**
+     * Computes total number of credit points
+     */
     getEctsSum: function () {
         var sum = 0;
         this.each(function (semester) {
@@ -93,6 +103,9 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
         });
         return sum;
     },
+    /**
+     * Adds the module in the module's given semester
+     */
     addModule: function (module) {
         var i = module.get("semester");
         if(!this.get(i)) {
@@ -104,6 +117,9 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
         }
         this.get(i).push(module);
     },
+    /**
+     * Adds a new semester to the collection
+     */
     push : function (semester){
         this.attributes[this.length + 1] = semester;
         this.length++;
