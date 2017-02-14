@@ -3,6 +3,9 @@ goog.provide("edu.kit.informatik.studyplan.client.storage.OAuthSync");
  * @param {string} method The action to take: "create", "read", "update", "patch" or "delete"
  * @param {Backbone.Model|null|undefined} model The model to transfer to the server
  * @param {Object<string,Object>} options The options for the transfer
+ * Model which handles the saving/loading of models which were saved on our REST-Webservice via OAuth
+ * This method also handles possible errors which might occur during the request by creating a fitting Notification object,
+ * of which the corresponding NotificationBox may then be shown by the MainView
  */
 edu.kit.informatik.studyplan.client.storage.OAuthSync = function (method, model, options) {
     "use strict";

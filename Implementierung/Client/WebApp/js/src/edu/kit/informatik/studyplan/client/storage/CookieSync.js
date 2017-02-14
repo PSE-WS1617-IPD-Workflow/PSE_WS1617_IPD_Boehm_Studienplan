@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.storage.CookieSync");
  * @param {string=} method The action to take: "create", "read", "update", "patch" or "delete"
  * @param {Backbone.Model=} model The model to transfer to the server
  * @param {Object<string,Object>=} options The options for the transfer
+ * Method which handles the saving/loading of models, which were saved in a cookie
  */
 edu.kit.informatik.studyplan.client.storage.CookieSync = function (method, model, options) {
     "use strict";

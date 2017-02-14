@@ -3,17 +3,20 @@ goog.provide("edu.kit.informatik.studyplan.client.router.MainRouter");
  * @class
  * @name edu.kit.informatik.studyplan.client.router.MainRouter
  * @extends {Backbone.Router}
+ * Singleton which represents the central router delegating to corresponding views
  */
 edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
     "use strict";
     var instance = null;
     /**
+     * The actuall class
      * @constructor
      * @name edu.kit.informatik.studyplan.client.router.MainRouter
      */
     var Constructor = Backbone.Router.extend(
         {
             /**
+             * The MainView of the application used
              * @type {edu.kit.informatik.studyplan.client.view.MainView}
              */
             view: null,
@@ -44,6 +47,9 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                         });
                 }.bind(this));
             },
+            /**
+             * The available routes
+             */
             routes:{
                     "plans/:planId":  "editPage",
                     "compare/:planId1/:planId2": "comparisonPage",
