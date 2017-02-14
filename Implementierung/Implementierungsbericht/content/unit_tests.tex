@@ -41,7 +41,19 @@ Unittests:
 	\end{itemize}
 	Dadurch wurden auch die \texttt{isValid}-Methoden der entsprechenden \texttt{ConstraintTypes} getestet & ERFOLGREICH \\
 	\hline
-	
+		SimpleGeneratorTest & Testet einzelne Methoden der \texttt{SimpleGenerator}. 
+	Einen Plan mit einer einzelnen \texttt{ModuleEntry} wird:
+	\begin{itemize}
+		\item anhand der Benutzer Preferenzen und \texttt{Constraint}s verschiedener art vervollständigt und modifiziert
+		\item anhand einer Zielfunktion optimiert
+	\end{itemize}
+	Dafür werden Objekte benutzt, die nur zum Testen erstellt wurden, d.h. die werden nicht beim echten verwendung des Systems vorhanden sein sondern die Daten aus der Datenbank. Das Verhalten von Methoden der Klassen \texttt{ModuleDao} und \texttt{Plan} werden mittels Mockito angepasst. & ERFOLGREICH\\
+	\hline
+	NodesListTest & Testet die topologischen Sortierung der Klasse \texttt{NodesList}. & ERFOLGREICH\\
+	\hline
+	VerificationManager & Getter für \texttt{Verifier} getestet. & ERFOLGREICH\\
+	\hline
+
 \end{longtable}
 
 \subsection{Client}

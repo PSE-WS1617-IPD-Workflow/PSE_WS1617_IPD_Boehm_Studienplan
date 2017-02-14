@@ -11,7 +11,11 @@ import org.junit.Test;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-
+/**
+ * This Use Case tests the methods of the NodesList class.
+ * @author Nada_Chatti
+ *
+ */
 public class NodesListTest {
 	SimpleGenerator generator;
 	NodesList nodes;

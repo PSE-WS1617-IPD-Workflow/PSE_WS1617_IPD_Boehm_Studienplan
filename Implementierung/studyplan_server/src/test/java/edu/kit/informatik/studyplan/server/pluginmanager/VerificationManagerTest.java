@@ -6,7 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.kit.informatik.studyplan.server.verification.standard.StandardVerifier;
-
+/**
+ * This use case tests the methods of the VerificationManager Class
+ * @author Nada_Chatti
+ *
+ */
 public class VerificationManagerTest {
 	VerificationManager manager;
 
