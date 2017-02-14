@@ -11,8 +11,8 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.core.MultivaluedMap;
 
 /**
+ * Supplies every response with the CORS headers required by the browser
  * @author NiklasUhl
- *
  */
 public class CorsResponseFilter implements ContainerResponseFilter {
 

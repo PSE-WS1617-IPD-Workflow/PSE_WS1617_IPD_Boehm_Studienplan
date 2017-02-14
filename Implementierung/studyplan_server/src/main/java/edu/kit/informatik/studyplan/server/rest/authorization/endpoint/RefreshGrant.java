@@ -9,18 +9,10 @@ import edu.kit.informatik.studyplan.server.model.userdata.authorization.Authoriz
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClient;
 
 /**
- * Diese Klasse repräsentiert einen RefreshGrant: beim Ablaufen der
- * Access-Token, schickt dieser Granttype eine Refresh-Token { @see RFC 6749
- * Kapitel 1.5} an den Klient als Antwort .
+ * Represents RefreshGrant { @see RFC 6749
+ * chapter 1.5}. Not supported by this system, calls to this will fail
  */
 public class RefreshGrant implements GrantType {
-
-	/**
-	 * Erstellt einen RefreshGrant.
-	 */
-	public RefreshGrant() {
-
-	}
 
 	@Override
 	public AuthorizationContext getLogin(RESTClient client, AuthorizationScope scope,
@@ -30,8 +22,7 @@ public class RefreshGrant implements GrantType {
 
 	@Override
 	public void postToken(MultivaluedMap<String, String> params) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 }
