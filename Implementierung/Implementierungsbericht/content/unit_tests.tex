@@ -1,1 +1,34 @@
 \section{Testfälle}
+\subsection{Client}
+Auf der Client Seite wurde mit Hilfe der Frameworks Karma und Jasmine.js getestet.
+Während der Implementierungsphase wurde insbesondere das Model mit Unit- und Integration-Tests überprüft.
+Dies war notwendig, da zu diesem Zeitpunkt noch nicht auf eine REST-Schnittstelle zu gegriffen werden konnte.
+Bei diesen Tests erreichten wir für die ModelKlassen eine Testabdeckung von ca. 65 Prozent. Weitere Tests werden in der Qualitätssicherungsphase folgen.
+Für die Integrationstests war es die Zielsetzung, dass jede Anfrage bzw. Antwort an bzw. vom Server durch einen Testfall abgedeckt ist.
+Dieses Ziel wurde erreicht, wobei alle Tests erfolgreich laufen.
+
+\begin{longtable}{| >{\hspace{0pt}} p{.2\textwidth} | >{\hspace{0pt}} p{.45\textwidth} | >{\hspace{0pt}} p{.25\textwidth} |}
+	\hline
+	\textbf{Testfall} & \textbf{Fragestellung} & \textbf{Status} \\ 
+	\hhline{|=|=|=|}  
+	\endfirsthead
+	\endhead
+	
+	%===============================================================================================
+	ModuleCollection Initialisierung & Wird eine ModuleCollection für gegebene Daten erfolgreich initialisiert?  & ERFOLGREICH \\
+	ModuleConstraint Initialisierung & Wird ein ModuleConstraint für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	Module Initialisierung & Wird ein Modul für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	Preference Initialisierung & Wird eine Preference für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	Plan Initialisierung & Wird ein Plan für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	Discipline Initialisierung & Wird eine Discipline für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	Filter Initialisierung & Wird ein Filter für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	LanguageManager Funktion & Gibt der Language Manager die richtigen Textbausteine zurück? & ERFOLGREICH \\
+	NotificationCollection Initialisierung & Gibt getInstance() das richtige Objekt zurück? & ERFOLGREICH \\
+	ObjectiveFunctionCollection Initialisierung & Wird eine ObjectiveFunctionCollection für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	TemplateManager Funktion & Gibt der TemplateManager die richtige HTML-Ausgabe zurück? & ERFOLGREICH \\
+	CookieSync Funktion & Speichert/Lädt CookieSync ein Model erfolgreich? & ERFOLGREICH \\
+	OAuthSync Funktion & Übergibt OAuthSync beim speichern/laden die richtigen Header? & ERFOLGREICH \\
+	MainView Funktion & Lädt der MainView die richtigen Views und zeigt diese an? & ERFOLGREICH \\	
+	\hhline{|=|=|=|}   
+	\caption{Geschriebene Unit-Tests}
+\end{longtable}
