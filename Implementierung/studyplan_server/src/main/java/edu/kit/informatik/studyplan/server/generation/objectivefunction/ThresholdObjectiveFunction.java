@@ -26,7 +26,7 @@ public class ThresholdObjectiveFunction extends AverageObjectiveFunction {
 	/**
 	 * Sets the threshold with the value given
 	 * 
-	 * @param threshold
+	 * @param threshold the threshold
 	 */
 	public ThresholdObjectiveFunction(final double threshold) {
 		this.threshold = threshold;

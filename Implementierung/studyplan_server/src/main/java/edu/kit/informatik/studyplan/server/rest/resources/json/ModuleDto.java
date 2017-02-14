@@ -12,6 +12,9 @@ import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * DTO for Module class
+ */
 public class ModuleDto {
 	
 	
@@ -34,9 +37,12 @@ public class ModuleDto {
 	String description;
 	@JsonProperty
 	List<ConstraintDto> constraints;
-	
-	
-	public ModuleDto (Module module) {
+
+	/**
+	 * Creates a ModuleDto from a module.
+	 * @param module module
+     */
+	public ModuleDto(Module module) {
 		this.id = module.getIdentifier();
 		this.name = module.getName();
 		this.categories = module.getCategories().stream()
@@ -50,8 +56,13 @@ public class ModuleDto {
 				.map(ConstraintDto::new).collect(Collectors.toList());
 		
 	}
-	
-	public ModuleDto (Module module, Plan plan) {
+
+	/**
+	 * Creates a plan-related ModuleDto (containing module preferences).
+	 * @param module the module
+	 * @param plan the plan as preference source
+     */
+	public ModuleDto(Module module, Plan plan) {
 		this(module);
 		this.preference = plan.getPreferenceForModule(module);
 		this.constraints = module.getConstraints().stream()
