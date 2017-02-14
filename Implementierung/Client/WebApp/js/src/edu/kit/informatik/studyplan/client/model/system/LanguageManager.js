@@ -15,11 +15,13 @@ edu.kit.informatik.studyplan.client.model.system.LanguageManager = (function () 
     var instance = null;
     
     /**
+     * The language manager class
      * @constructor
      * @private
      */
     var LanguageManager = function () {
         /**
+         * All messages available in the language manager
          * @type {Object<string,Object<string, string>>}
          */
         this.messages = {};
@@ -54,6 +56,7 @@ edu.kit.informatik.studyplan.client.model.system.LanguageManager = (function () 
     
     return {
         /**
+         * Method to retrieve the current instance of the language manager
          * @return {LanguageManager} The LanguageManager Object
          */
         getInstance : function () {

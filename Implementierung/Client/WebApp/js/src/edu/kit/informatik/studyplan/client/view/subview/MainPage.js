@@ -6,13 +6,35 @@ goog.provide("edu.kit.informatik.studyplan.client.view.subview.MainPage");
  */
 
 edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.MainPage.prototype} */{
+    /**
+    * the model element that contains the plans
+    */    
     planCollection: null,
+    /**
+    * the tag name of the described html element in the template
+    */
     tagName: "div",
+    /**
+    * UI-Element planList that displays all plans from planCollection
+    */
     planList: null,
+    /**
+    * html template for this element
+    */
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/subview/mainPage.html"),
+    /**
+    * holds events that are triggered from HTML e.g: Button presses
+    */
     events: {
         "click button.mainPageAddPlan": "addPlan"
     },
+    /**
+    * initializes the MainPage
+    * @this {Backbone.View}
+    * @param{...*} options
+    *               parameters:
+    *                   planCollection -> contains the planCollection that will be displayed - model connection
+    */
     initialize: function (options) {
         "use strict";
         this.planCollection = options.planCollection;
@@ -20,6 +42,9 @@ edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend
             planCollection: this.planCollection
         });
     },
+    /*
+    * renders this page
+    */
     render: function () {
         "use strict";
         this.$el.html(this.template());
@@ -29,7 +54,7 @@ edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend
         this.delegateEvents();
     },
     /**
-    *
+    * adds a plan to the model and view
     */
     addPlan:
         function () {

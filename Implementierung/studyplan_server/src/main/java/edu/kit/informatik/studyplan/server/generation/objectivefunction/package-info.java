@@ -1,9 +1,10 @@
 
 /**
- * Das Paket server.generation.objectivefunction beinhaltet die implementierung
- * der Zielfunktionen für die Generierung. Eine Zielfunktion bewertet einen
- * Studienplan anhand von Kriterien wie ECTS pro Semester, Semesteranzahl,
- * Nutzerpräferenzen, etc.
+ * The Package server.generation.objectivefunction contains the implementation 
+ * of the objective functions used for the generation.
+ * An Objective Function evaluates a plan based on certain criteria e.g. sum of 
+ * credit points per semester, number of semester in the plan, the preferences 
+ * of the user and so on.
  * 
  * @see edu.kit.informatik.studyplan.server.generation.objectivefunction.ObjectiveFunction
  */

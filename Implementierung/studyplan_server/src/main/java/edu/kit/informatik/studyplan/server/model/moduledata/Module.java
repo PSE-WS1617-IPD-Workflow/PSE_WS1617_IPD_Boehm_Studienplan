@@ -232,7 +232,15 @@ public class Module {
 		if (!(obj instanceof Module)) {
 			return false;
 		} else {
-			return ((Module) obj).getIdentifier().equals(this.getIdentifier());
+			if (this.getIdentifier() != null) {
+				return this.getIdentifier().equals(((Module) obj).getIdentifier());
+			} else {
+				if (name != null) {
+					return name.equals(((Module) obj).getName());
+				} else {
+					return this == obj;
+				}
+			}
 		}
 	}
 }

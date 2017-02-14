@@ -15,7 +15,7 @@ import edu.kit.informatik.studyplan.server.filter.FilterDescriptor;
 import edu.kit.informatik.studyplan.server.filter.FilterDescriptorProvider;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
@@ -40,7 +40,7 @@ public class FilterResource {
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Map<String,List<Map<String,Object>>> getAllFilters() {
+	public Map<String, List<Map<String, Object>>> getAllFilters() {
 		Discipline discipline = getUser().getDiscipline();
 		if (discipline == null) {
 			throw new UnprocessableEntityException();

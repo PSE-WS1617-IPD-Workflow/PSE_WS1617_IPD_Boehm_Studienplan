@@ -13,8 +13,8 @@ import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.Response.Status;
 
 /**
+ * Allows OPTION requests for every resource on this server.
  * @author NiklasUhl
- *
  */
 @PreMatching
 public class OptionsRequestFilter implements ContainerRequestFilter {

@@ -1,19 +1,19 @@
-package edu.kit.informatik.studyplan.server.model.userdata.dto;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
-import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
-import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
-import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
+package edu.kit.informatik.studyplan.server.rest.resources.json;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
+import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
+import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+
 /**
- * DTO for Plan
+ * DataTransferObject for plans
+ * @author NiklasUhl
+ *
  */
 public class PlanDto {
 	
@@ -31,11 +31,11 @@ public class PlanDto {
 	
 	@JsonProperty
 	List<ModuleEntryDto> modules;
-
+	
 	/**
-	 * Creates a PlanDto from a Plan
-	 * @param plan plan
-     */
+	 * creates a new instance from a given plan
+	 * @param plan the plan
+	 */
 	public PlanDto(Plan plan) {
 		this.id = plan.getIdentifier();
 		this.name = plan.getName();
@@ -45,10 +45,12 @@ public class PlanDto {
 			.map(entry -> new ModuleEntryDto(entry, plan.getPreferenceForModule(entry.getModule())))
 			.collect(Collectors.toList());
 	}
-
+	
 	/**
-	 * DTO for ModuleEntry
-     */
+	 * DataTransferObject for a module entry
+	 * @author NiklasUhl
+	 *
+	 */
 	public class ModuleEntryDto {
 		
 		@JsonProperty
@@ -67,16 +69,14 @@ public class PlanDto {
 		String lecturer;
 		
 		@JsonProperty
-		@JsonSerialize(using = MyObjectMapperProvider.CustomSerializerModule.PreferenceTypeSerializer.class)
-		@JsonDeserialize(using = MyObjectMapperProvider.CustomSerializerModule.PreferenceTypeDeserializer.class)
 		PreferenceType preference;
-
+		
 		/**
-		 * Creates a ModuleEntryDto from a ModuleEntry and a Preference
+		 * creates a new instance from the given entry with the given preference
 		 * @param entry the entry
 		 * @param preference the preference
-         */
-		public ModuleEntryDto (ModuleEntry entry, PreferenceType preference) {
+		 */
+		public ModuleEntryDto(ModuleEntry entry, PreferenceType preference) {
 			this.id = entry.getModule().getIdentifier();
 			this.name = entry.getModule().getName();
 			this.semester = entry.getSemester();

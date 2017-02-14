@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.NotificationColle
  * @class
  * @name edu.kit.informatik.studyplan.client.model.system.NotificationCollection
  * @extends {Backbone.Collection}
+ * Singleton which contains a collection of notifications
  */
 
 edu.kit.informatik.studyplan.client.model.system.NotificationCollection = (function () {
@@ -15,6 +16,7 @@ edu.kit.informatik.studyplan.client.model.system.NotificationCollection = (funct
      */
     var instance = null;
     /**
+     * The actual NotificationCollection class
      * @constructor
      * @name edu.kit.informatik.studyplan.client.model.system.NotificationCollection
      */

@@ -4,6 +4,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.DisciplineCollect
  * @param {Object=} attributes
  * @param {Object=} optionas
  * @extends {edu.kit.informatik.studyplan.client.model.system.OAuthCollection}
+ * Represents a collection of disciplines
  */
 
 edu.kit.informatik.studyplan.client.model.system.DisciplineCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.DisciplineCollection.prototype}*/{

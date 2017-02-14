@@ -4,6 +4,7 @@ define(["studyplan"], function (client) {
         var planCol, plan, resultObject, planResultObject;
         beforeEach(function () {
             client.config.init();
+            client.model.user.SessionInformation.getInstance().get('student').set('passedModules', new client.model.user.PassedModuleCollection());
             jasmine.Ajax.install();
             resultObject = {
                 plans   :   [

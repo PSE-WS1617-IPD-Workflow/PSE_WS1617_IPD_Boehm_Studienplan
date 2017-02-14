@@ -48,16 +48,16 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
-import edu.kit.informatik.studyplan.server.model.userdata.dto.PlanDto;
 import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
 import edu.kit.informatik.studyplan.server.pluginmanager.VerificationManager;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import edu.kit.informatik.studyplan.server.rest.resources.json.ModuleDto;
+import edu.kit.informatik.studyplan.server.rest.resources.json.PlanDto;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 
@@ -119,11 +119,17 @@ public class PlansResource {
 	@AuthorizationNeeded
 	public Response getPlans() {
 		List<PlanSummaryDto> result = getUser().getPlans().stream()
-				.map(plan -> new PlanSummaryDto(plan))
+				.map(PlanSummaryDto::new)
 				.collect(Collectors.toList());
 		return Response.ok(SimpleJsonResponse.build("plans", result)).build();
 	}
-
+	
+	
+	/**
+	 * DataTransferObject for a summary of plan, without the entries
+	 * @author NiklasUhl
+	 *
+	 */
 	public class PlanSummaryDto {
 		@JsonProperty
 		String id;
@@ -133,7 +139,11 @@ public class PlansResource {
 		double creditPointsSum;
 		@JsonProperty
 		String name;
-
+		
+		/**
+		 * creates an instance from the given plan
+		 * @param plan the plan
+		 */
 		public PlanSummaryDto(Plan plan) {
 			this.id = plan.getIdentifier();
 			this.status = plan.getVerificationState();
@@ -504,6 +514,8 @@ public class PlansResource {
 	 *            the id of the objective function to use
 	 * @param maxSemesterEcts
 	 *            maximum number of credits per semester, as specified by user
+	 * @param uriInfo
+	 * 			  contains given GET parameters
 	 * @return the generated plan's JSON representation.
 	 */
 	@GET
@@ -533,14 +545,9 @@ public class PlansResource {
 				if (function == null) {
 					throw new NotFoundException();
 				}
-				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, maxSemesterEcts); // TODO
-																												// incorporate
-																												// int
-																												// &
-																												// preferredSubs
-
-				return new PlanInOut(result); // TODO Check serialization of
-												// `result` inside generator
+				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, maxSemesterEcts);
+				return new PlanInOut(result);
+				// TODO Check serialization of `result` inside generator
 			} catch (IllegalArgumentException ex) {
 				ex.printStackTrace();
 				throw new BadRequestException();
@@ -612,7 +619,7 @@ public class PlansResource {
 		/**
 		 * Creates an empty ModuleInOut.
 		 */
-		public ModuleInOut() {
+		ModuleInOut() {
 		}
 
 		/**
@@ -621,7 +628,7 @@ public class PlansResource {
 		 * @param module
 		 *            the JsonModule instance
 		 */
-		public ModuleInOut(JsonModule module) {
+		ModuleInOut(JsonModule module) {
 			this.module = module;
 		}
 
@@ -655,7 +662,7 @@ public class PlansResource {
 		/**
 		 * Empty constructor.
 		 */
-		public PlanInOut() {
+		PlanInOut() {
 		}
 
 		/**
@@ -664,7 +671,7 @@ public class PlansResource {
 		 * @param plan
 		 *            the plan
 		 */
-		public PlanInOut(Plan plan) {
+		PlanInOut(Plan plan) {
 			this.plan = plan;
 			plan.getPreferences();
 			plan.getCreditPoints();
@@ -688,30 +695,7 @@ public class PlansResource {
 			this.plan = plan;
 		}
 	}
-
-	public class PlanRenameDto {
-
-		@JsonProperty
-		PlanRenameDtoElement plan;
-
-		public PlanRenameDto(PlanRenameDtoElement plan) {
-			this.plan = plan;
-		}
-
-		public class PlanRenameDtoElement {
-			@JsonProperty
-			public String id;
-
-			@JsonProperty
-			public String name;
-
-			public PlanRenameDtoElement(String id, String name) {
-				this.id = id;
-				this.name = name;
-			}
-		}
-	}
-
+	
 	/**
 	 * Annotation for denoting PATCH requests.
 	 */

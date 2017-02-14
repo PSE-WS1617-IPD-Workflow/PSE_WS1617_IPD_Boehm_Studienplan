@@ -1,5 +1,9 @@
 goog.provide("edu.kit.informatik.studyplan.client.model.system.TemplateManager");
-
+/**
+ * Model class which contains all templates used by the views.
+ * The templates are being automatically parsed and included at compile time.
+ * This reduces loading time as the templates are not being loaded and parsed during runtime
+ */
 edu.kit.informatik.studyplan.client.model.system.TemplateManager = (function () {
     "use strict";
     /**
@@ -8,6 +12,7 @@ edu.kit.informatik.studyplan.client.model.system.TemplateManager = (function () 
      */
     var instance = null;
     /**
+     * The actual TemplateRegistry class
      * @private
      * @constructor
      */
@@ -19,6 +24,7 @@ edu.kit.informatik.studyplan.client.model.system.TemplateManager = (function () 
          */
         this.templates = {};
         /**
+         * Method for adding templates. This should never be necessary, but just in case: here it is...
          * @public
          * @param {string} key The key of the template
          * @param {string} html The HTML content of the template
@@ -27,6 +33,7 @@ edu.kit.informatik.studyplan.client.model.system.TemplateManager = (function () 
             this.templates[key] = _.template(html);
         };
         /**
+         * Method to retrieve a template based on it's full path starting at /resources/...
          * @public
          * @param{string} key The key of the template
          * @throws {TemplateNotFoundException}

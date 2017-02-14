@@ -11,10 +11,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 /**
@@ -34,7 +32,6 @@ public class ModuleConstraint {
 
 	@ManyToOne
 	@JoinColumn(name = "type_id")
-	@JsonSerialize(using = MyObjectMapperProvider.CustomSerializerModule.ModuleConstraintTypeSerializer.class)
 	@JsonProperty("type")
 	private ModuleConstraintType constraintType;
 

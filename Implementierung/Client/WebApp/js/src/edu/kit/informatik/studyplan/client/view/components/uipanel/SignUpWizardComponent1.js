@@ -3,31 +3,34 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.SignUp
  * @constructor
  * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent}
- * saves beginning date and discipline.
+ * saves beginning date and discipline
+ * the first signupwizard: adds the new student some information: year of studystart and discipline.
  */
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1 = edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1.prototype}*/{
-    
+    //just for the dropdown of studystart options
     beginningArray: [],
+    //the new student
     student: null,
     disciplines: null,
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uipanel/signUpWizardComponent1.html"),
+    //a dropdown for discipline and one for studystart
     events: {
         "change select.beginningdateDropDown": "onChange1",
         "change select.disciplineDropDown": "onChange2"
     },
+    //current date to generate options of studystart
     date: null,
     
     
     /** 
-    * 
+    * constructor: sets date on the current year, initialize a disciplineCollection and fetches content from server --> neccesary for the discipline dropdown. needs new  student as a parameter
     */
-    initialize:
+    initialize: 
         function (options) {
             "use strict";
             this.date = new Date(Date.now()).getFullYear();
             this.beginning(this.date);
-            console.log(this.date);
             this.student = options.student;
             edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
             this.disciplines = new edu.kit.informatik.studyplan.client.model.system.DisciplineCollection();
@@ -37,19 +40,10 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
                     edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
                 }.bind(this)
             });
-                
-            /*todo: kram hierdrunter wiedereinfügen anstelle der discipline hierdrüber.
-            this.disciplines.fetch({
-                success: (function () {
-                    this.render();
-                }.bind(this))
-                
-            });*/
-            
         },
     
     /**
-    *
+    *renders that template. Template needs the disciplines and the studystart as parameters to display the content of the dropdowns.
     */
     render:
         function () {
@@ -65,6 +59,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     
     /**
     *@return{edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent}
+    * onChange1 and onChange2 will be triggered, lest the dropdowns weren't changed, so nothing wouldn't set without that.
+    * initialize a SignupWizard2 and gives the current student as a parameter.
     */
     next:
         function () {
@@ -77,7 +73,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
             return temp;
         },
     /**
-    *
+    *saves Changes of the studybegin-dropdown at current student
     */
     onChange1:
         function () {
@@ -90,7 +86,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
         },
     
     /**
-    *
+    *saves Changes of the discipline at current student.
     */
     onChange2:
         function () {
@@ -99,7 +95,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
         },
     
     /**
-    *
+    *creates the values of the studystart options caused at the actual year.
     */
     beginning:
         function (curyear) {

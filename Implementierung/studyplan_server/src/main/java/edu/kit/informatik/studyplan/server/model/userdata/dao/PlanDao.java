@@ -6,36 +6,34 @@ package edu.kit.informatik.studyplan.server.model.userdata.dao;
 
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
-/************************************************************/
 /**
- * DataAccessObject zum Zugriff auf Studienpläne aus der Datenbank
+ * DataAccessObject for accessing the user database
+ * @author NiklasUhl
  */
 public interface PlanDao {
 
 	/**
-	 * Sucht einen Plan nach seinem String-Identifier.
+	 * Searches for a plan by it's unique identifiers
 	 * 
-	 * @return den gefundenen Plan oder <code>null</code> falls nichts gefunden
+	 * @return the found plan or <code>null</code> if nothing was found
 	 * @param id
-	 *            der Identifier-String
+	 *            the identifier
 	 */
-	public Plan getPlanById(String id);
+	Plan getPlanById(String id);
 
 	/**
-	 * Löscht den Plan aus der Datenbank.
-	 * 
+	 * deletes the plan from database
 	 * @param plan
-	 *            der Plan
+	 *            the plan
 	 */
-	public void deletePlan(Plan plan);
+	void deletePlan(Plan plan);
 
 	/**
-	 * Speichert alle Änderungen am Plan in der Datenbank, legt ihn an, wenn
-	 * noch nicht vorhanden.
+	 * Saves all changes on the plan, or saves a new one if it does not exist yet.
 	 * 
 	 * @param plan
-	 *            der Plan
-	 * @return
+	 *            the plan
+	 * @return the generated identifier for this plan
 	 */
-	public String updatePlan(Plan plan);
+	String updatePlan(Plan plan);
 };

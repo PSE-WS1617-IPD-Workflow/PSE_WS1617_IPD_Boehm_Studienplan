@@ -83,7 +83,7 @@ public class Category {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if(!(obj instanceof Category)) {
+		if (!(obj instanceof Category)) {
 			return false;
 		} else {
 			return ((Category) obj).getCategoryId() == this.getCategoryId();

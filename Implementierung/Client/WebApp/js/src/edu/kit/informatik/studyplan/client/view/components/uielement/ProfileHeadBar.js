@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Prof
  * @constructor
  * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar}
+ * Class which represents the head bar shown in the profile view
  */
 
 edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar.prototype}*/{
@@ -24,7 +25,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
         this.delegateEvents();
     },
     /**
-    *
+    * Saves the passed modules
     */
     savePlan: function (pushToServer) {
         "use strict";
@@ -41,9 +42,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
         if(pushToServer){
             student.save({
                 success: function () {
-                    edu.kit.informatik.studyplan.client.router.MainRouter
-                        .getInstance()
-                        .hideLoading();
+                    edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
                     var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
                     edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
                         .add(
@@ -59,6 +58,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
         }
         
     },
+    /**
+     * Method which deletes the user
+     */
     deleteUser: function () {
         var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
         if(confirm(LM.getMessage("deleteUserPrompt"))){
@@ -80,6 +82,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
             
         }
     },
+    /**
+     * Method which leads the user back to the main page
+     */
     goHome: function () {
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/", {trigger: true})
     },

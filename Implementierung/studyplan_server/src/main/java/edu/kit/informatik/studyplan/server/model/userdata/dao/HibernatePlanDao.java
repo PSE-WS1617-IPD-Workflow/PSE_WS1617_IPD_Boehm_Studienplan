@@ -12,10 +12,9 @@ import edu.kit.informatik.studyplan.server.model.HibernateUtil;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
-/************************************************************/
 /**
- * Ein konkretes PlanDao, welches die Datenbankverbindung über Hibernate
- * herstellt.
+ * A concrete PlanDao implementation using Hibernate.
+ * @author NiklasUhl
  */
 class HibernatePlanDao implements PlanDao {
 	

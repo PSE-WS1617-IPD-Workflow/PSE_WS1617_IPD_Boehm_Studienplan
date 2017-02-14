@@ -12,9 +12,11 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
- * Die Klasse NodeWithOutput erbt von Node und stellt einen inneren Knoten der
- * Graphenstruktur, also ein Modul, welches Vorraussetzung für andere Module
- * ist, dar.
+ * The class NodeWithOutput inherits from Node and represents a concrete inner node of the 
+ * graph structure that might have children(nodes that this node's module has a prerequisite 
+ * or a plan_link constraint with).
+ * @author Nada_Chatti
+ * @version 1.0
  */
 public class NodeWithOutput extends Node {
 
@@ -26,8 +28,8 @@ public class NodeWithOutput extends Node {
 		super(module, plan, generator);
 	}
 	/**
-	 * Die Liste children vom Typ Node enthält alle Knoten, zu denen der Knoten
-	 * eine Ausgangskante hat.
+	 * The list of nodes that this node's module has a prerequisite or a plan_link 
+	 * constraint with).
 	 */
 	private ArrayList<Node> children = new ArrayList<Node>();
 
@@ -36,10 +38,10 @@ public class NodeWithOutput extends Node {
 	}
 	
 	protected void fulfillConstraints(boolean random) {
-		if(this.isPassed()) {
+		if (this.isPassed()) {
 			return;
 		}
-		if(this.constraintsAreFulfilled()){
+		if (this.constraintsAreFulfilled()) {
 			return;
 		}
 		Node newNode;
@@ -56,7 +58,7 @@ public class NodeWithOutput extends Node {
 				y = false;
 				newNode = new NodeWithOutput(module, getGenerator());
 				newNode.setPlan(this.getPlan());
-				if(random) {
+				if (random) {
 					getGenerator().getNodes().getRandomlyAddedNodes().add(newNode);
 				}
 			}
@@ -78,7 +80,7 @@ public class NodeWithOutput extends Node {
 	}
 	@Override
 	protected void addChild(Node node) {
-		if (!children.contains(node) && !getParents().contains(node)){
+		if (!children.contains(node) && !getParents().contains(node)) {
 			node.setPlan(getPlan());
 			children.add(node);
 			node.addParent(this);

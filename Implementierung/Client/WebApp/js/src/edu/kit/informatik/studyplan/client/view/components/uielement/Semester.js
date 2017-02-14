@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Seme
  * @constructor
  * @param {Object=} options
  * @extends {Backbone.View}
+ * Class which represents a semester in a plan
  */
 
 edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.Semester.prototype} */{
@@ -10,8 +11,18 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
     tagName: "tr",
     model: null,
     moduleElements: [],
+    /**
+     * Whether the semester is passed
+     */
     isPassedSemester: false,
+    /**
+     * Whether the plan is a plan with (only) passed modules
+     */
     isPassedPlan: false,
+    /**
+     * Whether the modules in the plan are preferencable
+     */
+    isPreferencable: true,
     byId: {},
     events : {
         

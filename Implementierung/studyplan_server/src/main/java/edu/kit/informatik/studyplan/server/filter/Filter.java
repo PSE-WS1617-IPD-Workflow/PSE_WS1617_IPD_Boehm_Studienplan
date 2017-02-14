@@ -4,9 +4,9 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
-import edu.kit.informatik.studyplan.server.filter.condition.Condition;
-
 import java.util.List;
+
+import edu.kit.informatik.studyplan.server.filter.condition.Condition;
 
 /**
  * Represents a filter for modules by giving a list of filter conditions.
@@ -18,5 +18,5 @@ public interface Filter {
 	 * 
 	 * @return the filter condition.
 	 */
-	public List<Condition> getConditions();
+	List<Condition> getConditions();
 };

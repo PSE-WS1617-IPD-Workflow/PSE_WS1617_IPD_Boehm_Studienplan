@@ -19,7 +19,7 @@ import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
-import edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext;
+import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
@@ -60,6 +60,11 @@ public class FieldsResource {
 		return Response.ok(result).build();
 	}
 
+	/**
+	 * DataTransferObject for a field
+	 * @author NiklasUhl
+	 *
+	 */
 	public class FieldDto {
 		
 		@JsonProperty
@@ -73,7 +78,11 @@ public class FieldsResource {
 
 		@JsonProperty
 		List<SubjectDto> categories;
-
+		
+		/**
+		 * Creates an instance from a given field
+		 * @param field the field
+		 */
 		public FieldDto(Field field) {
 			this.id = field.getFieldId();
 			this.name = field.getName();
@@ -83,7 +92,12 @@ public class FieldsResource {
 				categories.add(new SubjectDto(subject));
 			}
 		}
-
+		
+		/**
+		 * DataTransferObject for subjects (categories with isSubject set to true)
+		 * @author NiklasUhl
+		 *
+		 */
 		public class SubjectDto {
 
 			@JsonProperty
@@ -91,7 +105,11 @@ public class FieldsResource {
 
 			@JsonProperty
 			String name;
-
+			
+			/**
+			 * Creates a new instance from a given subject
+			 * @param category the subject
+			 */
 			public SubjectDto(Category category) {
 				this.id = category.getCategoryId();
 				this.name = category.getName();

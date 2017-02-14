@@ -6,23 +6,54 @@ goog.provide("edu.kit.informatik.studyplan.client.view.subview.PlanEditPage");
  */
 
 edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.PlanEditPage.prototype} */{
-    //filter and module view
+    /**
+    * filter and module view
+    */
     moduleFinder: null,
-    //currentPlan
+    /**
+    * view element to display current plan
+    */
     planView: null,
-    //information, where you are.
+    /**
+    * view element to display options
+    */
     planHeadBar: null,
-    //
+    /**
+    * view element to display options
+    */
     tagName: "div",
     /**
      * @type {edu.kit.informatik.studyplan.client.model.plans.Plan}
      */
     model: null,
+    /**
+    * html template for this element
+    */
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/subview/planEditPage.html"),
-    //is it a generated plan?
+    /**
+    * if this is true, the generated plan sidebar will be shown
+    */
     proposed: false,
+    /**
+    * contains the view element moduleFinder
+    **/
     standardModuleFinder: null,
+    /**
+    * dictates wheater it is possible to set a preference for modules
+    */
     isPreferencable: true,
+    /**
+    *
+    */
+
+    /**
+    * initializes the MainPage
+    * @this {Backbone.View}
+    * @param{...*} options
+    *               parameters:
+    *                   proposed -> should the proposal sidebar be shown
+    *                   plan -> model element
+    */
     initialize: function (options) {
         this.proposed = (typeof options.proposed) ? options.proposed : this.proposed;
         this.model = options.plan;
