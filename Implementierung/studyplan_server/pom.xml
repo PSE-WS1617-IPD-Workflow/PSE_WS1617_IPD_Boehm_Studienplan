@@ -113,7 +113,8 @@
 				<version>2.2</version>
 				<configuration>
 					<port>9999</port>
-					<path>/</path>
+					<path>/studyplan</path>
+					<tomcatUsers>${project.basedir}/src/main/tomcatconf/tomcat-users.xml</tomcatUsers>
 				</configuration>
 			</plugin>
 			<plugin>

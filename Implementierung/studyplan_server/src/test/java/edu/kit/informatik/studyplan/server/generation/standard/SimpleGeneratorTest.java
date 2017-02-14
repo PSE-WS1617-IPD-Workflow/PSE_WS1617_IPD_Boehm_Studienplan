@@ -37,6 +37,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 
 /**
+ * This Use Case tests the methods of the SimpleGenerator class.
  * @author Nada_Chatti
  *
  */
