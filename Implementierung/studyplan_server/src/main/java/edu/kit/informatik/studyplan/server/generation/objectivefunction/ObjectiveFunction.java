@@ -17,11 +17,6 @@ public abstract class ObjectiveFunction implements PartialObjectiveFunction {
 		this.subFunctions = new LinkedList();
 	}
 
-	/*
-	 * Wertet alle beeinhalteten Funktionen aus und rechnet diese in irgendeiner
-	 * Weise zusammen. Sonstige funktionalit�t wie in {@link
-	 * PartialObjectiveFunction#evaluate}
-	 */
 	/**
 	 * The evaluate method calls all sub-functions and calculates them in a certain way.
 	 * @param plan the plan to evaluate.
@@ -31,7 +26,7 @@ public abstract class ObjectiveFunction implements PartialObjectiveFunction {
 	/**
 	 * Getter for the subFunctions.
 	 * 
-	 * @return the collection of sub-Functions from tyme PartialObjectiveFunction.
+	 * @return the collection of sub-Functions from type PartialObjectiveFunction.
 	 */
 	public Collection<PartialObjectiveFunction> getSubFunctions() {
 		return subFunctions;

@@ -1,7 +1,7 @@
 /**
- * Dieses Paket verwaltet den Zugriff auf die Generierung- und
- * Verifizierungsplug-ins. Es ist das einzige Paket der direkt auf die Klassen
- * von {@link edu.kit.informatik.studyplan.server.generation} und
- * {@link edu.kit.informatik.studyplan.server.verification} Pakete zugreift.
+ * This package manages the access to the generation and veification plug-ins.
+ * It's the only package that has direct access to both genearation 
+ * {@link edu.kit.informatik.studyplan.server.generation} and verification 
+ * {@link edu.kit.informatik.studyplan.server.verification} packages.
  */
 package edu.kit.informatik.studyplan.server.pluginmanager;
