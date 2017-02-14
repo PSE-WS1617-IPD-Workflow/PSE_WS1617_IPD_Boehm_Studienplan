@@ -40,7 +40,7 @@ public class ThresholdObjectiveFunction extends AverageObjectiveFunction {
 	@Override
 	public double evaluate(final Plan plan) {
 		double val = super.evaluate(plan);
-		if(val<this.threshold){
+		if (val < this.threshold) {
 			val = 0;
 		}
 		return val;

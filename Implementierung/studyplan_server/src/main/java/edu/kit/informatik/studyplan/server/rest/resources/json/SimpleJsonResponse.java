@@ -7,7 +7,9 @@ import java.util.Map;
  * Helper class used to build a simple JSON response with one attribute.
  * @author Daniel Jungkind
  */
-public class SimpleJsonResponse {
+public final class SimpleJsonResponse {
+	
+	private SimpleJsonResponse() { }
     /**
      * Builds a map with one entry (key, value) and returns it.
      * @param key the key string

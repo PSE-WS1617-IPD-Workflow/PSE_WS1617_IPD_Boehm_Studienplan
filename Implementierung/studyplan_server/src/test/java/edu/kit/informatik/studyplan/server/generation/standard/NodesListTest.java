@@ -1,7 +1,8 @@
 package edu.kit.informatik.studyplan.server.generation.standard;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.mock;
+
 import java.util.List;
 
 import org.junit.Before;
@@ -27,28 +28,28 @@ public class NodesListTest {
 	public void setUp() throws Exception {
 		// creating modules
 		generator = new SimpleGenerator();
-		gbi= new Module();
+		gbi = new Module();
 		gbi.setIdentifier("GBI");
 		gbi.setCycleType(CycleType.BOTH);
 		gbi.setCreditPoints(2.0);
 		
-		swt= new Module();
+		swt = new Module();
 		swt.setIdentifier("SWT");
 		swt.setCycleType(CycleType.SUMMER_TERM);
 		swt.setCreditPoints(2.0);
 
-		prog= new Module();
+		prog = new Module();
 		prog.setIdentifier("PROG");
 		prog.setCycleType(CycleType.BOTH);
 		prog.setCreditPoints(2.0);
 
 		
-		tse= new Module();
+		tse = new Module();
 		tse.setIdentifier("TSE");
 		tse.setCycleType(CycleType.BOTH);
 		tse.setCreditPoints(2.0);
 		
-		pse= new Module();
+		pse = new Module();
 		pse.setIdentifier("PSE");
 		pse.setCycleType(CycleType.BOTH);
 		pse.setCreditPoints(2.0);
@@ -102,8 +103,8 @@ public class NodesListTest {
 	public void testSort() {
 		List<Node> result = nodes.sort();
 		assertFalse(result.containsAll(nodes.getAllNodes()));
-		for(int i = 0; i < result.size(); i++) {
-			for(int j = i + 1; j < result.size(); j++) {
+		for (int i = 0; i < result.size(); i++) {
+			for (int j = i + 1; j < result.size(); j++) {
 				assertFalse(result.get(i).getParents().contains(result.get(j)));
 			}
 		}

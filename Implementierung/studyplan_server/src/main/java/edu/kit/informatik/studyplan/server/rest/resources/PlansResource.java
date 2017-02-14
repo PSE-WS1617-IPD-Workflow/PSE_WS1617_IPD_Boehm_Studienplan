@@ -123,7 +123,13 @@ public class PlansResource {
 				.collect(Collectors.toList());
 		return Response.ok(SimpleJsonResponse.build("plans", result)).build();
 	}
-
+	
+	
+	/**
+	 * DataTransferObject for a summary of plan, without the entries
+	 * @author NiklasUhl
+	 *
+	 */
 	public class PlanSummaryDto {
 		@JsonProperty
 		String id;
@@ -133,7 +139,11 @@ public class PlansResource {
 		double creditPointsSum;
 		@JsonProperty
 		String name;
-
+		
+		/**
+		 * creates an instance from the given plan
+		 * @param plan the plan
+		 */
 		public PlanSummaryDto(Plan plan) {
 			this.id = plan.getIdentifier();
 			this.status = plan.getVerificationState();
@@ -685,30 +695,7 @@ public class PlansResource {
 			this.plan = plan;
 		}
 	}
-
-	public class PlanRenameDto {
-
-		@JsonProperty
-		PlanRenameDtoElement plan;
-
-		public PlanRenameDto(PlanRenameDtoElement plan) {
-			this.plan = plan;
-		}
-
-		public class PlanRenameDtoElement {
-			@JsonProperty
-			public String id;
-
-			@JsonProperty
-			public String name;
-
-			public PlanRenameDtoElement(String id, String name) {
-				this.id = id;
-				this.name = name;
-			}
-		}
-	}
-
+	
 	/**
 	 * Annotation for denoting PATCH requests.
 	 */

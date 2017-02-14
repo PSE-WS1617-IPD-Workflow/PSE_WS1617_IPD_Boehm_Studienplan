@@ -21,12 +21,12 @@ public interface PartialObjectiveFunction {
 	 * @return the descriptor
 	 */
 	@JsonProperty
-	public String getDescriptor();
+	String getDescriptor();
 
 	/**
 	 * @param descriptor the descriptor to set
 	 */
-	public void setDescriptor(String descriptor);
+	void setDescriptor(String descriptor);
 	
 	/**
 	 * Evaluate wertet einen Studienplan aus und gibt dementsprechend eine Zahl
@@ -37,5 +37,5 @@ public interface PartialObjectiveFunction {
 	 * @param plan
 	 *            der zu bewertende Plan
 	 */
-	public double evaluate(Plan plan);
+	double evaluate(Plan plan);
 };

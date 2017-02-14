@@ -17,6 +17,9 @@ public class MinimalECTSAtomObjectiveFunction extends AtomObjectiveFunction {
 	
 	private static double quotient = 1.0 / 1.03;
 	
+	/**
+	 * creates a new instance
+	 */
 	public MinimalECTSAtomObjectiveFunction() {
 		setDescriptor("minimale ECTS-Zahl");
 	}

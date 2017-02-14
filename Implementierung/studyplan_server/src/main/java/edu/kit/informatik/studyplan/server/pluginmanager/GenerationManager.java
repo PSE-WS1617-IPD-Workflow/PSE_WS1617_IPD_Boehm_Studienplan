@@ -81,7 +81,11 @@ public class GenerationManager {
 	 * @return ein vollständiger, korrekter und optimierter Studienplan vom Typ
 	 *         Plan.
 	 */
-	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO, Map<Field, Category>preferredSubjects, int maxECTSperSemester) {
+	public Plan generate(PartialObjectiveFunction objectiveFunction, 
+			Plan currentPlan, 
+			ModuleDao moduleDAO, 
+			Map<Field, Category>preferredSubjects, 
+			int maxECTSperSemester) {
 		initWrapper();
 		ThresholdObjectiveFunction thresholdObjectiveFunction = new ThresholdObjectiveFunction(THRESHOLD);
 		thresholdObjectiveFunction.add(objectiveFunction);

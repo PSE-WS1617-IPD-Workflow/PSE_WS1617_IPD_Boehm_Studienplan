@@ -29,6 +29,6 @@ public interface Generator {
 	 * @param currentPlan
 	 *            der bereits bestehende Plan
 	 */
-	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, 
+	Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, 
 			ModuleDao moduleDAO, Map<Field, Category> preferredSubjects, int maxECTSperSemester);
 }

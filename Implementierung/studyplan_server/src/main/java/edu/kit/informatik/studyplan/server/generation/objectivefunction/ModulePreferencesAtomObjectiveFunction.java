@@ -17,6 +17,9 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 public class ModulePreferencesAtomObjectiveFunction extends AtomObjectiveFunction {
 
 	
+	/**
+	 * creates a new instance
+	 */
 	public ModulePreferencesAtomObjectiveFunction() {
 		setDescriptor("Präferenzen berücksichten");
 	}
@@ -37,6 +40,6 @@ public class ModulePreferencesAtomObjectiveFunction extends AtomObjectiveFunctio
 				fulfilledPreferences++;
 			}
 		}
-		return ((double) fulfilledPreferences)/((double) numberOfPreferences);
+		return ((double) fulfilledPreferences) / ((double) numberOfPreferences);
 	}
 };

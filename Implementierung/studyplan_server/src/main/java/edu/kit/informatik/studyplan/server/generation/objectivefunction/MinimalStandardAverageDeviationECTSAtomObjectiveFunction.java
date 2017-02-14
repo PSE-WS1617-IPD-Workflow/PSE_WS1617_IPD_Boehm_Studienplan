@@ -34,8 +34,8 @@ public class MinimalStandardAverageDeviationECTSAtomObjectiveFunction extends At
 			.mapToDouble(semester -> semester.getTotalCredits()).average().orElse(0);
 		double partialResult = displayablePlan.getSemesters().stream()
 			.mapToDouble(semester -> Math.pow(semester.getTotalCredits() - average, 2)).sum();
-		double s = Math.sqrt(partialResult * (1.0/(number - 1)));
-		double v = s/average;
+		double s = Math.sqrt(partialResult * (1.0 / (number - 1)));
+		double v = s / average;
 		return 1 - v / Math.sqrt(number - 1);
 	}
 };

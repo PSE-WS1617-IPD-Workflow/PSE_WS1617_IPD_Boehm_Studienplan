@@ -18,12 +18,12 @@ public class WeightFunction {
 	public double getWeight(Node node) {
 		double r = node.getModule().getCreditPoints();
 		Node n = node;
-		while (n.getInnerNode() != null){
+		while (n.getInnerNode() != null) {
 			n = n.getInnerNode();
 			r += n.getModule().getCreditPoints();
 		}
 		n = node;
-		while (n.getOuterNode() != null){
+		while (n.getOuterNode() != null) {
 			n = n.getOuterNode();
 			r += n.getModule().getCreditPoints();
 		}

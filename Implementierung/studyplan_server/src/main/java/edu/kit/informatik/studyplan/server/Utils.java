@@ -15,7 +15,9 @@ import edu.kit.informatik.studyplan.server.model.userdata.dao.UserDaoFactory;
 /**
  * Utility class for several helper methods.
  */
-public class Utils {
+public final class Utils {
+	
+	private Utils() { }
     /**
      *
      * @param list the list to check
@@ -33,7 +35,10 @@ public class Utils {
      * @return the consumer converted to a function returning Void.
      */
     private static <T> Function<T, Void> consumerToVoidFunction(Consumer<T> consumer) {
-        return t -> { consumer.accept(t); return null; };
+        return t -> {
+        	consumer.accept(t);
+        	return null;
+        };
     }
 
     /**

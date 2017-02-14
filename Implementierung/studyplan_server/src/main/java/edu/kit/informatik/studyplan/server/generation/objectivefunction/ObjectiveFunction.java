@@ -4,29 +4,20 @@ package edu.kit.informatik.studyplan.server.generation.objectivefunction;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-
 /**
  * The ObjectiveFunction class is used to collect the sub-functions and evaluates them
  * individually.
  */
 public abstract class ObjectiveFunction implements PartialObjectiveFunction {
 	private Collection<PartialObjectiveFunction> subFunctions;
-
+	
+	/**
+	 * creates a new instance
+	 */
 	public ObjectiveFunction() {
-		this.subFunctions = new LinkedList();
+		this.subFunctions = new LinkedList<PartialObjectiveFunction>();
 	}
 
-	/*
-	 * Wertet alle beeinhalteten Funktionen aus und rechnet diese in irgendeiner
-	 * Weise zusammen. Sonstige funktionalit�t wie in {@link
-	 * PartialObjectiveFunction#evaluate}
-	 */
-	/**
-	 * The evaluate method calls all sub-functions and calculates them in a certain way.
-	 * @param plan the plan to evaluate.
-	 */
-	public abstract double evaluate(final Plan plan);
 
 	/**
 	 * Getter for the subFunctions.

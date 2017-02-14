@@ -64,7 +64,7 @@ public class Plan {
 	@JsonIgnore
 	private User user;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "plan_entries", 
 		joinColumns = @JoinColumn(name = "plan_identifier"), 
 		inverseJoinColumns = @JoinColumn(name = "entry_id"))
@@ -146,7 +146,9 @@ public class Plan {
 	 */
 	public double getCreditPoints() {
 		if (creditPoints == -1) {
-			creditPoints = getAllModuleEntries().stream().mapToDouble(entry -> entry.getModule().getCreditPoints()).sum();
+			creditPoints = getAllModuleEntries().stream()
+					.mapToDouble(entry -> entry.getModule().getCreditPoints())
+					.sum();
 		}
 		return creditPoints;
 	}
@@ -279,7 +281,7 @@ public class Plan {
 	@JsonIgnore
 	public List<ModuleEntry> getAllModuleEntries() {
 		LinkedList<ModuleEntry> allEntries = new LinkedList<ModuleEntry>(moduleEntries);
-		if (user != null){
+		if (user != null) {
 			allEntries.addAll(user.getPassedModules());
 		}
 		return allEntries;
