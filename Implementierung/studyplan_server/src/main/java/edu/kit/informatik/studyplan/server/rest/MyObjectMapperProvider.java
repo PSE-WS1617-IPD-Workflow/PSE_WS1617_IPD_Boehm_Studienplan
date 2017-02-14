@@ -51,6 +51,11 @@ public class MyObjectMapperProvider implements ContextResolver<ObjectMapper> {
      */
     public static class CustomSerializerModule extends SimpleModule {
         /**
+		 * 
+		 */
+		private static final long serialVersionUID = 2178778101223873807L;
+
+		/**
          * Creates a new CustomSerializerModule.
          */
         public CustomSerializerModule() {
