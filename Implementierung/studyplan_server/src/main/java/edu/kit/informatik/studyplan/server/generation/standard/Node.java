@@ -10,9 +10,11 @@ import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
 
 import java.util.ArrayList;
 
-// TODO all collections to lists and initialize!!
 /**
- * Die abstrakte Klasse Node stellt Knoten des Graphen da.
+ * The abstract class Node represents a module in a Graph.
+ * 
+ * @author Nada_Chatti
+ * @version 1.0
  */
 public abstract class Node {
 	/**
@@ -20,7 +22,7 @@ public abstract class Node {
 	 */
 	private SimpleGenerator generator;
 	/**
-	 * Ein Knoten beinhaltet ein Module module, welches er darstellt.
+	 * The Module that this node represents.
 	 */
 	private Module module;
 	/**
@@ -56,17 +58,15 @@ public abstract class Node {
 	private boolean constraintsFulfilled = false;
 
 	/**
-	 * If this is a node with output, this method fulfills all constraints
-	 * related to this Node according to the constraints' list of its module: -
-	 * it adds all nodes, to which this node is connected with an output edge
+	 * This method fulfills all constraints related to this Node according to the 
+	 * constraints' list of its module: 
+	 * - it adds all nodes, to which this node is connected with an output edge
 	 * (if constraint = plan_link or prerequisite), to the children list of this
-	 * node and recursively completes all children lists of the nodes added. -
-	 * it adds all nodes of parallel modules (constraint = semester_link) as
+	 * node and recursively completes all children lists of the nodes added. 
+	 * -it adds all nodes of parallel modules (constraint = semester_link) as
 	 * inner nodes. Before adding the new nodes, this method checks if a node
 	 * with the same module already exists if not it creates a new node with
 	 * that module then adds it.
-	 * 
-	 * If this is a node without output, it does nothing.
 	 * 
 	 * If this node's module is passed, this method does nothing and returns
 	 * null.
@@ -78,18 +78,16 @@ public abstract class Node {
 	protected abstract void fulfillConstraints(boolean random);
 
 	/**
-	 * If this is a Node with Output, this method returns a list of all nodes,
-	 * to which this node is connected with an output edge. If this is a node
-	 * without output, it returns null.
+	 * This method returns a list of all nodes, to which this node is connected with an 
+	 * output edge. 
 	 * 
 	 * @return children-nodes
 	 */
 	protected abstract ArrayList<Node> getChildren();
 
 	/**
-	 * If this is a Node with Output, this method adds a node to the list of
-	 * nodes to which this node is connected with an output edge. If this is a
-	 * node without output, it does nothing.
+	 * This method adds a node to the list of nodes to which this node is connected with 
+	 * an output edge. 
 	 * 
 	 * @param node
 	 *            the node to add.
@@ -97,15 +95,14 @@ public abstract class Node {
 	protected abstract void addChild(Node node);
 
 	/**
-	 * If this is a Node with Output, this method removes the given node to the
-	 * list of nodes to which this node is connected with an output edge. This
-	 * method returns a boolean indicating if the removal was successful. If
-	 * this is a node without output, it does nothing and returns false.
+	 * This method removes the given node to the list of nodes to which this node is 
+	 * connected with an output edge. This method returns a boolean indicating if the 
+	 * removal was successful.
 	 * 
 	 * @param node
 	 *            the node to remove.
 	 * @return -true if the removal was successful -false if the node given
-	 *         couldn't be found or the Node is without Output
+	 *         couldn't be found 
 	 */
 	protected abstract boolean removeChild(Node node);
 
@@ -128,6 +125,7 @@ public abstract class Node {
 	 *            of this Node.
 	 * @param plan
 	 *            from which this Node was created.
+	 * @param generator the generator that created this node.
 	 */
 	protected Node(Module module, Plan plan, SimpleGenerator generator) {
 		this.generator = generator;
@@ -429,7 +427,8 @@ public abstract class Node {
 	 * 
 	 * @param i
 	 *            number of the semester
-	 * @return
+	 * @return a boolean that is only if the node can be addded to the semester with the 
+	 * number given.
 	 */
 	protected boolean fitsInSemester(int i) {
 		// Check if a node is already fixed in a semester

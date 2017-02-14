@@ -22,6 +22,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  * 		-store the nodes created from the plan,
  * 		-edit the nodes to generate
  * @author Nada_Chatti
+ * @version 1.0
  *
  */
 public class NodesList extends ArrayList<Node>{

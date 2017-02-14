@@ -10,25 +10,25 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
- * Das Interface Generator bietet die allgemeine Struktur eines Generierers.
+ * The Generator interface provides the general structure of a generator.
  */
 public interface Generator {
 
 	/**
-	 * Die Methode generate generiert einen vollständigen, optimierten und
-	 * korrekten Studienplan. Hierzu nimmt sie einen angefangenen Studienplan
-	 * entgegen, vervollständigt diesen zunächst nach System-Constraints und
-	 * Zufall und optimiert ihn dann mit Hilfe der übergebenen Zielfunktion
-	 * objectiveFunktion. Die benötigten Module werden über übergebenen
-	 * ModuleDao erreicht.
+	 * The generate method generates a complete, optimized and correct study
+	 * plan. For this purpose, it accepts an initial study plan, completes it
+	 * first by the modules' constraints and random choosing of appropriate
+	 * modules, and then optimizes it with the aid of the given objective
+	 * function. The required modules are reached via moduleDao.
 	 * 
-	 * @return Zurückgegeben wird ein vollständiger, korrekter und optimierter
-	 *         Studienplan vom Typ Plan
+	 * 
+	 * @return a complete, optimized and correct study plan from type plan.
 	 * @param objectiveFunction
-	 *            Die Zielfunktion, anhand der optimiert werden soll
+	 *            the objective function, according to which the plan would be
+	 *            optimized.
 	 * @param currentPlan
-	 *            der bereits bestehende Plan
+	 *            the already existing plan
 	 */
-	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, 
-			ModuleDao moduleDAO, Map<Field, Category> preferredSubjects, int maxECTSperSemester);
+	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO,
+			Map<Field, Category> preferredSubjects, int maxECTSperSemester);
 }

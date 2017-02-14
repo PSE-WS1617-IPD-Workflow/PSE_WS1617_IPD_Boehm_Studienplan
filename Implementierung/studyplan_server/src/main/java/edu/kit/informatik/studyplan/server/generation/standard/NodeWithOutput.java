@@ -15,9 +15,11 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
- * Die Klasse NodeWithOutput erbt von Node und stellt einen inneren Knoten der
- * Graphenstruktur, also ein Modul, welches Vorraussetzung für andere Module
- * ist, dar.
+ * The class NodeWithOutput inherits from Node and represents a concrete inner node of the 
+ * graph structure that might have children(nodes that this node's module has a prerequisite 
+ * or a plan_link constraint with).
+ * @author Nada_Chatti
+ * @version 1.0
  */
 public class NodeWithOutput extends Node {
 
@@ -29,8 +31,8 @@ public class NodeWithOutput extends Node {
 		super(module, plan, generator);
 	}
 	/**
-	 * Die Liste children vom Typ Node enthält alle Knoten, zu denen der Knoten
-	 * eine Ausgangskante hat.
+	 * The list of nodes that this node's module has a prerequisite or a plan_link 
+	 * constraint with).
 	 */
 	private ArrayList<Node> children = new ArrayList<Node>();
 
