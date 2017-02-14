@@ -7,13 +7,15 @@ goog.provide("edu.kit.informatik.studyplan.client.view.subview.WizardPage");
  */
 
 edu.kit.informatik.studyplan.client.view.subview.WizardPage = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.subview.WizardPage.prototype} */{
-    //the wizardComponent which is actually open.
+    /** the wizardComponent which is actually open.*/
     curView: null,
-    //the method, which works after finishing last wizard.
+     /** the method, which works after finishing last wizard. */
     onFinish: function () {},
-    //template of WizardPage.
+    /**
+    * template of WizardPage.
+    */
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/subview/wizardPage.html"),
-    //event for the "next"-button.
+    /** event for the "next"-button. */
     events: {
         "click button.wizardPageNextWizard": "next"
     },
@@ -31,7 +33,7 @@ edu.kit.informatik.studyplan.client.view.subview.WizardPage = Backbone.View.exte
     },
     
     /**
-    *builds template.
+    * builds template.
     */
     render:
         function () {

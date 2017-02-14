@@ -41,9 +41,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
         if(pushToServer){
             student.save({
                 success: function () {
-                    edu.kit.informatik.studyplan.client.router.MainRouter
-                        .getInstance()
-                        .hideLoading();
+                    edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
                     var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
                     edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
                         .add(

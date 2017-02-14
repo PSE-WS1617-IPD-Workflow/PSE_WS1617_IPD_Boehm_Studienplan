@@ -56,7 +56,13 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
          * Method which checks if the user is logged in
          */
         isLoggedIn: function () {
-            return edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().has('access_token');
+            if(edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().has('access_token')){
+                var accessToken = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('access_token');
+                if(accessToken!==null&&accessToken!=undefined){
+                    return null
+                }
+            }
+            return false;
         },
         toJSON: function () {
             return {
