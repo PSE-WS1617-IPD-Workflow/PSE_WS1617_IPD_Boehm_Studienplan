@@ -38,7 +38,7 @@ Im Verzeichnis WebApp:
 	\item \texttt{npm install}
 	\item \texttt{npm install -g karma-cli}
 \end{enumerate}
-Brackets Installieren
+Brackets installieren
 \begin{enumerate}
 	\item Brackets ppa hinzufügen \texttt{add-apt-repository ppa:webupd8team/brackets}
 	\item \texttt{apt-get update}
@@ -48,11 +48,11 @@ Brackets Installieren
 \end{enumerate}
 \subsection{Windows}
 \begin{enumerate}
-\item Lade http://www.microsoft.com/de-de/download/details.aspx?id=29 herunter und installiere es
-\item Lade Apache 2.4.25 wenn 64-Bit Betriebssystem, dann unbedingt 64-Bit Version) von http://www.apachehaus.com/cgi-bin/download.plx herunter
-\item Extrahiere das Verzeichnis Apache24 in C:\ oder Äquivalent
+\item Lade \url{http://www.microsoft.com/de-de/download/details.aspx?id=29} herunter und installiere es
+\item Lade Apache 2.4.25 (wenn 64-Bit"=Betriebssystem, dann unbedingt 64-Bit-Version) von \url{http://www.apachehaus.com/cgi-bin/download.plx} herunter
+\item Extrahiere das Verzeichnis Apache24 in C:\textbackslash oder äquivalent
 \item Setze in \texttt{C:/Apache24/conf/httpd.conf} in der Zeile \texttt{Define SRVROOT[...]} den Wert \texttt{Define SRVROOT "[Verzeichnis von Apache24]"} 
-\subitem (wenn in C:/Apache24, setzte \texttt{Define SRVROOT C:/Apache24})
+\subitem (wenn in C:\textbackslash{}Apache24, setze \texttt{Define SRVROOT C:\textbackslash{}Apache24})
 \item Eventuell Zeile mit \texttt{LoadModule rewrite\_module modules/mod\_rewrite.so} (o.ä.) 
 \item Ersetze in httpd.conf (siehe 4.) die Zeilen
 
@@ -87,25 +87,25 @@ Require all granted
 </Directory>
 \end{json}
 
-(oder so ähnlich - wichtig ist das /htdocs, darauf kann man sich verlassen) durch
+(oder so ähnlich -- wichtig ist das /htdocs, darauf kann man sich verlassen) durch
 \begin{json}
 DEFINE WEBAPPROOT "[Pfad zu Repository]/Implementierung/Client/WebApp"
-Include "[Pfad zu Repository]/Implementierung/Client/Conf/apache.conf
+Include "[Pfad zu Repository]/Implementierung/Client/Conf/apache.conf"
 \end{json}
-Aktiviere mod\_rewrite in der httpd.conf
-\item Öffne CMD als Administrator in Verzeichnis \texttt{[...]/Apache24/bin/} führe aus: \texttt{httpd -k install} (dies installiert Apache 2.4 als Service) (Linux:)
-\item Öffne ApacheMonitor (befindet sich in \texttt{[...]/Apache24/bin/}) und starte Apache 2.4 (ggf. alles bejahen was kommt). *Achtung:* Hierfür darf kein Programm den Port 80 blockieren - insbesondere Skype macht das in der Standardeinstellung gerne mal! (Linux:  )
-\item Öffne im Webbrowser http://localhost ein Fenster mit dem Inhalt \texttt{It works: Studyplan Client} sollte sich öffnen
+Aktiviere mod\_rewrite in der httpd.conf.
+\item Öffne CMD als Administrator in Verzeichnis \texttt{[...]/Apache24/bin/} führe aus: \texttt{httpd -k install} (dies installiert Apache 2.4 als Service) 
+\item Öffne ApacheMonitor (befindet sich in \texttt{[...]/Apache24/bin/}) und starte Apache 2.4 (ggf. alles bejahen was kommt). \newline\textbf{Achtung:} Hierfür darf kein Programm den Port 80 blockieren -- insbesondere Skype macht das in der Standardeinstellung gerne mal! 
+\item Öffne im Webbrowser \url{http://localhost}: Ein Fenster mit dem Inhalt \texttt{It works: Studyplan Client} sollte sich öffnen
 \end{enumerate}
 \begin{enumerate}
-\item Installiere Brackets von [hier](http://brackets.io/)
-\item Öffne Brackets und installiere die Plugins \textit{Annotate} und wenn erwünscht \textit{Brackets Git}
-\item Installiere ant von [hier](http://ant.apache.org/bindownload.cgi) und füge das bin Verzeichnis der PATH Variable hinzu
-\item Installiere nodejs von https://nodejs.org/en/download/ und wähle bei Installation aus, dass PATH Variable gesetzt werden soll
-\item Installiere https://github.com/petetnt/brackets-sass-lint\#readme mit der brackets-npm-registry
-\item Für SASS/SCSS benötigen wir Ruby, deshalb installieren wir das http://rubyinstaller.org/ und fügen es während der Installation dem PATH hinzu
-\item Öffne CMD als Administrator in Verzeichnis \texttt{[Pfad zu Repository]/Implementierung/Client/WebApp}
-\item Führe aus: \texttt{gem install sass} (das installiert sass)
+\item Installiere Brackets von \url{http://brackets.io/}
+\item Öffne Brackets und installiere die Plugins \textit{Annotate} und, wenn erwünscht, \textit{Brackets Git}
+\item Installiere ant von \url{http://ant.apache.org/bindownload.cgi} und füge das bin-Verzeichnis der PATH"=Umgebungsvariable hinzu
+\item Installiere nodejs von \url{https://nodejs.org/en/download/} und wähle bei Installation aus, dass die PATH"=Variable gesetzt werden soll
+\item Installiere \url{https://github.com/petetnt/brackets-sass-lint\#readme} mit der brackets-npm-registry
+\item Für SASS/SCSS benötigen wir Ruby, deshalb installieren wir es von \url{http://rubyinstaller.org/} und fügen es während der Installation dem PATH hinzu
+\item Öffne CMD als Administrator in Verzeichnis \newline\texttt{[Pfad zu Repository]/Implementierung/Client/WebApp}
+\item Führe aus: \texttt{gem install sass} (Das installiert sass)
 \item \texttt{npm install}
 \item \texttt{npm install -g karma-cli}
 \end{enumerate}
@@ -114,15 +114,15 @@ Aktiviere mod\_rewrite in der httpd.conf
 \begin{enumerate}
 	\item Kompilieren mit 
 	\begin{json}
-	ant -DAPI\_DOMAIN=[server\_ip]:[port]/studplan/rest 
+	ant -DAPI_DOMAIN=[server_ip]:[port]/studplan/rest 
 	\end{json}
 	\item Mögliche Flags:
 	\begin{json}
-	- DAPI\_DOMAIN -> server url
-	- DAPI\_KEY -> client\_id
-	- DAPI\_SCOPE -> scope bei Login Anfrage
-	- DAPI\_TOKEN -> default access token
-	- DDEBUG\_ALWAYS\_LOGIN -> beim Start eingeloggt mit default access token
+	- DAPI_DOMAIN -> server url
+	- DAPI_KEY -> client_id
+	- DAPI_SCOPE -> scope bei Login-Anfrage
+	- DAPI_TOKEN -> default access token
+	- DDEBUG_ALWAYS_LOGIN -> beim Start eingeloggt mit default access token
 	\end{json}
 \end{enumerate}
 
