@@ -13,9 +13,9 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 import edu.kit.informatik.studyplan.server.verification.Verifier;
 
-/************************************************************/
 /**
  * Concrete verifier implementation
+ * @author NiklasUhl
  */
 public class StandardVerifier implements Verifier {
 
@@ -89,11 +89,6 @@ public class StandardVerifier implements Verifier {
 	private void findConstraintViolations(Plan plan) {
 		for (ModuleEntry moduleEntry : plan.getAllModuleEntries()) {
 			for (ModuleConstraint constraint : moduleEntry.getModule().getConstraints()) {
-//				if (constraint.getFirstModule().equals(moduleEntry.getModule())) {
-//					orientation = ModuleOrientation.LEFT_TO_RIGHT;
-//				} else {
-//					orientation = ModuleOrientation.RIGHT_TO_LEFT;
-//				}
 				ModuleEntry firstEntry = plan.getEntryFor(constraint.getFirstModule());
 				ModuleEntry secondEntry = plan.getEntryFor(constraint.getSecondModule());
 				if (firstEntry != null) {
