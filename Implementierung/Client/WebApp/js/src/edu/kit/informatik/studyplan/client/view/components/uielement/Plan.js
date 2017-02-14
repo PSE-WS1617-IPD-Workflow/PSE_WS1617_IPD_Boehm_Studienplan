@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Plan
  * @constructor
  * @param {Object=} options
  * @extends {Backbone.View}
+ * Class which represents a plan in the view
  */
 
 edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.Plan.prototype} */{
@@ -12,8 +13,17 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
         "click .addSemesterButton": "addSemester"
     },
     semesterElements : [],
+    /** 
+     * Whether semesters are addable to the plan
+     */
     isAddable: true,
+    /**
+     * Whether modules are preferencable in the plan
+     */
     isPreferencable: true,
+    /**
+     * Whether the plan is a plan of (only) passed modules
+     */
     isPassedPlan: false,
     initialize: function (options) {
         this.isAddable = (typeof options.isAddable !== "undefined") ? options.isAddable : this.isAddable;
@@ -24,6 +34,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
         
         this.reload();
     },
+    /**
+     * Method which reloads and renders the internal ui element view collections once the model changes
+     */
     reload: function () {
         console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.Plan] plan is being reloaded, plan:")
         console.log(this.model);
@@ -59,7 +72,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
         this.delegateEvents(); 
     },
     /**
-    *
+    * Method which adds a semester to the plan
     */
     addSemester: function () {
         "use strict";
@@ -71,11 +84,5 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
                                                                                        
         this.model.get('semesterCollection').push(newSemester);
         this.reload();
-    },
-    /**
-    *
-    */
-    onChange: function () {
-        "use strict";
     }
 });

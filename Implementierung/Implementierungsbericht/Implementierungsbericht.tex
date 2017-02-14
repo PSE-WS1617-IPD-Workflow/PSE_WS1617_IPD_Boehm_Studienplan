@@ -7,7 +7,7 @@
 \usepackage[ngerman]{babel}  % german hyphenation, quotes, etc
 \usepackage{hyperref}       % detailed hyperlink/pdf configuration
 \hypersetup{                % ‘texdoc hyperref‘ for options
-	pdftitle={PSE: Entwurfsdokumentation},%
+	pdftitle={PSE: Implementierungsbericht},%
 	bookmarks=true,%
 }
 \usepackage{graphicx}       % provides commands for including figures
@@ -111,12 +111,13 @@
 
 \input{content/implemented_features}
 
-\input{content/review}
-
 \input{content/unit_tests}
+
+\input{content/review}
 
 \newpage
 \begin{appendices}
-	\input{content/addendum}
+	\input{content/installation_guide}
+	\input{content/addendum}	
 \end{appendices}
 \end{document}
