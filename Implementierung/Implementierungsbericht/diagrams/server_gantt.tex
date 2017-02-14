@@ -1,3 +1,13 @@
+%ganttchar-setup for german
+\def\pgfcalendarweekdayletter#1{%  
+	\ifcase#1M\or D\or M\or D\or F\or S\or S\fi%  
+} 
+\def\pgfcalendarmonthname#1{%  
+	\ifcase#1 Dezember \or Januar\or Februar\or März\or April\or Mai\or Juni\or Juli \or August \or S. \or Oktober \or November \or Dezember\fi%  
+}  
+\ganttset{calendar week text={KW~\currentweek}}
+% stolen from Entwurfdsoku
+
 \begin{figure}
 		\centering
 		\resizebox{\textwidth}{!} {

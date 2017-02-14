@@ -1,5 +1,5 @@
 \section{Testfälle}
-In der Implementierungsphase wurden bereits erste Integrationstest durchgeführt. So wurden fast alle möglichen Nutzeraktionen einmal durchgespielt, um eine eine grundlegende Qualität der Implementierung zu gewährleisten
+In der Implementierungsphase wurden bereits erste Integrationstests durchgeführt. So wurden fast alle möglichen Nutzeraktionen einmal durchgespielt, um eine eine grundlegende Qualität der Implementierung zu gewährleisten.
 \subsection{Server}
 Auf dem Server wurden noch nicht für alle Klassen Unittests erstellt, da es sich hauptsächlich um Klassen zur Darstellung von REST-Schnittstellen und simple Java-Objekte handelt, die nur Getter und Setter besitzen. Die tatsächliche Funktionalität kann erst in Verbindung mit einer Datenbank getestet werden. Diese Integrationstests werden in Qualitätssicherungsphase stattfinden.
 
@@ -16,7 +16,7 @@ Unittests:
 	\hline
 	DisciplineTest & Getter und Setter für \texttt{Discipline} getestet & ERFOLGREICH \\
 	\hline
-	SemesterTest & Test der Semester-Abstandberechnung zwischen:
+	SemesterTest & Test der Semester-Abstandsberechnung zwischen:
 	\begin{itemize}
 		\item zwei Wintersemestern
 		\item zwei Sommersemestern
@@ -25,42 +25,41 @@ Unittests:
 	\end{itemize}
 	Test der compareTo-Methoden & ERFOLGREICH \\
 	\hline
-	StandardVerifierTest & Testet ob der \texttt{StandardVerifier} folgendes erkennt:
+	StandardVerifierTest & Testet, ob der \texttt{StandardVerifier} folgendes erkennt:
 	\begin{itemize}
 		\item fehlende Pflichtmodule
-		\item Verletzung von Rule-Group-Bedingungen
+		\item Verletzung von Rule-Group"=Bedingungen
 		\item Verletzung von Bereichsbedingungen (Fields)
 	\end{itemize} & ERFOLGREICH \\
 	\hline
 	StandardVerifierConstraintTest & Testet ob der die Verletzung folgender \texttt{ConstraintTypes} in unterschiedlichen Ausartungen erkennt:
 	\begin{itemize}
 		\item Verletzung von Überlappung 
-		\item Verletzung von Plan-Zusammengehörigkeit 
-		\item Verletzung von Semester-Zusammengehörigkeit 
+		\item Verletzung von Plan"=Zusammengehörigkeit 
+		\item Verletzung von Semester"=Zusammengehörigkeit 
 		\item Verletzung von Voraussetzungen
 	\end{itemize}
 	Dadurch wurden auch die \texttt{isValid}-Methoden der entsprechenden \texttt{ConstraintTypes} getestet & ERFOLGREICH \\
 	\hline
-		SimpleGeneratorTest & Testet einzelne Methoden der \texttt{SimpleGenerator}. 
-	Einen Plan mit einer einzelnen \texttt{ModuleEntry} wird:
+		SimpleGeneratorTest & Testet einzelne Methoden des \texttt{SimpleGenerator}. 
+	Ein Plan mit einem einzelnen \texttt{ModuleEntry} wird:
 	\begin{itemize}
-		\item anhand der Benutzer Preferenzen und \texttt{Constraint}s verschiedener art vervollständigt und modifiziert
+		\item anhand der Benutzer"=Präferenzen und \texttt{Constraint}s verschiedener Art vervollständigt und modifiziert
 		\item anhand einer Zielfunktion optimiert
 	\end{itemize}
-	Dafür werden Objekte benutzt, die nur zum Testen erstellt wurden, d.h. die werden nicht beim echten verwendung des Systems vorhanden sein sondern die Daten aus der Datenbank. Das Verhalten von Methoden der Klassen \texttt{ModuleDao} und \texttt{Plan} werden mittels Mockito angepasst. & ERFOLGREICH\\
+	Dafür werden sog. Mock-Objekte benutzt, die nur zum Testen erstellt wurden, d.h. bei der echten Verwendung des Systems werden diese nicht benutzt werden, sondern stattdessen die Daten aus der Datenbank. Das Verhalten von Methoden der Klassen \texttt{ModuleDao} und \texttt{Plan} wurde hierfür mittels Mockito angepasst. & ERFOLGREICH\\
 	\hline
-	NodesListTest & Testet die topologischen Sortierung der Klasse \texttt{NodesList}. & ERFOLGREICH\\
+	NodesListTest & Testet die topologische Sortierung der Klasse \texttt{NodesList}. & ERFOLGREICH\\
 	\hline
 	VerificationManager & Getter für \texttt{Verifier} getestet. & ERFOLGREICH\\
-	\hline
-
+	\hhline{|=|=|=|} 
 \end{longtable}
 
 \subsection{Client}
-Auf der Client Seite wurde mit Hilfe der Frameworks Karma und Jasmine.js getestet.
-Während der Implementierungsphase wurde insbesondere das Model mit Unit- und Integration-Tests überprüft.
+Auf der Client"=Seite wurde mit Hilfe der Frameworks Karma und Jasmine.js getestet.
+Während der Implementierungsphase wurde insbesondere das Modell mit Unit- und Integration-Tests überprüft.
 Dies war notwendig, da zu diesem Zeitpunkt noch nicht auf eine REST-Schnittstelle zu gegriffen werden konnte.
-Bei diesen Tests erreichten wir für die ModelKlassen eine Testabdeckung von ca. 65 Prozent. Weitere Tests werden in der Qualitätssicherungsphase folgen.
+Bei diesen Tests erreichten wir für die Modell-Klassen eine Testabdeckung von ca. 65~Prozent. Weitere Tests werden in der Qualitätssicherungsphase folgen.
 Für die Integrationstests war es die Zielsetzung, dass jede Anfrage bzw. Antwort an bzw. vom Server durch einen Testfall abgedeckt ist.
 Dieses Ziel wurde erreicht, wobei alle Tests erfolgreich laufen.
 
@@ -72,20 +71,20 @@ Dieses Ziel wurde erreicht, wobei alle Tests erfolgreich laufen.
 	\endhead
 	
 	%===============================================================================================
-	ModuleCollection Initialisierung & Wird eine ModuleCollection für gegebene Daten erfolgreich initialisiert?  & ERFOLGREICH \\
-	ModuleConstraint Initialisierung & Wird ein ModuleConstraint für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
-	Module Initialisierung & Wird ein Modul für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
-	Preference Initialisierung & Wird eine Preference für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
-	Plan Initialisierung & Wird ein Plan für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
-	Discipline Initialisierung & Wird eine Discipline für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
-	Filter Initialisierung & Wird ein Filter für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
-	LanguageManager Funktion & Gibt der Language Manager die richtigen Textbausteine zurück? & ERFOLGREICH \\
-	NotificationCollection Initialisierung & Gibt getInstance() das richtige Objekt zurück? & ERFOLGREICH \\
-	ObjectiveFunctionCollection Initialisierung & Wird eine ObjectiveFunctionCollection für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
-	TemplateManager Funktion & Gibt der TemplateManager die richtige HTML-Ausgabe zurück? & ERFOLGREICH \\
-	CookieSync Funktion & Speichert/Lädt CookieSync ein Model erfolgreich? & ERFOLGREICH \\
-	OAuthSync Funktion & Übergibt OAuthSync beim speichern/laden die richtigen Header? & ERFOLGREICH \\
-	MainView Funktion & Lädt der MainView die richtigen Views und zeigt diese an? & ERFOLGREICH \\	
+	ModuleCollection"=Initialisierung & Wird eine ModuleCollection für gegebene Daten erfolgreich initialisiert?  & ERFOLGREICH \\ \hline
+	ModuleConstraint"=Initialisierung & Wird ein ModuleConstraint für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\ \hline
+	Module"=Initialisierung & Wird ein Modul für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\ \hline
+	Preference"=Initialisierung & Wird eine Preference für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\ \hline
+	Plan"=Initialisierung & Wird ein Plan für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\ \hline
+	Discipline"=Initialisierung & Wird eine Discipline für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\ \hline
+	Filter"=Initialisierung & Wird ein Filter für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\ \hline
+	LanguageManager"=Funktion & Gibt der Language Manager die richtigen Textbausteine zurück? & ERFOLGREICH \\ \hline
+	NotificationCollection"=Initialisierung & Gibt getInstance() das richtige Objekt zurück? & ERFOLGREICH \\ \hline
+	ObjectiveFunctionCollection"=Initialisierung & Wird eine ObjectiveFunctionCollection für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\ \hline
+	TemplateManager"=Funktion & Gibt der TemplateManager die richtige HTML"=Ausgabe zurück? & ERFOLGREICH \\ \hline
+	CookieSync"=Funktion & Speichert/Lädt CookieSync ein Modell erfolgreich? & ERFOLGREICH \\ \hline
+	OAuthSync"=Funktion & Übergibt OAuthSync beim Speichern/Laden die richtigen Header? & ERFOLGREICH \\ \hline
+	MainView"=Funktion & Lädt der MainView die richtigen Views und zeigt diese an? & ERFOLGREICH \\	 
 	\hhline{|=|=|=|}   
 	\caption{Geschriebene Unit-Tests}
 \end{longtable}

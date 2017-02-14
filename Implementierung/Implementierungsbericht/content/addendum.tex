@@ -2,15 +2,15 @@
 \subsection{Datenbank einrichten}
 \begin{itemize}
 	\item beide Datenbanken aus den Dumps \texttt{moduledata\_dump.sql} und \texttt{userdata\_dump.sql} mit MySQL erzeugen
-	\item in der Nutzer-Datenbank folgendes Statement ausführen \\
-	\begin{lstlisting}[language=SQL, tabsize=2]
+	\item in der Nutzer-Datenbank folgendes Statement ausführen 
+	\begin{lstlisting}[language=SQL, tabsize=2, basicstyle=\normalfont\ttfamily]
 INSERT INTO `rest_client` 
 VALUES (1, 'key-26hg02lsa',
 		'secret-jg921tjg0', '.*',
 		'http://localhost/processLogin');
 	\end{lstlisting}
 	\item unter \texttt{studyplan\_server/src/main/resources} die Dateien \texttt{moduledata.cfg.xml} und \texttt{userdata.cfg.xml} bearbeiten und in Zeile 11 die Datenbankverbindung anpassen (connection.url, connection.username und connection.password müssen geändert werden)
-	\begin{lstlisting}[language=XML, tabsize=2, frame = single, caption={Auszug aus *data.cfg.xml}, captionpos=b]
+	\begin{lstlisting}[language=XML, tabsize=2, frame = single, caption={Auszug aus *data.cfg.xml}, captionpos=b, basicstyle=\normalfont\ttfamily]
 <!-- Database connection settings -->
 <property name="connection.driver_class">
 	com.mysql.jdbc.Driver
@@ -25,23 +25,45 @@ VALUES (1, 'key-26hg02lsa',
 \subsection{Tomcat einrichten}
 \begin{itemize}
 	\item \textit{Apache Tomcat 8.5} herunterladen oder direkt aus der ZIP-Datei entpacken (im letzteren Fall ist Tomcat bereits konfiguriert)
-	\item ansonsten müssen folgende im Ordner \texttt{conf} von Tomcat angepasst werden, hier kann sich an den Konfigurationen der fertig gepackten Variante orientiert werden
+	\item ansonsten müssen folgende Dateien im Ordner \texttt{conf} von Tomcat angepasst werden, hier kann man sich an den Konfigurationen der fertig gepackten Variante orientieren:
 	\begin{itemize}
 		\item \texttt{context.xml}: bei \texttt{<context>} sollte \texttt{reloadable} auf \texttt{true} gesetzt werden (dies ermöglicht einen Redeploy ohne Neustart des Servers)
 		\item   \texttt{server.xml}: hier kann in Zeile 69 der Port eingestellt werden auf dem Tomcat läuft, in unserem Fall 9999
 		\item \texttt{tomcat-users.xml}: Hier muss die Role \texttt{student} und entsprechende Nutzer die dieser angehören hinzugefügt werden. Nur Nutzer die hier hinterlegt sind, können sich auf dem System einloggen. \\
 		Dies ist das Äquivalent zu einem auf dem Shibboleth Identity Provider registrierten Nutzer, er ist berechtigt unsere Anwendung zu nutzen, hat aber zunächst kein Benutzerkonto.
 	\end{itemize}
-	\item Wurde die fertig konfigurierte Installation verwendet, so sind bereits die Nutzer \textit{max\_mustermann} und \textit{peter\_schmidt} hinterlegt, beide mit dem Passwort \textit{123}.
+	\item Wurde die fertig konfigurierte Installation verwendet, so sind bereits die Nutzer \textit{max\_mustermann} und \textit{peter\_schmidt} hinterlegt, beide mit dem Passwort \texttt{123}.
 \end{itemize}
 \subsection{Server kompilieren und ausführen}
 \begin{itemize}
 	\item Voraussetzung ist eine korrekt eingerichtete Installation von \textit{Apache Maven}
 	\item Über die Kommandozeile in das Verzeichnis \texttt{studplan\_server} navigieren
 	\item \texttt{mvn package} ausführen
-	\item im Verzeichnis \texttt{target} findet sich die Datei \texttt{studyplan.war}. Diese muss nun in das \texttt{webapp} Verzeichnis der Tomcat Installation kopiert werden.
-	\item der Server kann nun über das Skript \texttt{startup.sh} (bzw. \texttt{*.bat}) im \texttt{bin} Verzeichnis der Tomcat-Installation gestartet werden
-	\item der Studyplan Applikationsserver läuft nun unter \texttt{http://localhost:9999/studyplan}
-	\item angehalten wird Tomcat über das \texttt{shutdown} Skript im bin Verzeichnis
-	\item Alternativ kann der Server auch ohne lokale Tomcat-Installation über das Tomcat-Maven-Plugin gestartet werden. Hierfür muss im Verzeichnis \texttt{studyplan\_server} \texttt{mvn tomcat7:run} ausgeführt werden
+	\item im Verzeichnis \texttt{target} findet sich die Datei \texttt{studyplan.war}. Diese muss nun in das \texttt{webapp}"=Verzeichnis der Tomcat"=Installation kopiert werden.
+	\item der Server kann nun über das Skript \texttt{startup.sh} (bzw. \texttt{.bat}) im \texttt{bin}"=Verzeichnis der Tomcat"=Installation gestartet werden
+	\item der Studyplan"=Applikationsserver läuft nun unter \url{http://localhost:9999/studyplan}
+	\item angehalten wird Tomcat über das \texttt{shutdown}-Skript im bin"=Verzeichnis
+	\item Alternativ kann der Server auch ohne lokale Tomcat-Installation über das Tomcat-Maven-Plugin gestartet werden. Hierfür muss im Verzeichnis \texttt{studyplan\_server} der Befehl \texttt{mvn tomcat7:run} ausgeführt werden
 \end{itemize}
+
+\section{Bedienungsanleitung}
+
+StudyPlan ist eine Web-App, mit welcher ein Benutzer sein Studium einfach, schnell und sicher planen kann. Dafür muss er sich registrieren und ein paar Informationen bezüglich seines Studiums (Studienfach, Studienbeginn, bestandene Module...) eingeben, damit die richtigen Informationen für ihn geladen werden können. 
+
+Nach der Anmeldung wird er auf die Hauptseite weitergeleitet. Dort kann er seine Pläne verwalten (erstellen, duplizieren, als HTML-Dokument exportieren und löschen). 
+
+Will der Benutzer einen Plan erstellen, so klickt er auf den Erstellen"=Button und gibt einen Namen ein. Die Planansicht"=Seite ist eine übersichtliche Oberfläche mit einem Plan auf der linken Seite und einer Modul-Liste auf der Rechten.
+
+Die bereits bestandenen Module bzw. vergangenen Semester sind schon im Plan eingebettet bzw. ausgefüllt.
+So kann der Benutzer neue Semester einfügen und Module mit Drag-and-Drop aus der Modul-Liste in den Semestern des Plans ablegen. Die ECTS"=Anzahl der Semester und des ganzen Plans werden somit aktualisiert. 
+
+Die Modul-Liste stellt verschiedene Filter zur Verfügung, mit deren Hilfe man gewünschte Module einfach anhand verschiedener Kriterien finden kann.
+Dazu gehören der Modulname, der Turnus, die Veranstaltungsart, die Kategorie, das gewünschte ECTS-Intervall und, ob es sich um ein Pflicht- oder Wahlmodul handelt.
+
+Der Benutzer hat auch die Möglichkeit, Module positiv oder negativ zu bewerten (die Bewertungen werden auch bei der Generierung berücksichtigt).\\
+Klickt er auf den Überprüfen-Button, wird der derzeitige Plan anhand der Modul-Constraints und der Bereichs- und Rule-Group-Regeln verifiziert. Wenn Constraint"=Verletzungen gefunden werden, werden diese in einem Dialogfenster angezeigt und die fehlerhaften Module rot umrahmt. Damit kann der Benutzer den Plan an die Vorgaben des Modulhandbuchs anpassen.
+
+Der Vervollständigen"=Button dient zur Vervollständigung eines bereits existierenden Plans mit sinnvollen Modulen. Klickt der Benutzer darauf, wird er auf den Generierungs"=Wizard weitergeleitet. Dort kann er die Maximalanzahl an ECTS pro Semester sowie die Zielfunktion auswählen, anhand welcher der Plan optimiert werden soll. Wählt der Benutzer beispielsweise die Zielfunktion für eine minimale Semesteranzahl, wird der Plan so vervollständigt, dass er möglichst wenig Semester enthält.   \\
+Nach erfolgreicher Vervollständigung wird der neue Plan angezeigt und dem Nutzer angeboten, den Plan zu übernehmen, zu verwerfen, oder unter neuem Namen zu speichern. Dies kann der Nutzer in der rechten Seitenleiste auswählen. 
+
+Über die Kopfzeile der Seite kann der Benutzer jederzeit sein Profil bearbeiten, auf die Planliste zugreifen oder sich abmelden.
