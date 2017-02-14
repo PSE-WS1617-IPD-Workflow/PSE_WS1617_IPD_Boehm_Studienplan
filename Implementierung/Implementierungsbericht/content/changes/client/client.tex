@@ -1,16 +1,16 @@
-In der gesamten Client-Implementierung wurden Attributnamen den JSON-Definitionen angepasst, um die Standard-parse- und toJSON-Methoden nutzen zu können und Übersichtlichkeit durch Einheitlichkeit herzustellen.
+In der gesamten Client-Implementierung wurden Attributnamen den JSON-Definitionen angepasst, um die Standard-parse- und toJSON-Methoden nutzen zu kÃ¶nnen und Ãœbersichtlichkeit durch Einheitlichkeit herzustellen.
 \subsubsection{Model-Paket}
 \paragraph{Paket modules.*} 
 \begin{itemize} [nosep]
-\item In der Klasse ModuleCollection wurde die Methode containsModule(moduleId) eingefügt, um testen zu können, ob ein Modul bereits in einer Modulcollection enthalten ist. 
-\item Der Klasse Preferences wurde die Methode onChange angefügt, um auf Änderungen der Preferenz reagieren zu können.
+\item In der Klasse ModuleCollection wurde die Methode containsModule(moduleId) eingefÃ¼gt, um testen zu kÃ¶nnen, ob ein Modul bereits in einer Modulcollection enthalten ist. 
+\item Der Klasse Preferences wurde die Methode onChange angefÃ¼gt, um auf Ã„nderungen der Preferenz reagieren zu kÃ¶nnen.
 \end  {itemize}
-\paragraph{Paket plans.*} In der Klasse Plan wurden einige Methoden hinzugefügt:  retrieveProposedPlan() um generierten Plan zu erhalten, getEctsSum() und  addModule() um einer SemesterCollection ein neues Modul hinzuzufügen. Auf loadVerification() wurde hingegen verzichtet, da diese Information permanent im zugehörigen VerificationRecult gespeichert ist, und bei Änderung eine neuer Speicherung und neues endering ausgelößt wird.
+\paragraph{Paket plans.*} In der Klasse Plan wurden einige Methoden hinzugefÃ¼gt:  retrieveProposedPlan() um generierten Plan zu erhalten, getEctsSum() und  addModule() um einer SemesterCollection ein neues Modul hinzuzufÃ¼gen. Auf loadVerification() wurde hingegen verzichtet, da diese Information permanent im zugehÃ¶rigen VerificationRecult gespeichert ist, und bei Ã„nderung eine neuer Speicherung und neues endering ausgelÃ¶ÃŸt wird.
 
 \paragraph{System-Paket}
 \begin{itemize}
-\item Klasse Field wurde eingefügt, um eine Option, die der Nutzer zur besseren Generierung auswählen kann, zu repräsentieren.
-\item Klasse FieldCollection, welche alle existenten Optionen zur Generierung enthält, wurde eingefügt.
+\item Klasse Field wurde eingefÃ¼gt, um eine Option, die der Nutzer zur besseren Generierung auswÃ¤hlen kann, zu reprÃ¤sentieren.
+\item Klasse FieldCollection, welche alle existenten Optionen zur Generierung enthÃ¤lt, wurde eingefÃ¼gt.
 \end{itemize}
 
 \paragraph{User-Paket}
@@ -26,14 +26,14 @@ In der gesamten Client-Implementierung wurden Attributnamen den JSON-Definitione
 
 \paragraph{Uipanel-Paket} 
 \begin{itemize}
-\item In GenerationWizardComponent2 und in SignUpWizardComponent2 werden die onChange()-Methoden nicht gebraucht, da die fertigen Seiten moduleFinder beziehungsweise ProfilPage nutzen, und diese selbstständig triggern und speichern. 
-\item GenerationWizardComponent3 nutzt die eingeführte FieldCollection (siehe 2.7.1) und benötigt neben onChange() zwei weitere Methoden um auf das Betätigen der Slider zu reagieren.
-\item Die Klasse SignUpWizardComponent1 benötigt eine weitere onChange-Methode, da sie zwei Events enthält und eine Methode beginning() zur gekapselten Erstellung der Studienstart-Auswahl-Daten.
+\item In GenerationWizardComponent2 und in SignUpWizardComponent2 werden die onChange()-Methoden nicht gebraucht, da die fertigen Seiten moduleFinder beziehungsweise ProfilPage nutzen, und diese selbststÃ¤ndig triggern und speichern. 
+\item GenerationWizardComponent3 nutzt die eingefÃ¼hrte FieldCollection (siehe 2.7.1) und benÃ¶tigt neben onChange() zwei weitere Methoden um auf das BetÃ¤tigen der Slider zu reagieren.
+\item Die Klasse SignUpWizardComponent1 benÃ¶tigt eine weitere onChange-Methode, da sie zwei Events enthÃ¤lt und eine Methode beginning() zur gekapselten Erstellung der Studienstart-Auswahl-Daten.
 \end{itemize}
 
 \paragraph{subview}
 \begin{itemize}
-\item NotFoundPage eingefügt
+\item NotFoundPage eingefÃ¼gt
 \end{itemize}
 
 
