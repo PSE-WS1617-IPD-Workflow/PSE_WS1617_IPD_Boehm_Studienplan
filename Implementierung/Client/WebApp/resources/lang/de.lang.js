@@ -3,7 +3,7 @@ LM.messages = LM.messages || {};
 LM.messages["de"] = {};
 LM.messages["de"]["test"] = "Es funktioniert";
 LM.messages["de"]["error.noUrl"] = "FEHLER: Es wurde keine URL spezifiziert";
-LM.messages["de"]["error.invalidMethod"] = "FEHLER: Es wurde keine gültige Sync Methode ausgewählt";
+LM.messages["de"]["error.invalidMethod"] = "FEHLER: Es wurde keine gültige Sync-Methode ausgewählt";
 // HEADER
 LM.messages["de"]["icon"] = "<big>STUDY</big>plan";
 LM.messages["de"]["loggedIn"] = "Angemeldet";
@@ -18,7 +18,7 @@ LM.messages["de"]["welcomeText"] = "Herzlich willkommen bei STUDYplan. Zur Benut
 LM.messages["de"]["connectionErrorTitle"] = "Verbindungsfehler";
 LM.messages["de"]["connectionErrorText-400"] = "Es ist zu einem Fehler gekommen. Bitte kontaktieren Sie den Administrator. (Statuscode 400)";
 LM.messages["de"]["connectionErrorText-401"] = "Bitte loggen Sie sich erneut ein!";
-LM.messages["de"]["connectionErrorText-404"] = "Die Resource, auf welche Sie zugreifen wollten existiert nicht. (Statuscode 404)";
+LM.messages["de"]["connectionErrorText-404"] = "Die Resource, auf welche Sie zugreifen wollten, existiert nicht. (Statuscode 404)";
 LM.messages["de"]["connectionErrorText-405"] = "Es ist zu einem Fehler gekommen. Bitte kontaktieren Sie den Administrator. (Statuscode 405)";
 LM.messages["de"]["connectionErrorText-422"] = "Ihre Anfrage konnte nicht bearbeitet werden, da sie keinen Sinn ergibt. Wenn Sie sich jetzt wundern, warum das passiert ist, kontaktieren Sie bitte den Administrator. (Statuscode 422)";
 LM.messages["de"]["connectionErrorText-500"] = "Es ist zu einem Server-Fehler gekommen. Bitte kontaktieren Sie den Administrator oder versuchen Sie es später erneut. (Statuscode 500)";
@@ -31,9 +31,9 @@ LM.messages["de"]["execute"]="ausführen";
 LM.messages["de"]["comparePlan"]="vergleichen";
 LM.messages["de"]["selectAction"]="Aktion auswählen";
 LM.messages["de"]["planName"]="Name";
-LM.messages["de"]["planEctsSum"]="ECTS Summe";
+LM.messages["de"]["planEctsSum"]="ECTS-Summe";
 LM.messages["de"]["only2PlansComparableTitle"]="Fehler beim Vergleich";
-LM.messages["de"]["only2PlansComparableText"]="Es können nur 2 Pläne gleichzeitig verglichen werden!";
+LM.messages["de"]["only2PlansComparableText"]="Es können nur zwei Pläne gleichzeitig verglichen werden!";
 // Plan List Element
 LM.messages["de"]["showPlan"] = "anzeigen";
 LM.messages["de"]["duplicatePlan"] = "duplizieren";
@@ -66,9 +66,9 @@ LM.messages["de"]["authErrorinvalid_requestText"] = "Es ist zu einem Systemfehle
 LM.messages["de"]["authErrorunsupported_response_typeTitle"] = "Authentifizierungsfehler";
 LM.messages["de"]["authErrorunsupported_response_typeText"] = "Es ist zu einem Systemfehler gekommen. Nitte kontaktieren Sie den Administrator!";
 LM.messages["de"]["authErrorinvalid_scopeTitle"] = "Authentifizierungsfehler";
-LM.messages["de"]["authErrorinvalid_scopeText"] = "Es ist zu einem Systemfehler gekommen. Nitte kontaktieren Sie den Administrator!";
+LM.messages["de"]["authErrorinvalid_scopeText"] = "Es ist zu einem Systemfehler gekommen. Bitte kontaktieren Sie den Administrator!";
 LM.messages["de"]["authErrorserver_errorTitle"] = "Authentifizierungsfehler";
-LM.messages["de"]["authErrorserver_errorText"] = "Es ist zu einem Systemfehler gekommen. Nitte kontaktieren Sie den Administrator!";
+LM.messages["de"]["authErrorserver_errorText"] = "Es ist zu einem Systemfehler gekommen. Bitte kontaktieren Sie den Administrator!";
 LM.messages["de"]["authEndTitle"] = "ACHTUNG: Ende der Session!";
 LM.messages["de"]["authEndText"] = "Bitte beachten Sie, dass Sie in weniger als 60 Sekunden ausgeloggt werden!";
 LM.messages["de"]["realAuthEndTitle"] = "Sie wurden ausgeloggt";
@@ -138,7 +138,7 @@ LM.messages["de"]["proposalSidebarAction"] = "Aktionen";
 
 // Internet connection
 LM.messages["de"]["connectionBackTitle"] = "Verbindung wiederhergestellt";
-LM.messages["de"]["connectionBackText"] = "Sie können nun weiterarbeiten";
+LM.messages["de"]["connectionBackText"] = "Sie können nun weiterarbeiten.";
 LM.messages["de"]["connectionLostTitle"] = "Verbindung unterbrochen";
 LM.messages["de"]["connectionLostText"] = "Sie können aktuell keine Daten speichern.";
 
