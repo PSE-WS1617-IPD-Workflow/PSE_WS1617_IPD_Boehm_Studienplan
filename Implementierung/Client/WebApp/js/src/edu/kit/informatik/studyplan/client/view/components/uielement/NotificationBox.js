@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Noti
  * @constructor
  * @param {Object=} options
  * @extends {Backbone.View}
+ * Class which represents the view for a single notification
  */
 
 edu.kit.informatik.studyplan.client.view.components.uielement.NotificationBox = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.NotificationBox.prototype} */{
@@ -25,7 +26,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.NotificationBox = 
         this.delegateEvents();
     },
     /**
-    *
+    * Method which closes the notification
     */
     onClose: function () {
         "use strict";

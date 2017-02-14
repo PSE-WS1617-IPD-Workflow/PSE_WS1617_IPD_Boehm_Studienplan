@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Plan
  * @constructor
  * @param {Object} options
  * @extends {Backbone.View}
+ * Class which represents an element in a plan list
  */
 
 edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement.prototype} */{
@@ -23,7 +24,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
         this.delegateEvents();
     },
     /**
-    *
+    * Method which shows the plan
     */
     showPlan: function () {
         "use strict";
@@ -31,7 +32,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("plans/"+this.plan.get('id'),{trigger:true});
     },
     /**
-    *
+    * Method which exports the plan
     */
     exportPlan: function () {
         "use strict";
@@ -39,7 +40,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
         window.location.href=API_DOMAIN+"/plans/"+this.plan.get('id')+"/pdf?access-token="+edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('access_token');
     },
     /**
-    *
+    * Method which duplicates the plan
     */
     duplicatePlan: function () {
         "use strict";
@@ -85,7 +86,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
         });
     },
     /**
-    *
+    * Method which deletes the plan
     */
     deletePlan: function () {
         "use strict";
@@ -104,9 +105,15 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
             );
         }});
     },
+    /**
+     * Set's the elements checkbox
+     */
     setChecked: function (isChecked) {
         this.$el.find("input[type=checkbox]").prop('checked', isChecked);
     },
+    /**
+     * Returns wheter or not the checkbox is checked
+     */
     isChecked: function () {
         return  this.$el.find("input[type=checkbox]").prop('checked');
     }
