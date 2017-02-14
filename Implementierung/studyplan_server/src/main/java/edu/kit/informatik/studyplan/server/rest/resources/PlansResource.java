@@ -119,7 +119,7 @@ public class PlansResource {
 	@AuthorizationNeeded
 	public Response getPlans() {
 		List<PlanSummaryDto> result = getUser().getPlans().stream()
-				.map(plan -> new PlanSummaryDto(plan))
+				.map(PlanSummaryDto::new)
 				.collect(Collectors.toList());
 		return Response.ok(SimpleJsonResponse.build("plans", result)).build();
 	}
@@ -504,6 +504,8 @@ public class PlansResource {
 	 *            the id of the objective function to use
 	 * @param maxSemesterEcts
 	 *            maximum number of credits per semester, as specified by user
+	 * @param uriInfo
+	 * 			  contains given GET parameters
 	 * @return the generated plan's JSON representation.
 	 */
 	@GET
@@ -533,14 +535,9 @@ public class PlansResource {
 				if (function == null) {
 					throw new NotFoundException();
 				}
-				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, maxSemesterEcts); // TODO
-																												// incorporate
-																												// int
-																												// &
-																												// preferredSubs
-
-				return new PlanInOut(result); // TODO Check serialization of
-												// `result` inside generator
+				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, maxSemesterEcts);
+				return new PlanInOut(result);
+				// TODO Check serialization of `result` inside generator
 			} catch (IllegalArgumentException ex) {
 				ex.printStackTrace();
 				throw new BadRequestException();
@@ -612,7 +609,7 @@ public class PlansResource {
 		/**
 		 * Creates an empty ModuleInOut.
 		 */
-		public ModuleInOut() {
+		ModuleInOut() {
 		}
 
 		/**
@@ -621,7 +618,7 @@ public class PlansResource {
 		 * @param module
 		 *            the JsonModule instance
 		 */
-		public ModuleInOut(JsonModule module) {
+		ModuleInOut(JsonModule module) {
 			this.module = module;
 		}
 
@@ -655,7 +652,7 @@ public class PlansResource {
 		/**
 		 * Empty constructor.
 		 */
-		public PlanInOut() {
+		PlanInOut() {
 		}
 
 		/**
@@ -664,7 +661,7 @@ public class PlansResource {
 		 * @param plan
 		 *            the plan
 		 */
-		public PlanInOut(Plan plan) {
+		PlanInOut(Plan plan) {
 			this.plan = plan;
 			plan.getPreferences();
 			plan.getCreditPoints();

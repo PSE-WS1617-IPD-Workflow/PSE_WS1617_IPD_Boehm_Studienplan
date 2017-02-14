@@ -37,7 +37,7 @@ public class ConstraintDto {
 		@JsonProperty
 		String name;
 		
-		@JsonProperty("cycletype")
+		@JsonProperty("cycle-type")
 		CycleType cycleType;
 		
 		@JsonProperty("creditpoints")
