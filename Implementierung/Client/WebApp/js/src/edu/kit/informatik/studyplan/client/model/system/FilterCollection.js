@@ -5,6 +5,7 @@ var namespaceClient = edu.kit.informatik.studyplan.client;
  * @param {Object=} response
  * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.model.system.OAuthCollection}
+ * This class represents a collection of filters
  */
 edu.kit.informatik.studyplan.client.model.system.FilterCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.FilterCollection.prototype}*/{
     url: API_DOMAIN + "/filters",
@@ -19,6 +20,10 @@ edu.kit.informatik.studyplan.client.model.system.FilterCollection = edu.kit.info
         }
         return filters;
     },
+    /**
+     * Method for retrieving query parameters of a filter
+     * @return {Object|null} containing the values of the query 
+     */
     getParams : function () {
         "use strict";
         var result = {filters : ""};
