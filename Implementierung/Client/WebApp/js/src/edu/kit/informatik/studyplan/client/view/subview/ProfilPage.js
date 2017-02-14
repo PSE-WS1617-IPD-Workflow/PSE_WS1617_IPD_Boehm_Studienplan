@@ -24,6 +24,7 @@ edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik
     * modulerFinder that allows to search for modules
     */
     moduleFinder: null,
+    isPreferencable: false,
     
     /**
     * Initializes the Plan edit page

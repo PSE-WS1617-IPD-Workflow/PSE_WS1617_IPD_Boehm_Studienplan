@@ -53,15 +53,18 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
         this.plan.fetch({
             // TODO: zurück stellen, wenn nicht erfolgreich
             success: function () {
-                var attributes = _.clone(self.plan.attributes);
-                delete attributes["id"];
-                attributes["name"]=planName;
-                var newPlan = new edu.kit.informatik.studyplan.client.model.plans.Plan(attributes);
+                var attributes = this.plan.toJSON({method: "PUT"});
+                delete attributes["plan"]["id"];
+                attributes["plan"]["name"]=planName;
+                console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] plan to be duplicated");
+                console.info(this.plan);
+                var newPlan = new edu.kit.informatik.studyplan.client.model.plans.Plan(attributes,{parse: true});
                 // Add to collection
                 self.plan.collection.add(newPlan);
                 // Send POST request
                 newPlan.save({},{
                     success: function () {
+                        this.plan.
                         // Send PUT request
                         newPlan.save({}, {
                             success: function () {
@@ -74,13 +77,13 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
                                         type: "success"
                                     })
                                 );
-                            },
+                            }.bind(this),
                             patch: false
                         });
-                    }
+                    }.bind(this)
                 });
             }
-        });
+        }.bind(this));
     },
     /**
     *

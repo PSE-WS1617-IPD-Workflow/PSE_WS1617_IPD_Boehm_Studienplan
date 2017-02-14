@@ -16,7 +16,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.NotificationCentre =
     },
     render: function () {
         this.$el.html(this.template());
-        var ul = this.$el.find("#notificationCentre")[0];
+        var ul = this.$el.find("#notificationCentre");
         this.notificationCollection.each(function (el) {
             if(!el.get('wasShown')) {
                 var notification = new edu.kit.informatik.studyplan.client.view.components.uielement.NotificationBox({

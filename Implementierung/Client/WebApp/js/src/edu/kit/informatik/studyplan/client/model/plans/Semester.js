@@ -41,8 +41,11 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
     },
     toJSON: function (options) {
         var modules = [];
+        var passedModules = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student').get('passedModules');
         this.each(function (curMod) {
-            modules.push(curMod.toJSON(options)["module"])
+            if(!passedModules.containsModule(curMod.get('id'))){
+                modules.push(curMod.toJSON(options)["module"]);
+            }
         });
         return {
             modules: modules

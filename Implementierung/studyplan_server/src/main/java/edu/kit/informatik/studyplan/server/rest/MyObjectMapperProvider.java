@@ -2,26 +2,18 @@ package edu.kit.informatik.studyplan.server.rest;
 
 
 
-import java.io.IOException;
-import java.util.Objects;
-
-import javax.ws.rs.ext.ContextResolver;
-import javax.ws.rs.ext.Provider;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.Version;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraintType;
 import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
+
+import javax.ws.rs.ext.ContextResolver;
+import javax.ws.rs.ext.Provider;
+import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Provider for a customized ObjectMapper.
@@ -56,26 +48,8 @@ public class MyObjectMapperProvider implements ContextResolver<ObjectMapper> {
          */
         public CustomSerializerModule() {
             super("CustomSerializerModule", Version.unknownVersion());
-            this.addSerializer(ModuleConstraintType.class, new ModuleConstraintTypeSerializer());
             this.addSerializer(PreferenceType.class, new PreferenceTypeSerializer());
             this.addDeserializer(PreferenceType.class, new PreferenceTypeDeserializer());
-        }
-
-        /**
-         * Serializer for ModuleConstraintType.
-         */
-        public static class ModuleConstraintTypeSerializer extends JsonSerializer<ModuleConstraintType> {
-            /**
-             * Empty constructor.
-             */
-			public ModuleConstraintTypeSerializer() { }
-		
-            @Override
-            public void serialize(ModuleConstraintType value,
-                                  JsonGenerator jgen,
-                                  SerializerProvider serializerProvider) throws IOException {
-                jgen.writeString(value.getDescription());
-            }
         }
 
         /**

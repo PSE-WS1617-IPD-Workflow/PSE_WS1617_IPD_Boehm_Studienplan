@@ -3,6 +3,7 @@ define(["studyplan"], function (client) {
     describe("Plan", function () {
         var planCol, plan, resultObject, planResultObject;
         beforeEach(function () {
+            client.config.init();
             jasmine.Ajax.install();
             resultObject = {
                 plans   :   [
@@ -137,7 +138,6 @@ define(["studyplan"], function (client) {
                 }
             };
             var data = jasmine.Ajax.requests.mostRecent().data();
-            expect(data.plan.id).toEqual(response.plan.id);
             expect(data.plan.name).toEqual(response.plan.name);
             expect(data.plan.modules).toContain(response.plan.modules[0]);
             expect(data.plan.modules).toContain(response.plan.modules[1]);

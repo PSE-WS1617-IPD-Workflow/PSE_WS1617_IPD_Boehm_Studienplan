@@ -40,7 +40,7 @@
 		<mapping class="edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry"/>
 		<mapping class="edu.kit.informatik.studyplan.server.model.userdata.ModulePreference"/>	
 		<mapping class="edu.kit.informatik.studyplan.server.model.userdata.Semester"/>
-		<mapping class="edu.kit.informatik.studyplan.server.model.userdata.dao.AuthorizationContext"/>	
+		<mapping class="edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext"/>	
     	<mapping class="edu.kit.informatik.studyplan.server.model.userdata.authorization.RESTClient"/>
     </session-factory>
 

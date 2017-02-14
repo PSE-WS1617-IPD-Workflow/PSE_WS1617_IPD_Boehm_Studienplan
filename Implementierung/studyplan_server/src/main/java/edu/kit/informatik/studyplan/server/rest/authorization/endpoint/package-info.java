@@ -1,6 +1,4 @@
 /**
- * Dieses Paket repräsentiert den Authorization Endpoint auf dem
- * Authentifizierungs-Server, auf dem sich der Endbenutzer anmelden und dem
- * Client die Authentifizierung erteilen kann.
+ * Contains authorization endpoint implementation which allows users to log into this server
  */
 package edu.kit.informatik.studyplan.server.rest.authorization.endpoint;

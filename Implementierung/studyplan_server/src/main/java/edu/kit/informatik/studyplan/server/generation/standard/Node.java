@@ -1,17 +1,17 @@
 package edu.kit.informatik.studyplan.server.generation.standard;
 
-import edu.kit.informatik.studyplan.server.generation.Generator;
+import java.util.ArrayList;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
-import edu.kit.informatik.studyplan.server.model.moduledata.constraint.OverlappingModuleConstraintType;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.PrerequisiteModuleConstraintType;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
 
-import java.util.ArrayList;
-import java.util.List;
+
+
 
 // TODO all collections to lists and initialize!!
 /**
@@ -134,7 +134,6 @@ public abstract class Node {
 	 */
 	protected Node(Module module, Plan plan, SimpleGenerator generator) {
 		this.generator = generator;
-		System.out.println("INSTANZ");
 		this.module = module;
 		this.plan = plan;
 		// Check if the module in in the passedModules list of the user
@@ -415,8 +414,6 @@ public abstract class Node {
 	 */
 	protected ModuleConstraint getConstraint(Node node) {
 		for (ModuleConstraint c : getModule().getConstraints()) {
-			System.out.println("in get constraint"+getRemainingModuleFromConstraint(c).getIdentifier()
-					+"___" + node.getModule().getIdentifier());
 			if (getRemainingModuleFromConstraint(c).getIdentifier() == node.getModule().getIdentifier()) {
 				return c;
 			}

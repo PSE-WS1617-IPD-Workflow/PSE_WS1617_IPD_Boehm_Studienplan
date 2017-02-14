@@ -1,7 +1,7 @@
 package edu.kit.informatik.studyplan.server.pluginmanager;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import edu.kit.informatik.studyplan.server.generation.Generator;
@@ -27,14 +27,15 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  * Klasse adaptiert.
  */
 public class GenerationManager {
-	private static final double threshold = 0.5;
+	
+	private static final double THRESHOLD = 0.5;
 
 	/**
 	 * Liste der Zielfunktionen.
 	 * 
 	 * @see edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction
 	 */
-	private Collection<PartialObjectiveFunction> objectiveFunctions;
+	private List<PartialObjectiveFunction> objectiveFunctions;
 	
 	private ObjectiveFunction wrapper;
 
@@ -82,7 +83,7 @@ public class GenerationManager {
 	 */
 	public Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO, Map<Field, Category>preferredSubjects, int maxECTSperSemester) {
 		initWrapper();
-		ThresholdObjectiveFunction thresholdObjectiveFunction = new ThresholdObjectiveFunction(threshold);
+		ThresholdObjectiveFunction thresholdObjectiveFunction = new ThresholdObjectiveFunction(THRESHOLD);
 		thresholdObjectiveFunction.add(objectiveFunction);
 		wrapper.add(thresholdObjectiveFunction);
 		return generator.generate(wrapper, currentPlan, moduleDAO, preferredSubjects, maxECTSperSemester);
@@ -101,7 +102,7 @@ public class GenerationManager {
 	 * 
 	 * @return objectiveFunction : die Liste der Zielfunktionen
 	 */
-	public Collection<PartialObjectiveFunction> getAllObjectiveFunctions() {
+	public List<PartialObjectiveFunction> getAllObjectiveFunctions() {
 		return objectiveFunctions;
 	}
 
