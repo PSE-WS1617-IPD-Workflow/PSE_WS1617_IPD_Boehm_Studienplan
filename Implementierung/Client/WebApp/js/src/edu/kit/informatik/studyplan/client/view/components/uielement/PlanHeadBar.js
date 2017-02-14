@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Plan
  * @constructor
  * @param {Object=} options
  * @extends {Backbone.View}
+ * An abstract class
  */
 
 edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar} */{

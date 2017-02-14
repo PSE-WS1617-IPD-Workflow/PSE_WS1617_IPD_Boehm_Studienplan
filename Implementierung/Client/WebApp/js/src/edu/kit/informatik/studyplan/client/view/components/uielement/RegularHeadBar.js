@@ -3,6 +3,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Regu
  * @constructor
  * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar}
+ * Class which represents the head bar in the plan view
  */
 
 edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar.prototype}*/{
@@ -25,7 +26,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
         this.delegateEvents();
     },
     /**
-    *
+    * Method which initiates plan generation wizard
     */
     generate: function () {
         "use strict";
@@ -36,6 +37,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/", {trigger: true})
     },
     /**
+    * Method which initiates plan verification
+    * The following line is necessary due to the jquery ui dialog opened in this function
     * @suppress {missingProperties}
     */
     verify: function () {
@@ -105,7 +108,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
         });
     },
     /**
-    *
+    * Method which renames the plan
     */
     rename: function () {
         "use strict";

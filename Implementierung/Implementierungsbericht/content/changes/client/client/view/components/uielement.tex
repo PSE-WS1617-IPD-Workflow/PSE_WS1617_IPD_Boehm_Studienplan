@@ -36,3 +36,27 @@ In der Klasse Plan wurde folgendes geändert:
 	\item isPreferencable wurde dem Plan hinzugefügt (ob Module präferiert werden dürfen)
 	\item isPassedPlan wurde dem Plan hinzugefügt (ob dies ein Plan von bestanden Modulen ist)
 \end{itemize}
+
+In der Klasse PlanListElement wurde folgendes geändert:
+\begin{itemize}
+	\item setChecked(:string) zum setzten des Checkbox-Werts hinzugefügt
+	\item isChecked():boolean zum erhalten des Checkbox-Werts hinzugefügt
+	\item delete() heißt nun deletePlan() (delete ist in Javascript in Keyword)
+	\item duplicate() heißt nun duplicatePlan()
+	\item export() heißt nun exportPlan()
+	\item show() heißt nun showPlan()
+\end{itemize}
+
+Es wurde die Klasse ProfileHeadBar hinzugefügt, welche die folgenden Methoden hat:
+\begin{itemize}
+	\item savePlan() speichert die bestandenen Module
+	\item deleteUser() löscht den Nutzer
+	\item goHome() leitet den Nutzer zurück zur Hauptseite
+\end{itemize}
+
+In der Klasse Semester wurde folgendes geändert:
+\begin{itemize}
+	\item isPassedSemester besagt ob das Semester bereits vergangen ist
+	\item isPassedPlan besagt ob der Plan ein Plan mit ausschließlich bestandenen Modulen ist
+	\item isPreferencable besagt ob die Module präferenzierbar sind
+\end{itemize}
