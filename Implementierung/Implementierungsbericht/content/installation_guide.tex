@@ -1,0 +1,128 @@
+\section{Virtuelle Maschine}
+Die Virtuelle Maschine (VM) kann mit VirtualBox importiert werden. Es muss nur der Webbrowser innerhalb der VM geöffnet werden.
+
+\section{Client}
+Firefox und Chrome müssen auf dem System bereits installiert sein!
+\subsection{Linux (Ubuntu)}
+\underline{\textbf{Es könnte sein, dass die Befehle als root ausgeführt werden müssen (\texttt{sudo [Befehl]})}}
+
+\begin{enumerate}
+	\item Installiere Apache: 	
+	\begin{json}
+		apt-get install apache2 
+	\end{json}
+	\item Ersetze Zeile mit \texttt{DocumentRoot [...]} in 
+		\begin{json}
+			/etc/apache2/sites-enabled/000-default.conf
+		\end{json}
+	durch
+	
+	\begin{json}
+	DEFINE WEBAPPROOT "[Pfad zu Repository]/Implementierung/Client/WebApp"
+	Include [Pfad zu Repository]/Implementierung/Client/Conf/apache.conf 
+	\end{json}
+
+	\setcounter{enumi}{2}
+	\item Ordnerberechtigungen: \texttt{chmod -R +x [Pfad zu Repository] }
+	\item Apache Service neustarten: \texttt{service apache2 restart}
+	\item Installiere Ant \texttt{apt-get install ant}
+	\item Installiere ruby \texttt{apt-get install ruby}
+	\item Installiere npm \texttt{apt-get install npm}
+	\item Installiere grunt via npm \texttt{npm install -g grunt}
+	\item Erstelle Verknüpfung: \texttt{ln -s /usr/bin/nodejs /usr/bin/node}
+	\item Enable mod-rewrite \texttt{ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load}
+\end{enumerate}
+Im Verzeichnis WebApp:
+\begin{enumerate}
+	\item Installiere sass via gem \texttt{gem install sass}
+	\item \texttt{npm install}
+	\item \texttt{npm install -g karma-cli}
+\end{enumerate}
+Brackets Installieren
+\begin{enumerate}
+	\item Brackets ppa hinzufügen \texttt{add-apt-repository ppa:webupd8team/brackets}
+	\item \texttt{apt-get update}
+	\item Brackets installieren \texttt{apt-get install brackets}
+	\item Öffne Brackets und, wenn erwünscht, installiere die Plugins 
+	\item \textit{Annotate} und \textit{Brackets Git}		
+\end{enumerate}
+\subsection{Windows}
+\begin{enumerate}
+\item Lade http://www.microsoft.com/de-de/download/details.aspx?id=29 herunter und installiere es
+\item Lade Apache 2.4.25 wenn 64-Bit Betriebssystem, dann unbedingt 64-Bit Version) von http://www.apachehaus.com/cgi-bin/download.plx herunter
+\item Extrahiere das Verzeichnis Apache24 in C:\ oder Äquivalent
+\item Setze in \texttt{C:/Apache24/conf/httpd.conf} in der Zeile \texttt{Define SRVROOT[...]} den Wert \texttt{Define SRVROOT "[Verzeichnis von Apache24]"} 
+\subitem (wenn in C:/Apache24, setzte \texttt{Define SRVROOT C:/Apache24})
+\item Eventuell Zeile mit \texttt{LoadModule rewrite\_module modules/mod\_rewrite.so} (o.ä.) 
+\item Ersetze in httpd.conf (siehe 4.) die Zeilen
+
+\begin{json}
+DocumentRoot "${WEBAPPROOT}/htdocs"
+<Directory "${WEBAPPROOT}/htdocs">
+#
+# Possible values for the Options directive are "None", "All",
+# or any combination of:
+#   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+#
+# Note that "MultiViews" must be named *explicitly* --- "Options All"
+# doesn't give it to you.
+#
+# The Options directive is both complicated and important.  Please see
+# http://httpd.apache.org/docs/2.4/mod/core.html#options
+# for more information.
+#
+Options Indexes FollowSymLinks
+
+#
+# AllowOverride controls what directives may be placed in .htaccess files.
+# It can be "All", "None", or any combination of the keywords:
+#   Options FileInfo AuthConfig Limit
+#
+AllowOverride None
+
+#
+# Controls who can get stuff from this server.
+#
+Require all granted
+</Directory>
+\end{json}
+
+(oder so ähnlich - wichtig ist das /htdocs, darauf kann man sich verlassen) durch
+\begin{json}
+DEFINE WEBAPPROOT "[Pfad zu Repository]/Implementierung/Client/WebApp"
+Include "[Pfad zu Repository]/Implementierung/Client/Conf/apache.conf
+\end{json}
+Aktiviere mod\_rewrite in der httpd.conf
+\item Öffne CMD als Administrator in Verzeichnis \texttt{[...]/Apache24/bin/} führe aus: \texttt{httpd -k install} (dies installiert Apache 2.4 als Service) (Linux:)
+\item Öffne ApacheMonitor (befindet sich in \texttt{[...]/Apache24/bin/}) und starte Apache 2.4 (ggf. alles bejahen was kommt). *Achtung:* Hierfür darf kein Programm den Port 80 blockieren - insbesondere Skype macht das in der Standardeinstellung gerne mal! (Linux:  )
+\item Öffne im Webbrowser http://localhost ein Fenster mit dem Inhalt \texttt{It works: Studyplan Client} sollte sich öffnen
+\end{enumerate}
+\begin{enumerate}
+\item Installiere Brackets von [hier](http://brackets.io/)
+\item Öffne Brackets und installiere die Plugins \textit{Annotate} und wenn erwünscht \textit{Brackets Git}
+\item Installiere ant von [hier](http://ant.apache.org/bindownload.cgi) und füge das bin Verzeichnis der PATH Variable hinzu
+\item Installiere nodejs von https://nodejs.org/en/download/ und wähle bei Installation aus, dass PATH Variable gesetzt werden soll
+\item Installiere https://github.com/petetnt/brackets-sass-lint\#readme mit der brackets-npm-registry
+\item Für SASS/SCSS benötigen wir Ruby, deshalb installieren wir das http://rubyinstaller.org/ und fügen es während der Installation dem PATH hinzu
+\item Öffne CMD als Administrator in Verzeichnis \texttt{[Pfad zu Repository]/Implementierung/Client/WebApp}
+\item Führe aus: \texttt{gem install sass} (das installiert sass)
+\item \texttt{npm install}
+\item \texttt{npm install -g karma-cli}
+\end{enumerate}
+
+\subsection{Kompilieren}
+\begin{enumerate}
+	\item Kompilieren mit 
+	\begin{json}
+	ant -DAPI\_DOMAIN=[server\_ip]:[port]/studplan/rest 
+	\end{json}
+	\item Mögliche Flags:
+	\begin{json}
+	- DAPI\_DOMAIN -> server url
+	- DAPI\_KEY -> client\_id
+	- DAPI\_SCOPE -> scope bei Login Anfrage
+	- DAPI\_TOKEN -> default access token
+	- DDEBUG\_ALWAYS\_LOGIN -> beim Start eingeloggt mit default access token
+	\end{json}
+\end{enumerate}
+
