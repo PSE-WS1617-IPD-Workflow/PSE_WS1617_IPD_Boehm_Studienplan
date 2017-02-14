@@ -6,14 +6,15 @@ Auf dem Server wurden noch nicht für alle Klassen Unittests erstellt, da es sic
 
 Unittests:
 
-
-\begin{tabular}{|>{\ttfamily} l | p{0.6\textwidth}|}
+\begin{longtable}{| >{\hspace{0pt}} p{.26\textwidth} | >{\hspace{0pt}} p{.45\textwidth} | >{\hspace{0pt}} p{.19\textwidth} |}
 	\hline
-	\normalfont{\textbf{Testklasse}} & \textbf{Beschreibung} \\
+	\textbf{Testklasse} & \textbf{Beschreibung} & \textbf{Status} \\ 
+	\hhline{|=|=|=|}  
+	\endfirsthead
+	\endhead
+	CategoryTest & Getter und Setter für \texttt{Category} getestet & ERFOLGREICH \\
 	\hline
-	CategoryTest & Getter und Setter für \texttt{Category} getestet \\
-	\hline
-	DisciplineTest & Getter und Setter für \texttt{Discipline} getestet \\
+	DisciplineTest & Getter und Setter für \texttt{Discipline} getestet & ERFOLGREICH \\
 	\hline
 	SemesterTest & Test der Semester-Abstandberechnung zwischen:
 	\begin{itemize}
@@ -22,14 +23,14 @@ Unittests:
 		\item zwischen Winter- und Sommersemester
 		\item zwischen Sommer- und Wintersemester
 	\end{itemize}
-	Test der compareTo-Methoden \\
+	Test der compareTo-Methoden & ERFOLGREICH \\
 	\hline
 	StandardVerifierTest & Testet ob der \texttt{StandardVerifier} folgendes erkennt:
 	\begin{itemize}
 		\item fehlende Pflichtmodule
 		\item Verletzung von Rule-Group-Bedingungen
 		\item Verletzung von Bereichsbedingungen (Fields)
-	\end{itemize} \\
+	\end{itemize} & ERFOLGREICH \\
 	\hline
 	StandardVerifierConstraintTest & Testet ob der die Verletzung folgender \texttt{ConstraintTypes} in unterschiedlichen Ausartungen erkennt:
 	\begin{itemize}
@@ -38,7 +39,53 @@ Unittests:
 		\item Verletzung von Semester-Zusammengehörigkeit 
 		\item Verletzung von Voraussetzungen
 	\end{itemize}
-	Dadurch wurden auch die \texttt{isValid}-Methoden der entsprechenden \texttt{ConstraintTypes} getestet \\
+	Dadurch wurden auch die \texttt{isValid}-Methoden der entsprechenden \texttt{ConstraintTypes} getestet & ERFOLGREICH \\
+	\hline
+		SimpleGeneratorTest & Testet einzelne Methoden der \texttt{SimpleGenerator}. 
+	Einen Plan mit einer einzelnen \texttt{ModuleEntry} wird:
+	\begin{itemize}
+		\item anhand der Benutzer Preferenzen und \texttt{Constraint}s verschiedener art vervollständigt und modifiziert
+		\item anhand einer Zielfunktion optimiert
+	\end{itemize}
+	Dafür werden Objekte benutzt, die nur zum Testen erstellt wurden, d.h. die werden nicht beim echten verwendung des Systems vorhanden sein sondern die Daten aus der Datenbank. Das Verhalten von Methoden der Klassen \texttt{ModuleDao} und \texttt{Plan} werden mittels Mockito angepasst. & ERFOLGREICH\\
+	\hline
+	NodesListTest & Testet die topologischen Sortierung der Klasse \texttt{NodesList}. & ERFOLGREICH\\
+	\hline
+	VerificationManager & Getter für \texttt{Verifier} getestet. & ERFOLGREICH\\
 	\hline
 
-\end{tabular}
+\end{longtable}
+
+\subsection{Client}
+Auf der Client Seite wurde mit Hilfe der Frameworks Karma und Jasmine.js getestet.
+Während der Implementierungsphase wurde insbesondere das Model mit Unit- und Integration-Tests überprüft.
+Dies war notwendig, da zu diesem Zeitpunkt noch nicht auf eine REST-Schnittstelle zu gegriffen werden konnte.
+Bei diesen Tests erreichten wir für die ModelKlassen eine Testabdeckung von ca. 65 Prozent. Weitere Tests werden in der Qualitätssicherungsphase folgen.
+Für die Integrationstests war es die Zielsetzung, dass jede Anfrage bzw. Antwort an bzw. vom Server durch einen Testfall abgedeckt ist.
+Dieses Ziel wurde erreicht, wobei alle Tests erfolgreich laufen.
+
+\begin{longtable}{| >{\hspace{0pt}} p{.2\textwidth} | >{\hspace{0pt}} p{.45\textwidth} | >{\hspace{0pt}} p{.25\textwidth} |}
+	\hline
+	\textbf{Testfall} & \textbf{Fragestellung} & \textbf{Status} \\ 
+	\hhline{|=|=|=|}  
+	\endfirsthead
+	\endhead
+	
+	%===============================================================================================
+	ModuleCollection Initialisierung & Wird eine ModuleCollection für gegebene Daten erfolgreich initialisiert?  & ERFOLGREICH \\
+	ModuleConstraint Initialisierung & Wird ein ModuleConstraint für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	Module Initialisierung & Wird ein Modul für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	Preference Initialisierung & Wird eine Preference für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	Plan Initialisierung & Wird ein Plan für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	Discipline Initialisierung & Wird eine Discipline für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	Filter Initialisierung & Wird ein Filter für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	LanguageManager Funktion & Gibt der Language Manager die richtigen Textbausteine zurück? & ERFOLGREICH \\
+	NotificationCollection Initialisierung & Gibt getInstance() das richtige Objekt zurück? & ERFOLGREICH \\
+	ObjectiveFunctionCollection Initialisierung & Wird eine ObjectiveFunctionCollection für gegebene Daten erfolgreich initialisiert? & ERFOLGREICH \\
+	TemplateManager Funktion & Gibt der TemplateManager die richtige HTML-Ausgabe zurück? & ERFOLGREICH \\
+	CookieSync Funktion & Speichert/Lädt CookieSync ein Model erfolgreich? & ERFOLGREICH \\
+	OAuthSync Funktion & Übergibt OAuthSync beim speichern/laden die richtigen Header? & ERFOLGREICH \\
+	MainView Funktion & Lädt der MainView die richtigen Views und zeigt diese an? & ERFOLGREICH \\	
+	\hhline{|=|=|=|}   
+	\caption{Geschriebene Unit-Tests}
+\end{longtable}

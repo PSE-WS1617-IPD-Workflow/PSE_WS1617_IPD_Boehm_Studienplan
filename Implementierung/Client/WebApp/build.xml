@@ -35,7 +35,9 @@
     <antcall target="closure-compile-js"></antcall>
   </target>
   <target name="test">
-    <antcall target="closure-compile-js"></antcall>
+    <antcall target="closure-compile-js">
+     <param name="DDEBUG_ALWAYS_LOGIN" value="true"/> 
+    </antcall>
     <antcall target="run-grunt-test"></antcall>
   </target>
   <target name="run-grunt">
