@@ -25,7 +25,13 @@ edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter = edu.kit
         }); 
         this.delegateEvents();
     },
-    
+    /**
+    * updates value in model
+    * @param{..*} event
+    *            event that triggered the function call
+    * @param{..*} ui
+    *           the sender
+    */
     updateVal: function (event, ui) {
         this.filter.get("curValue").min = ui.values[ 0 ];
         this.filter.get("curValue").max = ui.values[ 1 ];
