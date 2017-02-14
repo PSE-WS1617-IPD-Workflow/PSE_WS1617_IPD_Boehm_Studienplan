@@ -1,1 +1,25 @@
 \section{Review}
+\subsection{Einhaltung des Implementierungsplans}
+Die Aufteilung des Teams in ein Server- und ein Client-Entwicklungsteam wurde beibehalten und erwies sich als sehr hilfreich, da sich jedes Teammitglied auf ein Teilgebiet konzentrieren konnte.
+\subsubsection{Server}
+Die Einrichtung der Entwicklungsumgebung lief ohne Probleme. Die Umsetzung von Datenbankzugriff brauchte zunächst ein paar Tage mehr Zeit als veranlagt, was allerdings nicht zu Problemen führte, da die Schnittstellen klar definiert wurden. Auch bei der Entwicklung der REST-Schnittstellen kam es zu minimalen Verzögerungen.\\
+ Mit der Implementierung der Filterarchitektur wurde bereits früher begonnen, sodass diese von der Datenbankzugriffsschicht verwendet werden konnte, allerdings wurde eine Änderung der Condition-Struktur nötig, wie in Kapitel~\ref{subsubsec:filter} beschrieben, weshalb der Zugriff auf Module über Filter erster später möglich war.\\
+ Die Implementierungsreihenfolge der weiteren Komponenten wurde vertauscht. So wurden zunächst Report-Generierung und der Authorization Endpoint implementiert, was beides zusammen innerhalb von zwei Tagen erledigt wurde. Erst daraufhin wurde mit der Implementierung der Verifizierung begonnen, was auch nur zwei Tage benötigte. \\
+ Die Generierung hingegen wurde fortlaufend über die ganze Dauer der Implementierungsphase entwickelt. \\
+ Die letzten vier Tage wurden für erste Integrationstests von Server und Client genutzt, um den Mehraufwand in der Qualitätssicherungsphase gering zu halten. Hierbei wurde ein paar Probleme im Bezug auf das Zusammenspiel von Datenbank- und REST-Schnittstelle sichtbar, welche es zu beheben galt. Näheres hierzu findet sich in Kapitel~\ref{subsec:problems}.
+ \include{diagrams/server_gantt}
+ 
+ \subsubsection{Client}
+ \include{diagrams/client_gantt}
+ 
+ 
+ \subsection{Unerwartete Probleme}
+ \label{subsec:problems}
+ Selbstverständlich funktioniert nicht bei der Implementierung eines Softwareprodukts nicht immer alles problemlos. Im Folgenden sind die Hürden dargestellt, die sich uns im Laufe der Implementierung stellten.
+ 
+ Zunächst ist anzumerken, dass keine Probleme durch Entwurfsbestandteile, welche sich als unpraktisch erwiesen, aufgetreten sind. Der Entwurf musste nur minimal überarbeitet werden.\\
+ Die Client-Entwicklung wurde anfangs durch die steile Lernkurve beim Erlernen von JavaScript, wenn man zuvor mit Java gearbeitet hat, ausgebremst, was sich aber nach dem Überwinden der ersten Hürden schnell löste. Auch stellte die Einrichtung der Client-Entwicklungsumgebung eine kleine Hürde dar.\\
+ Ein größeres Problem bestand im Zusammenspiel von REST- und Datenbankschnittstelle: Da das von uns verwendete Object-Relational-Mapping-Tool \textit{Hibernate} sehr stark sogenanntes \enquote{Lazy Loading} einsetzt, das heißt zu einem geladenen Objekt assoziierte Datenbankeinträge aus anderen Tabellen werden erst beim Zugriff auf die entsprechenden Getter nachgeladen. Dies hat zur Folge, dass von aus der Datenbank geladenen Instanzen nach dem Schließen der Datenbankverbindung kein Nachladen von assoziierten Relationen mehr möglich ist. So wurde es nötig, die Datenbankverbindung erst nach dem Antworten auf die Clientanfrage zu schließen. Die JAX-RS-Implementierung \textit{Jersey} konstruiert Antworten auf Anfragen jedoch erst nachdem alle Trigger, die nach dem Zusammenbauen der Antwort diese manipulieren können, aufgerufen wurden, weshalb es nicht einfach möglich war, mit einem solchen Trigger die Datenbankverbindung zu schließen. Da es jedoch keine späteren Zeitpunkt gibt, zu dem das Schließen der Verbindung veranlasst werden kann, mussten sogenannte \textit{Data-Transfer-Objects} (DTO) hinzugefügt werden, die bereits vor dem Schließen der Datenbankverbindung alle Antwortdaten laden und speichern, um dann serialisiert werden zu können.
+ Dies konnte das Problem vollständig lösen. \\
+ Hinzu kam weiterhin, dass am Wochenende vor unserem Abgabetermin, die komplette Internetanbindung des Wohnheims, in dem vier Teammitglieder wohnen, ausfiel, was die Verwendung von Versionsverwaltung und Recherchen erheblich erschwerte. \\
+ 

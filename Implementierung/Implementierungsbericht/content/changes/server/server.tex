@@ -5,6 +5,7 @@
 
 
 \subsubsection{Filter-Paket}
+\label{subsubsec:filter}
 
 Das Filter-Paket wurde grundlegend umgestaltet: Ein Filter enthält mittlerweile nur die Daten, die zum Filtern benötigt werden (wie z.B. konkret selektierte Elemente). Client-bezogene Daten (wie beispielsweise zulässige Intervallschranken oder eine Liste aller Auswahlelemente) liegen ausschließlich in den Filter-Deskriptoren. Diese kümmern sich auch um De- und Serialisierung von Filtern bei Anfragen.
 
@@ -20,7 +21,7 @@ Dafür wurde die Klasse NodesList hinzugefügt (zur Speicherung der Knoten).
 \subsubsection{Pluginmanager-Paket}
 
 Auf Implementierung eines Plugin-Systems wurde verzichtet.
-Standard-Generierer und -Verifizierer sind somit fest in die Software eingebaut (können aber nach wie vor später durch Black-Boxes ersetzt werden). GenerationManager und VerificationManager enthalten also fest verdrahtet unsere Nachbildungen.
+Standard-Generierer und -Verifizierer sind somit fest in die Software eingebaut (können aber nach wie vor später durch Black-Boxes ersetzt werden). GenerationManager und VerificationManager enthalten also fest verdrahtet unsere Nachbildungen, da nicht davon auszugehen ist, das eine Änderung des Generierungstools im laufenden Betrieb stattfindet.
 
 
 \subsubsection{Verification-Paket}

@@ -35,6 +35,11 @@ public class ObjectiveFunctionResource {
 		return SimpleJsonResponse.build("functions", result);
 	}
 	
+	/**
+	 * DataTransferObject for objective functions
+	 * @author NiklasUhl
+	 *
+	 */
 	public class FunctionDto {
 		
 		@JsonProperty
@@ -43,6 +48,11 @@ public class ObjectiveFunctionResource {
 		@JsonProperty
 		String name;
 		
+		/**
+		 * Constructs an instance with the given id from the given function
+		 * @param id the id
+		 * @param function the function
+		 */
 		public FunctionDto(int id, PartialObjectiveFunction function) {
 			this.id = id;
 			this.name = function.getDescriptor();

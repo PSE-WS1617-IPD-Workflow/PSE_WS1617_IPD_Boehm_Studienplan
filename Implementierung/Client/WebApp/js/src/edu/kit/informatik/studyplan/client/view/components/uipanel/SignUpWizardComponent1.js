@@ -1,4 +1,4 @@
-hgoog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1");
+goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1");
 /**
  * @constructor
  * @param {Object=} options
@@ -63,7 +63,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     * initialize a SignupWizard2 and gives the current student as a parameter.
     */
     next:
-        function () {and
+        function () {
             "use strict";
             this.onChange1();
             this.onChange2();

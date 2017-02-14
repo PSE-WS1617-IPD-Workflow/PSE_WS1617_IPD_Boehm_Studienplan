@@ -1,1 +1,7 @@
 \paragraph{User-Paket}
+In der Klasse SessionInformation wurden folgendes geändert
+\begin{itemize}
+	\item loggedIn wurde entfernt, da der Zustand von SessionInformation nun implizit über den Wert von access\_token berechnet wird
+	\item getLoginUrl() wurde hinzugefügt. Diese Methode berechnet die Login URL
+	\item isLoggedIn() wurde hinzugefügt. Diese Methode prüft ob access\_token vorhanden ist (und somit ob die Person eingloggt ist)
+\end{itemize}

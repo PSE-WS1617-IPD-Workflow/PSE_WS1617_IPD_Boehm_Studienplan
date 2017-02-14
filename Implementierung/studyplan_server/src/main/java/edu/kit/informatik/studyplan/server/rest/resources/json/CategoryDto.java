@@ -4,6 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 
+/**
+ * DataTransferObject for a category
+ * @author NiklasUhl
+ *
+ */
 public class CategoryDto {
 	
 	@JsonProperty
@@ -11,8 +16,12 @@ public class CategoryDto {
 	
 	@JsonProperty
 	String name;
-
-	public CategoryDto (Category category) {
+	
+	/**
+	 * Constructs a new DTO from the given Category
+	 * @param category the category
+	 */
+	public CategoryDto(Category category) {
 		this.id = category.getCategoryId();
 		this.name = category.getName();
 	}

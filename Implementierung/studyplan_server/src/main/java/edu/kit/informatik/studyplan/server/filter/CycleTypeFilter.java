@@ -3,9 +3,6 @@ package edu.kit.informatik.studyplan.server.filter;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleAttributeNames;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Represents a cycle type list filter to distinguish between winter term, summer term or both.
  */

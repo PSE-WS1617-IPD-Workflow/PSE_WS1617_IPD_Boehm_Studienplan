@@ -8,23 +8,23 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
- * Wertet alle Teilzielfunktionen erst ab der Überschreitung des Schwellwertes.
- * Mittelmäßige Studienpläne können so auf sehr schlechte Werte gesetzt werden.
- * Bessere Studienpläne heben sich so stärker heraus.
+ * Considers the evaluation of all sub-functions only when they attain the threshold.
+ * This class sees that the average evaluated plans would be low evaluated and the better 
+ * ones would get a better evaluation.
  */
 public class ThresholdObjectiveFunction extends AverageObjectiveFunction {
 	
 	private final double threshold;
 
 	/**
-	 * Setzt den Schwellwert auf 0.5
+	 * Sets the threshold with the value 0.5
 	 */
 	public ThresholdObjectiveFunction() {
 		threshold = 0.5d;
 	}
 
 	/**
-	 * Setzt den Schwellwert auf den Angegebenen Wert
+	 * Sets the threshold with the value given
 	 * 
 	 * @param threshold
 	 */
@@ -32,15 +32,10 @@ public class ThresholdObjectiveFunction extends AverageObjectiveFunction {
 		this.threshold = threshold;
 	}
 	
-
-	/*
-	 * Alle Zielfunktionen werden, wenn sie unter einem Schwellwert sind als
-	 * "worst case" gewertet erhalten also die Bewertung 0.
-	 */
 	@Override
 	public double evaluate(final Plan plan) {
 		double val = super.evaluate(plan);
-		if(val<this.threshold){
+		if (val < this.threshold) {
 			val = 0;
 		}
 		return val;

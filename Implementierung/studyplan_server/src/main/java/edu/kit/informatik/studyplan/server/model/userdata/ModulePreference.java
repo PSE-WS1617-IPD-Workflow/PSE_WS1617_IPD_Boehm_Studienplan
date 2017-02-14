@@ -15,7 +15,6 @@ import javax.persistence.Transient;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 
-/************************************************************/
 /**
  * Class modeling a module entry, which assigns a preference to a module.
  * 
@@ -26,7 +25,7 @@ import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory
 public class ModulePreference {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "preference_id")
 	private int preferenceId;
 
@@ -61,6 +60,8 @@ public class ModulePreference {
 	 *            the module whose preference shall be set
 	 * @param preference
 	 *            the preference to assign
+	 * @param plan
+	 *            the plan the preference is assigned to
 	 */
 	public ModulePreference(Module module, PreferenceType preference, Plan plan) {
 		this.plan = plan;
@@ -114,7 +115,8 @@ public class ModulePreference {
 	}
 
 	/**
-	 * @param plan the plan to set
+	 * @param plan
+	 *            the plan to set
 	 */
 	public void setPlan(Plan plan) {
 		this.plan = plan;

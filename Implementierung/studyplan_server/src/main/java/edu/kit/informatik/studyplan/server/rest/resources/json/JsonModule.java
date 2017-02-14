@@ -97,92 +97,157 @@ public class JsonModule {
                 new ArrayList<>(module.getConstraints()));
     }
 
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
 
-    public String getId() {
-        return id;
-    }
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * @return the categories
+	 */
+	public List<Category> getCategories() {
+		return categories;
+	}
 
-    public List<Category> getCategories() {
-        return categories;
-    }
+	/**
+	 * @param categories the categories to set
+	 */
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
 
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-    }
+	/**
+	 * @return the semester
+	 */
+	public Integer getSemester() {
+		return semester;
+	}
 
-    public Integer getSemester() {
-        return semester;
-    }
+	/**
+	 * @param semester the semester to set
+	 */
+	public void setSemester(Integer semester) {
+		this.semester = semester;
+	}
 
-    public void setSemester(Integer semester) {
-        this.semester = semester;
-    }
+	/**
+	 * @return the cycleType
+	 */
+	public CycleType getCycleType() {
+		return cycleType;
+	}
 
-    public CycleType getCycleType() {
-        return cycleType;
-    }
+	/**
+	 * @param cycleType the cycleType to set
+	 */
+	public void setCycleType(CycleType cycleType) {
+		this.cycleType = cycleType;
+	}
 
-    public void setCycleType(CycleType cycleType) {
-        this.cycleType = cycleType;
-    }
+	/**
+	 * @return the creditPoints
+	 */
+	public Double getCreditPoints() {
+		return creditPoints;
+	}
 
-    public Double getCreditPoints() {
-        return creditPoints;
-    }
+	/**
+	 * @param creditPoints the creditPoints to set
+	 */
+	public void setCreditPoints(Double creditPoints) {
+		this.creditPoints = creditPoints;
+	}
 
-    public void setCreditPoints(Double creditPoints) {
-        this.creditPoints = creditPoints;
-    }
+	/**
+	 * @return the lecturer
+	 */
+	public String getLecturer() {
+		return lecturer;
+	}
 
-    public String getLecturer() {
-        return lecturer;
-    }
+	/**
+	 * @param lecturer the lecturer to set
+	 */
+	public void setLecturer(String lecturer) {
+		this.lecturer = lecturer;
+	}
 
-    public void setLecturer(String lecturer) {
-        this.lecturer = lecturer;
-    }
+	/**
+	 * @return the preference
+	 */
+	public PreferenceType getPreference() {
+		return preference;
+	}
 
-    public PreferenceType getPreference() {
-        return preference;
-    }
+	/**
+	 * @param preference the preference to set
+	 */
+	public void setPreference(PreferenceType preference) {
+		this.preference = preference;
+	}
 
-    public void setPreference(PreferenceType preference) {
-        this.preference = preference;
-    }
+	/**
+	 * @return the compulsory
+	 */
+	public Boolean getCompulsory() {
+		return compulsory;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	/**
+	 * @param compulsory the compulsory to set
+	 */
+	public void setCompulsory(Boolean compulsory) {
+		this.compulsory = compulsory;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    public List<ModuleConstraint> getConstraints() {
-        return constraints;
-    }
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public void setConstraints(List<ModuleConstraint> constraints) {
-        this.constraints = constraints;
-    }
+	/**
+	 * @return the constraints
+	 */
+	public List<ModuleConstraint> getConstraints() {
+		return constraints;
+	}
 
-    public Boolean isCompulsory() {
-        return compulsory;
-    }
-
-    public void setCompulsory(Boolean compulsory) {
-        this.compulsory = compulsory;
-    }
+	/**
+	 * @param constraints the constraints to set
+	 */
+	public void setConstraints(List<ModuleConstraint> constraints) {
+		this.constraints = constraints;
+	}
 }

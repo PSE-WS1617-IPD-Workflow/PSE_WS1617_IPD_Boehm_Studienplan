@@ -1,10 +1,8 @@
 /**
- * Das Paket server.generation.standard beinhaltet eine konkrete
- * Generation-Implementierung. Hierzu wird neben der Generator-implementierenden
- * Klasse SimpleGenerator eine Graphstruktur verwendet. Das Kompositum besteht
- * aus Knoten vom Typ "Node", die entweder Ausgangskanten zu anderen Knoten
- * "Node" haben (NodeWithOutput) oder keine Ausgangskanten
- * haben(NodeWithoutOutput). Zudem nutzt der SimpleGenerator die Klasse
- * WeightFunction.
+ * The server.generation.standard package contains a concrete generation-implementation. 
+ * For this purpose, a graph structure is used in addition to the class that implements the
+ * Generator interface SimpleGenerator. The composite consists of nodes of the type "Node",
+ * which have output edges to other nodes. In addition, the SimpleGenerator uses the 
+ * WeightFunction class.
  */
 package edu.kit.informatik.studyplan.server.generation.standard;

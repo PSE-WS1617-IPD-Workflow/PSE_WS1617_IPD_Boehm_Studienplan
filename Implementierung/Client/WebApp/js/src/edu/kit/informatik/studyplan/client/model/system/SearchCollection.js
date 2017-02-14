@@ -4,6 +4,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.SearchCollection"
  * @param {Object=} attributes
  * @param {Object=} options
  * @extends {edu.kit.informatik.studyplan.client.model.module.ModuleCollection}
+ * Collection which contains the modules which were searched by the user based on the filters in the set filter collection
  */
 
 edu.kit.informatik.studyplan.client.model.system.SearchCollection = edu.kit.informatik.studyplan.client.model.module.ModuleCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.SearchCollection.prototype}*/{
@@ -21,6 +22,7 @@ edu.kit.informatik.studyplan.client.model.system.SearchCollection = edu.kit.info
         }
     },
     /**
+    * Method to set the used filter collection
     * @param {edu.kit.informatik.studyplan.client.model.system.FilterCollection} filters
     */
     setFilters : function (filters) {

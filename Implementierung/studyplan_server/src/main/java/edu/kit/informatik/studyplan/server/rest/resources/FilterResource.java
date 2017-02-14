@@ -40,7 +40,7 @@ public class FilterResource {
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Map<String,List<Map<String,Object>>> getAllFilters() {
+	public Map<String, List<Map<String, Object>>> getAllFilters() {
 		Discipline discipline = getUser().getDiscipline();
 		if (discipline == null) {
 			throw new UnprocessableEntityException();
