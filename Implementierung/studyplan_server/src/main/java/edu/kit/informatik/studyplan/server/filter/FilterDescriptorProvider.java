@@ -109,6 +109,10 @@ public final class FilterDescriptorProvider {
                 CompulsoryFilter::new);
     };
 
+    /**
+     *
+     * @return the field filter descriptor
+     */
     public FilterDescriptor FIELD() {
         return new ListFilterDescriptor<>(6, "field", "Bereich",
                 "Der Bereich der gefundenen Module",
