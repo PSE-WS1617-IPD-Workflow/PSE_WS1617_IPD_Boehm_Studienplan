@@ -4,36 +4,31 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost/" />
-<title>basic_example</title>
+<title>login</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">basic_example</td></tr>
+<tr><td rowspan="1" colspan="3">login</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/</td>
+	<td>/login</td>
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>css=button.showPlan</td>
+	<td>waitForVisible</td>
+	<td>css=a.loginButton</td>
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>id=4</td>
+	<td>clickAndWait</td>
+	<td>css=a.loginButton</td>
 	<td></td>
 </tr>
 <tr>
-	<td>select</td>
-	<td>css=#filterId_4 &gt; select.selectFilterDropDown</td>
-	<td>label=Pflichtmodule</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=button.filterButton</td>
+	<td>waitForVisible</td>
+	<td>link=Profil</td>
 	<td></td>
 </tr>
 </tbody></table>

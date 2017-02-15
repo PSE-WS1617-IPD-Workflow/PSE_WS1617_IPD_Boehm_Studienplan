@@ -17,8 +17,18 @@
 	<td></td>
 </tr>
 <tr>
+	<td>waitForVisible</td>
+	<td>css=button.showPlan</td>
+	<td></td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>css=button.showPlan</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>id=4</td>
 	<td></td>
 </tr>
 <tr>
@@ -35,6 +45,16 @@
 	<td>click</td>
 	<td>css=button.filterButton</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.moduleListWrapper</td>
+	<td>*PSE*</td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>css=div.moduleListWrapper</td>
+	<td>Kognitive Systeme</td>
 </tr>
 </tbody></table>
 </body>
