@@ -1,17 +1,13 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import edu.kit.informatik.studyplan.server.model.moduledata.*;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+import jersey.repackaged.com.google.common.collect.ImmutableList;
+
+import javax.ws.rs.BadRequestException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import javax.ws.rs.BadRequestException;
-
-import edu.kit.informatik.studyplan.server.model.moduledata.Category;
-import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
-import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
-import jersey.repackaged.com.google.common.collect.ImmutableList;
 
 /**
  * Provides published filter descriptors.
@@ -30,6 +26,7 @@ public final class FilterDescriptorProvider {
             CYCLE_TYPE(),
             MODULE_TYPE(),
             COMPULSORY(),
+            FIELD(),
             NAME()
         ));
     }
@@ -111,6 +108,14 @@ public final class FilterDescriptorProvider {
                 items -> Arrays.asList("Pflichtmodule", "Wahlmodule"),
                 CompulsoryFilter::new);
     };
+
+    public FilterDescriptor FIELD() {
+        return new ListFilterDescriptor<>(6, "field", "Bereich",
+                "Der Bereich der gefundenen Module",
+                () -> ModuleDaoFactory.getModuleDao().getFields(discipline),
+                items -> items.stream().map(Field::getName).collect(Collectors.toList()),
+                FieldFilter::new);
+    }
 
     /**
      *
