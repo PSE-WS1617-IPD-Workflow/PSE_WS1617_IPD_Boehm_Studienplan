@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost/" />
-<title>Login_Delete_User</title>
+<title>signup_wizzard_basic</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Login_Delete_User</td></tr>
+<tr><td rowspan="1" colspan="3">signup_wizzard_basic</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -27,38 +27,38 @@
 	<td></td>
 </tr>
 <tr>
+	<td>open</td>
+	<td>/signup</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=select.disciplineDropDown</td>
+	<td>label=Bachelor Informatik</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>css=select.beginningdateDropDown</td>
+	<td>label=Wintersemester 2015</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.wizardPageNextWizard</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=h1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.wizardPageNextWizard</td>
+	<td></td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
 	<td>css=div.mainPagePlanList</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=Profil</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>id=deleteUser</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=deleteUser</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertConfirmation</td>
-	<td>Profil wirklich löschen?</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>css=li.success</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertVisible</td>
-	<td>css=li.success</td>
 	<td></td>
 </tr>
 
