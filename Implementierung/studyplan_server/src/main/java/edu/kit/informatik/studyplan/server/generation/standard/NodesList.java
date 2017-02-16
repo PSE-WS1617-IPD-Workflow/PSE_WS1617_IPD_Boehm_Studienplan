@@ -220,7 +220,7 @@ public class NodesList extends ArrayList<Node> {
 		stack.clear();
 		for (Node n : getAllNodes()) {
 			if (!visited.contains(n)) {
-				System.out.println("SORT" + n.getModule().getIdentifier());
+//				System.out.println("SORT" + n.getModule().getIdentifier());
 				sortUtil(n, visited);
 			}
 		}
