@@ -2,19 +2,17 @@ define(["studyplan"], function (studyplan) {
     "use strict";
     describe("PlanCollection", function () {
         var planCollection = new studyplan.model.plans.PlanCollection({
-            plans : [
-                {
-                    id : 5,
-                    status : "invalid",
-                    "creditpoints-sum" : 20,
-                    name : "test",
-                    modules : [
-                        {
+            plans: [{
+                    id: 5,
+                    status: "invalid",
+                    "creditpoints-sum": 20,
+                    name: "test",
+                    modules: [{
                             id: 5,
                             name: "testest",
                             semester: 3,
                             creditpoints: 19,
-                            lecturer : "Samuel"
+                            lecturer: "Samuel"
                         },
                         {
                             id: 6,
@@ -24,41 +22,41 @@ define(["studyplan"], function (studyplan) {
                             lecturer: "Teuber"
                         }
                     ],
-                    "violations" : [
-                        {
-                            name: "Blöder Constraint",
-                            first: {
-                                id : 5
-                            },
-                            second: {
-                                id: 42
-                            },
-                            type: "abc"
-                        }
-                    ],
-                    "rule-group-violations" : [{
-                        "name" : "someNameViolation",
-                        "min-ects" : 100,
-                        "max-ects" : 200
+                    "violations": [{
+                        name: "Blöder Constraint",
+                        first: {
+                            id: 5
+                        },
+                        second: {
+                            id: 42
+                        },
+                        type: "abc"
                     }],
-                    "field-violations" : [{
-                        id : "42",
-                        name : "blaFieldViolation" ,
-                        "min-ects" : 10,
-                        categories : [{
-                            "id" : 9001,
-                            "name" : "over 9000"
+                    "rule-group-violations": [{
+                        "name": "someNameViolation",
+                        "min-ects": 100,
+                        "max-ects": 200
+                    }],
+                    "field-violations": [{
+                        id: "42",
+                        name: "blaFieldViolation",
+                        "min-ects": 10,
+                        categories: [{
+                            "id": 9001,
+                            "name": "over 9000"
                         }]
                     }]
                 },
                 {
-                    id : 5,
-                    status : "invalid",
-                    "creditpoints-sum" : 20,
-                    name : "test2"
+                    id: 5,
+                    status: "invalid",
+                    "creditpoints-sum": 20,
+                    name: "test2"
                 }
             ]
-        },{parse: true});
+        }, {
+            parse: true
+        });
         //console.log(planCollection);
         // TODO: Proper testing
     });

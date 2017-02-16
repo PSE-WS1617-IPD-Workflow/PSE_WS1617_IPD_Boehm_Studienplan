@@ -12,6 +12,6 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.Notification");
  * - string type: Type of notification (at the moment only "success", "error" or none)
  */
 
-edu.kit.informatik.studyplan.client.model.system.Notification = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.Notification.prototype}*/{
-    
+edu.kit.informatik.studyplan.client.model.system.Notification = Backbone.Model.extend( /** @lends {edu.kit.informatik.studyplan.client.model.system.Notification.prototype}*/ {
+
 });

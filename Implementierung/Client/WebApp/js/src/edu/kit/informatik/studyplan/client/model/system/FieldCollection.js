@@ -7,17 +7,21 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.FieldCollection")
  * a collection of all current fields.
  */
 
-edu.kit.informatik.studyplan.client.model.system.FieldCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.FieldCollection.prototype}*/{
+edu.kit.informatik.studyplan.client.model.system.FieldCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend( /** @lends {edu.kit.informatik.studyplan.client.model.system.FieldCollection.prototype}*/ {
     url: API_DOMAIN + "/fields",
-    
-    model : edu.kit.informatik.studyplan.client.model.system.Field,
+
+    model: edu.kit.informatik.studyplan.client.model.system.Field,
     /**
-    *parses every field on his own
-    */
-    parse : function (response, options) {
+     *parses every field on his own
+     */
+    parse: function (response, options) {
         var fields = [];
-        for(var i = 0; i<response["fields"].length; i++){
-            fields.push(new this.model({field:response["fields"][i]},{parse : true}));
+        for (var i = 0; i < response["fields"].length; i++) {
+            fields.push(new this.model({
+                field: response["fields"][i]
+            }, {
+                parse: true
+            }));
         }
         //console.log(sub);
         return fields;

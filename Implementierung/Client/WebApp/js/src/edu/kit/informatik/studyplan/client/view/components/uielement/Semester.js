@@ -6,7 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Seme
  * Class which represents a semester in a plan
  */
 
-edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.Semester.prototype} */{
+edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbone.View.extend( /** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.Semester.prototype} */ {
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/semester.html"),
     tagName: "tr",
     model: null,
@@ -24,8 +24,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
      */
     isPreferencable: true,
     byId: {},
-    events : {
-        
+    events: {
+
     },
     initialize: function (options) {
         this.model = options.semester;
@@ -42,23 +42,23 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         this.reload();
     },
     reload: function () {
-        this.moduleElements=[];
+        this.moduleElements = [];
         this.model.each(function (el) {
             var removable = true;
-            if(!this.isPassedPlan&&el.get('passed')){
+            if (!this.isPassedPlan && el.get('passed')) {
                 removable = false;
             }
             var draggable = true;
-            if(!this.isPassedPlan&&el.get('passed')){
+            if (!this.isPassedPlan && el.get('passed')) {
                 draggable = false;
             }
             var module = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
-                    module: el,
-                    isDraggable: draggable,
-                    isRemovable: removable,
-                    isPreferencable: this.isPreferencable,
-                    isPassedPlanModule: this.isPassedPlan
-                });
+                module: el,
+                isDraggable: draggable,
+                isRemovable: removable,
+                isPreferencable: this.isPreferencable,
+                isPassedPlanModule: this.isPassedPlan
+            });
             this.byId[el.get('id')] = module;
             module.setRedBorder(false);
             this.moduleElements.push(module);
@@ -71,7 +71,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
      * @return {Backbone.View|null}
      */
     render: function () {
-        this.$el.html(this.template({semester: this.model}));
+        this.$el.html(this.template({
+            semester: this.model
+        }));
         this.$el.droppable({
             drop: this.onDrop.bind(this)
         });
@@ -83,22 +85,21 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         return null;
     },
     setRedBorder: function (id) {
-        if(this.byId[id]){
+        if (this.byId[id]) {
             this.byId[id].setRedBorder(true);
         }
     },
-/**
-*
-*/
-    removeSemester:
-        function () {
-            "use strict";
-        },
     /**
-    *@param{Event} event
-    *@param{Object} ui
-    */
-    onDrop:function (event, ui) {
+     *
+     */
+    removeSemester: function () {
+        "use strict";
+    },
+    /**
+     *@param{Event} event
+     *@param{Object} ui
+     */
+    onDrop: function (event, ui) {
         console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.Semester] drop event");
         //TODO: Make module deletable when it wasn't before!
         var droppedElement = ui.helper.data("viewObject");
@@ -106,8 +107,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
          * @type {edu.kit.informatik.studyplan.client.model.module.Module}
          */
         var droppedModel = droppedElement.model;
-        if (!(droppedModel.collection instanceof edu.kit.informatik.studyplan.client.model.plans.Semester)){
-            droppedModel = /** @type {edu.kit.informatik.studyplan.client.model.module.Module} */(droppedModel.clone());
+        if (!(droppedModel.collection instanceof edu.kit.informatik.studyplan.client.model.plans.Semester)) {
+            droppedModel = /** @type {edu.kit.informatik.studyplan.client.model.module.Module} */ (droppedModel.clone());
             droppedModel.collection = null;
             // Do not insert a module twice
             if (this.model.collection.containsModule(droppedModel.get('id'))) {
@@ -123,10 +124,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
                 return false;
             }
         }
-        if (droppedModel.collection!==this.model) {
+        if (droppedModel.collection !== this.model) {
             var oldCol = droppedModel.collection;
             var oldSem = droppedModel.get('semester');
-            if(droppedModel.collection!==null){
+            if (droppedModel.collection !== null) {
                 droppedModel.collection.remove(droppedModel);
             }
             droppedModel.set('semester', this.model.semesterNum);
@@ -135,11 +136,11 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
             }
             this.model.add(droppedModel);
             droppedModel.collection = this.model;
-            if(!this.isPassedPlan){
+            if (!this.isPassedPlan) {
                 droppedModel.save(null, {
                     error: function () {
                         this.model.remove(droppedModel);
-                        if (oldCol!==null) {
+                        if (oldCol !== null) {
                             droppedModel.set('semester', oldSem);
                             oldCol.add(droppedModel);
                         }
@@ -149,17 +150,15 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         }
     },
     /**
-    *
-    */
-    scrollLeft:
-        function () {
-            "use strict";
-        },
+     *
+     */
+    scrollLeft: function () {
+        "use strict";
+    },
     /**
-    *
-    */
-    scrollRight:
-        function () {
-            "use strict";
-        }
+     *
+     */
+    scrollRight: function () {
+        "use strict";
+    }
 });

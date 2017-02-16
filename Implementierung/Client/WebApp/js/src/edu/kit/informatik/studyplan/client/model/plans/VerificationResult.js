@@ -7,7 +7,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.VerificationResult
  * Represents the verification result of a plan
  */
 
-edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.VerificationResult.prototype}*/{
+edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend( /** @lends {edu.kit.informatik.studyplan.client.model.plans.VerificationResult.prototype}*/ {
     plan: null,
     initialize: function (attributes, options) {
         this.plan = options.plan;
@@ -19,11 +19,11 @@ edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.inf
     onChange: function () {
         this.plan.trigger("change");
     },
-    url : function () {
+    url: function () {
         "use strict";
         return API_DOMAIN + "/plans/" + this.get('id') + '/verification';
     },
-    parse : function (response, options) {
+    parse: function (response, options) {
         "use strict";
         var result = response["plan"];
         if (typeof result["violations"] === "undefined") {
@@ -31,35 +31,43 @@ edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.inf
         }
         var violations = [];
         for (var i = 0; i < result["violations"].length; i++) {
-            violations.push(new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(result["violations"][i], {parse: true}));
+            violations.push(new edu.kit.informatik.studyplan.client.model.module.ModuleConstraint(result["violations"][i], {
+                parse: true
+            }));
         }
         var fieldViolations = [];
         if (typeof response["field-violations"] !== "undefined") {
-            for (var i = 0; i<response["field-violations"].length; i++){
+            for (var i = 0; i < response["field-violations"].length; i++) {
                 fieldViolations[i] = new edu.kit.informatik.studyplan.client.model.system.Field(
-                      response["field-violations"][i], {parse: true});
+                    response["field-violations"][i], {
+                        parse: true
+                    });
             }
         }
         var ruleGroupViolations = [];
-        if(typeof response["rule-group-violations"] !== "undefined") {
-            for(var i = 0; i<response["rule-group-violations"].length; i++){
-               ruleGroupViolations[i] = new edu.kit.informatik.studyplan.client.model.plans.RuleGroup(
-                      response["rule-group-violations"][i], {parse: true});
+        if (typeof response["rule-group-violations"] !== "undefined") {
+            for (var i = 0; i < response["rule-group-violations"].length; i++) {
+                ruleGroupViolations[i] = new edu.kit.informatik.studyplan.client.model.plans.RuleGroup(
+                    response["rule-group-violations"][i], {
+                        parse: true
+                    });
             }
         }
         var compulsoryViolations = [];
-        if(typeof response["compulsory-violations"] !== "undefined") {
-            for(var i = 0; i<response["compulsory-violations"].length; i++) {
+        if (typeof response["compulsory-violations"] !== "undefined") {
+            for (var i = 0; i < response["compulsory-violations"].length; i++) {
                 compulsoryViolations[i] = new edu.kit.informatik.studyplan.client.model.module.Module({
                     module: {
                         id: response["compulsory-violations"][i]["id"],
                         name: response["compulsory-violations"][i]["name"]
                     }
-                }, {parse: true});
+                }, {
+                    parse: true
+                });
             }
         }
         response["field-violations"] = fieldViolations;
-        response["rule-group-violations"] = ruleGroupViolations; 
+        response["rule-group-violations"] = ruleGroupViolations;
         result["violations"] = violations;
         return result;
     }

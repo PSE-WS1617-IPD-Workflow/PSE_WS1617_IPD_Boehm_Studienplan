@@ -6,11 +6,11 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Modu
  * Class which represents a sidebar showing relevant information for each module
  */
 
-edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar.prototype} */{
+edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar = Backbone.View.extend( /** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar.prototype} */ {
     module: null,
     className: "moduleInfo",
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/moduleInfoSidebar.html"),
-    moduleBoxes:{},
+    moduleBoxes: {},
     events: {
         "button button.close": "onClose"
     },
@@ -28,7 +28,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar 
         console.info(this.model.get('constraints'));
         _.each(this.model.get('constraints'), function (constraint) {
             _.each(["first", "second"], function (nthModule) {
-                if(constraint.get(nthModule).get('id')!=this.model.get('id')){
+                if (constraint.get(nthModule).get('id') != this.model.get('id')) {
                     var tmpModuleBox = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
                         module: constraint.get(nthModule),
                         //TODO: einstellbar
@@ -36,9 +36,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar 
                         isDraggable: true,
                         isPreferencable: this.isPreferencable,
                     });
-                  if(!this.moduleBoxes[constraint.get('type')]){
-                      this.moduleBoxes[constraint.get('type')]=[];
-                  }  this.moduleBoxes[constraint.get('type')].push(tmpModuleBox)
+                    if (!this.moduleBoxes[constraint.get('type')]) {
+                        this.moduleBoxes[constraint.get('type')] = [];
+                    }
+                    this.moduleBoxes[constraint.get('type')].push(tmpModuleBox)
                 }
             }.bind(this));
         }.bind(this));
@@ -53,10 +54,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar 
         console.info(_.pairs(this.moduleBoxes));
         // Go through all constraint types
         _.each(_.pairs(this.moduleBoxes), function (constraintTypes) {
-            var constraintEl = this.$el.find("."+constraintTypes[0]+"Constraints");
+            var constraintEl = this.$el.find("." + constraintTypes[0] + "Constraints");
             console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar] constraintType div:");
             console.info(constraintEl);
-            if(constraintEl.length>0){
+            if (constraintEl.length > 0) {
                 // Go through
                 _.each(constraintTypes[1], function (moduleBox) {
                     console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar] moduleBox:")
@@ -65,17 +66,16 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar 
                     constraintEl.append(moduleBox.$el)
                 });
             } else {
-                throw new Error("No constraint div of class ."+constraintTypes[0]+"Constraints")
+                throw new Error("No constraint div of class ." + constraintTypes[0] + "Constraints")
             }
         }.bind(this));
         this.delegateEvents();
     },
     /**
-    * Method which is called when the ModuleInfoSidebar should be closed
-    */
-    onClose:
-        function () {
-            "use strict";
-            edu.kit.informatik.studyplan.client.model.system.EventBus.trigger("hideModuleInfo");
-        }
+     * Method which is called when the ModuleInfoSidebar should be closed
+     */
+    onClose: function () {
+        "use strict";
+        edu.kit.informatik.studyplan.client.model.system.EventBus.trigger("hideModuleInfo");
+    }
 });

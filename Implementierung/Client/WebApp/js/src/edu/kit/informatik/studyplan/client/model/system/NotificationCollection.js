@@ -21,14 +21,14 @@ edu.kit.informatik.studyplan.client.model.system.NotificationCollection = (funct
      * @name edu.kit.informatik.studyplan.client.model.system.NotificationCollection
      */
     var Constructor = Backbone.Collection.extend({
-        model : edu.kit.informatik.studyplan.client.model.system.Notification
+        model: edu.kit.informatik.studyplan.client.model.system.Notification
     });
-    
+
     return {
         /**
-        * @return {edu.kit.informatik.studyplan.client.model.system.NotificationCollection}
-        */
-        getInstance : function () {
+         * @return {edu.kit.informatik.studyplan.client.model.system.NotificationCollection}
+         */
+        getInstance: function () {
             if (instance === null) {
                 instance = new Constructor();
             }

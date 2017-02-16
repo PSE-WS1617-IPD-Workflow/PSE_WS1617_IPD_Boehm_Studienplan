@@ -5,17 +5,17 @@ define(["studyplan"], function (studyplan) {
         beforeEach(function () {
             LM = studyplan.model.system.LanguageManager.getInstance();
             LM.messages = {
-                "de" : {
-                    "test1" : "Test Nachricht 1",
-                    "test2" : "Test Nachricht 2"
+                "de": {
+                    "test1": "Test Nachricht 1",
+                    "test2": "Test Nachricht 2"
                 },
-                "en" : {
-                    "test1" : "Test Message 1"
+                "en": {
+                    "test1": "Test Message 1"
                 }
             };
         });
         it("Instance should not be null", function () {
-            expect(LM).not.toBeNull();//test
+            expect(LM).not.toBeNull(); //test
         });
         it("should use german language on default", function () {
             expect(LM.getMessage("test1")).toMatch('Test Nachricht 1');

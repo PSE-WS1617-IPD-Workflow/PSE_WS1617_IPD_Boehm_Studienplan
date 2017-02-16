@@ -5,28 +5,28 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.filter.ModuleF
  * @extends {Backbone.View}
  */
 
-edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter.prototype} */{
+edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbone.View.extend( /** @lends {edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter.prototype} */ {
     /**
-    * html template for this element
-    */
+     * html template for this element
+     */
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/filter/moduleFilter.html"),
     /**
-    * the tag name of the described html element in the template
-    */
+     * the tag name of the described html element in the template
+     */
     tag: "ul",
     /** ui filter elements */
     filterComponents: null,
     /** pointer to model */
     filterCollection: null,
     /**
-    * events triggered by HTML
-    */
+     * events triggered by HTML
+     */
     events: {
         "click .filterMenuButton": "showFilterSettings",
-        "click .filterMenuButton_highlited_FilterButton": "showFilterSettings", 
+        "click .filterMenuButton_highlited_FilterButton": "showFilterSettings",
         "change .filterButton": "onChange"
     },
-    initialize: function (options){
+    initialize: function (options) {
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         this.filterCollection = new edu.kit.informatik.studyplan.client.model.system.FilterCollection();
         this.filterCollection.fetch({
@@ -43,32 +43,34 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
         this.reload();
     },
     /**
-    * renders this page
-    */
+     * renders this page
+     */
     reload: function () {
         this.filterComponents = [];
-        
+
 
         //foreach in filterCollection
         var _this = this;
         this.filterCollection.each(function (el) {
-            var tmp_options = { filter: el};
+            var tmp_options = {
+                filter: el
+            };
             /**
              * @type {edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent}
              */
-            var uiFilter = null;            
-            switch(el.get("specification").type) {
-                case "contains":
-                    uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.TextFilter(el);
-                    break;
-                case "list":
-                    uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.SelectFilter(el);
-                    break;
-                case "range":
-                    uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter(el);
-                    break;
+            var uiFilter = null;
+            switch (el.get("specification").type) {
+            case "contains":
+                uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.TextFilter(el);
+                break;
+            case "list":
+                uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.SelectFilter(el);
+                break;
+            case "range":
+                uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter(el);
+                break;
             }
-            if(uiFilter !== null) {
+            if (uiFilter !== null) {
                 uiFilter.initialize(tmp_options);
                 _this.filterComponents.push(uiFilter);
             }
@@ -76,53 +78,53 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
         this.render();
     },
     /**
-    * @this {Backbone.View}
-    * @return *    
-    */
+     * @this {Backbone.View}
+     * @return *    
+     */
     render: function () {
         "use strict";
         var filterButtons = [];
         _.each(this.filterComponents, function (tmpFilterComponent) {
 
-            if(tmpFilterComponent.filter.get('specification').type !== "contains"){
-                filterButtons.push({ 
+            if (tmpFilterComponent.filter.get('specification').type !== "contains") {
+                filterButtons.push({
                     id: tmpFilterComponent.filter.get("id"),
-                    name: tmpFilterComponent.filter.get("name")});
+                    name: tmpFilterComponent.filter.get("name")
+                });
             }
         }.bind(this));
-        
+
         this.$el.html(this.template({
-            buttons : filterButtons
+            buttons: filterButtons
         }));
-        
+
         var finder = this.$el.find(".collectivefilterSettings");
-        for(var i = 0; i < this.filterComponents.length; i++){
+        for (var i = 0; i < this.filterComponents.length; i++) {
             var tmpFilterComponent = this.filterComponents[i];
             tmpFilterComponent.render();
             finder.append(tmpFilterComponent.$el);
         }
         this.delegateEvents();
     },
-    
+
     /**
-    * triggered by changeEvent
-    */
+     * triggered by changeEvent
+     */
     onChange: function () {
         "use strict";
         this.render();
     },
-    buildParam: function () {
-    },
+    buildParam: function () {},
     /** displays the filter's settings in HTML*/
-    showFilterSettings : function (event){
+    showFilterSettings: function (event) {
         var tmpVisible = $("#filterId_" + event.target.id).is(":visible")
-        
-        $(".highlited_FilterButton").removeClass("highlited_FilterButton");        
+
+        $(".highlited_FilterButton").removeClass("highlited_FilterButton");
         $(".profileFilterWrapperSettings").hide();
-        if(!tmpVisible) {
+        if (!tmpVisible) {
             $("#filterId_" + event.target.id).show();
             $("#" + event.target.id).addClass("highlited_FilterButton");
         }
-        
+
     }
 });

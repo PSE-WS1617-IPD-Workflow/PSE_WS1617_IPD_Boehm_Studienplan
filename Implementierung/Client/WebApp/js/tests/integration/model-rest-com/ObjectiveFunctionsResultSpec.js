@@ -5,8 +5,7 @@ define(["studyplan"], function (client) {
         beforeEach(function () {
             jasmine.Ajax.install();
             resultObject = {
-                functions: [
-                    {
+                functions: [{
                         id: 1,
                         name: "Funktion 1",
                         description: "Ergreife Weltherrschaft"
@@ -27,17 +26,17 @@ define(["studyplan"], function (client) {
             objectiveCol.fetch();
             expect(jasmine.Ajax.requests.mostRecent().url).toEqual('http://api.studyplan.devel/objective-functions');
             jasmine.Ajax.requests.mostRecent().respondWith({
-                "status"    :   200,
-                "contentType"   :   "application/json",
-                "responseText"  :   JSON.stringify(resultObject)
+                "status": 200,
+                "contentType": "application/json",
+                "responseText": JSON.stringify(resultObject)
             });
         });
         afterEach(function () {
             jasmine.Ajax.uninstall();
         });
         it("Should retrieve data", function () {
-            for (var i=0; i<3;i++) {
-                var importantFunction = objectiveCol.get(i+1);
+            for (var i = 0; i < 3; i++) {
+                var importantFunction = objectiveCol.get(i + 1);
                 expect(importantFunction.get('name')).toBeDefined();
                 expect(importantFunction.get('name')).toEqual(resultObject.functions[i].name);
                 expect(importantFunction.get('description')).toEqual(resultObject.functions[i].description);

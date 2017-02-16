@@ -5,17 +5,17 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.Filter");
  * This class represents a filter which might be activated and used for filtering modules
  */
 
-edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.Filter.prototype}*/{
+edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend( /** @lends {edu.kit.informatik.studyplan.client.model.system.Filter.prototype}*/ {
     /*
      * Information concerning the curValue of filters:
      * For range filters it is set by an object of the form {min: <min val>, max: <max val>}
      * For list filters it is set by an object of the form {id: <el id>, text: <el text>}
      * For contains filter is set by a string
      */
-    parse : function (response, options) {
+    parse: function (response, options) {
         "use strict";
         response["curValue"] = response["default-value"];
-        if(response["specification"]["type"]==="list"){
+        if (response["specification"]["type"] === "list") {
             response["curValue"] = "none";
         }
         return response;
@@ -23,11 +23,11 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
     /**
      * This object contains query parameter builders for various filter types
      */
-    filterTypeHandler : {
+    filterTypeHandler: {
         /**
          * @this {edu.kit.informatik.studyplan.client.model.system.Filter}
          */
-        "range" : function () {
+        "range": function () {
             "use strict";
             var result = {};
             result[this.get('uri-name') + "-min"] = this.get('curValue').min;
@@ -37,7 +37,7 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
         /**
          * @this {edu.kit.informatik.studyplan.client.model.system.Filter}
          */
-        "list" : function () {
+        "list": function () {
             "use strict";
             var result = {};
             result[this.get('uri-name')] = this.get('curValue');
@@ -46,7 +46,7 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
         /**
          * @this {edu.kit.informatik.studyplan.client.model.system.Filter}
          */
-        "contains" : function () {
+        "contains": function () {
             "use strict";
             var result = {};
             result[this.get('uri-name')] = this.get('curValue');
@@ -57,9 +57,9 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
      * Method for retrieving query parameters of a filter
      * @return {Object|null} containing the values of the query 
      */
-    getParams : function () {
+    getParams: function () {
         "use strict";
-        if(this.get('curValue')!="none"){
+        if (this.get('curValue') != "none") {
             return this.filterTypeHandler[this.get('specification').type].apply(this);
         } else {
             return null;

@@ -6,13 +6,13 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Plan
  * Class which represents a plan in the view
  */
 
-edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.Plan.prototype} */{
+edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.View.extend( /** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.Plan.prototype} */ {
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/plan.html"),
     model: null,
     events: {
         "click .addSemesterButton": "addSemester"
     },
-    semesterElements : [],
+    semesterElements: [],
     /** 
      * Whether semesters are addable to the plan
      */
@@ -31,7 +31,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
         this.isPreferencable = (typeof options.isPreferencable !== "undefined") ? options.isPreferencable : this.isPreferencable;
         this.isPassedPlan = (typeof options.isPassedPlan !== "undefined") ? options.isPassedPlan : this.isPassedPlan;
         this.listenTo(this.model, "change", this.reload);
-        
+
         this.reload();
     },
     /**
@@ -69,19 +69,22 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
                 semester.setRedBorder(violation.get('second').get('id'));
             }).bind(this));
         }.bind(this));
-        this.delegateEvents(); 
+        this.delegateEvents();
     },
     /**
-    * Method which adds a semester to the plan
-    */
+     * Method which adds a semester to the plan
+     */
     addSemester: function () {
         "use strict";
         var newSemester = new edu.kit.informatik.studyplan.client.model.plans.Semester({
-                planId : this.model.get("id"),
-                semesterNum : this.model.get('semesterCollection').length,
-                modules : []
-        },{parse:true, collection: this.model});
-                                                                                       
+            planId: this.model.get("id"),
+            semesterNum: this.model.get('semesterCollection').length,
+            modules: []
+        }, {
+            parse: true,
+            collection: this.model
+        });
+
         this.model.get('semesterCollection').push(newSemester);
         this.reload();
     }

@@ -6,6 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.Compar
  */
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.ComparisonView = Backbone.View.extend(
-    /** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.ComparisonView} */{
-    
-});
+    /** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.ComparisonView} */
+    {
+
+    });
