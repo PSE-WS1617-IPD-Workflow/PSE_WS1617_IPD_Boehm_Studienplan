@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/" />
+<title>A10_first_sign_in</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">A10_first_sign_in</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://new_user:user@localhost:8080/studyplan/rest/auth/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>css=a.loginButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a.loginButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>css=select.disciplineDropDown option</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>css=select.disciplineDropDown</td>
+	<td>label=Bachelor Informatik</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>css=select.beginningdateDropDown</td>
+	<td>label=Wintersemester 2015</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.wizardPageNextWizard</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>css=div.signUpWizardmodules.box</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@id='content']/div/div/div/div/div[3]/div/div[3]/div/div[2]/ul/div/li</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=td</td>
+	<td>*Semester 1*</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='content']/div/div/div/div/div[3]/div/div[2]/div/div/table/tbody/tr[2]/td</td>
+	<td>*Semester 2*</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='content']/div/div/div/div/div[3]/div/div[2]/div/div/table/tbody/tr[3]/td</td>
+	<td>*Semester 3*</td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>css=div.planView</td>
+	<td>*Semester 4*</td>
+</tr>
+<tr>
+	<td>dragAndDropToObject</td>
+	<td>//div[@id='content']/div/div/div/div/div[3]/div/div[3]/div/div[2]/ul/div/li</td>
+	<td>css=ul.semesterModules.leftSided</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>dragAndDrop</td>
+	<td>//div[@id='filterId_0']/div/span</td>
+	<td>+60,+0</td>
+</tr>
+<tr>
+	<td>dragAndDrop</td>
+	<td>//div[@id='filterId_0']/div/span[2]</td>
+	<td>-330, +0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.filterButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@id='content']/div/div/div/div/div[3]/div/div[3]/div/div[2]/ul/div/li</td>
+	<td></td>
+</tr>
+<tr>
+	<td>dragAndDropToObject</td>
+	<td>//h3[contains(text(), 'Programmieren')]</td>
+	<td>css=ul.semesterModules.leftSided</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='content']/div/div/div/div/div[3]/div/div[2]/div/div/table/tbody/tr/td[2]</td>
+	<td>*Grundbegriffe der Informatik*</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=ul.semesterModules.leftSided</td>
+	<td>*Programmieren*</td>
+</tr>
+<tr>
+	<td>dragAndDropToObject</td>
+	<td>//h3[contains(text(), 'Algorithmen I')]</td>
+	<td>//div[@id='content']/div/div/div/div/div[3]/div/div[2]/div/div/table/tbody/tr[2]/td[2]/ul</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='content']/div/div/div/div/div[3]/div/div[2]/div/div/table/tbody/tr[2]/td[2]/ul</td>
+	<td>*Algorithmen I*</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.wizardPageNextWizard</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Profil</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=deleteUser</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>css=div.mainPagePlanList &gt; div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='content']/div/div/div/table/tbody</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

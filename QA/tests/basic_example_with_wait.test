@@ -47,8 +47,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>//div[@id='content']/div/div[3]/div/div[2]/ul/div/li</td>
+	<td>waitForNotVisible</td>
+	<td>css=.loading</td>
 	<td></td>
 </tr>
 <tr>
