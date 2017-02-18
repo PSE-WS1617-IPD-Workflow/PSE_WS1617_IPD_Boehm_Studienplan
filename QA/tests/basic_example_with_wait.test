@@ -47,6 +47,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>waitForVisible</td>
+	<td>//div[@id='content']/div/div[3]/div/div[2]/ul/div/li</td>
+	<td></td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>css=div.moduleListWrapper</td>
 	<td>*PSE*</td>
@@ -54,7 +59,7 @@
 <tr>
 	<td>assertNotText</td>
 	<td>css=div.moduleListWrapper</td>
-	<td>Kognitive Systeme</td>
+	<td>*Kognitive Systeme*</td>
 </tr>
 </tbody></table>
 </body>
