@@ -153,18 +153,19 @@ public class SimpleGeneratorTest {
 		la1.getFromConstraints().add(sym2);
 		la1.getToConstraints().add(sym2);
 
-		// creating and adding module entry
+		// creating and adding module entries
 
 		plan = mock(Plan.class);
-		ModuleEntry entry = new ModuleEntry();
-		entry.setModule(tse);
-		entry.setSemester(3);
-
-		// plan.getModuleEntries().add(entry);
-
+		ModuleEntry entry1 = new ModuleEntry();
+		entry1.setModule(tse);
+		entry1.setSemester(3);
+		ModuleEntry entry2 = new ModuleEntry();
+		entry2.setModule(prog);
+		entry2.setSemester(1);
 		moduleEntries = new ArrayList<ModuleEntry>();
 		when(plan.getModuleEntries()).thenReturn(moduleEntries);
-		plan.getModuleEntries().add(entry);
+		plan.getModuleEntries().add(entry1);
+		plan.getModuleEntries().add(entry2);
 
 		// initialising user and plan
 		user = new User();
@@ -192,18 +193,18 @@ public class SimpleGeneratorTest {
 		// creating nodes to compare with
 
 		nodesToCompareTo = new ArrayList<Node>();
-		nodesToCompareTo.add(new NodeWithOutput(pse, generator));
-		nodesToCompareTo.add(new NodeWithOutput(tse, generator));
-		nodesToCompareTo.add(new NodeWithOutput(gbi, generator));
-		nodesToCompareTo.add(new NodeWithOutput(prog, generator));
-		nodesToCompareTo.add(new NodeWithOutput(swt, generator));
+		nodesToCompareTo.add(new NodeWithOutput(pse, plan, generator));
+		nodesToCompareTo.add(new NodeWithOutput(tse, plan, generator));
+		nodesToCompareTo.add(new NodeWithOutput(gbi, plan, generator));
+		nodesToCompareTo.add(new NodeWithOutput(prog, plan, generator));
+		nodesToCompareTo.add(new NodeWithOutput(swt, plan, generator));
 
 	}
 
 	@Test
 	public void testPlanToGraph() {
 		generator.planToGraph(plan);
-		assertTrue(generator.getNodes().getAllNodes().containsAll(nodesToCompareTo));
+		assertTrue(generator.getNodes().containsAll(nodesToCompareTo));
 	}
 
 	@Test
@@ -235,9 +236,9 @@ public class SimpleGeneratorTest {
 		rule.setMaxNum(2);
 		generator.planToGraph(plan);
 		generator.addRuleGroupModules(rule, plan, category, dao);
-		nodesToCompareTo.add(new NodeWithOutput(la1, generator));
-		nodesToCompareTo.add(new NodeWithOutput(la2, generator));
-		assertTrue(generator.getNodes().getAllNodes().containsAll(nodesToCompareTo));
+		nodesToCompareTo.add(new NodeWithOutput(la1, plan, generator));
+		nodesToCompareTo.add(new NodeWithOutput(la2, plan, generator));
+		assertTrue(generator.getNodes().containsAll(nodesToCompareTo));
 
 	}
 
@@ -248,8 +249,8 @@ public class SimpleGeneratorTest {
 		field.setMinEcts(2.0);
 		generator.planToGraph(plan);
 		generator.addFieldModules(field, category, plan, dao);
-		nodesToCompareTo.add(new NodeWithOutput(ph, generator));
-		assertTrue(generator.getNodes().getAllNodes().containsAll(nodesToCompareTo));
+		nodesToCompareTo.add(new NodeWithOutput(ph, plan, generator));
+		assertTrue(generator.getNodes().containsAll(nodesToCompareTo));
 	}
 
 	@Test
@@ -265,7 +266,7 @@ public class SimpleGeneratorTest {
 		generator.planToGraph(plan);
 		generator.parallelize(generator.getNodes().sort(), 4);
 		Plan newPlan = generator.createPlan(generator.getNodes().sort(),
-				generator.parallelize(generator.getNodes().sort(), 4), plan);
+				generator.parallelize(generator.getNodes().sort(), 4), plan.getUser());
 		Plan compareTo = new Plan();
 		ModuleEntry entry1 = new ModuleEntry(prog, 1);
 		ModuleEntry entry2 = new ModuleEntry(gbi, 1);
