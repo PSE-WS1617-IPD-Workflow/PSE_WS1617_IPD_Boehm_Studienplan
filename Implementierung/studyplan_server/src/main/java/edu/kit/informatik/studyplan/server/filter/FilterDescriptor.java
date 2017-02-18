@@ -4,11 +4,10 @@
 
 package edu.kit.informatik.studyplan.server.filter;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.core.MultivaluedMap;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Descriptions of the published filter classes for the client. Offers facility to construct filters from GET request
@@ -85,7 +84,7 @@ public abstract class FilterDescriptor {
 	 * 
 	 * @return the filter name (used for GUI purposes)
 	 */
-	public String getFilterName() {
+	private String getFilterName() {
 		return filterName;
 	}
 
@@ -93,7 +92,7 @@ public abstract class FilterDescriptor {
 	 * 
 	 * @return a tooltip for the filter (for GUI purposes).
 	 */
-	public String getTooltip() {
+	private String getTooltip() {
 		return tooltip;
 	}
 
@@ -101,7 +100,7 @@ public abstract class FilterDescriptor {
 	 *
 	 * @return the filter identifier used in GET requests.
      */
-	public String getFilterUriIdentifier() {
+	String getFilterUriIdentifier() {
 		return filterUriIdentifier;
 	}
 };

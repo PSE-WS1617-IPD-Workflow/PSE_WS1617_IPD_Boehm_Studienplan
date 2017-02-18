@@ -18,7 +18,7 @@ public class CycleTypeFilter extends ListFilter<CycleType> {
 	}
 
 	@Override
-	public String getAttributeName() {
+	protected String getAttributeName() {
 		return ModuleAttributeNames.CYCLE_TYPE;
 	}
 

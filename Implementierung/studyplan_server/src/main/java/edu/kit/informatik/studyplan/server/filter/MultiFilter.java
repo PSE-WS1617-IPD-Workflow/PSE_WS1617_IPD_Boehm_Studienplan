@@ -22,14 +22,6 @@ public class MultiFilter implements Filter {
 	}
 
 	/**
-	 * 
-	 * @return the combined sub-filters
-	 */
-	public List<Filter> getFilters() {
-		return filters;
-	}
-
-	/**
 	 * Gibt eine Liste der Filterbedingungen der gebündelten Filter zurück. Diese ist ggf. leer.
 	 * 
 	 * @return a list of the combined filters' conditions. Might be empty.

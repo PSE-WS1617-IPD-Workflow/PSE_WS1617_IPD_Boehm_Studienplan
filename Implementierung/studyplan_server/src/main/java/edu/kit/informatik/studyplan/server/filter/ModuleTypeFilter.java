@@ -18,7 +18,7 @@ public class ModuleTypeFilter extends ListFilter<ModuleType> {
 	}
 
 	@Override
-	public String getAttributeName() {
+	protected String getAttributeName() {
 		return ModuleAttributeNames.MODULE_TYPE;
 	}
 }
