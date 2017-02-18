@@ -32,9 +32,9 @@ public final class ModuleAttributeNames {
 	 */
 	public static final String CYCLE_TYPE = "cycleType";
 	/**
-	 * discipline attribute string constant
+	 * field attribute string constant
 	 */
-	public static final String DISCIPLINE = "discipline";
+	public static final String FIELD = "field";
 	/**
 	 * compulsory attribute string constant
 	 */
