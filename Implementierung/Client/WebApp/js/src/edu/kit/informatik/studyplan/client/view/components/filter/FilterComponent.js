@@ -17,6 +17,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent = Bac
         initialize: function (options) {
             "use strict";
             this.filter = options.filter;
+	    //this.filter.on("change", this.render.bind(this));
         },
         /**
         *just something like an abstract method
