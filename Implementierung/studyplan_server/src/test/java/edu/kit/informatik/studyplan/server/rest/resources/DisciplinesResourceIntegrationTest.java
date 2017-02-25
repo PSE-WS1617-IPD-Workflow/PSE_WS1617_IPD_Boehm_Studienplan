@@ -6,7 +6,7 @@ import static io.restassured.RestAssured.get;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 
-public class DisciplinesResourceTest extends SimpleRestAssuredTest {
+public class DisciplinesResourceIntegrationTest extends SimpleRestAssuredTest {
     @Test
     public void getAllDisciplinesValidKeys() throws Exception {
         get("disciplines").then().assertThat().

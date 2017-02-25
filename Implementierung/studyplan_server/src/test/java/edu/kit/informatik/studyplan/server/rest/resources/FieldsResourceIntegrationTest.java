@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 
 @Ignore  //Auth doesn't work yet
-public class FieldsResourceTest extends SimpleRestAssuredTestWithAuth {
+public class FieldsResourceIntegrationTest extends SimpleRestAssuredTestWithAuth {
     @Test
     public void getChoosableFieldsValidKeys() throws Exception {
         customAuthorize(given()).get("fields").then().assertThat().

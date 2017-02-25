@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 
 @Ignore  //Auth doesn't work yet
-public class FilterResourceTest extends SimpleRestAssuredTestWithAuth {
+public class FilterResourceIntegrationTest extends SimpleRestAssuredTestWithAuth {
     @Test
     public void getFiltersValidKeys() throws Exception {
         customAuthorize(given()).get("filters").then().assertThat().

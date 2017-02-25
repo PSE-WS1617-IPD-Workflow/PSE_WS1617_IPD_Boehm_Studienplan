@@ -6,7 +6,7 @@ import static io.restassured.RestAssured.get;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 
-public class ObjectiveFunctionResourceTest extends SimpleRestAssuredTest {
+public class ObjectiveFunctionResourceIntegrationTest extends SimpleRestAssuredTest {
     @Test
     public void getAllObjectiveFunctionsValidKeys() throws Exception {
         get("objective-functions").then().assertThat().
