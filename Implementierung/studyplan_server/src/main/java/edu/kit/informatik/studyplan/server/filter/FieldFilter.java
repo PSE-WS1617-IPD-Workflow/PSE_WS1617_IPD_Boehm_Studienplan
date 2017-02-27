@@ -17,7 +17,7 @@ public class FieldFilter extends ListFilter<Field> {
     }
 
     @Override
-    public String getAttributeName() {
+    protected String getAttributeName() {
         return ModuleAttributeNames.FIELD;
     }
 }

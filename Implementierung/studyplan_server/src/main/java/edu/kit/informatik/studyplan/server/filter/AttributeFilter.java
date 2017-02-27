@@ -13,5 +13,5 @@ public abstract class AttributeFilter implements Filter {
 	 *
 	 * @return the name of the Module attribute which is to be filtered by this instance.
 	 */
-	public abstract String getAttributeName();
+	protected abstract String getAttributeName();
 };

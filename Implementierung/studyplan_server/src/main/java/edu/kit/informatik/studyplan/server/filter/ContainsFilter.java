@@ -12,7 +12,7 @@ public abstract class ContainsFilter extends AttributeFilter {
 	/**
 	 * The substring to search for.
 	 */
-	protected String substring;
+	private String substring;
 
 	/**
 	 * Creates a new ContainsFilter with a given substring.
@@ -20,7 +20,7 @@ public abstract class ContainsFilter extends AttributeFilter {
 	 * @param substring
 	 *            the substring.
 	 */
-	protected ContainsFilter(String substring) {
+	ContainsFilter(String substring) {
 		if (substring == null) {
 			throw new IllegalArgumentException("substring must not be null");
 		}
@@ -32,13 +32,5 @@ public abstract class ContainsFilter extends AttributeFilter {
 	 */
 	public List<Condition> getConditions() {
 		return Collections.singletonList(Condition.createContains(getAttributeName(), substring));
-	}
-
-	/**
-	 * 
-	 * @return the substring to search for
-	 */
-	public String getSubstring() {
-		return substring;
 	}
 }

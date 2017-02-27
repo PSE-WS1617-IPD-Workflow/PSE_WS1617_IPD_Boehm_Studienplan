@@ -14,6 +14,12 @@
     <powermock.version>1.6.6</powermock.version>
   </properties>
   <dependencies>
+	  <dependency>
+		  <groupId>io.rest-assured</groupId>
+		  <artifactId>rest-assured</artifactId>
+		  <version>3.0.2</version>
+		  <scope>test</scope>
+	  </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -116,6 +122,25 @@
 					<path>/studyplan</path>
 					<tomcatUsers>${project.basedir}/src/main/tomcatconf/tomcat-users.xml</tomcatUsers>
 				</configuration>
+				<executions>
+					<execution>
+						<id>start-tomcat</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<fork>true</fork>
+						</configuration>
+					</execution>
+					<execution>
+						<id>stop-tomcat</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>shutdown</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
         		<groupId>org.apache.maven.plugins</groupId>
@@ -145,7 +170,46 @@
 			     </execution>
 			   </executions>
 			 </plugin>
-    	</plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.1</version>
+				<configuration>
+					<excludes>
+						<exclude>**/*IntegrationTest*</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<includes>
+						<include>**/*IntegrationTest*</include>
+					</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
     </pluginManagement>
+	<plugins>
+		  <plugin>
+			  <groupId>org.apache.tomcat.maven</groupId>
+			  <artifactId>tomcat7-maven-plugin</artifactId>
+		  </plugin>
+		  <plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-failsafe-plugin</artifactId>
+		  </plugin>
+	</plugins>
   </build>
 </project>

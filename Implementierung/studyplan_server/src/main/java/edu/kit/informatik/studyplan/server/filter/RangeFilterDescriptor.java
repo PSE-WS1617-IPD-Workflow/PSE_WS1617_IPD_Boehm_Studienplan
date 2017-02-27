@@ -60,28 +60,13 @@ public class RangeFilterDescriptor extends FilterDescriptor {
         try {
             int lower = Integer.parseInt(minString);
             int upper = Integer.parseInt(maxString);
-            if (!(min <= lower && upper <= max && lower <= upper && min <= max)) {
+            if (!(min <= lower && upper <= max && min <= max)) {
                 throw new BadRequestException();
             }
             return constructor.apply(lower, upper);
-        } catch (NumberFormatException ex) {
+        } catch (IllegalArgumentException ex) {
             throw new BadRequestException();
         }
     }
 
-    /**
-     *
-     * @return the minimal lower bound of the range filter
-     */
-    public int getMin() {
-        return min;
-    }
-
-    /**
-     *
-     * @return the maximal upper bound of the range filter
-     */
-    public int getMax() {
-        return max;
-    }
 }
