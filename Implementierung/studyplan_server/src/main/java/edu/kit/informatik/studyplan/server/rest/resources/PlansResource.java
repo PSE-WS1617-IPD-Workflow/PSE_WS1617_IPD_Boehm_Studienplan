@@ -313,7 +313,7 @@ public class PlansResource {
 			if (module == null) {
 				throw new NotFoundException();
 			}
-			ModuleDto result = new ModuleDto(module);
+			ModuleDto result = new ModuleDto(module, plan);
 			return SimpleJsonResponse.build("module", result);
 		}));
 	}
