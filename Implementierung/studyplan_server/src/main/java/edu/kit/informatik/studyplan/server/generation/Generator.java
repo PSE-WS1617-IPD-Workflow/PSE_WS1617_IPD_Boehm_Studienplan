@@ -30,11 +30,13 @@ public interface Generator {
 	 * @param moduleDAO
 	 *            the ModuleDao to fetch the modules from the database.
 	 * @param preferredSubjects
-	 * 			  the preferred subjects per field (for the Generator to choose modules from)
+	 *            the preferred subjects per field (for the Generator to choose
+	 *            modules from)
 	 * @param maxECTSperSemester
-	 * 			  the maximum number of credit points per semester
-	 * @return a complete, correct and optimized study plan with type `Plan`
+	 *            the maximum number of credit points per semester
+	 * @return a complete, correct and optimized study plan with type `Plan` if
+	 *         such a plan could be created, if not this method returns an invalid plan.
 	 */
-	Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, 
-			ModuleDao moduleDAO, Map<Field, Category> preferredSubjects, int maxECTSperSemester);
+	Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO,
+			Map<Field, Category> preferredSubjects, int maxECTSperSemester);
 }

@@ -36,6 +36,7 @@ public class NodeWithOutput extends Node {
 	}
 	
 	protected void fulfillConstraints(boolean random) {
+		System.out.println("FULFILLING CONST " + this.getModule().getIdentifier());
 		if (this.isPassed()) {
 			return;
 		}
@@ -73,8 +74,8 @@ public class NodeWithOutput extends Node {
 			if (!y) {
 				newNode.fulfillConstraints(random);				
 			}
-			setConstraintsFulfilled(true);
 		}
+		setConstraintsFulfilled(true);
 	}
 	@Override
 	protected void addChild(Node node) {

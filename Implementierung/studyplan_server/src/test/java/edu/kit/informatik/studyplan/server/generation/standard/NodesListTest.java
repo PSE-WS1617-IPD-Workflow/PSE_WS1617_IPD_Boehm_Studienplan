@@ -1,6 +1,7 @@
 package edu.kit.informatik.studyplan.server.generation.standard;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -11,6 +12,7 @@ import org.junit.Test;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
+import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
@@ -131,4 +133,11 @@ public class NodesListTest {
 		assertFalse(nodes.contains(tseNode));
 	}
 
+	@Test
+	public void getCreditPoints() {
+		Field field = new Field();
+		field.getModules().add(la1);
+		la1.setField(field);
+		assertTrue(nodes.getCreditPoints(field) == 2);
+	}
 }

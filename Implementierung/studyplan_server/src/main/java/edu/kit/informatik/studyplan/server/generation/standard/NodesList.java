@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
@@ -151,25 +152,25 @@ public class NodesList extends ArrayList<Node> {
 	}
 
 	/**
-	 * Remove given node from list using the recursive
+	 * Remove given node from list recursively. 
 	 * 
 	 * @param n
 	 *            node to remove
 	 */
 	void remove(Node n) {
 		visited.clear();
-		if(get(n) != null) {
-			n = get(n);			
+		if (get(n) != null) {
+			n = get(n);
 		}
 		removeUtil(n);
-		for(Node visited: visited) {
+		for (Node visited : visited) {
 			Node aux = visited;
-			while(aux.hasInnerNode()) {
+			while (aux.hasInnerNode()) {
 				aux = aux.getInnerNode();
 				removeUtil(aux);
 			}
 			aux = visited;
-			while(aux.hasOuterNode()) {
+			while (aux.hasOuterNode()) {
 				aux = aux.getOuterNode();
 				removeUtil(aux);
 			}
@@ -186,24 +187,26 @@ public class NodesList extends ArrayList<Node> {
 	private void removeUtil(Node n) {
 		if (!visited.contains(n)) {
 			visited.add(n);
-			
-			//store children of the node in an array to remove them because removing 
-			//while iterating on a list doesn't give the right result
-			Node[] children = new Node [n.getChildren().size()]; 
+
+			// store children of the node in an array to remove them because
+			// removing
+			// while iterating on a list doesn't give the right result
+			Node[] children = new Node[n.getChildren().size()];
 			n.getChildren().toArray(children);
-			for(int i = 0; i < children.length; i++) {
+			for (int i = 0; i < children.length; i++) {
 				removeUtil(children[i]);
 			}
-			
+
 			// remove the node itself
 			getRandomlyAddedNodes().remove(n);
 			super.remove(n);
 			// remove this node from the child list of the remaining nodes
 			for (Node node : this) {
-				//TODO if plan link remove the parent? 
+				// TODO if plan link remove the parent?
 				node.removeChild(n);
 			}
 		}
+		System.out.println("removed " + n.getModule().getIdentifier());
 	}
 
 	/**
@@ -217,7 +220,8 @@ public class NodesList extends ArrayList<Node> {
 	protected int getCreditPoints(Field field) {
 		int creditPoints = 0;
 		for (Node n : this) {
-			if (field.equals(n.getModule().getField())) {
+			System.out.println(n.getModule().getIdentifier());
+			if (field.getFieldId() == n.getModule().getField().getFieldId()) {
 				creditPoints += n.getModule().getCreditPoints();
 			}
 		}
@@ -254,13 +258,40 @@ public class NodesList extends ArrayList<Node> {
 	 */
 	protected LinkedList<Node> sort() {
 		visited.clear();
-		stack.clear();
+		LinkedList<Node> result = new LinkedList<Node>();
 		for (Node n : this) {
-			if (!visited.contains(n)) {
-				sortUtil(n, visited);
+//			System.out.println("1. sort " + n.getModule().getIdentifier() + "___"
+//					+ (n.getModule().getCycleType() != CycleType.BOTH));
+
+			if (!visited.contains(n) && n.getModule().getCycleType() != CycleType.BOTH) {
+				stack.clear();
+				if (sortUtil(n, visited)) {
+					result.addAll(0, stack);
+//					System.out.println("sorted");
+				} else {
+					result.addAll(result.size(), stack);
+//					System.out.println("sorted");
+				}
 			}
 		}
-		return stack;
+		for (Node n : this) {
+//			System.out.println("2. sort " + n.getModule().getIdentifier() + "___" + !visited.contains(n));
+
+			if (!visited.contains(n)) {
+				stack.clear();
+				if (sortUtil(n, visited)) {
+					result.addAll(0, stack);
+//					System.out.println("sorted");
+				} else {
+					result.addAll(result.size(), stack);
+//					System.out.println("sorted");
+				}
+			}
+		}
+//		for (Node node : result) {
+//			System.out.println("sort" + node.getModule().getIdentifier());
+//		}
+		return result;
 	}
 
 	/**
@@ -272,9 +303,15 @@ public class NodesList extends ArrayList<Node> {
 	 *            the node to begin with
 	 * @param visited
 	 *            set of visited nodes
+	 * @return true if one of this node's children has already been visited,
+	 *         false if not.
 	 */
-	private void sortUtil(Node node, Set<Node> visited) {
+	private boolean sortUtil(Node node, Set<Node> visited) {
+		// this boolean says if this node has a child that has already been
+		// visited
+		boolean b = false;
 		visited.add(node);
+//		System.out.println("visit" + node.getModule().getIdentifier());
 		Node n = node;
 		while (n.hasInnerNode()) {
 			n = node.getInnerNode();
@@ -290,10 +327,13 @@ public class NodesList extends ArrayList<Node> {
 		while (j < children.size()) {
 			if (!visited.contains(children.get(j))) {
 				sortUtil(children.get(j), visited);
+			} else {
+				b = true;
 			}
 			j++;
 		}
 		stack.push(node);
+		return b;
 	}
 
 	/**
@@ -309,7 +349,8 @@ public class NodesList extends ArrayList<Node> {
 	protected List<Node> getOverlappingNodes(Node node) {
 		List<Node> result = new ArrayList<Node>();
 		if (!node.constraintsAreFulfilled()) {
-			throw new IllegalArgumentException("This node's constraints are not fulfilled");
+			throw new IllegalArgumentException(
+					"This node(" + node.getModule().getIdentifier() + ")'s constraints are not fulfilled");
 		}
 		for (ModuleConstraint constraint : node.getModule().getConstraints()) {
 			if ((constraint.getConstraintType() instanceof OverlappingModuleConstraintType)) {
