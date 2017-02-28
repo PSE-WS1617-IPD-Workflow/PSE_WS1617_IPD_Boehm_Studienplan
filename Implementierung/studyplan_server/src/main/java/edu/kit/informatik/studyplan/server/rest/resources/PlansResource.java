@@ -61,6 +61,7 @@ public class PlansResource {
 	public PlanInOut createPlan(PlanInOut planInput) {
 		planInput.getPlan().setUser(getUser());
 		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getName() == null
+				|| planInput.getPlan().getName().trim().isEmpty()
 				|| planInput.getPlan().getVerificationState() != null
 				|| !planInput.getPlan().getModuleEntries().isEmpty()
 				|| !planInput.getPlan().getPreferences().isEmpty()) {
@@ -144,6 +145,7 @@ public class PlansResource {
 	public PlanInOut replacePlan(@PathParam("id") String planId, PlanInOut planInput) {
 		if (planInput.getPlan().getModuleEntries() == null || planInput.getPlan().getPreferences() == null
 				|| planInput.getPlan().getName() == null
+				|| planInput.getPlan().getName().trim().isEmpty()
 				|| !Objects.equals(planInput.getPlan().getIdentifier(), planId)) {
 			throw new BadRequestException();
 		}
@@ -197,6 +199,8 @@ public class PlansResource {
 	@AuthorizationNeeded
 	public PlanInOut renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
 		if (!Objects.equals(planInput.getPlan().getIdentifier(), planId)
+				|| planInput.getPlan().getName() == null
+				|| planInput.getPlan().getName().trim().isEmpty()
 				|| planInput.getPlan().getVerificationState() != null
 				|| !planInput.getPlan().getModuleEntries().isEmpty() || !planInput.getPlan().getPreferences().isEmpty()
 				|| planInput.getPlan().getCreditPoints() != 0) {
