@@ -73,7 +73,7 @@ public class SimpleGeneratorTest {
 		// creating modules
 		field1 = new Field();
 		field1.setFieldId(1);
-		
+		field1.setMinEcts(14.0);
 		gbi = new Module();
 		gbi.setIdentifier("GBI");
 		gbi.setCycleType(CycleType.BOTH);
@@ -255,7 +255,7 @@ public class SimpleGeneratorTest {
 	}
 
 	@Test
-	public void testAddFieldModules() {
+	public void testAddChoosableFieldModules() {
 		Module ph2;
 		Module hm;
 		Module numerik;
@@ -285,6 +285,7 @@ public class SimpleGeneratorTest {
 		field.getModules().add(numerik);
 		numerik.setField(field);
 		field.getModules().add(tse);
+		
 		tse.setField(field);
 		category = new Category();
 		List<Module> modulesByCategory = new ArrayList<Module>();
@@ -303,6 +304,19 @@ public class SimpleGeneratorTest {
 		assertTrue(generator.getNodes().getCreditPoints(field) == 9.0);
 	}
 
+	@Test
+	public void testAddNotChoosableFieldModules() {
+		Field field = new Field();
+		field.getModules().add(ph1);
+		ph1.setField(field);
+		category = null;
+		field.setMinEcts(2.0);
+		generator.planToGraph(plan);
+		generator.addFieldModules(field, category, plan, dao);
+		assertTrue(generator.getNodes().containsAll(nodesToCompareTo));
+		assertTrue(generator.getNodes().contains(new NodeWithOutput(ph1, plan, generator)));
+		assertTrue(generator.getNodes().getCreditPoints(field) == 2.0);
+	}
 	@Test
 	public void testParallelize() {
 		generator.planToGraph(plan);
@@ -338,6 +352,7 @@ public class SimpleGeneratorTest {
 		field.setMinEcts(2.0);
 		ph1.setField(field);
 		discipline.getFields().add(field);
+		discipline.getFields().add(field1);
 		RuleGroup rule = new RuleGroup();
 		rule.getModules().add(la1);
 		rule.setMinNum(1);
@@ -346,10 +361,11 @@ public class SimpleGeneratorTest {
 		Map<Field, Category> map = new HashMap<Field, Category>();
 		map.put(field, category);
 		generator.planToGraph(plan);
-		assertTrue(generator.randomlyGeneratedPlan(generator.getNodes(), plan, 
-				map, 4, dao).getNodesList().contains(new NodeWithOutput(ph1, plan, generator)));
-		assertTrue(generator.randomlyGeneratedPlan(generator.getNodes(), plan, 
-				map, 4, dao).getNodesList().contains(new NodeWithOutput(la1, plan, generator)));
+		GenerationResult result = generator.randomlyGeneratedPlan(generator.getNodes(), plan, 
+				map, 4, dao);
+		assertTrue(result.getNodesList().contains(new NodeWithOutput(ph1, plan, generator)));
+		assertTrue(result.getNodesList().contains(new NodeWithOutput(la1, plan, generator)));
+
 	}
 	
 	@Test
@@ -383,7 +399,7 @@ public class SimpleGeneratorTest {
 		
 		assertTrue(generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(), plan, 
 				map, -1, 4, dao).size() == 10);
-		System.out.println("NOT NULL BABE");
+//		System.out.println("NOT NULL BABE");
 		for(NodesList l : generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(), plan, 
 				map, -1, 4, dao).values()) {
 			assertTrue(l.contains(new NodeWithOutput(ph1, plan, generator))
@@ -412,9 +428,9 @@ public class SimpleGeneratorTest {
 		PartialObjectiveFunction obFunction = new MinimalECTSAtomObjectiveFunction();
 		Plan newPlan = generator.generate(obFunction, plan,
 				dao, map, 4);
-		for(ModuleEntry m : newPlan.getAllModuleEntries()){
-			System.out.println(m.getModule().getIdentifier());
-		}
+//		for(ModuleEntry m : newPlan.getAllModuleEntries()){
+//			System.out.println(m.getModule().getIdentifier());
+//		}
 		assertTrue(newPlan.getUser().equals(plan.getUser()));
 		assertFalse(newPlan.getVerificationState().equals(VerificationState.INVALID));
 		List<Module> modules = new ArrayList<Module>();

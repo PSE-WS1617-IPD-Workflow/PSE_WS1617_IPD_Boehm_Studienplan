@@ -206,7 +206,7 @@ public class NodesList extends ArrayList<Node> {
 				node.removeChild(n);
 			}
 		}
-		System.out.println("removed " + n.getModule().getIdentifier());
+//		System.out.println("removed " + n.getModule().getIdentifier());
 	}
 
 	/**
@@ -220,7 +220,7 @@ public class NodesList extends ArrayList<Node> {
 	protected int getCreditPoints(Field field) {
 		int creditPoints = 0;
 		for (Node n : this) {
-			System.out.println(n.getModule().getIdentifier());
+//			System.out.println(n.getModule().getIdentifier());
 			if (field.getFieldId() == n.getModule().getField().getFieldId()) {
 				creditPoints += n.getModule().getCreditPoints();
 			}

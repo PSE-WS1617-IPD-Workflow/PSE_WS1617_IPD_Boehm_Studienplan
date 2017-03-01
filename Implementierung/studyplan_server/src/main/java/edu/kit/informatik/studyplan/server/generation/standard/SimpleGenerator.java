@@ -125,22 +125,21 @@ public class SimpleGenerator implements Generator {
 	 *            the plan being generated
 	 */
 	void addFieldModules(Field field, Category category, Plan currentPlan, ModuleDao moduleDAO) {
+//		for(Module m : field.getModules()) {
+//			System.out.println("FIELD_____"+m.getIdentifier());
+//		}
 		int creditPoints = nodes.getCreditPoints(field);
-		System.out.println(creditPoints);
+//		System.out.println(creditPoints);
 		if (creditPoints >= field.getMinEcts()) {
 			return;
 		}
-		System.out.println("ECTS = " + creditPoints + "  MIN = " + field.getMinEcts());
+//		System.out.println("ECTS = " + creditPoints + "  MIN = " + field.getMinEcts());
 
 		List<Module> modules;
 		// set of random numbers to choose modules randomly from the list
 		Set<Integer> randomNumbers;
 		// to iterate through the set above
 //		if (category != null) {
-//		} else {
-//			modules = field.getModules();
-//		}
-		
 		modules = getModulesWithPreference(currentPlan, field.getModules(), category,
 				PreferenceType.POSITIVE, moduleDAO);
 		randomNumbers = getRandomNumbers(modules.size(), modules.size());
@@ -158,7 +157,7 @@ public class SimpleGenerator implements Generator {
 		if (creditPoints >= field.getMinEcts()) {
 			return;
 		}
-		System.out.println("ECTS = " + creditPoints + "  MIN = " + field.getMinEcts());
+//		System.out.println("ECTS = " + creditPoints + "  MIN = " + field.getMinEcts());
 
 		/*
 		 * if preferred modules do not reach the credit points needed add
@@ -179,7 +178,7 @@ public class SimpleGenerator implements Generator {
 		if (creditPoints >= field.getMinEcts()) {
 			return;
 		}
-		System.out.println("ECTS = " + creditPoints + "  MIN = " + field.getMinEcts());
+//		System.out.println("ECTS = " + creditPoints + "  MIN = " + field.getMinEcts());
 
 		/*
 		 * if preferred and not evaluated modules do not reach the credit points needed 
@@ -200,10 +199,10 @@ public class SimpleGenerator implements Generator {
 		if (creditPoints >= field.getMinEcts()) {
 			return;
 		}
-		System.out.println("ECTS = " + creditPoints + "  MIN = " + field.getMinEcts());
+//		System.out.println("ECTS = " + creditPoints + "  MIN = " + field.getMinEcts());
 
 		/*
-		 * if preferred modules do not reach the credit points needed add
+		 * if modules in the category given do not reach the credit points needed add
 		 * modules from the rest of the modules in the field
 		 */
 		modules = field.getModules();
@@ -221,7 +220,7 @@ public class SimpleGenerator implements Generator {
 		if (creditPoints >= field.getMinEcts()) {
 			return;
 		}
-		System.out.println("ECTS = " + creditPoints + "  MIN = " + field.getMinEcts());
+//		System.out.println("ECTS = " + creditPoints + "  MIN = " + field.getMinEcts());
 		if (creditPoints < field.getMinEcts()) {
 			throw new IllegalArgumentException("CreditPoints of the Category < minECTS of "
 					+ "field");
@@ -247,6 +246,11 @@ public class SimpleGenerator implements Generator {
 	 */
 	GenerationResult randomlyGeneratedPlan(NodesList nodes, Plan plan, Map<Field, Category> preferredSubjects,
 			int maxECTSperSemester, ModuleDao moduleDAO) {
+//		for(Field f : preferredSubjects.keySet()){
+//			for(Module m : f.getModules()) {
+//				System.out.println(m.getIdentifier());
+//			}
+//		}
 		// adding modules of the rule groups of the discipline
 		List<RuleGroup> ruleGroups = plan.getUser().getDiscipline().getRuleGroups();
 		for (RuleGroup ruleGroup : ruleGroups) {
@@ -254,9 +258,11 @@ public class SimpleGenerator implements Generator {
 		}
 		// adding modules of the fields of the discipline
 		List<Field> fields = plan.getUser().getDiscipline().getFields();
+//		System.out.println("ADDING FIELDS");
 		for (Field field : fields) {
 			addFieldModules(field, preferredSubjects.get(field), plan, moduleDAO);
 		}
+//		System.out.println("END");
 		List<Node> sorted = nodes.sort();
 		GenerationResult result = new GenerationResult(
 				createPlan(sorted, parallelize(sorted, maxECTSperSemester), plan.getUser()), nodes);
@@ -489,12 +495,12 @@ public class SimpleGenerator implements Generator {
 			}
 			GenerationResult modified = randomlyModifiedPlan(numberOfNodesToChange, generated, preferredSubjects, maxECTSperSemester,
 					moduleDAO);
-			for(ModuleEntry m : modified.getPlan().getAllModuleEntries()) {
-				System.out.println("ModuleEntries module" + m.getModule().getIdentifier());
-			}
-			for(Node n : generated.getNodesList()) {
-				System.out.println("Nodes node" + n.getModule().getIdentifier());
-			}
+//			for(ModuleEntry m : modified.getPlan().getAllModuleEntries()) {
+//				System.out.println("ModuleEntries module" + m.getModule().getIdentifier());
+//			}
+//			for(Node n : generated.getNodesList()) {
+//				System.out.println("Nodes node" + n.getModule().getIdentifier());
+//			}
 			planFamily.put(modified.getPlan(), modified.getNodesList());
 		}
 		return planFamily;
@@ -562,6 +568,9 @@ public class SimpleGenerator implements Generator {
 	 */
 	List<Module> getModulesWithPreference(Plan currentPlan, List<Module> listOfModules, Category category,
 			PreferenceType preference, ModuleDao moduleDAO) {
+//		if(preference == PreferenceType.POSITIVE){System.out.println("POS");}
+//		if(preference == PreferenceType.NEGATIVE){System.out.println("neg");}
+//		if(preference == null){System.out.println("null");}
 		List<Module> modules = new ArrayList<Module>();
 		if (category != null) {
 			Filter filter = new CategoryFilter(category);
@@ -578,6 +587,9 @@ public class SimpleGenerator implements Generator {
 				}
 			}
 		}
+//		for(Module m : modules) {
+//			System.out.println(m.getIdentifier());
+//		}
 		return modules;
 	}
 

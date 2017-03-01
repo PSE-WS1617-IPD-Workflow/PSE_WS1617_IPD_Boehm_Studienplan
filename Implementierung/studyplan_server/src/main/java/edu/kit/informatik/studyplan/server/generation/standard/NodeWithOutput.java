@@ -36,7 +36,7 @@ public class NodeWithOutput extends Node {
 	}
 	
 	protected void fulfillConstraints(boolean random) {
-		System.out.println("FULFILLING CONST " + this.getModule().getIdentifier());
+//		System.out.println("FULFILLING CONST " + this.getModule().getIdentifier());
 		if (this.isPassed()) {
 			return;
 		}

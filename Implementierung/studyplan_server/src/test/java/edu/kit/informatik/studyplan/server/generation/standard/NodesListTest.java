@@ -36,47 +36,56 @@ public class NodesListTest {
 	Node swtNode;
 	Node pseNode;
 	Node tseNode;
+	Field field1;
 	@Before
 	public void setUp() {
 		generator = new SimpleGenerator();
 
 		// creating modules
+		field1 = new Field();
+		field1.setFieldId(1);
+		
 		gbi = new Module();
 		gbi.setIdentifier("GBI");
 		gbi.setCycleType(CycleType.BOTH);
 		gbi.setCreditPoints(2.0);
-		
+		gbi.setField(field1);
+
 		swt = new Module();
 		swt.setIdentifier("SWT");
 		swt.setCycleType(CycleType.SUMMER_TERM);
 		swt.setCreditPoints(2.0);
-
+		swt.setField(field1);
+		
 		prog = new Module();
 		prog.setIdentifier("PROG");
 		prog.setCycleType(CycleType.BOTH);
 		prog.setCreditPoints(2.0);
+		prog.setField(field1);
 
-		
 		tse = new Module();
 		tse.setIdentifier("TSE");
 		tse.setCycleType(CycleType.BOTH);
 		tse.setCreditPoints(2.0);
+		tse.setField(field1);
 		
 		pse = new Module();
 		pse.setIdentifier("PSE");
 		pse.setCycleType(CycleType.BOTH);
 		pse.setCreditPoints(2.0);
+		pse.setField(field1);
 
-		
 		la1 = new Module();
 		la1.setIdentifier("LA1");
 		la1.setCycleType(CycleType.BOTH);
 		la1.setCreditPoints(2.0);
-		
+		la1.setField(field1);
+
 		la2 = new Module();
 		la2.setIdentifier("LA2");
 		la2.setCycleType(CycleType.BOTH);
 		la2.setCreditPoints(2.0);
+		la2.setField(field1);
 
 		ph = new Module();
 		ph.setIdentifier("PH");
@@ -136,6 +145,7 @@ public class NodesListTest {
 	@Test
 	public void getCreditPoints() {
 		Field field = new Field();
+		field.setFieldId(0);
 		field.getModules().add(la1);
 		la1.setField(field);
 		assertTrue(nodes.getCreditPoints(field) == 2);
