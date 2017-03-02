@@ -109,6 +109,12 @@
     	<artifactId>log4j</artifactId>
     	<version>1.2.17</version>
     </dependency>
+    <dependency>
+    	<groupId>io.rest-assured</groupId>
+    	<artifactId>json-schema-validator</artifactId>
+    	<version>3.0.2</version>
+    	<scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
     <finalName>studyplan</finalName>

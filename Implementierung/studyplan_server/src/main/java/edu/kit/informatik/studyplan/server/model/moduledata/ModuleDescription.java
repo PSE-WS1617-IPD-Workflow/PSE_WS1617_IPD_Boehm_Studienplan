@@ -54,7 +54,7 @@ public class ModuleDescription {
 	 * @return returns the lecturer
 	 */
 	public String getLecturer() {
-		return descriptionText;
+		return lecturer;
 	}
 
 	/**
