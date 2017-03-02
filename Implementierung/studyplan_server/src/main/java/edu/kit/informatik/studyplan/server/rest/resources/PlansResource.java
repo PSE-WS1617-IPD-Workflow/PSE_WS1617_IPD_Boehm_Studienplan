@@ -42,6 +42,7 @@ import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
+import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
@@ -192,7 +193,7 @@ public class PlansResource {
 			throw new BadRequestException();
 		}
 		if (planInput.getPlan().getModuleEntries().stream()
-				.anyMatch(entry -> !isValid(entry, getUser().getStudyStart()))) {
+				.anyMatch(entry -> !isValid(entry))) {
 			throw new BadRequestException("Invalid module entry.");
 		}
 		return Utils.withPlanDao(dao -> {
@@ -397,10 +398,9 @@ public class PlansResource {
 	@AuthorizationNeeded
 	public ModuleInOut putModuleSemester(@PathParam("plan") String planId, @PathParam("module") String moduleId,
 			ModuleInOut moduleInput) {
-		if (moduleInput == null 
-				|| moduleInput.getModule() == null 
-				|| !Objects.equals(moduleInput.getModule().getId(), moduleId)
-				|| moduleInput.getModule().getSemester() == null) {
+		if (moduleInput == null
+				|| !isValid(moduleInput.getModule())
+				|| !Objects.equals(moduleInput.getModule().getId(), moduleId)) {
 			throw new BadRequestException();
 		}
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
@@ -652,15 +652,27 @@ public class PlansResource {
 		return Response.ok(converter.getWriter().toString()).build();
 	}
 
-	private boolean isValid(ModuleEntry entry, Semester studyStart) {
-		if (entry.getModule() == null) {
+	private boolean isValid(JsonModule module) {
+		if (module == null) {
 			return false;
 		}
-		if (entry.getSemester() <= 0 || entry.getSemester() > MAX_SEMESTERS) {
+		Module loadedModule = Utils.withModuleDao(dao -> dao.getModuleById(module.getId()));
+		return isValid(module.getSemester(), loadedModule.getCycleType());
+	}
+
+	private boolean isValid(ModuleEntry entry) {
+		if (entry == null || entry.getModule() == null) {
 			return false;
 		}
-		//TODO: the drop
-		return true;
+		return isValid(entry.getSemester(), entry.getModule().getCycleType());
+	}
+	
+	private boolean isValid(int semester, CycleType cycleType) {
+		if (semester <= 0 || semester > MAX_SEMESTERS) {
+			return false;
+		}
+		Semester desiredSemester = getUser().getStudyStart().plus(semester);
+		return cycleType.matches(desiredSemester.getSemesterType());
 	}
 
 

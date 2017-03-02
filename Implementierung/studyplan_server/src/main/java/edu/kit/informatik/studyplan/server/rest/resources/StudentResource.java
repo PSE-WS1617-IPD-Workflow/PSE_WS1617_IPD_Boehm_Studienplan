@@ -82,7 +82,8 @@ public class StudentResource {
 							if (entry.getModule() == null) {
 								throw new BadRequestException();
 							}
-							if (jsonModule.getSemester() <= 0) {
+							if (jsonModule.getSemester() <= 0 
+									|| jsonModule.getSemester() > PlansResource.MAX_SEMESTERS) {
 								throw new BadRequestException();
 							}
 							if (jsonModule.getSemester() > thisStudent.getStudyStart().getDistanceToCurrentSemester()) {
