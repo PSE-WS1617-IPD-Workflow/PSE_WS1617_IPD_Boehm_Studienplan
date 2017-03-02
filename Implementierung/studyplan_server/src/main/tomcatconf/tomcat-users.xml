@@ -46,4 +46,6 @@
   	<user username="manager" password="xxxx" roles="manager-gui"/>
   	<user username="max_mustermann" password="123" roles="student"/>
   	<user username="peter_schmidt" password="123" roles="student"/>
+	<user username="user" password="user" roles="student"/>
+	<user username="new_user" password="user" roles="student"/>
 </tomcat-users>

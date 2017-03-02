@@ -47,6 +47,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>waitForNotVisible</td>
+	<td>css=.loading</td>
+	<td></td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>css=div.moduleListWrapper</td>
 	<td>*PSE*</td>
@@ -54,7 +59,7 @@
 <tr>
 	<td>assertNotText</td>
 	<td>css=div.moduleListWrapper</td>
-	<td>Kognitive Systeme</td>
+	<td>*Kognitive Systeme*</td>
 </tr>
 </tbody></table>
 </body>

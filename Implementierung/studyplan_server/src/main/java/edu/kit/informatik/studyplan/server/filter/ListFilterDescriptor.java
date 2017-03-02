@@ -1,17 +1,17 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.core.MultivaluedMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.core.MultivaluedMap;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * FilterDescriptor for ListFilters.
@@ -66,10 +66,11 @@ public class ListFilterDescriptor<T> extends FilterDescriptor {
         }
         try {
             int selectionNumber = Integer.parseInt(selectionString);
-            if (selectionNumber < 0 || selectionNumber >= itemObjectsSupplier.get().size()) {
+            List<T> itemObjects = itemObjectsSupplier.get();
+            if (selectionNumber < 0 || selectionNumber >= itemObjects.size()) {
                 throw new BadRequestException();
             }
-            return constructor.apply(itemObjectsSupplier.get().get(selectionNumber));
+            return constructor.apply(itemObjects.get(selectionNumber));
         } catch (NumberFormatException ex) {
             throw new BadRequestException();
         }
@@ -78,7 +79,7 @@ public class ListFilterDescriptor<T> extends FilterDescriptor {
     /**
      * Represents a JSON list item by id and name.
      */
-    private static class ListItem {
+    static class ListItem {
     	@JsonProperty
         private int id;
     	@JsonProperty
@@ -89,20 +90,19 @@ public class ListFilterDescriptor<T> extends FilterDescriptor {
             this.text = name;
         }
 
+        @Override
+        public boolean equals(Object obj) {
+            return (obj instanceof ListItem) &&
+                    this.id == ((ListItem) obj).getId() &&
+                    Objects.equals(this.text, ((ListItem) obj).getText());
+        }
+
         public int getId() {
             return id;
         }
 
-        public void setId(int id) {
-            this.id = id;
-        }
-
         public String getText() {
             return text;
-        }
-
-        public void setText(String text) {
-            this.text = text;
         }
     }
 }

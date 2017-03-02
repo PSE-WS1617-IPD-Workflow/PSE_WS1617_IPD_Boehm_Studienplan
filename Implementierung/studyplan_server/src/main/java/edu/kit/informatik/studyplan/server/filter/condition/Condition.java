@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Represents a simple one-relational attribute-based boolean condition.
  */
-public final class Condition {
+public class Condition {  //DO NOT MAKE THIS FINAL, OTHERWISE SOME TESTS WON'T COMPILE!
     private String lhsName;
     private Object[] rhsValues;
     private BooleanRelation relation;
@@ -44,6 +44,14 @@ public final class Condition {
         return String.format("(%s %s %s)", lhsName, relation, Arrays.toString(rhsValues));
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Condition) &&
+                this.getLhsName().equals(((Condition) obj).getLhsName()) &&
+                this.getRelation().equals(((Condition) obj).getRelation()) &&
+                Arrays.equals(this.getRhsValues(), ((Condition) obj).getRhsValues());
+    }
+
     /**
      * Creates an `Equals` condition.
      * @param lhsName the attribute name of the left-hand side. Must not be null.
@@ -51,6 +59,9 @@ public final class Condition {
      * @return the condition
      */
     public static Condition createEquals(String lhsName, Object rhsValue) {
+        if (lhsName == null || rhsValue == null) {
+            throw new IllegalArgumentException();
+        }
         return new Condition(lhsName, new Object[]{rhsValue}, BooleanRelation.EQUALS);
     }
 
@@ -62,6 +73,9 @@ public final class Condition {
      * @return the condition
      */
     public static Condition createBetween(String lhsName, double lower, double upper) {
+        if (lower > upper || lhsName == null) {
+            throw new IllegalArgumentException();
+        }
         return new Condition(lhsName, new Object[]{lower, upper}, BooleanRelation.BETWEEN);
     }
 
@@ -72,6 +86,9 @@ public final class Condition {
      * @return the condition
      */
     public static Condition createContains(String lhsName, String rhsSubstring) {
+        if (lhsName == null || rhsSubstring == null) {
+            throw new IllegalArgumentException();
+        }
         return new Condition(lhsName, new Object[]{rhsSubstring}, BooleanRelation.CONTAINS);
     }
 }

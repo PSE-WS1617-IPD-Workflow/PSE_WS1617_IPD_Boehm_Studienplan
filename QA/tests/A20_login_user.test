@@ -4,13 +4,18 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost/" />
-<title>login_logout_checkIfStillLoggedIn</title>
+<title>login</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">login_logout_checkIfStillLoggedIn</td></tr>
+<tr><td rowspan="1" colspan="3">login</td></tr>
 </thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://user:user@localhost:8080/studyplan/rest/auth/login</td>
+	<td></td>
+</tr>
 <tr>
 	<td>open</td>
 	<td>/login</td>
@@ -28,32 +33,17 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>link=Logout</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=Logout</td>
+	<td>link=Profil</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>css=a.loginButton</td>
+	<td>//div[@id='content']/div/div/div/table/thead</td>
 	<td></td>
 </tr>
 <tr>
-	<td>open</td>
-	<td>/</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>css=a.loginButton</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertLocation</td>
-	<td>http://localhost/login</td>
+	<td>assertVisible</td>
+	<td>//div[@id='content']/div/div/div/table/thead</td>
 	<td></td>
 </tr>
 </tbody></table>

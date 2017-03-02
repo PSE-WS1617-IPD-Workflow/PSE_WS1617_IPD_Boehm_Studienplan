@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/" />
+<title>A10_first_sign_in_profile_view</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">A10_first_sign_in_profile_view</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Profil</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Profil</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>css=ul.semesterModules.leftSided</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=ul.semesterModules.leftSided</td>
+	<td>*Grundbegriffe der Informatik*</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=ul.semesterModules.leftSided</td>
+	<td>*Programmieren*</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='content']/div/div[2]/div/div/table/tbody/tr[2]/td[2]/ul</td>
+	<td>*Algorithmen I*</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=td</td>
+	<td>*Semester 1*</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='content']/div/div[2]/div/div/table/tbody/tr[2]/td</td>
+	<td>*Semester 2*</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='content']/div/div[2]/div/div/table/tbody/tr[3]/td</td>
+	<td>*Semester 3*</td>
+</tr>
+<!--Now we delete the profile again, so the test runs next time as well...-->
+<tr>
+	<td>click</td>
+	<td>id=deleteUser</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>css=a.loginButton</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

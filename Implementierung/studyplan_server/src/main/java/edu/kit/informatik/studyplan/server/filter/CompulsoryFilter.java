@@ -10,14 +10,14 @@ public class CompulsoryFilter extends ListFilter<Boolean> {
 	 * Creates a new CompulsoryFilter with a given selection.
 	 *
 	 * @param selection
-	 *            if the filtered modules sould be compulsory or not
+	 *            if the filtered modules should be compulsory or not
 	 */
 	public CompulsoryFilter(boolean selection) {
 		super(selection);
 	}
 
 	@Override
-	public String getAttributeName() {
+	protected String getAttributeName() {
 		return ModuleAttributeNames.IS_COMPULSORY;
 	}
 }

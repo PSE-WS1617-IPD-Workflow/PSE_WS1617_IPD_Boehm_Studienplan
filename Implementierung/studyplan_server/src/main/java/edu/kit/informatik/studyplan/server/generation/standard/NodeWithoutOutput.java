@@ -2,6 +2,7 @@ package edu.kit.informatik.studyplan.server.generation.standard;
 
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 
 /************************************************************/
 /**
@@ -11,8 +12,9 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Module;
  */
 public class NodeWithoutOutput extends Node {
 
-	protected NodeWithoutOutput(Module module, SimpleGenerator generator) {
-		super(module, generator);
+
+	protected NodeWithoutOutput(Module module, Plan plan, SimpleGenerator generator) {
+		super(module, plan, generator);
 	}
 
 	@Override

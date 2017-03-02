@@ -1,12 +1,12 @@
 package edu.kit.informatik.studyplan.server.model.moduledata.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import edu.kit.informatik.studyplan.server.filter.condition.Condition;
+import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import org.hibernate.query.Query;
 
-import edu.kit.informatik.studyplan.server.filter.condition.Condition;
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Converter for Condition lists to HQL "where"-clauses
@@ -81,10 +81,23 @@ public class ConditionQueryConverter {
 				parameters.add("%" + condition.getRhsValues()[0] + "%");
 				break;
 			case EQUALS:
-				conditionBuilder.append("m." + condition.getLhsName());
-				conditionBuilder.append(" = ");
-				conditionBuilder.append(":" + paramPrefix + parameters.size());
-				parameters.add(condition.getRhsValues()[0]);
+				if (condition.getRhsValues()[0].getClass() != CycleType.class
+						|| condition.getRhsValues()[0] == CycleType.BOTH) {
+					conditionBuilder.append("m." + condition.getLhsName());
+					conditionBuilder.append(" = ");
+					conditionBuilder.append(":" + paramPrefix + parameters.size());
+					parameters.add(condition.getRhsValues()[0]);
+				} else { //rhs == WT or ST
+					conditionBuilder.append("((m." + condition.getLhsName());
+					conditionBuilder.append(" = ");
+					conditionBuilder.append(":" + paramPrefix + parameters.size() + ")");
+					parameters.add(condition.getRhsValues()[0]);
+					conditionBuilder.append(" or ");
+					conditionBuilder.append("(m." + condition.getLhsName());
+					conditionBuilder.append(" = ");
+					conditionBuilder.append(":" + paramPrefix + parameters.size() + "))");
+					parameters.add(CycleType.BOTH);
+				}
 				break;
 			default:
 				break;
