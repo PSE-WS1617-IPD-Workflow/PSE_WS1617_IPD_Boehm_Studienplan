@@ -263,14 +263,15 @@ public class PlansResource {
 				|| planInput.getPlan().getCreditPoints() != 0) {
 			throw new BadRequestException();
 		}
-		if (getUser().getPlans().stream()
-				.anyMatch(plan -> plan.getName().equals(planInput.getPlan().getName()))) {
-			throw new UnprocessableEntityException();
-		}
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
 			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
+			}
+			if (!plan.getName().equals(planInput.getPlan().getName()) 
+					&& getUser().getPlans().stream()
+						.anyMatch(entry -> entry.getName().equals(planInput.getPlan().getName()))) {
+				throw new BadRequestException("Duplicate name.");
 			}
 			plan.setName(planInput.getPlan().getName());
 			dao.updatePlan(plan);
