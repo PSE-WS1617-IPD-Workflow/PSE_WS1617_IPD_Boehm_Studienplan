@@ -1,13 +1,55 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
+import java.io.IOException;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.HttpMethod;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.ServiceUnavailableException;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriInfo;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.userdata.*;
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
+import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
+import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import edu.kit.informatik.studyplan.server.model.userdata.Semester;
+import edu.kit.informatik.studyplan.server.model.userdata.User;
+import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
@@ -21,25 +63,19 @@ import edu.kit.informatik.studyplan.server.rest.resources.json.PlanDto;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import javax.ws.rs.core.Response.Status;
-import java.io.IOException;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.util.*;
-import java.util.stream.Collectors;
-
 /**
  * REST resource for /plans.
  */
 @Path("/plans")
 public class PlansResource {
+	
+	/**
+	 * maximum number of semesters a plan may contain
+	 */
+	public static final int MAX_SEMESTERS = 200;
+	
+	private static int maxPlanNameLength = 100;
+	
 	@Inject
 	Provider<AuthorizationContext> context;
 
@@ -62,6 +98,7 @@ public class PlansResource {
 		planInput.getPlan().setUser(getUser());
 		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getName() == null
 				|| planInput.getPlan().getName().trim().isEmpty()
+				|| planInput.getPlan().getName().length() > maxPlanNameLength
 				|| planInput.getPlan().getVerificationState() != null
 				|| !planInput.getPlan().getModuleEntries().isEmpty()
 				|| !planInput.getPlan().getPreferences().isEmpty()) {
@@ -146,17 +183,29 @@ public class PlansResource {
 		if (planInput.getPlan().getModuleEntries() == null || planInput.getPlan().getPreferences() == null
 				|| planInput.getPlan().getName() == null
 				|| planInput.getPlan().getName().trim().isEmpty()
+				|| planInput.getPlan().getName().length() > maxPlanNameLength
 				|| !Objects.equals(planInput.getPlan().getIdentifier(), planId)) {
 			throw new BadRequestException();
+		}
+		if (planInput.getPlan().getModuleEntries().stream()
+				.anyMatch(entry -> !isValid(entry, getUser().getStudyStart()))) {
+			throw new BadRequestException("Invalid module entry.");
 		}
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
 			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
 			}
-			planInput.getPlan().setIdentifier(null);
-			planInput.getPlan().setVerificationState(VerificationState.NOT_VERIFIED);
-			dao.updatePlan(planInput.getPlan());
+			if (!plan.getName().equals(planInput.getPlan().getName()) 
+					&& getUser().getPlans().stream()
+						.anyMatch(entry -> entry.getName().equals(planInput.getPlan().getName()))) {
+				throw new BadRequestException("Duplicate name.");
+			}
+			plan.setName(planInput.getPlan().getName());
+			plan.getModuleEntries().clear();
+			plan.getModuleEntries().addAll(planInput.getPlan().getModuleEntries());
+			plan.setVerificationState(VerificationState.NOT_VERIFIED);
+			dao.updatePlan(plan);
 			return planInput;
 		});
 	}
@@ -201,6 +250,7 @@ public class PlansResource {
 		if (!Objects.equals(planInput.getPlan().getIdentifier(), planId)
 				|| planInput.getPlan().getName() == null
 				|| planInput.getPlan().getName().trim().isEmpty()
+				|| planInput.getPlan().getName().length() > maxPlanNameLength
 				|| planInput.getPlan().getVerificationState() != null
 				|| !planInput.getPlan().getModuleEntries().isEmpty() || !planInput.getPlan().getPreferences().isEmpty()
 				|| planInput.getPlan().getCreditPoints() != 0) {
@@ -588,6 +638,18 @@ public class PlansResource {
 		converter.getWriter().flush();
 		return Response.ok(converter.getWriter().toString()).build();
 	}
+
+	private boolean isValid(ModuleEntry entry, Semester studyStart) {
+		if (entry.getModule() == null) {
+			return false;
+		}
+		if (entry.getSemester() <= 0 || entry.getSemester() > MAX_SEMESTERS) {
+			return false;
+		}
+		//TODO: winter and summer term
+		return true;
+	}
+
 
 	/**
 	 * Class for encapsulating a single JsonModule. Used for JSON
