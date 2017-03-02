@@ -658,11 +658,17 @@ public class PlansResource {
 			return false;
 		}
 		Module loadedModule = Utils.withModuleDao(dao -> dao.getModuleById(module.getId()));
+		if (!loadedModule.getDiscipline().equals(getUser().getDiscipline())) {
+			return false;
+		}
 		return isValid(module.getSemester(), loadedModule.getCycleType());
 	}
 
 	private boolean isValid(ModuleEntry entry) {
 		if (entry == null || entry.getModule() == null) {
+			return false;
+		}
+		if (!entry.getModule().getDiscipline().equals(getUser().getDiscipline())) {
 			return false;
 		}
 		return isValid(entry.getSemester(), entry.getModule().getCycleType());
