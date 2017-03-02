@@ -95,8 +95,9 @@ public class PlansResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
 	public PlanInOut createPlan(PlanInOut planInput) {
-		planInput.getPlan().setUser(getUser());
-		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getName() == null
+		if (planInput == null
+				|| planInput.getPlan() == null
+				|| planInput.getPlan().getIdentifier() != null || planInput.getPlan().getName() == null
 				|| planInput.getPlan().getName().trim().isEmpty()
 				|| planInput.getPlan().getName().length() > maxPlanNameLength
 				|| planInput.getPlan().getVerificationState() != null
@@ -108,6 +109,7 @@ public class PlansResource {
 				.anyMatch(plan -> plan.getName().equals(planInput.getPlan().getName()))) {
 			throw new UnprocessableEntityException();
 		}
+		planInput.getPlan().setUser(getUser());
 		return Utils.withPlanDao(dao -> {
 			Plan plan = planInput.getPlan();
 			plan.getCreditPoints();
@@ -180,7 +182,9 @@ public class PlansResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
 	public PlanInOut replacePlan(@PathParam("id") String planId, PlanInOut planInput) {
-		if (planInput.getPlan().getModuleEntries() == null || planInput.getPlan().getPreferences() == null
+		if (planInput == null
+				|| planInput.getPlan() == null 
+				|| planInput.getPlan().getModuleEntries() == null || planInput.getPlan().getPreferences() == null
 				|| planInput.getPlan().getName() == null
 				|| planInput.getPlan().getName().trim().isEmpty()
 				|| planInput.getPlan().getName().length() > maxPlanNameLength
@@ -247,7 +251,9 @@ public class PlansResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
 	public PlanInOut renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
-		if (!Objects.equals(planInput.getPlan().getIdentifier(), planId)
+		if (planInput == null
+				|| planInput.getPlan() == null
+				|| !Objects.equals(planInput.getPlan().getIdentifier(), planId)
 				|| planInput.getPlan().getName() == null
 				|| planInput.getPlan().getName().trim().isEmpty()
 				|| planInput.getPlan().getName().length() > maxPlanNameLength
@@ -288,7 +294,7 @@ public class PlansResource {
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
 			if (plan == null || !getUser().equals(plan.getUser())) {
-				throw new UnprocessableEntityException();
+				throw new NotFoundException();
 			}
 			dao.deletePlan(plan);
 			return Response.ok().build();
@@ -391,7 +397,9 @@ public class PlansResource {
 	@AuthorizationNeeded
 	public ModuleInOut putModuleSemester(@PathParam("plan") String planId, @PathParam("module") String moduleId,
 			ModuleInOut moduleInput) {
-		if (!Objects.equals(moduleInput.getModule().getId(), moduleId)
+		if (moduleInput == null 
+				|| moduleInput.getModule() == null 
+				|| !Objects.equals(moduleInput.getModule().getId(), moduleId)
 				|| moduleInput.getModule().getSemester() == null) {
 			throw new BadRequestException();
 		}
@@ -468,7 +476,9 @@ public class PlansResource {
 	@AuthorizationNeeded
 	public ModuleInOut setModulePreference(@PathParam("plan") String planId, @PathParam("module") String moduleId,
 			ModuleInOut moduleInput) {
-		if (!Objects.equals(moduleInput.getModule().getId(), moduleId)) {
+		if (moduleInput == null
+				|| moduleInput.getModule() == null 
+				|| !Objects.equals(moduleInput.getModule().getId(), moduleId)) {
 			throw new BadRequestException();
 		}
 		return Utils.withModuleDao(moduleDao -> Utils.withPlanDao(planDao -> {
@@ -626,6 +636,9 @@ public class PlansResource {
 		AbstractSecurityProvider provider = AbstractSecurityProvider.getSecurityProviderImpl();
 		AuthorizationContext context = provider.getAuthorizationContext(accessToken);
 		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		if (plan == null) {
+			throw new NotFoundException();
+		}
 		if (context == null || !context.getUser().equals(plan.getUser())) {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
@@ -646,7 +659,7 @@ public class PlansResource {
 		if (entry.getSemester() <= 0 || entry.getSemester() > MAX_SEMESTERS) {
 			return false;
 		}
-		//TODO: winter and summer term
+		//TODO: the drop
 		return true;
 	}
 
