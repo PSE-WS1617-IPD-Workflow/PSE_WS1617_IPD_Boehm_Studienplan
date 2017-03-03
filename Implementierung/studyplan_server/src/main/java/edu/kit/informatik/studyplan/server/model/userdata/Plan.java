@@ -111,6 +111,7 @@ public class Plan {
 	 *
 	 * @return returns the plans {@link VerificationState}
 	 */
+	@JsonIgnore
 	public VerificationState getVerificationState() {
 		return state;
 	}
@@ -120,6 +121,7 @@ public class Plan {
 	 * @param verificationState
 	 *            the verification state to set
 	 */
+	@JsonIgnore
 	public void setVerificationState(VerificationState verificationState) {
 		this.state = verificationState;
 	}

@@ -450,14 +450,8 @@ public abstract class Node {
 	 *         with the number given.
 	 */
 	protected boolean fitsInSemester(int i) {
-		// Check if a node is already fixed in a semester
-		if (semester != 0) {
-			if (semester == i) {
-				return true;
-			}
-			return false;
-		}
-		// Check if Semester type corresponds to cycle tupe of the module
+
+		// Check if Semester type corresponds to cycle type of the module
 		if (getModule().getCycleType() == CycleType.WINTER_TERM) {
 			if (getSemesterType(i) != SemesterType.WINTER_TERM) {
 				return false;
@@ -489,5 +483,11 @@ public abstract class Node {
 	public SimpleGenerator getGenerator() {
 		return generator;
 	}
+	
+	@Override
+	public String toString(){
+		return module.getIdentifier() + "  " + module.getName();
+	}
+	
 
 }
