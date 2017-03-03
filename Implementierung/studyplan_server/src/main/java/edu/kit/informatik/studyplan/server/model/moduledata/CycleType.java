@@ -3,6 +3,8 @@ package edu.kit.informatik.studyplan.server.model.moduledata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
+
 /**
  * cycles types for a module
  * @author NiklasUhl
@@ -24,4 +26,24 @@ public enum CycleType {
 	 */
 	@JsonProperty("both")
 	BOTH;
+	
+	/**
+	 * check if the given semester type matches this cycle type.<br>
+	 * WINTER_TERM and WINTER_TERM match,
+	 * SUMMER_TERM and SUMMER_TERM match,
+	 * BOTH matches everything
+	 * @param semesterType a semester type
+	 * @return the result
+	 */
+	public boolean matches(SemesterType semesterType) {
+		if (semesterType == null) {
+			return false;
+		}
+		if (this == BOTH) {
+			return true;
+		} else {
+			return semesterType.toString().equals(this.toString());
+		}
+	}
+		
 };

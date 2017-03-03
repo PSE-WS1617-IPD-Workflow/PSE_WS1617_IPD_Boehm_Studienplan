@@ -1,13 +1,56 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
+import java.io.IOException;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.HttpMethod;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.ServiceUnavailableException;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriInfo;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
+import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.userdata.*;
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
+import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
+import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import edu.kit.informatik.studyplan.server.model.userdata.Semester;
+import edu.kit.informatik.studyplan.server.model.userdata.User;
+import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
@@ -21,25 +64,19 @@ import edu.kit.informatik.studyplan.server.rest.resources.json.PlanDto;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import javax.ws.rs.core.Response.Status;
-import java.io.IOException;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.util.*;
-import java.util.stream.Collectors;
-
 /**
  * REST resource for /plans.
  */
 @Path("/plans")
 public class PlansResource {
+	
+	/**
+	 * maximum number of semesters a plan may contain
+	 */
+	public static final int MAX_SEMESTERS = 200;
+	
+	private static int maxPlanNameLength = 100;
+	
 	@Inject
 	Provider<AuthorizationContext> context;
 
@@ -59,9 +96,11 @@ public class PlansResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
 	public PlanInOut createPlan(PlanInOut planInput) {
-		planInput.getPlan().setUser(getUser());
-		if (planInput.getPlan().getIdentifier() != null || planInput.getPlan().getName() == null
+		if (planInput == null
+				|| planInput.getPlan() == null
+				|| planInput.getPlan().getIdentifier() != null || planInput.getPlan().getName() == null
 				|| planInput.getPlan().getName().trim().isEmpty()
+				|| planInput.getPlan().getName().length() > maxPlanNameLength
 				|| planInput.getPlan().getVerificationState() != null
 				|| !planInput.getPlan().getModuleEntries().isEmpty()
 				|| !planInput.getPlan().getPreferences().isEmpty()) {
@@ -71,6 +110,7 @@ public class PlansResource {
 				.anyMatch(plan -> plan.getName().equals(planInput.getPlan().getName()))) {
 			throw new UnprocessableEntityException();
 		}
+		planInput.getPlan().setUser(getUser());
 		return Utils.withPlanDao(dao -> {
 			Plan plan = planInput.getPlan();
 			plan.getCreditPoints();
@@ -143,20 +183,34 @@ public class PlansResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
 	public PlanInOut replacePlan(@PathParam("id") String planId, PlanInOut planInput) {
-		if (planInput.getPlan().getModuleEntries() == null || planInput.getPlan().getPreferences() == null
+		if (planInput == null
+				|| planInput.getPlan() == null 
+				|| planInput.getPlan().getModuleEntries() == null || planInput.getPlan().getPreferences() == null
 				|| planInput.getPlan().getName() == null
 				|| planInput.getPlan().getName().trim().isEmpty()
+				|| planInput.getPlan().getName().length() > maxPlanNameLength
 				|| !Objects.equals(planInput.getPlan().getIdentifier(), planId)) {
 			throw new BadRequestException();
+		}
+		if (planInput.getPlan().getModuleEntries().stream()
+				.anyMatch(entry -> !isValid(entry))) {
+			throw new BadRequestException("Invalid module entry.");
 		}
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
 			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
 			}
-			planInput.getPlan().setIdentifier(null);
-			planInput.getPlan().setVerificationState(VerificationState.NOT_VERIFIED);
-			dao.updatePlan(planInput.getPlan());
+			if (!plan.getName().equals(planInput.getPlan().getName()) 
+					&& getUser().getPlans().stream()
+						.anyMatch(entry -> entry.getName().equals(planInput.getPlan().getName()))) {
+				throw new BadRequestException("Duplicate name.");
+			}
+			plan.setName(planInput.getPlan().getName());
+			plan.getModuleEntries().clear();
+			plan.getModuleEntries().addAll(planInput.getPlan().getModuleEntries());
+			plan.setVerificationState(VerificationState.NOT_VERIFIED);
+			dao.updatePlan(plan);
 			return planInput;
 		});
 	}
@@ -198,22 +252,26 @@ public class PlansResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
 	public PlanInOut renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
-		if (!Objects.equals(planInput.getPlan().getIdentifier(), planId)
+		if (planInput == null
+				|| planInput.getPlan() == null
+				|| !Objects.equals(planInput.getPlan().getIdentifier(), planId)
 				|| planInput.getPlan().getName() == null
 				|| planInput.getPlan().getName().trim().isEmpty()
+				|| planInput.getPlan().getName().length() > maxPlanNameLength
 				|| planInput.getPlan().getVerificationState() != null
 				|| !planInput.getPlan().getModuleEntries().isEmpty() || !planInput.getPlan().getPreferences().isEmpty()
 				|| planInput.getPlan().getCreditPoints() != 0) {
 			throw new BadRequestException();
 		}
-		if (getUser().getPlans().stream()
-				.anyMatch(plan -> plan.getName().equals(planInput.getPlan().getName()))) {
-			throw new UnprocessableEntityException();
-		}
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
 			if (plan == null || !getUser().equals(plan.getUser())) {
 				throw new NotFoundException();
+			}
+			if (!plan.getName().equals(planInput.getPlan().getName()) 
+					&& getUser().getPlans().stream()
+						.anyMatch(entry -> entry.getName().equals(planInput.getPlan().getName()))) {
+				throw new BadRequestException("Duplicate name.");
 			}
 			plan.setName(planInput.getPlan().getName());
 			dao.updatePlan(plan);
@@ -238,7 +296,7 @@ public class PlansResource {
 		return Utils.withPlanDao(dao -> {
 			Plan plan = dao.getPlanById(planId);
 			if (plan == null || !getUser().equals(plan.getUser())) {
-				throw new UnprocessableEntityException();
+				throw new NotFoundException();
 			}
 			dao.deletePlan(plan);
 			return Response.ok().build();
@@ -341,8 +399,9 @@ public class PlansResource {
 	@AuthorizationNeeded
 	public ModuleInOut putModuleSemester(@PathParam("plan") String planId, @PathParam("module") String moduleId,
 			ModuleInOut moduleInput) {
-		if (!Objects.equals(moduleInput.getModule().getId(), moduleId)
-				|| moduleInput.getModule().getSemester() == null) {
+		if (moduleInput == null
+				|| !isValid(moduleInput.getModule())
+				|| !Objects.equals(moduleInput.getModule().getId(), moduleId)) {
 			throw new BadRequestException();
 		}
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
@@ -418,7 +477,9 @@ public class PlansResource {
 	@AuthorizationNeeded
 	public ModuleInOut setModulePreference(@PathParam("plan") String planId, @PathParam("module") String moduleId,
 			ModuleInOut moduleInput) {
-		if (!Objects.equals(moduleInput.getModule().getId(), moduleId)) {
+		if (moduleInput == null
+				|| moduleInput.getModule() == null 
+				|| !Objects.equals(moduleInput.getModule().getId(), moduleId)) {
 			throw new BadRequestException();
 		}
 		return Utils.withModuleDao(moduleDao -> Utils.withPlanDao(planDao -> {
@@ -576,6 +637,9 @@ public class PlansResource {
 		AbstractSecurityProvider provider = AbstractSecurityProvider.getSecurityProviderImpl();
 		AuthorizationContext context = provider.getAuthorizationContext(accessToken);
 		Plan plan = PlanDaoFactory.getPlanDao().getPlanById(planId);
+		if (plan == null) {
+			throw new NotFoundException();
+		}
 		if (context == null || !context.getUser().equals(plan.getUser())) {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
@@ -588,6 +652,30 @@ public class PlansResource {
 		converter.getWriter().flush();
 		return Response.ok(converter.getWriter().toString()).build();
 	}
+
+	private boolean isValid(JsonModule module) {
+		if (module == null) {
+			return false;
+		}
+		Module loadedModule = Utils.withModuleDao(dao -> dao.getModuleById(module.getId()));
+		return isValid(module.getSemester(), loadedModule.getCycleType());
+	}
+
+	private boolean isValid(ModuleEntry entry) {
+		if (entry == null || entry.getModule() == null) {
+			return false;
+		}
+		return isValid(entry.getSemester(), entry.getModule().getCycleType());
+	}
+	
+	private boolean isValid(int semester, CycleType cycleType) {
+		if (semester <= 0 || semester > MAX_SEMESTERS) {
+			return false;
+		}
+		Semester desiredSemester = getUser().getStudyStart().plus(semester);
+		return cycleType.matches(desiredSemester.getSemesterType());
+	}
+
 
 	/**
 	 * Class for encapsulating a single JsonModule. Used for JSON

@@ -1,16 +1,17 @@
 package edu.kit.informatik.studyplan.server.rest.resources.json;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
 import edu.kit.informatik.studyplan.server.rest.MyObjectMapperProvider;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * DTO for Module class
@@ -22,11 +23,14 @@ public class ModuleDto {
 	String id;
 	@JsonProperty
 	String name;
-	List<CategoryDto> categories;
 	@JsonProperty
+	List<CategoryDto> categories;
+	@JsonProperty("cycle-type")
 	CycleType cycleType;
-	@JsonProperty("creditpoins")
+	@JsonProperty("creditpoints")
 	double creditPoints;
+	@JsonProperty
+	boolean compulsory;
 	@JsonProperty
 	String lecturer;
 	@JsonProperty
@@ -47,7 +51,9 @@ public class ModuleDto {
 		this.name = module.getName();
 		this.categories = module.getCategories().stream()
 				.map(CategoryDto::new).collect(Collectors.toList());
+		this.cycleType = module.getCycleType();
 		this.creditPoints = module.getCreditPoints();
+		this.compulsory = module.isCompulsory();
 		String lecturerName = module.getModuleDescription().getLecturer();
 		this.lecturer = lecturerName != null ? lecturerName : "";
 		String descriptionText = module.getModuleDescription().getDescriptionText();

@@ -1,22 +1,26 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import edu.kit.informatik.studyplan.server.Utils;
-import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
-import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
-import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
+import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
-import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import edu.kit.informatik.studyplan.server.Utils;
+import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
+import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
+import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
+import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 /**
  * REST resource for /disciplines.
  */
 @Path("/disciplines")
+@AuthorizationNeeded
 public class DisciplinesResource {
     /**
      * Handler for GET /disciplines

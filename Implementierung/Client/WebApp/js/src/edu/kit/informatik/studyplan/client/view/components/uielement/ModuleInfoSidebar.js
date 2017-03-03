@@ -12,7 +12,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar 
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/moduleInfoSidebar.html"),
     moduleBoxes:{},
     events: {
-        "button button.close": "onClose"
+        "click button.close": "onClose"
     },
     isPreferencable: true,
     initialize: function (options) {
