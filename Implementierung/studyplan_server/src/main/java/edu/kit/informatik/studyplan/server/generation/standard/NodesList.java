@@ -88,6 +88,7 @@ public class NodesList extends ArrayList<Node> {
 	 * @return the Node added if add was successful, null if node already exist.
 	 */
 	public Node add(Module m) {
+		//TODO change to contains
 		for (Node n : this) {
 			if (m.getIdentifier() == n.getModule().getIdentifier()) {
 				return null;
@@ -217,8 +218,8 @@ public class NodesList extends ArrayList<Node> {
 	 *            to
 	 * @return
 	 */
-	protected int getCreditPoints(Field field) {
-		int creditPoints = 0;
+	protected double getCreditPoints(Field field) {
+		double creditPoints = 0;
 		for (Node n : this) {
 //			System.out.println(n.getModule().getIdentifier());
 			if (field.getFieldId() == n.getModule().getField().getFieldId()) {
@@ -262,7 +263,8 @@ public class NodesList extends ArrayList<Node> {
 		for (Node n : this) {
 //			System.out.println("1. sort " + n.getModule().getIdentifier() + "___"
 //					+ (n.getModule().getCycleType() != CycleType.BOTH));
-
+			// sort the modules that have a specific cycle type(summer, or winter) 
+			// before other modules
 			if (!visited.contains(n) && n.getModule().getCycleType() != CycleType.BOTH) {
 				stack.clear();
 				if (sortUtil(n, visited)) {

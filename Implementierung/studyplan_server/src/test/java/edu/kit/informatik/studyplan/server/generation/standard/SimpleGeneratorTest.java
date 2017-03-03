@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Matchers;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -68,7 +69,7 @@ public class SimpleGeneratorTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		// initialising generator
+		// initializing generator
 		generator = new SimpleGenerator();
 		// creating modules
 		field1 = new Field();
@@ -185,6 +186,7 @@ public class SimpleGeneratorTest {
 		discipline.setDisciplineId(0);
 		user.setDiscipline(discipline);
 		user.setStudyStart(new Semester(SemesterType.WINTER_TERM, 2014));
+		user.getPassedModules().add(entry2);
 
 		// plan.setUser(user);
 		when(plan.getUser()).thenReturn(user);
@@ -346,7 +348,7 @@ public class SimpleGeneratorTest {
 
 
 	@Test
-	public void testRandomlyGeneratedPlan() {
+	public void testcomplete() {
 		Field field = new Field();
 		field.getModules().add(ph1);
 		field.setMinEcts(2.0);
@@ -361,7 +363,7 @@ public class SimpleGeneratorTest {
 		Map<Field, Category> map = new HashMap<Field, Category>();
 		map.put(field, category);
 		generator.planToGraph(plan);
-		GenerationResult result = generator.randomlyGeneratedPlan(generator.getNodes(), plan, 
+		GenerationResult result = generator.complete(generator.getNodes(), plan, 
 				map, 4, dao);
 		assertTrue(result.getNodesList().contains(new NodeWithOutput(ph1, plan, generator)));
 		assertTrue(result.getNodesList().contains(new NodeWithOutput(la1, plan, generator)));
@@ -410,7 +412,7 @@ public class SimpleGeneratorTest {
 	}
 
 	@Test
-	public void testGenerate() {
+	public void testGenerateValidPlan() {
 		Field field = new Field();
 		field.setFieldId(0);
 		field.getModules().add(ph1);
@@ -447,10 +449,58 @@ public class SimpleGeneratorTest {
 			newModules.add(entry.getModule());
 		}
 		assertTrue(newModules.containsAll(newModules));
+		assertTrue(newPlan.getVerificationState() == VerificationState.VALID);
 //		for(Node n: generator.getNodes()) {
 //			System.out.println(n.getModule().getIdentifier());
 //		}
 	}
 
-	
+	@Ignore
+	@Test
+	public void testGenerateInvalidPlan() {
+		Field field = new Field();
+		field.setFieldId(0);
+		field.getModules().add(ph1);
+		field.setMinEcts(2.0);
+		ph1.setField(field);
+		
+		RuleGroup rule = new RuleGroup();
+		rule.getModules().add(la1);
+		rule.setMinNum(1);
+		rule.setMaxNum(2);
+		discipline.getRuleGroups().add(rule);
+		discipline.getFields().add(field);
+		Map<Field, Category> map = new HashMap<Field, Category>();
+		map.put(field, category);
+		PartialObjectiveFunction obFunction = new MinimalECTSAtomObjectiveFunction();
+		ModuleEntry swtEntry = new ModuleEntry(swt, 1);
+		ModuleEntry gbiEntry = new ModuleEntry(gbi, 2);	
+		plan.getModuleEntries().clear();
+		plan.getModuleEntries().add(swtEntry);
+		plan.getModuleEntries().add(gbiEntry);		
+		Plan newPlan = generator.generate(obFunction, plan,
+				dao, map, 4);
+//		for(ModuleEntry m : newPlan.getAllModuleEntries()){
+//			System.out.println(m.getModule().getIdentifier());
+//		}
+		assertTrue(newPlan.getUser().equals(plan.getUser()));
+		assertFalse(newPlan.getVerificationState().equals(VerificationState.INVALID));
+		List<Module> modules = new ArrayList<Module>();
+		modules.add(pse);
+		modules.add(tse);
+		modules.add(gbi);
+		modules.add(la1);
+		modules.add(la2);
+		modules.add(ph1);
+		modules.add(prog);
+		modules.add(swt);
+		List<Module> newModules = new ArrayList<Module>();
+		for(ModuleEntry entry : newPlan.getModuleEntries()) {
+			newModules.add(entry.getModule());
+		}
+		assertTrue(newModules.containsAll(newModules));
+//		for(Node n: generator.getNodes()) {
+//			System.out.println(n.getModule().getIdentifier());
+//		}
+	}
 }
