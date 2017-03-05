@@ -36,7 +36,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
         console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar] save");
         var planObject = this.model.toJSON({
             method: "put",
-            planModule: true
+            planModule: true,
+            includePassed: true
         });
         var modules = planObject["plan"]["modules"];
         var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation
@@ -45,8 +46,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
         student.get('passedModules')
             .reset(modules);
         if (pushToServer) {
-            student.save({
+            student.save(null,{
                 success: function () {
+                    console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar] save done");
                     edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
                     var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
                     edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
@@ -60,6 +62,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
                         );
                 }
             });
+        } else {
+            edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
         }
 
     },
