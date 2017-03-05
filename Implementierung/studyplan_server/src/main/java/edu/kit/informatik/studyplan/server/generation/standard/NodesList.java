@@ -24,6 +24,8 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  *
  */
 public class NodesList extends ArrayList<Node> {
+
+
 	/**
 	 * To avoid unnecessary errors.
 	 */
@@ -54,10 +56,6 @@ public class NodesList extends ArrayList<Node> {
 	 */
 	private List<Node> randomlyAddedNodes = new ArrayList<Node>();
 	/**
-	 * Auxiliary attribute: stores result while sorting the list.
-	 */
-	private LinkedList<Node> stack = new LinkedList<Node>();
-	/**
 	 * Auxiliary attribute: stores visited nodes while sorting the list.
 	 */
 	Set<Node> visited = new LinkedHashSet<Node>();
@@ -67,15 +65,18 @@ public class NodesList extends ArrayList<Node> {
 	 * 
 	 * @param node
 	 *            the node that should be added.
+	 * @param random
+	 *            if this node is added randomly this parameter should be true.
 	 * @return the Node added if add was successful, null if node already exist.
 	 */
-	public boolean add(Node node) {
-		for (Node n : this) {
-			if (node.equals(n)) {
-				return false;
-			}
+	public boolean add(Node node, boolean random) {
+		if (this.contains(node)) {
+			return false;
 		}
 		super.add(node);
+		if (random) {
+			getRandomlyAddedNodes().add(node);
+		}
 		return true;
 	}
 
@@ -88,11 +89,8 @@ public class NodesList extends ArrayList<Node> {
 	 * @return the Node added if add was successful, null if node already exist.
 	 */
 	public Node add(Module m) {
-		//TODO change to contains
-		for (Node n : this) {
-			if (m.getIdentifier() == n.getModule().getIdentifier()) {
-				return null;
-			}
+		if (this.stream().anyMatch(n -> n.getModule().getIdentifier() == m.getIdentifier())) {
+			return null;
 		}
 		Node node = new NodeWithOutput(m, plan, generator);
 		add(node);
@@ -153,7 +151,7 @@ public class NodesList extends ArrayList<Node> {
 	}
 
 	/**
-	 * Remove given node from list recursively. 
+	 * Remove given node from list recursively.
 	 * 
 	 * @param n
 	 *            node to remove
@@ -189,9 +187,8 @@ public class NodesList extends ArrayList<Node> {
 		if (!visited.contains(n)) {
 			visited.add(n);
 
-			// store children of the node in an array to remove them because
-			// removing
-			// while iterating on a list doesn't give the right result
+			/* store children of the node in an array to remove them because
+			 removing while iterating on a list doesn't give the right result. */
 			Node[] children = new Node[n.getChildren().size()];
 			n.getChildren().toArray(children);
 			for (int i = 0; i < children.length; i++) {
@@ -207,7 +204,6 @@ public class NodesList extends ArrayList<Node> {
 				node.removeChild(n);
 			}
 		}
-//		System.out.println("removed " + n.getModule().getIdentifier());
 	}
 
 	/**
@@ -221,7 +217,6 @@ public class NodesList extends ArrayList<Node> {
 	protected double getCreditPoints(Field field) {
 		double creditPoints = 0;
 		for (Node n : this) {
-//			System.out.println(n.getModule().getIdentifier());
 			if (field.getFieldId() == n.getModule().getField().getFieldId()) {
 				creditPoints += n.getModule().getCreditPoints();
 			}
@@ -248,94 +243,8 @@ public class NodesList extends ArrayList<Node> {
 		return result;
 	}
 
-	/**
-	 * Returns a topologically sorted list of the nodes of the list given. This
-	 * method considers a node and its inner nodes as one so that the result
-	 * stack only has one node of the whole list.
-	 * 
-	 * @param nodes
-	 *            list of nodes
-	 * @return a list of sorted nodes
-	 */
-	protected LinkedList<Node> sort() {
-		visited.clear();
-		LinkedList<Node> result = new LinkedList<Node>();
-		for (Node n : this) {
-//			System.out.println("1. sort " + n.getModule().getIdentifier() + "___"
-//					+ (n.getModule().getCycleType() != CycleType.BOTH));
-			// sort the modules that have a specific cycle type(summer, or winter) 
-			// before other modules
-			if (!visited.contains(n) && n.getModule().getCycleType() != CycleType.BOTH) {
-				stack.clear();
-				if (sortUtil(n, visited)) {
-					result.addAll(0, stack);
-//					System.out.println("sorted");
-				} else {
-					result.addAll(result.size(), stack);
-//					System.out.println("sorted");
-				}
-			}
-		}
-		for (Node n : this) {
-//			System.out.println("2. sort " + n.getModule().getIdentifier() + "___" + !visited.contains(n));
-
-			if (!visited.contains(n)) {
-				stack.clear();
-				if (sortUtil(n, visited)) {
-					result.addAll(0, stack);
-//					System.out.println("sorted");
-				} else {
-					result.addAll(result.size(), stack);
-//					System.out.println("sorted");
-				}
-			}
-		}
-//		for (Node node : result) {
-//			System.out.println("sort" + node.getModule().getIdentifier());
-//		}
-		return result;
-	}
-
-	/**
-	 * Adds a node to the stack recursively so that the stack always stays
-	 * topologically sorted. This method considers a node and its inner nodes as
-	 * one so that the result stack only has one node of the whole list.
-	 * 
-	 * @param node
-	 *            the node to begin with
-	 * @param visited
-	 *            set of visited nodes
-	 * @return true if one of this node's children has already been visited,
-	 *         false if not.
-	 */
-	private boolean sortUtil(Node node, Set<Node> visited) {
-		// this boolean says if this node has a child that has already been
-		// visited
-		boolean b = false;
-		visited.add(node);
-//		System.out.println("visit" + node.getModule().getIdentifier());
-		Node n = node;
-		while (n.hasInnerNode()) {
-			n = node.getInnerNode();
-			visited.add(n);
-		}
-		n = node;
-		while (n.hasOuterNode()) {
-			n = node.getOuterNode();
-			visited.add(n);
-		}
-		ArrayList<Node> children = node.getChildren();
-		int j = 0;
-		while (j < children.size()) {
-			if (!visited.contains(children.get(j))) {
-				sortUtil(children.get(j), visited);
-			} else {
-				b = true;
-			}
-			j++;
-		}
-		stack.push(node);
-		return b;
+	protected List<Node> sort() {
+		return (new NodesListSorter(this)).sort();
 	}
 
 	/**

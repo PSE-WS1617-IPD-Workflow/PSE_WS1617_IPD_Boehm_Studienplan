@@ -123,6 +123,7 @@ public abstract class Node {
 		this.generator = generator;
 		this.module = module;
 		this.plan = plan;
+		//TODO set semester?
 		// Check if the module in in the passedModules list of the user
 		for (ModuleEntry m : plan.getUser().getPassedModules()) {
 			if (module.getIdentifier() == m.getModule().getIdentifier()) {
