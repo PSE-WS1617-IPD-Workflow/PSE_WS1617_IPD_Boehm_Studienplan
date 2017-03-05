@@ -123,6 +123,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
             };
         } else {
             var result = {
+                id: this.get('id'),
                 name: this.get('name'),
             };
             if (this.get('semesterCollection')) {
