@@ -10,9 +10,9 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/studyplan_userdata?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;useSSL=false</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">N3888CHAtt*+</property>
+        <property name="connection.url">jdbc:mysql://localhost/studyplan_userdata</property>
+        <property name="connection.username">NiklasUhl</property>
+        <property name="connection.password"></property>
 
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
