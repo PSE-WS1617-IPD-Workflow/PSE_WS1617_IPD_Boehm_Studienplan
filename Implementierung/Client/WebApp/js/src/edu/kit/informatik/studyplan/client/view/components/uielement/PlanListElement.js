@@ -68,12 +68,16 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
                 var newPlan = new edu.kit.informatik.studyplan.client.model.plans.Plan(attributes, {
                     parse: true
                 });
+                console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] plan duplicate");
+                console.log(attributes);
+                console.info(newPlan);
                 // Add to collection
                 self.plan.collection.add(newPlan);
                 // Send POST request
                 newPlan.save(null, {
                     success: function () {
                         // Send PUT request
+                        newPlan.set(newPlan.parse(attributes));
                         newPlan.save(null, {
                             success: function () {
                                 edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();

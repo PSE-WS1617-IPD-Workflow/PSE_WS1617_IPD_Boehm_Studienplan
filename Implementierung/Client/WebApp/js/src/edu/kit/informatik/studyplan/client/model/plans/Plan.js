@@ -19,13 +19,14 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         "use strict";
         response = response["plan"];
         //included modules aren't passed.
-        if (response["modules"]) {
+        if (typeof response["modules"] !== "undefined") {
             for (var i = 0; i < response["modules"].length; i++) {
-                response["modules"]["passed"] = false;
+                response["modules"][i]["passed"] = false;
             }
         } else {
             response["modules"] = [];
         }
+        console.log(response);
         var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
         //includes passed-Modules.
         if (student) {
