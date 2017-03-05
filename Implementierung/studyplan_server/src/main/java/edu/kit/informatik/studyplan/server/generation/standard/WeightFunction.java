@@ -23,6 +23,7 @@ public class WeightFunction {
 		Node n = node;
 		while (n.getInnerNode() != null) {
 			n = n.getInnerNode();
+//			System.out.println(n.getModule().getIdentifier());
 			r += n.getModule().getCreditPoints();
 		}
 		n = node;

@@ -51,7 +51,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.ProposalSidebar = Ba
         "use strict";
         var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
         var name = prompt(LM.getMessage('newNameRequest'))
-        if (name !== null) {
+        if (name === null) {
             return false;
         }
         var plan = this.model.getPlan({

@@ -154,5 +154,32 @@ public class Semester implements Comparable<Semester> {
 			}
 		}
 	}
+	
+	/**
+	 * Calculates the {semester}th semester after this one.<br>
+	 * Note that this.plus(1) will return a copy of this semester.
+	 * If a number < 1 is provided, <code>null</code> will be return
+	 * @param semester a positive semester number
+	 * @return the result
+	 */
+	public Semester plus(int semester) {
+		if (semester < 1) {
+			return null;
+		}
+		int offset = semester - 1;
+		if (offset % 2 == 0) {
+			int newYear = this.year + offset / 2;
+			return new Semester(this.semesterType, newYear);
+		} else {
+			int newYear = this.year;
+			if (this.semesterType == SemesterType.WINTER_TERM) {
+				newYear++;
+			}
+			SemesterType newSemesterType = this.semesterType.toggle();
+			offset--;
+			newYear += offset / 2;
+			return new Semester(newSemesterType, newYear);
+		}
+	}
 
 };

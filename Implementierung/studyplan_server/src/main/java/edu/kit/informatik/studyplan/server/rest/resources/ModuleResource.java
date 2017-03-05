@@ -1,23 +1,5 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.GET;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.UriInfo;
-
 import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.filter.FilterDescriptorProvider;
@@ -32,6 +14,18 @@ import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 import edu.kit.informatik.studyplan.server.rest.resources.json.ModuleDto;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.UriInfo;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * REST resource for /modules.
@@ -109,7 +103,7 @@ public class ModuleResource {
 	 * @return the extracted filter.
 	 */
 	static Filter getFilterFromRequest(MultivaluedMap<String, String> params, Discipline discipline) {
-		if (!params.containsKey("filters")) {
+		if (!params.containsKey("filters") || params.getFirst("filters").isEmpty()) {
 			return new TrueFilter();
 		} else {
 			List<String> filterNames = Arrays.asList(params.getFirst("filters").split(","));

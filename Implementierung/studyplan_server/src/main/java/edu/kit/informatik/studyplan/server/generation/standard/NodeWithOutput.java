@@ -20,9 +20,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  */
 public class NodeWithOutput extends Node {
 
-	protected NodeWithOutput(Module module, SimpleGenerator generator) {
-		super(module, generator);
-	}	
+
 
 	protected NodeWithOutput(Module module, Plan plan, SimpleGenerator generator) {
 		super(module, plan, generator);
@@ -39,6 +37,7 @@ public class NodeWithOutput extends Node {
 	
 	protected void fulfillConstraints(boolean random) {
 		if (this.isPassed()) {
+			setConstraintsFulfilled(true);
 			return;
 		}
 		if (this.constraintsAreFulfilled()) {
@@ -53,30 +52,28 @@ public class NodeWithOutput extends Node {
 			module = getRemainingModuleFromConstraint(c);
 			// Check if a node with this module already exists in the list of
 			// nodes of the current plan
-			newNode = getGenerator().getNodes().getFromAllNodes(module);
+			newNode = getGenerator().getNodes().get(module);
 			if (newNode == null) {
 				y = false;
-				newNode = new NodeWithOutput(module, getGenerator());
+				newNode = new NodeWithOutput(module, getPlan(), getGenerator());
 				newNode.setPlan(this.getPlan());
-				if (random) {
-					getGenerator().getNodes().getRandomlyAddedNodes().add(newNode);
-				}
 			}
-			if (c.getConstraintType() instanceof PrerequisiteModuleConstraintType) {
+			if (c.getConstraintType() instanceof PrerequisiteModuleConstraintType
+					&& this.getModule().getToConstraints().contains(c)) {
 				addParent(newNode);
-				getGenerator().getNodes().addToAllNodes(newNode);
+				getGenerator().getNodes().add(newNode, random);
 			} else if (c.getConstraintType() instanceof PlanLinkModuleConstraintType) {
 				addChild(newNode);
-				getGenerator().getNodes().addToAllNodes(newNode);
+				getGenerator().getNodes().add(newNode, random);
 			} else if (c.getConstraintType() instanceof SemesterLinkModuleConstraintType) {
 				addInnerNode(newNode);
-				getGenerator().getNodes().addToAllNodes(newNode);
+				getGenerator().getNodes().add(newNode, random);
 			}
 			if (!y) {
 				newNode.fulfillConstraints(random);				
 			}
-			setConstraintsFulfilled(true);
 		}
+		setConstraintsFulfilled(true);
 	}
 	@Override
 	protected void addChild(Node node) {

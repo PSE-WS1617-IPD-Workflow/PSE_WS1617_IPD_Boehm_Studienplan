@@ -1,36 +1,20 @@
 package edu.kit.informatik.studyplan.server.model.userdata;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import edu.kit.informatik.studyplan.server.Utils;
+import edu.kit.informatik.studyplan.server.model.moduledata.Module;
+import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.NotFoundException;
-
-import org.hibernate.annotations.GenericGenerator;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import edu.kit.informatik.studyplan.server.Utils;
-import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 
 /**
  * Class modeling a studyplan
@@ -127,6 +111,7 @@ public class Plan {
 	 *
 	 * @return returns the plans {@link VerificationState}
 	 */
+	@JsonIgnore
 	public VerificationState getVerificationState() {
 		return state;
 	}
@@ -136,6 +121,7 @@ public class Plan {
 	 * @param verificationState
 	 *            the verification state to set
 	 */
+	@JsonIgnore
 	public void setVerificationState(VerificationState verificationState) {
 		this.state = verificationState;
 	}
@@ -217,6 +203,8 @@ public class Plan {
 	 */
 	@JsonProperty("modules")
 	public void setJsonModules(List<JsonModule> jsonModules) {
+		if (jsonModules == null || jsonModules.isEmpty())
+			return;
 		HashSet<String> placedModulesIds = new HashSet<>(jsonModules.size()); // for
 																				// finding
 																				// duplicates

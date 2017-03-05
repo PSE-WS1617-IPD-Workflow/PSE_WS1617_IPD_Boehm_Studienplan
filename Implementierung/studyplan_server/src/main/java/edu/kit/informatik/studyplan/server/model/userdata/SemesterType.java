@@ -54,4 +54,12 @@ public enum SemesterType {
 			return null;
 		}
 	}
+	
+	/**
+	 * toggles the semester type
+	 * @return the new semester type
+	 */
+	public SemesterType toggle() {
+		return values()[(this.ordinal() + 1) % values().length];
+	}
 };

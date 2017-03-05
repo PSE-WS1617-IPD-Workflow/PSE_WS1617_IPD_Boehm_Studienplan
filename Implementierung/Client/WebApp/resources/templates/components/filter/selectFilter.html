@@ -4,8 +4,12 @@
         <option value='none'>{{=obj.LM.getMessage('allValues')}}</option>
         {{_.each(obj.filter.get("specification").items, function (item) { }}
             <option value='{{=item.id}}' 
-                    {{ if(item.id === obj.filter.get("curVal")) { }}
+{{console.log("[filter.selectFilter] values:")}}
+{{console.log(obj.filter.get("curValue"))}}
+{{console.log(item.id)}}
+                    {{ if(item.id == obj.filter.get("curValue")) { }}
                     selected="selected"
+{{console.log("THIS WAS UPDATED AND SELECTED!")}}
                     {{ } }}
             >{{=item.text}}</option>
         {{ }) }}

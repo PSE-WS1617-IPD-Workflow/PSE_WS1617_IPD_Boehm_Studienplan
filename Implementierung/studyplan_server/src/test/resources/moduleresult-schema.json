@@ -1,0 +1,78 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "ModuleResult",
+    "description": "a result accessing a single module",
+    "type": "object",
+    "properties": {
+        "module": {
+           "type": "object",
+           "properties": {
+            	"id": {
+            		"type" : "string"
+            	},
+            	"name": {
+            		"type": "string"
+            	},
+            	"categories" : {
+            		"type" : "array",
+            		"items" : {
+	            		"type" : "object",
+	            		"properties" : {
+	            			"id" : {
+	            				"type" : "integer"
+	            			},
+	            			"name" : {
+	            				"type" : "string"
+	            			}
+	            		},
+	            		"required" : ["id", "name"]
+            		}
+            	},
+            	"cycle-type" : {
+            		"enum" : ["WT", "ST", "both"]
+            	},
+            	"creditpoints" : {
+            		"type": "number",
+            		"minimum" : 0
+            	},
+            	"lecturer" : {
+            		"type": "string"
+            	},
+            	"compulsory" : {
+            		"type": "boolean"
+            	},
+            	"description" : {
+            		"type": "string"
+            	},
+            	"constraints" : {
+            		"type" : "array",
+            		"items": {
+            			"type" : "object",
+            			"properties" : {
+            				"name" : {
+            					"type" : "string"
+            				},
+            				"type" : {
+            					"type" : "string"
+            				},
+            				"first" : {
+            					"type" : "object",
+            					"properties" : {
+            						"id" : { "type" : "string"}
+            					}
+            				},
+            				"second" : {
+            					"type" : "object",
+            					"properties" : {
+            						"id" : { "type" : "string"}
+            					}
+            				}
+            			}
+            		}
+            	}
+           },
+           "required" : ["id", "name", "cycle-type", "creditpoints", "compulsory"]
+        }
+    },
+    "required" : ["module"]
+}

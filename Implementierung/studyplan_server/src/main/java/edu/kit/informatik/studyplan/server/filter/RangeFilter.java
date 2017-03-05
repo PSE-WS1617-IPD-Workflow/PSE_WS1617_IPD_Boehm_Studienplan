@@ -12,11 +12,11 @@ public abstract class RangeFilter extends AttributeFilter {
 	/**
 	 * the filter's lower bound
 	 */
-	protected int lower;
+	private int lower;
 	/**
 	 * the filter's upper bound
 	 */
-	protected int upper;
+	private int upper;
 
 	/**
 	 * Creates a new RangeFilter with given range.
@@ -27,7 +27,7 @@ public abstract class RangeFilter extends AttributeFilter {
 	 * @param upper
 	 *            the filter's upper bound
 	 */
-	protected RangeFilter(int lower, int upper) {
+	RangeFilter(int lower, int upper) {
 		if (!(lower <= upper)) {
 			throw new IllegalArgumentException("RangeFilter must have valid ranges");
 		}
@@ -41,21 +41,5 @@ public abstract class RangeFilter extends AttributeFilter {
 	 */
 	public List<Condition> getConditions() {
 		return Collections.singletonList(Condition.createBetween(getAttributeName(), lower, upper));
-	}
-
-    /**
-	 * 
-	 * @return the filter's lower bound
-	 */
-	public int getLower() {
-		return lower;
-	}
-
-	/**
-	 * 
-	 * @return the filter's upper bound
-	 */
-	public int getUpper() {
-		return upper;
 	}
 }

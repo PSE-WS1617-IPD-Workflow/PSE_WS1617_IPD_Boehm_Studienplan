@@ -13,7 +13,7 @@ public abstract class ListFilter<T> extends AttributeFilter {
 	/**
 	 * The selected element's object representation.
 	 */
-	protected T selection;
+	private T selection;
 
 	/**
 	 * Creates a new ListFilter with a given selected object.
@@ -21,7 +21,7 @@ public abstract class ListFilter<T> extends AttributeFilter {
 	 * @param selection
 	 *            the selected object. Must not be null.
 	 */
-	protected ListFilter(T selection) {
+	ListFilter(T selection) {
 		if (selection == null) {
 			throw new IllegalArgumentException("Filter selection must not be null.");
 		}
@@ -34,13 +34,5 @@ public abstract class ListFilter<T> extends AttributeFilter {
 	 */
 	public List<Condition> getConditions() {
 		return Collections.singletonList(Condition.createEquals(getAttributeName(), selection));
-	}
-
-	/**
-	 * 
-	 * @return the selected element's object.
-	 */
-	public T getSelection() {
-		return selection;
 	}
 }

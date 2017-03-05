@@ -71,10 +71,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
                 // Add to collection
                 self.plan.collection.add(newPlan);
                 // Send POST request
-                newPlan.save({}, {
+                newPlan.save(null, {
                     success: function () {
                         // Send PUT request
-                        newPlan.save({}, {
+                        newPlan.save(null, {
                             success: function () {
                                 edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
                                 edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(

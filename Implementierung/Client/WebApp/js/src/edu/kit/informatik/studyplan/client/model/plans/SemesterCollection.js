@@ -53,24 +53,19 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
             var curSem = student.get('current-semester');
         }
         var semesterNum = (curSem) ? curSem : 1;
-        var currentSemesterNum = semesters.length;
-        while (currentSemesterNum < semesterNum) {
-            currentSemesterNum++;
-            semesters[currentSemesterNum] = new edu.kit.informatik.studyplan.client.model.plans.Semester({
-                planId: this.planId,
-                semesterNum: currentSemesterNum,
-                modules: []
-            }, {
-                parse: true,
-                collection: this
-            })
+        var currentlyInsertedSemesters = (semesters.length-1);
+        if(currentlyInsertedSemesters<0){
+            currentlyInsertedSemesters=0;
+        }
+        while(currentlyInsertedSemesters<semesterNum){
+            currentlyInsertedSemesters++;
+            semesters[currentlyInsertedSemesters] = new edu.kit.informatik.studyplan.client.model.plans.Semester({
+                    planId : this.planId,
+                    semesterNum : currentlyInsertedSemesters,
+                    modules : []
+            },{parse:true, collection: this})
         }
         this.length = semesters.length;
-        if (semesters.length < semesterNum) {
-            for (var i = (semesters.length + 1); i <= semesterNum; i++) {
-
-            }
-        }
         return semesters;
     },
     toJSON: function (options) {

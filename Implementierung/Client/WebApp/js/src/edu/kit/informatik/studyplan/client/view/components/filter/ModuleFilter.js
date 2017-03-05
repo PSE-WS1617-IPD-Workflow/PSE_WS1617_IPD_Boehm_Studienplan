@@ -58,17 +58,17 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
             /**
              * @type {edu.kit.informatik.studyplan.client.view.components.filter.FilterComponent}
              */
-            var uiFilter = null;
-            switch (el.get("specification").type) {
-            case "contains":
-                uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.TextFilter(el);
-                break;
-            case "list":
-                uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.SelectFilter(el);
-                break;
-            case "range":
-                uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter(el);
-                break;
+            var uiFilter = null;            
+            switch(el.get("specification").type) {
+                case "contains":
+                    uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.TextFilter(tmp_options);
+                    break;
+                case "list":
+                    uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.SelectFilter(tmp_options);
+                    break;
+                case "range":
+                    uiFilter = new edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter(tmp_options);
+                    break;
             }
             if (uiFilter !== null) {
                 uiFilter.initialize(tmp_options);

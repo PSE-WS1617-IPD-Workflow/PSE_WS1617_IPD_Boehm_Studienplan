@@ -1,19 +1,9 @@
 package edu.kit.informatik.studyplan.server.model.userdata;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
+
+import javax.persistence.*;
 
 /**
  * Class modeling a module entry, which assigns a preference to a module.
@@ -105,6 +95,7 @@ public class ModulePreference {
 	 *            the preference type to set
 	 */
 	public void setPreference(PreferenceType preferenceType) {
+		this.type = preferenceType;
 	}
 
 	/**

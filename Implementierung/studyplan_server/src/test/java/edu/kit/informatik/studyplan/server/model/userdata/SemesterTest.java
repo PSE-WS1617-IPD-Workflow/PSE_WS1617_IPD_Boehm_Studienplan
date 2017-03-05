@@ -53,5 +53,45 @@ public class SemesterTest {
 		assertTrue(semester1.compareTo(semester2) < 0);
 		assertTrue(semester2.compareTo(semester1) > 0);
 	}
+	
+	@Test
+	public void plusOneTest() {
+		Semester semester = new Semester(SemesterType.WINTER_TERM, 2015);
+		semester = semester.plus(1);
+		assertEquals(2015, semester.getYear());
+		assertEquals(SemesterType.WINTER_TERM, semester.getSemesterType());
+	}
+	
+	@Test
+	public void winterPlusEvenTest() {
+		Semester semester = new Semester(SemesterType.WINTER_TERM, 2015);
+		semester = semester.plus(4);
+		assertEquals(2017, semester.getYear());
+		assertEquals(SemesterType.SUMMER_TERM, semester.getSemesterType());
+	}
+	
+	@Test
+	public void winterPlusOddTest() {
+		Semester semester = new Semester(SemesterType.WINTER_TERM, 2015);
+		semester = semester.plus(3);
+		assertEquals(2016, semester.getYear());
+		assertEquals(SemesterType.WINTER_TERM, semester.getSemesterType());
+	}
+	
+	@Test
+	public void summerPlusEvenTest() {
+		Semester semester = new Semester(SemesterType.SUMMER_TERM, 2016);
+		semester = semester.plus(4);
+		assertEquals(2017, semester.getYear());
+		assertEquals(SemesterType.WINTER_TERM, semester.getSemesterType());
+	}
+	
+	@Test
+	public void summerPlusOddTest() {
+		Semester semester = new Semester(SemesterType.SUMMER_TERM, 2016);
+		semester = semester.plus(3);
+		assertEquals(2017, semester.getYear());
+		assertEquals(SemesterType.SUMMER_TERM, semester.getSemesterType());
+	}
 
 }

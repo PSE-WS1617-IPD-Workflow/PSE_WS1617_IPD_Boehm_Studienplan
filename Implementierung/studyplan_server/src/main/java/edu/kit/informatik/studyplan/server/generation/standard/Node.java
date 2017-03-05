@@ -10,9 +10,6 @@ import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
 
-
-
-
 /**
  * The abstract class Node represents a module in a Graph.
  * 
@@ -61,18 +58,21 @@ public abstract class Node {
 	private boolean constraintsFulfilled = false;
 
 	/**
-	 * This method fulfills all constraints related to this Node according to the 
-	 * constraints' list of its module: 
-	 * - it adds all nodes, to which this node is connected with an output edge
-	 * (if constraint = plan_link or prerequisite), to the children list of this
-	 * node and recursively completes all children lists of the nodes added. 
-	 * -it adds all nodes of parallel modules (constraint = semester_link) as
-	 * inner nodes. Before adding the new nodes, this method checks if a node
-	 * with the same module already exists if not it creates a new node with
-	 * that module then adds it.
+	 * This method fulfills all constraints related to this Node according to
+	 * the constraints' list of its module: - it adds all nodes, to which this
+	 * node is connected with an output edge (if constraint = plan_link or
+	 * prerequisite), to the children list of this node and recursively
+	 * completes all children lists of the nodes added. -it adds all nodes of
+	 * parallel modules (constraint = semester_link) as inner nodes. Before
+	 * adding the new nodes, this method checks if a node with the same module
+	 * already exists if not it creates a new node with that module then adds
+	 * it.
 	 * 
 	 * If this node's module is passed, this method does nothing and returns
 	 * null.
+	 * 
+	 * If the parameter random is true this method adds the new nodes to the
+	 * list of randomly added nodes.
 	 * 
 	 * @param random
 	 *            -true if this node is a randomly added node from the generator
@@ -81,16 +81,16 @@ public abstract class Node {
 	protected abstract void fulfillConstraints(boolean random);
 
 	/**
-	 * This method returns a list of all nodes, to which this node is connected with an 
-	 * output edge. 
+	 * This method returns a list of all nodes, to which this node is connected
+	 * with an output edge.
 	 * 
 	 * @return children-nodes
 	 */
 	protected abstract ArrayList<Node> getChildren();
 
 	/**
-	 * This method adds a node to the list of nodes to which this node is connected with 
-	 * an output edge. 
+	 * This method adds a node to the list of nodes to which this node is
+	 * connected with an output edge.
 	 * 
 	 * @param node
 	 *            the node to add.
@@ -98,28 +98,16 @@ public abstract class Node {
 	protected abstract void addChild(Node node);
 
 	/**
-	 * This method removes the given node to the list of nodes to which this node is 
-	 * connected with an output edge. This method returns a boolean indicating if the 
-	 * removal was successful.
+	 * This method removes the given node to the list of nodes to which this
+	 * node is connected with an output edge. This method returns a boolean
+	 * indicating if the removal was successful.
 	 * 
 	 * @param node
 	 *            the node to remove.
 	 * @return -true if the removal was successful -false if the node given
-	 *         couldn't be found 
+	 *         couldn't be found
 	 */
 	protected abstract boolean removeChild(Node node);
-
-	/**
-	 * Creates a new Node with the module given. This constructor should only be
-	 * used as an auxiliary by the Generator (e.g. to use the equals method) .
-	 * 
-	 * @param module
-	 *            of this Node.
-	 */
-	protected Node(Module module, SimpleGenerator generator) {
-		this.generator = generator;
-		this.module = module;
-	}
 
 	/**
 	 * Creates a new Node from the plan given with the module given.
@@ -128,12 +116,14 @@ public abstract class Node {
 	 *            of this Node.
 	 * @param plan
 	 *            from which this Node was created.
-	 * @param generator the generator that created this node.
+	 * @param generator
+	 *            the generator that created this node.
 	 */
 	protected Node(Module module, Plan plan, SimpleGenerator generator) {
 		this.generator = generator;
 		this.module = module;
 		this.plan = plan;
+		//TODO set semester?
 		// Check if the module in in the passedModules list of the user
 		for (ModuleEntry m : plan.getUser().getPassedModules()) {
 			if (module.getIdentifier() == m.getModule().getIdentifier()) {
@@ -269,8 +259,10 @@ public abstract class Node {
 	 *            the innerNode to set
 	 */
 	protected void setInnerNode(Node innerNode) {
-		this.innerNode = innerNode;
-		innerNode.setOuterNode(this);
+		if (innerNode != null) {
+			this.innerNode = innerNode;
+			innerNode.setOuterNode(this);
+		}
 	}
 
 	/**
@@ -282,6 +274,7 @@ public abstract class Node {
 		return isPassed;
 	}
 
+	// TODO use it
 	/**
 	 * Creates a module entry from this node.
 	 * 
@@ -335,6 +328,30 @@ public abstract class Node {
 		} else {
 			return true;
 		}
+	}
+
+	protected boolean removeInnerNode(Node n) {
+		Node node = this;
+		while (node.hasInnerNode()) {
+			node = node.getInnerNode();
+			if (node.equals(n)) {
+				node.getOuterNode().setInnerNode(node.getInnerNode());
+				return true;
+			}
+		}
+		node = this;
+		while (node.hasOuterNode()) {
+			node = node.getOuterNode();
+			if (node.equals(n)) {
+				if (node.hasOuterNode()) {
+					node.getOuterNode().setInnerNode(node.getInnerNode());
+				} else {
+					node.getInnerNode().setOuterNode(null);
+				}
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override
@@ -430,18 +447,12 @@ public abstract class Node {
 	 * 
 	 * @param i
 	 *            number of the semester
-	 * @return a boolean that is only if the node can be addded to the semester with the 
-	 * number given.
+	 * @return a boolean that is only if the node can be addded to the semester
+	 *         with the number given.
 	 */
 	protected boolean fitsInSemester(int i) {
-		// Check if a node is already fixed in a semester
-		if (semester != 0) {
-			if (semester == i) {
-				return true;
-			}
-			return false;
-		}
-		// Check if Semester type corresponds to cycle tupe of the module
+
+		// Check if Semester type corresponds to cycle type of the module
 		if (getModule().getCycleType() == CycleType.WINTER_TERM) {
 			if (getSemesterType(i) != SemesterType.WINTER_TERM) {
 				return false;
@@ -473,6 +484,11 @@ public abstract class Node {
 	public SimpleGenerator getGenerator() {
 		return generator;
 	}
-
+	
+	@Override
+	public String toString(){
+		return module.getIdentifier() + "  " + module.getName();
+	}
+	
 
 }
