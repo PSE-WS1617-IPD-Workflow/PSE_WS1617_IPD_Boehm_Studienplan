@@ -39,7 +39,11 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
      * This method computes the url of the model
      */
     url: function () {
-        return API_DOMAIN + "/plans/" + this.planId + "/modules"
+        if(this.planId!==null) {
+            return API_DOMAIN + "/plans/" + this.planId + "/modules";
+        } else {
+            return API_DOMAIN + "/modules";
+        }
     },
     /**
      * This method parses the content of a semesterCollection
