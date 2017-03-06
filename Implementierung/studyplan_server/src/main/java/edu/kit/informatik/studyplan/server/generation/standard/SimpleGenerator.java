@@ -23,6 +23,7 @@ import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
+import edu.kit.informatik.studyplan.server.model.userdata.Semester;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 import edu.kit.informatik.studyplan.server.verification.Verifier;
@@ -51,7 +52,7 @@ public class SimpleGenerator implements Generator {
 	}
 
 	public Plan generate(PartialObjectiveFunction objectiveFunction, final Plan currentPlan, ModuleDao moduleDAO,
-			Map<Field, Category> preferredSubjects, int maxSemesterEcts) {
+			Map<Field, Category> preferredSubjects, double maxSemesterEcts) {
 		Map<Plan, NodesList> planFamily;
 		Iterator<Plan> it;
 		Verifier verifier = new StandardVerifier();
@@ -236,7 +237,7 @@ public class SimpleGenerator implements Generator {
 	 *         modification.
 	 */
 	GenerationResult complete(NodesList nodes, Plan plan, Map<Field, Category> preferredSubjects,
-			int maxECTSperSemester, ModuleDao moduleDAO) {
+			double maxECTSperSemester, ModuleDao moduleDAO) {
 		// adding modules of the rule groups of the discipline
 		List<RuleGroup> ruleGroups = plan.getUser().getDiscipline().getRuleGroups();
 		for (RuleGroup ruleGroup : ruleGroups) {
@@ -269,18 +270,23 @@ public class SimpleGenerator implements Generator {
 	 */
 	Plan createPlan(List<Node> sorted, int[] semesterAllocation, User user) {
 		Plan plan = new Plan();
+		plan.getAllModuleEntries().addAll(user.getPassedModules());
+		int a = Semester.getCurrentSemester().getDistanceTo(user.getStudyStart());
 		for (int i = 0; i < sorted.size(); i++) {
-			ModuleEntry entry = new ModuleEntry(sorted.get(i).getModule(), semesterAllocation[i]);
+			ModuleEntry entry = new ModuleEntry(sorted.get(i).getModule(), semesterAllocation[i] 
+					+ Semester.getCurrentSemester().getDistanceTo(user.getStudyStart()));
 			plan.getModuleEntries().add(entry);
 			Node n = sorted.get(i);
 			while (n.hasInnerNode()) {
 				n = n.getInnerNode();
-				plan.getModuleEntries().add(new ModuleEntry(n.getModule(), semesterAllocation[i]));
+				plan.getModuleEntries().add(new ModuleEntry(n.getModule(), semesterAllocation[i]
+						+ Semester.getCurrentSemester().getDistanceTo(user.getStudyStart())));
 			}
 			n = sorted.get(i);
 			while (n.hasOuterNode()) {
 				n = n.getOuterNode();
-				plan.getModuleEntries().add(new ModuleEntry(n.getModule(), semesterAllocation[i]));
+				plan.getModuleEntries().add(new ModuleEntry(n.getModule(), semesterAllocation[i]
+						+ Semester.getCurrentSemester().getDistanceTo(user.getStudyStart())));
 			}
 
 		}
@@ -362,12 +368,12 @@ public class SimpleGenerator implements Generator {
 	 * @return an array containing the number of the semester allocated to each
 	 *         node
 	 */
-	int[] parallelize(List<Node> sorted, int maxECTSperSemester) {
+	int[] parallelize(List<Node> sorted, double maxECTSperSemester) {
 		WeightFunction weight = new WeightFunction();
 		Node node;
 		boolean set;
 		int[] bucketAllocation = new int[sorted.size()];
-		int[] bucketSum = new int[sorted.size()];
+		double[] bucketSum = new double[sorted.size()];
 		int[] minPos = new int[sorted.size()];
 		for (int i = 0; i < minPos.length; i++) {
 			minPos[i] = 1;
@@ -459,7 +465,7 @@ public class SimpleGenerator implements Generator {
 	 *            the moduleDao used to fetch modules
 	 */
 	Map<Plan, NodesList> randomlyGeneratedFamilyOfPlans(NodesList nodes, Plan currentPlan,
-			Map<Field, Category> preferredSubjects, int numberOfNodesToChange, int maxECTSperSemester,
+			Map<Field, Category> preferredSubjects, int numberOfNodesToChange, double maxECTSperSemester,
 			ModuleDao moduleDAO) {
 		Map<Plan, NodesList> planFamily = new HashMap<Plan, NodesList>();
 		GenerationResult generated = complete(nodes, currentPlan, preferredSubjects, maxECTSperSemester, moduleDAO);
@@ -568,7 +574,7 @@ public class SimpleGenerator implements Generator {
 	 * @return the new plan
 	 */
 	private GenerationResult modify(int numberOfNodes, GenerationResult generated,
-			Map<Field, Category> preferredSubjects, int maxECTSperSemester, ModuleDao moduleDAO) {
+			Map<Field, Category> preferredSubjects, double maxECTSperSemester, ModuleDao moduleDAO) {
 
 		NodesList nodes = generated.getNodesList();
 		Set<Integer> randomNumbers = randomNumbers(nodes.getRandomlyAddedNodes().size(),
