@@ -18,8 +18,8 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
     /** 
      * Method which initializes the object
      * @param {Object=} attributes
-     * @param {Object=} options configuration details like
-     *                      - Object collection: The collection which the semester belongs to
+     * @param {Object=} options
+     * @return {?}
      */
     initialize: function (attributes, options) {
         this.collection = options.collection;
@@ -31,7 +31,6 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
     },
     /**
      * This method makes sure the semester collection (and plan) is being notified, when the semester changes
-     * @return {string}
      */
     onChange: function () {
         this.collection.trigger("change");
@@ -40,7 +39,11 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
      * This method computes the url of the model
      */
     url: function () {
-        return API_DOMAIN + "/plans/" + this.planId + "/modules"
+        if(this.planId!==null) {
+            return API_DOMAIN + "/plans/" + this.planId + "/modules";
+        } else {
+            return API_DOMAIN + "/modules";
+        }
     },
     /**
      * This method parses the content of a semesterCollection
@@ -62,8 +65,8 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
     },
     /**
      * Method which converts the model to a serializable JSON object
-     * @param {Object=} options Any options for serialization
-     * @return {Object} The serializable object
+     * @param {Object=} options
+     * @return {Object}
      */
     toJSON: function (options) {
         var modules = [];

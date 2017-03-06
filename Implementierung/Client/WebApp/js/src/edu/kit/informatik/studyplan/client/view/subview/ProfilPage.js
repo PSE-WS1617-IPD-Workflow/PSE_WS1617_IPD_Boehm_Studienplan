@@ -68,7 +68,42 @@
                  display: "none"
              });
          }
+        edu.kit.informatik.studyplan.client.model.system.EventBus.on("showModuleInfo", this.showModuleDetails.bind(this));
+        edu.kit.informatik.studyplan.client.model.system.EventBus.on("hideModuleInfo", this.hideModuleDetails.bind(this));
      },
+     /**
+     *@param{edu.kit.informatik.studyplan.client.model.module.Module} module
+     * load ModuleDetails and show them at the sidebar.  
+     */
+    showModuleDetails: function (module) {
+        "use strict";
+        //console.info("[edu.kit.informatik.studyplan.client.view.subview.PlanEditPage] showModuleDetails");
+        if (this.standardModuleFinder === null) {
+            this.standardModuleFinder = this.moduleFinder;
+        }
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+        module.fetch({
+            success: function () {
+                this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar({
+                    module: module,
+                    isPreferencable: false
+                });
+                this.render();
+                edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+            }.bind(this),
+            error: function () {
+                this.standardModuleFinder = null;
+            }.bind(this)
+        });
+    },
+    /**
+     *hide ModuleDetails and shows last Sidebar.
+     */
+    hideModuleDetails: function () {
+        "use strict";
+        this.moduleFinder = this.standardModuleFinder;
+        this.render();
+    },
      /**
       * Saves passed modules
       */

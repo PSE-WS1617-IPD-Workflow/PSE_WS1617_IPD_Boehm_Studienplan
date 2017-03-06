@@ -18,7 +18,7 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend( /** @l
         .getTemplate("resources/templates/subview/loading.html")()),
     initialize: function () {
         "use strict";
-        console.info("[edu.kit.informatik.studyplan.client.view.MainView] initializing...");
+        //console.info("[edu.kit.informatik.studyplan.client.view.MainView] initializing...");
         this.headerElement = $("<div id='header'></div>");
         this.contentElement = $("<div id='content'></div>");
         this.notificationElement = $("<div id='notifications'></div>");

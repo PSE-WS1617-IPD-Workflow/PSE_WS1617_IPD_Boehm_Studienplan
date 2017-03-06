@@ -26,16 +26,16 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
         } else {
             response["modules"] = [];
         }
-        console.log(response);
+        //console.log(response);
         var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
         //includes passed-Modules.
         if (student) {
             var passedModules = student.get('passedModules');
         }
         //todo: bleiben die consolen-eingaben?
-        console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] parsing plan")
-        console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] passedModules:")
-        console.info(passedModules);
+        //console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] parsing plan")
+        //console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] passedModules:")
+        //console.info(passedModules);
         if (passedModules) {
             passedModules.each(function (module) {
                 module.set('passed', true);
@@ -106,6 +106,8 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     /**
      *builds a JSon while using toJSON to semesterCollecton and the standard-JSON
      * with option "post or patch it includes just the name, else id, name and modulecollection.
+     * @param {Object=} options
+     * @return {Object}
      */
     toJSON: function (options) {
         if (options.method === "post") {

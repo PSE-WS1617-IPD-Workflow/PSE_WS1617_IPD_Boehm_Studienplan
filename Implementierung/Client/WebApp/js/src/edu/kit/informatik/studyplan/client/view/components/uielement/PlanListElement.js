@@ -30,7 +30,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
      */
     showPlan: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] showPlan");
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] showPlan");
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("plans/" + this.plan.get('id'), {
             trigger: true
         });
@@ -40,7 +40,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
      */
     exportPlan: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] exportPlan");
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] exportPlan");
         window.location.href = API_DOMAIN + "/plans/" + this.plan.get('id') + "/pdf?access-token=" + edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('access_token');
     },
     /**
@@ -48,7 +48,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
      */
     duplicatePlan: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] duplicatePlan");
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] duplicatePlan");
         var planName = prompt(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("planNameQuestion"), "");
         if (planName === null) {
             return;
@@ -63,21 +63,21 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
                 });
                 delete attributes["plan"]["id"];
                 attributes["plan"]["name"] = planName;
-                console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] plan to be duplicated");
-                console.info(this.plan);
+                //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] plan to be duplicated");
+                //console.info(this.plan);
                 var newPlan = new edu.kit.informatik.studyplan.client.model.plans.Plan(attributes, {
                     parse: true
                 });
-                console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] plan duplicate");
-                console.log(attributes);
-                console.info(newPlan);
+                //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] plan duplicate");
+                //console.log(attributes);
+                //console.info(newPlan);
                 // Add to collection
                 self.plan.collection.add(newPlan);
                 // Send POST request
                 newPlan.save(null, {
                     success: function () {
                         // Send PUT request
-                        newPlan.set(newPlan.parse(attributes));
+                        newPlan.set(newPlan.parse(attributes,{}));
                         newPlan.save(null, {
                             success: function () {
                                 edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
@@ -102,7 +102,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
      */
     deletePlan: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] deletePlan");
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] deletePlan");
         var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         this.plan.destroy({

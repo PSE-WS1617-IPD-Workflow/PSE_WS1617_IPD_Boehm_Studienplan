@@ -23,7 +23,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
          * @this {edu.kit.informatik.studyplan.client.router.MainRouter}
          */
         initialize: function () {
-            console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] initialize");
+            //console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] initialize");
             this.view = new edu.kit.informatik.studyplan.client.view.MainView();
             this.view.setHeader(edu.kit.informatik.studyplan.client.view.subview.Header, {
                 sessionInformation: edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance()
@@ -71,7 +71,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
          * @url /
          */
         mainPage: function () {
-            console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] mainPage");
+            //console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] mainPage");
             this.showLoading();
             var planCollection = new edu.kit.informatik.studyplan.client.model.plans.PlanCollection();
             planCollection.fetch({
@@ -90,7 +90,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
          * @url /plans/:planId
          */
         editPage: function (planId) {
-            console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] editPage");
+            //console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] editPage");
             this.showLoading();
             var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({
                 id: planId
@@ -115,7 +115,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
          * @url /compare/:plan1/:plan2
          */
         comparisonPage: function (planId1, planId2) {
-            console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] comparisonPage");
+            //console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] comparisonPage");
             this.showLoading();
             this.hideLoading();
             throw new Error("Not implemented");
@@ -125,7 +125,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
          * @url /plans/:planId/generate
          */
         generationWizard: function (planId) {
-            console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] generationWizard");
+            //console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] generationWizard");
             this.showLoading();
             var info = new edu.kit.informatik.studyplan.client.model.system.ProposalInformation();
             var plan = new edu.kit.informatik.studyplan.client.model.plans.Plan({
@@ -166,7 +166,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
          * @url /processLogin
          */
         handleLogin: function () {
-            console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] handleLogin");
+            //console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] handleLogin");
             this.showLoading();
             var redirectData = this.processData(window.location.hash.substr(1));
             var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
@@ -234,7 +234,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                         })
                     );
             }.bind(this), redirectData["expires_in"] * 1000);
-            console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] authentication successful");
+            //console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] authentication successful");
             info.set('student', new edu.kit.informatik.studyplan.client.model.user.Student());
             var student = info.get('student');
             student.fetch({
@@ -265,7 +265,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
          * @url /login
          */
         loginPage: function () {
-            console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] loginPage");
+            //console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] loginPage");
             this.showLoading();
             this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.LoginPage, {});
             this.hideLoading();
@@ -275,7 +275,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
          * @url /profile
          */
         showProfile: function () {
-            console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] showProfile");
+            //console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] showProfile");
             this.showLoading();
             var student = new edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
             student.fetch({
@@ -295,7 +295,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
          * @url /signup
          */
         signUpWizard: function () {
-            console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] signUpWizard");
+            //console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] signUpWizard");
             this.showLoading();
             var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
             var done = function () {
@@ -333,7 +333,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
          * /[non existent url]
          */
         notFound: function () {
-            console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] notFound");
+            //console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] notFound");
             this.showLoading();
             this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.NotFoundPage, {});
             this.hideLoading();
@@ -343,7 +343,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
          * @url /logout
          */
         logoutPage: function () {
-            console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] logoutPage");
+            //console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] logoutPage");
             this.showLoading();
             var info = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance();
             info.set('access_token', undefined);

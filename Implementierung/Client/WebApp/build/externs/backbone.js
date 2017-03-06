@@ -126,7 +126,8 @@ Backbone.Model.prototype.omit = _.prototype.omit;
 Backbone.Model.prototype.extend = function(properties, classProperties) {};
 
 /**
- * @param {...*} config
+  * @param {Object=} config
+  * @return {?}
  */
 Backbone.Model.prototype.initialize = function(config) {};
 
@@ -190,8 +191,9 @@ Backbone.Model.prototype.defaults;
 Backbone.Model.prototype.collection;
 
 /**
- * param {Object=} options
- * return {Object}
+ * @suppress {checkTypes}
+ * @param {Object=} options
+ * @return {Object}
  */
 Backbone.Model.prototype.toJSON = function(options) {};
 
@@ -294,7 +296,8 @@ Backbone.Collection.prototype.syncArgs;
 Backbone.Collection.prototype.previousModels;
 
 /**
- * @param {...*} args
+  * @param {Object=} args
+  * @return {?}
  */
 Backbone.Collection.prototype.initialize = function(args) {};
 
@@ -351,8 +354,9 @@ Backbone.Collection.prototype.lastIndexOf = _.prototype.lastIndexOf;
 Backbone.Collection.prototype.isEmpty = _.prototype.isEmpty;
 
 /**
- * param {Object=} options
- * return {Array.<Object>}
+ * @suppress {checkTypes}
+ * @param {Object=} options
+ * @return {Object|Array}
  */
 Backbone.Collection.prototype.toJSON = function(options) {};
 
@@ -632,13 +636,9 @@ Backbone.View.prototype.events;
 
 /** @type {{id: string, className: string, tagName: string}} */
 Backbone.View.prototype.options;
-/**
- * @param {...*} args
- */
+
 Backbone.View.prototype.initialize = function(args) {};
-/**
- * @return {Backbone.View}
- */
+
 Backbone.View.prototype.render = function(){};
 /** @type {Element} */
 Backbone.View.prototype.el;

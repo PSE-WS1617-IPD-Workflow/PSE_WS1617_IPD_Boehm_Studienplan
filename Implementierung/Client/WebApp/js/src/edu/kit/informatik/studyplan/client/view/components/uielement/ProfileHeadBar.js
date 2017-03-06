@@ -33,7 +33,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
         "use strict";
         pushToServer = (typeof pushToServer !== "undefined") ? pushToServer : true;
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar] save");
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar] save");
         var planObject = this.model.toJSON({
             method: "put",
             planModule: true,
@@ -48,7 +48,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
         if (pushToServer) {
             student.save(null,{
                 success: function () {
-                    console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar] save done");
+                    //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar] save done");
                     edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
                     var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
                     edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()

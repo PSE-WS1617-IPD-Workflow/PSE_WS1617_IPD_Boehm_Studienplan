@@ -100,7 +100,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
      *@param{Object} ui
      */
     onDrop: function (event, ui) {
-        console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.Semester] drop event");
+        //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.Semester] drop event");
         //TODO: Make module deletable when it wasn't before!
         var droppedElement = ui.helper.data("viewObject");
         /**

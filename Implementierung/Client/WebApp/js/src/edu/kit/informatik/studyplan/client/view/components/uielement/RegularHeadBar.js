@@ -32,7 +32,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
      */
     generate: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar] generate");
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar] generate");
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("plans/" + this.model.get('id') + "/generate", {
             trigger: true
         });
@@ -49,7 +49,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
      */
     verify: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar] verify");
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar] verify");
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         var self = this;
         var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
@@ -118,7 +118,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
      */
     rename: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar] rename")
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar] rename")
         var name = this.$el.find("#curPlanName").val();
         if (name.length > 100) {
             edu.kit.informatik.studyplan.client.model.system.NotificationCollection

@@ -146,8 +146,8 @@ LM.messages["de"]["connectionLostText"] = "Sie können aktuell keine Daten speic
 LM.messages["de"]["allValues"] = "Alles";
 
 // Module Info Sidebar
-LM.messages["de"]["lecturer"] = "";
-LM.messages["de"]["ECTS"] = "ECTS";
+LM.messages["de"]["lecturer"] = "Dozent:";
+LM.messages["de"]["ECTS"] = "ECTS:";
 LM.messages["de"]["description"] = "Beschreibung"
 LM.messages["de"]["constraints"] = "Bedingungen";
 LM.messages["de"][""] = "";

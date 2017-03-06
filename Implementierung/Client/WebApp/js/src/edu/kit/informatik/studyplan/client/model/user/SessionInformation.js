@@ -84,8 +84,8 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
                 instance.fetch({
                     success: function () {
                         if (!instance.has('state')) {
-                            console.log("edu.kit.informatik.studyplan.client.model.user.SessionInformation");
-                            console.log(instance.get('state'));
+                            //console.log("edu.kit.informatik.studyplan.client.model.user.SessionInformation");
+                            //console.log(instance.get('state'));
                             instance.generateState();
                             instance.save();
                         }

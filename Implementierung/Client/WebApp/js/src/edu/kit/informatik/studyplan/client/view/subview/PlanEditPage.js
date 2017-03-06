@@ -58,8 +58,8 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
         this.proposed = (typeof options.proposed) ? options.proposed : this.proposed;
         this.model = options.plan;
         if (!this.proposed) {
-            console.log("[edu.kit.informatik.studyplan.client.view.subview.PlanEditPage] planId")
-            console.log(this.model.get('id'));
+            //console.log("[edu.kit.informatik.studyplan.client.view.subview.PlanEditPage] planId")
+            //console.log(this.model.get('id'));
             //moduleFinder should allow to drop some modules and put them in the plan, should allow to set preferences, is just a sidebar, because theres the plan too, has a planId.
             this.moduleFinder = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder({
                 isSidebar: true,
@@ -120,7 +120,7 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
      */
     showModuleDetails: function (module) {
         "use strict";
-        console.info("[edu.kit.informatik.studyplan.client.view.subview.PlanEditPage] showModuleDetails");
+        //console.info("[edu.kit.informatik.studyplan.client.view.subview.PlanEditPage] showModuleDetails");
         if (this.standardModuleFinder === null) {
             this.standardModuleFinder = this.moduleFinder;
         }

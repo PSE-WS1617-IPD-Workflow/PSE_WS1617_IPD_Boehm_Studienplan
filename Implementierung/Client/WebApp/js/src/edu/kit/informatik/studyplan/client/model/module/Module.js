@@ -46,8 +46,8 @@ edu.kit.informatik.studyplan.client.model.module.Module = edu.kit.informatik.stu
             module: this,
             preference: response["module"]["preference"]
         }
-        console.log("[edu.kit.informatik.studyplan.client.model.module.Module] preference")
-        console.log(preferenceInfo);
+        //console.log("[edu.kit.informatik.studyplan.client.model.module.Module] preference")
+        //console.log(preferenceInfo);
         result["preference"] = new edu.kit.informatik.studyplan.client.model.module.Preference(preferenceInfo);
 
         return result;
@@ -56,6 +56,8 @@ edu.kit.informatik.studyplan.client.model.module.Module = edu.kit.informatik.stu
 
     /**
      *toJson converts the Javascript Object Module to a Json which can send to the server and can be read by the server.
+     * @param {Object=} options
+     * @return {Object}
      */
     toJSON: function (options) {
         if (options.planModule) {
