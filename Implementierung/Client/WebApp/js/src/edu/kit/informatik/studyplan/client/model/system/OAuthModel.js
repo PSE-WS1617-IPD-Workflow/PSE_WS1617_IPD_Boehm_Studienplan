@@ -6,7 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.OAuthModel");
  * Represents a model which is being saved on the server via OAuth
  */
 
-edu.kit.informatik.studyplan.client.model.system.OAuthModel = Backbone.Model.extend(/** @lends {edu.kit.informatik.studyplan.client.model.system.OAuthModel.prototype}*/{
+edu.kit.informatik.studyplan.client.model.system.OAuthModel = Backbone.Model.extend( /** @lends {edu.kit.informatik.studyplan.client.model.system.OAuthModel.prototype}*/ {
     sync: edu.kit.informatik.studyplan.client.storage.OAuthSync,
     save: function (key, val, options) {
         // Handle both `"key", value` and `{key: value}` -style arguments.
@@ -19,17 +19,17 @@ edu.kit.informatik.studyplan.client.model.system.OAuthModel = Backbone.Model.ext
         }
         options = options || {};
         // Make sure updating awaits a positive server esponse
-        _.defaults(options,{
+        _.defaults(options, {
             wait: true
         })
-        Backbone.Model.prototype.save.apply(this,[attrs, options])
+        Backbone.Model.prototype.save.apply(this, [attrs, options])
     },
     destroy: function (options) {
         options = options || {};
         // Make sure updating awaits a positive server response
-        options["wait"]=true;
+        options["wait"] = true;
         // Make sure JQuery does not expect any JSON response from server
-        options["dataType"]="text";
-        Backbone.Model.prototype.destroy.apply(this,[options])
+        options["dataType"] = "text";
+        Backbone.Model.prototype.destroy.apply(this, [options])
     }
 });

@@ -57,7 +57,7 @@ edu.kit.informatik.studyplan.client.model.system.TemplateManager = (function () 
         /** 
          * @return {TemplateRegistry}
          */
-        getInstance : function () {
+        getInstance: function () {
             if (instance === null) {
                 instance = new TemplateRegistry();
             }

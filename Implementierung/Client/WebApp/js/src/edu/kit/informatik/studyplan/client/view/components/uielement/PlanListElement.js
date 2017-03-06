@@ -6,7 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Plan
  * Class which represents an element in a plan list
  */
 
-edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement.prototype} */{
+edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = Backbone.View.extend( /** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement.prototype} */ {
     tagName: 'tr',
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/planListEl.html"),
     plan: null,
@@ -20,33 +20,37 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
         this.plan = options.plan;
     },
     render: function () {
-        this.$el.html(this.template({plan: this.plan}));
+        this.$el.html(this.template({
+            plan: this.plan
+        }));
         this.delegateEvents();
     },
     /**
-    * Method which shows the plan
-    */
+     * Method which shows the plan
+     */
     showPlan: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] showPlan");
-        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("plans/"+this.plan.get('id'),{trigger:true});
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] showPlan");
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("plans/" + this.plan.get('id'), {
+            trigger: true
+        });
     },
     /**
-    * Method which exports the plan
-    */
+     * Method which exports the plan
+     */
     exportPlan: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] exportPlan");
-        window.location.href=API_DOMAIN+"/plans/"+this.plan.get('id')+"/pdf?access-token="+edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('access_token');
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] exportPlan");
+        window.location.href = API_DOMAIN + "/plans/" + this.plan.get('id') + "/pdf?access-token=" + edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('access_token');
     },
     /**
-    * Method which duplicates the plan
-    */
+     * Method which duplicates the plan
+     */
     duplicatePlan: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] duplicatePlan");
-        var planName= prompt(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("planNameQuestion"), "");
-        if(planName===null){
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] duplicatePlan");
+        var planName = prompt(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("planNameQuestion"), "");
+        if (planName === null) {
             return;
         }
         var self = this;
@@ -54,19 +58,27 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
         this.plan.fetch({
             // TODO: zurück stellen, wenn nicht erfolgreich
             success: function () {
-                var attributes = this.plan.toJSON({method: "PUT"});
+                var attributes = this.plan.toJSON({
+                    method: "PUT"
+                });
                 delete attributes["plan"]["id"];
-                attributes["plan"]["name"]=planName;
-                console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] plan to be duplicated");
-                console.info(this.plan);
-                var newPlan = new edu.kit.informatik.studyplan.client.model.plans.Plan(attributes,{parse: true});
+                attributes["plan"]["name"] = planName;
+                //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] plan to be duplicated");
+                //console.info(this.plan);
+                var newPlan = new edu.kit.informatik.studyplan.client.model.plans.Plan(attributes, {
+                    parse: true
+                });
+                //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] plan duplicate");
+                //console.log(attributes);
+                //console.info(newPlan);
                 // Add to collection
                 self.plan.collection.add(newPlan);
                 // Send POST request
-                newPlan.save({},{
+                newPlan.save(null, {
                     success: function () {
                         // Send PUT request
-                        newPlan.save({}, {
+                        newPlan.set(newPlan.parse(attributes,{}));
+                        newPlan.save(null, {
                             success: function () {
                                 edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
                                 edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
@@ -86,24 +98,26 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
         });
     },
     /**
-    * Method which deletes the plan
-    */
+     * Method which deletes the plan
+     */
     deletePlan: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] deletePlan");
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] deletePlan");
         var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
-        this.plan.destroy({success: function () {
-            edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
-            edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
-                new edu.kit.informatik.studyplan.client.model.system.Notification({
-                    title: LM.getMessage("planDeletedTitle"),
-                    text: LM.getMessage("planDeletedText"),
-                    wasShown: false,
-                    type: "success"
-                })
-            );
-        }});
+        this.plan.destroy({
+            success: function () {
+                edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
+                    new edu.kit.informatik.studyplan.client.model.system.Notification({
+                        title: LM.getMessage("planDeletedTitle"),
+                        text: LM.getMessage("planDeletedText"),
+                        wasShown: false,
+                        type: "success"
+                    })
+                );
+            }
+        });
     },
     /**
      * Set's the elements checkbox
@@ -115,6 +129,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
      * Returns wheter or not the checkbox is checked
      */
     isChecked: function () {
-        return  this.$el.find("input[type=checkbox]").prop('checked');
+        return this.$el.find("input[type=checkbox]").prop('checked');
     }
 });

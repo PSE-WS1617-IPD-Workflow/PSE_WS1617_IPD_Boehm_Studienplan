@@ -3,40 +3,44 @@ define(["studyplan"], function (client) {
     describe("ModuleInitialisation", function () {
         it("testing parse", function () {
 
-            var json =  {module:
-                         {
-                        id : 0,
-                        name : "Magische Tierwesen",
-                        categories://test,
-                            [{
-                                id: 42,
-                                name: "Meistern von lebensgefährliche n Situationen"
-                            }],
-                        semester: 5,
-                        "cycle-type": "Mittsommer",
-                        lecturer: "Hagrid",
-                        preference: 1,
-                        description: "Auf Heippogreifen reiten, Schrumpfhörnige Schnarchkackler füttern und beißende Bücher bändigen. Spannung Spaß und Abenteuer im Verbotenen Wald.",
-                        constraints: [{
-                            name: "keine Ahnung wozu der gut ist, ich glaube das sollte lieber ID sein, aber dazu bin ich vielleicht nicht befugt.",
-        
-                            first: {
-                                id : 1,
-                                },
-                            second: {
-                                //wie stellt man das klugerweise da ? 
-                                id : 0
-                            },
-                            type: "Himmel und Hölle gleichzeitig zum Ausgleich."
+            var json = {
+                module: {
+                    id: 0,
+                    name: "Magische Tierwesen",
+                    categories: //test,
+                        [{
+                            id: 42,
+                            name: "Meistern von lebensgefährliche n Situationen"
+                        }],
+                    semester: 5,
+                    "cycle-type": "Mittsommer",
+                    lecturer: "Hagrid",
+                    preference: 1,
+                    description: "Auf Heippogreifen reiten, Schrumpfhörnige Schnarchkackler füttern und beißende Bücher bändigen. Spannung Spaß und Abenteuer im Verbotenen Wald.",
+                    constraints: [{
+                        name: "keine Ahnung wozu der gut ist, ich glaube das sollte lieber ID sein, aber dazu bin ich vielleicht nicht befugt.",
 
-                        }]
-                    
-                    }
-                        };
+                        first: {
+                            id: 1,
+                        },
+                        second: {
+                            //wie stellt man das klugerweise da ? 
+                            id: 0
+                        },
+                        type: "Himmel und Hölle gleichzeitig zum Ausgleich."
+
+                    }]
+
+                }
+            };
             var json_copy1 = JSON.parse(JSON.stringify(json.module));
-            var json_copy = {module: json_copy1};
-            var module1 = new client.model.module.Module(json_copy, {parse : true});
-            
+            var json_copy = {
+                module: json_copy1
+            };
+            var module1 = new client.model.module.Module(json_copy, {
+                parse: true
+            });
+
             expect(module1.get("name")).toEqual(json.module["name"]);
             expect(module1.get("name")).toBeDefined();
             expect(module1.get("lecturer")).toEqual(json.module["lecturer"]);
@@ -51,8 +55,8 @@ define(["studyplan"], function (client) {
             expect(module1.get("constraints")[0].get("second").get("name")).toEqual(json.module.constraints[0].second.name);
             expect(module1.get("constraints")[0].get("type")).toEqual(json.module.constraints[0].type);
             expect(module1.get("constraints")[0].get("first").get("description")).toEqual(json.module.constraints[0].first["description"]);
-           //weitere Tests: Array nicht mehr Werte als vorgesehen, PlanID, passed, discipline, preference ausführlicher, leere Felder, tiefere Constraintverknüpfungen.
+            //weitere Tests: Array nicht mehr Werte als vorgesehen, PlanID, passed, discipline, preference ausführlicher, leere Felder, tiefere Constraintverknüpfungen.
         });
-    
+
     });
 });

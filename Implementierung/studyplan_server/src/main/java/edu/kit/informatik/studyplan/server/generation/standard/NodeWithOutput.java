@@ -36,7 +36,6 @@ public class NodeWithOutput extends Node {
 	}
 	
 	protected void fulfillConstraints(boolean random) {
-//		System.out.println("FULFILLING CONST " + this.getModule().getIdentifier());
 		if (this.isPassed()) {
 			setConstraintsFulfilled(true);
 			return;
@@ -58,19 +57,17 @@ public class NodeWithOutput extends Node {
 				y = false;
 				newNode = new NodeWithOutput(module, getPlan(), getGenerator());
 				newNode.setPlan(this.getPlan());
-				if (random) {
-					getGenerator().getNodes().getRandomlyAddedNodes().add(newNode);
-				}
 			}
-			if (c.getConstraintType() instanceof PrerequisiteModuleConstraintType) {
+			if (c.getConstraintType() instanceof PrerequisiteModuleConstraintType
+					&& this.getModule().getToConstraints().contains(c)) {
 				addParent(newNode);
-				getGenerator().getNodes().add(newNode);
+				getGenerator().getNodes().add(newNode, random);
 			} else if (c.getConstraintType() instanceof PlanLinkModuleConstraintType) {
 				addChild(newNode);
-				getGenerator().getNodes().add(newNode);
+				getGenerator().getNodes().add(newNode, random);
 			} else if (c.getConstraintType() instanceof SemesterLinkModuleConstraintType) {
 				addInnerNode(newNode);
-				getGenerator().getNodes().add(newNode);
+				getGenerator().getNodes().add(newNode, random);
 			}
 			if (!y) {
 				newNode.fulfillConstraints(random);				

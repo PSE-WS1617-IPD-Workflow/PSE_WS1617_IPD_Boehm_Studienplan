@@ -11,13 +11,22 @@ define(["studyplan"], function (studyplan) {
              * @type{edu.kit.informatik.studyplan.client.view.MainView}
              */
             mainView = new studyplan.view.MainView();
-            headerWrapper = { headerConstructor : function (options) {} };
-            contentWrapper = { contentConstructor : function (options) {} };
-            renderWrapper = { render : function () {} , remove : function () {} };
-            options = {test: "foo"};
+            headerWrapper = {
+                headerConstructor: function (options) {}
+            };
+            contentWrapper = {
+                contentConstructor: function (options) {}
+            };
+            renderWrapper = {
+                render: function () {},
+                remove: function () {}
+            };
+            options = {
+                test: "foo"
+            };
         });
         it("Instance should not be null", function () {
-            expect(mainView).not.toBeNull();//test
+            expect(mainView).not.toBeNull(); //test
         });
         it("Should initialise Header", function () {
             spyOn(headerWrapper, 'headerConstructor');
@@ -32,10 +41,10 @@ define(["studyplan"], function (studyplan) {
             expect(contentWrapper.contentConstructor.calls.argsFor(0)[0].test).toEqual("foo");
         });
         it("Should call header and content render function on render", function () {
-            spyOn(renderWrapper,"render");
+            spyOn(renderWrapper, "render");
             spyOn(headerWrapper, 'headerConstructor').and.returnValue(renderWrapper);
             spyOn(contentWrapper, 'contentConstructor').and.returnValue(renderWrapper);
-            mainView.setHeader(headerWrapper.headerConstructor,options);
+            mainView.setHeader(headerWrapper.headerConstructor, options);
             mainView.setContent(contentWrapper.contentConstructor, options);
             mainView.render();
             expect(renderWrapper.render.calls.count()).toEqual(2);

@@ -8,35 +8,35 @@ goog.provide("edu.kit.informatik.studyplan.client.storage.CookieSync");
 edu.kit.informatik.studyplan.client.storage.CookieSync = function (method, model, options) {
     "use strict";
     var create = function (model) {
-            console.group();
-            console.info("[edu.kit.informatik.studyplan.client.storage.CookieSync]")
-            console.log(model.toJSON());
-            Cookies.set(_.result(model, 'url'), model.toJSON());
-            console.log(Cookies.get(_.result(model, 'url')));
-            console.groupEnd();
-            return model.toJSON();
-        };
+        console.group();
+        //console.info("[edu.kit.informatik.studyplan.client.storage.CookieSync]")
+        //console.log(model.toJSON());
+        Cookies.set(_.result(model, 'url'), model.toJSON());
+        //console.log(Cookies.get(_.result(model, 'url')));
+        console.groupEnd();
+        return model.toJSON();
+    };
     var methods = {
-        "create" : create,
-        "update" : create,
-        "delete" : function (model) {
+        "create": create,
+        "update": create,
+        "delete": function (model) {
             Cookies.remove(_.result(model, 'url'));
         },
-        "read" : function (model) {
+        "read": function (model) {
             return Cookies.getJSON(_.result(model, 'url'));
         }
     };
     if (typeof methods[method] !== "undefined") {
         var result = methods[method](model);
-        if(result===undefined&&options&&options.error){
+        if (result === undefined && options && options.error) {
             options.error(null, "[edu.kit.informatik.studyplan.client.storage.CookieSync] Invalid method " + method, 400);
         }
-        if(options&&options.success){
+        if (options && options.success) {
             options.success(result);
         }
         return result;
     } else {
-        if(options&&options.error){
+        if (options && options.error) {
             options.error(null, "[edu.kit.informatik.studyplan.client.storage.CookieSync] Invalid method " + method, 400);
         }
         throw new Error("[edu.kit.informatik.studyplan.client.storage.CookieSync] Invalid method " + method);

@@ -5,7 +5,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.PlanLi
  * @extends {Backbone.View}
  */
 
-edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList.prototype} */{
+edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.View.extend( /** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList.prototype} */ {
     tagName: 'div',
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uipanel/planList.html"),
     planCollection: null,
@@ -15,11 +15,11 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
         "click button.planListActionExecution": "onActionSelection"
     },
     /**
-    * initializes this class
-    * @this {Backbone.View}
-    * @param{...*} options
-    *               planCollection -> connection to the model
-    */
+     * initializes this class
+     * @this {Backbone.View}
+     * @param{...*} options
+     *               planCollection -> connection to the model
+     */
     initialize: function (options) {
         "use strict";
         this.planCollection = options.planCollection;
@@ -31,10 +31,10 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
         this.reload();
     },
     /**
-    * updates date and rerenders ui
-    */
+     * updates date and rerenders ui
+     */
     reload: function () {
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] reload");
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] reload");
         this.planListElements = [];
         var self = this;
         this.planCollection.each(function (curPlan) {
@@ -45,8 +45,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
         this.render();
     },
     /**
-    *renders the template and the inserted profilepage
-    */
+     *renders the template and the inserted profilepage
+     */
     render: function () {
         "use strict";
         this.$el.html(this.template());
@@ -58,14 +58,14 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
         this.delegateEvents();
     },
     /**
-    * updates data after an action is selected
-    */
+     * updates data after an action is selected
+     */
     onActionSelection: function () {
         "use strict";
         var select = this.$el.find("select.planListAction");
         var planListEls = [];
         _.each(this.planListElements, function (curEl) {
-            if (curEl.isChecked()){
+            if (curEl.isChecked()) {
                 planListEls.push(curEl);
             }
         })
@@ -73,13 +73,13 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
     },
     /**
     * loads page to compare plans
-    * @param{..*} planListEls
+    * @param{...*} planListEls
                     list of plans
     */
     comparePlans: function (planListEls) {
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] comparePlans");
-        console.log(planListEls);
-        if(planListEls.length!==2){
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] comparePlans");
+        //console.log(planListEls);
+        if (planListEls.length !== 2) {
             edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
                 new edu.kit.informatik.studyplan.client.model.system.Notification({
                     title: LM.getMessage("only2PlansComparableTitle"),
@@ -91,35 +91,36 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
             return;
         }
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate(
-            "compare/"+planListEls[0].plan.get('id')+"/"+planListEls[1].plan.get('id'),
-            {trigger: true}
+            "compare/" + planListEls[0].plan.get('id') + "/" + planListEls[1].plan.get('id'), {
+                trigger: true
+            }
         )
     },
     /**
     * sends a deleterequest for a plan
-    * @param{..*} planListEls
+    * @param{Object|null} planListEls
                     list of plans
     */
     deletePlans: function (planListEls) {
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] deletePlans");
-        console.log(planListEls);
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] deletePlans");
+        //console.log(planListEls);
         _.each(planListEls, function (el) {
             el.deletePlan();
         });
     },
     /**
-    *
-    */
+     *
+     */
     onChange: function () {
         "use strict";
     },
     /**
-    * updates all checkboxxes according to the select all box
-    */
+     * updates all checkboxxes according to the select all box
+     */
     checkAllCheckboxChange: function () {
         var isChecked = this.$el.find("#checkAllCheckbox").prop('checked');
-        console.log(this.planListElements);
-        _.each(this.planListElements,function (el) {
+        //console.log(this.planListElements);
+        _.each(this.planListElements, function (el) {
             el.setChecked(isChecked);
         });
     }

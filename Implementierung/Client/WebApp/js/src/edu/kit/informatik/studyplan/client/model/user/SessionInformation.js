@@ -21,14 +21,14 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
      */
     var Constructor = edu.kit.informatik.studyplan.client.model.system.CookieModel.extend({
         // cookie storage name
-        url : "edu.kit.informatik.studyplan.client.model.user.SessionInformation.storage",
+        url: "edu.kit.informatik.studyplan.client.model.user.SessionInformation.storage",
         initialize: function () {
             this.set('student', new edu.kit.informatik.studyplan.client.model.user.Student())
         },
         /**
-        * Method which sets a random value for state
-        */
-        generateState : function () {
+         * Method which sets a random value for state
+         */
+        generateState: function () {
             var random = null;
             // Use crypto API if available
             if (window.crypto.getRandomValues) {
@@ -43,22 +43,22 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
             } else {
                 random = Math.ceil(Math.random() * 10000000 + 1000000).toString(36);
             }
-            this.set('state', random.substr(0,30));
+            this.set('state', random.substr(0, 30));
             this.save();
         },
         /**
          * Method for retrieval of the Login URL
          */
-        getLoginUrl : function () {
-            return API_DOMAIN + "/auth/login?response_type=token&client_id="+API_KEY+"&scope=student&state="+this.get('state');
+        getLoginUrl: function () {
+            return API_DOMAIN + "/auth/login?response_type=token&client_id=" + API_KEY + "&scope=student&state=" + this.get('state');
         },
         /**
          * Method which checks if the user is logged in
          */
         isLoggedIn: function () {
-            if(edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().has('access_token')){
+            if (edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().has('access_token')) {
                 var accessToken = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('access_token');
-                if(accessToken!==null&&accessToken!=undefined){
+                if (accessToken !== null && accessToken != undefined) {
                     return true;
                 }
             }
@@ -76,16 +76,16 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
         /**
          * @return {edu.kit.informatik.studyplan.client.model.user.SessionInformation}
          */
-        getInstance : function () {
+        getInstance: function () {
             if (instance === null) {
                 instance = new Constructor();
             }
-            if (!instance.get('wasLoaded')){
+            if (!instance.get('wasLoaded')) {
                 instance.fetch({
                     success: function () {
-                        if(!instance.has('state')){
-                            console.log("edu.kit.informatik.studyplan.client.model.user.SessionInformation");
-                            console.log(instance.get('state'));
+                        if (!instance.has('state')) {
+                            //console.log("edu.kit.informatik.studyplan.client.model.user.SessionInformation");
+                            //console.log(instance.get('state'));
                             instance.generateState();
                             instance.save();
                         }

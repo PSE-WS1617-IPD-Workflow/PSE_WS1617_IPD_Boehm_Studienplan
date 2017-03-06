@@ -101,7 +101,6 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
         <define name="API_SCOPE" value="${API_SCOPE}" />
         <define name="API_TOKEN" value="${API_TOKEN}" />
         <define name="DEBUG_ALWAYS_LOGIN" value="${DEBUG_ALWAYS_LOGIN}" />
-        <warning group="checkTypes" level="OFF"/><!--Problem with JS-Docs...-->
       <externs dir="${basedir}/build/externs">
         <file name="extern.js"/>
         <file name="cookie.js"/>

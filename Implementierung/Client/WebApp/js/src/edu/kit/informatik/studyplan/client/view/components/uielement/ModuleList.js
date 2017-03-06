@@ -6,18 +6,18 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Modu
  * Method which represents a list of modules in the module finder
  */
 
-edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList.prototype} */{
+edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backbone.View.extend( /** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList.prototype} */ {
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/moduleList.html"),
     moduleCollection: null,
     tagName: "ul",
     moduleBoxes: null,
-    initialize: function(options){
+    initialize: function (options) {
         "use strict";
         this.moduleCollection = options.moduleCollection;
         this.isDraggable = options.isDraggable;
         this.isRemovable = options.isRemovable;
         this.planId = options.planId;
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList] planId: " + this.planId);
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList] planId: " + this.planId);
         this.isPreferencable = options.isPreferencable;
         //this.listenTo(this.moduleCollection, "change", this.onChange);
         //this.listenTo(this.moduleCollection, "all", this.onChange);
@@ -48,7 +48,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
     render: function () {
         this.$el.html(this.template());
         var container = this.$el.find(".moduleListWrapper");
-        _.each(this.moduleBoxes, function(el){
+        _.each(this.moduleBoxes, function (el) {
             el.render();
             container.append(el.$el)
         }.bind(this));
