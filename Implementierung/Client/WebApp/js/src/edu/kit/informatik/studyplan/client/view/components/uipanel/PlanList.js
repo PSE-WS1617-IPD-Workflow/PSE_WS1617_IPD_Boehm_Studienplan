@@ -73,7 +73,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
     },
     /**
     * loads page to compare plans
-    * @param{..*} planListEls
+    * @param{...*} planListEls
                     list of plans
     */
     comparePlans: function (planListEls) {
@@ -98,7 +98,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
     },
     /**
     * sends a deleterequest for a plan
-    * @param{..*} planListEls
+    * @param{...*} planListEls
                     list of plans
     */
     deletePlans: function (planListEls) {

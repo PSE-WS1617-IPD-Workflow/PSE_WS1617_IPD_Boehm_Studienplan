@@ -24,5 +24,21 @@ edu.kit.informatik.studyplan.client.model.module.ModuleConstraint = Backbone.Mod
             parse: true
         });
         return response;
+    },
+    
+    /**
+     * Returns true if the constraint is relevant for the given module id.
+     * (In case of type prerequisite constraint is only relevant for second module)
+     * @param {string} moduleId The id of the module to check for
+     * return {boolean}
+     */
+    isRelevantFor : function (moduleId) {
+        if(this.get('type')=="prerequisite") {
+            if(this.get('first').get('id')==moduleId) {
+                return false;
+            }
+        }
+        return true;
     }
+    
 });

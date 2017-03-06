@@ -632,13 +632,9 @@ Backbone.View.prototype.events;
 
 /** @type {{id: string, className: string, tagName: string}} */
 Backbone.View.prototype.options;
-/**
- * @param {...*} args
- */
+
 Backbone.View.prototype.initialize = function(args) {};
-/**
- * @return {Backbone.View}
- */
+
 Backbone.View.prototype.render = function(){};
 /** @type {Element} */
 Backbone.View.prototype.el;
