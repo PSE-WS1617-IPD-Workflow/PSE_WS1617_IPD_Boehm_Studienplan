@@ -17,7 +17,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList = Backb
         this.isDraggable = options.isDraggable;
         this.isRemovable = options.isRemovable;
         this.planId = options.planId;
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList] planId: " + this.planId);
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleList] planId: " + this.planId);
         this.isPreferencable = options.isPreferencable;
         //this.listenTo(this.moduleCollection, "change", this.onChange);
         //this.listenTo(this.moduleCollection, "all", this.onChange);

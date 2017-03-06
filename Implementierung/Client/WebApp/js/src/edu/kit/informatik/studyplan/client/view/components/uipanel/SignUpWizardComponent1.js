@@ -74,8 +74,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
      */
     onChange1: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1] semester:")
-        console.log(this.beginningArray[(this.$el.find("select.beginningdateDropDown").val())]);
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1] semester:")
+        //console.log(this.beginningArray[(this.$el.find("select.beginningdateDropDown").val())]);
         this.student.set('studyStartYear', this.beginningArray[(this.$el.find("select.beginningdateDropDown").val())]['year']);
         this.student.set('studyStartCycle', this.beginningArray[this.$el.find("select.beginningdateDropDown").val()]['term']);
 
@@ -106,7 +106,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
                 year: curyear - i,
                 term: "ST"
             });
-            console.log(this.beginningArray[i]);
+            //console.log(this.beginningArray[i]);
         }
     }
 

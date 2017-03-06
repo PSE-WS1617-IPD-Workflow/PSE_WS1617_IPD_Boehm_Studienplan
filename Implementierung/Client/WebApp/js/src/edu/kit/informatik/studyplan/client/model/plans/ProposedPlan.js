@@ -32,6 +32,8 @@ edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informati
     },
     /**
      * Fetches the proposed plan based on the information in proposalInfo
+     * @param {Object=} options
+     * @return {Object}
      */
     fetch: function (options) {
         if (typeof options === "undefined") {
@@ -45,7 +47,7 @@ edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informati
         options["data"]["min-semester-ects"] = this.proposalInfo.get("min-semester-ects");
         options["data"]["max-semester-ects"] = this.proposalInfo.get("max-semester-ects");
         var fields = "";
-        console.log(this.proposalInfo.get('fieldCollection'));
+        //console.log(this.proposalInfo.get('fieldCollection'));
         this.proposalInfo.get('fieldCollection').each(function (field) {
             fields += ((fields !== "") ? "," : "") + field.get("id");
             options["data"]["field-" + field.get("id")] = field.get("curValue");

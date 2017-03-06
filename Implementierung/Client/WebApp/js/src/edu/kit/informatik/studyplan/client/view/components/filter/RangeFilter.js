@@ -9,8 +9,6 @@ edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter = edu.kit
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/filter/rangeFilter.html"),
     tag: "ul",
     /**
-     * @this {Backbone.View}
-     * @return *
      * @suppress {missingProperties}
      */
     render: function () {
@@ -27,9 +25,9 @@ edu.kit.informatik.studyplan.client.view.components.filter.RangeFilter = edu.kit
     },
     /**
      * updates value in model
-     * @param{..*} event
+     * @param{Object} event
      *            event that triggered the function call
-     * @param{..*} ui
+     * @param{Object} ui
      *           the sender
      */
     updateVal: function (event, ui) {

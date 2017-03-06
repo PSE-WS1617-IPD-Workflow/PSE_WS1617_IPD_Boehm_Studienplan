@@ -15,7 +15,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.TextFilter = edu.kit.
     },
     /**
      * updates model from HTML
-     * @param{..*} the trigger
+     * @param {Object} event
      */
     textChange: function (event) {
         if (event.target.id == this.filter.get("id")) {

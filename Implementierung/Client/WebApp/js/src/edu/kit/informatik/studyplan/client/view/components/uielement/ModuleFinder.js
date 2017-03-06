@@ -36,7 +36,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
         this.filterCollection = new edu.kit.informatik.studyplan.client.model.system.FilterCollection();
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
         this.moduleCollection.setFilters(this.filterCollection);
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder] planId: " + this.planId);
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder] planId: " + this.planId);
         this.filterCollection.fetch({
             reset: true,
             success: function () {

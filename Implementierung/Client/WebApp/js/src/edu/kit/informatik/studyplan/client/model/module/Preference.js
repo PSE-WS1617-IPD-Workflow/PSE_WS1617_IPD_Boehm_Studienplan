@@ -44,10 +44,12 @@ edu.kit.informatik.studyplan.client.model.module.Preference = edu.kit.informatik
 
     /**
      *preference isn't a defined JSon, so we define a Module with given Id and  preference.
+     * @param {Object=} options
+     * @return {Object}
      */
     toJSON: function (options) {
         "use strict";
-        console.log(this);
+        //console.log(this);
         return {
             module: {
                 id: this.get('module').get('id'),

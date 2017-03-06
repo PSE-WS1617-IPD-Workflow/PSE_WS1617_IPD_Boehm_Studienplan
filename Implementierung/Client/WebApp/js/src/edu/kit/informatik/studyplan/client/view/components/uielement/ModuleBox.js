@@ -37,7 +37,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
      */
     voteUp: function () {
         "use strict";
-        console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteUp");
+        //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteUp");
         var preference = this.model.get('preference');
         preference.set('preference', 'positive');
         preference.save();
@@ -46,7 +46,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
      * Method called when downvoted
      */
     voteDown: function () {
-        console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteDown");
+        //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteDown");
         var preference = this.model.get('preference');
         preference.set('preference', 'negative');
         preference.save();
@@ -69,7 +69,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     removeModule: function () {
         "use strict";
         // TODO zeug
-        console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] remove");
+        //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] remove");
         var oldCol = this.model.collection;
         if (this.isPassedPlanModule) {
             this.model.collection.remove(this.model);

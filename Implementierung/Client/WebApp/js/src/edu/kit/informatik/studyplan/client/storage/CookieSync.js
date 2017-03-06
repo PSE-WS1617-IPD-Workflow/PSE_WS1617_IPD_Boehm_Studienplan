@@ -9,10 +9,10 @@ edu.kit.informatik.studyplan.client.storage.CookieSync = function (method, model
     "use strict";
     var create = function (model) {
         console.group();
-        console.info("[edu.kit.informatik.studyplan.client.storage.CookieSync]")
-        console.log(model.toJSON());
+        //console.info("[edu.kit.informatik.studyplan.client.storage.CookieSync]")
+        //console.log(model.toJSON());
         Cookies.set(_.result(model, 'url'), model.toJSON());
-        console.log(Cookies.get(_.result(model, 'url')));
+        //console.log(Cookies.get(_.result(model, 'url')));
         console.groupEnd();
         return model.toJSON();
     };

@@ -126,8 +126,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
      */
     onChange: function (event) {
         "use strict";
-        console.log("generation3")
-        console.log(event);
+        //console.log("generation3")
+        //console.log(event);
         var fieldId = event.currentTarget.getAttribute("data-field-id");
         var value = event.currentTarget.value;
         this.information.get("fieldCollection").get(fieldId).set("curValue", value);

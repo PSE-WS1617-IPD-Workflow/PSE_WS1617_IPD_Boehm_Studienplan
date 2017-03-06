@@ -55,7 +55,11 @@ edu.kit.informatik.studyplan.client.model.module.ModuleCollection = edu.kit.info
     },
 
     /**
-     *toJson converts the Javascript Object ModuleCollection to a Json which can send to the server and can be read by the server. For that it uses the toJSON-method of Module on every included module.
+     * toJson converts the Javascript Object ModuleCollection to a Json
+     * which can send to the server and can be read by the server.
+     * For that it uses the toJSON-method of Module on every included module.
+     * @param {Object=} options
+     * @return {Object}
      */
     toJSON: function (options) {
         var res = [];

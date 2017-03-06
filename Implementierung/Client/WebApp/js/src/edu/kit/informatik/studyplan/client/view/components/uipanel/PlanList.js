@@ -34,7 +34,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
      * updates date and rerenders ui
      */
     reload: function () {
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] reload");
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] reload");
         this.planListElements = [];
         var self = this;
         this.planCollection.each(function (curPlan) {
@@ -77,8 +77,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
                     list of plans
     */
     comparePlans: function (planListEls) {
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] comparePlans");
-        console.log(planListEls);
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] comparePlans");
+        //console.log(planListEls);
         if (planListEls.length !== 2) {
             edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
                 new edu.kit.informatik.studyplan.client.model.system.Notification({
@@ -98,12 +98,12 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
     },
     /**
     * sends a deleterequest for a plan
-    * @param{...*} planListEls
+    * @param{Object|null} planListEls
                     list of plans
     */
     deletePlans: function (planListEls) {
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] deletePlans");
-        console.log(planListEls);
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] deletePlans");
+        //console.log(planListEls);
         _.each(planListEls, function (el) {
             el.deletePlan();
         });
@@ -119,7 +119,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
      */
     checkAllCheckboxChange: function () {
         var isChecked = this.$el.find("#checkAllCheckbox").prop('checked');
-        console.log(this.planListElements);
+        //console.log(this.planListElements);
         _.each(this.planListElements, function (el) {
             el.setChecked(isChecked);
         });

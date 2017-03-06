@@ -18,8 +18,8 @@ edu.kit.informatik.studyplan.client.storage.OAuthSync = function (method, model,
     });
     var errorCallback = options["error"];
     options["error"] = function (xhr, textStatus, errorThrown) {
-        console.info("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Method: " + method);
-        console.info(model);
+        //console.info("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Method: " + method);
+        //console.info(model);
         edu.kit.informatik.studyplan.client.storage.OAuthSync.errorCallback(xhr, textStatus, errorThrown);
         if (errorCallback) errorCallback.call(options.context, xhr, textStatus, errorThrown)
     }
@@ -27,9 +27,9 @@ edu.kit.informatik.studyplan.client.storage.OAuthSync = function (method, model,
 };
 edu.kit.informatik.studyplan.client.storage.OAuthSync.errorCallback = function (xhr, textStatus, errorThrown) {
     console.group()
-    console.info("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Request failed: " + textStatus + " (" + errorThrown + ")");
-    console.log("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Status code:" + xhr.status);
-    console.info(xhr);
+    //console.info("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Request failed: " + textStatus + " (" + errorThrown + ")");
+    //console.log("[edu.kit.informatik.studyplan.client.storage.OAuthSync] Status code:" + xhr.status);
+    //console.info(xhr);
     console.groupEnd();
     var notificationCollection = edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance();
     // Retrieve error message

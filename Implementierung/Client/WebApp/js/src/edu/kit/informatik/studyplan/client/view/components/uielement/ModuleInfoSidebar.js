@@ -25,7 +25,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar 
      * Method which reloads and then renders the internal collections of view elements once the model is changed
      */
     reload: function () {
-        console.info(this.model.get('constraints'));
+        //console.info(this.model.get('constraints'));
         this.moduleBoxes = {};
         _.each(this.model.get('constraints'), function (constraint) {
             if(constraint.isRelevantFor(this.model.get('id'))){
@@ -49,25 +49,25 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar 
         this.render();
     },
     render: function () {
-        console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar] shown module:");
-        console.info(this.model);
+        //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar] shown module:");
+        //console.info(this.model);
         this.$el.html(this.template({
             module: this.model
         }))
-        console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar] rendering module info Sidebar")
-        console.info(this.moduleBoxes);
-        console.info(_.pairs(this.moduleBoxes));
+        //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar] rendering module info Sidebar")
+        //console.info(this.moduleBoxes);
+        //console.info(_.pairs(this.moduleBoxes));
         // Go through all constraint types
         _.each(_.pairs(this.moduleBoxes), function (constraintTypes) {
             var constraintEl = this.$el.find("." + constraintTypes[0] + "Constraints");
-            console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar] constraintType div:");
-            console.info(constraintEl);
+            //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar] constraintType div:");
+            //console.info(constraintEl);
             constraintEl.html("");
             if (constraintEl.length > 0) {
                 // Go through
                 _.each(constraintTypes[1], function (moduleBox) {
-                    console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar] moduleBox:")
-                    console.info(moduleBox);
+                    //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar] moduleBox:")
+                    //console.info(moduleBox);
                     moduleBox.render();
                     constraintEl.append(moduleBox.$el)
                 });

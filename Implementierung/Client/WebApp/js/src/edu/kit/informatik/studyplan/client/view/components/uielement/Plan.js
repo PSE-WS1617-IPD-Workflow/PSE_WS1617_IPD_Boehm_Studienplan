@@ -38,8 +38,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
      * Method which reloads and renders the internal ui element view collections once the model changes
      */
     reload: function () {
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.Plan] plan is being reloaded, plan:")
-        console.log(this.model);
+        //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.Plan] plan is being reloaded, plan:")
+        //console.log(this.model);
         var semesterCol = this.model.get('semesterCollection');
         this.semesterElements = [];
         semesterCol.each((function (semester) {

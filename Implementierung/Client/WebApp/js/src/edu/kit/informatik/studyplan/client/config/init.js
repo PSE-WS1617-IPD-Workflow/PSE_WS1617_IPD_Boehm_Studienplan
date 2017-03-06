@@ -37,13 +37,13 @@ edu.kit.informatik.studyplan.client.config.init = function () {
         }));
     }
     $(function () {
-        console.info("[edu.kit.informatik.studyplan.client.config.init] Starting Studyplan...");
+        //console.info("[edu.kit.informatik.studyplan.client.config.init] Starting Studyplan...");
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance();
         Backbone.history.start({
             pushState: true
         });
-        console.info("[edu.kit.informatik.studyplan.client.config.init] Backbone.History.started:");
-        console.info(Backbone.History.started);
+        //console.info("[edu.kit.informatik.studyplan.client.config.init] Backbone.History.started:");
+        //console.info(Backbone.History.started);
 
         edu.kit.informatik.studyplan.client.config.init.checkAvailability();
         window.setInterval(edu.kit.informatik.studyplan.client.config.init.checkAvailability, 20 * 1000);
