@@ -23,6 +23,7 @@ import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDao;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
+import edu.kit.informatik.studyplan.server.model.userdata.Semester;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 import edu.kit.informatik.studyplan.server.verification.Verifier;
@@ -269,18 +270,22 @@ public class SimpleGenerator implements Generator {
 	 */
 	Plan createPlan(List<Node> sorted, int[] semesterAllocation, User user) {
 		Plan plan = new Plan();
+		plan.getAllModuleEntries().addAll(user.getPassedModules());
 		for (int i = 0; i < sorted.size(); i++) {
-			ModuleEntry entry = new ModuleEntry(sorted.get(i).getModule(), semesterAllocation[i]);
+			ModuleEntry entry = new ModuleEntry(sorted.get(i).getModule(), semesterAllocation[i] 
+					+ Semester.getCurrentSemester().getDistanceTo(user.getStudyStart()));
 			plan.getModuleEntries().add(entry);
 			Node n = sorted.get(i);
 			while (n.hasInnerNode()) {
 				n = n.getInnerNode();
-				plan.getModuleEntries().add(new ModuleEntry(n.getModule(), semesterAllocation[i]));
+				plan.getModuleEntries().add(new ModuleEntry(n.getModule(), semesterAllocation[i]
+						+ Semester.getCurrentSemester().getDistanceTo(user.getStudyStart())));
 			}
 			n = sorted.get(i);
 			while (n.hasOuterNode()) {
 				n = n.getOuterNode();
-				plan.getModuleEntries().add(new ModuleEntry(n.getModule(), semesterAllocation[i]));
+				plan.getModuleEntries().add(new ModuleEntry(n.getModule(), semesterAllocation[i]
+						+ Semester.getCurrentSemester().getDistanceTo(user.getStudyStart())));
 			}
 
 		}

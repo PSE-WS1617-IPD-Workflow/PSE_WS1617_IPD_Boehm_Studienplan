@@ -5,6 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
@@ -242,9 +243,15 @@ public class NodesList extends ArrayList<Node> {
 		}
 		return result;
 	}
-
+	/**
+	 * Sorts this list of nodes using the NodesListSorter.
+	 * The List returned does not contain the nodes with passed modules.
+	 * @return a sorted list of the nodes of this nodesList(without the nodes 
+	 * with passed modules)
+	 */
 	protected List<Node> sort() {
-		return (new NodesListSorter(this)).sort();
+		return (new NodesListSorter(this)).sort().stream()
+				.filter(n -> (n.isPassed() == false)).collect(Collectors.toList());
 	}
 
 	/**
