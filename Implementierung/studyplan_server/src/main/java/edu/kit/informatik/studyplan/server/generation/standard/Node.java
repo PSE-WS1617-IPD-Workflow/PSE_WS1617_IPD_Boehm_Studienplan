@@ -407,7 +407,7 @@ public abstract class Node {
 	 * @return Semester type of the semester with the number given
 	 */
 	private SemesterType getSemesterType(int i) {
-		if ((i % 2) == 1) {
+		if ((i % 2) == 0) {
 			return plan.getUser().getStudyStart().getSemesterType();
 		}
 		// if not the cycle takes the opposite value
