@@ -13,7 +13,7 @@ var API_SCOPE = "student";
 /**
  * @define {string}
  */
-var API_TOKEN = "fakeAccessToken"
+var API_TOKEN = "fakeAccessToken";
 /**
  * @define {boolean}
  */

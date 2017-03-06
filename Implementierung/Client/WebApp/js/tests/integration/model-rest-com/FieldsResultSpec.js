@@ -5,8 +5,7 @@ define(["studyplan"], function (client) {
         beforeEach(function () {
             jasmine.Ajax.install();
             resultObject = {
-                fields: [
-                    {
+                fields: [{
                         id: 1,
                         name: "Field 1",
                         "min-ects": 100
@@ -27,17 +26,17 @@ define(["studyplan"], function (client) {
             fieldsCol.fetch();
             expect(jasmine.Ajax.requests.mostRecent().url).toEqual('http://api.studyplan.devel/fields');
             jasmine.Ajax.requests.mostRecent().respondWith({
-                "status"    :   200,
-                "contentType"   :   "application/json",
-                "responseText"  :   JSON.stringify(resultObject)
+                "status": 200,
+                "contentType": "application/json",
+                "responseText": JSON.stringify(resultObject)
             });
         });
         afterEach(function () {
             jasmine.Ajax.uninstall();
         });
         it("Should retrieve data", function () {
-            for (var i=0; i<3;i++) {
-                var importantField = fieldsCol.get(i+1);
+            for (var i = 0; i < 3; i++) {
+                var importantField = fieldsCol.get(i + 1);
                 expect(importantField.get('name')).toBeDefined();
                 expect(importantField.get('name')).toEqual(resultObject.fields[i].name);
                 expect(importantField.get('min-ects')).toEqual(resultObject.fields[i]["min-ects"]);
@@ -49,17 +48,17 @@ define(["studyplan"], function (client) {
             field1.fetch();
             expect(jasmine.Ajax.requests.mostRecent().url).toEqual('http://api.studyplan.devel/fields/1');
             jasmine.Ajax.requests.mostRecent().respondWith({
-                "status"    :   200,
-                "contentType"   :   "application/json",
-                "responseText"  :   JSON.stringify({
+                "status": 200,
+                "contentType": "application/json",
+                "responseText": JSON.stringify({
                     field: {
                         id: 1,
                         name: "Field 1",
                         "min-ects": 100,
-                        categories:[{
-                                id: 42,
-                                name: "Meistern von lebensgefährlichen Situationen"
-                            }]
+                        categories: [{
+                            id: 42,
+                            name: "Meistern von lebensgefährlichen Situationen"
+                        }]
                     }
                 })
             });

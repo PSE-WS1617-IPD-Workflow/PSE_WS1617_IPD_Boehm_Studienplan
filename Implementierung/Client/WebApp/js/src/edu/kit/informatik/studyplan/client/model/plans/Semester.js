@@ -8,9 +8,9 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.Semester");
  * (This class is great, believe me: It's great. It's one of the best classes I've ever seen.)
  */
 
-edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.studyplan.client.model.module.ModuleCollection.extend(/** @lends {edu.kit.informatik.studyplan.client.model.plans.Semester.prototype}*/{
-    planId : null,
-    semesterNum : 0,
+edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.studyplan.client.model.module.ModuleCollection.extend( /** @lends {edu.kit.informatik.studyplan.client.model.plans.Semester.prototype}*/ {
+    planId: null,
+    semesterNum: 0,
     /** 
      * @type {edu.kit.informatik.studyplan.client.model.plans.SemesterCollection}
      */
@@ -39,8 +39,8 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
     /**
      * This method computes the url of the model
      */
-    url : function () {
-        return API_DOMAIN + "/plans/"+this.planId+"/modules"
+    url: function () {
+        return API_DOMAIN + "/plans/" + this.planId + "/modules"
     },
     /**
      * This method parses the content of a semesterCollection
@@ -48,17 +48,17 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
      * @param {Object=} options Other configuration details
      * @return {Array<Object>}
      */
-    parse : function (response, options) {
+    parse: function (response, options) {
         "use strict";
         this.planId = response["planId"];
         this.semesterNum = response["semesterNum"];
-        
+
         // Initialise modules
-        for(var i = 0; i < response["modules"].length; i++){
+        for (var i = 0; i < response["modules"].length; i++) {
             response["modules"][i]["semester"] = this.semesterNum;
         }
         //console.log(response["modules"]);
-        return edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype.parse.apply(this,[response,options]);
+        return edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype.parse.apply(this, [response, options]);
     },
     /**
      * Method which converts the model to a serializable JSON object
@@ -69,7 +69,7 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
         var modules = [];
         var passedModules = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student').get('passedModules');
         this.each(function (curMod) {
-            if(!passedModules.containsModule(curMod.get('id'))){
+            if (!passedModules.containsModule(curMod.get('id'))||options.includePassed) {
                 modules.push(curMod.toJSON(options)["module"]);
             }
         });
@@ -84,7 +84,7 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
     getEctsSum: function () {
         var sum = 0;
         this.each(function (module) {
-            sum+=module.get('creditpoints');
+            sum += module.get('creditpoints');
         });
         return sum;
     }

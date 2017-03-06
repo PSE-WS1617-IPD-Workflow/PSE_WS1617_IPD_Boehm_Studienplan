@@ -6,12 +6,11 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Plan
  * An abstract class
  */
 
-edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar} */{
+edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar = Backbone.View.extend( /** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar} */ {
     /**
-    *
-    */
-    onChange:
-        function () {
-            "use strict";
-        }
+     *
+     */
+    onChange: function () {
+        "use strict";
+    }
 });

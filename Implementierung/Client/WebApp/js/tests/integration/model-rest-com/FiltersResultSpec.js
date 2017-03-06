@@ -5,11 +5,13 @@ define(["studyplan"], function (client) {
         beforeEach(function () {
             jasmine.Ajax.install();
             resultObject = {
-                filters: [
-                    {
+                filters: [{
                         id: 1,
                         name: "Filter 1",
-                        "default-value": {min: 5, max: 10},
+                        "default-value": {
+                            min: 5,
+                            max: 10
+                        },
                         tooltip: "The cake is a lie!",
                         specification: {
                             type: "range",
@@ -24,8 +26,7 @@ define(["studyplan"], function (client) {
                         tooltip: "Ich bin ein super Filter, viel besser als der Filter 1",
                         specification: {
                             type: "list",
-                            items: [
-                                {
+                            items: [{
                                     id: 2,
                                     text: "Mayo"
                                 },
@@ -51,23 +52,23 @@ define(["studyplan"], function (client) {
             filterCol.fetch();
             expect(jasmine.Ajax.requests.mostRecent().url).toEqual('http://api.studyplan.devel/filters');
             jasmine.Ajax.requests.mostRecent().respondWith({
-                "status"    :   200,
-                "contentType"   :   "application/json",
-                "responseText"  :   JSON.stringify(resultObject)
+                "status": 200,
+                "contentType": "application/json",
+                "responseText": JSON.stringify(resultObject)
             });
         });
         afterEach(function () {
             jasmine.Ajax.uninstall();
         });
         it("Should retrieve data", function () {
-            for (var i=0; i<3;i++) {
-                var importantFilter = filterCol.get(i+1);
+            for (var i = 0; i < 3; i++) {
+                var importantFilter = filterCol.get(i + 1);
                 expect(importantFilter.get('id')).toBeDefined();
                 expect(importantFilter.get('id')).toEqual(resultObject.filters[i].id);
                 expect(importantFilter.get('name')).toEqual(resultObject.filters[i].name);
                 expect(importantFilter.get('default-value')).toEqual(resultObject.filters[i]["default-value"]);
                 expect(importantFilter.get('tooltip')).toEqual(resultObject.filters[i].tooltip);
-                
+
             }
         });
     });

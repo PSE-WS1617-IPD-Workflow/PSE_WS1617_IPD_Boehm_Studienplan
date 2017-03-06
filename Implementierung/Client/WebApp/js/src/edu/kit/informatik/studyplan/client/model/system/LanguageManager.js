@@ -8,12 +8,12 @@ edu.kit.informatik.studyplan.client.model.system.LanguageManager = (function () 
      * @private
      */
     var LANGUAGE_MANAGER_FALLBACK_LANGUAGE = "de";
-     /**
+    /**
      * @type {LanguageManager }
      * @private
      */
     var instance = null;
-    
+
     /**
      * The language manager class
      * @constructor
@@ -53,13 +53,13 @@ edu.kit.informatik.studyplan.client.model.system.LanguageManager = (function () 
             return key;
         };
     };
-    
+
     return {
         /**
          * Method to retrieve the current instance of the language manager
          * @return {LanguageManager} The LanguageManager Object
          */
-        getInstance : function () {
+        getInstance: function () {
             if (instance === null) {
                 instance = new LanguageManager();
             }

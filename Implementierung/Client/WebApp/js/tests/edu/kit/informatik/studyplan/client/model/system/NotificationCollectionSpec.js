@@ -1,6 +1,6 @@
 define(["studyplan"], function (client) {
     "use strict";
-    
+
     describe("NotificationCollection", function () {
         var notifCol = null;
         beforeEach(function () {

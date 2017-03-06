@@ -4,19 +4,19 @@ goog.provide("edu.kit.informatik.studyplan.client.view.MainView");
  * @extends {Backbone.View}
  */
 
-edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend(/** @lends {edu.kit.informatik.studyplan.client.view.MainView.prototype} */{
+edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend( /** @lends {edu.kit.informatik.studyplan.client.view.MainView.prototype} */ {
     el: "body",
-    curHeaderView : null,
-    curContentView : null,
+    curHeaderView: null,
+    curContentView: null,
     notificationCentre: null,
-    headerElement : null,
+    headerElement: null,
     contentElement: null,
     notificationElement: null,
     showLoad: false,
     loading: $(edu.kit.informatik.studyplan.client.model.system.TemplateManager
-                .getInstance()
-                .getTemplate("resources/templates/subview/loading.html")()),
-    initialize : function () {
+        .getInstance()
+        .getTemplate("resources/templates/subview/loading.html")()),
+    initialize: function () {
         "use strict";
         console.info("[edu.kit.informatik.studyplan.client.view.MainView] initializing...");
         this.headerElement = $("<div id='header'></div>");
@@ -25,8 +25,8 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend(/** @le
         this.notificationCentre = new edu.kit.informatik.studyplan.client.view.components.uipanel.NotificationCentre();
         this.render();
     },
-    
-    render : function () {
+
+    render: function () {
         "use strict";
         if (this.curHeaderView !== null) {
             this.curHeaderView.remove();
@@ -59,23 +59,23 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend(/** @le
     },
     showLoading: function () {
         var old = this.showLoad;
-        this.showLoad=true;
-        if(old!=this.showLoad){
+        this.showLoad = true;
+        if (old != this.showLoad) {
             this.render();
         }
     },
     hideLoading: function () {
         var old = this.showLoad;
-        this.showLoad=false;
-        if(old!=this.showLoad){
+        this.showLoad = false;
+        if (old != this.showLoad) {
             this.render();
         }
     },
     /**
-    *@param{function(new:Backbone.View, Object)} Header
-    *@param{Object} options
-    */
-    setHeader : function (Header, options) {
+     *@param{function(new:Backbone.View, Object)} Header
+     *@param{Object} options
+     */
+    setHeader: function (Header, options) {
         "use strict";
         if (this.curHeaderView !== null) {
             this.curHeaderView.remove();
@@ -83,10 +83,10 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend(/** @le
         this.curHeaderView = new Header(options);
     },
     /**
-    *@param{function(new:Backbone.View, Object)} Content
-    *@param{Object} options
-    */
-    setContent : function (Content, options) {
+     *@param{function(new:Backbone.View, Object)} Content
+     *@param{Object} options
+     */
+    setContent: function (Content, options) {
         "use strict";
         if (this.curContentView !== null) {
             this.curContentView.remove();
