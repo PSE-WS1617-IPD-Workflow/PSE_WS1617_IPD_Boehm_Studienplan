@@ -1,6 +1,7 @@
 package edu.kit.informatik.studyplan.server.generation.standard;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -9,6 +10,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import edu.kit.informatik.studyplan.server.filter.CategoryFilter;
 import edu.kit.informatik.studyplan.server.filter.Filter;
@@ -53,7 +55,7 @@ public class SimpleGenerator implements Generator {
 	}
 
 	public Plan generate(PartialObjectiveFunction objectiveFunction, final Plan currentPlan, ModuleDao moduleDAO,
-			Map<Field, Category> preferredSubjects, double maxSemesterEcts) {
+			Map<Field, Category> preferredSubjects, double maxSemesterEcts, double minSemesterEcts) {
 		this.currentPlan = currentPlan;
 		Map<Plan, NodesList> planFamily;
 		Iterator<Plan> it;
@@ -62,7 +64,8 @@ public class SimpleGenerator implements Generator {
 		// first generation of family of plans with change of all randomly added
 		// nodes
 		planToGraph(currentPlan);
-		planFamily = randomlyGeneratedFamilyOfPlans(nodes, plan, preferredSubjects, -1, maxSemesterEcts, moduleDAO);
+		planFamily = randomlyGeneratedFamilyOfPlans(nodes, plan, preferredSubjects, -1, 
+				maxSemesterEcts, minSemesterEcts, moduleDAO);
 		it = planFamily.keySet().iterator(); // iterates through all plans
 												// created
 		plan = new Plan();
@@ -98,8 +101,8 @@ public class SimpleGenerator implements Generator {
 		NodesList planNodesList;
 		for (int i = 0; i < 5; i++) {
 			planNodesList = planFamily.get(plan);
-			planFamily = randomlyGeneratedFamilyOfPlans(planNodesList, plan, preferredSubjects, 10, maxSemesterEcts,
-					moduleDAO);
+			planFamily = randomlyGeneratedFamilyOfPlans(planNodesList, plan, preferredSubjects,
+					10, maxSemesterEcts, minSemesterEcts, moduleDAO);
 			it = planFamily.keySet().iterator();
 			plan = new Plan();
 			plan.setUser(currentPlan.getUser());
@@ -232,6 +235,8 @@ public class SimpleGenerator implements Generator {
 	 *            a mapping of the categories chosen for each field
 	 * @param maxECTSperSemester
 	 *            maximum amount of credit points per semester
+	 * @param minECTSperSemester
+	 *            minimum amount of credit points per semester
 	 * @param moduleDAO
 	 *            the moduleDao used to fetch modules
 	 * @return a Map containing only one key (the plan generated) and one value
@@ -239,7 +244,7 @@ public class SimpleGenerator implements Generator {
 	 *         modification.
 	 */
 	GenerationResult complete(NodesList nodes, Plan plan, Map<Field, Category> preferredSubjects,
-			double maxECTSperSemester, ModuleDao moduleDAO) {
+			double maxECTSperSemester,double minECTSperSemester, ModuleDao moduleDAO) {
 		// adding modules of the rule groups of the discipline
 		List<RuleGroup> ruleGroups = plan.getUser().getDiscipline().getRuleGroups();
 		for (RuleGroup ruleGroup : ruleGroups) {
@@ -252,7 +257,7 @@ public class SimpleGenerator implements Generator {
 		}
 		List<Node> sorted = nodes.sort();
 		GenerationResult result = new GenerationResult(
-				createPlan(sorted, parallelize(sorted, maxECTSperSemester), plan.getUser()), nodes);
+				createPlan(sorted, parallelize(sorted, maxECTSperSemester, minECTSperSemester), plan.getUser()), nodes);
 		return result;
 	}
 
@@ -364,15 +369,18 @@ public class SimpleGenerator implements Generator {
 	 *            topologically sorted list of nodes
 	 * @param maxECTSperSemester
 	 *            maximum amount of credit points per semester
+	 * @param minECTSperSemester
+	 *            minimum amount of credit points per semester
 	 * @return an array containing the number of the semester allocated to each
 	 *         node
 	 */
-	int[] parallelize(List<Node> sorted, double maxECTSperSemester) {
+	int[] parallelize(List<Node> sorted, double maxECTSperSemester, double minECTSperSemester) {
 		WeightFunction weight = new WeightFunction();
 		Node node;
 		boolean set;
 		int[] bucketAllocation = new int[sorted.size()];
-		double[] bucketSum = new double[sorted.size()];
+		double[] bucketSum = new double[sorted.size()]; 
+		// bucketSum[0] is the sum of semester number 1 ! 
 		int[] minPos = new int[sorted.size()];
 		for (int i = 0; i < minPos.length; i++) {
 			minPos[i] = Semester.getCurrentSemester().getDistanceTo(currentPlan.getUser().getStudyStart());
@@ -423,7 +431,71 @@ public class SimpleGenerator implements Generator {
 						+ "have too many Credit Points for a single Semester" + weight.getWeight(node));
 			}
 		}
+		
+		//make sure that the credit points in a semester > minECTSperSemester
+		
+//		IntStream allocationStream = Arrays.stream(bucketAllocation);
+//		int max = Arrays.stream(bucketAllocation).max().getAsInt();
+		
+		//Get the last semester(greatest number in bucketAllocation)
+		int max = max(bucketAllocation);
+		boolean ok;
+		while(max > Semester.getCurrentSemester().getDistanceTo(currentPlan.getUser()
+				.getStudyStart())) {
+			if(bucketSum[max - 1] < minECTSperSemester) {
+				ok = false;
+				//iterate through previous semesters 
+				for(int prevSem = Semester.getCurrentSemester().getDistanceTo(currentPlan.getUser()
+						.getStudyStart()); prevSem < max; prevSem++) {
+					final int a = prevSem; // to be able to use prevSem in stream
+					List<Node> nodesAllocated = sorted.stream()
+							.filter(n -> (bucketAllocation[sorted.indexOf(n)] == a))
+							.collect(Collectors.toList());
+					/*iterate through the nodes allocated to this semester that do not have 
+					children(with constraint from type Prerequisite) */
+					for(Node n : nodesAllocated.stream().filter(no -> no.getChildren()
+							.stream().filter(child -> child.getConstraint(no)
+									.getConstraintType() instanceof PrerequisiteModuleConstraintType)
+							.collect(Collectors.toList()).isEmpty()).collect(Collectors.toList())) {
+						if((bucketSum[prevSem - 1] - weight.getWeight(n)) >= minECTSperSemester) {
+							bucketAllocation[sorted.indexOf(n)] = max;
+							bucketSum[prevSem - 1] -= weight.getWeight(n);
+							bucketSum[max - 1] += weight.getWeight(n);
+							if(bucketSum[max - 1] >= minECTSperSemester) {
+								ok = true;
+								break;
+							}
+						}
+					}
+					if (ok) {
+						break;
+					}
+				}
+			}
+			max --;
+		}
+//		int index = indexOfNodeInLastSem(bucketAllocation);
+//		while (index < minSemesterNum) {
+//			while(bucketSum[index + 1] < maxECTSperSemester) {
+//				bucketAllocation[index]
+//			}
+//			index = indexOfNodeInLastSem(bucketAllocation);
+//		}
 		return bucketAllocation;
+	}
+	/**
+	 * 
+	 * @param array
+	 * @return
+	 */
+	private int max(int[] array) {
+		int max = -1;
+		for(int i = 1; i < array.length; i++) {
+			if(array[i] > max) {
+				max = array[i];
+			}
+		}
+		return max;
 	}
 
 	/**
@@ -465,21 +537,24 @@ public class SimpleGenerator implements Generator {
 	 *            the number of nodes to change in the random modification phase
 	 * @param maxECTSperSemester
 	 *            maximum amount of credit points per semester
+	 * @param minECTSperSemester
+	 *            minimum amount of credit points per semester
 	 * @param moduleDAO
 	 *            the moduleDao used to fetch modules
 	 */
 	Map<Plan, NodesList> randomlyGeneratedFamilyOfPlans(NodesList nodes, Plan currentPlan,
 			Map<Field, Category> preferredSubjects, int numberOfNodesToChange, double maxECTSperSemester,
-			ModuleDao moduleDAO) {
+			double minECTSperSemester, ModuleDao moduleDAO) {
 		Map<Plan, NodesList> planFamily = new HashMap<Plan, NodesList>();
-		GenerationResult generated = complete(nodes, currentPlan, preferredSubjects, maxECTSperSemester, moduleDAO);
+		GenerationResult generated = complete(nodes, currentPlan, preferredSubjects, maxECTSperSemester, 
+				minECTSperSemester, moduleDAO);
 		planFamily.put(generated.getPlan(), generated.getNodesList());
 		for (int i = 0; i < 9; i++) {
 			if (numberOfNodesToChange == -1) {
 				numberOfNodesToChange = nodes.getRandomlyAddedNodes().size();
 			}
-			GenerationResult modified = modify(numberOfNodesToChange, generated, preferredSubjects, maxECTSperSemester,
-					moduleDAO);
+			GenerationResult modified = modify(numberOfNodesToChange, generated, preferredSubjects,
+					maxECTSperSemester, minECTSperSemester, moduleDAO);
 			planFamily.put(modified.getPlan(), modified.getNodesList());
 		}
 		return planFamily;
@@ -574,12 +649,16 @@ public class SimpleGenerator implements Generator {
 	 *            number of nodes to change
 	 * @param generated
 	 *            a pair of the plan and the nodeslist the plan was created from
+	 * @param maxECTSperSemester
+	 *            maximum amount of credit points per semester
+	 * @param minECTSperSemester
+	 *            minimum amount of credit points per semester
 	 * @param preferredSubjects
 	 * @return the new plan
 	 */
 	private GenerationResult modify(int numberOfNodes, GenerationResult generated,
-			Map<Field, Category> preferredSubjects, double maxECTSperSemester, ModuleDao moduleDAO) {
-
+			Map<Field, Category> preferredSubjects, double maxECTSperSemester, 
+			double minECTSperSemester, ModuleDao moduleDAO) {
 		NodesList nodes = generated.getNodesList();
 		Set<Integer> randomNumbers = randomNumbers(nodes.getRandomlyAddedNodes().size(),
 				Math.min(numberOfNodes, nodes.getRandomlyAddedNodes().size()));
@@ -592,7 +671,8 @@ public class SimpleGenerator implements Generator {
 				nodes.remove(ranAdded[i]);
 			}
 		}
-		return complete(nodes, generated.getPlan(), preferredSubjects, maxECTSperSemester, moduleDAO);
+		return complete(nodes, generated.getPlan(), preferredSubjects, maxECTSperSemester, 
+				minECTSperSemester, moduleDAO);
 	}
 
 }

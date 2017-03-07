@@ -75,18 +75,22 @@ public class GenerationManager {
 	 * 			  the preferred subjects per field (for the Generator to choose modules from)
 	 * @param maxECTSperSemester
 	 * 			  the maximum number of credit points per semester
+	 * @param minECTSperSemester
+	 * 			  the minimum number of credit points per semester
 	 * @return a complete, correct and optimized study plan with type `Plan`
 	 */
 	public Plan generate(PartialObjectiveFunction objectiveFunction, 
 			Plan currentPlan, 
 			ModuleDao moduleDAO, 
 			Map<Field, Category>preferredSubjects, 
-			int maxECTSperSemester) {
+			double maxECTSperSemester,
+			double minECTSperSemester) {
 		initWrapper();
 		ThresholdObjectiveFunction thresholdObjectiveFunction = new ThresholdObjectiveFunction(THRESHOLD);
 		thresholdObjectiveFunction.add(objectiveFunction);
 		wrapper.add(thresholdObjectiveFunction);
-		return generator.generate(wrapper, currentPlan, moduleDAO, preferredSubjects, maxECTSperSemester);
+		return generator.generate(wrapper, currentPlan, moduleDAO, preferredSubjects, 
+				maxECTSperSemester, minECTSperSemester);
 	}
 	/**
 	 * Initializes the wrapper with adding the average of all objective functions to its 
