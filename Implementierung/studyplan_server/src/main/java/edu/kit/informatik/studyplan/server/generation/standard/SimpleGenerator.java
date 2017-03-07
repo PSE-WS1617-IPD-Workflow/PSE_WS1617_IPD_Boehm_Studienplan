@@ -39,6 +39,7 @@ import edu.kit.informatik.studyplan.server.verification.standard.StandardVerifie
  */
 public class SimpleGenerator implements Generator {
 
+	Plan currentPlan;
 	/**
 	 * List of Nodes of the Graph to create.
 	 */
@@ -53,6 +54,7 @@ public class SimpleGenerator implements Generator {
 
 	public Plan generate(PartialObjectiveFunction objectiveFunction, final Plan currentPlan, ModuleDao moduleDAO,
 			Map<Field, Category> preferredSubjects, double maxSemesterEcts) {
+		this.currentPlan = currentPlan;
 		Map<Plan, NodesList> planFamily;
 		Iterator<Plan> it;
 		Verifier verifier = new StandardVerifier();
@@ -273,20 +275,17 @@ public class SimpleGenerator implements Generator {
 		plan.getAllModuleEntries().addAll(user.getPassedModules());
 		int a = Semester.getCurrentSemester().getDistanceTo(user.getStudyStart());
 		for (int i = 0; i < sorted.size(); i++) {
-			ModuleEntry entry = new ModuleEntry(sorted.get(i).getModule(), semesterAllocation[i] 
-					+ Semester.getCurrentSemester().getDistanceTo(user.getStudyStart()));
+			ModuleEntry entry = new ModuleEntry(sorted.get(i).getModule(), semesterAllocation[i]);
 			plan.getModuleEntries().add(entry);
 			Node n = sorted.get(i);
 			while (n.hasInnerNode()) {
 				n = n.getInnerNode();
-				plan.getModuleEntries().add(new ModuleEntry(n.getModule(), semesterAllocation[i]
-						+ Semester.getCurrentSemester().getDistanceTo(user.getStudyStart())));
+				plan.getModuleEntries().add(new ModuleEntry(n.getModule(), semesterAllocation[i]));
 			}
 			n = sorted.get(i);
 			while (n.hasOuterNode()) {
 				n = n.getOuterNode();
-				plan.getModuleEntries().add(new ModuleEntry(n.getModule(), semesterAllocation[i]
-						+ Semester.getCurrentSemester().getDistanceTo(user.getStudyStart())));
+				plan.getModuleEntries().add(new ModuleEntry(n.getModule(), semesterAllocation[i]));
 			}
 
 		}
@@ -376,13 +375,15 @@ public class SimpleGenerator implements Generator {
 		double[] bucketSum = new double[sorted.size()];
 		int[] minPos = new int[sorted.size()];
 		for (int i = 0; i < minPos.length; i++) {
-			minPos[i] = 1;
+			minPos[i] = Semester.getCurrentSemester().getDistanceTo(currentPlan.getUser().getStudyStart());
 		}
 		for (int i = 0; i < sorted.size(); i++) {
 			node = sorted.get(i);
 			set = false;
 			// Check if a node is already fixed in a semester
-			if (node.getSemester() != 0) {
+			if (node.getSemester() != 0 && node.fitsInSemester(node.getSemester())) {
+				if(node.fitsInSemester(node.getSemester())) {
+				minPos[i] = node.getSemester();
 				bucketAllocation[i] = node.getSemester();
 				bucketSum[node.getSemester() - 1] += weight.getWeight(node);
 				for (Node child : node.getChildren()) {
@@ -394,10 +395,13 @@ public class SimpleGenerator implements Generator {
 					}
 				}
 				set = true;
+				}
 			} else {
+				node.setSemester(0);
 				for (int j = minPos[i]; j < sorted.size(); j++) {
 					if (weight.getWeight(node) + bucketSum[j - 1] <= maxECTSperSemester
 							&& checkIfOverlapping(node, bucketAllocation, sorted, j - 1) && node.fitsInSemester(j)) {
+						minPos[i] = j;
 						bucketAllocation[i] = j;
 						bucketSum[j - 1] += weight.getWeight(node);
 						for (Node child : node.getChildren()) {

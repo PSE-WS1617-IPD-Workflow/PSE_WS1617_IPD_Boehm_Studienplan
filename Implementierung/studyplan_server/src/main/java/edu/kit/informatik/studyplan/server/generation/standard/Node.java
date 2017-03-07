@@ -8,6 +8,7 @@ import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleCon
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.PrerequisiteModuleConstraintType;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import edu.kit.informatik.studyplan.server.model.userdata.Semester;
 import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
 
 /**
@@ -407,7 +408,7 @@ public abstract class Node {
 	 * @return Semester type of the semester with the number given
 	 */
 	private SemesterType getSemesterType(int i) {
-		if ((i % 2) == 0) {
+		if ((i % 2) == 1) {
 			return plan.getUser().getStudyStart().getSemesterType();
 		}
 		// if not the cycle takes the opposite value
@@ -451,7 +452,13 @@ public abstract class Node {
 	 *         with the number given.
 	 */
 	protected boolean fitsInSemester(int i) {
-
+		if(this.isPassed) {
+			return true;
+		}
+		if(i < Semester.getCurrentSemester().getDistanceTo(plan.getUser()
+				.getStudyStart())) {
+					return false;
+		}
 		// Check if Semester type corresponds to cycle type of the module
 		if (getModule().getCycleType() == CycleType.WINTER_TERM) {
 			if (getSemesterType(i) != SemesterType.WINTER_TERM) {
