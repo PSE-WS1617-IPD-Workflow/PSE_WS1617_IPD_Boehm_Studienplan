@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -71,6 +72,8 @@ public class SimpleGeneratorTest {
 	public void setUp() throws Exception {
 		// initializing generator
 		generator = new SimpleGenerator();
+		plan = mock(Plan.class);
+		generator.setCurrentPlan(plan);
 		// creating modules
 		field1 = new Field();
 		field1.setFieldId(1);
@@ -168,7 +171,6 @@ public class SimpleGeneratorTest {
 
 		// creating and adding module entries
 
-		plan = mock(Plan.class);
 		ModuleEntry entry1 = new ModuleEntry();
 		entry1.setModule(tse);
 		entry1.setSemester(3);
@@ -176,16 +178,16 @@ public class SimpleGeneratorTest {
 		entry2.setModule(prog);
 		entry2.setSemester(1);
 		moduleEntries = new ArrayList<ModuleEntry>();
-		when(plan.getModuleEntries()).thenReturn(moduleEntries);
-		plan.getModuleEntries().add(entry1);
-		plan.getModuleEntries().add(entry2);
+		when(plan.getAllModuleEntries()).thenReturn(moduleEntries);
+		plan.getAllModuleEntries().add(entry1);
+		plan.getAllModuleEntries().add(entry2);
 
 		// initialising user and plan
 		user = new User();
 		discipline = new Discipline();
 		discipline.setDisciplineId(0);
 		user.setDiscipline(discipline);
-		user.setStudyStart(new Semester(SemesterType.WINTER_TERM, 2014));
+		user.setStudyStart(new Semester(SemesterType.WINTER_TERM, 2015));
 		user.getPassedModules().add(entry2);
 
 		// plan.setUser(user);
@@ -322,8 +324,8 @@ public class SimpleGeneratorTest {
 	@Test
 	public void testParallelize() {
 		generator.planToGraph(plan);
-		int[] result = generator.parallelize(generator.getNodes().sort(), 4);
-		int[] compareTo = new int[] { 1, 1, 2, 3 };
+		int[] result = generator.parallelize(generator.getNodes().sort(), 4.0, 2.0);
+		int[] compareTo = new int[] { 3, 4, 5};
 		assertArrayEquals(compareTo, result);
 	}
 
@@ -331,19 +333,23 @@ public class SimpleGeneratorTest {
 	public void testCreatePlan() {
 		generator.planToGraph(plan);
 		Plan newPlan = generator.createPlan(generator.getNodes().sort(),
-				generator.parallelize(generator.getNodes().sort(), 4), plan.getUser());
+				generator.parallelize(generator.getNodes().sort(), 4, 2.0), plan.getUser());
 		Plan compareTo = new Plan();
 		ModuleEntry entry1 = new ModuleEntry(prog, 1);
-		ModuleEntry entry2 = new ModuleEntry(gbi, 1);
-		ModuleEntry entry3 = new ModuleEntry(swt, 2);
-		ModuleEntry entry4 = new ModuleEntry(pse, 3);
-		ModuleEntry entry5 = new ModuleEntry(tse, 3);
+		ModuleEntry entry2 = new ModuleEntry(gbi, 3);
+		ModuleEntry entry3 = new ModuleEntry(swt, 4);
+		ModuleEntry entry4 = new ModuleEntry(pse, 5);
+		ModuleEntry entry5 = new ModuleEntry(tse, 5);
 		compareTo.getModuleEntries().add(entry1);
 		compareTo.getModuleEntries().add(entry2);
 		compareTo.getModuleEntries().add(entry3);
 		compareTo.getModuleEntries().add(entry4);
 		compareTo.getModuleEntries().add(entry5);
-		assertTrue(newPlan.getModuleEntries().size() == compareTo.getModuleEntries().size());
+		assertTrue(newPlan.getAllModuleEntries().size() == compareTo.getModuleEntries().size());
+		for(ModuleEntry e : newPlan.getAllModuleEntries()) {
+			assertTrue(e.getSemester() == compareTo.getEntryFor(e.getModule()).getSemester());
+		}
+		int a = 0;
 	}
 
 
@@ -364,7 +370,7 @@ public class SimpleGeneratorTest {
 		map.put(field, category);
 		generator.planToGraph(plan);
 		GenerationResult result = generator.complete(generator.getNodes(), plan, 
-				map, 4, dao);
+				map, 4.0, 2.0, dao);
 		assertTrue(result.getNodesList().contains(new NodeWithOutput(ph1, plan, generator)));
 		assertTrue(result.getNodesList().contains(new NodeWithOutput(la1, plan, generator)));
 
@@ -400,10 +406,10 @@ public class SimpleGeneratorTest {
 		generator.planToGraph(plan);
 		
 		assertTrue(generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(), plan, 
-				map, -1, 4, dao).size() == 10);
+				map, -1, 4.0, 2.0, dao).size() == 10);
 //		System.out.println("NOT NULL BABE");
 		for(NodesList l : generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(), plan, 
-				map, -1, 4, dao).values()) {
+				map, -1, 4.0, 2.0, dao).values()) {
 			assertTrue(l.contains(new NodeWithOutput(ph1, plan, generator))
 					|| l.contains(new NodeWithOutput(ph2, plan, generator)));
 			assertTrue((l.contains(new NodeWithOutput(la1, plan, generator)) 
@@ -429,7 +435,7 @@ public class SimpleGeneratorTest {
 		map.put(field, category);
 		PartialObjectiveFunction obFunction = new MinimalECTSAtomObjectiveFunction();
 		Plan newPlan = generator.generate(obFunction, plan,
-				dao, map, 4);
+				dao, map, 4.0, 2.0);
 //		for(ModuleEntry m : newPlan.getAllModuleEntries()){
 //			System.out.println(m.getModule().getIdentifier());
 //		}
@@ -479,7 +485,7 @@ public class SimpleGeneratorTest {
 		plan.getModuleEntries().add(swtEntry);
 		plan.getModuleEntries().add(gbiEntry);		
 		Plan newPlan = generator.generate(obFunction, plan,
-				dao, map, 4);
+				dao, map, 4.0 , 2.0);
 //		for(ModuleEntry m : newPlan.getAllModuleEntries()){
 //			System.out.println(m.getModule().getIdentifier());
 //		}

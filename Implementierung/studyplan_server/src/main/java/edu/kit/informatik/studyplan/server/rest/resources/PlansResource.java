@@ -567,7 +567,8 @@ public class PlansResource {
 	@AuthorizationNeeded
 	public PlanInOut generatePlan(@PathParam("plan") String planId, 
 			@PathParam("objectiveId") int objectiveId,
-			@QueryParam("max-semester-ects") @NotNull Integer maxSemesterEcts, 
+			@QueryParam("max-semester-ects") @NotNull Integer maxSemesterEcts,
+			@QueryParam("min-semester-ects") @NotNull Integer minSemesterEcts,
 			@Context UriInfo uriInfo) {
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
 			Plan plan = planDao.getPlanById(planId);
@@ -588,7 +589,8 @@ public class PlansResource {
 				if (function == null) {
 					throw new NotFoundException();
 				}
-				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, maxSemesterEcts);
+				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, 
+						maxSemesterEcts, minSemesterEcts);
 				return new PlanInOut(result);
 				// TODO Check serialization of `result` inside generator
 			} catch (IllegalArgumentException ex) {
