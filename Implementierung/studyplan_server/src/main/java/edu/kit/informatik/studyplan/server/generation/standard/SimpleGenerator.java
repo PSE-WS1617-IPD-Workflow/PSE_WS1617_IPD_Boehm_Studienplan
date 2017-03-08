@@ -41,7 +41,21 @@ import edu.kit.informatik.studyplan.server.verification.standard.StandardVerifie
  */
 public class SimpleGenerator implements Generator {
 
-	Plan currentPlan;
+	private Plan currentPlan;
+	/**
+	 * @return the currentPlan
+	 */
+	public Plan getCurrentPlan() {
+		return currentPlan;
+	}
+
+	/**
+	 * @param currentPlan the currentPlan to set
+	 */
+	public void setCurrentPlan(Plan currentPlan) {
+		this.currentPlan = currentPlan;
+	}
+
 	/**
 	 * List of Nodes of the Graph to create.
 	 */
@@ -375,15 +389,16 @@ public class SimpleGenerator implements Generator {
 	 *         node
 	 */
 	int[] parallelize(List<Node> sorted, double maxECTSperSemester, double minECTSperSemester) {
+		int currentSem = Semester.getCurrentSemester().getDistanceTo(currentPlan.getUser().getStudyStart());
 		WeightFunction weight = new WeightFunction();
 		Node node;
 		boolean set;
 		int[] bucketAllocation = new int[sorted.size()];
-		double[] bucketSum = new double[sorted.size()]; 
+		double[] bucketSum = new double[sorted.size() + currentSem]; 
 		// bucketSum[0] is the sum of semester number 1 ! 
 		int[] minPos = new int[sorted.size()];
 		for (int i = 0; i < minPos.length; i++) {
-			minPos[i] = Semester.getCurrentSemester().getDistanceTo(currentPlan.getUser().getStudyStart());
+			minPos[i] = currentSem;
 		}
 		for (int i = 0; i < sorted.size(); i++) {
 			node = sorted.get(i);
@@ -406,7 +421,10 @@ public class SimpleGenerator implements Generator {
 				}
 			} else {
 				node.setSemester(0);
-				for (int j = minPos[i]; j < sorted.size(); j++) {
+				/* Iterate through semesters from minimum position of the node to last possible
+				 * semester (size of sorted plus the current Semester 
+				 */
+				for (int j = minPos[i]; j < sorted.size() + currentSem; j++) {
 					if (weight.getWeight(node) + bucketSum[j - 1] <= maxECTSperSemester
 							&& checkIfOverlapping(node, bucketAllocation, sorted, j - 1) && node.fitsInSemester(j)) {
 						minPos[i] = j;
@@ -573,12 +591,12 @@ public class SimpleGenerator implements Generator {
 		nodes = new NodesList(plan, this);
 		Node node;
 		// Create a Node for every ModuleEntry and add it to the list of nodes
-		for (int i = 0; i < plan.getModuleEntries().size(); i++) {
+		for (int i = 0; i < plan.getAllModuleEntries().size(); i++) {
 			Module m = plan.getAllModuleEntries().get(i).getModule();
 			node = nodes.get(m);
 			if (node == null) {
 				node = new NodeWithOutput(m, plan, this);
-				node.setSemester(plan.getModuleEntries().get(i).getSemester());
+				node.setSemester(plan.getAllModuleEntries().get(i).getSemester());
 				nodes.add(node, false);
 			} else {
 				nodes.add(node, false);
