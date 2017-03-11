@@ -10,10 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.NotFoundException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -181,17 +178,21 @@ public class Plan {
 	 */
 	@JsonProperty("modules")
 	public List<JsonModule> getJsonModules() {
-		return getModuleEntries().stream().map(entry -> {
-			JsonModule jsonModule = new JsonModule();
-			jsonModule.setId(entry.getModule().getIdentifier());
-			jsonModule.setName(entry.getModule().getName());
-			jsonModule.setSemester(entry.getSemester());
-			jsonModule.setCreditPoints(entry.getModule().getCreditPoints());
-			jsonModule.setLecturer(entry.getModule().getModuleDescription().getLecturer());
-			jsonModule.setCycleType(entry.getModule().getCycleType());
-			jsonModule.setPreference(getPreferenceForModule(entry.getModule()));
-			return jsonModule;
-		}).collect(Collectors.toList());
+		if (moduleEntries == null) {
+			return null;
+		} else {
+			return moduleEntries.stream().map(entry -> {
+				JsonModule jsonModule = new JsonModule();
+				jsonModule.setId(entry.getModule().getIdentifier());
+				jsonModule.setName(entry.getModule().getName());
+				jsonModule.setSemester(entry.getSemester());
+				jsonModule.setCreditPoints(entry.getModule().getCreditPoints());
+				jsonModule.setLecturer(entry.getModule().getModuleDescription().getLecturer());
+				jsonModule.setCycleType(entry.getModule().getCycleType());
+				jsonModule.setPreference(getPreferenceForModule(entry.getModule()));
+				return jsonModule;
+			}).collect(Collectors.toList());
+		}
 	}
 
 	/**

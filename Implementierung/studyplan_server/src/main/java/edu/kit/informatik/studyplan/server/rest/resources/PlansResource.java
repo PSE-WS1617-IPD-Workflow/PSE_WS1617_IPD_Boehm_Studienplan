@@ -183,7 +183,7 @@ public class PlansResource {
 			plan.getModuleEntries().addAll(planInput.getPlan().getModuleEntries());
 			plan.setVerificationState(VerificationState.NOT_VERIFIED);
 			dao.updatePlan(plan);
-			return planInput;
+			return new PlanInOut(plan);
 		});
 	}
 
@@ -223,7 +223,7 @@ public class PlansResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
-	public PlanInOut renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
+	public Map<String,PlanDto> renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
 		if (planInput == null
 				|| planInput.getPlan() == null
 				|| !Objects.equals(planInput.getPlan().getIdentifier(), planId)
@@ -247,8 +247,12 @@ public class PlansResource {
 			}
 			plan.setName(planInput.getPlan().getName());
 			dao.updatePlan(plan);
+
 			planInput.getPlan().setIdentifier(planId);
-			return planInput;
+			PlanDto result = new PlanDto();
+			result.setId(plan.getIdentifier());
+			result.setName(plan.getName());
+			return SimpleJsonResponse.build("plan", result);
 		});
 	}
 
@@ -718,7 +722,9 @@ public class PlansResource {
 		 */
 		PlanInOut(Plan plan) {
 			this.plan = plan;
+			plan.getModuleEntries();
 			plan.getPreferences();
+			plan.getJsonModules();
 			plan.getCreditPoints();
 		}
 

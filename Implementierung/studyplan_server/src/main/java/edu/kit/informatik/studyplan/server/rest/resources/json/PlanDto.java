@@ -1,14 +1,13 @@
 package edu.kit.informatik.studyplan.server.rest.resources.json;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
 import edu.kit.informatik.studyplan.server.model.userdata.PreferenceType;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * DataTransferObject for plans
@@ -16,22 +15,27 @@ import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
  *
  */
 public class PlanDto {
-	
+
 	@JsonProperty
 	String id;
-	
+
 	@JsonProperty
 	String name;
-	
+
 	@JsonProperty
 	VerificationState status;
-	
+
 	@JsonProperty("creditpoints-sum")
-	double creditPoints;
-	
+	Double creditPoints;
+
 	@JsonProperty
 	List<ModuleEntryDto> modules;
-	
+
+	/**
+	 * Creates a new PlanDto.
+	 */
+	public PlanDto() { }
+
 	/**
 	 * creates a new instance from a given plan
 	 * @param plan the plan
@@ -45,7 +49,15 @@ public class PlanDto {
 			.map(entry -> new ModuleEntryDto(entry, plan.getPreferenceForModule(entry.getModule())))
 			.collect(Collectors.toList());
 	}
-	
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	/**
 	 * DataTransferObject for a module entry
 	 * @author NiklasUhl
@@ -60,10 +72,10 @@ public class PlanDto {
 		String name;
 		
 		@JsonProperty
-		int semester;
+		Integer semester;
 		
 		@JsonProperty("creditpoints")
-		double creditPoints;
+		Double creditPoints;
 		
 		@JsonProperty
 		String lecturer;
