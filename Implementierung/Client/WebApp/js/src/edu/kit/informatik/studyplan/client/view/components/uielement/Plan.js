@@ -30,7 +30,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
         this.model = options.plan;
         this.isPreferencable = (typeof options.isPreferencable !== "undefined") ? options.isPreferencable : this.isPreferencable;
         this.isPassedPlan = (typeof options.isPassedPlan !== "undefined") ? options.isPassedPlan : this.isPassedPlan;
-        this.listenTo(this.model, "change", this.reload);
+        this.listenTo(this.model, "change", this.reload.bind(this));
 
         this.reload();
     },

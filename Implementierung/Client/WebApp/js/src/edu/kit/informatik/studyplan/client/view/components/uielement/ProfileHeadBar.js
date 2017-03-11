@@ -17,7 +17,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
     initialize: function (options) {
         "use strict";
         this.model = options.plan;
-        this.listenTo(this.model, "change", this.render);
+        this.listenTo(this.model, "change", this.render.bind(this));
     },
     render: function () {
         "use strict";

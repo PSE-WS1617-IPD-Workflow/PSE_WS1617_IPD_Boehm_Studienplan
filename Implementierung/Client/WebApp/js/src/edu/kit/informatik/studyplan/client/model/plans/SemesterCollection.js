@@ -11,12 +11,19 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
     planId: null,
     initialize: function (attributes, options) {
         this.plan = options.plan;
-        this.listenTo(this, "change", this.onChange);
+        this.listenTo(this, "change", this.onChange.bind(this));
     },
     /**
      * Transfers the "change" event to the plan
      */
     onChange: function () {
+        this.plan.get('verificationResult').set({
+            status:'not-verified',
+            violations: [],
+            "compulsory-violations": [],
+            "field-violations": [],
+            "rule-group-violations": []
+        }, {silent: true});
         this.plan.trigger("change");
     },
     parse: function (response, options) {

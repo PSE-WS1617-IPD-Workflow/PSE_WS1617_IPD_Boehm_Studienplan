@@ -11,7 +11,7 @@ edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.inf
     plan: null,
     initialize: function (attributes, options) {
         this.plan = options.plan;
-        this.listenTo(this.model, "change", this.onChange);
+        this.listenTo(this.model, "change", this.onChange.bind(this));
     },
     /**
      * Transfer the "change" event to the plan

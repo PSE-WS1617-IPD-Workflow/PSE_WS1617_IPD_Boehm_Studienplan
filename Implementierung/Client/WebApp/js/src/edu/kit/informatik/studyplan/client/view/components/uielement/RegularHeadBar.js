@@ -18,7 +18,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
     initialize: function (options) {
         "use strict";
         this.model = options.plan;
-        this.listenTo(this.model, "change", this.render);
+        this.listenTo(this.model, "change", this.render.bind(this));
     },
     render: function () {
         "use strict";
@@ -66,13 +66,17 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                     });
                 }
                 if (self.model.get('verificationResult').get('status') == "invalid") {
+                    // Turned to true, if the dialog needs to be shown
+                    var showDialog = false;
                     var html = "<div>";
                     html += LM.getMessage("verificationFailText")
                     html += "<ul>";
                     _.each(self.model.get('verificationResult').get('field-violations'), function (field) {
+                        showDialog = true;
                         html += "<li>" + field.name + " (min: " + field["min-ects"] + " ECTS)</li>";
                     });
                     _.each(self.model.get('verificationResult').get('rule-group-violations'), function (ruleGroup) {
+                        showDialog = true;
                         html += "<li>" + ruleGroup.name + " (" +
                             ((ruleGroup["min-num"] != -1) ?
                                 "min: " + ruleGroup["min-num"] + "" :
@@ -86,25 +90,28 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                             ")</li>";
                     });
                     _.each(self.model.get('verificationResult').get('compulsory-violations'), function (module) {
+                        showDialog = true;
                         html += "<li>" + module.name + "</li>";
                     });
                     html += "</ul>";
                     html += "</div>";
-                    var options = {
-                        title: LM.getMessage("verificationFailTitle"),
-                        resizable: false,
-                        height: "auto",
-                        minWidth: 400,
-                        minHeight: 300,
-                        modal: false,
-                        draggable: true,
-                        buttons: {}
+                    if(showDialog) {
+                        var options = {
+                            title: LM.getMessage("verificationFailTitle"),
+                            resizable: false,
+                            height: "auto",
+                            minWidth: 400,
+                            minHeight: 300,
+                            modal: false,
+                            draggable: true,
+                            buttons: {},
+                        }
+                        options["buttons"][LM.getMessage('OK')] = function () {
+                            $(this).dialog("close");
+                        }
+                        var dialog = $(html).dialog(options);
+                        dialog.show();
                     }
-                    options["buttons"][LM.getMessage('OK')] = function () {
-                        $(this).dialog("close");
-                    }
-                    var dialog = $(html).dialog(options);
-                    dialog.show();
                 }
                 if (notification !== null) {
                     edu.kit.informatik.studyplan.client.model.system.NotificationCollection
