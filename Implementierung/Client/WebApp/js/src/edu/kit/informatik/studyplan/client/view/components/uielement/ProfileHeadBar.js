@@ -84,10 +84,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
                             wasShown: false,
                             type: "success"
                         }));
-                    edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("logout", {
+                    edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/logout", {
                         trigger: true
-                    })
-
+                    });
                 }
             });
 
