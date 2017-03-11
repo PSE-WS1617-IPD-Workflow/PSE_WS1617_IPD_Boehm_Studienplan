@@ -94,7 +94,25 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
      */
     beginning: function (curyear) {
         "use strict";
-        for (var i = 0; i <= 10; i++) {
+        var exactDate = new Date(Date.now()).getMonth();
+        if(exactDate>8){
+            var temp = curyear;
+            this.beginningArray.push({
+                name: (edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("winterterm") + temp),
+                year: curyear,
+                term: "WT"
+            })
+        }
+        if(exactDate>2){
+            var temp = curyear;
+            this.beginningArray.push({
+                name: 
+                (edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("summerterm") + temp),
+                year: curyear,
+                term: "ST"
+            })
+        }
+        for (var i = 1; i <= 10; i++) {
             var temp = curyear - i;
             this.beginningArray.push({
                 name: (edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("winterterm") + temp),
