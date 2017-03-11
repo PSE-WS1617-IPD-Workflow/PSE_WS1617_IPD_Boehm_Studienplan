@@ -34,12 +34,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         this.isPassedSemester = (typeof options.isPassedSemester !== "undefined") ? options.isPassedSemester : this.isPassedSemester;
         this.isPassedPlan = (typeof options.isPassedPlan !== "undefined") ? options.isPassedPlan : this.isPassedPlan;
         this.reload();
-        this.listenTo(this.model, "change", this.reload);
-        this.listenTo(this.model, "destroy", this.reload);
-        this.listenTo(this.model, "all", this.reload);
-        this.listenTo(this.model, "reset", this.reload);
-        this.listenTo(this.model, "add", this.reload);
-        this.reload();
     },
     reload: function () {
         this.moduleElements = [];

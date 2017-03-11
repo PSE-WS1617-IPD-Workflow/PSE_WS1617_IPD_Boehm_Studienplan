@@ -8,6 +8,12 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.Plan");
  */
 
 edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend( /** @lends {edu.kit.informatik.studyplan.client.model.plans.Plan.prototype}*/ {
+    
+    initialize: function () {
+        this.listenTo(this, "change", function () {
+            console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] Change event triggered");
+        });
+    },
 
     urlRoot: API_DOMAIN + "/plans",
 
@@ -58,7 +64,7 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
                 id: response["id"],
                 violations: response["violations"],
                 status: response["status"],
-                "": response["compulsory-violations"],
+                "compulsory-violations": response["compulsory-violations"],
                 "field-violations": response["field-violations"],
                 "rule-group-violations": response["rule-group-violations"]
             }
