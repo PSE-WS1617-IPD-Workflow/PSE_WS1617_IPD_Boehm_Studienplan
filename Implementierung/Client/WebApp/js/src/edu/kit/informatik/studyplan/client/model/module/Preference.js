@@ -9,7 +9,11 @@ goog.provide("edu.kit.informatik.studyplan.client.model.module.Preference");
  */
 
 edu.kit.informatik.studyplan.client.model.module.Preference = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend( /** @lends {edu.kit.informatik.studyplan.client.model.module.Preference.prototype}*/ {
-
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "plans-modules-preference",
+    
     /**
      *it's the event you use to set the preference of a module
      */

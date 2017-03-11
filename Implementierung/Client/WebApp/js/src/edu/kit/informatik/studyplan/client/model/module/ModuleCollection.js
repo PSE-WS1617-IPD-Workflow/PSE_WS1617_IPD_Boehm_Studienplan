@@ -9,6 +9,11 @@ goog.provide("edu.kit.informatik.studyplan.client.model.module.ModuleCollection"
  */
 
 edu.kit.informatik.studyplan.client.model.module.ModuleCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend( /** @lends {edu.kit.informatik.studyplan.client.model.module.ModuleCollection.prototype}*/ {
+    
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "modules",
 
     //the plan that includes this ModuleCollection.
     planId: null,

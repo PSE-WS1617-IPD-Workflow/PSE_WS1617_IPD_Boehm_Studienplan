@@ -10,6 +10,10 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.Field");
 
 edu.kit.informatik.studyplan.client.model.system.Field = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend( /** @lends {edu.kit.informatik.studyplan.client.model.system.Field.prototype}*/ {
     /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "fields",
+    /**
      *just the standard-parse-method
      */
     parse: function (response, options) {

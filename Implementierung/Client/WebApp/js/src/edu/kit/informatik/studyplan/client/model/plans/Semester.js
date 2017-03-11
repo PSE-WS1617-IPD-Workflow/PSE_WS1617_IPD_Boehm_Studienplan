@@ -9,6 +9,10 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.Semester");
  */
 
 edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.studyplan.client.model.module.ModuleCollection.extend( /** @lends {edu.kit.informatik.studyplan.client.model.plans.Semester.prototype}*/ {
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "plans-modules",
     planId: null,
     semesterNum: 0,
     /** 

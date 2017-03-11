@@ -8,7 +8,10 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.Plan");
  */
 
 edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend( /** @lends {edu.kit.informatik.studyplan.client.model.plans.Plan.prototype}*/ {
-    
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "plans-id",
     initialize: function () {
         this.listenTo(this, "change", function () {
             console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] Change event triggered");

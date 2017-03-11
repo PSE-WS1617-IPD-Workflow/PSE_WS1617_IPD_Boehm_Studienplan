@@ -8,6 +8,10 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.PlanCollection");
  */
 
 edu.kit.informatik.studyplan.client.model.plans.PlanCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend( /** @lends {edu.kit.informatik.studyplan.client.model.plans.PlanCollection.prototype}*/ {
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "plans",
     url: API_DOMAIN + "/plans",
     model: edu.kit.informatik.studyplan.client.model.plans.Plan,
 

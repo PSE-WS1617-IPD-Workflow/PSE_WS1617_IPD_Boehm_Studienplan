@@ -6,6 +6,10 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.Filter");
  */
 
 edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend( /** @lends {edu.kit.informatik.studyplan.client.model.system.Filter.prototype}*/ {
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "filters",
     /*
      * Information concerning the curValue of filters:
      * For range filters it is set by an object of the form {min: <min val>, max: <max val>}

@@ -8,6 +8,10 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.ProposedPlan");
  */
 
 edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informatik.studyplan.client.model.plans.Plan.extend( /** @lends {edu.kit.informatik.studyplan.client.model.plans.ProposedPlan.prototype}*/ {
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "plans-proposal",
 
     /**
      * Computes the url where the proposed plan can be found
