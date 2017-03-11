@@ -82,6 +82,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
      */
     click: function (event) {
         "use strict";
+        // Check if clicked on relevant area of module box (everything but buttons)
+        if($(event.target).closest('.buttons').length){
+            return false;
+        }
         event.preventDefault();
         var eventBus = edu.kit.informatik.studyplan.client.model.system.EventBus;
         eventBus.trigger("showModuleInfo", this.model)
