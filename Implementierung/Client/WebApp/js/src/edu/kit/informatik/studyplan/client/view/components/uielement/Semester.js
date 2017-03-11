@@ -101,7 +101,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
      */
     onDrop: function (event, ui) {
         //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.Semester] drop event");
-        //TODO: Make module deletable when it wasn't before!
+        if(!ui || !ui.helper || !ui.helper.data("viewObject") ) {
+            return false;
+        }
         var droppedElement = ui.helper.data("viewObject");
         /**
          * @type {edu.kit.informatik.studyplan.client.model.module.Module}
