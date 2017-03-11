@@ -123,6 +123,19 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
                 );
                 return false;
             }
+            // Do not insert module in wrong cycle type
+            if (this.model.getCycleType()!=droppedModel.get('cycle-type') && droppedModel.get('cycle-type')!="both") {
+                var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
+                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
+                    new edu.kit.informatik.studyplan.client.model.system.Notification({
+                        title: LM.getMessage('wrongSemesterTypeTitle'),
+                        text: LM.getMessage('wrongSemesterTypeText-'+this.model.getCycleType()),
+                        wasShown: false,
+                        type: "error"
+                    })
+                );
+                return false;
+            }
         }
         if (droppedModel.collection !== this.model) {
             var oldCol = droppedModel.collection;

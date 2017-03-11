@@ -90,5 +90,19 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
             sum += module.get('creditpoints');
         });
         return sum;
+    },
+    /**
+     * Method to set the cycle type of the semester
+     * @param {string} type Either "WT" or "ST"
+     */
+    setCycleType: function (type) {
+        this.cycleType = type;
+    },
+    /**
+     * Method to set the cycle type of the semester
+     * @return {string} Either "WT" or "ST"
+     */
+    getCycleType: function () {
+        return this.cycleType;
     }
 });

@@ -96,6 +96,9 @@ LM.messages["de"]["radioSliderMax"] = "max";
 //Plan
 LM.messages["de"]["notInsertTwiceTitle"] = "Module bereits vorhanden";
 LM.messages["de"]["notInsertTwiceText"] = "Module können nur einmal dem Studienplan hinzugefügt werden. Dieses ist bereits im Plan vorhanden.";
+LM.messages["de"]["wrongSemesterTypeTitle"] = "Falsches Semester";
+LM.messages["de"]["wrongSemesterTypeText-ST"] = "Sie können dieses Modul nicht im Sommersemester hören";
+LM.messages["de"]["wrongSemesterTypeText-WT"] = "Sie können dieses Modul nicht im Wintersemester hören";
 
 LM.messages["de"]["sum"] = "Gesamt: ";
 LM.messages["de"]["modules"] = "Module";
@@ -188,3 +191,7 @@ LM.messages["de"]["PUT-student-404"] = "Die gewählte Fachrichtung konnte nicht 
 
 //503
 LM.messages["de"]["GET-plans-id-pdf-503"] = "Es ist ein interner Fehler aufgetreten. Der Exportdienst ist zurzeit außer Betrieb. Bitte kontaktieren Sie den Administrator. (Statuscode 503)";
+
+//WT/ST
+LM.messages["de"]["semesterTypeName-WT"] = "Wintersemester";
+LM.messages["de"]["semesterTypeName-ST"] = "Sommersemester";
