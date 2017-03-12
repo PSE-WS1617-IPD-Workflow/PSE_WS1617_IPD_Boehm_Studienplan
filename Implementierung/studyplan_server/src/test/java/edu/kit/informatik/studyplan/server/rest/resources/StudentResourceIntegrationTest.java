@@ -184,9 +184,9 @@ public class StudentResourceIntegrationTest extends SimpleRestAssuredTestWithAut
 	
 	@Test
 	public void notAuthorized() {
-		get("/student").then().assertThat().statusCode(403);
-		put("/student").then().assertThat().statusCode(403);
-		delete("/student").then().assertThat().statusCode(403);
+		get("/student").then().assertThat().statusCode(401);
+		put("/student").then().assertThat().statusCode(401);
+		delete("/student").then().assertThat().statusCode(401);
 	}
 	
 	

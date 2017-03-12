@@ -1,0 +1,34 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "ModulesResult",
+    "description": "a result accessing modules",
+    "type": "object",
+    "properties": {
+        "modules": {
+        	"type" : "array",
+        	"items": {
+				"type": "object",
+           		"properties": {
+	            	"id": {
+	            		"type" : "string"
+	            	},
+	            	"name": {
+	            		"type": "string"
+	            	},
+	            	"cycle-type" : {
+	            		"enum" : ["WT", "ST", "both"]
+	            	},
+	            	"creditpoints" : {
+	            		"type": "number",
+	            		"minimum" : 0
+	            	},
+	            	"lecturer" : {
+	            		"type": "string"
+	            	}
+           		},
+           		"required" : ["id", "name", "cycle-type", "creditpoints"]
+        	}
+        }
+    },
+    "required" : ["modules"]
+}
