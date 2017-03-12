@@ -76,6 +76,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
      */
     addSemester: function () {
         "use strict";
+        if(this.model.get('semesterCollection').length>200) {
+            alert(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("semesterLimit"));
+            return;
+        }
         var newSemester = new edu.kit.informatik.studyplan.client.model.plans.Semester({
             planId: this.model.get("id"),
             semesterNum: this.model.get('semesterCollection').length,
