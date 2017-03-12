@@ -12,11 +12,6 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
      * Key by which error messages are identified
      */
     modelErrorKey: "plans-id",
-    initialize: function () {
-        this.listenTo(this, "change", function () {
-            console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] Change event triggered");
-        });
-    },
 
     urlRoot: API_DOMAIN + "/plans",
 
@@ -27,55 +22,48 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
     parse: function (response, options) {
         "use strict";
         response = response["plan"];
-        //included modules aren't passed.
+        //only parse modules, when sent by server
         if (typeof response["modules"] !== "undefined") {
             for (var i = 0; i < response["modules"].length; i++) {
                 response["modules"][i]["passed"] = false;
             }
-        } else {
-            response["modules"] = [];
-        }
-        //console.log(response);
-        var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
-        //includes passed-Modules.
-        if (student) {
-            var passedModules = student.get('passedModules');
-        }
-        //todo: bleiben die consolen-eingaben?
-        //console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] parsing plan")
-        //console.info("[edu.kit.informatik.studyplan.client.model.plans.Plan] passedModules:")
-        //console.info(passedModules);
-        if (passedModules) {
-            passedModules.each(function (module) {
-                module.set('passed', true);
-                response["modules"].push(module.toJSON({
-                    planModule: true
-                })["module"]);
+            var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance().get('student');
+            
+            if (student) {
+                var passedModules = student.get('passedModules');
+            }
+            if (passedModules) {
+                passedModules.each(function (module) {
+                    module.set('passed', true);
+                    response["modules"].push(module.toJSON({
+                        planModule: true
+                    })["module"]);
+                });
+            }
+            response.semesterCollection = new edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({
+                planId: response.id,
+                modules: response.modules
+            }, {
+                parse: true,
+                plan: this
             });
         }
-        // Initialize an object of type client.model.plans.SemesterCollection and set planId and module
-        response.semesterCollection = new edu.kit.informatik.studyplan.client.model.plans.SemesterCollection({
-            planId: response.id,
-            modules: response.modules
-        }, {
-            parse: true,
-            plan: this
-        });
-        //building a verificationResult with the given information
-        response.verificationResult = new edu.kit.informatik.studyplan.client.model.plans.VerificationResult({
-            plan: {
-                id: response["id"],
-                violations: response["violations"],
-                status: response["status"],
-                "compulsory-violations": response["compulsory-violations"],
-                "field-violations": response["field-violations"],
-                "rule-group-violations": response["rule-group-violations"]
-            }
-        }, {
-            parse: true,
-            plan: this
-        });
-
+        //building a verificationResult with the given information when passed by server
+        if (typeof response["status"] !== "undefined") {
+            response.verificationResult = new edu.kit.informatik.studyplan.client.model.plans.VerificationResult({
+                plan: {
+                    id: response["id"],
+                    violations: response["violations"],
+                    status: response["status"],
+                    "compulsory-violations": response["compulsory-violations"],
+                    "field-violations": response["field-violations"],
+                    "rule-group-violations": response["rule-group-violations"]
+                }
+            }, {
+                parse: true,
+                plan: this
+            });
+        }
         return response;
     },
     /**

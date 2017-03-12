@@ -43,7 +43,7 @@ edu.kit.informatik.studyplan.client.model.system.NotificationCollection = (funct
             Backbone.Collection.prototype.add.call(this, notifications)
         },
         removeJustSent: function (key) {
-            console.log("resetting "+key)
+            // console.log("resetting "+key)
             this.justSentNotifications[key]=false;
         }
     });
