@@ -79,19 +79,20 @@ edu.kit.informatik.studyplan.client.storage.OAuthSync.errorCallback = function (
         case "error":
             if (xhr.status === 0) {
                 msgKey = "connectionErrorText-timeout";
-            }
-            var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance()
-            .get('student');            
-            msgKey = "connectionErrorText-"+xhr.status;
-            // Custom Model error message handling
-            var errorKey = _.result(model,"modelErrorKey", null);
-            if (errorKey!=null) {
-                var propMsgKey = httpMethod + "-" + errorKey + "-" + msgKey;
-                // Check if key exists in Language Manager
-                if(LM.getMessage(propMsgKey)!=propMsgKey) {
-                    msgKey = propMsgKey;
-                } else {
-                    console.error("[edu.kit.informatik.studyplan.client.storage.OAuthSync.errorCallback] Es fehlt das Sprachelement " + propMsgKey)
+            } else {
+                var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance()
+                .get('student');            
+                msgKey = "connectionErrorText-"+xhr.status;
+                // Custom Model error message handling
+                var errorKey = _.result(model,"modelErrorKey", null);
+                if (errorKey!=null) {
+                    var propMsgKey = httpMethod + "-" + errorKey + "-" + msgKey;
+                    // Check if key exists in Language Manager
+                    if(LM.getMessage(propMsgKey)!=propMsgKey) {
+                        msgKey = propMsgKey;
+                    } else {
+                        console.error("[edu.kit.informatik.studyplan.client.storage.OAuthSync.errorCallback] Es fehlt das Sprachelement " + propMsgKey)
+                    }
                 }
             }
         break;
