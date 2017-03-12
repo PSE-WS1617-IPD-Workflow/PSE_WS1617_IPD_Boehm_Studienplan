@@ -1,0 +1,42 @@
+<div>
+    {{=obj.LM.getMessage("verificationFailText")}}
+    <ul>
+        {{ if (obj.verification.get('field-violations').length > 0 ) { }}
+            <li>
+                {{=obj.LM.getMessage("verificationFieldDescription") }}
+                <ol>
+                    {{console.log(obj.verification.get('field-violations'))}}
+                    {{ _.each(obj.verification.get('field-violations'), function (field) { }}
+                        <li>{{=field.get("name")}} (min: {{=field.get("min-ects")}} ECTS)</li>
+                    {{ }); }}
+                </ol>
+            </li>
+        {{ } }}
+        
+        
+        {{ if (obj.verification.get('rule-group-violations').length > 0 ) { }}
+            <li>
+                {{=obj.LM.getMessage("verificationGroupDescription") }}
+                <ol>
+                    {{ _.each(obj.verification.get('rule-group-violations'), function (ruleGroup) { }}
+                        <li>{{=ruleGroup.get("name")}} (
+                                {{=((ruleGroup.get("min-num") != -1) ? "min: " + ruleGroup.get("min-num") + "" : "")}}
+                                {{=((ruleGroup.get("max-num") != -1 && ruleGroup.get("min-num") != -1) ? "," : "")}}
+                                {{=((ruleGroup.get("max-num") != -1) ? "max: " + ruleGroup.get("max-num") + "" : "") }}
+                            )</li>
+                    {{ }); }}
+                </ol>
+            </li>
+        {{ } }}
+        {{ if (obj.verification.get('compulsory-violations').length > 0 ) { }}
+            <li>
+                {{=obj.LM.getMessage("verificationCompulsoryDescription") }}
+                <ol>
+                    {{ _.each(obj.verification.get('compulsory-violations'), function (module) { }}
+                        <li>{{=module.get("name")}}</li>
+                    {{ }); }}
+                </ol>
+            </li>
+        {{ } }}
+    </ul>
+</div>

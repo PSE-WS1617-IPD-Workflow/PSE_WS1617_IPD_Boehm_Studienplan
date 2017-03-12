@@ -52,7 +52,10 @@ LM.messages["de"]["verify"] = "Überprüfen";
 LM.messages["de"]["verificationSuccessTitle"] = "Verifikation erfolgreich!";
 LM.messages["de"]["verificationSuccessText"] = "Der Studienplan wurde erfolgreich überprüft und ist korrekt.";
 LM.messages["de"]["verificationFailTitle"] = "Verifikation fehlgeschlagen!";
-LM.messages["de"]["verificationFailText"] = "Der Studienplan wurde überprüft und ist nicht korrekt.";
+LM.messages["de"]["verificationFailText"] = "Der Studienplan wurde überprüft und ist nicht korrekt. Module, bei denen Voraussetzungen nicht erfüllt sind, wurden rot markiert.";
+LM.messages["de"]["verificationFieldDescription"] = "Sie haben in folgenden Bereichen die ECTS-Mindestzahl unterschritten: ";
+LM.messages["de"]["verificationGroupDescription"] = "Sie haben in folgenden Bereichen zu viele/zu wenig Module ausgewählt: ";
+LM.messages["de"]["verificationCompulsoryDescription"] = "Sie müssen folgende Module zwingend hören: ";
 LM.messages["de"]["OK"] = "OK";
 LM.messages["de"]["changeSavedTitle"] = "Änderung gespeichert";
 LM.messages["de"]["changeSavedText"] = "Die Änderung wurde erfolgreich gespeichert.";
@@ -196,6 +199,7 @@ LM.messages["de"]["PUT-plans-id-connectionErrorText-404"] = "Es ist ein interner
 LM.messages["de"]["PATCH-plans-id-connectionErrorText-404"] = "Der Plan, der umbenannt werden soll, konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["DELETE-plans-id-connectionErrorText-404"] = "Der Plan, der gelöscht werden soll, konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["GET-plans-id-connectionErrorText-404"] = "Der Plan konnte nicht gefunden werden. (Statuscode 404)";
+LM.messages["de"]["POST-plans-id-connectionErrorText-422"] = "Ein Plan mit diesem Namen existiert bereits. (Statuscode 422)";
 
 // plans verification (plans-verification)
 LM.messages["de"]["GET-plans-verification-connectionErrorText-404"] = "Der Plan, der überprüft werden soll, konnte nicht gefunden werden. (Statuscode 404)";

@@ -66,19 +66,19 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
             fields: this.fieldCollection
         }));
         this.$el.find(".rangeSlider1").slider({
-            range: true,
+            range: false,
             min: 0,
             max: 60,
-            values: [0, 60],
+            values: [60],
             slide: this.updateVal1.bind(this)
         });
-        this.$el.find(".rangeSlider2").slider({
+        /*this.$el.find(".rangeSlider2").slider({
             range: true,
             min: 2,
             max: 20,
             values: [2, 20],
             slide: this.updateVal2.bind(this)
-        });
+        });*/
         this.delegateEvents();
         return this;
     },
@@ -97,26 +97,28 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
      */
     updateVal1: function (event, ui) {
         "use strict";
-        var temp1 = ui.values[0];
-        var temp2 = ui.values[1];
-        this.information.set('min-semester-ects', temp1);
+        //var temp1 = ui.values[0];
+        var temp2 = ui.values[0];
+        //this.information.set('min-semester-ects', temp1);
         this.information.set('max-semester-ects', temp2);
 
-        $("#minECTS").val(ui.values[0]);
-        $("#maxECTS").val(ui.values[1]);
+        //$("#minECTS").val(temp1);
+        $("#maxECTS").val(temp2);
     },
     /**
      *updating and saving the slider for preferredd number of semesters
      */
     updateVal2: function (event, ui) {
         "use strict";
-        var temp1 = ui.values[0];
+        // currently not in use
+        /*var temp1 = ui.values[0];
         var temp2 = ui.values[1];
         this.information.set('min-semesters', temp1);
         this.information.set('max-semesters', temp2);
 
         $("#minSemester").val(ui.values[0]);
         $("#maxSemester").val(ui.values[1]);
+        */
     },
 
 
