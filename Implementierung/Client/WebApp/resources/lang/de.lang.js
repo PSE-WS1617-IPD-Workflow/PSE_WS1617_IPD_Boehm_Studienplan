@@ -35,6 +35,7 @@ LM.messages["de"]["planEctsSum"]="ECTS-Summe";
 LM.messages["de"]["only2PlansComparableTitle"]="Vergleich nicht möglich";
 LM.messages["de"]["only2PlansComparableText"]="Es können nur zwei Pläne gleichzeitig verglichen werden.";
 // Plan List Element
+LM.messages["de"]["deleteSelectedPlansButton"] = "Makierte Pläne Löschen";
 LM.messages["de"]["showPlan"] = "anzeigen";
 LM.messages["de"]["duplicatePlan"] = "duplizieren";
 LM.messages["de"]["deletePlan"] = "löschen";
@@ -212,6 +213,8 @@ LM.messages["de"]["GET-plans-modules-connectionErrorText-422"] = "Es ist ein int
 LM.messages["de"]["GET-plans-modules-connectionErrorText-404"] = "Es ist ein interner Fehler aufgetreten. Wir können keine Modulliste für Sie laden, da der Plan, zu dem die Modulpräferenzen geladen werden sollen, nicht gefunden werden konnte. (Statuscode 404)";
 
 // plans modules (plans-modules-id)
+LM.messages["de"]["deletePlanPrompt"] = "Den Plan wirklich löschen?";
+LM.messages["de"]["deletePlansPrompt"] = "Die Pläne wirklich löschen?";
 LM.messages["de"]["DELETE-plans-modules-id-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Das Modul, das aus dem Plan entfernt werden soll, war nicht im Plan vorhanden. (Statuscode 422)";
 LM.messages["de"]["GET-plans-modules-id-connectionErrorText-404"] = "Das gewünschte Modul oder der Plan, zu welchem die zugehörigen Modulpräferenzen gehören, konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["PUT-plans-modules-id-connectionErrorText-404"] = "Der Plan oder das Modul, das innerhalb des Plans platziert werden soll, konnte nicht gefunden werden. (Statuscode 404)";
