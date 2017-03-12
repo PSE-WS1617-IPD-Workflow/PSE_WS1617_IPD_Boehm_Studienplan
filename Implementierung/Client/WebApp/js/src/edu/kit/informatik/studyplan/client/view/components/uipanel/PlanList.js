@@ -104,9 +104,12 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
     deletePlans: function (planListEls) {
         //console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] deletePlans");
         //console.log(planListEls);
-        _.each(planListEls, function (el) {
-            el.deletePlan();
-        });
+        var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
+        if (confirm(LM.getMessage("deletePlansPrompt"))) {
+            _.each(planListEls, function (el) {
+                el.deletePlan(true);
+            });
+         }
     },
     /**
      *
