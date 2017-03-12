@@ -547,6 +547,8 @@ public class PlansResource {
 			@PathParam("objectiveId") int objectiveId,
 			@QueryParam("max-semester-ects") @NotNull Integer maxSemesterEcts,
 			@QueryParam("min-semester-ects") @NotNull Integer minSemesterEcts,
+			@QueryParam("min-semesters") @NotNull Integer minSemesterNum,
+			@QueryParam("max-semesters") @NotNull Integer maxSemesterNum,
 			@Context UriInfo uriInfo) {
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
 			Plan plan = planDao.getPlanById(planId);
@@ -568,7 +570,7 @@ public class PlansResource {
 					throw new NotFoundException();
 				}
 				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, 
-						maxSemesterEcts, minSemesterEcts);
+						maxSemesterEcts, minSemesterEcts, minSemesterNum, maxSemesterNum);
 				return new PlanInOut(result);
 			} catch (IllegalArgumentException ex) {
 				ex.printStackTrace();
