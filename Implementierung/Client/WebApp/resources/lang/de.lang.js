@@ -8,7 +8,7 @@ LM.messages["de"]["error.invalidMethod"] = "FEHLER: Es wurde keine gültige Sync
 LM.messages["de"]["icon"] = "<big>STUDY</big>plan";
 LM.messages["de"]["loggedIn"] = "Angemeldet";
 LM.messages["de"]["notLoggedIn"] = "Nicht angemeldet";
-LM.messages["de"]["profile"] = "Profil";
+LM.messages["de"]["profile"] = "Profil/Bestandene Module";
 LM.messages["de"]["logout"] = "Logout";
 LM.messages["de"]["login"] = "Login";
 // Login
@@ -217,6 +217,7 @@ LM.messages["de"]["deletePlanPrompt"] = "Den Plan wirklich löschen?";
 LM.messages["de"]["deletePlansPrompt"] = "Die Pläne wirklich löschen?";
 LM.messages["de"]["DELETE-plans-modules-id-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Das Modul, das aus dem Plan entfernt werden soll, war nicht im Plan vorhanden. (Statuscode 422)";
 LM.messages["de"]["GET-plans-modules-id-connectionErrorText-404"] = "Das gewünschte Modul oder der Plan, zu welchem die zugehörigen Modulpräferenzen gehören, konnte nicht gefunden werden. (Statuscode 404)";
+LM.messages["de"]["PUT-plans-modules-id-connectionErrorText-400"] = "Das Modul darf in diesem Zyklus nicht verwendet werden (es gibt Module die nur im Winter- bzw. nur im Sommersemester gehört werden dürfen)";
 LM.messages["de"]["PUT-plans-modules-id-connectionErrorText-404"] = "Der Plan oder das Modul, das innerhalb des Plans platziert werden soll, konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["DELETE-plans-modules-id-connectionErrorText-404"] = "Der Plan oder das Modul, das aus dem Plan entfernt werden soll, konnte nicht gefunden werden. (Statuscode 404)";
 
