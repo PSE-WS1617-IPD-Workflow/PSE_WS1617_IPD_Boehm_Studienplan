@@ -6,6 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.subview.MainPage");
  */
 
 edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend( /** @lends {edu.kit.informatik.studyplan.client.view.subview.MainPage.prototype} */ {
+    pageTour: edu.kit.informatik.studyplan.client.model.system.TourManager.getInstance().getTour("mainPage"),
     /**
      * the model element that contains the plans
      */

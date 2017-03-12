@@ -242,3 +242,21 @@ LM.messages["de"]["semesterLimit"] = "Leider ist es nicht möglich länger als 2
 
 // Main Page
 LM.messages["de"]["mainPageText"] = "Auf dieser Seite finden Sie Ihre Studienpläne.<br>Durch Klick auf den Button in der rechten unteren Ecke können Sie neue Studienpläne erstellen. Unter \"Profil\" können Sie weitere bestandene Module hinzufügen.";
+
+
+/**
+ *  Tour Texts
+ ************************************
+ * Format:
+ * TOUR-[TOUR].[MESSAGE KEY]
+ *
+ */
+LM.messages["de"]["noHelpAvailableTitle"]="Keine Hilfe verfügbar";
+LM.messages["de"]["noHelpAvailableText"] = "Für diese Seite ist leider aktuell keine Hilfe verfügbar."
+LM.messages["de"]["TOUR-next"] = "Weiter";
+LM.messages["de"]["TOUR-done"] ="Fertig";
+//LM.messages["de"]["TOUR-."] = "";
+//LM.messages["de"]["TOUR-MainPage."] = "";
+LM.messages["de"]["TOUR-MainPage.welcome"] = "Herzlich willkommen, dies ist die Hauptseite der Anwendung, mit welcher Sie Ihre Pläne verwalten können.";
+LM.messages["de"]["TOUR-MainPage.table"] = "Hier sehen Sie Ihre erstellten Studienpläne und können Sie bearbeiten, duplizieren, löschen und exportieren.";
+LM.messages["de"]["TOUR-MainPage.mainPageAddPlan"] = "Hier können Sie neue Pläne hinzufügen.";

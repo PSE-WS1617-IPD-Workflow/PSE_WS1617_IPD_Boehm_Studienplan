@@ -79,6 +79,7 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend( /** @l
         if (this.curHeaderView !== null) {
             this.curHeaderView.remove();
         }
+        options["tourHandler"] = this.tourHandler.bind(this);
         this.curHeaderView = new Header(options);
     },
     /**
@@ -91,5 +92,22 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend( /** @l
             this.curContentView.remove();
         }
         this.curContentView = new Content(options);
+    },
+    /**
+     * Function which handles the view of tours when someone clicks on the help button
+     */
+    tourHandler: function () {
+        if(!this.curContentView.pageTour||this.curContentView.pageTour==null) {
+            var notification = new edu.kit.informatik.studyplan.client.model.system.Notification({
+                title: LM.getMessage("noHelpAvailableTitle"),
+                text: LM.getMessage("noHelpAvailableText"),
+                wasShown: false,
+                type: ""
+            });
+            edu.kit.informatik.studyplan.client.model.system.NotificationCollection
+                        .getInstance().add(notification);
+            return;
+        }
+        this.curContentView.pageTour().start();
     }
 });
