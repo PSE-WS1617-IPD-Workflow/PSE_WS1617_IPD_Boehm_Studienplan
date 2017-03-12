@@ -75,6 +75,7 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
             });
         }
         this.planView = new edu.kit.informatik.studyplan.client.view.components.uielement.Plan({
+            isPreferencable: (!this.proposed),
             plan: this.model
         });
         //adding a HeadBar
