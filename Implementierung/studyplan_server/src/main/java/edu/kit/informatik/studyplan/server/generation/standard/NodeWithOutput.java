@@ -2,6 +2,8 @@ package edu.kit.informatik.studyplan.server.generation.standard;
 
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
@@ -89,6 +91,19 @@ public class NodeWithOutput extends Node {
 		return children.remove(node);
 	}
 
-
+	@Override
+	List<Node> getPrerequisiteChildren() {
+		List<Node> list = new ArrayList<Node>();
+		for (ModuleConstraint constraint : getModule().getConstraints().stream()
+				.filter(c -> c.getConstraintType() instanceof PrerequisiteModuleConstraintType)
+				.collect(Collectors.toList())) {
+				for (Node child : getChildren()) {
+					if (child.getModule().equals(getRemainingModuleFromConstraint(constraint))) {
+						list.add(child);
+					}
+				}
+		}
+		return list;
+	}
 
 }

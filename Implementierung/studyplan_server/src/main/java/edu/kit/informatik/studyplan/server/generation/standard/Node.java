@@ -1,6 +1,8 @@
 package edu.kit.informatik.studyplan.server.generation.standard;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
@@ -42,7 +44,7 @@ public abstract class Node {
 	/**
 	 * List of nodes that have an edge to this node.
 	 */
-	private ArrayList<Node> parents = new ArrayList<Node>();
+	private List<Node> parents = new ArrayList<Node>();
 	/**
 	 * An inner node to represent nodes of parallel modules.
 	 */
@@ -124,7 +126,7 @@ public abstract class Node {
 		this.generator = generator;
 		this.module = module;
 		this.plan = plan;
-		//TODO set semester?
+		// TODO set semester?
 		// Check if the module in in the passedModules list of the user
 		for (ModuleEntry m : plan.getUser().getPassedModules()) {
 			if (module.getIdentifier() == m.getModule().getIdentifier()) {
@@ -146,7 +148,7 @@ public abstract class Node {
 	 * 
 	 * @return parent-modules
 	 */
-	protected ArrayList<Node> getParents() {
+	protected List<Node> getParents() {
 		return parents;
 	}
 
@@ -230,32 +232,6 @@ public abstract class Node {
 	}
 
 	/**
-	 * returns the innermost node.
-	 * 
-	 * @return innermost node.
-	 */
-	protected Node getInnermostNode() {
-		Node n = this;
-		while (n.hasInnerNode()) {
-			n = n.getInnerNode();
-		}
-		return n;
-	}
-
-	/**
-	 * returns the outermost node.
-	 * 
-	 * @return outermost node.
-	 */
-	protected Node getOutermostNode() {
-		Node n = this;
-		while (n.hasOuterNode()) {
-			n = n.getOuterNode();
-		}
-		return n;
-	}
-
-	/**
 	 * @param innerNode
 	 *            the innerNode to set
 	 */
@@ -273,19 +249,6 @@ public abstract class Node {
 	 */
 	protected boolean isPassed() {
 		return isPassed;
-	}
-
-	// TODO use it
-	/**
-	 * Creates a module entry from this node.
-	 * 
-	 * @return module entry
-	 */
-	protected ModuleEntry toModuleEntry() {
-		ModuleEntry entry = new ModuleEntry();
-		entry.setModule(module);
-		entry.setSemester(semester);
-		return entry;
 	}
 
 	/**
@@ -331,6 +294,14 @@ public abstract class Node {
 		}
 	}
 
+	/**
+	 * Removes the inner node given from the inner nodes. if this node does not
+	 * have such an inner node this method does nothing.
+	 * 
+	 * @param n
+	 * @return true if the removal was successful, false if not (this node
+	 *         doesn't have an inner node with the module given).
+	 */
 	protected boolean removeInnerNode(Node n) {
 		Node node = this;
 		while (node.hasInnerNode()) {
@@ -444,20 +415,23 @@ public abstract class Node {
 
 	/**
 	 * Checks if this node can be added to the semester with number given
-	 * respecting its cycle type
+	 * respecting its cycle type.
 	 * 
 	 * @param i
-	 *            number of the semester
-	 * @return a boolean that is only if the node can be addded to the semester
+	 *            number of the semester.
+	 * @param semesterAllocation
+	 *            array of the current semester allocation of the nodes.
+	 * @param sorted
+	 *            the sorted list of nodes.
+	 * @return a boolean that is only if the node can be added to the semester
 	 *         with the number given.
 	 */
-	protected boolean fitsInSemester(int i) {
-		if(this.isPassed) {
+	protected boolean fitsInSemester(int i, int[] semesterAllocation, List<Node> sorted) {
+		if (this.isPassed && i == this.getSemester()) {
 			return true;
 		}
-		if(i < Semester.getCurrentSemester().getDistanceTo(plan.getUser()
-				.getStudyStart())) {
-					return false;
+		if (i < Semester.getCurrentSemester().getDistanceTo(plan.getUser().getStudyStart())) {
+			return false;
 		}
 		// Check if Semester type corresponds to cycle type of the module
 		if (getModule().getCycleType() == CycleType.WINTER_TERM) {
@@ -471,18 +445,54 @@ public abstract class Node {
 			}
 		}
 		// check if a prerequisite module is placed in a further semester
-		for (ModuleConstraint constraint : getModule().getConstraints()) {
+		for (Node parent : getPrerequisiteParents()) {
+			if (parent.getSemester() >= i) {
+				return false;
+			} else if (semesterAllocation[sorted.indexOf(parent)] >= i) {
+				return false;
+			}
+		}
+		/* check if a module that has this module as prerequisite is placed in a further 
+		 * previous semester.
+		 */
+		for (Node child : getPrerequisiteChildren()) {
+			if (child.getSemester() >= i) {
+				return false;
+//			} else if (semesterAllocation[sorted.indexOf(child)] <= i) {
+//				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * 
+	 * @return a list of the parents whose mudules are prerequisites to this
+	 *         node's module.
+	 */
+	List<Node> getPrerequisiteParents() {
+		List<Node> list = new ArrayList<Node>();
+		for (ModuleConstraint constraint : getModule().getConstraints().stream()
+				.filter(c -> c.getConstraintType() instanceof PrerequisiteModuleConstraintType)
+				.collect(Collectors.toList())) {
 			if (constraint.getConstraintType() instanceof PrerequisiteModuleConstraintType) {
 				for (Node parent : getParents()) {
-					if (parent.equals(getRemainingModuleFromConstraint(constraint))) {
-						if (parent.getSemester() >= i) {
-							return false;
-						}
+					if (parent.getModule().equals(getRemainingModuleFromConstraint(constraint))) {
+						list.add(parent);
 					}
 				}
 			}
 		}
-		return true;
+		return list;
+	}
+	
+	/**
+	 * 
+	 * @return a list of the children(if this node has children) whose modules have this
+	 *  this node's module as prerequisite.
+	 */
+	List<Node> getPrerequisiteChildren() {
+		return null;
 	}
 
 	/**
@@ -491,11 +501,10 @@ public abstract class Node {
 	public SimpleGenerator getGenerator() {
 		return generator;
 	}
-	
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return module.getIdentifier() + "  " + module.getName();
 	}
-	
 
 }
