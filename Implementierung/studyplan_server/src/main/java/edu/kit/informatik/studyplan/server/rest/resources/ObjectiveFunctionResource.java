@@ -1,22 +1,26 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
-import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
-import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
+import edu.kit.informatik.studyplan.server.pluginmanager.GenerationManager;
+import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
+import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 
 /**
  * REST resource for /objective-functions.
  */
 @Path("/objective-functions")
+@AuthorizationNeeded
 public class ObjectiveFunctionResource {
 	/**
 	 * GET request handler.

@@ -11,4 +11,12 @@ class SimpleRestAssuredTestWithAuth extends SimpleRestAssuredTest {
 //                  .auth().preemptive().basic("max_mustermann", "123");
                     //doesn't work!?
     }
+    static RequestSpecification customAuthorize(RequestSpecification given, String accessToken) {
+        return given
+                .header("Authorization", accessToken)
+                .header("Origin", "*");
+
+//                  .auth().preemptive().basic("max_mustermann", "123");
+                    //doesn't work!?
+    }
 }

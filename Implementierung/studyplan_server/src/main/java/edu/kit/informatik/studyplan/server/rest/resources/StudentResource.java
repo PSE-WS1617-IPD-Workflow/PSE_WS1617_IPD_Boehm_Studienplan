@@ -30,6 +30,7 @@ import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
+import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 
 /**
@@ -59,6 +60,9 @@ public class StudentResource {
 	@JsonView(Views.StudentClass.class)
 	public StudentInOut replaceInformation(StudentInOut studentInput) {
 		return Utils.withUserDao(userDao -> Utils.withModuleDao(moduleDao -> Utils.withPlanDao(planDao -> {
+			if (studentInput == null || studentInput.getStudent() == null) {
+				throw new BadRequestException();
+			}
 			User thisStudent = getUser();
 			JsonStudent jsonStudent = studentInput.getStudent();
 			if (jsonStudent.getDiscipline() != null) {
@@ -69,26 +73,34 @@ public class StudentResource {
 				}
 				thisStudent.setDiscipline(foundDiscipline);
 			}
+			Semester studyStart;
 			if (jsonStudent.getStudyStart() != null) {
-				thisStudent.setStudyStart(jsonStudent.getStudyStart());
+				studyStart = jsonStudent.getStudyStart();
+				if (studyStart.compareTo(Semester.getCurrentSemester()) <= 0 
+						&& studyStart.getDistanceToCurrentSemester() <= PlansResource.MAX_SEMESTERS) {
+					thisStudent.setStudyStart(studyStart);
+				} else {
+					throw new UnprocessableEntityException();
+				}
+			} else {
+				studyStart = thisStudent.getStudyStart();
 			}
-			if (jsonStudent.getPassedModules() != null) {
+			if (jsonStudent.getPassedModules() != null && studyStart != null) {
 				List<ModuleEntry> newPassedModules = jsonStudent.getPassedModules()
 						.stream()
 						.map(jsonModule -> {
-							ModuleEntry entry =
-									new ModuleEntry(moduleDao.getModuleById(jsonModule.getId()),
-											jsonModule.getSemester());
-							if (entry.getModule() == null) {
-								throw new BadRequestException();
+							Module module = moduleDao.getModuleById(jsonModule.getId());
+							if (module == null) {
+								throw new NotFoundException();
 							}
 							if (jsonModule.getSemester() <= 0 
 									|| jsonModule.getSemester() > PlansResource.MAX_SEMESTERS) {
-								throw new BadRequestException();
+								throw new UnprocessableEntityException();
 							}
-							if (jsonModule.getSemester() > thisStudent.getStudyStart().getDistanceToCurrentSemester()) {
-								throw new BadRequestException();
+							if (jsonModule.getSemester() > studyStart.getDistanceToCurrentSemester()) {
+								throw new UnprocessableEntityException();
 							}
+							ModuleEntry entry = new ModuleEntry(module, jsonModule.getSemester());
 							return entry;
 						})
 						.collect(Collectors.toList());

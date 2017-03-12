@@ -11,12 +11,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Matchers;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 
-import edu.kit.informatik.studyplan.server.filter.CategoryFilter;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.MinimalECTSAtomObjectiveFunction;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
@@ -74,6 +72,10 @@ public class SimpleGeneratorTest {
 		generator = new SimpleGenerator();
 		plan = mock(Plan.class);
 		generator.setCurrentPlan(plan);
+		generator.setMaxECTSperSemester(4.0);
+		generator.setMaxSemesterNum(10);
+		generator.setMinSemesterNum(2);
+		generator.setMinECTSperSemester(2.0);
 		// creating modules
 		field1 = new Field();
 		field1.setFieldId(1);
@@ -190,7 +192,6 @@ public class SimpleGeneratorTest {
 		user.setStudyStart(new Semester(SemesterType.WINTER_TERM, 2015));
 		user.getPassedModules().add(entry2);
 
-		// plan.setUser(user);
 		when(plan.getUser()).thenReturn(user);
 		ModulePreference modPref = new ModulePreference(la1, PreferenceType.POSITIVE, plan);
 		modPreferences = new ArrayList<ModulePreference>();
@@ -322,9 +323,9 @@ public class SimpleGeneratorTest {
 		assertTrue(generator.getNodes().getCreditPoints(field) == 2.0);
 	}
 	@Test
-	public void testParallelize() {
+	public void testAllocateToSemesters() {
 		generator.planToGraph(plan);
-		int[] result = generator.parallelize(generator.getNodes().sort(), 4.0, 2.0);
+		int[] result = generator.allocateToSemesters(generator.getNodes().sort());
 		int[] compareTo = new int[] { 3, 4, 5};
 		assertArrayEquals(compareTo, result);
 	}
@@ -333,7 +334,7 @@ public class SimpleGeneratorTest {
 	public void testCreatePlan() {
 		generator.planToGraph(plan);
 		Plan newPlan = generator.createPlan(generator.getNodes().sort(),
-				generator.parallelize(generator.getNodes().sort(), 4, 2.0), plan.getUser());
+				generator.allocateToSemesters(generator.getNodes().sort()), plan.getUser());
 		Plan compareTo = new Plan();
 		ModuleEntry entry1 = new ModuleEntry(prog, 1);
 		ModuleEntry entry2 = new ModuleEntry(gbi, 3);
@@ -349,7 +350,6 @@ public class SimpleGeneratorTest {
 		for(ModuleEntry e : newPlan.getAllModuleEntries()) {
 			assertTrue(e.getSemester() == compareTo.getEntryFor(e.getModule()).getSemester());
 		}
-		int a = 0;
 	}
 
 
@@ -370,7 +370,7 @@ public class SimpleGeneratorTest {
 		map.put(field, category);
 		generator.planToGraph(plan);
 		GenerationResult result = generator.complete(generator.getNodes(), plan, 
-				map, 4.0, 2.0, dao);
+				map, dao);
 		assertTrue(result.getNodesList().contains(new NodeWithOutput(ph1, plan, generator)));
 		assertTrue(result.getNodesList().contains(new NodeWithOutput(la1, plan, generator)));
 
@@ -406,10 +406,9 @@ public class SimpleGeneratorTest {
 		generator.planToGraph(plan);
 		
 		assertTrue(generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(), plan, 
-				map, -1, 4.0, 2.0, dao).size() == 10);
-//		System.out.println("NOT NULL BABE");
+				map, -1, dao).size() == 10);
 		for(NodesList l : generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(), plan, 
-				map, -1, 4.0, 2.0, dao).values()) {
+				map, -1, dao).values()) {
 			assertTrue(l.contains(new NodeWithOutput(ph1, plan, generator))
 					|| l.contains(new NodeWithOutput(ph2, plan, generator)));
 			assertTrue((l.contains(new NodeWithOutput(la1, plan, generator)) 
@@ -418,7 +417,7 @@ public class SimpleGeneratorTest {
 	}
 
 	@Test
-	public void testGenerateValidPlan() {
+	public void testGenerateWithValidConstraints() {
 		Field field = new Field();
 		field.setFieldId(0);
 		field.getModules().add(ph1);
@@ -435,10 +434,7 @@ public class SimpleGeneratorTest {
 		map.put(field, category);
 		PartialObjectiveFunction obFunction = new MinimalECTSAtomObjectiveFunction();
 		Plan newPlan = generator.generate(obFunction, plan,
-				dao, map, 4.0, 2.0);
-//		for(ModuleEntry m : newPlan.getAllModuleEntries()){
-//			System.out.println(m.getModule().getIdentifier());
-//		}
+				dao, map, 4.0, 2.0, 0, 10);
 		assertTrue(newPlan.getUser().equals(plan.getUser()));
 		assertFalse(newPlan.getVerificationState().equals(VerificationState.INVALID));
 		List<Module> modules = new ArrayList<Module>();
@@ -456,57 +452,34 @@ public class SimpleGeneratorTest {
 		}
 		assertTrue(newModules.containsAll(newModules));
 		assertTrue(newPlan.getVerificationState() == VerificationState.VALID);
-//		for(Node n: generator.getNodes()) {
-//			System.out.println(n.getModule().getIdentifier());
-//		}
 	}
 
-	@Ignore
 	@Test
-	public void testGenerateInvalidPlan() {
+	public void testGenerateWithInvalidConstraints() {
 		Field field = new Field();
 		field.setFieldId(0);
-		field.getModules().add(ph1);
-		field.setMinEcts(2.0);
-		ph1.setField(field);
 		
-		RuleGroup rule = new RuleGroup();
-		rule.getModules().add(la1);
-		rule.setMinNum(1);
-		rule.setMaxNum(2);
-		discipline.getRuleGroups().add(rule);
-		discipline.getFields().add(field);
 		Map<Field, Category> map = new HashMap<Field, Category>();
-		map.put(field, category);
 		PartialObjectiveFunction obFunction = new MinimalECTSAtomObjectiveFunction();
+		
+		// add entries with invalid constraint
 		ModuleEntry swtEntry = new ModuleEntry(swt, 1);
 		ModuleEntry gbiEntry = new ModuleEntry(gbi, 2);	
 		plan.getModuleEntries().clear();
 		plan.getModuleEntries().add(swtEntry);
 		plan.getModuleEntries().add(gbiEntry);		
 		Plan newPlan = generator.generate(obFunction, plan,
-				dao, map, 4.0 , 2.0);
-//		for(ModuleEntry m : newPlan.getAllModuleEntries()){
-//			System.out.println(m.getModule().getIdentifier());
-//		}
+				dao, map, 4.0 , 2.0, 0, 10);
 		assertTrue(newPlan.getUser().equals(plan.getUser()));
 		assertFalse(newPlan.getVerificationState().equals(VerificationState.INVALID));
 		List<Module> modules = new ArrayList<Module>();
 		modules.add(pse);
 		modules.add(tse);
 		modules.add(gbi);
-		modules.add(la1);
-		modules.add(la2);
-		modules.add(ph1);
 		modules.add(prog);
 		modules.add(swt);
-		List<Module> newModules = new ArrayList<Module>();
-		for(ModuleEntry entry : newPlan.getModuleEntries()) {
-			newModules.add(entry.getModule());
-		}
-		assertTrue(newModules.containsAll(newModules));
-//		for(Node n: generator.getNodes()) {
-//			System.out.println(n.getModule().getIdentifier());
-//		}
+		List<ModuleEntry> entries = newPlan.getAllModuleEntries();
+		assertTrue(entries.stream().map(e -> e.getModule()).collect(Collectors.toList())
+				.containsAll(modules));
 	}
 }

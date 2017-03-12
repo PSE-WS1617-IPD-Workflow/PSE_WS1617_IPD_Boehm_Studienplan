@@ -79,11 +79,11 @@ LM.messages["de"]["loginSuccessfulTitle"] = "Login erfolgreich";
 LM.messages["de"]["loginSuccessfulText"] = "";
 //GenerationWizard
 LM.messages["de"]["generationTitle"] = "Studienplan-Vorschlag erstellen";
-LM.messages["de"]["generationExplanation1"] = "Wir benötigen einige Hinweise über deine Studienziele, um dir einen Studienplan vorschlagen zu können.";
-LM.messages["de"]["generationExplanation2"] = "Du kannst mit dem Pfeil nach oben und dem Pfeil nach unten bewerten, welche Veranstaltungen dir gut, und welche eher schlecht gefallen.";
-LM.messages["de"]["generationExplanation3"] = "Hier kannst du noch weitere Einschränkungen für deinen Studienplan machen.";
-LM.messages["de"]["generationEctsQuestion"] = "Wie viele ECTS-Punkte möchtest du mindestestens und maximal pro Semester erreichen?";
-LM.messages["de"]["generationSemesterQuestion"] = "Wie viele Semester möchtest du mindestens und maximal studieren?";
+LM.messages["de"]["generationExplanation1"] = "Wir benötigen einige Hinweise über Ihre Studienziele, um Ihnen einen Studienplan vorschlagen zu können.";
+LM.messages["de"]["generationExplanation2"] = "Sie können mit dem Pfeil nach oben und dem Pfeil nach unten bewerten, welche Veranstaltungen Ihnen gut, und welche Ihnen eher schlecht gefallen.";
+LM.messages["de"]["generationExplanation3"] = "Hier kkönnen Sie noch weitere Einschränkungen für Ihren Studienplan machen.";
+LM.messages["de"]["generationEctsQuestion"] = "Wie viele ECTS-Punkte möchten Sie mindestestens und maximal pro Semester erreichen?";
+LM.messages["de"]["generationSemesterQuestion"] = "Wie viele Semester möchten Sie mindestens und maximal studieren?";
 LM.messages["de"]["generationChooseFunction"] = "Studienziel:";
 
 
@@ -104,10 +104,10 @@ LM.messages["de"]["sum"] = "Gesamt: ";
 LM.messages["de"]["modules"] = "Module";
 //SignupWizard
 LM.messages["de"]["signUpTitle1"] = "Herzlich Willkommen!";
-LM.messages["de"]["signUpExplanation1"] = "Wir benötigen einige Informationen über dich, um dir bei der Studienplanerstellung helfen zu können. Diese kannst du auf den folgenden Seiten angeben.";
+LM.messages["de"]["signUpExplanation1"] = "Wir benötigen einige Informationen über Sie, um Ihnen bei der Studienplanerstellung helfen zu können. Diese können Sie auf den folgenden Seiten angeben.";
 LM.messages["de"]["signUpExplanation2"] = "";
 LM.messages["de"]["signUpTitle2"] = "Beendete Module";
-LM.messages["de"]["signUpExplanation2"] = "Bitte gib an, welche Module du bereits bestanden hast.";
+LM.messages["de"]["signUpExplanation2"] = "Bitte geben Sie an, welche Module Sie bereits bestanden haben.";
 LM.messages["de"]["discipline"] = "Studienfach:";
 LM.messages["de"]["beginningdate"] = "Studienbeginn:";
 LM.messages["de"]["winterterm"] = "Wintersemester ";
@@ -136,7 +136,7 @@ LM.messages["de"]["saveProposal"] = "Plan ersetzen";
 LM.messages["de"]["saveAsProposal"] = "Unter anderem Namen speichern";
 LM.messages["de"]["proposal"] = "Vorschlag";
 LM.messages["de"]["proposalSidebartitle"] = "Studienplan-Vorschlag";
-LM.messages["de"]["proposalSidebarExplanation"] = "Dies ist der auf Basis deiner Interessen generierte Studienplan.";
+LM.messages["de"]["proposalSidebarExplanation"] = "Dies ist der auf Basis Ihrer Interessen generierte Studienplan.";
 LM.messages["de"]["proposalSidebarAction"] = "Aktionen";
 
 // Internet connection

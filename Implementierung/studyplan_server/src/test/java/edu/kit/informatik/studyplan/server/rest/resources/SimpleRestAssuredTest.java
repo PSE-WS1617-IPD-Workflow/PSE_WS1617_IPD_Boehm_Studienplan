@@ -1,17 +1,19 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import io.restassured.RestAssured;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
+import static org.junit.Assume.assumeNoException;
 
 import java.net.ConnectException;
 
-import static org.junit.Assume.assumeNoException;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+
+import io.restassured.RestAssured;
 
 @Ignore
 public class SimpleRestAssuredTest {
-    @BeforeClass
-    public static void setUp() throws Exception {
+   
+	@BeforeClass
+    public static void setServerConnection() throws Exception {
         RestAssured.port = 9999;
         RestAssured.basePath = "/studyplan/rest/";
         RestAssured.baseURI = "http://localhost";

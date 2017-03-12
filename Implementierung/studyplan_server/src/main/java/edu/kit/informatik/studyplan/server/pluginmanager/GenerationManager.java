@@ -84,13 +84,15 @@ public class GenerationManager {
 			ModuleDao moduleDAO, 
 			Map<Field, Category>preferredSubjects, 
 			double maxECTSperSemester,
-			double minECTSperSemester) {
+			double minECTSperSemester,
+			int minSemesterNum,
+			int maxSemesterNum) {
 		initWrapper();
 		ThresholdObjectiveFunction thresholdObjectiveFunction = new ThresholdObjectiveFunction(THRESHOLD);
 		thresholdObjectiveFunction.add(objectiveFunction);
 		wrapper.add(thresholdObjectiveFunction);
 		return generator.generate(wrapper, currentPlan, moduleDAO, preferredSubjects, 
-				maxECTSperSemester, minECTSperSemester);
+				maxECTSperSemester, minECTSperSemester, minSemesterNum, maxSemesterNum);
 	}
 	/**
 	 * Initializes the wrapper with adding the average of all objective functions to its 
