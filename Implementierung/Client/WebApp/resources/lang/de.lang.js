@@ -97,8 +97,8 @@ LM.messages["de"]["radioSliderMax"] = "max";
 
 
 //Plan
-LM.messages["de"]["notInsertTwiceTitle"] = "Module bereits vorhanden";
-LM.messages["de"]["notInsertTwiceText"] = "Module können nur einmal dem Studienplan hinzugefügt werden. Dieses ist bereits im Plan vorhanden.";
+LM.messages["de"]["notInsertTwiceTitle"] = "Modul bereits vorhanden";
+LM.messages["de"]["notInsertTwiceText"] = "Ein Modul kann nur einmal hinzugefügt werden. Dieses wurde bereits hinzugefügt.";
 LM.messages["de"]["wrongSemesterTypeTitle"] = "Falsches Semester";
 LM.messages["de"]["wrongSemesterTypeText-ST"] = "Sie können dieses Modul nicht im Sommersemester hören";
 LM.messages["de"]["wrongSemesterTypeText-WT"] = "Sie können dieses Modul nicht im Wintersemester hören";
