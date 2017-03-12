@@ -69,6 +69,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
             semester: this.model
         }));
         this.$el.droppable({
+            classes: {
+                "ui-droppable-hover": "semester-drop-hover"
+            },
+      
             drop: this.onDrop.bind(this)
         });
         _.each(this.moduleElements, function (element) {
