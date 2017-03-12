@@ -200,6 +200,20 @@ public class StandardVerifierConstraintTest {
 		plan.getUser().getPassedModules().add(entry2);
 		assertTrue(isCorrect(new StandardVerifier().verify(plan)));
 		
+		//module 1 passed, module 2 not
+		plan.getUser().getPassedModules().clear();
+		plan.getModuleEntries().clear();
+		plan.getUser().getPassedModules().add(entry1);
+		plan.getModuleEntries().add(entry2);
+		assertTrue(isCorrect(new StandardVerifier().verify(plan)));
+		
+		//module 2 passed, module 1 not
+		plan.getUser().getPassedModules().clear();
+		plan.getModuleEntries().clear();
+		plan.getUser().getPassedModules().add(entry2);
+		plan.getModuleEntries().add(entry1);
+		assertTrue(isCorrect(new StandardVerifier().verify(plan)));
+		
 		
 	}
 
