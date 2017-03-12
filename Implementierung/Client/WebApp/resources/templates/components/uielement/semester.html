@@ -1,5 +1,6 @@
 <td>
     <h3>Semester {{=obj.semester.semesterNum}}</h3>
+    {{=obj.LM.getMessage("semesterTypeName-"+obj.semester.getCycleType())}} <br>
     {{=obj.semester.getEctsSum()}} ECTS
 </td>
 <td style="position:relative;">

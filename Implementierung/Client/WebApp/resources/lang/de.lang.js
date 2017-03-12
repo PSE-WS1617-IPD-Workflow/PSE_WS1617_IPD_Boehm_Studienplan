@@ -15,7 +15,7 @@ LM.messages["de"]["login"] = "Login";
 LM.messages["de"]["welcome"] = "Herzlich willkommen!"
 LM.messages["de"]["welcomeText"] = "Herzlich willkommen bei STUDYplan. Zur Benutzung der Software loggen Sie sich bitte ein."
 // Sync
-LM.messages["de"]["connectionErrorTitle"] = "Verbindungsfehler";
+LM.messages["de"]["connectionErrorTitle"] = "Fehler";
 LM.messages["de"]["connectionErrorText-400"] = "Es ist ein Fehler aufgetreten. Bitte kontaktieren Sie den Administrator. (Statuscode 400)";
 LM.messages["de"]["connectionErrorText-401"] = "Bitte loggen Sie sich erneut ein!";
 LM.messages["de"]["connectionErrorText-404"] = "Die Ressource, auf welche Sie zugreifen wollten, existiert nicht. (Statuscode 404)";
@@ -79,11 +79,11 @@ LM.messages["de"]["loginSuccessfulTitle"] = "Login erfolgreich";
 LM.messages["de"]["loginSuccessfulText"] = "";
 //GenerationWizard
 LM.messages["de"]["generationTitle"] = "Studienplan-Vorschlag erstellen";
-LM.messages["de"]["generationExplanation1"] = "Wir benötigen einige Hinweise über deine Studienziele, um dir einen Studienplan vorschlagen zu können.";
-LM.messages["de"]["generationExplanation2"] = "Du kannst mit dem Pfeil nach oben und dem Pfeil nach unten bewerten, welche Veranstaltungen dir gut, und welche eher schlecht gefallen.";
-LM.messages["de"]["generationExplanation3"] = "Hier kannst du noch weitere Einschränkungen für deinen Studienplan machen.";
-LM.messages["de"]["generationEctsQuestion"] = "Wie viele ECTS-Punkte möchtest du mindestestens und maximal pro Semester erreichen?";
-LM.messages["de"]["generationSemesterQuestion"] = "Wie viele Semester möchtest du mindestens und maximal studieren?";
+LM.messages["de"]["generationExplanation1"] = "Wir benötigen einige Hinweise über Ihre Studienziele, um Ihnen einen Studienplan vorschlagen zu können.";
+LM.messages["de"]["generationExplanation2"] = "Sie können mit dem Pfeil nach oben und dem Pfeil nach unten bewerten, welche Veranstaltungen Ihnen gut, und welche Ihnen eher schlecht gefallen.";
+LM.messages["de"]["generationExplanation3"] = "Hier kkönnen Sie noch weitere Einschränkungen für Ihren Studienplan machen.";
+LM.messages["de"]["generationEctsQuestion"] = "Wie viele ECTS-Punkte möchten Sie mindestestens und maximal pro Semester erreichen?";
+LM.messages["de"]["generationSemesterQuestion"] = "Wie viele Semester möchten Sie mindestens und maximal studieren?";
 LM.messages["de"]["generationChooseFunction"] = "Studienziel:";
 
 
@@ -96,15 +96,18 @@ LM.messages["de"]["radioSliderMax"] = "max";
 //Plan
 LM.messages["de"]["notInsertTwiceTitle"] = "Module bereits vorhanden";
 LM.messages["de"]["notInsertTwiceText"] = "Module können nur einmal dem Studienplan hinzugefügt werden. Dieses ist bereits im Plan vorhanden.";
+LM.messages["de"]["wrongSemesterTypeTitle"] = "Falsches Semester";
+LM.messages["de"]["wrongSemesterTypeText-ST"] = "Sie können dieses Modul nicht im Sommersemester hören";
+LM.messages["de"]["wrongSemesterTypeText-WT"] = "Sie können dieses Modul nicht im Wintersemester hören";
 
 LM.messages["de"]["sum"] = "Gesamt: ";
 LM.messages["de"]["modules"] = "Module";
 //SignupWizard
 LM.messages["de"]["signUpTitle1"] = "Herzlich Willkommen!";
-LM.messages["de"]["signUpExplanation1"] = "Wir benötigen einige Informationen über dich, um dir bei der Studienplanerstellung helfen zu können. Diese kannst du auf den folgenden Seiten angeben.";
+LM.messages["de"]["signUpExplanation1"] = "Wir benötigen einige Informationen über Sie, um Ihnen bei der Studienplanerstellung helfen zu können. Diese können Sie auf den folgenden Seiten angeben.";
 LM.messages["de"]["signUpExplanation2"] = "";
 LM.messages["de"]["signUpTitle2"] = "Beendete Module";
-LM.messages["de"]["signUpExplanation2"] = "Bitte gib an, welche Module du bereits bestanden hast.";
+LM.messages["de"]["signUpExplanation2"] = "Bitte geben Sie an, welche Module Sie bereits bestanden haben.";
 LM.messages["de"]["discipline"] = "Studienfach:";
 LM.messages["de"]["beginningdate"] = "Studienbeginn:";
 LM.messages["de"]["winterterm"] = "Wintersemester ";
@@ -133,7 +136,7 @@ LM.messages["de"]["saveProposal"] = "Plan ersetzen";
 LM.messages["de"]["saveAsProposal"] = "Unter anderem Namen speichern";
 LM.messages["de"]["proposal"] = "Vorschlag";
 LM.messages["de"]["proposalSidebartitle"] = "Studienplan-Vorschlag";
-LM.messages["de"]["proposalSidebarExplanation"] = "Dies ist der auf Basis deiner Interessen generierte Studienplan.";
+LM.messages["de"]["proposalSidebarExplanation"] = "Dies ist der auf Basis Ihrer Interessen generierte Studienplan.";
 LM.messages["de"]["proposalSidebarAction"] = "Aktionen";
 
 // Internet connection
@@ -159,32 +162,67 @@ LM.messages["de"]["constraintType_semester_link"] = "Zusammengehörend (im selbe
 LM.messages["de"]["constraintType_plan_link"] = "Zusammengehörend";
 
 
-// Detailed Error Strings
+/**
+ *  Detailed Error Strings
+ ************************************
+ * Format:
+ * [METHOD]-[MODEL ERROR KEY]-connectionErrorText-[HTTP STATUS CODE]
+ *
+ */
 
-//422
+// fields (fields)
 LM.messages["de"]["GET-fields-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Wir können keine Bereiche für Sie laden, da wir Ihre Fachrichtung nicht kennen. (Statuscode 422)";
-LM.messages["de"]["GET-filters-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Wir können keine Filter für Sie laden, da wir Ihre Fachrichtung nicht kennen. (Statuscode 422)";
-LM.messages["de"]["GET-modules-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Wir können keine Modulliste für Sie laden, da wir Ihre Fachrichtung nicht kennen. (Statuscode 422)";
-LM.messages["de"]["POST-plans-connectionErrorText-422"] = "Ein Plan dieses Namens existiert bereits. (Statuscode 422)";
-LM.messages["de"]["GET-plans-id-modules-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Wir können keine Modulliste für Sie laden, da wir Ihre Fachrichtung nicht kennen. (Statuscode 422)";
-LM.messages["de"]["DELETE-plans-id-modules-id-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Das Modul, das aus dem Plan entfernt werden soll, war nicht im Plan vorhanden. (Statuscode 422)";
-LM.messages["de"]["PUT-plans-id-modules-id-preference-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Das Modul, dessen Präferenz entfernt werden soll, hatte vorher keine Präferenz. (Statuscode 422)";
 
-//404
+
+// filters (filters)
+LM.messages["de"]["GET-filters-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Wir können keine Filter für Sie laden, da wir Ihre Fachrichtung nicht kennen. (Statuscode 422)";
+
+
+// modules collection (modules)
+LM.messages["de"]["GET-modules-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Wir können keine Modulliste für Sie laden, da wir Ihre Fachrichtung nicht kennen. (Statuscode 422)";
+
+// modules (modules-id)
 LM.messages["de"]["GET-modules-id-connectionErrorText-404"] = "Das gewünschte Modul konnte nicht gefunden werden. (Statuscode 404)";
+
+
+// plans collection (plans)
+LM.messages["de"]["POST-plans-connectionErrorText-422"] = "Ein Plan dieses Namens existiert bereits. (Statuscode 422)";
+
+// plans (plans-id)
 LM.messages["de"]["PUT-plans-id-connectionErrorText-404"] = "Es ist ein interner Fehler aufgetreten. Der zu ersetzende Plan konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["PATCH-plans-id-connectionErrorText-404"] = "Der Plan, der umbenannt werden soll, konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["DELETE-plans-id-connectionErrorText-404"] = "Der Plan, der gelöscht werden soll, konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["GET-plans-id-connectionErrorText-404"] = "Der Plan konnte nicht gefunden werden. (Statuscode 404)";
-LM.messages["de"]["GET-plans-id-modules-connectionErrorText-404"] = "Es ist ein interner Fehler aufgetreten. Wir können keine Modulliste für Sie laden, da der Plan, zu dem die Modulpräferenzen geladen werden sollen, nicht gefunden werden konnte. (Statuscode 404)";
-LM.messages["de"]["GET-plans-id-modules-id-connectionErrorText-404"] = "Das gewünschte Modul oder der Plan, zu welchem die zugehörigen Modulpräferenzen gehören, konnte nicht gefunden werden. (Statuscode 404)";
-LM.messages["de"]["PUT-plans-id-modules-id-connectionErrorText-404"] = "Der Plan oder das Modul, das innerhalb des Plans platziert werden soll, konnte nicht gefunden werden. (Statuscode 404)";
-LM.messages["de"]["DELETE-plans-id-modules-id-connectionErrorText-404"] = "Der Plan oder das Modul, das aus dem Plan entfernt werden soll, konnte nicht gefunden werden. (Statuscode 404)";
-LM.messages["de"]["PUT-plans-id-modules-id-preference-connectionErrorText-404"] = "Es ist ein interner Fehler aufgetreten. Die Modul-Präferenz konnte nicht gespeichert werden, da das Modul oder der Plan, der gerade bearbeitet wird, nicht gefunden werden konnten. (Statuscode 404)";
-LM.messages["de"]["GET-plans-id-verification-connectionErrorText-404"] = "Der Plan, der überprüft werden soll, konnte nicht gefunden werden. (Statuscode 404)";
-LM.messages["de"]["GET-plans-id-proposal-id-connectionErrorText-404"] = "Der zu vervollständigende Plan oder das gewählte Studienziel konnte nicht gefunden werden. (Statuscode 404)";
-LM.messages["de"]["GET-plans-id-pdf-404"] = "Der Plan, der exportiert werden soll, konnte nicht gefunden werden. (Statuscode 404)";
-LM.messages["de"]["PUT-student-404"] = "Die gewählte Fachrichtung konnte nicht gefunden werden. (Statuscode 404)";
 
-//503
-LM.messages["de"]["GET-plans-id-pdf-503"] = "Es ist ein interner Fehler aufgetreten. Der Exportdienst ist zurzeit außer Betrieb. Bitte kontaktieren Sie den Administrator. (Statuscode 503)";
+// plans verification (plans-verification)
+LM.messages["de"]["GET-plans-verification-connectionErrorText-404"] = "Der Plan, der überprüft werden soll, konnte nicht gefunden werden. (Statuscode 404)";
+
+// plans proposal (plans-proposal)
+LM.messages["de"]["GET-plans-proposal-connectionErrorText-404"] = "Der zu vervollständigende Plan oder das gewählte Studienziel konnte nicht gefunden werden. (Statuscode 404)";
+
+
+// plans modules collection (plans-modules)
+LM.messages["de"]["GET-plans-modules-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Wir können keine Modulliste für Sie laden, da wir Ihre Fachrichtung nicht kennen. (Statuscode 422)";
+LM.messages["de"]["GET-plans-modules-connectionErrorText-404"] = "Es ist ein interner Fehler aufgetreten. Wir können keine Modulliste für Sie laden, da der Plan, zu dem die Modulpräferenzen geladen werden sollen, nicht gefunden werden konnte. (Statuscode 404)";
+
+// plans modules (plans-modules-id)
+LM.messages["de"]["DELETE-plans-modules-id-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Das Modul, das aus dem Plan entfernt werden soll, war nicht im Plan vorhanden. (Statuscode 422)";
+LM.messages["de"]["GET-plans-modules-id-connectionErrorText-404"] = "Das gewünschte Modul oder der Plan, zu welchem die zugehörigen Modulpräferenzen gehören, konnte nicht gefunden werden. (Statuscode 404)";
+LM.messages["de"]["PUT-plans-modules-id-connectionErrorText-404"] = "Der Plan oder das Modul, das innerhalb des Plans platziert werden soll, konnte nicht gefunden werden. (Statuscode 404)";
+LM.messages["de"]["DELETE-plans-modules-id-connectionErrorText-404"] = "Der Plan oder das Modul, das aus dem Plan entfernt werden soll, konnte nicht gefunden werden. (Statuscode 404)";
+
+// modules preference (plans-modules-preference)
+LM.messages["de"]["PUT-plans-modules-preference-connectionErrorText-422"] = "Es ist ein interner Fehler aufgetreten. Das Modul, dessen Präferenz entfernt werden soll, hatte vorher keine Präferenz. (Statuscode 422)";
+LM.messages["de"]["PUT-plans-modules-preference-connectionErrorText-404"] = "Es ist ein interner Fehler aufgetreten. Die Modul-Präferenz konnte nicht gespeichert werden, da das Modul oder der Plan, der gerade bearbeitet wird, nicht gefunden werden konnten. (Statuscode 404)";
+
+// student (student)
+LM.messages["de"]["PUT-student-connectionErrorText-404"] = "Die gewählte Fachrichtung konnte nicht gefunden werden. (Statuscode 404)";
+
+
+// Nicht notwendig, da direkt von Server abgerufen: LM.messages["de"]["GET-plans-id-pdf-404"] = "Der Plan, der exportiert werden soll, konnte nicht gefunden werden. (Statuscode 404)";
+
+// Nicht notwendig, da direkt von Server abgerufen: LM.messages["de"]["GET-plans-id-pdf-503"] = "Es ist ein interner Fehler aufgetreten. Der Exportdienst ist zurzeit außer Betrieb. Bitte kontaktieren Sie den Administrator. (Statuscode 503)";
+
+//WT/ST
+LM.messages["de"]["semesterTypeName-WT"] = "Wintersemester";
+LM.messages["de"]["semesterTypeName-ST"] = "Sommersemester";

@@ -8,10 +8,14 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.VerificationResult
  */
 
 edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend( /** @lends {edu.kit.informatik.studyplan.client.model.plans.VerificationResult.prototype}*/ {
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "plans-verification",
     plan: null,
     initialize: function (attributes, options) {
         this.plan = options.plan;
-        this.listenTo(this.model, "change", this.onChange);
+        this.listenTo(this.model, "change", this.onChange.bind(this));
     },
     /**
      * Transfer the "change" event to the plan

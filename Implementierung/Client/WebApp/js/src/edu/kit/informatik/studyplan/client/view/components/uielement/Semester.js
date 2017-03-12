@@ -34,12 +34,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         this.isPassedSemester = (typeof options.isPassedSemester !== "undefined") ? options.isPassedSemester : this.isPassedSemester;
         this.isPassedPlan = (typeof options.isPassedPlan !== "undefined") ? options.isPassedPlan : this.isPassedPlan;
         this.reload();
-        this.listenTo(this.model, "change", this.reload);
-        this.listenTo(this.model, "destroy", this.reload);
-        this.listenTo(this.model, "all", this.reload);
-        this.listenTo(this.model, "reset", this.reload);
-        this.listenTo(this.model, "add", this.reload);
-        this.reload();
     },
     reload: function () {
         this.moduleElements = [];
@@ -101,7 +95,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
      */
     onDrop: function (event, ui) {
         //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.Semester] drop event");
-        //TODO: Make module deletable when it wasn't before!
+        if(!ui || !ui.helper || !ui.helper.data("viewObject") ) {
+            return false;
+        }
         var droppedElement = ui.helper.data("viewObject");
         /**
          * @type {edu.kit.informatik.studyplan.client.model.module.Module}
@@ -117,6 +113,19 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
                     new edu.kit.informatik.studyplan.client.model.system.Notification({
                         title: LM.getMessage('notInsertTwiceTitle'),
                         text: LM.getMessage('notInsertTwiceText'),
+                        wasShown: false,
+                        type: "error"
+                    })
+                );
+                return false;
+            }
+            // Do not insert module in wrong cycle type
+            if (this.model.getCycleType()!=droppedModel.get('cycle-type') && droppedModel.get('cycle-type')!="both") {
+                var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
+                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
+                    new edu.kit.informatik.studyplan.client.model.system.Notification({
+                        title: LM.getMessage('wrongSemesterTypeTitle'),
+                        text: LM.getMessage('wrongSemesterTypeText-'+this.model.getCycleType()),
                         wasShown: false,
                         type: "error"
                     })

@@ -1,43 +1,6 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import java.io.IOException;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.HttpMethod;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.ServiceUnavailableException;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.core.UriInfo;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
@@ -45,12 +8,7 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
-import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
-import edu.kit.informatik.studyplan.server.model.userdata.Plan;
-import edu.kit.informatik.studyplan.server.model.userdata.Semester;
-import edu.kit.informatik.studyplan.server.model.userdata.User;
-import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
+import edu.kit.informatik.studyplan.server.model.userdata.*;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
@@ -63,6 +21,20 @@ import edu.kit.informatik.studyplan.server.rest.resources.json.ModuleDto;
 import edu.kit.informatik.studyplan.server.rest.resources.json.PlanDto;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
+import javax.ws.rs.core.Response.Status;
+import java.io.IOException;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * REST resource for /plans.
@@ -211,7 +183,7 @@ public class PlansResource {
 			plan.getModuleEntries().addAll(planInput.getPlan().getModuleEntries());
 			plan.setVerificationState(VerificationState.NOT_VERIFIED);
 			dao.updatePlan(plan);
-			return planInput;
+			return new PlanInOut(plan);
 		});
 	}
 
@@ -251,7 +223,7 @@ public class PlansResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
-	public PlanInOut renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
+	public Map<String,PlanDto> renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
 		if (planInput == null
 				|| planInput.getPlan() == null
 				|| !Objects.equals(planInput.getPlan().getIdentifier(), planId)
@@ -275,8 +247,12 @@ public class PlansResource {
 			}
 			plan.setName(planInput.getPlan().getName());
 			dao.updatePlan(plan);
+
 			planInput.getPlan().setIdentifier(planId);
-			return planInput;
+			PlanDto result = new PlanDto();
+			result.setId(plan.getIdentifier());
+			result.setName(plan.getName());
+			return SimpleJsonResponse.build("plan", result);
 		});
 	}
 
@@ -557,6 +533,8 @@ public class PlansResource {
 	 *            the id of the objective function to use
 	 * @param maxSemesterEcts
 	 *            maximum number of credits per semester, as specified by user
+	 * @param minSemesterEcts
+	 *            minimal number of credits per semester, as specified by user
 	 * @param uriInfo
 	 * 			  contains given GET parameters
 	 * @return the generated plan's JSON representation.
@@ -569,6 +547,8 @@ public class PlansResource {
 			@PathParam("objectiveId") int objectiveId,
 			@QueryParam("max-semester-ects") @NotNull Integer maxSemesterEcts,
 			@QueryParam("min-semester-ects") @NotNull Integer minSemesterEcts,
+			@QueryParam("min-semesters") @NotNull Integer minSemesterNum,
+			@QueryParam("max-semesters") @NotNull Integer maxSemesterNum,
 			@Context UriInfo uriInfo) {
 		return Utils.withPlanDao(planDao -> Utils.withModuleDao(moduleDao -> {
 			Plan plan = planDao.getPlanById(planId);
@@ -578,7 +558,7 @@ public class PlansResource {
 
 			MultivaluedMap<String, String> parameters = uriInfo.getQueryParameters();
 
-			if (maxSemesterEcts == null) {
+			if (maxSemesterEcts == null || minSemesterEcts == null) {
 				throw new BadRequestException();
 			}
 			try {
@@ -590,9 +570,8 @@ public class PlansResource {
 					throw new NotFoundException();
 				}
 				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, 
-						maxSemesterEcts, minSemesterEcts);
+						maxSemesterEcts, minSemesterEcts, minSemesterNum, maxSemesterNum);
 				return new PlanInOut(result);
-				// TODO Check serialization of `result` inside generator
 			} catch (IllegalArgumentException ex) {
 				ex.printStackTrace();
 				throw new BadRequestException();
@@ -751,7 +730,9 @@ public class PlansResource {
 		 */
 		PlanInOut(Plan plan) {
 			this.plan = plan;
+			plan.getModuleEntries();
 			plan.getPreferences();
+			plan.getJsonModules();
 			plan.getCreditPoints();
 		}
 

@@ -24,7 +24,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.ProposalSidebar = Ba
      */
     deletePlan: function () {
         "use strict";
-        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate('/plans/' + this.model, {
+        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate('/plans/' + this.model.get('id'), {
             trigger: true
         });
     },
@@ -55,7 +55,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.ProposalSidebar = Ba
             return false;
         }
         var plan = this.model.getPlan({
-            newPlan: false,
+            newPlan: true,
             planName: name,
             success: function () {
                 edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();

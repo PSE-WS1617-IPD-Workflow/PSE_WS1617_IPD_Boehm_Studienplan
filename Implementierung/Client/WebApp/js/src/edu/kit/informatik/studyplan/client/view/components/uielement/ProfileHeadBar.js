@@ -17,7 +17,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
     initialize: function (options) {
         "use strict";
         this.model = options.plan;
-        this.listenTo(this.model, "change", this.render);
+        this.listenTo(this.model, "change", this.render.bind(this));
     },
     render: function () {
         "use strict";
@@ -84,10 +84,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ProfileHeadBar = e
                             wasShown: false,
                             type: "success"
                         }));
-                    edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("logout", {
+                    edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/logout", {
                         trigger: true
-                    })
-
+                    });
                 }
             });
 

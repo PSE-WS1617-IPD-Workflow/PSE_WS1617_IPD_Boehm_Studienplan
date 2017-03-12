@@ -8,6 +8,10 @@ var namespaceClient = edu.kit.informatik.studyplan.client;
  * This class represents a collection of filters
  */
 edu.kit.informatik.studyplan.client.model.system.FilterCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend( /** @lends {edu.kit.informatik.studyplan.client.model.system.FilterCollection.prototype}*/ {
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "filters",
     url: API_DOMAIN + "/filters",
     model: namespaceClient.model.system.Filter,
 

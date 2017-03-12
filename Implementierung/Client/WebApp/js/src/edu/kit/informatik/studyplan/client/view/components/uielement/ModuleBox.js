@@ -25,6 +25,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
         "click button.preferenceButtonDown": "voteDown"
     },
     initialize: function (options) {
+        "use strict";
         this.model = options.module;
         this.isRemovable = (typeof options.isRemovable !== "undefined") ? options.isRemovable : this.isRemovable;
         this.isDraggable = (typeof options.isDraggable !== "undefined") ? options.isDraggable : this.isDraggable;
@@ -37,18 +38,34 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
      */
     voteUp: function () {
         "use strict";
-        //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteUp");
-        var preference = this.model.get('preference');
-        preference.set('preference', 'positive');
+	    //console.info("irgendwas stimmt da nicht");
+        if (this.model.get('preference').get('preference') == '' || this.model.get('preference').get('preference') == 'negative') {
+            console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteUp");
+        	var preference = this.model.get('preference');
+        	preference.set('preference','positive');
+        }
+            else{
+	        //console.info("Versuch, positive Preferenzen zurückzusetzen");
+                var preference =this.model.get('preference');
+            preference.set('preference', '');
+        }
         preference.save();
     },
     /** 
      * Method called when downvoted
      */
     voteDown: function () {
-        //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteDown");
-        var preference = this.model.get('preference');
-        preference.set('preference', 'negative');
+	"use strict";
+	if(this.model.get('preference').get('preference')=='' || this.model.get('preference').get('preference')=='positive'){
+        	console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteDown");
+        	var preference = this.model.get('preference');
+        	preference.set('preference', 'negative');
+	}
+	else{
+		console.info("Versuch negative Preferenz zurück zu setzen");
+		var preference = this.model.get('preference');
+		preference.set('preference','');
+	}
         preference.save();
     },
     /**
@@ -82,6 +99,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
      */
     click: function (event) {
         "use strict";
+        // Check if clicked on relevant area of module box (everything but buttons)
+        if($(event.target).closest('.buttons').length){
+            return false;
+        }
         event.preventDefault();
         var eventBus = edu.kit.informatik.studyplan.client.model.system.EventBus;
         eventBus.trigger("showModuleInfo", this.model)
@@ -100,7 +121,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
                 opacity: 0.7,
                 helper: "clone",
                 appendTo: 'body',
-                containment: 'window',
+                //containment: 'window',
                 start: function (event, ui) {
                     ui.helper.data("viewObject", this);
                     ui.helper.addClass("grabbing");

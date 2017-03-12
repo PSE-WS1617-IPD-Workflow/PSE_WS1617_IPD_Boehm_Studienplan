@@ -8,6 +8,11 @@ goog.provide("edu.kit.informatik.studyplan.client.model.user.Student");
  */
 
 edu.kit.informatik.studyplan.client.model.user.Student = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend( /** @lends {edu.kit.informatik.studyplan.client.model.user.Student.prototype}*/ {
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "student",
+    
     url: API_DOMAIN + "/student",
     /**
      *

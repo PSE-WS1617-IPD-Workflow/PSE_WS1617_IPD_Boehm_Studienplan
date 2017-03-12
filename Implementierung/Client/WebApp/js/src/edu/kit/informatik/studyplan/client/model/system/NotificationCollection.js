@@ -21,7 +21,31 @@ edu.kit.informatik.studyplan.client.model.system.NotificationCollection = (funct
      * @name edu.kit.informatik.studyplan.client.model.system.NotificationCollection
      */
     var Constructor = Backbone.Collection.extend({
-        model: edu.kit.informatik.studyplan.client.model.system.Notification
+        /**
+         * Timeout of how long one may not show the same error message again after it has been shown once (in ms)
+         */
+        justSentTime: 2000,
+        model: edu.kit.informatik.studyplan.client.model.system.Notification,
+        justSentNotifications: [],
+        
+        add: function (models) {
+            var singular = !_.isArray(models);
+            models = singular ? [models] : models.slice();
+            var notifications = [];
+            for (var i = 0; i < models.length; i++) {
+                var notificationKey = models[i].get('title') + "\u001F" + models[i].get('text');
+                if(!this.justSentNotifications[notificationKey]){
+                    this.justSentNotifications[notificationKey] = true;
+                    window.setTimeout(this.removeJustSent.bind(this,notificationKey), this.justSentTime);
+                    notifications.push(models[i]);
+                }
+            }
+            Backbone.Collection.prototype.add.call(this, notifications)
+        },
+        removeJustSent: function (key) {
+            console.log("resetting "+key)
+            this.justSentNotifications[key]=false;
+        }
     });
 
     return {
