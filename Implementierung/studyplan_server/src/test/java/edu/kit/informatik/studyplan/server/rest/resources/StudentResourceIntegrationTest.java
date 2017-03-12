@@ -1,11 +1,10 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static io.restassured.config.RedirectConfig.redirectConfig;
 import static io.restassured.config.RestAssuredConfig.newConfig;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.*;
 
 import java.net.URI;
 import java.util.HashMap;
@@ -181,6 +180,13 @@ public class StudentResourceIntegrationTest extends SimpleRestAssuredTestWithAut
 			.body(json)
 			.put("/student").then()
 			.assertThat().statusCode(422);
+	}
+	
+	@Test
+	public void notAuthorized() {
+		get("/student").then().assertThat().statusCode(403);
+		put("/student").then().assertThat().statusCode(403);
+		delete("/student").then().assertThat().statusCode(403);
 	}
 	
 	
