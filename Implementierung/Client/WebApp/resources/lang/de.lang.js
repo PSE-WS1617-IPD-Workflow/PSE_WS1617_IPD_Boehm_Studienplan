@@ -89,6 +89,7 @@ LM.messages["de"]["generationExplanation3"] = "Hier kkönnen Sie noch weitere Ei
 LM.messages["de"]["generationEctsQuestion"] = "Wie viele ECTS-Punkte möchten Sie mindestestens und maximal pro Semester erreichen?";
 LM.messages["de"]["generationSemesterQuestion"] = "Wie viele Semester möchten Sie mindestens und maximal studieren?";
 LM.messages["de"]["generationChooseFunction"] = "Studienziel:";
+LM.messages["de"]["GET-plans-proposal-connectionErrorText-400"] = "Für diese Einstellungen konnte kein Plan erstellt werden";
 
 
 //RadioSlider
