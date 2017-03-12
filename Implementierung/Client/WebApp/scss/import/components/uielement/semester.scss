@@ -1,10 +1,15 @@
 .semesterModules, addSemesterTBody{
+    float:left;
     margin:0px;
     padding:0px;
     
     list-style-type:none;
     overflow:hidden;
     min-height: 180px;
+}
+.dragHereSymbol{
+    float:left;
+    margin: 24px 34px;
 }
 .addSemesterButton{
     width: 100%;
@@ -13,4 +18,7 @@
     background-color: transparent;
     border: $boxBorderColor solid 2px;
     border-radius: 10px;
+}
+.semester-drop-hover{
+    background-color: $bg4;
 }
