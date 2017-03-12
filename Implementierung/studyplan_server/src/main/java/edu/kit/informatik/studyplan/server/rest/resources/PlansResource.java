@@ -1,6 +1,43 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
+import java.io.IOException;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.HttpMethod;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.ServiceUnavailableException;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriInfo;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.filter.Filter;
 import edu.kit.informatik.studyplan.server.generation.objectivefunction.PartialObjectiveFunction;
@@ -8,7 +45,12 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
-import edu.kit.informatik.studyplan.server.model.userdata.*;
+import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
+import edu.kit.informatik.studyplan.server.model.userdata.ModulePreference;
+import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import edu.kit.informatik.studyplan.server.model.userdata.Semester;
+import edu.kit.informatik.studyplan.server.model.userdata.User;
+import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.AbstractSecurityProvider;
 import edu.kit.informatik.studyplan.server.model.userdata.dao.PlanDaoFactory;
@@ -21,20 +63,6 @@ import edu.kit.informatik.studyplan.server.rest.resources.json.ModuleDto;
 import edu.kit.informatik.studyplan.server.rest.resources.json.PlanDto;
 import edu.kit.informatik.studyplan.server.rest.resources.json.SimpleJsonResponse;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
-
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import javax.ws.rs.core.Response.Status;
-import java.io.IOException;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * REST resource for /plans.
@@ -571,7 +599,8 @@ public class PlansResource {
 				}
 				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, 
 						maxSemesterEcts, minSemesterEcts, minSemesterNum, maxSemesterNum);
-				return new PlanInOut(result);
+				double score = manager.wrap(function).evaluate(result);
+				return new PlanInOut(result, score);
 			} catch (IllegalArgumentException ex) {
 				ex.printStackTrace();
 				throw new BadRequestException();
@@ -715,6 +744,9 @@ public class PlansResource {
 		@JsonProperty("plan")
 		@NotNull
 		private Plan plan;
+		
+		@JsonProperty
+		private Double score = null;
 
 		/**
 		 * Empty constructor.
@@ -735,6 +767,16 @@ public class PlansResource {
 			plan.getJsonModules();
 			plan.getCreditPoints();
 		}
+		
+		/**
+		 * Constructor with plan parameter and score provided by the objective function
+		 * @param plan the plan
+		 * @param score the score
+		 */
+		PlanInOut(Plan plan, Double score) {
+			this(plan);
+			this.score = score;
+		}
 
 		/**
 		 *
@@ -753,6 +795,21 @@ public class PlansResource {
 		public void setPlan(Plan plan) {
 			this.plan = plan;
 		}
+
+		/**
+		 * @return the score this plan got in generation
+		 */
+		public Double getScore() {
+			return score;
+		}
+
+		/**
+		 * @param score the score to set
+		 */
+		public void setScore(Double score) {
+			this.score = score;
+		}
+		
 	}
 	
 	/**
