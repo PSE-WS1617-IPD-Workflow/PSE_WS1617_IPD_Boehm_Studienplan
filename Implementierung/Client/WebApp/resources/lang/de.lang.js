@@ -228,3 +228,6 @@ LM.messages["de"]["PUT-student-connectionErrorText-404"] = "Die gewählte Fachri
 //WT/ST
 LM.messages["de"]["semesterTypeName-WT"] = "Wintersemester";
 LM.messages["de"]["semesterTypeName-ST"] = "Sommersemester";
+
+// Plan
+LM.messages["de"]["semesterLimit"] = "Leider ist es nicht möglich länger als 200 Semester zu studieren - aber Glückwunsch dazu überhaupt soweit gekommen zu sein!"
