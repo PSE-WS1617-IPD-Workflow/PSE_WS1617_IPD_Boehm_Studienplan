@@ -65,7 +65,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
         "use strict";
         this.onChange1();
         this.onChange2();
-	console.log(this.student);
+	
         var temp = new edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent2({
             student: this.student
         });
@@ -76,8 +76,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
      */
     onChange1: function () {
         "use strict";
-        console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1] semester:")
-        console.log(this.beginningArray[(this.$el.find("select.beginningdateDropDown").val())]);
+        // console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1] semester:")
+        // console.log(this.beginningArray[(this.$el.find("select.beginningdateDropDown").val())]);
         this.student.set('studyStartYear', this.beginningArray[(this.$el.find("select.beginningdateDropDown").val())]['year']);
         this.student.set('studyStartCycle', this.beginningArray[this.$el.find("select.beginningdateDropDown").val()]['type']);
 
