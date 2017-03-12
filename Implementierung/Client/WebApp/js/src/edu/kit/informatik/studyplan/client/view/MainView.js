@@ -51,9 +51,8 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend( /** @l
         }
         this.notificationCentre.render();
         this.notificationElement.append(this.notificationCentre.$el);
-        if (this.showLoad) {
-            this.$el.append(this.loading);
-        }
+        this.$el.append(this.loading);
+        
         this.$el.show();
         this.delegateEvents();
     },
@@ -61,14 +60,14 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend( /** @l
         var old = this.showLoad;
         this.showLoad = true;
         if (old != this.showLoad) {
-            this.render();
+            $(".loadingScreen").css({display:"block"});
         }
     },
     hideLoading: function () {
         var old = this.showLoad;
         this.showLoad = false;
         if (old != this.showLoad) {
-            this.render();
+            $(".loadingScreen").css({display:"none"});
         }
     },
     /**

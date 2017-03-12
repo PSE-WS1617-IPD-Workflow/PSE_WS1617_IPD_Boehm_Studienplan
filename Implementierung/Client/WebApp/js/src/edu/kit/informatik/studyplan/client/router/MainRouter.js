@@ -105,6 +105,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 plan: plan
                             });
                             this.hideLoading();
+                            this.view.render();
                         }.bind(this)
                     });
                 }.bind(this)
@@ -118,6 +119,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             //console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] comparisonPage");
             this.showLoading();
             this.hideLoading();
+            this.view.render();
             throw new Error("Not implemented");
         },
         /**
@@ -153,11 +155,13 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                         isAddable: false
                                     });
                                     this.hideLoading();
+                                    this.view.render();
                                 }.bind(this)
                             });
                         }.bind(this)
                     });
                     this.hideLoading();
+                    this.view.render();
                 }.bind(this)
             });
         },
@@ -243,6 +247,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             this.showLoading();
             this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.LoginPage, {});
             this.hideLoading();
+            this.view.render();
         },
         /**
          * Show profile page
@@ -261,6 +266,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     this.view.render();
                     // Do stuff heresignUpWizard
                     this.hideLoading();
+                    this.view.render();
                 }.bind(this)
             });
         },
@@ -284,6 +290,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                             // Callback student saved
                             success: function () {
                                 this.hideLoading();
+                                this.view.render();
                                 this.navigate("/", {
                                     trigger: true
                                 });
@@ -292,6 +299,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     }.bind(this)
                 });
                 this.hideLoading();
+                this.view.render();
             }.bind(this);
             if (student.loaded) {
                 done();
@@ -311,6 +319,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             this.showLoading();
             this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.NotFoundPage, {});
             this.hideLoading();
+            this.view.render();
         },
         /**
          * logsout user and redirects to /login
@@ -332,6 +341,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     })
                 );
             this.hideLoading();
+            this.view.render();
             this.navigate("/login", {
                 trigger: true
             });
