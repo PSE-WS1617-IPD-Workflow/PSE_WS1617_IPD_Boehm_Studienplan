@@ -12,7 +12,8 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
     planListElements: [],
     events: {
         "change #checkAllCheckbox": "checkAllCheckboxChange",
-        "click button.planListActionExecution": "onActionSelection"
+        "click button.planListActionExecution": "onActionSelection",
+        "click button.planListDeleteSelected" : "deletePlans"
     },
     /**
      * initializes this class
@@ -60,7 +61,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
     /**
      * updates data after an action is selected
      */
-    onActionSelection: function () {
+    /*onActionSelection: function () {
         "use strict";
         var select = this.$el.find("select.planListAction");
         var planListEls = [];
@@ -68,9 +69,10 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
             if (curEl.isChecked()) {
                 planListEls.push(curEl);
             }
-        })
+        });
         this[select.val()](planListEls);
-    },
+    },*/
+
     /**
     * loads page to compare plans
     * @param{...*} planListEls
@@ -96,14 +98,19 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
             }
         )
     },
+    
     /**
     * sends a deleterequest for a plan
-    * @param{Object|null} planListEls
-                    list of plans
     */
-    deletePlans: function (planListEls) {
+    deletePlans: function () {
         //console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] deletePlans");
         //console.log(planListEls);
+        var planListEls = [];
+        _.each(this.planListElements, function (curEl) {
+            if (curEl.isChecked()) {
+                planListEls.push(curEl);
+            }
+        });
         var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
         if (confirm(LM.getMessage("deletePlansPrompt"))) {
             _.each(planListEls, function (el) {
