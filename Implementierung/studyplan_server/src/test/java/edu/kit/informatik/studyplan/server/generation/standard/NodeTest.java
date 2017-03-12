@@ -7,6 +7,8 @@ import static org.mockito.Mockito.when;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.mchange.util.AssertException;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
@@ -60,6 +62,11 @@ public class NodeTest {
 		tseNode.removeInnerNode(pseNode);
 		assertFalse(tseNode.hasOuterNode());
 
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testaddInnerNode() {
+		pseNode.addInnerNode(pseNode);
 	}
 
 }

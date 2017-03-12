@@ -112,14 +112,13 @@ public class NodesListTest {
 		pseNode.addInnerNode(tseNode);
 		la1Node.addChild(la2Node);
 
-		nodes.add(pseNode);
-		nodes.add(tseNode);
-		nodes.add(gbiNode);
-		nodes.add(progNode);
-		nodes.add(swtNode);
-		nodes.add(la1Node);
-		nodes.add(la2Node);
-		nodes.add(tseNode);
+		nodes.add(pseNode, false);
+		nodes.add(tseNode, false);
+		nodes.add(gbiNode, false);
+		nodes.add(progNode, false);
+		nodes.add(swtNode, false);
+		nodes.add(la1Node, false);
+		nodes.add(la2Node, false);
 		
 	}
 
@@ -141,7 +140,11 @@ public class NodesListTest {
 		assertFalse(nodes.contains(pseNode));
 		assertFalse(nodes.contains(tseNode));
 	}
-
+	
+	@Test
+	public void testAdd() {
+		assertFalse(nodes.add(tseNode, false));
+	}
 	@Test
 	public void getCreditPoints() {
 		Field field = new Field();
