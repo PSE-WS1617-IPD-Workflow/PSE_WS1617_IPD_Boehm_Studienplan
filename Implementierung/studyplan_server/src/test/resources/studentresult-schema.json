@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "StudentResult",
+  "type": "object",
+  "properties": {
+    "student": {
+      "type": "object",
+      "properties": {
+        "discipline": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            }
+          }
+        },
+        "studystart": {
+          "type": "object",
+          "properties": {
+            "semester-type": {
+              "enum": [
+                "ST",
+                "WT"
+              ]
+            },
+            "year": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "semester-type",
+            "year"
+          ]
+        },
+        "passed modules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "creditpoints": {
+                "type": "number",
+                "minimum": 0
+              },
+              "lecturer": {
+                "type": "string"
+              },
+              "semester": {
+                "type": "integer",
+              	"minimum" : 0
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "creditpoints",
+              "semester"
+            ]
+          }
+        },
+        "current semester": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
