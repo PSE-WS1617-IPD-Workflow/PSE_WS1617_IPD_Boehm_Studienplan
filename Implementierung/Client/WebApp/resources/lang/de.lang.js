@@ -235,3 +235,6 @@ LM.messages["de"]["semesterTypeName-ST"] = "Sommersemester";
 
 // Plan
 LM.messages["de"]["semesterLimit"] = "Leider ist es nicht möglich länger als 200 Semester zu studieren - aber Glückwunsch dazu überhaupt soweit gekommen zu sein!"
+
+// Main Page
+LM.messages["de"]["mainPageText"] = "Auf dieser Seite finden Sie Ihre Studienpläne.<br>Durch Klick auf den Button in der rechten unteren Ecke können Sie neue Studienpläne erstellen. Unter \"Profil\" können Sie weitere bestandene Module hinzufügen.";
