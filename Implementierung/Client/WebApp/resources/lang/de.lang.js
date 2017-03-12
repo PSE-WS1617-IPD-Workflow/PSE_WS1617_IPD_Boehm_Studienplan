@@ -198,6 +198,7 @@ LM.messages["de"]["PUT-plans-id-connectionErrorText-404"] = "Es ist ein interner
 LM.messages["de"]["PATCH-plans-id-connectionErrorText-404"] = "Der Plan, der umbenannt werden soll, konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["DELETE-plans-id-connectionErrorText-404"] = "Der Plan, der gelöscht werden soll, konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["GET-plans-id-connectionErrorText-404"] = "Der Plan konnte nicht gefunden werden. (Statuscode 404)";
+LM.messages["de"]["POST-plans-id-connectionErrorText-422"] = "Ein Plan mit diesem Namen existiert bereits. (Statuscode 422)";
 
 // plans verification (plans-verification)
 LM.messages["de"]["GET-plans-verification-connectionErrorText-404"] = "Der Plan, der überprüft werden soll, konnte nicht gefunden werden. (Statuscode 404)";
