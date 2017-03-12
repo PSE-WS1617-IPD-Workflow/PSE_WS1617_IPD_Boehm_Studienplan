@@ -3,6 +3,7 @@ package edu.kit.informatik.studyplan.server.verification.standard;
 import java.util.HashMap;
 import java.util.List;
 
+import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
@@ -10,6 +11,8 @@ import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleCon
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleOrientation;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import edu.kit.informatik.studyplan.server.model.userdata.Semester;
+import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 import edu.kit.informatik.studyplan.server.verification.Verifier;
 
@@ -29,6 +32,7 @@ public class StandardVerifier implements Verifier {
 		findFieldViolations(plan);
 		findRuleGroupViolations(plan);
 		findConstraintViolations(plan);
+		findSemesterTypeViolations(plan);
 		return result;
 	}
 
@@ -102,6 +106,18 @@ public class StandardVerifier implements Verifier {
 					result.setCorrect(false);
 				}
 			}
+		}
+	}
+
+	private void findSemesterTypeViolations(Plan plan) {
+		Semester studyStart = plan.getUser().getStudyStart();
+		boolean violated = plan.getModuleEntries().stream().anyMatch(entry -> {
+			CycleType cycleType = entry.getModule().getCycleType();
+			SemesterType semesterType = studyStart.plus(entry.getSemester()).getSemesterType();
+			return !cycleType.matches(semesterType);
+		});
+		if (violated) {
+			result.setCorrect(false);
 		}
 	}
 
