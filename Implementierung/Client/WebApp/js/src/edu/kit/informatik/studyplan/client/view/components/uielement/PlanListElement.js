@@ -77,6 +77,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
                 self.plan.collection.add(newPlan);
                 // Send POST request
                 newPlan.save(null, {
+                    error: function () {
+                        newPlan.collection.remove(newPlan);
+                    }.bind(this),
                     success: function () {
                         // Send PUT request
                         newPlan.set(newPlan.parse(attributes,{}));

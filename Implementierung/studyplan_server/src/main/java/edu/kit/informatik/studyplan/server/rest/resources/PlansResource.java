@@ -223,7 +223,7 @@ public class PlansResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
-	public Map<String,PlanDto> renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
+	public Map<String, PlanDto> renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
 		if (planInput == null
 				|| planInput.getPlan() == null
 				|| !Objects.equals(planInput.getPlan().getIdentifier(), planId)
@@ -636,11 +636,11 @@ public class PlansResource {
 	}
 
 	private boolean isValid(JsonModule module) {
-		if (module == null) {
+		if (module == null || module.getSemester() == null) {
 			return false;
 		}
 		Module loadedModule = Utils.withModuleDao(dao -> dao.getModuleById(module.getId()));
-		if (!loadedModule.getDiscipline().equals(getUser().getDiscipline())) {
+		if (loadedModule == null || !loadedModule.getDiscipline().equals(getUser().getDiscipline())) {
 			return false;
 		}
 		return isValid(module.getSemester(), loadedModule.getCycleType());
