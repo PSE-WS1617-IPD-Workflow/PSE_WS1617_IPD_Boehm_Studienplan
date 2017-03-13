@@ -29,7 +29,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
     initialize: function (options) {
         "use strict";
         this.planId = options.planId;
-        //TODO: fetchModuleCollection
         this.moduleCollection = new edu.kit.informatik.studyplan.client.model.system.SearchCollection(null, {
             planId: this.planId
         });

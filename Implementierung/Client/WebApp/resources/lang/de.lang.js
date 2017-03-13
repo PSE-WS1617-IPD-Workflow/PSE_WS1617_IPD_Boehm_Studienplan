@@ -197,8 +197,8 @@ LM.messages["de"]["GET-modules-id-connectionErrorText-404"] = "Das gewünschte M
 LM.messages["de"]["POST-plans-connectionErrorText-422"] = "Ein Plan dieses Namens existiert bereits. (Statuscode 422)";
 
 // plans (plans-id)
-LM.messages["de"]["POST-plans-id-connectionErrorText-400"] = "Bitte geben Sie Ihrem Studienplan einen (nicht leeren) Namen!";
-LM.messages["de"]["PATCH-plans-id-connectionErrorText-400"] = "Bitte geben Sie Ihrem Studienplan einen (nicht leeren) Namen!";
+LM.messages["de"]["POST-plans-id-connectionErrorText-400"] = "Bitte geben Sie Ihrem Studienplan einen noch nicht verwendeten und (nicht leeren) Namen!";
+LM.messages["de"]["PATCH-plans-id-connectionErrorText-400"] = "Bitte geben Sie Ihrem Studienplan einen noch nicht verwendeten und einen (nicht leeren) Namen!";
 LM.messages["de"]["PUT-plans-id-connectionErrorText-404"] = "Es ist ein interner Fehler aufgetreten. Der zu ersetzende Plan konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["PATCH-plans-id-connectionErrorText-404"] = "Der Plan, der umbenannt werden soll, konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["DELETE-plans-id-connectionErrorText-404"] = "Der Plan, der gelöscht werden soll, konnte nicht gefunden werden. (Statuscode 404)";
@@ -266,6 +266,7 @@ LM.messages["de"]["TOUR-MainPage.welcome"] = "Herzlich willkommen, dies ist die 
 LM.messages["de"]["TOUR-MainPage.table"] = "Hier sehen Sie Ihre erstellten Studienpläne und können sie bearbeiten, duplizieren, löschen und exportieren.";
 LM.messages["de"]["TOUR-MainPage.profileLink"] = "Mit diesem Link gelangen Sie zu ihrem Profil.<br> Sie können dort Ihre bestandenen Leistungen eintragen oder Ihr Konto Löschen"
 LM.messages["de"]["TOUR-MainPage.mainPageAddPlan"] = "Hier können Sie neue Pläne hinzufügen.";
+LM.messages["de"]["TOUR-MainPage.help"] = "Hilfe auf jeder Seite erhalten Sie hier.";
 
 //LM.messages["de"]["TOUR-ProfilePage."] = "";
 LM.messages["de"]["TOUR-ProfilePage.welcome"] = "Auf dieser Seite können Sie Ihre bestandenen Module bearbeiten oder Ihr Konto löschen.";

@@ -14,6 +14,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
      * @name edu.kit.informatik.studyplan.client.router.MainRouter
      */
     var Constructor = Backbone.Router.extend({
+        firstTimeHelp:false,
         /**
          * The MainView of the application used
          * @type {edu.kit.informatik.studyplan.client.view.MainView}
@@ -80,6 +81,10 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                         planCollection: planCollection
                     });
                     this.view.render();
+                    if (this.firstTimeHelp) {
+                        this.view.tourHandler();
+                        this.firstTimeHelp=false;
+                    }
                     this.hideLoading();
                 }.bind(this)
             });
@@ -294,6 +299,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 this.navigate("/", {
                                     trigger: true
                                 });
+                                this.firstTimeHelp=true;
                             }.bind(this)
                         });
                     }.bind(this)
