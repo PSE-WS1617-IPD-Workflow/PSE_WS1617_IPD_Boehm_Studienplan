@@ -10,6 +10,61 @@ Durch die während der Entwicklung geänderten Anforderungen erfordern manche An
 	\endfirsthead
 	\endhead
 	%%
-	&  \\
+	A10: Erstanmeldung / \newline A20: Login 
+	& Auf Einbindung des Shibboleth Identity Providers wurde (wie angekündigt) verzichtet. \\
+	\hline
+	A40: Profil bearbeiten
+	& Eingabe von Studienbeginn/Studiengang nur bei Erstanmeldung möglich; „Konto speichern“ kehrt nicht zur letzten offenen Seite zurück (TODO!). Der Nutzer kann außerdem sein Konto löschen. \\
+	\hline
+	A50: Neuen Studienplan anlegen
+	& Das Namens-Popup hat keine Voreinstellung. \\
+	\hline
+	A70: Studienplan duplizieren
+	& Es wird nach einem neuen Namen für den Plan gefragt. (Benutzerfreundlicher) \\
+	\hline
+	A85: Studienplan exportieren
+	& Es wird eine HTML-Zusammenfassung des Studienplans im Browser angezeigt. \\
+	\hline
+	A90: Mehrere Studienpläne löschen
+	& Duplizieren und Teilen wurden entfernt; das Aktions"=Wahlfeld durch eine einzige Schaltfläche ersetzt. \\ 
+	\hline
+	A100: Studienpläne vergleichen
+	& Entfernt. \\
+	\hline
+	A110: Module filtern
+	& Filtern nach Fachrichtung und Vorkommen im Plan entfernt; Filtern nach Bereich hinzugefügt. Filter sind nicht zurücksetzbar über einen Extra-Knopf, sondern verfügen über einstellbare Standardwerte.\\
+	\hline
+	A130: Modulinfo-Leiste
+	& Möglichkeit zur Bewertung entfernt; Modul"=Constraints werden nun angezeigt. \\
+	\hline
+	A140: Modul einfügen
+	& Module können auch in abgeschlossene Semester eingefügt werden. \\
+	\hline
+	A170: Änderung rückgängig machen
+	& Entfernt. \\
+	\hline
+	A210: Semesterzeile löschen
+	& Da Zeilen nicht explizit gespeichert werden und leere Zeilen schon gar nicht: Entfernt. \\
+	\hline
+	A215: Abgeschlossene Semester ein-/ausblenden
+	& Entfernt. \\
+	\hline
+	A220: Studienplan überprüfen
+	& Es gibt keine Tooltips beim Drüberfahren mit der Maus, stattdessen werden die Verifizierungsergebnisse gesammelt als Popup angezeigt. \\
+	%A230: Plan verwerfen safety prompt
 	\hhline{|=|=|}
 \end{longtable}
+
+\subsubsection*{Testergebnisse}
+
+\begin{longtable}{| >{\hspace{0pt}} p{.73\textwidth} | >{\hspace{0pt}} p{.20\textwidth} |}
+	\hline
+	\textbf{Anwendungsfall} & \textbf{Status} \\ 
+	\hhline{|=|=|}  
+	\endfirsthead
+	\endhead
+	%%
+	& ERFOLGREICH \\
+	\hhline{|=|=|}
+\end{longtable}
+
