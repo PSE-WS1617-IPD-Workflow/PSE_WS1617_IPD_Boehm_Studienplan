@@ -49,21 +49,22 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
             });
         }
         //building a verificationResult with the given information when passed by server
-        if (typeof response["status"] !== "undefined") {
-            response.verificationResult = new edu.kit.informatik.studyplan.client.model.plans.VerificationResult({
-                plan: {
-                    id: response["id"],
-                    violations: response["violations"],
-                    status: response["status"],
-                    "compulsory-violations": response["compulsory-violations"],
-                    "field-violations": response["field-violations"],
-                    "rule-group-violations": response["rule-group-violations"]
-                }
-            }, {
-                parse: true,
-                plan: this
-            });
+        if (typeof response["status"] === "undefined") {
+            response["status"] = "not-verified";
         }
+        response.verificationResult = new edu.kit.informatik.studyplan.client.model.plans.VerificationResult({
+            plan: {
+                id: response["id"],
+                violations: response["violations"],
+                status: response["status"],
+                "compulsory-violations": response["compulsory-violations"],
+                "field-violations": response["field-violations"],
+                "rule-group-violations": response["rule-group-violations"]
+            }
+        }, {
+            parse: true,
+            plan: this
+        });
         return response;
     },
     /**
