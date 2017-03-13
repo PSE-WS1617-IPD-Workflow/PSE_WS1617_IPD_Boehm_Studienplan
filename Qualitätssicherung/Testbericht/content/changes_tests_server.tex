@@ -20,7 +20,8 @@
 		\item zwischen Winter- und Sommersemester
 		\item zwischen Sommer- und Wintersemester
 	\end{itemize}
-	Test der compareTo-Methoden & ERFOLGREICH \\
+	Test der compareTo-Methoden \\
+	Test der plus-Methode & ERFOLGREICH \\
 	\hline
 	StandardVerifierTest & Testet, ob der \texttt{StandardVerifier} folgendes erkennt:
 	\begin{itemize}
@@ -80,10 +81,33 @@
 	\hline
 	StudentResourceIntegrationTest & Überprüft, ob der Nutzer beim Neuanlegen korrekt initialisiert ist; das Setzen von Fachrichtung und Studienstart funktioniert; fehlerhafte Fachrichtungen/Studienstarts (zukünftig/prähistorisch) abgefangen werden; bestandene Module korrekt gesetzt werden; fehlerhafte bestandene Module (falsches Modul, falsches Semester) abgefangen werden; die JSON-Rückgaben korrekt serialisiert werden und eine Autorisierung vor dem Zugriff auf die Ressourcen verlangt wird. & ERFOLGREICH \\
 	\hline
-	ModuleResourceIntegrationTest & Überprüft, ob GET /modules/id korrekt als JSON serialisiert wird und auch die DB-Daten enthält; testet mehrere Filteraufrufe auf korrekte Rückgabe sowie fehlerhafte Eingabe. & ERFOLGREICH \\
+	ModuleResourceIntegrationTest & Überprüft, ob GET /modules/id korrekt als JSON serialisiert wird und auch die korrekten Daten gesendet werden; testet mehrere Filteraufrufe auf korrekte Rückgabe sowie fehlerhafte Eingabe. & ERFOLGREICH \\
 	\hline
 	
-	& & ERFOLGREICH \\
+	PlansResourcePlanCreationIntegrationTest & 
+		folgendes wurde überprüft:
+		\begin{itemize}
+			\item Anlegen eines Plans möglich
+			\item korrekte Serialisierung aller Pläne eines Nutzers
+			\item doppelte Plannamen werden abgefangen
+			\item ungültige Plannamen werden abgefangen (leerer Name, zu langer Name)
+			\item Zugriff nur autorisiert möglich
+		\end{itemize}
+		& ERFOLGREICH \\ \hline
+	PlansResourcePlanEditIntegrationTest & 
+	folgendes wurde überprüft:
+	\begin{itemize}
+		\item Planumbenennung möglich; doppelte Namen, leere Namen, zu lange Namen werden abgefangen
+		\item korrekte Serialisierung eines Plans
+		\item Platzierung von Modulen im Studienplan
+		\item Bewegung von Modulen im Studienplan
+		\item Entfernen von Modulen aus dem Studienplan
+		\item Setzen und Entfernen von Modulpräferenzen
+		\item Zugriff auf die Exportfunktion
+		\item Zugriff auf Ressourcen nur autorisiert möglich
+	\end{itemize}
+	Dies beinhalten auch das Überprüfen ungültiger Eingabeparameter.
+	& ERFOLGREICH \\
 	
 	\hhline{|=|=|=|}  
 \end{longtable}
