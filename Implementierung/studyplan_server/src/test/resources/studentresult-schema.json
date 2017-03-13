@@ -53,13 +53,17 @@
               "semester": {
                 "type": "integer",
               	"minimum" : 0
+              },
+              "cycle-type": {
+              	"enum" : ["WT", "ST", "both"]
               }
             },
             "required": [
               "id",
               "name",
               "creditpoints",
-              "semester"
+              "semester",
+              "cycle-type"
             ]
           }
         },
