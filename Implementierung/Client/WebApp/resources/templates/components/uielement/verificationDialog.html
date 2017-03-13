@@ -5,7 +5,6 @@
             <li>
                 {{=obj.LM.getMessage("verificationFieldDescription") }}
                 <ol>
-                    {{console.log(obj.verification.get('field-violations'))}}
                     {{ _.each(obj.verification.get('field-violations'), function (field) { }}
                         <li>{{=field.get("name")}} (min: {{=field.get("min-ects")}} ECTS)</li>
                     {{ }); }}

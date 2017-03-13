@@ -29,7 +29,6 @@ edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.inf
     },
     parse: function (response, options) {
         "use strict";
-        console.log(response);
         var result = response["plan"];
         if (typeof result["violations"] === "undefined") {
             result["violations"] = [];
@@ -77,7 +76,6 @@ edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.inf
         result["rule-group-violations"] = ruleGroupViolations;
         result["compulsory-violations"] = compulsoryViolations;
         result["violations"] = violations;
-        console.log(result);
         return result;
     }
 });

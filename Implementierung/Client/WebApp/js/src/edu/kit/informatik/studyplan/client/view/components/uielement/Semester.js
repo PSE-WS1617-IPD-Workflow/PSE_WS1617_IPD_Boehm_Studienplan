@@ -23,6 +23,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
      * Whether the modules in the plan are preferencable
      */
     isPreferencable: true,
+    /**
+     * Wether or not modules are draggable
+     */
+    isDraggable: true,
     byId: {},
     events: {
 
@@ -30,6 +34,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
     initialize: function (options) {
         this.model = options.semester;
         this.isRemovable = (typeof options.isRemovable !== "undefined") ? options.isRemovable : this.isRemovable;
+        this.isDraggable = (typeof options.isDraggable !== "undefined") ? options.isDraggable : this.isDraggable;
         this.isPreferencable = (typeof options.isPreferencable !== "undefined") ? options.isPreferencable : this.isPreferencable;
         this.isPassedSemester = (typeof options.isPassedSemester !== "undefined") ? options.isPassedSemester : this.isPassedSemester;
         this.isPassedPlan = (typeof options.isPassedPlan !== "undefined") ? options.isPassedPlan : this.isPassedPlan;
@@ -43,7 +48,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
                 removable = false;
             }
             var draggable = true;
-            if (!this.isPassedPlan && el.get('passed')) {
+            if (!this.isPassedPlan && el.get('passed') || !this.isDraggable) {
                 draggable = false;
             }
             var module = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({

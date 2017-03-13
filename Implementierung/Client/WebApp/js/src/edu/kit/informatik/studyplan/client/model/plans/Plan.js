@@ -147,10 +147,11 @@ edu.kit.informatik.studyplan.client.model.plans.Plan = edu.kit.informatik.studyp
      *sets the parent plan of a new, generated plan.
      */
     retrieveProposedPlan: function () {
-        return new edu.kit.informatik.studyplan.client.model.plans.ProposedPlan({
+        var proposedPlan = new edu.kit.informatik.studyplan.client.model.plans.ProposedPlan({
             id: this.get('id'),
             parent: this
         });
+        return proposedPlan;
     },
     /**
      *

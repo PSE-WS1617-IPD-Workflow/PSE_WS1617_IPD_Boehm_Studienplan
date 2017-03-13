@@ -39,12 +39,9 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
      **/
     standardModuleFinder: null,
     /**
-     * dictates wheater it is possible to set a preference for modules
+     * dictates wether it is possible to set a preference for modules
      */
     isPreferencable: true,
-    /**
-     *
-     */
 
     /**
      * initializes the MainPage
@@ -76,6 +73,8 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
         }
         this.planView = new edu.kit.informatik.studyplan.client.view.components.uielement.Plan({
             isPreferencable: (!this.proposed),
+            isDraggable: (!this.proposed),
+            isAddable: (!this.proposed),
             plan: this.model
         });
         //adding a HeadBar

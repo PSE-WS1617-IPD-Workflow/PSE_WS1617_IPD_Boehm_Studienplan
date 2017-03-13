@@ -22,11 +22,16 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
      */
     isPreferencable: true,
     /**
+     * Wether modules are draggable
+     */
+    isDraggable: true,
+    /**
      * Whether the plan is a plan of (only) passed modules
      */
     isPassedPlan: false,
     initialize: function (options) {
         this.isAddable = (typeof options.isAddable !== "undefined") ? options.isAddable : this.isAddable;
+        this.isDraggable = (typeof options.isDraggable !== "undefined") ? options.isDraggable : this.isDraggable;
         this.model = options.plan;
         this.isPreferencable = (typeof options.isPreferencable !== "undefined") ? options.isPreferencable : this.isPreferencable;
         this.isPassedPlan = (typeof options.isPassedPlan !== "undefined") ? options.isPassedPlan : this.isPassedPlan;
@@ -48,6 +53,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
                     semester: semester,
                     isRemovable: true,
                     isPreferencable: this.isPreferencable,
+                    isDraggable: this.isDraggable,
                     isPassedPlan: this.isPassedPlan
                 })
             );
