@@ -9,6 +9,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Regu
 edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar.extend( /** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar.prototype}*/ {
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/regularHeadBar.html"),
     model: null,
+    dialog: null,
     events: {
         "change #curPlanName": "rename",
         "click #generatePlan": "generate",
@@ -75,6 +76,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                         verification: this.model.get('verificationResult')
                     });
                     if(showDialog) {
+                        if(this.dialog!=null){
+                            $(this.dialog).dialog("close")
+                            this.dialog=null;
+                        }
                         var options = {
                             title: LM.getMessage("verificationFailTitle"),
                             resizable: false,
@@ -86,10 +91,11 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                             buttons: {},
                         }
                         options["buttons"][LM.getMessage('OK')] = function () {
-                            $(this).dialog("close");
-                        }
-                        var dialog = $(html).dialog(options);
-                        dialog.show();
+                            $(this.dialog).dialog("close");
+                            this.dialog=null;
+                        }.bind(this);
+                        this.dialog = $(html).dialog(options);
+                        this.dialog.show();
                     } else {
                         notification = new edu.kit.informatik.studyplan.client.model.system.Notification({
                             title: LM.getMessage("verificationFailTitle"),
