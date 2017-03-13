@@ -1,10 +1,11 @@
 .mainPageLabel{
-    margin-top: 10px;  
+    position: relative;
+    top: 15px;
 }
 .mainPagePlanList{
     width:1050px;
     min-height: 60px;
-    margin:10px auto 10px auto;
+    margin:25px auto 10px auto;
     padding: 10px 30px 10px 30px;
 }
 .mainPageAddPlan{
