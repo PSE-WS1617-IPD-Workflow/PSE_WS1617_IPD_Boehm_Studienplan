@@ -24,3 +24,12 @@
     position: relative;
     top: 20px;
 }
+button.deleteProposal, button.saveProposal, button.saveAsProposal {
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    background-color: #FFFFFF;
+    color: #444444;
+    border: 1px solid #dddddd;
+    padding: 3px;
+}
