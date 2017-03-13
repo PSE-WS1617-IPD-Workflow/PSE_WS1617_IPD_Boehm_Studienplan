@@ -6,6 +6,7 @@
   */
 
  edu.kit.informatik.studyplan.client.view.subview.ProfilPage = edu.kit.informatik.studyplan.client.view.subview.PlanEditPage.extend( /** @lends {edu.kit.informatik.studyplan.client.view.subview.ProfilPage.prototype} */ {
+    pageTour: edu.kit.informatik.studyplan.client.model.system.TourManager.getInstance().getTour("profilePage"),
      /**
       * says wheather planHeadBar should be displayed
       */
