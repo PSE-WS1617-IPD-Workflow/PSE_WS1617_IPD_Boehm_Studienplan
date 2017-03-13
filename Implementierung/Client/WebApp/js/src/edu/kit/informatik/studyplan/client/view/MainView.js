@@ -108,6 +108,16 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend( /** @l
                         .getInstance().add(notification);
             return;
         }
-        this.curContentView.pageTour().start();
+        if(this.curTour!=null){
+            this.curTour.cancel();
+        }
+        this.curTour = this.curContentView.pageTour();
+        this.curTour.start();
+        var endTour = function (){
+            this.curTour=null;
+        }.bind(this);
+        this.curTour.on("complete", endTour);
+        this.curTour.on("cancel", endTour);
+        
     }
 });

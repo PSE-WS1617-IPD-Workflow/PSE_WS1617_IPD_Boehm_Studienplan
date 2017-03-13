@@ -206,6 +206,7 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
         </sources>
         <sources dir="${basedir}/resources/tours">
         <file name="MainPage.js"/>  
+            <file name="PlanEditPage.js"/>  
       </sources>
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/view/subview">
             <file name="ComparisonPage.js"/>

@@ -6,6 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.subview.PlanEditPage");
  */
 
 edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.extend( /** @lends {edu.kit.informatik.studyplan.client.view.subview.PlanEditPage.prototype} */ {
+    pageTour: edu.kit.informatik.studyplan.client.model.system.TourManager.getInstance().getTour("planEditPage"),
     /**
      * filter and module view
      */
@@ -53,6 +54,9 @@ edu.kit.informatik.studyplan.client.view.subview.PlanEditPage = Backbone.View.ex
      */
     initialize: function (options) {
         this.proposed = (typeof options.proposed) ? options.proposed : this.proposed;
+        if(this.proposed){
+            this.pageTour=null;
+        }
         this.model = options.plan;
         if (!this.proposed) {
             //console.log("[edu.kit.informatik.studyplan.client.view.subview.PlanEditPage] planId")
