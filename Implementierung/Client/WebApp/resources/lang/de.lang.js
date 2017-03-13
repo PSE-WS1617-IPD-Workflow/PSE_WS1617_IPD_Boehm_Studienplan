@@ -47,6 +47,7 @@ LM.messages["de"]["planDeletedText"] = "Der Plan wurde erfolgreich gelöscht.";
 
 // RegularHeadBar
 LM.messages["de"]["home"] = "Home";
+LM.messages["de"]["changePlanNameIcon"] = "Plannamen bearbeiten";
 LM.messages["de"]["makeProposal"] = "Plan vervollständigen";
 LM.messages["de"]["verify"] = "Überprüfen";
 LM.messages["de"]["verificationSuccessTitle"] = "Verifikation erfolgreich!";
