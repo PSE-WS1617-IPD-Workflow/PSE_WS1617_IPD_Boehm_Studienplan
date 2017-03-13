@@ -31,6 +31,16 @@
           ]
         });
         tour.addStep('step3', {
+          text: LM.getMessage("TOUR-MainPage.profileLink"),
+          attachTo: ".profile top",
+          buttons: [
+            {
+              text: LM.getMessage("TOUR-next"),
+              action: tour.next
+            }
+          ]
+        });
+        tour.addStep('step4', {
           text: LM.getMessage("TOUR-MainPage.mainPageAddPlan"),
           attachTo: ".mainPageAddPlan right",
           buttons: [
