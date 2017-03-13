@@ -92,7 +92,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
             modules: []
         }, {
             parse: true,
-            collection: this.model
+            collection: this.model.get('semesterCollection')
         });
 
         this.model.get('semesterCollection').push(newSemester);

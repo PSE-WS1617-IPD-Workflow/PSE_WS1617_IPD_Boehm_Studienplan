@@ -90,6 +90,10 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         return null;
     },
     overSemester: function (event, ui) {
+        this.$el.addClass("semester-drop-hover");
+        if(this.isPassedPlan){
+            return false;
+        }
         if(!ui || !ui.helper || !ui.helper.data("viewObject") ) {
             return false;
         }
@@ -107,9 +111,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
             notAllowed = true;
         }
         if (notAllowed) {
-            this.$el.addClass("semester-drop-hover notAllowed");
+            this.$el.addClass("notAllowed");
         } else {
-            this.$el.addClass("semester-drop-hover allowed");
+            this.$el.addClass("allowed");
         }
     },
     outSemester: function (event, ui) {
@@ -159,7 +163,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
             }
         }
         // Do not insert module in wrong cycle type
-        if (typeof droppedModel.get('cycle-type')!== "undefined" && this.model.getCycleType()!=droppedModel.get('cycle-type') && droppedModel.get('cycle-type')!="both") {
+        if (!this.isPassedPlan&&typeof droppedModel.get('cycle-type')!== "undefined" && this.model.getCycleType()!=droppedModel.get('cycle-type') && droppedModel.get('cycle-type')!="both") {
             var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
             edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
                 new edu.kit.informatik.studyplan.client.model.system.Notification({
