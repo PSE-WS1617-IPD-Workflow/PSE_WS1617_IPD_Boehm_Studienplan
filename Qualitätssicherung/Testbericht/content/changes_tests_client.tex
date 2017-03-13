@@ -1,9 +1,9 @@
 \FloatBarrier
 \subsection{Client}
-
+\subsubsection*{Unit-Tests}
 \begin{longtable}{| >{\hspace{0pt}} p{.2\textwidth} | >{\hspace{0pt}} p{.45\textwidth} | >{\hspace{0pt}} p{.25\textwidth} |}
 	\hline
-	\textbf{Testfall} & \textbf{Fragestellung} & \textbf{Status} \\ 
+	\textbf{Testfall} & \textbf{Beschreibung} & \textbf{Status} \\ 
 	\hhline{|=|=|=|}  
 	\endfirsthead
 	\endhead
@@ -24,5 +24,26 @@
 	OAuthSync"=Funktion & Übergibt OAuthSync beim Speichern/Laden die richtigen Header? & ERFOLGREICH \\ \hline
 	MainView"=Funktion & Lädt der MainView die richtigen Views und zeigt diese an? & ERFOLGREICH \\	 
 	\hhline{|=|=|=|}   
-	\caption{Geschriebene Unit-Tests}
+\end{longtable}
+
+\subsubsection*{Integration-Tests}
+\begin{longtable}{| >{\hspace{0pt}} p{.2\textwidth} | >{\hspace{0pt}} p{.45\textwidth} | >{\hspace{0pt}} p{.25\textwidth} |}
+	\hline
+	\textbf{Testfall} & \textbf{Beschreibung} & \textbf{Status} \\ 
+	\hhline{|=|=|=|}  
+	\endfirsthead
+	\endhead
+	
+	%===============================================================================================
+	Discipline Collection & Test der Kommunikation zwischen Discipline Collection und Server-Mock /disciplines & ERFOLGREICH \\ \hline
+	Field Collection & Test der Kommunikation zwischen Field Collection und Server-Mock /fields & ERFOLGREICH \\ \hline
+	Filter Collection & Test der Kommunikation zwischen Filter Collection und Server-Mock /filters & ERFOLGREICH \\ \hline
+	Module & Test der Kommunikation zwischen Module und Server-Mock /plans/\{id\}/modules/\{id\} & ERFOLGREICH \\ \hline
+	Module Collection & Test der Kommunikation zwischen Module Collection und Server-Mock /plans/\{id\}/modules & ERFOLGREICH \\ \hline
+	Objective Functioin Collection & Test der Kommunikation zwischen Objective Function Collection und Server-Mock /objective-functions  & ERFOLGREICH \\ \hline
+	Plan & Test der Kommunikation zwischen Plan und Server-Mock /plans/\{id\} & ERFOLGREICH \\ \hline
+	Plan Collection & Test der Kommunikation zwischen Plan Collection und Server-Mock /plans & ERFOLGREICH \\ \hline
+	Proposed Plan & Test der Kommunikation zwischen Proposed Plan und Server-Mock /plans/\{id\}/proposal/\{objective-function\} & ERFOLGREICH \\ \hline
+	Student & Test der Kommunikation zwischen Student und Server-Mock /student & ERFOLGREICH \\ \hline
+	
 \end{longtable}
