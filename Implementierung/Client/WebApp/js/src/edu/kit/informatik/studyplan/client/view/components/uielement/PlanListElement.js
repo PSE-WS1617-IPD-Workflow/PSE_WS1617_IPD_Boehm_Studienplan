@@ -11,7 +11,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/planListEl.html"),
     plan: null,
     events: {
-        "click button.showPlan": "showPlan",
+        "click .showPlan": "showPlan",
         "click button.duplicatePlan": "duplicatePlan",
         "click button.deletePlan": "deletePlan",
         "click button.exportPlan": "exportPlan",
@@ -28,8 +28,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
     /**
      * Method which shows the plan
      */
-    showPlan: function () {
+    showPlan: function (event) {
         "use strict";
+        event.preventDefault();
         //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] showPlan");
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("plans/" + this.plan.get('id'), {
             trigger: true
