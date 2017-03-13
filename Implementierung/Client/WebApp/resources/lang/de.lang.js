@@ -126,6 +126,7 @@ LM.messages["de"]["profileSavedText"] = "Das Profil wurde erfolgreich gespeicher
 
 
 LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
+LM.messages["de"]["resetFilterButton"] = "Filter zurücksetzen";
 LM.messages["de"]["mainMenuButton"] = "Hauptmenü";
 
 LM.messages["de"]["deleteUser"] = "Konto löschen";

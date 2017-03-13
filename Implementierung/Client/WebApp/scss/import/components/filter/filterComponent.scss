@@ -14,3 +14,7 @@
 .filterComponent{
     position: relative;
 }
+.resetFilters {
+    /* located in moduleFinder.scss*/    
+    @extend .filterButton;
+}
