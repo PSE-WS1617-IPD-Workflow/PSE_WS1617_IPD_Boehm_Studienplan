@@ -21,7 +21,7 @@
           ]
         });
         tour.addStep('step2', {
-          text: LM.getMessage("TOUR-PlanEditPage.plan"),
+          text: LM.getMessage("TOUR-ProfilePage.plan"),
           attachTo: ".planView left",
           showCancelLink:true,
           buttons: [
