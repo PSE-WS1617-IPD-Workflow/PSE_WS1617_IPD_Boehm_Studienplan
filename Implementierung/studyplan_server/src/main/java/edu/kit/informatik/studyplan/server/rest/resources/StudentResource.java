@@ -1,26 +1,7 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
-
 import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
@@ -32,6 +13,16 @@ import edu.kit.informatik.studyplan.server.model.userdata.authorization.Authoriz
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
 import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * REST resource for /student.
@@ -140,6 +131,7 @@ public class StudentResource {
 			m.setId(entry.getModule().getIdentifier());
 			m.setName(entry.getModule().getName());
 			m.setCreditPoints(entry.getModule().getCreditPoints());
+			m.setCycleType(entry.getModule().getCycleType());
 			m.setLecturer(entry.getModule().getModuleDescription().getLecturer());
 			m.setSemester(entry.getSemester());
 			return m;

@@ -14,6 +14,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     isPreferencable: true,
     isDraggable: true,
     isRemovable: true,
+    //true implies that module is not preferencable, even if isPreferencable is set to true
     isPassedPlanModule: false,
     /**
      * events which are listened to and their handlers
