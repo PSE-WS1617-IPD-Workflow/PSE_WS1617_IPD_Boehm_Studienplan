@@ -265,6 +265,14 @@ LM.messages["de"]["TOUR-MainPage.welcome"] = "Herzlich willkommen, dies ist die 
 LM.messages["de"]["TOUR-MainPage.table"] = "Hier sehen Sie Ihre erstellten Studienpläne und können Sie bearbeiten, duplizieren, löschen und exportieren.";
 LM.messages["de"]["TOUR-MainPage.mainPageAddPlan"] = "Hier können Sie neue Pläne hinzufügen.";
 
+//LM.messages["de"]["TOUR-ProfilePage."] = "";
+LM.messages["de"]["TOUR-ProfilePage.welcome"] = "Auf dieser Seite können Sie Ihre bestandenen Module bearbeiten oder Ihr Konto löschen.";
+LM.messages["de"]["TOUR-ProfilePage.plan"] = "Durch Drag-and-Drop können Sie bestandene Module hinzufügen";
+LM.messages["de"]["TOUR-ProfilePage.moduleFilter"] = "Hier können Sie die angezeigten Module filtern.";
+LM.messages["de"]["TOUR-ProfilePage.moduleList"] = "Hier werden Ihnen Module angezeigt, die Sie durch Drag-and-Drop als bestanden hinzufügen können.";
+LM.messages["de"]["TOUR-ProfilePage.deleteProfile"] = "Mit diesem Button können Sie Ihr Konto löschen, Es werden alle über Sie gespeicherten Daten gelöscht.";
+LM.messages["de"]["TOUR-ProfilePage.save"] = "Mit diesem Button werden alle Änderungen die Sie auf dieser Seite vorgenommen haben gespeichert.";
+
 //LM.messages["de"]["TOUR-PlanEditPage."] = "";
 LM.messages["de"]["TOUR-PlanEditPage.welcome"] = "Auf dieser Seite können Sie Ihren Studienplan manuel bearbeiten.";
 LM.messages["de"]["TOUR-PlanEditPage.editName"] = "Hier können Sie den Namen des Plans anpassen.";
