@@ -18,6 +18,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.ProposalSidebar = Ba
     },
     render: function () {
         this.$el.html(this.template());
+        this.delegateEvents();
     },
     /**
      * delete the plan
