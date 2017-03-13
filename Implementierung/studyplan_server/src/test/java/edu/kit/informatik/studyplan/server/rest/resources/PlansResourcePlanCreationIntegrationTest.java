@@ -34,6 +34,27 @@ public class PlansResourcePlanCreationIntegrationTest extends SimpleRestAssuredT
 				int start = new URI(string).getFragment().indexOf("=") + 1;
 				int end = new URI(string).getFragment().indexOf("&");
 				accessToken = "Bearer " + new URI(string).getFragment().substring(start, end);
+				
+		Map<String, Object> json = new HashMap<String, Object>();
+		Map<String, Object> discipline = new HashMap<String, Object>();
+		Map<String, Object> studyStart = new HashMap<String, Object>();
+		Map<String, Object> student = new HashMap<String, Object>();
+		student.put("discipline", discipline);
+		student.put("study-start", studyStart);
+		json.put("student", student);
+		discipline.put("id", 1);
+		studyStart.put("semester-type", "WT");
+		studyStart.put("year", 2015);
+		
+		customAuthorize(given(), accessToken)
+			.contentType("application/json")
+			.body(json)
+			.put("/student").then()
+			.assertThat().statusCode(200)
+			.body(matchesJsonSchemaInClasspath("studentresult-schema.json"))
+			.body("student.discipline.id", equalTo(1))
+			.body("student.study-start.semester-type", equalTo("WT"))
+			.body("student.study-start.year", equalTo(2015));
 	}
 	
 	@After
