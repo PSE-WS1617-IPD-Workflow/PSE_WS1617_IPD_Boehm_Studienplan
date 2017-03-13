@@ -81,6 +81,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList = Backbone.
     comparePlans: function (planListEls) {
         //console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList] comparePlans");
         //console.log(planListEls);
+        var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
         if (planListEls.length !== 2) {
             edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
                 new edu.kit.informatik.studyplan.client.model.system.Notification({

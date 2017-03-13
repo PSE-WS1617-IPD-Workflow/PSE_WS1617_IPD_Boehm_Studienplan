@@ -119,6 +119,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
         "use strict";
         //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar] rename")
         var name = this.$el.find("#curPlanName").val();
+        var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
         if (name.length > 100) {
             edu.kit.informatik.studyplan.client.model.system.NotificationCollection
                 .getInstance().add(

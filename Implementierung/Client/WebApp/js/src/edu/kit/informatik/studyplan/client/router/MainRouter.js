@@ -331,6 +331,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             var info = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance();
             info.set('access_token', undefined);
             info.save();
+            var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
             edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
                 .add(
                     new edu.kit.informatik.studyplan.client.model.system.Notification({

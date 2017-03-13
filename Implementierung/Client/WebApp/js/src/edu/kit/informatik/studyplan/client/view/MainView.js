@@ -98,6 +98,7 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend( /** @l
      */
     tourHandler: function () {
         if(!this.curContentView.pageTour||this.curContentView.pageTour==null) {
+            var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
             var notification = new edu.kit.informatik.studyplan.client.model.system.Notification({
                 title: LM.getMessage("noHelpAvailableTitle"),
                 text: LM.getMessage("noHelpAvailableText"),

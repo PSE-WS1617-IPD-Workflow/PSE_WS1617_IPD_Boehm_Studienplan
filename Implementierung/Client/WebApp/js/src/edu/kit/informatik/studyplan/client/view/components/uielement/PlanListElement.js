@@ -56,6 +56,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
         }
         var self = this;
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+        var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
         this.plan.fetch({
             // TODO: zurück stellen, wenn nicht erfolgreich
             success: function () {

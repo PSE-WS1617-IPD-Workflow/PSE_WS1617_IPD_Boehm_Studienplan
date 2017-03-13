@@ -21,7 +21,9 @@ require.config({
       'jquery-ui': '/base/htdocs/lib/jquery-ui',
       'underscore' : '/base/htdocs/lib/underscore',
       'backbone' : '/base/htdocs/lib/backbone',
-      'studyplan' : '/base/htdocs/js/app'
+      'studyplan' : '/base/htdocs/js/app',
+      'shepherd' : '/base/htdocs/lib/shepherd.min',
+      'tether': '/base/htdocs/lib/tether.min'
   },
   // dynamically load all test files
   deps: allTestFiles,

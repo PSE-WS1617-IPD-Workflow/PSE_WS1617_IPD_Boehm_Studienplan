@@ -76,11 +76,13 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
          */
         setLogoutTimeouts: function () {
             var expiresIn = this.get('expires_in') - Date.now();
+            var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
             // Warning user:
             window.setTimeout(function () {
                 if(!this.isLoggedIn()){
                     return;
                 }
+                
                 edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
                     .add(
                         new edu.kit.informatik.studyplan.client.model.system.Notification({
