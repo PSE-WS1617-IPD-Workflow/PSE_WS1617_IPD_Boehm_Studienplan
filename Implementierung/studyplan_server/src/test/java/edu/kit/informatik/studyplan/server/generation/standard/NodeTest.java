@@ -1,13 +1,10 @@
 package edu.kit.informatik.studyplan.server.generation.standard;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertFalse;
+import static org.mockito.Mockito.*;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import com.mchange.util.AssertException;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;

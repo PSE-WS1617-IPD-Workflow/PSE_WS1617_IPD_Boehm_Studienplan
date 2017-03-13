@@ -1,7 +1,5 @@
 package edu.kit.informatik.studyplan.server.model.userdata;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,15 +18,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.NotFoundException;
 
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
 
@@ -212,47 +207,6 @@ public class Plan {
 				return jsonModule;
 			}).collect(Collectors.toList());
 		}
-	}
-
-	/**
-	 * Only being called by Jackson and/or REST handlers, respectively.
-	 * 
-	 * @param jsonModules
-	 *            The modules attribute's content from the plan's JSON
-	 *            representation.
-	 */
-	@JsonProperty("modules")
-	public void setJsonModules(List<JsonModule> jsonModules) {
-		if (jsonModules == null || jsonModules.isEmpty())
-			return;
-		HashSet<String> placedModulesIds = new HashSet<>(jsonModules.size()); // for
-																				// finding
-																				// duplicates
-		List<ModuleEntry> moduleEntries = new ArrayList<>(jsonModules.size());
-		List<ModulePreference> preferences = new LinkedList<>();
-		for (JsonModule jsonModule : jsonModules) {
-			if (placedModulesIds.contains(jsonModule.getId())) {
-				throw new BadRequestException();
-			} else {
-				placedModulesIds.add(jsonModule.getId());
-			}
-			// if (jsonModule.getSemester() <
-			// user.getStudyStart().getDistanceToCurrentSemester()) {
-			// throw new BadRequestException();
-			// }
-			Module module = Utils.withModuleDao(dao -> dao.getModuleById(jsonModule.getId()));
-			if (module == null) {
-				throw new NotFoundException();
-			}
-			ModuleEntry entry = new ModuleEntry(module, jsonModule.getSemester());
-			moduleEntries.add(entry);
-			if (jsonModule.getPreference() != null) {
-				ModulePreference preference = new ModulePreference(module, jsonModule.getPreference(), this);
-				preferences.add(preference);
-			}
-		}
-		this.moduleEntries = moduleEntries;
-		this.modulePreferences = preferences;
 	}
 
 	/**
