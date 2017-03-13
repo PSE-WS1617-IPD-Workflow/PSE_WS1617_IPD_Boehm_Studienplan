@@ -41,7 +41,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
         "use strict";
 	    //console.info("irgendwas stimmt da nicht");
         if (this.model.get('preference').get('preference') != 'positive') {
-            console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteUp");
+            //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteUp");
         	var preference = this.model.get('preference');
         	preference.set('preference','positive');
         } else{
@@ -57,12 +57,12 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     voteDown: function () {
 	"use strict";
 	if(this.model.get('preference').get('preference')!='negative'){
-        	console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteDown");
+        	//console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteDown");
         	var preference = this.model.get('preference');
         	preference.set('preference', 'negative');
 	}
 	else{
-		console.info("Versuch negative Preferenz zurück zu setzen");
+		//console.info("Versuch negative Preferenz zurück zu setzen");
 		var preference = this.model.get('preference');
 		preference.set('preference','');
 	}

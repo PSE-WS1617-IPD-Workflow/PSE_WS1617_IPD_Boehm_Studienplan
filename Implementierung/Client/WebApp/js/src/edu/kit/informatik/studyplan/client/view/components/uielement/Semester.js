@@ -101,8 +101,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
                 notAllowed = true;
             }
         }
-        console.log(this.model.getCycleType());
-        console.log(droppedModel.get('cycle-type'));
+        //console.log(this.model.getCycleType());
+        //console.log(droppedModel.get('cycle-type'));
         if (typeof droppedModel.get('cycle-type')!== "undefined" && this.model.getCycleType()!=droppedModel.get('cycle-type') && droppedModel.get('cycle-type')!="both") {
             notAllowed = true;
         }
