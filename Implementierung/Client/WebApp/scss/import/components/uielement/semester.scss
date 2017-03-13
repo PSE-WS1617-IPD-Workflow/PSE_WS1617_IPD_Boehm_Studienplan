@@ -7,6 +7,23 @@
     overflow:hidden;
     min-height: 180px;
 }
+.semesterModules::after{
+    content:" ";
+    color:darken($boxColor, 60%);
+    float:left;
+    height:140px;
+    padding:10px;
+    margin:10px;
+    width:220px;
+    border:2px dashed #BBBBBB;
+    transition: all .3s ease-in-out;
+}
+.notDraggable .semesterModules::after{
+    display:none;
+}
+.semester-drop-hover .semesterModules::after{
+    transform: scale(0.01);
+}
 .dragHereSymbol{
     float:left;
     margin: 24px 34px;
@@ -19,6 +36,15 @@
     border: $boxBorderColor solid 2px;
     border-radius: 10px;
 }
+.planView tr{
+    transition: all .3s ease-in-out;
+}
 .semester-drop-hover{
     background-color: $bg4;
+}
+.semester-drop-hover.allowed{
+    background-color: lighten($bg2, 10%);
+}
+.semester-drop-hover.notAllowed{
+    background-color: lighten($error1, 50%);
 }
