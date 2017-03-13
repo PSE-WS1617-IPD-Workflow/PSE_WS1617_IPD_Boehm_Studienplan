@@ -71,13 +71,15 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
      */
     render: function () {
         this.$el.html(this.template({
-            semester: this.model
+            semester: this.model,
+            notDraggable: !this.isDraggable
         }));
         this.$el.droppable({
-            classes: {
+            /*classes: {
                 "ui-droppable-hover": "semester-drop-hover"
-            },
-      
+            },*/
+            over: this.overSemester.bind(this),
+            out: this.outSemester.bind(this),
             drop: this.onDrop.bind(this)
         });
         _.each(this.moduleElements, function (element) {
@@ -86,6 +88,32 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
         }.bind(this));
         this.delegateEvents();
         return null;
+    },
+    overSemester: function (event, ui) {
+        if(!ui || !ui.helper || !ui.helper.data("viewObject") ) {
+            return false;
+        }
+        var droppedElement = ui.helper.data("viewObject");
+        var droppedModel = droppedElement.model;
+        var notAllowed = false;
+        if (!(droppedModel.collection instanceof edu.kit.informatik.studyplan.client.model.plans.Semester)) {
+            if (this.model.collection.containsModule(droppedModel.get('id'))) {
+                notAllowed = true;
+            }
+        }
+        console.log(this.model.getCycleType());
+        console.log(droppedModel.get('cycle-type'));
+        if (typeof droppedModel.get('cycle-type')!== "undefined" && this.model.getCycleType()!=droppedModel.get('cycle-type') && droppedModel.get('cycle-type')!="both") {
+            notAllowed = true;
+        }
+        if (notAllowed) {
+            this.$el.addClass("semester-drop-hover notAllowed");
+        } else {
+            this.$el.addClass("semester-drop-hover allowed");
+        }
+    },
+    outSemester: function (event, ui) {
+        this.$el.removeClass("semester-drop-hover allowed notAllowed");
     },
     setRedBorder: function (id) {
         if (this.byId[id]) {
@@ -103,6 +131,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
      *@param{Object} ui
      */
     onDrop: function (event, ui) {
+        this.outSemester(event, ui);
         //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.Semester] drop event");
         if(!ui || !ui.helper || !ui.helper.data("viewObject") ) {
             return false;
@@ -128,19 +157,19 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Semester = Backbon
                 );
                 return false;
             }
-            // Do not insert module in wrong cycle type
-            if (this.model.getCycleType()!=droppedModel.get('cycle-type') && droppedModel.get('cycle-type')!="both") {
-                var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
-                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
-                    new edu.kit.informatik.studyplan.client.model.system.Notification({
-                        title: LM.getMessage('wrongSemesterTypeTitle'),
-                        text: LM.getMessage('wrongSemesterTypeText-'+this.model.getCycleType()),
-                        wasShown: false,
-                        type: "error"
-                    })
-                );
-                return false;
-            }
+        }
+        // Do not insert module in wrong cycle type
+        if (typeof droppedModel.get('cycle-type')!== "undefined" && this.model.getCycleType()!=droppedModel.get('cycle-type') && droppedModel.get('cycle-type')!="both") {
+            var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
+            edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
+                new edu.kit.informatik.studyplan.client.model.system.Notification({
+                    title: LM.getMessage('wrongSemesterTypeTitle'),
+                    text: LM.getMessage('wrongSemesterTypeText-'+this.model.getCycleType()),
+                    wasShown: false,
+                    type: "error"
+                })
+            );
+            return false;
         }
         if (droppedModel.collection !== this.model) {
             var oldCol = droppedModel.collection;
