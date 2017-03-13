@@ -35,7 +35,7 @@ LM.messages["de"]["planEctsSum"]="ECTS-Summe";
 LM.messages["de"]["only2PlansComparableTitle"]="Vergleich nicht möglich";
 LM.messages["de"]["only2PlansComparableText"]="Es können nur zwei Pläne gleichzeitig verglichen werden.";
 // Plan List Element
-LM.messages["de"]["deleteSelectedPlansButton"] = "Makierte Pläne Löschen";
+LM.messages["de"]["deleteSelectedPlansButton"] = "Markierte Pläne löschen";
 LM.messages["de"]["showPlan"] = "anzeigen";
 LM.messages["de"]["duplicatePlan"] = "duplizieren";
 LM.messages["de"]["deletePlan"] = "löschen";
