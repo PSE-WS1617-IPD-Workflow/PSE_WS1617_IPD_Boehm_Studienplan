@@ -14,7 +14,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
         "change #curPlanName": "rename",
         "click #generatePlan": "generate",
         "click #verifyPlan": "verify",
-        "click button.mainPageNavigation": "goHome"
+        "click button.mainPageNavigation": "goHome",
+        "click button.editNamePencil": "focusRename"
     },
     initialize: function (options) {
         "use strict";
@@ -145,5 +146,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                     );
             }
         })
+    },
+    focusRename: function () {
+        $("#curPlanName").focus();
     }
 });

@@ -1,5 +1,4 @@
 <div class="profileModuleFilterWrapper">
-    
     {{_.each(obj.buttons, function (item) { }}
     <button id="{{=item.id }}" class="filterMenuButton">
        {{=item.name }}
@@ -8,5 +7,6 @@
     <div class="collectivefilterSettings">
     </div>
 </div>
+<button class="resetFilters">&#x21ba; {{=obj.LM.getMessage("resetFilterButton")}} </button>
 
     

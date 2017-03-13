@@ -107,8 +107,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
     deletePlan: function (deleteAll) {
         "use strict";
         //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] deletePlan");
-        var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();        
-        if ((deleteAll) ? true : confirm(LM.getMessage("deletePlanPrompt"))) {
+        var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();      
+        if ((deleteAll === true) ? true : confirm(LM.getMessage("deletePlanPrompt"))) {
             edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
             this.plan.destroy({
                 success: function () {

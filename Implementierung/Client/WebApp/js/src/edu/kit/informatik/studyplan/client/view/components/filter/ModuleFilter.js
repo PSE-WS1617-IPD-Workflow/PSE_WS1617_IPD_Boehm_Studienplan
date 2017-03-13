@@ -22,6 +22,7 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
      * events triggered by HTML
      */
     events: {
+        "click .resetFilters": "resetFilters",
         "click .filterMenuButton": "showFilterSettings",
         "click .filterMenuButton_highlited_FilterButton": "showFilterSettings",
         "change .filterButton": "onChange"
@@ -113,6 +114,13 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     onChange: function () {
         "use strict";
         this.render();
+    },
+    resetFilters: function(event){
+        this.filterCollection.each(function (el) {
+            el.set("curValue", el.get("default-value"));
+        });
+        this.render();
+        $(".filterButton").click();
     },
     buildParam: function () {},
     /** displays the filter's settings in HTML*/
