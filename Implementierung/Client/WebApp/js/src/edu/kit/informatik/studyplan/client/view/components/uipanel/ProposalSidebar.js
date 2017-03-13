@@ -24,6 +24,9 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.ProposalSidebar = Ba
      */
     deletePlan: function () {
         "use strict";
+        if(!confirm(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("deleteProposal-sure"))){
+            return;
+        }
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate('/plans/' + this.model.get('id'), {
             trigger: true
         });

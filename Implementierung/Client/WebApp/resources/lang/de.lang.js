@@ -138,6 +138,7 @@ LM.messages["de"]["notFoundTitle"] = "Diese Seite existiert nicht.";
 // Proposed plan
 LM.messages["de"]["newNameRequest"] = "Wie soll der neue Plan heißen?";
 LM.messages["de"]["deleteProposal"] = "Plan verwerfen";
+LM.messages["de"]["deleteProposal-sure"] = "Sind Sie sicher, dass Sie diesen Plan verwerfen wollen?"
 LM.messages["de"]["saveProposal"] = "Plan ersetzen";
 LM.messages["de"]["saveAsProposal"] = "Unter anderem Namen speichern";
 LM.messages["de"]["proposal"] = "Vorschlag";
