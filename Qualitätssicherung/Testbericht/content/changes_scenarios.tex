@@ -1,0 +1,113 @@
+% scenario environment
+% #1: Scenario title
+\newenvironment{scenario}[1]{
+	\vspace{-\baselineskip}
+	\subsubsection*{#1} 
+	\vspace{-\baselineskip}
+	\begin{enumerate}[nosep]
+}{
+	\end{enumerate}
+}
+
+% scenario* environment
+% #1: Scenario title
+% #2: Initial description
+\newenvironment{scenario*}[2]{
+	\vspace{-\baselineskip}
+	\subsubsection*{#1} \vspace{-\baselineskip}
+	\hspace{0pt}#2  \vspace{-\baselineskip}
+	\begin{enumerate}[nosep]
+}{
+	\end{enumerate}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\FloatBarrier
+\subsection{Geänderte Testszenarien}
+
+Im Folgenden eine Auflistung der konsequenterweise ebenfalls angepassten Testszenarien.
+
+\begin{scenario}{Erststart mit „halbherziger Bedienung“}
+	\item A10: Erstanmeldung (ohne Angabe bereits bestandener {Modul})
+	\item A50: Neuen Studienplan anlegen
+	\item A220: Studienplan auf Korrektheit überprüfen – Ergebnis „fehlerhaft“ (da unvollständig)
+	\item A230: Studienplan vervollständigen lassen mit anschließendem Verwerfen
+	\item A57: Schließen der Studienplan-Ansicht
+	\item A80: Studienplan löschen 
+	\item A30: Logout
+\end{scenario}
+
+\begin{scenario}{Einfache Vervollständigung}
+	\item A20: Login
+	\item A40: Profil bearbeiten – erste zwei Semester anschließend belegt
+	\item A50: Neuen Studienplan anlegen
+	\item A230: Studienplan vervollständigen lassen mit anschließendem Übernehmen des {Studienplans}
+	\item A60: Studienplan umbenennen 
+	\item A57: Schließen der Studienplan-Ansicht
+	\item A85: Studienplan exportieren
+	\item A30: Logout
+\end{scenario}
+
+\begin{scenario*}{Bearbeitung eines Studienplans}
+	{{Nutzer} ist bereits eingeloggt und hat mind. einen {Studienplan} angelegt.}
+	\item A55: Studienplan anzeigen
+	\item A110: Module filtern 
+	\item A130: Modulinfo anzeigen und wieder schließen
+	\item A140: Modul einfügen
+	\item A150: Modul löschen
+	\item A160: Modul verschieben
+	\item A160: Modul negativ bewerten
+	\item A180: Modul positiv bewerten (selbes {Modul} – es ist dann positiv bewertet) 
+	\item A140: Modul einfügen
+	\item A57: Schließen der Studienplan-Ansicht
+\end{scenario*}
+
+\begin{scenario*}{Profil bearbeiten}
+	{{Nutzer} ist bereits eingeloggt und hat mind. einen {Studienplan} angelegt.}
+	\item A55: Studienplan anzeigen
+	\item A40: Profil bearbeiten – dabei Änderung der Semester-Belegung
+	\item Anschließend sollte die Änderung im Studienplan gezeigt werden.
+\end{scenario*}
+
+\begin{scenario}{Vervollständigung mit mehreren Alternativen}
+	\item A20: Login
+	\item A50: Neuen Studienplan anlegen
+	\item A110: Module filtern
+	\item A140: Modul einfügen
+	\item Schritte 3–4 mehrmals wiederholen, sodass Abhängigkeitsfehler vorhanden sind und der {Studienplan} noch unvollständig ist
+	\item A220: Studienplan auf Korrektheit überprüfen: Es werden Abhängigkeitsfehler gemeldet
+	\item Mittels \enquote{A150: Modul löschen} und \enquote{A160: Modul verschieben} Abhängigkeitsfehler beheben
+	\item A220: Studienplan auf Korrektheit überprüfen: Der Studienplan ist unvollständig
+	\item A230: Studienplan vervollständigen lassen mit anschließendem Speichern unter neuem Namen
+	\item A57: Schließen der Studienplan-Ansicht
+	\item A55: Studienplan anzeigen (den in Schritt 2 erstellten Studienplan)
+	\item A230: Studienplan vervollständigen lassen mit anderen Zielkriterien als in Schritt 9 und anschließendem Speichern unter neuem Namen
+	\item A57: Schließen der Studienplan-Ansicht
+\end{scenario}
+
+\begin{scenario}{Studienpläne duplizieren und löschen}
+	\item A20: Login
+	\item A50: Neuen Studienplan anlegen
+	\item A57: Schließen der Studienplan-Ansicht
+	\item A70: Studienplan duplizieren
+	\item Mehrmaliges Wiederholen von Schritt 4.
+	\item A90: Mehrere Studienpläne löschen: Alle Studienpläne löschen.
+\end{scenario}
+
+\subsubsection*{Semester"=Zeilen anpassen}
+\vspace{-\baselineskip}
+Entfällt. 
+
+\subsubsection*{Testergebnisse}
+
+\begin{longtable}{| >{\hspace{0pt}} p{.73\textwidth} | >{\hspace{0pt}} p{.20\textwidth} |}
+	\hline
+	\textbf{Testszenario} & \textbf{Status} \\ 
+	\hhline{|=|=|}  
+	\endfirsthead
+	\endhead
+	%%
+	& ERFOLGREICH \\
+	\hhline{|=|=|}
+\end{longtable}
