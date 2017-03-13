@@ -56,7 +56,7 @@ LM.messages["de"]["verificationFailTitle"] = "Verifikation fehlgeschlagen!";
 LM.messages["de"]["verificationFailText"] = "Der Studienplan wurde überprüft und ist nicht korrekt. Module, bei denen Voraussetzungen nicht erfüllt sind, wurden rot markiert.";
 LM.messages["de"]["verificationFieldDescription"] = "Sie haben in folgenden Bereichen die ECTS-Mindestzahl unterschritten: ";
 LM.messages["de"]["verificationGroupDescription"] = "Sie haben in folgenden Bereichen zu viele/zu wenig Module ausgewählt: ";
-LM.messages["de"]["verificationCompulsoryDescription"] = "Sie müssen folgende Module zwingend hören: ";
+LM.messages["de"]["verificationCompulsoryDescription"] = "Sie müssen folgende Module zwingend belegen: ";
 LM.messages["de"]["OK"] = "OK";
 LM.messages["de"]["changeSavedTitle"] = "Änderung gespeichert";
 LM.messages["de"]["changeSavedText"] = "Die Änderung wurde erfolgreich gespeichert.";
@@ -65,11 +65,11 @@ LM.messages["de"]["nameTooLongText"] = "Der Name darf höchstens 100 Zeichen lan
 
 
 LM.messages["de"]["invalidStateTitle"] = "Authentifizierungsfehler";
-LM.messages["de"]["invalidStateText"] = "Bitte versuchen Sie die Anmeldung erneut.";
+LM.messages["de"]["invalidStateText"] = "Bitte versuchen Sie erneut, sich anzumelden.";
 LM.messages["de"]["authErrorinvalid_requestTitle"] = "Authentifizierungsfehler";
-LM.messages["de"]["authErrorinvalid_requestText"] = "Es ist ein Systemfehler aufgetreten. Nitte kontaktieren Sie den Administrator.";
+LM.messages["de"]["authErrorinvalid_requestText"] = "Es ist ein Systemfehler aufgetreten. Bitte kontaktieren Sie den Administrator.";
 LM.messages["de"]["authErrorunsupported_response_typeTitle"] = "Authentifizierungsfehler";
-LM.messages["de"]["authErrorunsupported_response_typeText"] = "Es ist ein Systemfehler aufgetreten. Nitte kontaktieren Sie den Administrator.";
+LM.messages["de"]["authErrorunsupported_response_typeText"] = "Es ist ein Systemfehler aufgetreten. Bitte kontaktieren Sie den Administrator.";
 LM.messages["de"]["authErrorinvalid_scopeTitle"] = "Authentifizierungsfehler";
 LM.messages["de"]["authErrorinvalid_scopeText"] = "Es ist ein Systemfehler aufgetreten. Bitte kontaktieren Sie den Administrator.";
 LM.messages["de"]["authErrorserver_errorTitle"] = "Authentifizierungsfehler";
@@ -90,7 +90,7 @@ LM.messages["de"]["generationExplanation3"] = "Hier können Sie noch weitere Ein
 LM.messages["de"]["generationEctsQuestion"] = "Wie viele ECTS-Punkte möchten Sie mindestestens und maximal pro Semester erreichen?";
 LM.messages["de"]["generationSemesterQuestion"] = "Wie viele Semester möchten Sie mindestens und maximal studieren?";
 LM.messages["de"]["generationChooseFunction"] = "Studienziel:";
-LM.messages["de"]["GET-plans-proposal-connectionErrorText-400"] = "Für diese Einstellungen konnte kein Plan erstellt werden";
+LM.messages["de"]["GET-plans-proposal-connectionErrorText-400"] = "Für diese Einstellungen konnte kein Plan erstellt werden.";
 
 
 //RadioSlider
@@ -126,6 +126,7 @@ LM.messages["de"]["profileSavedText"] = "Das Profil wurde erfolgreich gespeicher
 
 
 LM.messages["de"]["applyFilterButton"] = "Filter anwenden";
+LM.messages["de"]["resetFilterButton"] = "Filter zurücksetzen";
 LM.messages["de"]["mainMenuButton"] = "Hauptmenü";
 
 LM.messages["de"]["deleteUser"] = "Konto löschen";
@@ -241,10 +242,10 @@ LM.messages["de"]["semesterTypeName-WT"] = "Wintersemester";
 LM.messages["de"]["semesterTypeName-ST"] = "Sommersemester";
 
 // Plan
-LM.messages["de"]["semesterLimit"] = "Leider ist es nicht möglich länger als 200 Semester zu studieren - aber Glückwunsch dazu überhaupt soweit gekommen zu sein!"
+LM.messages["de"]["semesterLimit"] = "Leider ist es nicht möglich, länger als 200 Semester zu studieren – aber Glückwunsch dazu, überhaupt soweit gekommen zu sein!"
 
 // Main Page
-LM.messages["de"]["mainPageText"] = "Auf dieser Seite finden Sie Ihre Studienpläne.<br>Durch Klick auf den Button in der rechten unteren Ecke können Sie neue Studienpläne erstellen. Unter \"Profil\" können Sie weitere bestandene Module hinzufügen.";
+LM.messages["de"]["mainPageText"] = "Auf dieser Seite finden Sie Ihre Studienpläne.<br>Durch Klick auf den Button in der rechten unteren Ecke können Sie neue Studienpläne erstellen. Unter „Profil“ können Sie weitere bestandene Module hinzufügen.";
 
 
 /**
@@ -262,25 +263,25 @@ LM.messages["de"]["TOUR-done"] ="Fertig";
 //LM.messages["de"]["TOUR-."] = "";
 //LM.messages["de"]["TOUR-MainPage."] = "";
 LM.messages["de"]["TOUR-MainPage.welcome"] = "Herzlich willkommen, dies ist die Hauptseite der Anwendung, mit welcher Sie Ihre Pläne verwalten können.";
-LM.messages["de"]["TOUR-MainPage.table"] = "Hier sehen Sie Ihre erstellten Studienpläne und können Sie bearbeiten, duplizieren, löschen und exportieren.";
-LM.messages["de"]["TOUR-MainPage.profileLink"] = "Mit diesem Link gelangen Sie zu ihrem Profil.<br> Sie können dort Ihre bestandenen Leistungen eintragen oder ihr Konto Löschen"
+LM.messages["de"]["TOUR-MainPage.table"] = "Hier sehen Sie Ihre erstellten Studienpläne und können sie bearbeiten, duplizieren, löschen und exportieren.";
+LM.messages["de"]["TOUR-MainPage.profileLink"] = "Mit diesem Link gelangen Sie zu ihrem Profil.<br> Sie können dort Ihre bestandenen Leistungen eintragen oder Ihr Konto Löschen"
 LM.messages["de"]["TOUR-MainPage.mainPageAddPlan"] = "Hier können Sie neue Pläne hinzufügen.";
 
 //LM.messages["de"]["TOUR-ProfilePage."] = "";
 LM.messages["de"]["TOUR-ProfilePage.welcome"] = "Auf dieser Seite können Sie Ihre bestandenen Module bearbeiten oder Ihr Konto löschen.";
-LM.messages["de"]["TOUR-ProfilePage.plan"] = "Durch Drag-and-Drop können Sie bestandene Module hinzufügen";
+LM.messages["de"]["TOUR-ProfilePage.plan"] = "Durch Drag-and-Drop können Sie bestandene Module hinzufügen.";
 LM.messages["de"]["TOUR-ProfilePage.moduleFilter"] = "Hier können Sie die angezeigten Module filtern.";
 LM.messages["de"]["TOUR-ProfilePage.moduleList"] = "Hier werden Ihnen Module angezeigt, die Sie durch Drag-and-Drop als bestanden hinzufügen können.";
-LM.messages["de"]["TOUR-ProfilePage.deleteProfile"] = "Mit diesem Button können Sie Ihr Konto löschen, Es werden alle über Sie gespeicherten Daten gelöscht.";
-LM.messages["de"]["TOUR-ProfilePage.save"] = "Mit diesem Button werden alle Änderungen die Sie auf dieser Seite vorgenommen haben gespeichert.";
+LM.messages["de"]["TOUR-ProfilePage.deleteProfile"] = "Mit diesem Button können Sie Ihr Konto löschen, es werden alle über Sie erfassten Daten gelöscht.";
+LM.messages["de"]["TOUR-ProfilePage.save"] = "Mit diesem Button werden alle Änderungen, die Sie auf dieser Seite vorgenommen haben, gespeichert.";
 
 //LM.messages["de"]["TOUR-PlanEditPage."] = "";
-LM.messages["de"]["TOUR-PlanEditPage.welcome"] = "Auf dieser Seite können Sie Ihren Studienplan manuel bearbeiten.";
+LM.messages["de"]["TOUR-PlanEditPage.welcome"] = "Auf dieser Seite können Sie Ihren Studienplan manuell bearbeiten.";
 LM.messages["de"]["TOUR-PlanEditPage.editName"] = "Hier können Sie den Namen des Plans anpassen.";
 LM.messages["de"]["TOUR-PlanEditPage.plan"] = "Dies ist der eigentliche Plan: Durch Drag-and-Drop können Sie diesem Module hinzufügen";
-LM.messages["de"]["TOUR-PlanEditPage.addSemester"] = "Mit diesem Knopf können Sie Ihrem Studienplan weitere Semester hinzufügen";
-LM.messages["de"]["TOUR-PlanEditPage.moduleFilter"] = "Hier können Sie die angezeigten Module filtern, um jene zu finden, die Sie gerne hinzufügen würden.";
+LM.messages["de"]["TOUR-PlanEditPage.addSemester"] = "Mit diesem Button können Sie Ihrem Studienplan weitere Semester hinzufügen";
+LM.messages["de"]["TOUR-PlanEditPage.moduleFilter"] = "Hier können Sie die angezeigten Module filtern, um jene zu finden, die Sie gerne hinzufügen möchten.";
 LM.messages["de"]["TOUR-PlanEditPage.moduleList"] = "Hier werden Ihnen Module angezeigt, die Sie durch Drag-and-Drop dem Plan hinzufügen können.";
 LM.messages["de"]["TOUR-PlanEditPage.preferences"] = "Sie können Module auch positiv und negativ bewerten. Wenn Sie sich anschließend Ihren Plan vervollständigen lassen, werden diese Bewertungen berücksichtigt.";
 LM.messages["de"]["TOUR-PlanEditPage.verification"] = "Mit diesem Knopf können Sie Ihren Plan überprüfen lassen.<ul><li>Erfüllt er alle Anforderungen so ist das kleine Icon grün</li><li>Wurde er noch nicht überprüft ist das Icon gelb</li><li>Wurde er überprüft und es sind Fehler im Plan, so ist das Icon rot</li></ul>";
-LM.messages["de"]["TOUR-PlanEditPage.generation"] = "Wenn Sie wollen, dass das System Ihnen einen Vorschlag für die Vervollständigung des Plans macht, müssen Sie hier klicken.";
+LM.messages["de"]["TOUR-PlanEditPage.generation"] = "Wenn Sie wollen, dass das System Ihnen einen Vorschlag für die Vervollständigung des Plans macht, klicken Sie hier.";

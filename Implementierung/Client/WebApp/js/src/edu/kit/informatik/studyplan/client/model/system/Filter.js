@@ -18,9 +18,10 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
      */
     parse: function (response, options) {
         "use strict";
-        response["curValue"] = response["default-value"];
+        response["curValue"] = JSON.parse(JSON.stringify(response["default-value"]));
         if (response["specification"]["type"] === "list") {
             response["curValue"] = "none";
+            response["default-value"] = "none";
         }
         return response;
     },
