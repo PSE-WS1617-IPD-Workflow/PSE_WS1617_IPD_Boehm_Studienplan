@@ -15,11 +15,12 @@
 .proposalSidebarTitle {
     height: 50px;
     font-weight: bold;
-    background-color: #666666;
+    background-color: #cce0e0;
     
 }
 .proposalSidebarTitle label{    
-    margin-left: 20 px;
-    margin-top: 20px;
-    font-size: 13 px;    
+    margin-left: 20px;
+    font-size: 13px;
+    position: relative;
+    top: 20px;
 }
