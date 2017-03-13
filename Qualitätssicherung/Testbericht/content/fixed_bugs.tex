@@ -14,27 +14,27 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	%%
 	Expires\_in-Daten werden nicht SessionInformation gespeichert/verarbeitet & --- & --- \\
 	\hline
-	Modulinfo-Leiste zeigt nichts an und lässt sich nicht schließen. & ???, Schließen: Ein Event war nicht richtig registriert & ??? \\
+	Modulinfo-Leiste zeigt nichts an und lässt sich nicht schließen. & ???, Schließen: Ein Event war nicht richtig registriert; Keine Anzeige: Falsche Übergabe der Daten an Template & ??? --- \\
 	\hline
 	Module können in jedem beliebigen Turnus abgelegt werden & Client/Server validieren die Eingabe nicht & Validierung der Eingaben \\
 	\hline
 	Nutzer wird nach Löschen des Kontos nicht ausgeloggt & Fehlende/Fehlerhafte URI-Weiterleitung & --- \\
 	\hline
-	Beim Erstlogin kann ein Semester aus der Zukunft erstellt werden & ??? & Erstlogin-Wizard zeigt keine Semester aus der Zukunft mehr an \\
+	Beim Erstlogin kann ein Semester aus der Zukunft erstellt werden & Fehler beim dynamischen Erstellen der Auswahlmöglichkeiten auf Basis des aktuellen Datums & Erstlogin-Wizard zeigt keine Semester aus der Zukunft mehr an \\
 	\hline
-	Modulsuchleisten"=Scrollbar wird nach Filter-Anwendung zurückgesetzt & (Probleme beim Rendering) ??? & ??? \\
+	Modulsuchleisten"=Scrollbar wird nach Filter-Anwendung zurückgesetzt & Der Lade-Bildschirm führte automatisch zu einem neu-rendern der Seite & --- \\
 	\hline
 	Server akzeptiert Modulbelegungen in nicht-positive Semester & Fehlende Validierung der Eingabe & Range-Checks eingefügt \\
 	\hline
-	Der Kategorie-Filter kann nicht zurückgesetzt werden (?) & ??? & ??? \\
+	Der Kategorie-Filter kann nicht verändert werden & Bei neu-rendern des Felds wurde das aktuell ausgewählte Feld nicht berücksichtigt & Aktuell ausgewähltes Feld bei rendering als ausgewählt setzen. \\
 	\hline
 	Bestandene Module erscheinen nach Verifizierung fehlerhaft, sollten aber ignoriert werden & SemesterLinkConstraint.isValid() berücksichtigte abgeschlossene Module nicht & Wenn beide Module im Plan vorhanden und mind. eines von beiden bestanden ist, wird \texttt{\textbf{true}} zurückgegeben. \\
 	\hline
-	\#152 WT/ST restriction ? Hatten wir das schon? & & \\
+	WS/SS Sperre & Es wurde nicht berücksichtigt, dass manche Module nur im Winter- bzw. im Sommersemester gehört werden dürfen. & \\
 	\hline
 	Keine Zielfunktionen im Generierungs-Wizard & FunctionDto-Klasse war nicht statisch und konnte daher nicht serialisiert werden & + \texttt{static} \\
 	\hline
-	Client rendert Ansicht zu häufig (? \#161)  & --- & Render-Aufrufe überprüft  \\
+	Client rendert Ansicht zu häufig  & --- & Render-Aufrufe überprüft  \\
 	\hline
 	Server akzeptiert Erstellung eines namenlosen Plans & Fehlernde Eingabevalidierung & Validierung hinzugefügt. \\
 	\hline
@@ -44,7 +44,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Beim Neuladen der Seitenleiste wird nicht nur dort ein Ladesymbol angezeigt & --- & Neues Ladesymbol erstellt und verdrahtet \\
 	\hline
-	Client zeigt zu viele Notifications an & ??? & ??? \\
+	Client zeigt zu viele Benachrichtigungen an & Benachrichtigungen werden pro Anfrage ausgegeben. Deshalb werden bei mehreren (ähnlichen) aufeinanderfolgenden Anfragen die Benachrichtigungen mehrfach angezeigt. & Sperre: Jede Benachrichtigung darf nicht häufiger als alle 2 Sekunden gezeigt werden. \\
 	\hline
 	Filter sind nach einmaligem Setzen nicht mehr änderbar & Fehlende Ausnutzung der JS-Typumwandlung bei Vergleichen, fehlerhafter Bezeichner  & --- \\
 	\hline
@@ -56,7 +56,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Fehlermeldungen haben wenig Aussagekraft & Gab nur wenige Standardmeldungen & Verfassen von genaueren, situationsspezifischeren Fehlermeldungen und Einbauen in den Client \\
 	\hline
-	Nach Klick auf „Konto speichern“ friert der Client ein & ??? & ??? \\
+	Nach Klick auf „Konto speichern“ friert der Client ein & Fehlendes Aufheben des Lade-Bildschirms & --- \\
 	\hline
 	Client sendet beim Profil-Speichern nur neu hinzugefügte Module an den Server & --- & --- \\
 	\hline
@@ -64,7 +64,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Modulpräferenzen können nicht im Client zurückgesetzt werden & Fehlerhafter Eventhandler & --- \\
 	\hline
-	Modul-Constraints werden in der Seitenleiste mehrfach angezeigt & ??? & ??? \\
+	Modul-Constraints werden in der Seitenleiste mehrfach angezeigt & Fehlendes Zurücksetzen der Liste der Modul Constraints im View (hierduch wird das Modul beim Rendern wieder und wieder hinzugefügt) & --- \\
 	\hline
 	Verifizierungs-Ergebnis-Popup nicht immer im Vordergrund (überdeckbar) & Fehlerhafte z-Indizes & --- \\
 	\hline
@@ -90,9 +90,9 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Modulinfo in der Profilansicht/Generierungsergebnis"=Ansicht nicht aufrufbar & Aufrufen von plans/Plan-ID/modules mit Plan-ID = undefined & Fallback eingebaut \\
 	\hline
-	Generierungsergebnis wird nicht angezeigt & ???  & ??? \\
+	Generierungsergebnis wird nicht angezeigt & --  & --- \\
 	\hline
-	Generierungsergebnis-Buttons sind ohne Effekt & ???  & ??? \\
+	Generierungsergebnis-Buttons sind ohne Effekt & Kleiner Fehler  & --- \\
 	\hline
 	Generierung verwendet nur max"=semester"=ects"=Parameter & --- & Beachtung weiterer Parameter eingebaut \\
 	\hline
