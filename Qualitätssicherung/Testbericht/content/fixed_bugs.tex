@@ -12,7 +12,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\endfirsthead
 	\endhead
 	%%
-	Expires\_in-Daten werden nicht SessionInformation gespeichert/verarbeitet & --- & --- \\
+	expires\_in-Daten werden nicht in SessionInformation gespeichert/verarbeitet & --- & --- \\
 	\hline
 	Modulinfo-Leiste zeigt nichts an und lässt sich nicht schließen. & Schließen: Ein Event war nicht richtig registriert; Keine Anzeige: Falsche Übergabe der Daten an Template & --- \\
 	\hline
@@ -26,25 +26,25 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Server akzeptiert Modulbelegungen in nicht-positive Semester & Fehlende Validierung der Eingabe & Range-Checks eingefügt \\
 	\hline
-	Der Kategorie-Filter kann nicht verändert werden & Bei neu-rendern des Felds wurde das aktuell ausgewählte Feld nicht berücksichtigt & Aktuell ausgewähltes Feld bei rendering als ausgewählt setzen. \\
+	Der Kategorie-Filter kann nicht verändert werden & Bei Neu-Rendern des Felds wurde das aktuell ausgewählte Feld nicht berücksichtigt & Aktuell ausgewähltes Feld bei Rendering als ausgewählt setzen. \\
 	\hline
 	Bestandene Module erscheinen nach Verifizierung fehlerhaft, sollten aber ignoriert werden & SemesterLinkConstraint.isValid() berücksichtigte abgeschlossene Module nicht & Wenn beide Module im Plan vorhanden und mind. eines von beiden bestanden ist, wird \texttt{\textbf{true}} zurückgegeben. \\
 	\hline
-	WS/SS Sperre & Es wurde nicht berücksichtigt, dass manche Module nur im Winter- bzw. im Sommersemester gehört werden dürfen. & \\
+	WS-/SS-Sperre & Es wurde nicht berücksichtigt, dass manche Module nur im Winter- bzw. im Sommersemester gehört werden dürfen. & \\
 	\hline
 	Keine Zielfunktionen im Generierungs-Wizard & FunctionDto-Klasse war nicht statisch und konnte daher nicht serialisiert werden & + \texttt{static} \\
 	\hline
 	Client rendert Ansicht zu häufig  & --- & Render-Aufrufe überprüft  \\
 	\hline
-	Server akzeptiert Erstellung eines namenlosen Plans & Fehlernde Eingabevalidierung & Validierung hinzugefügt. \\
+	Server akzeptiert Erstellung eines namenlosen Plans & Fehlende Eingabevalidierung & Validierung hinzugefügt. \\
 	\hline
 	Plan-Duplizierung schlägt fehl & Bei Clientanfrage fehlt Modulliste, dem Server fehlt Validierung & Modulliste wird mitgesendet; Plan nicht einfach aus dem Request in die DB gespeichert \\
 	\hline
-	Planansicht verzählt sich bei Semesternummer & Fehlende „< 0“-Abfrage,  unerwartetes Verhalten bei der Längenmessung von JS-Arrays & --- \\
+	Planansicht verzählt sich bei Semesternummer & Fehlende „< 0“"=Abfrage,  unerwartetes Verhalten bei der Längenmessung von JS-Arrays & --- \\
 	\hline
 	Beim Neuladen der Seitenleiste wird nicht nur dort ein Ladesymbol angezeigt & --- & Neues Ladesymbol erstellt und verdrahtet \\
 	\hline
-	Client zeigt zu viele Benachrichtigungen an & Benachrichtigungen werden pro Anfrage ausgegeben. Deshalb werden bei mehreren (ähnlichen) aufeinanderfolgenden Anfragen die Benachrichtigungen mehrfach angezeigt. & Sperre: Jede Benachrichtigung darf nicht häufiger als alle 2 Sekunden gezeigt werden. \\
+	Client zeigt zu viele Benachrichtigungen an & Benachrichtigungen werden pro Anfrage ausgegeben. Deshalb werden bei mehreren (ähnlichen) aufeinanderfolgenden Anfragen die Benachrichtigungen mehrfach angezeigt. & Sperre: Jede Benachrichtigung darf nicht häufiger als alle zwei Sekunden gezeigt werden. \\
 	\hline
 	Filter sind nach einmaligem Setzen nicht mehr änderbar & Fehlende Ausnutzung der JS-Typumwandlung bei Vergleichen, fehlerhafter Bezeichner  & --- \\
 	\hline
@@ -64,7 +64,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Modulpräferenzen können nicht im Client zurückgesetzt werden & Fehlerhafter Eventhandler & --- \\
 	\hline
-	Modul-Constraints werden in der Seitenleiste mehrfach angezeigt & Fehlendes Zurücksetzen der Liste der Modul Constraints im View (hierduch wird das Modul beim Rendern wieder und wieder hinzugefügt) & --- \\
+	Modul-Constraints werden in der Seitenleiste mehrfach angezeigt & Fehlendes Zurücksetzen der Liste der Modul"=Constraints im View (hierduch wird das Modul beim Rendern wieder und wieder hinzugefügt) & --- \\
 	\hline
 	Verifizierungs-Ergebnis-Popup nicht immer im Vordergrund (überdeckbar) & Fehlerhafte z-Indizes & --- \\
 	\hline
@@ -74,15 +74,11 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Moduleinfügen löst keinen sichtbaren Verlust des Verifikationsstatus aus & Fehlendes UI-Refreshing & --- \\
 	\hline
-	& & \\
-	\hline
 	Modulinfo: Constraints werden mit falscher Richtung angezeigt & Fehlende Weiterverarbeitung der vom Server gelieferten Constraints & --- \\
 	\hline
 	Modulboxen nicht vollständig anklickbar & ---  & --- \\
 	\hline
 	Fehlende Semesterbegrenzung nach oben & --- & Festgelegt auf max. 200 \\
-	\hline
-	& & \\
 	\hline
 	Durch Verifizierung ehemals fehlerhaft markierte Module verlieren Status erst nach Neuladen und erneutem Verifizieren & Fehlerhaftes Event- und Rendering-Triggern & --- \\
 	\hline
@@ -90,7 +86,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Modulinfo in der Profilansicht/Generierungsergebnis"=Ansicht nicht aufrufbar & Aufrufen von plans/Plan-ID/modules mit Plan-ID = undefined & Fallback eingebaut \\
 	\hline
-	Generierungsergebnis wird nicht angezeigt & --  & --- \\
+	Generierungsergebnis wird nicht angezeigt & ---  & --- \\
 	\hline
 	Generierungsergebnis-Buttons sind ohne Effekt & Kleiner Fehler  & --- \\
 	\hline
@@ -102,17 +98,24 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Bei Duplizierung eines Plans wird erst nach Neuladen korrekte ECTS-Summe angezeigt & Serialisierungsfehler, falscher Inhalt wurde serialisiert & --- \\
 	\hline
-	Nach dem Umbenennen eines Plans verschwinden alle platzierten Module & Server serialisiert ein leeres module-Attribut & Serialisierung des module-Attributs entfernt. \\
+	Nach dem Umbenennen eines Plans verschwinden alle platzierten Module & Server serialisiert ein leeres modules-Attribut & Serialisierung des modules-Attributs entfernt. \\
 	\hline
 	Präferieren von Modulen erst nach zweimaligem Klick möglich & Fehlender null-Check & --- \\
 	\hline
-	& (noch uv.) ... tbc. & \\
+	Übernommenes Generierungsergebnis hat keinen Verifikationsstatus & PUT /plans lässt kein client-seitiges Setzen des Status zu & Aufrufen von GET /plans/id/verify \\
 	\hline
-	
-	
-	
-	
-	& & \\
+	Wintersemester werden mit nur einer Jahreszahl dargestellt & --- & Wintersemester werden – wie gewohnt – mit „WS XX/YY“ dargestellt \\
 	\hline
+	Präferenzen/Bestandene Module löschen zeigt nur temporäre Wirkung & Server vergisst gelöschte Modulpräferenzen/bestanene Module (Hibernate"=Problem) & In der Hibernate"=Annotation zu den Planpräferenzen/bestandenen Modulen \texttt{orphanRemoal = true} setzen \\
+	\hline
+	In Generierungs-Ergebnis-Ansicht können Module verschoben werden, Semesterzeilen hinzugefügt werden etc. & Fehlende Sperre & --- \\
+	\hline
+	Plan-Duplizierung lässt Client einfrieren & Parsing-Probleme, welche verhindern, dass nach dem GET"=Request keine POST- und PUT"=Reuests gesendet werden & --- \\
+	\hline
+	Bei mehrfachem Klick auf „Überprüfen“ erscheint das Ergebnisfenster mehrfach & fehlende Überprüfung & --- \\
+	\hline
+	In Modulinfo-Leiste werden Constraint-Module viel zu grob angezeigt & fehlendes CSS (u.a. fehlender max"=height"=Parameter) & --- \\
+	\hline
+	Diverse Rechtschreibfehler in den UI-Texten & erhöhter Koffein"=Spiegel und/oder Schlafmangel & (Wieder-)Einschalten des Hirns \\
 	\hhline{|=|=|=|}
 \end{longtable}
