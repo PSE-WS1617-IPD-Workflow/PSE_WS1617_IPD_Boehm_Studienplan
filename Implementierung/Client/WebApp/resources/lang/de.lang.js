@@ -266,6 +266,7 @@ LM.messages["de"]["TOUR-MainPage.welcome"] = "Herzlich willkommen, dies ist die 
 LM.messages["de"]["TOUR-MainPage.table"] = "Hier sehen Sie Ihre erstellten Studienpläne und können sie bearbeiten, duplizieren, löschen und exportieren.";
 LM.messages["de"]["TOUR-MainPage.profileLink"] = "Mit diesem Link gelangen Sie zu ihrem Profil.<br> Sie können dort Ihre bestandenen Leistungen eintragen oder Ihr Konto Löschen"
 LM.messages["de"]["TOUR-MainPage.mainPageAddPlan"] = "Hier können Sie neue Pläne hinzufügen.";
+LM.messages["de"]["TOUR-MainPage.help"] = "Hilfe auf jeder Seite erhalten Sie hier.";
 
 //LM.messages["de"]["TOUR-ProfilePage."] = "";
 LM.messages["de"]["TOUR-ProfilePage.welcome"] = "Auf dieser Seite können Sie Ihre bestandenen Module bearbeiten oder Ihr Konto löschen.";

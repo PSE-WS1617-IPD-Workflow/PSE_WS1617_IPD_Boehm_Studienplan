@@ -45,6 +45,16 @@
           attachTo: ".mainPageAddPlan right",
           buttons: [
             {
+              text: LM.getMessage("TOUR-next"),
+              action: tour.next
+            }
+          ]
+        });
+        tour.addStep('step5', {
+          text: LM.getMessage("TOUR-MainPage.help"),
+          attachTo: ".tour top",
+          buttons: [
+            {
               text: LM.getMessage("TOUR-done"),
               action: tour.next
             }
