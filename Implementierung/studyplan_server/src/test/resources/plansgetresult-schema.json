@@ -1,0 +1,20 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "PlansGetResult",
+	"type": "object",
+	"properties": {
+		"plans" : {
+			"type" : "array",
+			"items" : {
+				"type" : "object",
+				"properties" : {
+					"id" : {"type" : "string"},
+					"status" : {"enum" : ["valid", "invalid", "not-verified"]},
+					"creditpoints-sum" : {"type" : "number", "minimum" : 0},
+					"name" : {"type" : "string"}
+				},
+				"required" : ["id", "status", "creditpoints-sum", "name"]
+			}
+		}
+	}
+}
