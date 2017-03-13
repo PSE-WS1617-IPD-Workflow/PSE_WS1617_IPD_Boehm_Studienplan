@@ -11,7 +11,7 @@
     {{ if(obj.isRemovable) { }}
     <button class="deleteButton"></button>
     {{ } }}
-    {{ if (obj.isPreferencable) { }}
+    {{ if (obj.isPreferencable && !obj.module.get('passed')) { }}
     <div class="preferenceButtonBox {{=obj.module.get('preference').get('preference')}}">
       <button class="preferenceButtonUp"></button>
       <button class="preferenceButtonDown"></button>

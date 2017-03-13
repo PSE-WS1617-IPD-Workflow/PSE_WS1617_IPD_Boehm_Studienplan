@@ -263,6 +263,7 @@ LM.messages["de"]["TOUR-done"] ="Fertig";
 //LM.messages["de"]["TOUR-MainPage."] = "";
 LM.messages["de"]["TOUR-MainPage.welcome"] = "Herzlich willkommen, dies ist die Hauptseite der Anwendung, mit welcher Sie Ihre Pläne verwalten können.";
 LM.messages["de"]["TOUR-MainPage.table"] = "Hier sehen Sie Ihre erstellten Studienpläne und können Sie bearbeiten, duplizieren, löschen und exportieren.";
+LM.messages["de"]["TOUR-MainPage.profileLink"] = "Mit diesem Link gelangen Sie zu ihrem Profil.<br> Sie können dort Ihre bestandenen Leistungen eintragen oder ihr Konto Löschen"
 LM.messages["de"]["TOUR-MainPage.mainPageAddPlan"] = "Hier können Sie neue Pläne hinzufügen.";
 
 //LM.messages["de"]["TOUR-ProfilePage."] = "";
