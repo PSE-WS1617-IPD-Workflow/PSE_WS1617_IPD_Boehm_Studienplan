@@ -28,7 +28,7 @@
 
 Im Folgenden eine Auflistung der konsequenterweise ebenfalls angepassten Testszenarien.
 
-\begin{scenario}{Erststart mit „halbherziger Bedienung“}
+\begin{scenario}{T1: Erststart mit „halbherziger Bedienung“}
 	\item A10: Erstanmeldung (ohne Angabe bereits bestandener {Module})
 	\item A50: Neuen Studienplan anlegen
 	\item A220: Studienplan auf Korrektheit überprüfen – Ergebnis „fehlerhaft“ (da unvollständig)
@@ -38,7 +38,7 @@ Im Folgenden eine Auflistung der konsequenterweise ebenfalls angepassten Testsze
 	\item A30: Logout
 \end{scenario}
 
-\begin{scenario}{Einfache Vervollständigung}
+\begin{scenario}{T2: Einfache Vervollständigung}
 	\item A20: Login
 	\item A40: Profil bearbeiten – erste zwei Semester anschließend belegt
 	\item A50: Neuen Studienplan anlegen
@@ -49,7 +49,7 @@ Im Folgenden eine Auflistung der konsequenterweise ebenfalls angepassten Testsze
 	\item A30: Logout
 \end{scenario}
 
-\begin{scenario*}{Bearbeitung eines Studienplans}
+\begin{scenario*}{T3: Bearbeitung eines Studienplans}
 	{{Nutzer} ist bereits eingeloggt und hat mind. einen {Studienplan} angelegt.}
 	\item A55: Studienplan anzeigen
 	\item A110: Module filtern 
@@ -63,14 +63,14 @@ Im Folgenden eine Auflistung der konsequenterweise ebenfalls angepassten Testsze
 	\item A57: Schließen der Studienplan-Ansicht
 \end{scenario*}
 
-\begin{scenario*}{Profil bearbeiten}
+\begin{scenario*}{T4: Profil bearbeiten}
 	{{Nutzer} ist bereits eingeloggt und hat mind. einen {Studienplan} angelegt.}
 	\item A55: Studienplan anzeigen
 	\item A40: Profil bearbeiten – dabei Änderung der Semester-Belegung
 	\item Anschließend sollte die Änderung im Studienplan gezeigt werden.
 \end{scenario*}
 
-\begin{scenario}{Vervollständigung mit mehreren Alternativen}
+\begin{scenario}{T5: Vervollständigung mit mehreren Alternativen}
 	\item A20: Login
 	\item A50: Neuen Studienplan anlegen
 	\item A110: Module filtern
@@ -86,7 +86,7 @@ Im Folgenden eine Auflistung der konsequenterweise ebenfalls angepassten Testsze
 	\item A57: Schließen der Studienplan-Ansicht
 \end{scenario}
 
-\begin{scenario}{Studienpläne duplizieren und löschen}
+\begin{scenario}{T6: Studienpläne duplizieren und löschen}
 	\item A20: Login
 	\item A50: Neuen Studienplan anlegen
 	\item A57: Schließen der Studienplan-Ansicht
@@ -95,7 +95,7 @@ Im Folgenden eine Auflistung der konsequenterweise ebenfalls angepassten Testsze
 	\item A90: Mehrere Studienpläne löschen: Alle Studienpläne löschen.
 \end{scenario}
 
-\subsubsection*{Semester"=Zeilen anpassen}
+\subsubsection*{T7: Semester"=Zeilen anpassen}
 \vspace{-\baselineskip}
 Entfällt. 
 
@@ -108,6 +108,16 @@ Entfällt.
 	\endfirsthead
 	\endhead
 	%%
-	& ERFOLGREICH \\
+	T1: Erststart mit „halbherziger Bedienung“ & ERFOLGREICH \\
+	\hline
+	T2: Einfache Vervollständigung & ERFOLGREICH \\
+	\hline
+	T3: Bearbeitung eines Studienplans & ERFOLGREICH \\
+	\hline
+	T4: Profil bearbeiten & ERFOLGREICH \\
+	\hline
+	T5: Vervollständigung mit mehreren Alternativen & ERFOLGREICH \\
+	\hline
+	T6: Studienpläne duplizieren und löschen & ERFOLGREICH \\
 	\hhline{|=|=|}
 \end{longtable}

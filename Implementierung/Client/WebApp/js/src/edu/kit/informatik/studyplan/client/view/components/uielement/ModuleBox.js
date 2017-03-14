@@ -49,7 +49,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
                 var preference =this.model.get('preference');
             preference.set('preference', '');
         }
-        preference.save();
+        preference.save(null);
     },
     /** 
      * Method called when downvoted
@@ -66,7 +66,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
 		var preference = this.model.get('preference');
 		preference.set('preference','');
 	}
-        preference.save();
+        preference.save(null);
     },
     /**
      * Method which sets a red border to the object (for verification result)

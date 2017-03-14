@@ -126,8 +126,6 @@ public abstract class Node {
 		this.generator = generator;
 		this.module = module;
 		this.plan = plan;
-		// TODO set semester?
-		// Check if the module in in the passedModules list of the user
 		for (ModuleEntry m : plan.getUser().getPassedModules()) {
 			if (module.getIdentifier() == m.getModule().getIdentifier()) {
 				isPassed = true;
@@ -456,10 +454,8 @@ public abstract class Node {
 		 * previous semester.
 		 */
 		for (Node child : getPrerequisiteChildren()) {
-			if (child.getSemester() >= i) {
+			if (child.getSemester() != 0 && child.getSemester() <= i) {
 				return false;
-//			} else if (semesterAllocation[sorted.indexOf(child)] <= i) {
-//				return false;
 			}
 		}
 		return true;
@@ -498,7 +494,7 @@ public abstract class Node {
 	/**
 	 * @return the generator that created this node
 	 */
-	public SimpleGenerator getGenerator() {
+	protected SimpleGenerator getGenerator() {
 		return generator;
 	}
 

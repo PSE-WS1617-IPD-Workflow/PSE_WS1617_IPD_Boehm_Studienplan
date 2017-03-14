@@ -102,7 +102,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Präferieren von Modulen erst nach zweimaligem Klick möglich & Fehlender null-Check & --- \\
 	\hline
-	Übernommenes Generierungsergebnis hat keinen Verifikationsstatus & PUT /plans lässt kein client-seitiges Setzen des Status zu & Aufrufen von GET /plans/id/verify \\
+	Übernommenes Generierungsergebnis hat keinen Verifikationsstatus & PUT /plans lässt kein clientseitiges Setzen des Status zu & Aufrufen von GET /plans/id/verify \\
 	\hline
 	Wintersemester werden mit nur einer Jahreszahl dargestellt & --- & Wintersemester werden – wie gewohnt – mit „WS XX/YY“ dargestellt \\
 	\hline
@@ -116,17 +116,19 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	In Modulinfo-Leiste werden Constraint-Module viel zu groß angezeigt & fehlendes CSS (u.a. fehlender max"=height"=Parameter) & --- \\
 	\hline
-	Buttons der Generierungs-Sidebar nach Anzeigen von Modul Informationen nicht mehr verwendbar & Fehlerhaftes Setzen der Events & --- \\
+	Buttons der Generierungs"=Sidebar nach Anzeigen von Modulinformationen nicht mehr verwendbar & Fehlerhaftes Setzen der Events & --- \\
 	\hline
-	Cycle-Type-Sperre darf in Profilansicht nicht gesetzt sein & Eingestellt in Semesterklasse, die sowohl bei Plan Bearbeitung als auch in Profil verwendet wird & Behandlung der einzelnen Fälle \\
+	Cycle-Type-Sperre darf in Profilansicht nicht gesetzt sein & Eingestellt in Semesterklasse, die sowohl bei Planbearbeitung als auch in Profil verwendet wird & Behandlung der einzelnen Fälle \\
 	\hline
-	"Phantom Plan" bei Duplikations Versuch unter gleichem Namen & Fehlendes Rollback nach Plan Erstellung vor Plan Ersetzung & --- \\
+	„Phantom-Plan“ bei Duplikationsversuch unter gleichem Namen & Fehlendes Rollback nach Plan-Erstellung vor Plan-Ersetzung & --- \\
 	\hline
-	Sicherheitsabfrage beim Plan Verwerfen fehlt & --- & --- \\
+	Sicherheitsabfrage beim Plan-Verwerfen fehlt & --- & --- \\
 	\hline
 	Es lassen sich keine Informationen über Constraint-Modul in Info-Sidebar laden & Fehlende Ressourcen-URL im Constraint-Modul & --- \\
 	\hline
-	Der Button "Filter zurücksetzen" funktioniert nur bei einmaliger Benutzung & Zeiger wurden übergeben, jedoch keine Kopie erzeugt & Erzeugen einer Kopie \\
+	Bei Modul-Bewertung/Modul-Detail-Anzeige werden Verifikations-Informationen zurückgesetzt & Verifikations"=Informationen werden bei jeder Planänderung zurückgesetzt & Verifikations"=Informationen werden nur noch beim Hinzufügen und Entfernen von Modulen sowie Ändern des Modul"=Semesters zurückgesetzt. \\
+	\hline
+	Der Button „Filter zurücksetzen“ funktioniert nur bei einmaliger Benutzung & Referenzen wurden übergeben, jedoch keine Kopie erzeugt & Erzeugen einer Kopie \\
 	\hline
 	Diverse Rechtschreibfehler in den UI-Texten & erhöhter Koffein"=Spiegel und/oder Schlafmangel & (Wieder-)Einschalten des Hirns \\
 	\hhline{|=|=|=|}
