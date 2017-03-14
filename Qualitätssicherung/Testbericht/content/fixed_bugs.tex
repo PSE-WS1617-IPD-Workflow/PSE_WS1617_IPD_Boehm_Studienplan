@@ -16,7 +16,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Modulinfo-Leiste zeigt nichts an und lässt sich nicht schließen. & Schließen: Ein Event war nicht richtig registriert; Keine Anzeige: Falsche Übergabe der Daten an Template & --- \\
 	\hline
-	Module können in jedem beliebigen Turnus abgelegt werden & Client/Server validieren die Eingabe nicht & Validierung der Eingaben \\
+	Module können in jedem beliebigen Turnus abgelegt werden & Client/Server validieren die Eingabe nicht & Validierung ob das gewählte Semester mit dem Modul-Turnus kompatibel ist \\
 	\hline
 	Nutzer wird nach Löschen des Kontos nicht ausgeloggt & Fehlende/Fehlerhafte URI-Weiterleitung & --- \\
 	\hline
@@ -24,13 +24,11 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Modulsuchleisten"=Scrollbar wird nach Filter-Anwendung zurückgesetzt & Der Lade-Bildschirm führte automatisch zu einem neu-rendern der Seite & --- \\
 	\hline
-	Server akzeptiert Modulbelegungen in nicht-positive Semester & Fehlende Validierung der Eingabe & Range-Checks eingefügt \\
+	Server akzeptiert Modulbelegungen in nicht-positive Semester & Fehlende Validierung der Eingabe & Eingabevalidierung ergänzt \\
 	\hline
-	Der Kategorie-Filter kann nicht verändert werden & Bei Neu-Rendern des Felds wurde das aktuell ausgewählte Feld nicht berücksichtigt & Aktuell ausgewähltes Feld bei Rendering als ausgewählt setzen. \\
+	Der Kategorie-Filter kann nicht verändert werden & Bei Neu-Rendern des Felds wurde das aktuell ausgewählte Feld nicht berücksichtigt & Aktuell ausgewähltes Feld bei Rendering als ausgewählt setzen \\
 	\hline
-	Bestandene Module erscheinen nach Verifizierung fehlerhaft, sollten aber ignoriert werden & SemesterLinkConstraint.isValid() berücksichtigte abgeschlossene Module nicht & Wenn beide Module im Plan vorhanden und mind. eines von beiden bestanden ist, wird \texttt{\textbf{true}} zurückgegeben. \\
-	\hline
-	WS-/SS-Sperre & Es wurde nicht berücksichtigt, dass manche Module nur im Winter- bzw. im Sommersemester gehört werden dürfen. & \\
+	Bestandene Module erscheinen nach Verifizierung fehlerhaft, sollten aber ignoriert werden & \texttt{SemesterLinkConstraint\#isValid()} berücksichtigte abgeschlossene Module nicht & Wenn beide Module im Plan vorhanden und mind. eines von beiden bestanden ist, wird \texttt{\textbf{true}} zurückgegeben. \\
 	\hline
 	Keine Zielfunktionen im Generierungs-Wizard & FunctionDto-Klasse war nicht statisch und konnte daher nicht serialisiert werden & + \texttt{static} \\
 	\hline
@@ -50,15 +48,15 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Ändern von Modulpräferenzen bleibt wirkungslos & Server ändert vorhandene Präferenzen nicht & --- \\
 	\hline
-	Verifizierungs-Ergebnis-Popup kann nur einmal verschoben werden & Das Fallenlass"=Event einer Semesterzeile wurde getriggert, daraufhin saß das Popup fest & --- \\
+	Verifizierungs-Ergebnis-Popup kann nur einmal verschoben werden & Das Drop"=Event einer Semesterzeile wurde getriggert, daraufhin saß das Popup fest & --- \\
 	\hline
 	Verifizierungs-Ergebnis-Popup hat einen Schließen-Button ohne Symbol & Fehlende Einbindung eines jQuery-UI-Icon-Sets & --- \\
 	\hline
-	Fehlermeldungen haben wenig Aussagekraft & Gab nur wenige Standardmeldungen & Verfassen von genaueren, situationsspezifischeren Fehlermeldungen und Einbauen in den Client \\
+	Fehlermeldungen haben wenig Aussagekraft & --- & verfassen von genaueren, situationsspezifischen Fehlermeldungen \\
 	\hline
 	Nach Klick auf „Konto speichern“ friert der Client ein & Fehlendes Aufheben des Lade-Bildschirms & --- \\
 	\hline
-	Client sendet beim Profil-Speichern nur neu hinzugefügte Module an den Server & --- & --- \\
+	Client sendet beim Profil-Speichern nur neu hinzugefügte Module an den Server & Spezifikation der REST-Schnittstelle wurde nicht berücksichtigt & --- \\
 	\hline
 	„Plan löschen“ hatte keine Sicherheitsabfrage & --- & Hinzugefügt. \\
 	\hline
@@ -82,9 +80,9 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Durch Verifizierung ehemals fehlerhaft markierte Module verlieren Status erst nach Neuladen und erneutem Verifizieren & Fehlerhaftes Event- und Rendering-Triggern & --- \\
 	\hline
-	Nicht eingehaltene Modulconstraints werden nur als rote Markierung, nicht jedoch im Fehler-Popup aufgeführt. & --- & --- \\
-	\hline
 	Modulinfo in der Profilansicht/Generierungsergebnis"=Ansicht nicht aufrufbar & Aufrufen von plans/Plan-ID/modules mit Plan-ID = undefined & Fallback eingebaut \\
+	\hline
+	Generierung funktioniert nicht & --- & --- \\
 	\hline
 	Generierungsergebnis wird nicht angezeigt & ---  & --- \\
 	\hline
@@ -92,27 +90,27 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Generierung verwendet nur max"=semester"=ects"=Parameter & --- & Beachtung weiterer Parameter eingebaut \\
 	\hline
-	Verifizierung überprüft Turnus nicht & --- & Eingebaut \\
+	Verifizierung überprüft Turnus nicht & --- & --- \\
 	\hline
 	Nach Generierung Wechsel zum Hauptmenü nicht möglich & Fehlerhafter Event"=Handler & --- \\
 	\hline
-	Bei Duplizierung eines Plans wird erst nach Neuladen korrekte ECTS-Summe angezeigt & Serialisierungsfehler, falscher Inhalt wurde serialisiert & --- \\
+	Bei Duplizierung eines Plans wird erst nach Neuladen korrekte ECTS-Summe angezeigt & Serialisierungsfehler, falscher Inhalt wurde gesendet & --- \\
 	\hline
 	Nach dem Umbenennen eines Plans verschwinden alle platzierten Module & Server serialisiert ein leeres modules-Attribut & Serialisierung des modules-Attributs entfernt. \\
 	\hline
 	Präferieren von Modulen erst nach zweimaligem Klick möglich & Fehlender null-Check & --- \\
 	\hline
-	Übernommenes Generierungsergebnis hat keinen Verifikationsstatus & PUT /plans lässt kein clientseitiges Setzen des Status zu & Aufrufen von GET /plans/id/verify \\
+	Übernommenes Generierungsergebnis hat keinen Verifikationsstatus & PUT /plans lässt kein clientseitiges Setzen des Status zu & Aufruf von GET /plans/id/verify nach Speichern des Ergebnisses \\
 	\hline
-	Wintersemester werden mit nur einer Jahreszahl dargestellt & --- & Wintersemester werden – wie gewohnt – mit „WS XX/YY“ dargestellt \\
+	Wintersemester werden mit nur einer Jahreszahl dargestellt & --- & Wintersemester werden – wie gewohnt – mit „WS XXXX/YYYY“ dargestellt \\
 	\hline
-	Präferenzen/Bestandene Module löschen zeigt nur temporäre Wirkung & Server vergisst gelöschte Modulpräferenzen/bestanene Module (Hibernate"=Problem) & In der Hibernate"=Annotation zu den Planpräferenzen/bestandenen Modulen \texttt{orphanRemoval = true} setzen \\
+	Präferenzen/Bestandene Module löschen zeigt nur temporäre Wirkung & Server vergisst gelöschte Modulpräferenzen/bestanene Module (Hibernate"=Problem) & In den Hibernate"=Annotation zu den Planpräferenzen/bestandenen Modulen \texttt{orphanRemoval = true} gesetzt \\
 	\hline
 	In Generierungs-Ergebnis-Ansicht können Module verschoben werden, Semesterzeilen hinzugefügt werden etc. & Fehlende Sperre & --- \\
 	\hline
-	Plan-Duplizierung lässt Client einfrieren & Parsing-Probleme, welche verhindern, dass nach dem GET"=Request keine POST- und PUT"=Reuests gesendet werden & --- \\
+	Plan-Duplizierung lässt Client einfrieren & Parsing-Probleme, welche verhindern, dass nach der GET"=Anfrage keine POST- und PUT"=Anfrage gesendet werden & --- \\
 	\hline
-	Bei mehrfachem Klick auf „Überprüfen“ erscheint das Ergebnisfenster mehrfach & fehlende Überprüfung & --- \\
+	Bei mehrfachem Klick auf „Überprüfen“ erscheint das Ergebnisfenster mehrfach & --- & --- \\
 	\hline
 	In Modulinfo-Leiste werden Constraint-Module viel zu groß angezeigt & fehlendes CSS (u.a. fehlender max"=height"=Parameter) & --- \\
 	\hline
@@ -130,6 +128,6 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Der Button „Filter zurücksetzen“ funktioniert nur bei einmaliger Benutzung & Referenzen wurden übergeben, jedoch keine Kopie erzeugt & Erzeugen einer Kopie \\
 	\hline
-	Diverse Rechtschreibfehler in den UI-Texten & erhöhter Koffein"=Spiegel und/oder Schlafmangel & (Wieder-)Einschalten des Hirns \\
+	Diverse Rechtschreibfehler in den UI-Texten & --- & --- \\
 	\hhline{|=|=|=|}
 \end{longtable}
