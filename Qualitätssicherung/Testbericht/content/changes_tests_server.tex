@@ -20,8 +20,8 @@
 		\item zwischen Winter- und Sommersemester
 		\item zwischen Sommer- und Wintersemester
 	\end{itemize}
-	Test der compareTo-Methoden \\
-	Test der plus-Methode & ERFOLGREICH \\
+	Test der compareTo-Methoden \newline
+	Test der plus-Methode   & ERFOLGREICH \\
 	\hline
 	StandardVerifierTest & Testet, ob der \texttt{StandardVerifier} folgendes erkennt:
 	\begin{itemize}
@@ -30,7 +30,7 @@
 		\item Verletzung von Bereichsbedingungen (Fields)
 	\end{itemize} & ERFOLGREICH \\
 	\hline
-	StandardVerifierConstraintTest & Testet ob der die Verletzung folgender \texttt{ConstraintTypes} in unterschiedlichen Ausartungen erkennt:
+	StandardVerifierConstraintTest & Testet, ob der die Verletzung folgender \texttt{ConstraintTypes} in unterschiedlichen Ausartungen erkennt:
 	\begin{itemize}
 		\item Verletzung von Überlappung 
 		\item Verletzung von Plan"=Zusammengehörigkeit 
@@ -79,13 +79,13 @@
 	\hline
 	FilterResourceIntegrationTest & Überprüft die korrekte JSON-Serialisierung von GET /filters (die drei Typen range, list und contains samt zugehöriger Spezifikation). & ERFOLGREICH \\
 	\hline
-	StudentResourceIntegrationTest & Überprüft, ob der Nutzer beim Neuanlegen korrekt initialisiert ist; das Setzen von Fachrichtung und Studienstart funktioniert; fehlerhafte Fachrichtungen/Studienstarts (zukünftig/prähistorisch) abgefangen werden; bestandene Module korrekt gesetzt werden; fehlerhafte bestandene Module (falsches Modul, falsches Semester) abgefangen werden; die JSON-Rückgaben korrekt serialisiert werden und eine Autorisierung vor dem Zugriff auf die Ressourcen verlangt wird. & ERFOLGREICH \\
+	StudentResourceIntegrationTest & Überprüft, ob der Nutzer beim Neuanlegen korrekt initialisiert ist, ob das Setzen von Fachrichtung und Studienstart funktioniert, ob fehlerhafte Fachrichtungen/Studienstarts (zukünftig/prähistorisch) abgefangen werden, ob bestandene Module korrekt gesetzt werden, ob fehlerhafte bestandene Module (falsches Modul, falsches Semester) abgefangen werden, ob die JSON-Rückgaben korrekt serialisiert werden und ob eine Autorisierung vor dem Zugriff auf die Ressourcen verlangt wird. & ERFOLGREICH \\
 	\hline
 	ModuleResourceIntegrationTest & Überprüft, ob GET /modules/id korrekt als JSON serialisiert wird und auch die korrekten Daten gesendet werden; testet mehrere Filteraufrufe auf korrekte Rückgabe sowie fehlerhafte Eingabe. & ERFOLGREICH \\
 	\hline
 	
 	PlansResourcePlanCreationIntegrationTest & 
-		folgendes wurde überprüft:
+		Folgendes wurde überprüft:
 		\begin{itemize}
 			\item Anlegen eines Plans möglich
 			\item korrekte Serialisierung aller Pläne eines Nutzers
@@ -95,7 +95,7 @@
 		\end{itemize}
 		& ERFOLGREICH \\ \hline
 	PlansResourcePlanEditIntegrationTest & 
-	folgendes wurde überprüft:
+	Folgendes wurde überprüft:
 	\begin{itemize}
 		\item Planumbenennung möglich; doppelte Namen, leere Namen, zu lange Namen werden abgefangen
 		\item korrekte Serialisierung eines Plans

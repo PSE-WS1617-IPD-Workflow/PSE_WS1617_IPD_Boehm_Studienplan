@@ -3,7 +3,7 @@
 
 Im Folgenden sind Coverage-Statistiken zur Server-Überdeckung aufgeführt. 
 
-\paragraph{Unit-Tests} Für das rest-Package wurden keine Unit-Tests verfasst, weshalb es hier auch nicht aufgeführt ist; die REST-Schnittstellen werden sinnvollerweise in den Integrationstests abgedeckt. Da der Plugin-Manager weitestgehend kastriert wurde, erschien eine größere Abdeckung nicht mehr nötig; genauso auch wie bei vielen primitiven Gettern und Settern im Model.
+\paragraph{Unit-Tests} Für das rest-Package wurden keine Unit-Tests verfasst, weshalb es hier auch nicht aufgeführt ist. Die REST-Schnittstellen werden sinnvollerweise in den Integrationstests abgedeckt. Da der Plugin-Manager seine Funktion weitgehend verloren hat, wurden nur die für die Nutzung relevanten Bestandteile getestet. Ebenso wurde auf das Testen einiger primitiver Getter und Setter im Modell verzichtet.
 
 \begin{longtable}{| >{\hspace{0pt}} p{.26\textwidth} | >{\hspace{0pt}} p{.45\textwidth} | }
 	\hline
@@ -27,7 +27,7 @@ Im Folgenden sind Coverage-Statistiken zur Server-Überdeckung aufgeführt.
 	\caption{Unit-Test-Überdeckung Server}
 \end{longtable}
 
-\paragraph{Integrations-Tests} Aufgrund von Schwierigkeiten beim Zusammenspiel von JaCoCo und unserer Tomcat"=Serverumgebung sind für Integrationstests keine Coverage-Daten verfügbar. Als groben Überblick diene stattdessen die manuell bestimmte Methodenüberdeckung für die einzelnen REST"=Ressourcen. Auf Integrationstests für Verifzierung und Generierung wurde verzichtet, da diese schon ausreichend mit Unit-Tests abgedeckt sind.
+\paragraph{Integrations-Tests} Aufgrund von Schwierigkeiten beim Zusammenspiel von JaCoCo und unserer Tomcat"=Serverumgebung sind für Integrationstests keine Coverage-Daten verfügbar. Als grober Überblick diene stattdessen die manuell bestimmte Methodenüberdeckung für die einzelnen REST"=Ressourcen. Auf Integrationstests für Verifzierung und Generierung wurde verzichtet, da diese schon ausreichend mit Unit-Tests abgedeckt sind.
 
 \begin{longtable}{| >{\hspace{0pt}} p{.26\textwidth} | >{\hspace{0pt}} p{.45\textwidth} | }
 	\hline
