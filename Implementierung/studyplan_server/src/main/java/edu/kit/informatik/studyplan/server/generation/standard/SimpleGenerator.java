@@ -90,7 +90,7 @@ public class SimpleGenerator implements Generator {
 	/**
 	 * @return the currentPlan
 	 */
-	public Plan getCurrentPlan() {
+	protected Plan getCurrentPlan() {
 		return currentPlan;
 	}
 
@@ -110,7 +110,7 @@ public class SimpleGenerator implements Generator {
 	/**
 	 * @return the nodes of the graph to create
 	 */
-	public NodesList getNodes() {
+	protected NodesList getNodes() {
 		return nodes;
 	}
 
@@ -185,7 +185,7 @@ public class SimpleGenerator implements Generator {
 	 *            preferred to get the modules from (if field is not choosable
 	 *            this parameter would be null)
 	 */
-	void addFieldModules(Field field, Category category, ModuleDao moduleDAO) {
+	private void addFieldModules(Field field, Category category, ModuleDao moduleDAO) {
 		double creditPoints = nodes.getCreditPoints(field);
 		if (creditPoints >= field.getMinEcts()) {
 			return;
@@ -292,7 +292,7 @@ public class SimpleGenerator implements Generator {
 	 *         (the nodesList from which the plan was generated) for later
 	 *         modification.
 	 */
-	GenerationResult complete(NodesList nodes, Map<Field, Category> preferredSubjects, ModuleDao moduleDAO) {
+	private GenerationResult complete(NodesList nodes, Map<Field, Category> preferredSubjects, ModuleDao moduleDAO) {
 		// adding modules of the rule groups of the discipline
 		List<RuleGroup> ruleGroups = currentPlan.getUser().getDiscipline().getRuleGroups();
 		for (RuleGroup ruleGroup : ruleGroups) {
@@ -323,7 +323,7 @@ public class SimpleGenerator implements Generator {
 	 *            to set the new plan's user
 	 * @return the created plan
 	 */
-	Plan createPlan(List<Node> sorted, int[] semesterAllocation, User user) {
+	private Plan createPlan(List<Node> sorted, int[] semesterAllocation, User user) {
 		Plan plan = new Plan();
 		plan.getAllModuleEntries().addAll(user.getPassedModules());
 		for (int i = 0; i < sorted.size(); i++) {
@@ -356,7 +356,7 @@ public class SimpleGenerator implements Generator {
 	 * @param moduleDAO
 	 *            the moduleDao used to fetch modules
 	 */
-	void addRuleGroupModules(RuleGroup ruleGroup, Category category, ModuleDao moduleDAO) {
+	private void addRuleGroupModules(RuleGroup ruleGroup, Category category, ModuleDao moduleDAO) {
 		int num = nodes.nodesInRuleGroup(ruleGroup).size();
 		int i = ruleGroup.getMinNum();
 		int a = ruleGroup.getMaxNum();
@@ -414,7 +414,7 @@ public class SimpleGenerator implements Generator {
 	 * 
 	 * @param sorted the sorted list of nodes.
 	 */
-	void parallelize(List<Node> sorted) {
+	private void parallelize(List<Node> sorted) {
 		WeightFunction weight = new WeightFunction();
 		Node node;
 		boolean set;
@@ -483,7 +483,7 @@ public class SimpleGenerator implements Generator {
 	 * @param currentSem number of the current semester.
 	 * @param sorted the sorted list of nodes.
 	 */
-	void considerMinSemesterNum(int currentSem, List<Node> sorted) {
+	private void considerMinSemesterNum(int currentSem, List<Node> sorted) {
 		// Get the last semester(greatest number in semesterAllocation)
 		int lastSem = max(semesterAllocation);
 		boolean ok = true;
@@ -549,7 +549,7 @@ public class SimpleGenerator implements Generator {
 	 * @param sorted the sorted list of nodes.
 	 * @return true if the change was successful, false if not.
 	 */
-	boolean pushToSem(int semester, Node node, List<Node> sorted) {
+	private boolean pushToSem(int semester, Node node, List<Node> sorted) {
 		visited = new ArrayList<Node>();
 		return pushToSemUtil(semester, node, sorted);
 	}
@@ -563,7 +563,7 @@ public class SimpleGenerator implements Generator {
 	 * @param sorted the sorted list of nodes.
 	 * @return true if the change was successful, false if not.
 	 */
-	boolean pushToSemUtil(int semester, Node node, List<Node> sorted) {
+	private boolean pushToSemUtil(int semester, Node node, List<Node> sorted) {
 		if (semester > maxSemesterNum) {
 			return false;
 		}
@@ -591,7 +591,7 @@ public class SimpleGenerator implements Generator {
 	 * @param currentSem number of the current semester.
 	 * @param sorted the sorted list of nodes.
 	 */
-	void considerMinECTSperSemester(int currentSem, List<Node> sorted) {
+	private void considerMinECTSperSemester(int currentSem, List<Node> sorted) {
 		// Get the last semester(greatest number in semesterAllocation)
 		int lastSem = max(semesterAllocation);
 		int sem = lastSem;
@@ -668,7 +668,7 @@ public class SimpleGenerator implements Generator {
 	 * @return an array containing the number of the semester to which each node
 	 *         is allocated.
 	 */
-	int[] allocateToSemesters(List<Node> sorted) {
+	private int[] allocateToSemesters(List<Node> sorted) {
 		int currentSem = Semester.getCurrentSemester().getDistanceTo(currentPlan.getUser().getStudyStart());
 		semesterAllocation = new int[sorted.size()];
 		semesterSum = new double[Math.max(sorted.size() + currentSem, maxSemesterNum)];
@@ -750,7 +750,7 @@ public class SimpleGenerator implements Generator {
 	 * @param moduleDAO
 	 *            the moduleDao used to fetch modules
 	 */
-	Map<Plan, NodesList> randomlyGeneratedFamilyOfPlans(NodesList nodes, 
+	private Map<Plan, NodesList> randomlyGeneratedFamilyOfPlans(NodesList nodes, 
 			Map<Field, Category> preferredSubjects, int numberOfNodesToChange, ModuleDao moduleDAO) {
 		Map<Plan, NodesList> planFamily = new HashMap<Plan, NodesList>();
 		GenerationResult generated = complete(nodes, preferredSubjects, moduleDAO);
@@ -774,7 +774,7 @@ public class SimpleGenerator implements Generator {
 	 *            the plan to use
 	 */
 
-	public void planToGraph(Plan plan) {
+	private void planToGraph(Plan plan) {
 		nodes = new NodesList(plan, this);
 		Node node;
 		// Create a Node for every ModuleEntry and add it to the list of nodes
@@ -801,7 +801,7 @@ public class SimpleGenerator implements Generator {
 	 *            number of Integers needed
 	 * @return set of i random numbers that are < max.
 	 */
-	Set<Integer> randomNumbers(int max, int i) {
+	private Set<Integer> randomNumbers(int max, int i) {
 		Set<Integer> generated = new LinkedHashSet<Integer>();
 		Random rand = new Random();
 		while (generated.size() < i) {
@@ -825,7 +825,7 @@ public class SimpleGenerator implements Generator {
 	 *            the category chosen.
 	 * @return the list of preferred modules.
 	 */
-	List<Module> getModulesWithPreference(Plan currentPlan, List<Module> listOfModules, Category category,
+	private List<Module> getModulesWithPreference(Plan currentPlan, List<Module> listOfModules, Category category,
 			PreferenceType preference, ModuleDao moduleDAO) {
 		List<Module> modules = new ArrayList<Module>();
 		if (category != null) {
@@ -880,28 +880,28 @@ public class SimpleGenerator implements Generator {
 	/**
 	 * @param maxECTSperSemester the maxECTSperSemester to set
 	 */
-	public void setMaxECTSperSemester(double maxECTSperSemester) {
+	protected void setMaxECTSperSemester(double maxECTSperSemester) {
 		this.maxECTSperSemester = maxECTSperSemester;
 	}
 	
 	/**
 	 * @param minECTSperSemester the minECTSperSemester to set
 	 */
-	public void setMinECTSperSemester(double minECTSperSemester) {
+	protected void setMinECTSperSemester(double minECTSperSemester) {
 		this.minECTSperSemester = minECTSperSemester;
 	}
 	
 	/**
 	 * @param minSemesterNum the minSemesterNum to set
 	 */
-	public void setMinSemesterNum(int minSemesterNum) {
+	protected void setMinSemesterNum(int minSemesterNum) {
 		this.minSemesterNum = minSemesterNum;
 	}
 	
 	/**
 	 * @param maxSemesterNum the maxSemesterNum to set
 	 */
-	public void setMaxSemesterNum(int maxSemesterNum) {
+	protected void setMaxSemesterNum(int maxSemesterNum) {
 		this.maxSemesterNum = maxSemesterNum;
 	}
 	

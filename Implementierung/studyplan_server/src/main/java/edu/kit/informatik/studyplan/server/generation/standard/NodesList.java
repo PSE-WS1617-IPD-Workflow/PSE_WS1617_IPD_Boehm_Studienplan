@@ -44,7 +44,7 @@ public class NodesList extends ArrayList<Node> {
 	 * @param plan
 	 *            to set.
 	 */
-	public NodesList(Plan plan, SimpleGenerator generator) {
+	protected NodesList(Plan plan, SimpleGenerator generator) {
 		this.plan = plan;
 		this.generator = generator;
 	}
@@ -68,7 +68,7 @@ public class NodesList extends ArrayList<Node> {
 	 *            if this node is added randomly this parameter should be true.
 	 * @return the Node added if add was successful, null if node already exist.
 	 */
-	public boolean add(Node node, boolean random) {
+	protected boolean add(Node node, boolean random) {
 		if (this.contains(node)) {
 			return false;
 		}
@@ -87,7 +87,7 @@ public class NodesList extends ArrayList<Node> {
 	 *            module which node should be added
 	 * @return the Node added if add was successful, null if node already exist.
 	 */
-	public Node add(Module m) {
+	protected Node add(Module m) {
 		if (this.stream().anyMatch(n -> n.getModule().getIdentifier() == m.getIdentifier())) {
 			return null;
 		}
@@ -103,7 +103,7 @@ public class NodesList extends ArrayList<Node> {
 	 *            the module which node is needed.
 	 * @return -the node of the module given if it exists, -null if it doesn't.
 	 */
-	public Node get(Module m) {
+	protected Node get(Module m) {
 		for (Node n : this) {
 			if (m.getIdentifier() == n.getModule().getIdentifier()) {
 				return n;
@@ -119,7 +119,7 @@ public class NodesList extends ArrayList<Node> {
 	 *            the module which node is needed.
 	 * @return -the node of the module given if it exists, -null if it doesn't.
 	 */
-	public Node get(Node node) {
+	protected Node get(Node node) {
 		for (Node n : this) {
 			if (node.getModule().getIdentifier() == n.getModule().getIdentifier()) {
 				return n;
@@ -134,7 +134,7 @@ public class NodesList extends ArrayList<Node> {
 	 * 
 	 * @return Sum of Credit Points
 	 */
-	public double getSumCreditPoints() {
+	protected double getSumCreditPoints() {
 		int r = 0;
 		for (Node n : this) {
 			r += n.getModule().getCreditPoints();
@@ -145,7 +145,7 @@ public class NodesList extends ArrayList<Node> {
 	/**
 	 * @return the randomlyAddedNodes
 	 */
-	public List<Node> getRandomlyAddedNodes() {
+	protected List<Node> getRandomlyAddedNodes() {
 		return randomlyAddedNodes;
 	}
 

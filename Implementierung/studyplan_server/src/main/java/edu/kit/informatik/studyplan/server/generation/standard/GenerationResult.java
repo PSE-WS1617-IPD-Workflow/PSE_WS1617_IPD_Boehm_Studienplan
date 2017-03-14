@@ -10,10 +10,6 @@ import edu.kit.informatik.studyplan.server.model.userdata.Plan;
  */
 public class GenerationResult {
 	/**
-	 * The result of the evaluation of the plan 
-	 */
-	double evaluation;
-	/**
 	 * The plan generated.
 	 */
 	Plan plan;
