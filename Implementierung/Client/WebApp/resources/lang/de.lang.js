@@ -197,8 +197,8 @@ LM.messages["de"]["GET-modules-id-connectionErrorText-404"] = "Das gewünschte M
 LM.messages["de"]["POST-plans-connectionErrorText-422"] = "Ein Plan dieses Namens existiert bereits. (Statuscode 422)";
 
 // plans (plans-id)
-LM.messages["de"]["POST-plans-id-connectionErrorText-400"] = "Bitte geben Sie Ihrem Studienplan einen noch nicht verwendeten und (nicht leeren) Namen!";
-LM.messages["de"]["PATCH-plans-id-connectionErrorText-400"] = "Bitte geben Sie Ihrem Studienplan einen noch nicht verwendeten und einen (nicht leeren) Namen!";
+LM.messages["de"]["POST-plans-id-connectionErrorText-400"] = "Bitte geben Sie Ihrem Studienplan einen noch nicht verwendeten (und nicht leeren) Namen!";
+LM.messages["de"]["PATCH-plans-id-connectionErrorText-400"] = "Bitte geben Sie Ihrem Studienplan einen noch nicht verwendeten (und nicht leeren) Namen!";
 LM.messages["de"]["PUT-plans-id-connectionErrorText-404"] = "Es ist ein interner Fehler aufgetreten. Der zu ersetzende Plan konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["PATCH-plans-id-connectionErrorText-404"] = "Der Plan, der umbenannt werden soll, konnte nicht gefunden werden. (Statuscode 404)";
 LM.messages["de"]["DELETE-plans-id-connectionErrorText-404"] = "Der Plan, der gelöscht werden soll, konnte nicht gefunden werden. (Statuscode 404)";
