@@ -38,6 +38,14 @@ import edu.kit.informatik.studyplan.server.verification.standard.StandardVerifie
  * @version 1.0
  */
 public class SimpleGenerator implements Generator {
+	
+	final private int CHANGE_ALL_NODES = -1;
+	
+	final private int NUM_NODES_TO_CHANGE = 10;
+	
+	final private int NUM_PLANS_TO_CREATE = 5;
+
+
 	/**
 	 * The maximum number of credit points per semester specified by the user.
 	 */
@@ -51,7 +59,7 @@ public class SimpleGenerator implements Generator {
 	 */
 	private int minSemesterNum;
 	/**
-	 * The mmaximum number of semesters specified by the user.
+	 * The maximum number of semesters specified by the user.
 	 */
 	private int maxSemesterNum;
 	/**
@@ -121,7 +129,8 @@ public class SimpleGenerator implements Generator {
 		// first generation of family of plans with change of all randomly added
 		// nodes
 		planToGraph(currentPlan);
-		planFamily = randomlyGeneratedFamilyOfPlans(nodes, plan, preferredSubjects, -1, moduleDAO);
+		planFamily = randomlyGeneratedFamilyOfPlans(nodes, preferredSubjects, CHANGE_ALL_NODES, 
+				moduleDAO);
 		it = planFamily.keySet().iterator(); // iterates through all plans
 												// created
 		plan = new Plan();
@@ -144,9 +153,10 @@ public class SimpleGenerator implements Generator {
 		}
 		// Save the nodes list from which this plan was created
 		NodesList planNodesList;
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < NUM_PLANS_TO_CREATE; i++) {
 			planNodesList = planFamily.get(plan);
-			planFamily = randomlyGeneratedFamilyOfPlans(planNodesList, plan, preferredSubjects, 10, moduleDAO);
+			planFamily = randomlyGeneratedFamilyOfPlans(planNodesList, preferredSubjects, 
+					NUM_NODES_TO_CHANGE, moduleDAO);
 			it = planFamily.keySet().iterator();
 			plan = new Plan();
 			plan.setUser(currentPlan.getUser());
@@ -174,10 +184,8 @@ public class SimpleGenerator implements Generator {
 	 * @param category
 	 *            preferred to get the modules from (if field is not choosable
 	 *            this parameter would be null)
-	 * @param currentPlan
-	 *            the plan being generated
 	 */
-	void addFieldModules(Field field, Category category, Plan currentPlan, ModuleDao moduleDAO) {
+	void addFieldModules(Field field, Category category, ModuleDao moduleDAO) {
 		double creditPoints = nodes.getCreditPoints(field);
 		if (creditPoints >= field.getMinEcts()) {
 			return;
@@ -284,20 +292,20 @@ public class SimpleGenerator implements Generator {
 	 *         (the nodesList from which the plan was generated) for later
 	 *         modification.
 	 */
-	GenerationResult complete(NodesList nodes, Plan plan, Map<Field, Category> preferredSubjects, ModuleDao moduleDAO) {
+	GenerationResult complete(NodesList nodes, Map<Field, Category> preferredSubjects, ModuleDao moduleDAO) {
 		// adding modules of the rule groups of the discipline
-		List<RuleGroup> ruleGroups = plan.getUser().getDiscipline().getRuleGroups();
+		List<RuleGroup> ruleGroups = currentPlan.getUser().getDiscipline().getRuleGroups();
 		for (RuleGroup ruleGroup : ruleGroups) {
-			addRuleGroupModules(ruleGroup, plan, preferredSubjects.get(ruleGroup), moduleDAO);
+			addRuleGroupModules(ruleGroup, preferredSubjects.get(ruleGroup), moduleDAO);
 		}
 		// adding modules of the fields of the discipline
-		List<Field> fields = plan.getUser().getDiscipline().getFields();
+		List<Field> fields = currentPlan.getUser().getDiscipline().getFields();
 		for (Field field : fields) {
-			addFieldModules(field, preferredSubjects.get(field), plan, moduleDAO);
+			addFieldModules(field, preferredSubjects.get(field), moduleDAO);
 		}
 		List<Node> sorted = nodes.sort();
 		allocateToSemesters(sorted);
-		GenerationResult result = new GenerationResult(createPlan(sorted, semesterAllocation, plan.getUser()), nodes);
+		GenerationResult result = new GenerationResult(createPlan(sorted, semesterAllocation, currentPlan.getUser()), nodes);
 		return result;
 	}
 
@@ -345,14 +353,15 @@ public class SimpleGenerator implements Generator {
 	 *            which modules are being added
 	 * @param category
 	 *            preferred to get the preferred modules
-	 * @param currentPlan
-	 *            the plan given originally to the generator
 	 * @param moduleDAO
 	 *            the moduleDao used to fetch modules
 	 */
-	void addRuleGroupModules(RuleGroup ruleGroup, Plan currentPlan, Category category, ModuleDao moduleDAO) {
+	void addRuleGroupModules(RuleGroup ruleGroup, Category category, ModuleDao moduleDAO) {
 		int num = nodes.nodesInRuleGroup(ruleGroup).size();
-		if (num >= ruleGroup.getMinNum() && num <= ruleGroup.getMaxNum()) {
+		int i = ruleGroup.getMinNum();
+		int a = ruleGroup.getMaxNum();
+		if (num >= ruleGroup.getMinNum() && (num <= ruleGroup.getMaxNum() 
+												|| ruleGroup.getMaxNum() == -1)) {
 			return;
 		}
 		List<Module> modules;
@@ -421,17 +430,15 @@ public class SimpleGenerator implements Generator {
 			 * Check if a node is already fixed in a semester: if it is check if
 			 * a parent is in a previous semester
 			 */
-			if (node.getSemester() != 0 && node.fitsInSemester(node.getSemester(), semesterAllocation, sorted)
+			if (node.getSemester() != 0 
+					&& node.fitsInSemester(node.getSemester(), semesterAllocation, sorted)
 					&& weight.getWeight(node) + semesterSum[node.getSemester() - 1] <= maxECTSperSemester
 					&& checkIfOverlapping(node, semesterAllocation, sorted, node.getSemester())) {
 				minPos[i] = node.getSemester();
 				semesterAllocation[i] = node.getSemester();
 				semesterSum[node.getSemester() - 1] += weight.getWeight(node);
-				for (Node child : node.getChildren()) {
-					if ((child.getConstraint(node) != null)
-							&& (child.getConstraint(node)
-									.getConstraintType() instanceof PrerequisiteModuleConstraintType)
-							&& sorted.contains(child)) {
+				for (Node child : node.getPrerequisiteChildren()) {
+					if (sorted.contains(child)) {
 						minPos[sorted.indexOf(child)] = Math.max(node.getSemester() + 1, minPos[sorted.indexOf(child)]);
 					}
 				}
@@ -481,40 +488,6 @@ public class SimpleGenerator implements Generator {
 		int lastSem = max(semesterAllocation);
 		boolean ok = true;
 		while (lastSem < minSemesterNum && ok == true) {
-			// if (semesterSum[sem - 1] < minECTSperSemester) {
-			// ok = false;
-			// // iterate through semesters
-			// for (int otherSem = currentSem; otherSem < lastSem; otherSem++) {
-			// final int a = otherSem; // to be able to use prevSem in
-			// // stream
-			// List<Node> nodesAllocated = sorted.stream().filter(n ->
-			// (semesterAllocation[sorted.indexOf(n)] == a))
-			// .collect(Collectors.toList());
-			// /*
-			// * iterate through the nodes allocated to this semester that
-			// * do not have children(with constraint from type
-			// * Prerequisite)
-			// */
-			// for (Node n : nodesAllocated.stream()
-			// .filter(no -> no.getPrerequisiteChildren().isEmpty())
-			// .collect(Collectors.toList())) {
-			// if ((semesterSum[otherSem - 1] - weight.getWeight(n)) >=
-			// minECTSperSemester
-			// && n.fitsInSemester(sem, semesterAllocation, sorted)) {
-			// semesterAllocation[sorted.indexOf(n)] = sem;
-			// semesterSum[otherSem - 1] -= weight.getWeight(n);
-			// semesterSum[sem - 1] += weight.getWeight(n);
-			// if (semesterSum[sem - 1] >= minECTSperSemester) {
-			// ok = true;
-			// break;
-			// }
-			// }
-			// }
-			// if (ok) {
-			// break;
-			// }
-			// }
-			// }
 			ok = false;
 			// iterate through other semesters
 			for (int otherSem = currentSem; otherSem < lastSem; otherSem++) {
@@ -533,18 +506,6 @@ public class SimpleGenerator implements Generator {
 						ok = true;
 						break;
 					}
-					// if ((semesterSum[otherSem - 1] - weight.getWeight(n)) >=
-					// minECTSperSemester
-					// && n.fitsInSemester(lastSem + 1 , semesterAllocation,
-					// sorted)
-					// && semesterSum[lastSem] + weight.getWeight(n) <=
-					// maxECTSperSemester) {
-					// semesterAllocation[sorted.indexOf(n)] = lastSem + 1;
-					// semesterSum[otherSem - 1] -= weight.getWeight(n);
-					// semesterSum[lastSem] += weight.getWeight(n);
-					// ok = true;
-					// break;
-					// }
 				}
 				if (ok) {
 					break;
@@ -569,18 +530,6 @@ public class SimpleGenerator implements Generator {
 							break;
 
 						}
-						// if ((semesterSum[otherSem - 1] - weight.getWeight(n))
-						// >= minECTSperSemester
-						// && n.fitsInSemester(lastSem + 1 , semesterAllocation,
-						// sorted)
-						// && semesterSum[lastSem] + weight.getWeight(n) <=
-						// maxECTSperSemester) {
-						// semesterAllocation[sorted.indexOf(n)] = lastSem + 1;
-						// semesterSum[otherSem - 1] -= weight.getWeight(n);
-						// semesterSum[lastSem] += weight.getWeight(n);
-						// ok = true;
-						// break;
-						// }
 					}
 					if (ok) {
 						break;
@@ -590,12 +539,30 @@ public class SimpleGenerator implements Generator {
 			lastSem = max(semesterAllocation);
 		}
 	}
-
+	/**
+	 * Changes the semester to which the node was allocated to the semester given as a 
+	 * parameter, if it fits in the given semester. This method uses the recursive 
+	 * pushToSemUtil to check if the change of semester is allowed(module constraints).
+	 * 
+	 * @param semester to which the node should be allocated.
+	 * @param node the node concerned.
+	 * @param sorted the sorted list of nodes.
+	 * @return true if the change was successful, false if not.
+	 */
 	boolean pushToSem(int semester, Node node, List<Node> sorted) {
 		visited = new ArrayList<Node>();
 		return pushToSemUtil(semester, node, sorted);
 	}
-
+	/**
+	 * Changes the semester to which the node was allocated to the semester given as a 
+	 * parameter and according to that changes recursively  the semesters to which the 
+	 * children of the node were allocated to.
+	 * 
+	 * @param semester to which the node should be allocated.
+	 * @param node the node concerned.
+	 * @param sorted the sorted list of nodes.
+	 * @return true if the change was successful, false if not.
+	 */
 	boolean pushToSemUtil(int semester, Node node, List<Node> sorted) {
 		if (semester > maxSemesterNum) {
 			return false;
@@ -653,18 +620,6 @@ public class SimpleGenerator implements Generator {
 							}
 
 						}
-						// if ((semesterSum[otherSem - 1] - weight.getWeight(n))
-						// >= minECTSperSemester
-						// && n.fitsInSemester(sem, semesterAllocation, sorted))
-						// {
-						// semesterAllocation[sorted.indexOf(n)] = sem;
-						// semesterSum[otherSem - 1] -= weight.getWeight(n);
-						// semesterSum[sem - 1] += weight.getWeight(n);
-						// if (semesterSum[sem - 1] >= minECTSperSemester) {
-						// ok = true;
-						// break;
-						// }
-						// }
 					}
 					if (ok) {
 						break;
@@ -690,18 +645,6 @@ public class SimpleGenerator implements Generator {
 							}
 
 						}
-						// if ((semesterSum[otherSem - 1] - weight.getWeight(n))
-						// >= minECTSperSemester
-						// && n.fitsInSemester(sem , semesterAllocation,
-						// sorted)) {
-						// semesterAllocation[sorted.indexOf(n)] = sem;
-						// semesterSum[otherSem - 1] -= weight.getWeight(n);
-						// semesterSum[sem - 1] += weight.getWeight(n);
-						// if (semesterSum[sem - 1] >= minECTSperSemester) {
-						// ok = true;
-						// break;
-						// }
-						// }
 					}
 					if (ok) {
 						break;
@@ -745,13 +688,6 @@ public class SimpleGenerator implements Generator {
 		// make sure that the credit points in a semester > minECTSperSemester
 		considerMinECTSperSemester(currentSem, sorted);
 
-		// int index = indexOfNodeInLastSem(semesterAllocation);
-		// while (index < minSemesterNum) {
-		// while(semesterSum[index + 1] < maxECTSperSemester) {
-		// semesterAllocation[index]
-		// }
-		// index = indexOfNodeInLastSem(semesterAllocation);
-		// }
 		return semesterAllocation;
 	}
 
@@ -814,10 +750,10 @@ public class SimpleGenerator implements Generator {
 	 * @param moduleDAO
 	 *            the moduleDao used to fetch modules
 	 */
-	Map<Plan, NodesList> randomlyGeneratedFamilyOfPlans(NodesList nodes, Plan currentPlan,
+	Map<Plan, NodesList> randomlyGeneratedFamilyOfPlans(NodesList nodes, 
 			Map<Field, Category> preferredSubjects, int numberOfNodesToChange, ModuleDao moduleDAO) {
 		Map<Plan, NodesList> planFamily = new HashMap<Plan, NodesList>();
-		GenerationResult generated = complete(nodes, currentPlan, preferredSubjects, moduleDAO);
+		GenerationResult generated = complete(nodes, preferredSubjects, moduleDAO);
 		planFamily.put(generated.getPlan(), generated.getNodesList());
 		for (int i = 0; i < 9; i++) {
 			if (numberOfNodesToChange == -1) {
@@ -850,7 +786,7 @@ public class SimpleGenerator implements Generator {
 				node.setSemester(plan.getAllModuleEntries().get(i).getSemester());
 				nodes.add(node, false);
 			} else {
-				nodes.add(node, false);
+				nodes.get(m).setSemester(plan.getAllModuleEntries().get(i).getSemester());
 			}
 			node.fulfillConstraints(false);
 		}
@@ -939,7 +875,7 @@ public class SimpleGenerator implements Generator {
 				nodes.remove(ranAdded[i]);
 			}
 		}
-		return complete(nodes, generated.getPlan(), preferredSubjects, moduleDAO);
+		return complete(nodes, preferredSubjects, moduleDAO);
 	}
 	/**
 	 * @param maxECTSperSemester the maxECTSperSemester to set

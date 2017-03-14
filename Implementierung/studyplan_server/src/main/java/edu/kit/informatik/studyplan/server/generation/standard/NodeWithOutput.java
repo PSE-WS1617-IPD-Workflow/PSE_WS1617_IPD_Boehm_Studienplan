@@ -58,7 +58,6 @@ public class NodeWithOutput extends Node {
 			if (newNode == null) {
 				y = false;
 				newNode = new NodeWithOutput(module, getPlan(), getGenerator());
-				newNode.setPlan(this.getPlan());
 			}
 			if (c.getConstraintType() instanceof PrerequisiteModuleConstraintType
 					&& this.getModule().getToConstraints().contains(c)) {
@@ -70,7 +69,10 @@ public class NodeWithOutput extends Node {
 			} else if (c.getConstraintType() instanceof SemesterLinkModuleConstraintType) {
 				addInnerNode(newNode);
 				getGenerator().getNodes().add(newNode, random);
+			} else {
+				y = true; // so that fulfillConstraints wouldn't be called for newNode
 			}
+			
 			if (!y) {
 				newNode.fulfillConstraints(random);				
 			}

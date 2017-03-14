@@ -456,7 +456,7 @@ public abstract class Node {
 		 * previous semester.
 		 */
 		for (Node child : getPrerequisiteChildren()) {
-			if (child.getSemester() >= i) {
+			if (child.getSemester() != 0 && child.getSemester() <= i) {
 				return false;
 //			} else if (semesterAllocation[sorted.indexOf(child)] <= i) {
 //				return false;

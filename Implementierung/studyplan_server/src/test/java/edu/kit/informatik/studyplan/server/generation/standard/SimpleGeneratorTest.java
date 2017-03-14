@@ -252,7 +252,7 @@ public class SimpleGeneratorTest {
 		rule.setMinNum(1);
 		rule.setMaxNum(2);
 		generator.planToGraph(plan);
-		generator.addRuleGroupModules(rule, plan, category, dao);
+		generator.addRuleGroupModules(rule, category, dao);
 		nodesToCompareTo.add(new NodeWithOutput(la1, plan, generator));
 		nodesToCompareTo.add(new NodeWithOutput(la2, plan, generator));
 		assertTrue(generator.getNodes().containsAll(nodesToCompareTo));
@@ -300,7 +300,7 @@ public class SimpleGeneratorTest {
 			thenReturn(modulesByCategory);
 		field.setMinEcts(8.0);
 		generator.planToGraph(plan);
-		generator.addFieldModules(field, category, plan, dao);
+		generator.addFieldModules(field, category, dao);
 		nodesToCompareTo.add(new NodeWithOutput(hm, plan, generator));
 		nodesToCompareTo.add(new NodeWithOutput(numerik, plan, generator));
 		assertTrue(generator.getNodes().containsAll(nodesToCompareTo));
@@ -317,7 +317,7 @@ public class SimpleGeneratorTest {
 		category = null;
 		field.setMinEcts(2.0);
 		generator.planToGraph(plan);
-		generator.addFieldModules(field, category, plan, dao);
+		generator.addFieldModules(field, category, dao);
 		assertTrue(generator.getNodes().containsAll(nodesToCompareTo));
 		assertTrue(generator.getNodes().contains(new NodeWithOutput(ph1, plan, generator)));
 		assertTrue(generator.getNodes().getCreditPoints(field) == 2.0);
@@ -369,7 +369,7 @@ public class SimpleGeneratorTest {
 		Map<Field, Category> map = new HashMap<Field, Category>();
 		map.put(field, category);
 		generator.planToGraph(plan);
-		GenerationResult result = generator.complete(generator.getNodes(), plan, 
+		GenerationResult result = generator.complete(generator.getNodes(), 
 				map, dao);
 		assertTrue(result.getNodesList().contains(new NodeWithOutput(ph1, plan, generator)));
 		assertTrue(result.getNodesList().contains(new NodeWithOutput(la1, plan, generator)));
@@ -405,9 +405,9 @@ public class SimpleGeneratorTest {
 		map.put(field, category);
 		generator.planToGraph(plan);
 		
-		assertTrue(generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(), plan, 
+		assertTrue(generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(), 
 				map, -1, dao).size() == 10);
-		for(NodesList l : generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(), plan, 
+		for(NodesList l : generator.randomlyGeneratedFamilyOfPlans(generator.getNodes(),
 				map, -1, dao).values()) {
 			assertTrue(l.contains(new NodeWithOutput(ph1, plan, generator))
 					|| l.contains(new NodeWithOutput(ph2, plan, generator)));
@@ -482,4 +482,5 @@ public class SimpleGeneratorTest {
 		assertTrue(entries.stream().map(e -> e.getModule()).collect(Collectors.toList())
 				.containsAll(modules));
 	}
+	
 }
