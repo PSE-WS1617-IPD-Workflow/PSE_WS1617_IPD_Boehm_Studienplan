@@ -45,7 +45,7 @@
 		\item anhand der Benutzer"=Präferenzen und \texttt{Constraint}s verschiedener Art vervollständigt und modifiziert
 		\item anhand einer Zielfunktion optimiert
 	\end{itemize}
-	Dafür werden sog. Mock-Objekte benutzt, die nur zum Testen erstellt wurden, d.h. bei der echten Verwendung des Systems werden diese nicht benutzt werden, sondern stattdessen die Daten aus der Datenbank. Das Verhalten von Methoden der Klassen \texttt{ModuleDao} und \texttt{Plan} wurde hierfür mittels Mockito angepasst. & ERFOLGREICH\\
+	Dafür werden sog. Mock-Objekte benutzt, die nur zum Testen erstellt wurden, d.h. bei der echten Verwendung des Systems werden diese nicht benutzt, sondern stattdessen die Daten aus der Datenbank. Das Verhalten von Methoden der Klassen \texttt{ModuleDao} und \texttt{Plan} wurde hierfür mittels Mockito angepasst. & ERFOLGREICH\\
 	\hline
 	NodesListTest & Testet die topologische Sortierung der Klasse \texttt{NodesList}. & ERFOLGREICH\\
 	\hline
@@ -53,7 +53,7 @@
 	\hline
 	ConditionTest & Factory-Methoden getestet & ERFOLGREICH \\
 	\hline
-	ContainsFilterDescriptorTest, ListFilterDescriptorTest, RangeFilterDescriptorTest, FilterDescriptorTest,  & Korrekte JSON-Serialisierung, Parsen der Filterdaten aus einem Request getestet; dabei auch ungültige Eingaben überprüft & ERFOLGREICH \\
+	ContainsFilterDescriptorTest, ListFilterDescriptorTest, RangeFilterDescriptorTest, FilterDescriptorTest  & Korrekte JSON-Serialisierung, Parsen der Filterdaten aus einer Anfrage getestet; dabei auch ungültige Eingaben überprüft & ERFOLGREICH \\
 	\hline
 	FilterDescriptorProviderTest & Invarianten des Providers getestet (untersch. URI"=Identifier u. IDs, jeder veröffentlichte Filter kann mit dem Identifier gefunden werden) & ERFOLGREICH \\
 	\hline
