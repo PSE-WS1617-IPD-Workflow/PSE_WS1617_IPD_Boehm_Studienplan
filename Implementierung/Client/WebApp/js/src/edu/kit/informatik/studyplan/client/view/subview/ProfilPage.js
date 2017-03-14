@@ -37,7 +37,6 @@
       * @param{...*} options
       */
      initialize: function (options) {
-         // TODO: isSignUp
          this.isSignUp = (typeof options.isSignUp !== "undefined") ? options.isSignUp : false;
          this.model = options.plan;
          //Initialize moduleFinder

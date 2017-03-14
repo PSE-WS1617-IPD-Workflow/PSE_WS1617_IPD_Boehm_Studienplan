@@ -38,7 +38,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Server akzeptiert Erstellung eines namenlosen Plans & Fehlende Eingabevalidierung & Validierung hinzugefügt. \\
 	\hline
-	Plan-Duplizierung schlägt fehl & Bei Clientanfrage fehlt Modulliste, dem Server fehlt Validierung & Modulliste wird mitgesendet; Plan nicht einfach aus dem Request in die DB gespeichert \\
+	Plan-Duplizierung schlägt fehl & Bei Clientanfrage fehlt Modulliste, dem Server fehlt Validierung & Modulliste wird mitgesendet;  Aufbereitung der Eingabe zur Speicherung hinzugefügt\\
 	\hline
 	Planansicht verzählt sich bei Semesternummer & Fehlende „< 0“"=Abfrage,  unerwartetes Verhalten bei der Längenmessung von JS-Arrays & --- \\
 	\hline
@@ -102,11 +102,11 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Präferieren von Modulen erst nach zweimaligem Klick möglich & Fehlender null-Check & --- \\
 	\hline
-	Übernommenes Generierungsergebnis hat keinen Verifikationsstatus & PUT /plans lässt kein client-seitiges Setzen des Status zu & Aufrufen von GET /plans/id/verify \\
+	Übernommenes Generierungsergebnis hat keinen Verifikationsstatus & PUT /plans lässt kein clientseitiges Setzen des Status zu & Aufrufen von GET /plans/id/verify \\
 	\hline
 	Wintersemester werden mit nur einer Jahreszahl dargestellt & --- & Wintersemester werden – wie gewohnt – mit „WS XX/YY“ dargestellt \\
 	\hline
-	Präferenzen/Bestandene Module löschen zeigt nur temporäre Wirkung & Server vergisst gelöschte Modulpräferenzen/bestanene Module (Hibernate"=Problem) & In der Hibernate"=Annotation zu den Planpräferenzen/bestandenen Modulen \texttt{orphanRemoal = true} setzen \\
+	Präferenzen/Bestandene Module löschen zeigt nur temporäre Wirkung & Server vergisst gelöschte Modulpräferenzen/bestanene Module (Hibernate"=Problem) & In der Hibernate"=Annotation zu den Planpräferenzen/bestandenen Modulen \texttt{orphanRemoval = true} setzen \\
 	\hline
 	In Generierungs-Ergebnis-Ansicht können Module verschoben werden, Semesterzeilen hinzugefügt werden etc. & Fehlende Sperre & --- \\
 	\hline
@@ -116,17 +116,19 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	In Modulinfo-Leiste werden Constraint-Module viel zu groß angezeigt & fehlendes CSS (u.a. fehlender max"=height"=Parameter) & --- \\
 	\hline
-	Buttons der Generierungs-Sidebar nach Anzeigen von Modul Informationen nicht mehr verwendbar & Fehlerhaftes Setzen der Events & --- \\
+	Buttons der Generierungs"=Sidebar nach Anzeigen von Modulinformationen nicht mehr verwendbar & Fehlerhaftes Setzen der Events & --- \\
 	\hline
-	Cycle-Type-Sperre darf in Profilansicht nicht gesetzt sein & Eingestellt in Semesterklasse, die sowohl bei Plan Bearbeitung als auch in Profil verwendet wird & Behandlung der einzelnen Fälle \\
+	Cycle-Type-Sperre darf in Profilansicht nicht gesetzt sein & Eingestellt in Semesterklasse, die sowohl bei Planbearbeitung als auch in Profil verwendet wird & Behandlung der einzelnen Fälle \\
 	\hline
-	"Phantom Plan" bei Duplikations Versuch unter gleichem Namen & Fehlendes Rollback nach Plan Erstellung vor Plan Ersetzung & --- \\
+	„Phantom-Plan“ bei Duplikationsversuch unter gleichem Namen & Fehlendes Rollback nach Plan-Erstellung vor Plan-Ersetzung & --- \\
 	\hline
-	Sicherheitsabfrage beim Plan Verwerfen fehlt & --- & --- \\
+	Sicherheitsabfrage beim Plan-Verwerfen fehlt & --- & --- \\
 	\hline
 	Es lassen sich keine Informationen über Constraint-Modul in Info-Sidebar laden & Fehlende Ressourcen-URL im Constraint-Modul & --- \\
 	\hline
 	Bei Modul-Bewertung/Modul-Detail-Anzeige werden Verifikations-Informationen zurück gesetzt & Verifikations-Informationen werden bei jeder Planänderung zurückgesetzt & Verifikations-Informationen werden nur noch beim hinzufügen und entfernen von Modulen sowie ändern des Modul-Semesters zurückgesetzt. \\
+	\hline
+	Der Button „Filter zurücksetzen“ funktioniert nur bei einmaliger Benutzung & Referenzen wurden übergeben, jedoch keine Kopie erzeugt & Erzeugen einer Kopie \\
 	\hline
 	Diverse Rechtschreibfehler in den UI-Texten & erhöhter Koffein"=Spiegel und/oder Schlafmangel & (Wieder-)Einschalten des Hirns \\
 	\hhline{|=|=|=|}

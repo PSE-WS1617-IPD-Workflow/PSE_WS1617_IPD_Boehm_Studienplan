@@ -117,7 +117,8 @@ edu.kit.informatik.studyplan.client.view.components.filter.ModuleFilter = Backbo
     },
     resetFilters: function(event){
         this.filterCollection.each(function (el) {
-            el.set("curValue", el.get("default-value"));
+            el.set("curValue", JSON.parse(JSON.stringify(el.get("default-value"))));
+            console.log(el);
         });
         this.render();
         $(".filterButton").click();
