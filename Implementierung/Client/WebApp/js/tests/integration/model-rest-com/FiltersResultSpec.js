@@ -66,7 +66,11 @@ define(["studyplan"], function (client) {
                 expect(importantFilter.get('id')).toBeDefined();
                 expect(importantFilter.get('id')).toEqual(resultObject.filters[i].id);
                 expect(importantFilter.get('name')).toEqual(resultObject.filters[i].name);
-                expect(importantFilter.get('default-value')).toEqual(resultObject.filters[i]["default-value"]);
+                if(resultObject.filters[i]["specification"]["type"]=="list"){
+                    expect(importantFilter.get('default-value')).toEqual("none");
+                }else{
+                    expect(importantFilter.get('default-value')).toEqual(resultObject.filters[i]["default-value"]);
+                }
                 expect(importantFilter.get('tooltip')).toEqual(resultObject.filters[i].tooltip);
 
             }
