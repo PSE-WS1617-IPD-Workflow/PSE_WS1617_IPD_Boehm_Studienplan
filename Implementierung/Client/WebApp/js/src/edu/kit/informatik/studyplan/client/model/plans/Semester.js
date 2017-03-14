@@ -27,7 +27,7 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
      */
     initialize: function (attributes, options) {
         this.collection = options.collection;
-        this.listenTo(this, "change reset add remove", this.onChange.bind(this));
+        this.listenTo(this, "change:semester reset add remove", this.onChange.bind(this));
     },
     /**
      * This method makes sure the semester collection (and plan) is being notified, when the semester changes
