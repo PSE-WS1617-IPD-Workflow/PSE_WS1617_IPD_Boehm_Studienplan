@@ -1,0 +1,50 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "PlanResult",
+	"type": "object",
+	"properties": {
+		"plan" : {
+			"type" : "object",
+			"properties" : {
+				"id" : {"type": "string"},
+				"name" : {"type" : "string"},
+				"status" : {"enum" : ["valid", "invalid", "not-verified"]},
+				"creditpoints-sum" : {"type" : "number", "minimum" : 0},
+				"modules" : {
+					"type" : "array",
+					"items" : {
+						"type": "object",
+           				"properties": {
+			            	"id": {
+			            		"type" : "string"
+			            	},
+			            	"name": {
+			            		"type": "string"
+			            	},
+			            	"semester" : {
+			            		"type" : "integer",
+			            		"minimum" : 1
+			            	},
+			            	"cycle-type" : {
+			            		"enum" : ["WT", "ST", "both"]
+			            	},
+			            	"creditpoints" : {
+			            		"type": "number",
+			            		"minimum" : 0
+			            	},
+			            	"lecturer" : {
+			            		"type": "string"
+			            	},
+			            	"preference" : {
+			            		"enum" : ["positive", "negative"]
+			            	}
+           				},
+           				"required" : ["id", "name", "semester", "creditpoints"]
+					}
+				}
+			},
+			"required" : ["id", "name", "status", "creditpoints-sum", "modules"]
+		}
+	},
+	"required" : ["plan"]
+}

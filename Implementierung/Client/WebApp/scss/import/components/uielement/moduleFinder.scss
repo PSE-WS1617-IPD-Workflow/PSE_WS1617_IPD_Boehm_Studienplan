@@ -32,9 +32,10 @@
     background-color:$boxBgColor;
     border-bottom:1px solid $boxBorderColor;
  
-    padding: 20px 0;
-    
-    .filterButton{
+    padding: 20px 0px;
+
+    .filterButton {
+        margin-bottom: 10px;
         cursor: pointer;
         padding-bottom: 3px;
         padding-top: 3px;
@@ -49,6 +50,11 @@
         
         &:hover{
             background: $bg1;
+        }
+        &.loadingModules{
+            background-image:url("../img/loadingModules.svg");
+            background-position: left center;
+            background-repeat: no-repeat;
         }
     }
 }

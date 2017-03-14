@@ -4,11 +4,12 @@ import io.restassured.specification.RequestSpecification;
 
 class SimpleRestAssuredTestWithAuth extends SimpleRestAssuredTest {
     static RequestSpecification customAuthorize(RequestSpecification given) {
-        return given
-                .header("Authorization", "Bearer admin123")
-                .header("Origin", "*");
+        return customAuthorize(given, "Bearer admin123");
+    }
 
-//                  .auth().preemptive().basic("max_mustermann", "123");
-                    //doesn't work!?
+    static RequestSpecification customAuthorize(RequestSpecification given, String accessToken) {
+        return given
+                .header("Authorization", accessToken)
+                .header("Origin", "*");
     }
 }

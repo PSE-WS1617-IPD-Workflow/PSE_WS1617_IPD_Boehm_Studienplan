@@ -70,6 +70,49 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
                 expires_in: this.get('expires_in'),
                 state: this.get('state')
             }
+        },
+        /**
+         * Creates timeouts which will warn the user before logout and eventually logout user
+         */
+        setLogoutTimeouts: function () {
+            var expiresIn = this.get('expires_in') - Date.now();
+            var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
+            // Warning user:
+            window.setTimeout(function () {
+                if(!this.isLoggedIn()){
+                    return;
+                }
+                
+                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                    .add(
+                        new edu.kit.informatik.studyplan.client.model.system.Notification({
+                            title: LM.getMessage("authEndTitle"),
+                            text: LM.getMessage("authEndText"),
+                            wasShown: false,
+                            type: "error"
+                        })
+                    );
+            }.bind(this), (expiresIn - (100 * 1000)) );
+            // Logging out user:
+            window.setTimeout(function () {
+                if(!this.isLoggedIn()){
+                    return;
+                }
+                this.set('access_token', undefined);
+                this.save();
+                edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/login", {
+                    trigger: true
+                });
+                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
+                    .add(
+                        new edu.kit.informatik.studyplan.client.model.system.Notification({
+                            title: LM.getMessage("realAuthEndTitle"),
+                            text: LM.getMessage("realAuthEndText"),
+                            wasShown: false,
+                            type: "error"
+                        })
+                    );
+            }.bind(this), (expiresIn - (5 * 1000)) );
         }
     });
     return {
@@ -90,6 +133,9 @@ edu.kit.informatik.studyplan.client.model.user.SessionInformation = (function ()
                             instance.save();
                         }
                         instance.set('wasLoaded', true);
+                        if(instance.isLoggedIn()){
+                            instance.setLogoutTimeouts();
+                        }
                     }
                 });
             }

@@ -1,5 +1,11 @@
 package edu.kit.informatik.studyplan.server.filter;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.ws.rs.BadRequestException;
+
 import edu.kit.informatik.studyplan.server.model.moduledata.Category;
 import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
@@ -7,11 +13,6 @@ import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.ModuleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.dao.ModuleDaoFactory;
 import jersey.repackaged.com.google.common.collect.ImmutableList;
-
-import javax.ws.rs.BadRequestException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Provides published filter descriptors.
@@ -90,7 +91,7 @@ public final class FilterDescriptorProvider {
      */
     public FilterDescriptor getDescriptorFromUriIdentifier(String uriIdentifier) throws BadRequestException {
         return values().stream()
-                .filter(descriptor -> descriptor.getFilterUriIdentifier().equals(uriIdentifier))
+                .filter(descriptor -> descriptor.getFilterUriIdentifier().equalsIgnoreCase(uriIdentifier.trim()))
                 .findFirst().orElseThrow(BadRequestException::new);
     }
 }

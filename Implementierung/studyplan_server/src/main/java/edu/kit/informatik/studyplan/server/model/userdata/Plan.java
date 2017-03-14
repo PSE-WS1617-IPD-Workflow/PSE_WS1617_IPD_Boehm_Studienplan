@@ -10,7 +10,10 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.NotFoundException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -52,7 +55,7 @@ public class Plan {
 	@JsonIgnore
 	private List<ModuleEntry> moduleEntries = new LinkedList<ModuleEntry>();
 
-	@OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "plan", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore
 	private List<ModulePreference> modulePreferences = new LinkedList<ModulePreference>();
 
@@ -172,32 +175,7 @@ public class Plan {
 
 	/**
 	 * Only being called by Jackson and/or REST handlers, respectively.
-	 * 
-	 * @return Publishes the module entries inside the plan's JSON
-	 *         representation.
-	 */
-	@JsonProperty("modules")
-	public List<JsonModule> getJsonModules() {
-		if (moduleEntries == null) {
-			return null;
-		} else {
-			return moduleEntries.stream().map(entry -> {
-				JsonModule jsonModule = new JsonModule();
-				jsonModule.setId(entry.getModule().getIdentifier());
-				jsonModule.setName(entry.getModule().getName());
-				jsonModule.setSemester(entry.getSemester());
-				jsonModule.setCreditPoints(entry.getModule().getCreditPoints());
-				jsonModule.setLecturer(entry.getModule().getModuleDescription().getLecturer());
-				jsonModule.setCycleType(entry.getModule().getCycleType());
-				jsonModule.setPreference(getPreferenceForModule(entry.getModule()));
-				return jsonModule;
-			}).collect(Collectors.toList());
-		}
-	}
-
-	/**
-	 * Only being called by Jackson and/or REST handlers, respectively.
-	 * 
+	 *
 	 * @param jsonModules
 	 *            The modules attribute's content from the plan's JSON
 	 *            representation.
@@ -207,8 +185,8 @@ public class Plan {
 		if (jsonModules == null || jsonModules.isEmpty())
 			return;
 		HashSet<String> placedModulesIds = new HashSet<>(jsonModules.size()); // for
-																				// finding
-																				// duplicates
+		// finding
+		// duplicates
 		List<ModuleEntry> moduleEntries = new ArrayList<>(jsonModules.size());
 		List<ModulePreference> preferences = new LinkedList<>();
 		for (JsonModule jsonModule : jsonModules) {
@@ -232,8 +210,35 @@ public class Plan {
 				preferences.add(preference);
 			}
 		}
-		this.moduleEntries = moduleEntries;
-		this.modulePreferences = preferences;
+		this.moduleEntries.clear();
+		this.moduleEntries.addAll(moduleEntries);
+		this.modulePreferences.clear();
+		this.modulePreferences.addAll(preferences);
+	}
+
+	/**
+	 * Only being called by Jackson and/or REST handlers, respectively.
+	 * 
+	 * @return Publishes the module entries inside the plan's JSON
+	 *         representation.
+	 */
+	@JsonProperty("modules")
+	public List<JsonModule> getJsonModules() {
+		if (moduleEntries == null) {
+			return null;
+		} else {
+			return moduleEntries.stream().map(entry -> {
+				JsonModule jsonModule = new JsonModule();
+				jsonModule.setId(entry.getModule().getIdentifier());
+				jsonModule.setName(entry.getModule().getName());
+				jsonModule.setSemester(entry.getSemester());
+				jsonModule.setCreditPoints(entry.getModule().getCreditPoints());
+				jsonModule.setLecturer(entry.getModule().getModuleDescription().getLecturer());
+				jsonModule.setCycleType(entry.getModule().getCycleType());
+				jsonModule.setPreference(getPreferenceForModule(entry.getModule()));
+				return jsonModule;
+			}).collect(Collectors.toList());
+		}
 	}
 
 	/**

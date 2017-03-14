@@ -26,17 +26,19 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleInfoSidebar 
      */
     reload: function () {
         //console.info(this.model.get('constraints'));
+        //console.log(_.result(this.model.collection, "url"));
         this.moduleBoxes = {};
         _.each(this.model.get('constraints'), function (constraint) {
             if(constraint.isRelevantFor(this.model.get('id'))){
                 _.each(["first", "second"], function (nthModule) {
                     if (constraint.get(nthModule).get('id') != this.model.get('id')) {
+                        constraint.get(nthModule).urlRoot = _.result(this.model.collection, "url");
                         var tmpModuleBox = new edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox({
                             module: constraint.get(nthModule),
                             //TODO: einstellbar
                             isRemovable: false,
                             isDraggable: true,
-                            isPreferencable: this.isPreferencable,
+                            isPreferencable: this.isPreferencable
                         });
                         if (!this.moduleBoxes[constraint.get('type')]) {
                             this.moduleBoxes[constraint.get('type')] = [];

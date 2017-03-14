@@ -18,12 +18,16 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.ProposalSidebar = Ba
     },
     render: function () {
         this.$el.html(this.template());
+        this.delegateEvents();
     },
     /**
      * delete the plan
      */
     deletePlan: function () {
         "use strict";
+        if(!confirm(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("deleteProposal-sure"))){
+            return;
+        }
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate('/plans/' + this.model.get('id'), {
             trigger: true
         });
@@ -37,9 +41,14 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.ProposalSidebar = Ba
         var plan = this.model.getPlan({
             newPlan: false,
             success: function () {
-                edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
-                edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate('plans/' + plan.get('id'), {
-                    trigger: true
+                // Make sure plan is verified
+                plan.get('verificationResult').fetch({
+                    success: function () {
+                        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+                        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate('plans/' + plan.get('id'), {
+                            trigger: true
+                        });
+                    }
                 });
             }
         });
@@ -58,9 +67,14 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.ProposalSidebar = Ba
             newPlan: true,
             planName: name,
             success: function () {
-                edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
-                edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate('plans/' + plan.get('id'), {
-                    trigger: true
+                // Make sure plan is verified
+                plan.get('verificationResult').fetch({
+                    success: function () {
+                        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+                        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate('plans/' + plan.get('id'), {
+                            trigger: true
+                        });
+                    }
                 });
             }
         });

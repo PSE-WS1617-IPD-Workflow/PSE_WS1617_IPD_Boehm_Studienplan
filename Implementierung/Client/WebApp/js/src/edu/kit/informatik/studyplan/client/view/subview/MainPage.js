@@ -6,6 +6,7 @@ goog.provide("edu.kit.informatik.studyplan.client.view.subview.MainPage");
  */
 
 edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend( /** @lends {edu.kit.informatik.studyplan.client.view.subview.MainPage.prototype} */ {
+    pageTour: edu.kit.informatik.studyplan.client.model.system.TourManager.getInstance().getTour("mainPage"),
     /**
      * the model element that contains the plans
      */
@@ -35,7 +36,7 @@ edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend
      *               parameters:
      *                   planCollection -> contains the planCollection that will be displayed - model connection
      */
-    initialize: function (options) {
+    initialize: function (options) { 
         "use strict";
         this.planCollection = options.planCollection;
         this.planList = new edu.kit.informatik.studyplan.client.view.components.uipanel.PlanList({
@@ -59,6 +60,7 @@ edu.kit.informatik.studyplan.client.view.subview.MainPage = Backbone.View.extend
     addPlan: function () {
         "use strict";
         var planName = prompt(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("planNameQuestion"), "");
+        var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
         if (planName === null) {
             return;
         }

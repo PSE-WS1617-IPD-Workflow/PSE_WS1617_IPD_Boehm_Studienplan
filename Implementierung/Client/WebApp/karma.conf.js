@@ -23,6 +23,8 @@ module.exports = function(config) {
       {pattern: 'htdocs/lib/jquery.js', included: false},
       {pattern: 'htdocs/lib/backbone.js', included: false},
       {pattern: 'htdocs/lib/underscore.js', included: false},
+      {pattern: 'htdocs/lib/shepherd.min.js', included: false},
+      {pattern: 'htdocs/lib/tether.min.js', included: false},
       {pattern: 'js/tests/**/*Spec.js', included: false}
     ],
 

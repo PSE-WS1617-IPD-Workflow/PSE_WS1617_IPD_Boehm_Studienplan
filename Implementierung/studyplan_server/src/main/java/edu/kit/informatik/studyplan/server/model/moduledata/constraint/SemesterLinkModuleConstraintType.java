@@ -18,7 +18,7 @@ public class SemesterLinkModuleConstraintType extends ModuleConstraintType {
 		if (first == null || second == null) {
 			return false;
 		}
-		if (first.isPassed() && second.isPassed()) {
+		if (first.isPassed() || second.isPassed()) {
 			return true;
 		}
 		return first.getSemester() == second.getSemester();

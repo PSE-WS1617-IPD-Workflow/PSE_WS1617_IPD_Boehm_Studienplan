@@ -104,4 +104,14 @@ public class Discipline {
 	public List<Module> getCompulsoryModules() {
 		return compulsoryModules;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Discipline)) {
+			return false;
+		}
+		Discipline discipline = (Discipline) obj;
+		return discipline.getDisciplineId() == this.getDisciplineId()
+				&& discipline.getDescription().equals(this.getDescription());
+	};
 }

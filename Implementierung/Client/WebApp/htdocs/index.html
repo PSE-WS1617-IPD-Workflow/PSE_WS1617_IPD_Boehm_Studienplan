@@ -4,7 +4,7 @@
         <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
         <title>STUDYplan</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="lib/elastislide.scss">
+        <link rel="stylesheet" type="text/css" href="lib/shepherd-theme-arrows.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <script src="lib/require.js"></script>
         <script type="application/javascript">
@@ -17,7 +17,9 @@
                     'jquery-ui': 'lib/jquery-ui',
                     'underscore' : 'lib/underscore',
                     'backbone' : 'lib/backbone',
-                    'studyplan' : 'js/app'
+                    'studyplan' : 'js/app',
+                    'shepherd' : 'lib/shepherd.min',
+                    'tether' : 'lib/tether.min'
                 }
             });
             requirejs(["studyplan"], function (client) {

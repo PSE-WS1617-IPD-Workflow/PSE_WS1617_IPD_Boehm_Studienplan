@@ -42,6 +42,7 @@ div[class^=generationWizardComponent] .box label {
     }
     
     .profileModuleFilterWrapper {
+        float: left;
         margin-bottom: 40px;
     }
     
@@ -54,10 +55,18 @@ div[class^=generationWizardComponent] .box label {
     }
     
     .filterButton {
-        width: 200px;
-        position: absolute;
+        width: 35%;
+        float: right;
         right: 20px;
         bottom: 20px;
+        margin: 5px;
+    }
+    .resetFilters {
+        width: 35%;
+        float: right;
+        right: 20px;
+        bottom: 20px;
+        margin: 5px;
     }
     
     .profileModuleCollectionWrapper .moduleListWrapper .moduleBox {

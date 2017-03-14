@@ -14,6 +14,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     isPreferencable: true,
     isDraggable: true,
     isRemovable: true,
+    //true implies that module is not preferencable, even if isPreferencable is set to true
     isPassedPlanModule: false,
     /**
      * events which are listened to and their handlers
@@ -39,12 +40,11 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
     voteUp: function () {
         "use strict";
 	    //console.info("irgendwas stimmt da nicht");
-        if (this.model.get('preference').get('preference') == '' || this.model.get('preference').get('preference') == 'negative') {
-            console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteUp");
+        if (this.model.get('preference').get('preference') != 'positive') {
+            //console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteUp");
         	var preference = this.model.get('preference');
         	preference.set('preference','positive');
-        }
-            else{
+        } else{
 	        //console.info("Versuch, positive Preferenzen zurückzusetzen");
                 var preference =this.model.get('preference');
             preference.set('preference', '');
@@ -56,13 +56,13 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox = Backbo
      */
     voteDown: function () {
 	"use strict";
-	if(this.model.get('preference').get('preference')=='' || this.model.get('preference').get('preference')=='positive'){
-        	console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteDown");
+	if(this.model.get('preference').get('preference')!='negative'){
+        	//console.info("[edu.kit.informatik.studyplan.client.view.components.uielement.ModuleBox] voteDown");
         	var preference = this.model.get('preference');
         	preference.set('preference', 'negative');
 	}
 	else{
-		console.info("Versuch negative Preferenz zurück zu setzen");
+		//console.info("Versuch negative Preferenz zurück zu setzen");
 		var preference = this.model.get('preference');
 		preference.set('preference','');
 	}

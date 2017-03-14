@@ -1,0 +1,113 @@
+\FloatBarrier
+\subsection{Server}
+
+\subsubsection*{Unit-Tests}
+
+\begin{longtable}{| >{\hspace{0pt}} p{.26\textwidth} | >{\hspace{0pt}} p{.45\textwidth} | >{\hspace{0pt}} p{.19\textwidth} |}
+	\hline
+	\textbf{Testklasse} & \textbf{Beschreibung} & \textbf{Status} \\ 
+	\hhline{|=|=|=|}  
+	\endfirsthead
+	\endhead
+	CategoryTest & Getter und Setter für \texttt{Category} getestet & ERFOLGREICH \\
+	\hline
+	DisciplineTest & Getter und Setter für \texttt{Discipline} getestet & ERFOLGREICH \\
+	\hline
+	SemesterTest & Test der Semester-Abstandsberechnung zwischen:
+	\begin{itemize}
+		\item zwei Wintersemestern
+		\item zwei Sommersemestern
+		\item zwischen Winter- und Sommersemester
+		\item zwischen Sommer- und Wintersemester
+	\end{itemize}
+	Test der compareTo-Methoden \\
+	Test der plus-Methode & ERFOLGREICH \\
+	\hline
+	StandardVerifierTest & Testet, ob der \texttt{StandardVerifier} folgendes erkennt:
+	\begin{itemize}
+		\item fehlende Pflichtmodule
+		\item Verletzung von Rule-Group"=Bedingungen
+		\item Verletzung von Bereichsbedingungen (Fields)
+	\end{itemize} & ERFOLGREICH \\
+	\hline
+	StandardVerifierConstraintTest & Testet ob der die Verletzung folgender \texttt{ConstraintTypes} in unterschiedlichen Ausartungen erkennt:
+	\begin{itemize}
+		\item Verletzung von Überlappung 
+		\item Verletzung von Plan"=Zusammengehörigkeit 
+		\item Verletzung von Semester"=Zusammengehörigkeit 
+		\item Verletzung von Voraussetzungen
+	\end{itemize}
+	Dadurch wurden auch die \texttt{isValid}-Methoden der entsprechenden \texttt{ConstraintTypes} getestet & ERFOLGREICH \\
+	\hline
+	SimpleGeneratorTest & Testet einzelne Methoden des \texttt{SimpleGenerator}. 
+	Ein Plan mit einem einzelnen \texttt{ModuleEntry} wird:
+	\begin{itemize}
+		\item anhand der Benutzer"=Präferenzen und \texttt{Constraint}s verschiedener Art vervollständigt und modifiziert
+		\item anhand einer Zielfunktion optimiert
+	\end{itemize}
+	Dafür werden sog. Mock-Objekte benutzt, die nur zum Testen erstellt wurden, d.h. bei der echten Verwendung des Systems werden diese nicht benutzt werden, sondern stattdessen die Daten aus der Datenbank. Das Verhalten von Methoden der Klassen \texttt{ModuleDao} und \texttt{Plan} wurde hierfür mittels Mockito angepasst. & ERFOLGREICH\\
+	\hline
+	NodesListTest & Testet die topologische Sortierung der Klasse \texttt{NodesList}. & ERFOLGREICH\\
+	\hline
+	VerificationManager & Getter für \texttt{Verifier} getestet. & ERFOLGREICH\\
+	\hline
+	ConditionTest & Factory-Methoden getestet & ERFOLGREICH \\
+	\hline
+	ContainsFilterDescriptorTest, ListFilterDescriptorTest, RangeFilterDescriptorTest, FilterDescriptorTest,  & Korrekte JSON-Serialisierung, Parsen der Filterdaten aus einem Request getestet; dabei auch ungültige Eingaben überprüft & ERFOLGREICH \\
+	\hline
+	FilterDescriptorProviderTest & Invarianten des Providers getestet (untersch. URI"=Identifier u. IDs, jeder veröffentlichte Filter kann mit dem Identifier gefunden werden) & ERFOLGREICH \\
+	\hline
+	MultiFilterTest & Korrekte Listenglättung der Sub-Condition-Listen getestet & ERFOLGREICH \\
+	\hline
+	TrueFilterTest & Rückgabe einer leeren Condition-Liste getestet & ERFOLGREICH \\
+	\hhline{|=|=|=|}  
+\end{longtable}
+
+\subsubsection*{Integrations-Tests}
+
+\begin{longtable}{| >{\hspace{0pt}} p{.26\textwidth} | >{\hspace{0pt}} p{.45\textwidth} | >{\hspace{0pt}} p{.19\textwidth} |}
+	\hline
+	\textbf{Testklasse} & \textbf{Beschreibung} & \textbf{Status} \\ 
+	\hhline{|=|=|=|}  
+	\endfirsthead
+	\endhead
+	DisciplinesResourceIntegrationTest & Überprüft die korrekte JSON-Serialisierung von GET /disciplines. & ERFOLGREICH \\
+	\hline
+	FieldsResourceIntegrationTest & Überprüft die korrekte JSON-Serialisierung von GET /fields. & ERFOLGREICH \\
+	\hline
+	ObjectiveFunctionResourceIntegrationTest & Überprüft die korrekte JSON-Serialisierung von GET /objective-functions. & ERFOLGREICH \\
+	\hline
+	FilterResourceIntegrationTest & Überprüft die korrekte JSON-Serialisierung von GET /filters (die drei Typen range, list und contains samt zugehöriger Spezifikation). & ERFOLGREICH \\
+	\hline
+	StudentResourceIntegrationTest & Überprüft, ob der Nutzer beim Neuanlegen korrekt initialisiert ist; das Setzen von Fachrichtung und Studienstart funktioniert; fehlerhafte Fachrichtungen/Studienstarts (zukünftig/prähistorisch) abgefangen werden; bestandene Module korrekt gesetzt werden; fehlerhafte bestandene Module (falsches Modul, falsches Semester) abgefangen werden; die JSON-Rückgaben korrekt serialisiert werden und eine Autorisierung vor dem Zugriff auf die Ressourcen verlangt wird. & ERFOLGREICH \\
+	\hline
+	ModuleResourceIntegrationTest & Überprüft, ob GET /modules/id korrekt als JSON serialisiert wird und auch die korrekten Daten gesendet werden; testet mehrere Filteraufrufe auf korrekte Rückgabe sowie fehlerhafte Eingabe. & ERFOLGREICH \\
+	\hline
+	
+	PlansResourcePlanCreationIntegrationTest & 
+		folgendes wurde überprüft:
+		\begin{itemize}
+			\item Anlegen eines Plans möglich
+			\item korrekte Serialisierung aller Pläne eines Nutzers
+			\item doppelte Plannamen werden abgefangen
+			\item ungültige Plannamen werden abgefangen (leerer Name, zu langer Name)
+			\item Zugriff nur autorisiert möglich
+		\end{itemize}
+		& ERFOLGREICH \\ \hline
+	PlansResourcePlanEditIntegrationTest & 
+	folgendes wurde überprüft:
+	\begin{itemize}
+		\item Planumbenennung möglich; doppelte Namen, leere Namen, zu lange Namen werden abgefangen
+		\item korrekte Serialisierung eines Plans
+		\item Platzierung von Modulen im Studienplan
+		\item Bewegung von Modulen im Studienplan
+		\item Entfernen von Modulen aus dem Studienplan
+		\item Setzen und Entfernen von Modulpräferenzen
+		\item Zugriff auf die Exportfunktion
+		\item Zugriff auf Ressourcen nur autorisiert möglich
+	\end{itemize}
+	Dies beinhalten auch das Überprüfen ungültiger Eingabeparameter.
+	& ERFOLGREICH \\
+	
+	\hhline{|=|=|=|}  
+\end{longtable}

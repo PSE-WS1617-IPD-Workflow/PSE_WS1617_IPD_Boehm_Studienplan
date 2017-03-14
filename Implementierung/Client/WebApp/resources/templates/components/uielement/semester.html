@@ -3,8 +3,9 @@
     {{=obj.LM.getMessage("semesterTypeName-"+obj.semester.getCycleType())}} <br>
     {{=obj.semester.getEctsSum()}} ECTS
 </td>
-<td style="position:relative;">
+<td style="position:relative;" class="{{=(obj.notDraggable) ? 'notDraggable' : ''}}">
     <ul class="semesterModules leftSided">
 
     </ul>
+    <!--<img src="img/drag-here.png" class="dragHereSymbol">-->
 </td>

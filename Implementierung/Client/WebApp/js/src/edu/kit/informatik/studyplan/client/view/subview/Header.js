@@ -17,6 +17,7 @@ edu.kit.informatik.studyplan.client.view.subview.Header = Backbone.View.extend( 
      * events that trigger certain methods
      */
     events: {
+        "click a.tour": "showTour",
         "click a.profile": "showProfile",
         "click a.logout": "logoutUser",
         "click a.home": "goHome"
@@ -35,6 +36,7 @@ edu.kit.informatik.studyplan.client.view.subview.Header = Backbone.View.extend( 
     initialize: function (options) {
         "use strict";
         this.sessionInformation = options.sessionInformation;
+        this.tourHandler = options.tourHandler;
     },
     /*
      * renders the header
@@ -75,5 +77,9 @@ edu.kit.informatik.studyplan.client.view.subview.Header = Backbone.View.extend( 
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("/logout", {
             trigger: true
         });
+    },
+    showTour: function (event) {
+        event.preventDefault();
+        this.tourHandler();
     }
 });

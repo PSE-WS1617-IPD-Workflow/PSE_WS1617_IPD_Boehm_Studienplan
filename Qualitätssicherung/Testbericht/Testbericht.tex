@@ -7,7 +7,7 @@
 \usepackage[ngerman]{babel}  % german hyphenation, quotes, etc
 \usepackage{hyperref}       % detailed hyperlink/pdf configuration
 \hypersetup{                % ‘texdoc hyperref‘ for options
-	pdftitle={PSE: Implementierungsbericht},%
+	pdftitle={PSE: Testbericht},%
 	bookmarks=true,%
 }
 \usepackage{graphicx}       % provides commands for including figures
@@ -72,7 +72,7 @@
 \addto\captionsngerman{\let\appendixtocname\appendixname\let\appendixpagename\appendixname}
 
 % fix hyphenation
-\hyphenation{Log-out Log-in Ak-tions Ak-tion ge-öff-net liken dis-liken Like Dis-like No-ti-fi-ca-tion Mo-dule inkl Au-tho-ri-za-tion Web-App Ar-chi-tek-tur-en Ge-ne-rie-rungs Stu-di-en-plan Client}
+\hyphenation{Log-out Log-in Ak-tions Ak-tion ge-öff-net liken dis-liken Like Dis-like No-ti-fi-ca-tion Mo-dule inkl Au-tho-ri-za-tion Web-App Ar-chi-tek-tur-en Ge-ne-rie-rungs Stu-di-en-plan Client außer-dem}
 
 \usepackage{enumitem}
 \setlist[itemize]{nosep}
@@ -107,10 +107,19 @@
 % % Hier beginnt die Gliederung des Pflichtenhefts
 \input{content/intro}
 
+\input{content/changes_tests}
+
+\input{content/changes_usecases_scenarios}
+
+\input{content/changes_software}
+
+\input{content/fixed_bugs}
+
+\input{content/user_feedback}
 
 
-\newpage
-\begin{appendices}
-	\input{content/addendum}	
-\end{appendices}
+%\newpage
+%\begin{appendices}
+%	\input{content/addendum}	
+%\end{appendices}
 \end{document}

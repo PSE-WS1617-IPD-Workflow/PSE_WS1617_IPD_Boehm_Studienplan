@@ -9,11 +9,13 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uielement.Regu
 edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = edu.kit.informatik.studyplan.client.view.components.uielement.PlanHeadBar.extend( /** @lends {edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar.prototype}*/ {
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/regularHeadBar.html"),
     model: null,
+    dialog: null,
     events: {
         "change #curPlanName": "rename",
         "click #generatePlan": "generate",
         "click #verifyPlan": "verify",
-        "click button.mainPageNavigation": "goHome"
+        "click button.mainPageNavigation": "goHome",
+        "click button.editNamePencil": "focusRename"
     },
     initialize: function (options) {
         "use strict";
@@ -51,13 +53,12 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
         "use strict";
         //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar] verify");
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
-        var self = this;
         var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
         this.model.get('verificationResult').fetch({
             success: function () {
                 edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
                 var notification = null;
-                if (self.model.get('verificationResult').get('status') == "valid") {
+                if (this.model.get('verificationResult').get('status') == "valid") {
                     notification = new edu.kit.informatik.studyplan.client.model.system.Notification({
                         title: LM.getMessage("verificationSuccessTitle"),
                         text: LM.getMessage("verificationSuccessText"),
@@ -65,37 +66,21 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                         type: "success"
                     });
                 }
-                if (self.model.get('verificationResult').get('status') == "invalid") {
+                if (this.model.get('verificationResult').get('status') == "invalid") {
                     // Turned to true, if the dialog needs to be shown
-                    var showDialog = false;
-                    var html = "<div>";
-                    html += LM.getMessage("verificationFailText")
-                    html += "<ul>";
-                    _.each(self.model.get('verificationResult').get('field-violations'), function (field) {
-                        showDialog = true;
-                        html += "<li>" + field.name + " (min: " + field["min-ects"] + " ECTS)</li>";
+                    var showDialog = (this.model.get('verificationResult').get('field-violations').length>0||
+                                       this.model.get('verificationResult').get('rule-group-violations').length > 0 ||
+                                       this.model.get('verificationResult').get('compulsory-violations').length > 0);
+                    var html = edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate(
+                        "resources/templates/components/uielement/verificationDialog.html"
+                    )({
+                        verification: this.model.get('verificationResult')
                     });
-                    _.each(self.model.get('verificationResult').get('rule-group-violations'), function (ruleGroup) {
-                        showDialog = true;
-                        html += "<li>" + ruleGroup.name + " (" +
-                            ((ruleGroup["min-num"] != -1) ?
-                                "min: " + ruleGroup["min-num"] + "" :
-                                "") +
-                            ((ruleGroup["max-num"] != -1 && ruleGroup["min-num"] != -1) ?
-                                "," :
-                                "") +
-                            ((ruleGroup["max-num"] != -1) ?
-                                "max: " + ruleGroup["max-num"] + "" :
-                                "") +
-                            ")</li>";
-                    });
-                    _.each(self.model.get('verificationResult').get('compulsory-violations'), function (module) {
-                        showDialog = true;
-                        html += "<li>" + module.name + "</li>";
-                    });
-                    html += "</ul>";
-                    html += "</div>";
                     if(showDialog) {
+                        if(this.dialog!=null){
+                            $(this.dialog).dialog("close")
+                            this.dialog=null;
+                        }
                         var options = {
                             title: LM.getMessage("verificationFailTitle"),
                             resizable: false,
@@ -107,17 +92,25 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                             buttons: {},
                         }
                         options["buttons"][LM.getMessage('OK')] = function () {
-                            $(this).dialog("close");
-                        }
-                        var dialog = $(html).dialog(options);
-                        dialog.show();
+                            $(this.dialog).dialog("close");
+                            this.dialog=null;
+                        }.bind(this);
+                        this.dialog = $(html).dialog(options);
+                        this.dialog.show();
+                    } else {
+                        notification = new edu.kit.informatik.studyplan.client.model.system.Notification({
+                            title: LM.getMessage("verificationFailTitle"),
+                            text: LM.getMessage("verificationFailText"),
+                            wasShown: false,
+                            type: "error"
+                        });
                     }
                 }
                 if (notification !== null) {
                     edu.kit.informatik.studyplan.client.model.system.NotificationCollection
                         .getInstance().add(notification);
                 }
-            }
+            }.bind(this)
         });
     },
     /**
@@ -127,6 +120,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
         "use strict";
         //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar] rename")
         var name = this.$el.find("#curPlanName").val();
+        var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
         if (name.length > 100) {
             edu.kit.informatik.studyplan.client.model.system.NotificationCollection
                 .getInstance().add(
@@ -152,5 +146,8 @@ edu.kit.informatik.studyplan.client.view.components.uielement.RegularHeadBar = e
                     );
             }
         })
+    },
+    focusRename: function () {
+        $("#curPlanName").focus();
     }
 });

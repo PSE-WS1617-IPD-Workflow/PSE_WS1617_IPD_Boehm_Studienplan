@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
@@ -14,6 +15,8 @@ import edu.kit.informatik.studyplan.server.model.moduledata.constraint.Prerequis
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.SemesterLinkModuleConstraintType;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import edu.kit.informatik.studyplan.server.model.userdata.Semester;
+import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 
@@ -38,6 +41,7 @@ public class StandardVerifierConstraintTest {
 		discipline = new Discipline();
 		User user = new User();
 		user.setDiscipline(discipline);
+		user.setStudyStart(new Semester(SemesterType.WINTER_TERM, 2015));
 		plan = new Plan();
 		plan.setUser(user);
 		constraint = new ModuleConstraint();
@@ -47,6 +51,8 @@ public class StandardVerifierConstraintTest {
 		module2.getToConstraints().add(constraint);
 		constraint.setFirstModule(module1);
 		constraint.setSecondModule(module2);
+		module1.setCycleType(CycleType.BOTH);
+		module2.setCycleType(CycleType.BOTH);
 	}
 	
 	/**
@@ -198,6 +204,20 @@ public class StandardVerifierConstraintTest {
 		plan.getUser().getPassedModules().clear();
 		plan.getModuleEntries().clear();
 		plan.getUser().getPassedModules().add(entry2);
+		assertTrue(isCorrect(new StandardVerifier().verify(plan)));
+		
+		//module 1 passed, module 2 not
+		plan.getUser().getPassedModules().clear();
+		plan.getModuleEntries().clear();
+		plan.getUser().getPassedModules().add(entry1);
+		plan.getModuleEntries().add(entry2);
+		assertTrue(isCorrect(new StandardVerifier().verify(plan)));
+		
+		//module 2 passed, module 1 not
+		plan.getUser().getPassedModules().clear();
+		plan.getModuleEntries().clear();
+		plan.getUser().getPassedModules().add(entry2);
+		plan.getModuleEntries().add(entry1);
 		assertTrue(isCorrect(new StandardVerifier().verify(plan)));
 		
 		

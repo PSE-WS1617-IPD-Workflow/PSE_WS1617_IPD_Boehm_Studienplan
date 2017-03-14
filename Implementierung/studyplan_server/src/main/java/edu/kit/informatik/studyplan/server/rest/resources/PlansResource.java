@@ -223,7 +223,7 @@ public class PlansResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@AuthorizationNeeded
-	public Map<String,PlanDto> renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
+	public Map<String, PlanDto> renamePlan(@PathParam("id") String planId, PlanInOut planInput) {
 		if (planInput == null
 				|| planInput.getPlan() == null
 				|| !Objects.equals(planInput.getPlan().getIdentifier(), planId)
@@ -558,7 +558,7 @@ public class PlansResource {
 
 			MultivaluedMap<String, String> parameters = uriInfo.getQueryParameters();
 
-			if (maxSemesterEcts == null || minSemesterEcts == null) {
+			if (maxSemesterEcts == null || minSemesterEcts == null || minSemesterNum == null || maxSemesterNum == null) {
 				throw new BadRequestException();
 			}
 			try {
@@ -571,7 +571,8 @@ public class PlansResource {
 				}
 				Plan result = manager.generate(function, plan, moduleDao, preferredSubjects, 
 						maxSemesterEcts, minSemesterEcts, minSemesterNum, maxSemesterNum);
-				return new PlanInOut(result);
+				double score = manager.wrap(function).evaluate(result);
+				return new PlanInOut(result, score);
 			} catch (IllegalArgumentException ex) {
 				ex.printStackTrace();
 				throw new BadRequestException();
@@ -635,15 +636,21 @@ public class PlansResource {
 	}
 
 	private boolean isValid(JsonModule module) {
-		if (module == null) {
+		if (module == null || module.getSemester() == null) {
 			return false;
 		}
 		Module loadedModule = Utils.withModuleDao(dao -> dao.getModuleById(module.getId()));
+		if (loadedModule == null || !loadedModule.getDiscipline().equals(getUser().getDiscipline())) {
+			return false;
+		}
 		return isValid(module.getSemester(), loadedModule.getCycleType());
 	}
 
 	private boolean isValid(ModuleEntry entry) {
 		if (entry == null || entry.getModule() == null) {
+			return false;
+		}
+		if (!entry.getModule().getDiscipline().equals(getUser().getDiscipline())) {
 			return false;
 		}
 		return isValid(entry.getSemester(), entry.getModule().getCycleType());
@@ -709,6 +716,9 @@ public class PlansResource {
 		@JsonProperty("plan")
 		@NotNull
 		private Plan plan;
+		
+		@JsonProperty
+		private Double score = null;
 
 		/**
 		 * Empty constructor.
@@ -729,6 +739,16 @@ public class PlansResource {
 			plan.getJsonModules();
 			plan.getCreditPoints();
 		}
+		
+		/**
+		 * Constructor with plan parameter and score provided by the objective function
+		 * @param plan the plan
+		 * @param score the score
+		 */
+		PlanInOut(Plan plan, Double score) {
+			this(plan);
+			this.score = score;
+		}
 
 		/**
 		 *
@@ -747,6 +767,21 @@ public class PlansResource {
 		public void setPlan(Plan plan) {
 			this.plan = plan;
 		}
+
+		/**
+		 * @return the score this plan got in generation
+		 */
+		public Double getScore() {
+			return score;
+		}
+
+		/**
+		 * @param score the score to set
+		 */
+		public void setScore(Double score) {
+			this.score = score;
+		}
+		
 	}
 	
 	/**

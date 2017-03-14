@@ -1,11 +1,11 @@
 package edu.kit.informatik.studyplan.server.verification.standard;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.kit.informatik.studyplan.server.model.moduledata.CycleType;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.Field;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
@@ -13,6 +13,8 @@ import edu.kit.informatik.studyplan.server.model.moduledata.RuleGroup;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
 import edu.kit.informatik.studyplan.server.model.userdata.ModuleEntry;
 import edu.kit.informatik.studyplan.server.model.userdata.Plan;
+import edu.kit.informatik.studyplan.server.model.userdata.Semester;
+import edu.kit.informatik.studyplan.server.model.userdata.SemesterType;
 import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.verification.VerificationResult;
 
@@ -26,6 +28,7 @@ public class StandardVerifierTest {
 	private Module independentModule2;
 	private Module module1;
 	private Module module2;
+	private Module winterModule;
 	private ModuleConstraint constraint;
 	
 	@Before
@@ -37,14 +40,21 @@ public class StandardVerifierTest {
 		discipline.getRuleGroups().add(ruleGroup);
 		User user = new User();
 		user.setDiscipline(discipline);
+		user.setStudyStart(new Semester(SemesterType.WINTER_TERM, 2015));
 		plan = new Plan();
 		plan.setUser(user);
 		independentModule1 = new Module();
 		independentModule2 = new Module();
+		independentModule1.setCycleType(CycleType.BOTH);
+		independentModule2.setCycleType(CycleType.BOTH);
+		winterModule = new Module();
+		winterModule.setCycleType(CycleType.WINTER_TERM);
 		module1 = new Module();
 		module1.getFromConstraints().add(constraint);
 		module2 = new Module();
 		module2.getToConstraints().add(constraint);
+		module1.setCycleType(CycleType.BOTH);
+		module2.setCycleType(CycleType.BOTH);
 	}
 
 	@Test
@@ -226,6 +236,18 @@ public class StandardVerifierTest {
 		assertTrue(verify.getFieldViolations().isEmpty());
 		assertTrue(verify.getViolations().isEmpty());
 		assertTrue(!verify.getRuleGroupViolations().isEmpty());
+		assertTrue(verify.getCompulsoryViolations().isEmpty());
+	}
+	
+	@Test
+	public void cycleTypeTest() {
+		ModuleEntry entry = new ModuleEntry(winterModule, 2);
+		plan.getModuleEntries().add(entry);
+		VerificationResult verify = new StandardVerifier().verify(plan);
+		assertTrue(!verify.isCorrect());
+		assertTrue(verify.getFieldViolations().isEmpty());
+		assertTrue(verify.getViolations().isEmpty());
+		assertTrue(verify.getRuleGroupViolations().isEmpty());
 		assertTrue(verify.getCompulsoryViolations().isEmpty());
 	}
 

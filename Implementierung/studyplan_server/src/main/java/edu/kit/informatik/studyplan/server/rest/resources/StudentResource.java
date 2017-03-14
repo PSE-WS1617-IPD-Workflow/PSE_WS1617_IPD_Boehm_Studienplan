@@ -1,26 +1,7 @@
 package edu.kit.informatik.studyplan.server.rest.resources;
 
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
-
 import edu.kit.informatik.studyplan.server.Utils;
 import edu.kit.informatik.studyplan.server.model.moduledata.Discipline;
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
@@ -30,7 +11,18 @@ import edu.kit.informatik.studyplan.server.model.userdata.User;
 import edu.kit.informatik.studyplan.server.model.userdata.VerificationState;
 import edu.kit.informatik.studyplan.server.model.userdata.authorization.AuthorizationContext;
 import edu.kit.informatik.studyplan.server.rest.AuthorizationNeeded;
+import edu.kit.informatik.studyplan.server.rest.UnprocessableEntityException;
 import edu.kit.informatik.studyplan.server.rest.resources.json.JsonModule;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * REST resource for /student.
@@ -59,6 +51,9 @@ public class StudentResource {
 	@JsonView(Views.StudentClass.class)
 	public StudentInOut replaceInformation(StudentInOut studentInput) {
 		return Utils.withUserDao(userDao -> Utils.withModuleDao(moduleDao -> Utils.withPlanDao(planDao -> {
+			if (studentInput == null || studentInput.getStudent() == null) {
+				throw new BadRequestException();
+			}
 			User thisStudent = getUser();
 			JsonStudent jsonStudent = studentInput.getStudent();
 			if (jsonStudent.getDiscipline() != null) {
@@ -69,26 +64,34 @@ public class StudentResource {
 				}
 				thisStudent.setDiscipline(foundDiscipline);
 			}
+			Semester studyStart;
 			if (jsonStudent.getStudyStart() != null) {
-				thisStudent.setStudyStart(jsonStudent.getStudyStart());
+				studyStart = jsonStudent.getStudyStart();
+				if (studyStart.compareTo(Semester.getCurrentSemester()) <= 0 
+						&& studyStart.getDistanceToCurrentSemester() <= PlansResource.MAX_SEMESTERS) {
+					thisStudent.setStudyStart(studyStart);
+				} else {
+					throw new UnprocessableEntityException();
+				}
+			} else {
+				studyStart = thisStudent.getStudyStart();
 			}
-			if (jsonStudent.getPassedModules() != null) {
+			if (jsonStudent.getPassedModules() != null && studyStart != null) {
 				List<ModuleEntry> newPassedModules = jsonStudent.getPassedModules()
 						.stream()
 						.map(jsonModule -> {
-							ModuleEntry entry =
-									new ModuleEntry(moduleDao.getModuleById(jsonModule.getId()),
-											jsonModule.getSemester());
-							if (entry.getModule() == null) {
-								throw new BadRequestException();
+							Module module = moduleDao.getModuleById(jsonModule.getId());
+							if (module == null) {
+								throw new NotFoundException();
 							}
 							if (jsonModule.getSemester() <= 0 
 									|| jsonModule.getSemester() > PlansResource.MAX_SEMESTERS) {
-								throw new BadRequestException();
+								throw new UnprocessableEntityException();
 							}
-							if (jsonModule.getSemester() > thisStudent.getStudyStart().getDistanceToCurrentSemester()) {
-								throw new BadRequestException();
+							if (jsonModule.getSemester() > studyStart.getDistanceToCurrentSemester()) {
+								throw new UnprocessableEntityException();
 							}
+							ModuleEntry entry = new ModuleEntry(module, jsonModule.getSemester());
 							return entry;
 						})
 						.collect(Collectors.toList());
@@ -128,6 +131,7 @@ public class StudentResource {
 			m.setId(entry.getModule().getIdentifier());
 			m.setName(entry.getModule().getName());
 			m.setCreditPoints(entry.getModule().getCreditPoints());
+			m.setCycleType(entry.getModule().getCycleType());
 			m.setLecturer(entry.getModule().getModuleDescription().getLecturer());
 			m.setSemester(entry.getSemester());
 			return m;

@@ -11,7 +11,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
     template: edu.kit.informatik.studyplan.client.model.system.TemplateManager.getInstance().getTemplate("resources/templates/components/uielement/planListEl.html"),
     plan: null,
     events: {
-        "click button.showPlan": "showPlan",
+        "click .showPlan": "showPlan",
         "click button.duplicatePlan": "duplicatePlan",
         "click button.deletePlan": "deletePlan",
         "click button.exportPlan": "exportPlan",
@@ -28,8 +28,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
     /**
      * Method which shows the plan
      */
-    showPlan: function () {
+    showPlan: function (event) {
         "use strict";
+        event.preventDefault();
         //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] showPlan");
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().navigate("plans/" + this.plan.get('id'), {
             trigger: true
@@ -55,6 +56,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
         }
         var self = this;
         edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+        var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
         this.plan.fetch({
             // TODO: zurück stellen, wenn nicht erfolgreich
             success: function () {
@@ -75,6 +77,9 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
                 self.plan.collection.add(newPlan);
                 // Send POST request
                 newPlan.save(null, {
+                    error: function () {
+                        newPlan.collection.remove(newPlan);
+                    }.bind(this),
                     success: function () {
                         // Send PUT request
                         newPlan.set(newPlan.parse(attributes,{}));
@@ -99,25 +104,29 @@ edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement = 
     },
     /**
      * Method which deletes the plan
+     * @param {boolean=} deleteAll
+                            attribute set if all plans will be deleted
      */
-    deletePlan: function () {
+    deletePlan: function (deleteAll) {
         "use strict";
         //console.log("[edu.kit.informatik.studyplan.client.view.components.uielement.PlanListElement] deletePlan");
-        var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
-        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
-        this.plan.destroy({
-            success: function () {
-                edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
-                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
-                    new edu.kit.informatik.studyplan.client.model.system.Notification({
-                        title: LM.getMessage("planDeletedTitle"),
-                        text: LM.getMessage("planDeletedText"),
-                        wasShown: false,
-                        type: "success"
-                    })
-                );
-            }
-        });
+        var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();      
+        if ((deleteAll === true) ? true : confirm(LM.getMessage("deletePlanPrompt"))) {
+            edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+            this.plan.destroy({
+                success: function () {
+                    edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+                    edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance().add(
+                        new edu.kit.informatik.studyplan.client.model.system.Notification({
+                            title: LM.getMessage("planDeletedTitle"),
+                            text: LM.getMessage("planDeletedText"),
+                            wasShown: false,
+                            type: "success"
+                        })
+                    );
+                }
+            });
+        }
     },
     /**
      * Set's the elements checkbox
