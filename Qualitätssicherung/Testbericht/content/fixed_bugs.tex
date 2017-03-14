@@ -16,7 +16,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Modulinfo-Leiste zeigt nichts an und lässt sich nicht schließen. & Schließen: Ein Event war nicht richtig registriert; Keine Anzeige: Falsche Übergabe der Daten an Template & --- \\
 	\hline
-	Module können in jedem beliebigen Turnus abgelegt werden & Client/Server validieren die Eingabe nicht & Validierung ob das gewählte Semester mit dem Modul-Turnus kompatibel ist \\
+	Module können in jedem beliebigen Turnus abgelegt werden & Client/Server validieren die Eingabe nicht & Validierung, ob das gewählte Semester mit dem Modul-Turnus kompatibel ist \\
 	\hline
 	Nutzer wird nach Löschen des Kontos nicht ausgeloggt & Fehlende/Fehlerhafte URI-Weiterleitung & --- \\
 	\hline
@@ -28,13 +28,13 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Der Kategorie-Filter kann nicht verändert werden & Bei Neu-Rendern des Felds wurde das aktuell ausgewählte Feld nicht berücksichtigt & Aktuell ausgewähltes Feld bei Rendering als ausgewählt setzen \\
 	\hline
-	Bestandene Module erscheinen nach Verifizierung fehlerhaft, sollten aber ignoriert werden & \texttt{SemesterLinkConstraint\#isValid()} berücksichtigte abgeschlossene Module nicht & Wenn beide Module im Plan vorhanden und mind. eines von beiden bestanden ist, wird \texttt{\textbf{true}} zurückgegeben. \\
+	Bestandene Module erscheinen nach Verifizierung fehlerhaft, sollten aber ignoriert werden & \texttt{SemesterLinkCon"=straint\#isValid()} berücksichtigte abgeschlossene Module nicht & Wenn beide Module im Plan vorhanden und mind. eines von beiden bestanden ist, wird \texttt{\textbf{true}} zurückgegeben \\
 	\hline
 	Keine Zielfunktionen im Generierungs-Wizard & FunctionDto-Klasse war nicht statisch und konnte daher nicht serialisiert werden & + \texttt{static} \\
 	\hline
 	Client rendert Ansicht zu häufig  & --- & Render-Aufrufe überprüft  \\
 	\hline
-	Server akzeptiert Erstellung eines namenlosen Plans & Fehlende Eingabevalidierung & Validierung hinzugefügt. \\
+	Server akzeptiert Erstellung eines namenlosen Plans & Fehlende Eingabevalidierung & Validierung hinzugefügt \\
 	\hline
 	Plan-Duplizierung schlägt fehl & Bei Clientanfrage fehlt Modulliste, dem Server fehlt Validierung & Modulliste wird mitgesendet;  Aufbereitung der Eingabe zur Speicherung hinzugefügt\\
 	\hline
@@ -48,7 +48,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Ändern von Modulpräferenzen bleibt wirkungslos & Server ändert vorhandene Präferenzen nicht & --- \\
 	\hline
-	Verifizierungs-Ergebnis-Popup kann nur einmal verschoben werden & Das Drop"=Event einer Semesterzeile wurde getriggert, daraufhin saß das Popup fest & --- \\
+	Verifizierungs-Ergebnis-Popup kann nur einmal verschoben werden & Das Drop"=Event einer Semesterzeile wurde getriggert, daraufhin saß das Pop"=up fest & --- \\
 	\hline
 	Verifizierungs-Ergebnis-Popup hat einen Schließen-Button ohne Symbol & Fehlende Einbindung eines jQuery-UI-Icon-Sets & --- \\
 	\hline
@@ -80,7 +80,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Durch Verifizierung ehemals fehlerhaft markierte Module verlieren Status erst nach Neuladen und erneutem Verifizieren & Fehlerhaftes Event- und Rendering-Triggern & --- \\
 	\hline
-	Modulinfo in der Profilansicht/Generierungsergebnis"=Ansicht nicht aufrufbar & Aufrufen von plans/Plan-ID/modules mit Plan-ID = undefined & Fallback eingebaut \\
+	Modulinfo in der Profilansicht/Generierungsergebnis"=ansicht nicht aufrufbar & Aufrufen von plans/Plan-ID/modules mit Plan-ID = undefined & Fallback eingebaut \\
 	\hline
 	Generierung funktioniert nicht & --- & --- \\
 	\hline
@@ -104,7 +104,7 @@ Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ mark
 	\hline
 	Wintersemester werden mit nur einer Jahreszahl dargestellt & --- & Wintersemester werden – wie gewohnt – mit „WS XXXX/YYYY“ dargestellt \\
 	\hline
-	Präferenzen/Bestandene Module löschen zeigt nur temporäre Wirkung & Server vergisst gelöschte Modulpräferenzen/bestanene Module (Hibernate"=Problem) & In den Hibernate"=Annotation zu den Planpräferenzen/bestandenen Modulen \texttt{orphanRemoval = true} gesetzt \\
+	Präferenzen/Bestandene Module löschen zeigt nur temporäre Wirkung & Server vergisst gelöschte Modulpräferenzen/bestandene Module (Hibernate"=Problem) & In der Hibernate"=Annotation zu den Planpräferenzen/bestandenen Modulen \texttt{orphanRemoval = true} gesetzt \\
 	\hline
 	In Generierungs-Ergebnis-Ansicht können Module verschoben werden, Semesterzeilen hinzugefügt werden etc. & Fehlende Sperre & --- \\
 	\hline
