@@ -444,6 +444,9 @@ public abstract class Node {
 		}
 		// check if a prerequisite module is placed in a further semester
 		for (Node parent : getPrerequisiteParents()) {
+			if (parent.isPassed()) {
+				continue;
+			}
 			if (parent.getSemester() >= i) {
 				return false;
 			} else if (semesterAllocation[sorted.indexOf(parent)] >= i) {
