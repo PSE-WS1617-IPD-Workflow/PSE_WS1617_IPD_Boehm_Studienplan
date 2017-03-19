@@ -32,8 +32,8 @@
         <property name="current_session_context_class">managed</property>
 
         <!-- Echo all executed SQL to stdout -->
-        <property name="show_sql">true</property>
-        <property name="format_sql">true</property>
+        <!-- property name="show_sql">true</property -->
+        <!-- property name="format_sql">true</property -->
         
 		<mapping class="edu.kit.informatik.studyplan.server.model.userdata.User"/>
 		<mapping class="edu.kit.informatik.studyplan.server.model.userdata.Plan"/>
