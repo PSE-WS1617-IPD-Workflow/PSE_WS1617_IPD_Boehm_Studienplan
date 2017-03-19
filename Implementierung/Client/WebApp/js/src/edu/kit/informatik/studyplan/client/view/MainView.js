@@ -51,9 +51,8 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend( /** @l
         }
         this.notificationCentre.render();
         this.notificationElement.append(this.notificationCentre.$el);
-        if (this.showLoad) {
-            this.$el.append(this.loading);
-        }
+        this.$el.append(this.loading);
+        
         this.$el.show();
         this.delegateEvents();
     },
@@ -61,14 +60,14 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend( /** @l
         var old = this.showLoad;
         this.showLoad = true;
         if (old != this.showLoad) {
-            this.render();
+            $(".loadingScreen").css({display:"block"});
         }
     },
     hideLoading: function () {
         var old = this.showLoad;
         this.showLoad = false;
         if (old != this.showLoad) {
-            this.render();
+            $(".loadingScreen").css({display:"none"});
         }
     },
     /**
@@ -80,6 +79,7 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend( /** @l
         if (this.curHeaderView !== null) {
             this.curHeaderView.remove();
         }
+        options["tourHandler"] = this.tourHandler.bind(this);
         this.curHeaderView = new Header(options);
     },
     /**
@@ -92,5 +92,33 @@ edu.kit.informatik.studyplan.client.view.MainView = Backbone.View.extend( /** @l
             this.curContentView.remove();
         }
         this.curContentView = new Content(options);
+    },
+    /**
+     * Function which handles the view of tours when someone clicks on the help button
+     */
+    tourHandler: function () {
+        if(!this.curContentView.pageTour||this.curContentView.pageTour==null) {
+            var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
+            var notification = new edu.kit.informatik.studyplan.client.model.system.Notification({
+                title: LM.getMessage("noHelpAvailableTitle"),
+                text: LM.getMessage("noHelpAvailableText"),
+                wasShown: false,
+                type: ""
+            });
+            edu.kit.informatik.studyplan.client.model.system.NotificationCollection
+                        .getInstance().add(notification);
+            return;
+        }
+        if(this.curTour!=null){
+            this.curTour.cancel();
+        }
+        this.curTour = this.curContentView.pageTour();
+        this.curTour.start();
+        var endTour = function (){
+            this.curTour=null;
+        }.bind(this);
+        this.curTour.on("complete", endTour);
+        this.curTour.on("cancel", endTour);
+        
     }
 });

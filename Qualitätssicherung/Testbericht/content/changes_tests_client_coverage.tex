@@ -1,0 +1,8 @@
+\FloatBarrier
+\subsection{Client-Coverage-Daten}
+Die beim Client gemessene Testüberdeckung beträgt 44,98\%. Leider ist dieser Wert aus mehreren Gründen ungenau.
+\paragraph{Testen der Nutzeroberfläche}
+Neben den vorhandenen Unit- und Integrations-Tests, welche von dieser Metrik erfasst werden, wurden auch eine Vielzahl von manuellen und halb-automatisierten Nutzeroberflächen-Tests durchgeführt (teilweise manuell, teilweise mit Hilfe der Selenium-IDE). Diese Testfälle orientierten sich insbesondere an den im Pflichtenheft festgelegten globalen Testfällen. Aus technischen Gründen können diese Tests jedoch nicht in die Testüberdeckung miteingerechnet werden.\\
+Dennoch waren insbesondere diese Tests sehr effektiv beim Aufdecken von Fehlern, da durch das Bedienen der Nutzeroberfläche die Kommunikation und das Zusammenspiel der verschiedenen Subsysteme exzellent überprüft werden konnte. Die hier genannten Testmethoden haben uns dabei geholfen, viele Fehler in der Software zu finden und zu beseitigen.
+\paragraph{Daten im Code}
+Aus Performance-Gründen hatten wir uns bereits in der Entwurfsphase dafür entschieden, verschiedene Daten wie Templates und Sprachdaten zur Compilezeit in den Code miteinzubauen. Hierdurch wurden die notwendigen Serveranfragen beim Ausführen des Clients im Webbrowser deutlich reduziert. Dies wirkt sich sehr positiv auf die Geschwindigkeit der Anwendung aus, da zur Laufzeit lediglich die Daten der REST-Schnittstelle geladen werden müssen. Gleichzeitig führt diese Entscheidung allerdings zu Ungenauigkeiten bei der Messung der Testüberdeckung, da diese Daten ebenfalls als \enquote{Codezeilen} aufgefasst werden.

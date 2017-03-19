@@ -22,15 +22,20 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
      */
     isPreferencable: true,
     /**
+     * Wether modules are draggable
+     */
+    isDraggable: true,
+    /**
      * Whether the plan is a plan of (only) passed modules
      */
     isPassedPlan: false,
     initialize: function (options) {
         this.isAddable = (typeof options.isAddable !== "undefined") ? options.isAddable : this.isAddable;
+        this.isDraggable = (typeof options.isDraggable !== "undefined") ? options.isDraggable : this.isDraggable;
         this.model = options.plan;
         this.isPreferencable = (typeof options.isPreferencable !== "undefined") ? options.isPreferencable : this.isPreferencable;
         this.isPassedPlan = (typeof options.isPassedPlan !== "undefined") ? options.isPassedPlan : this.isPassedPlan;
-        this.listenTo(this.model, "change", this.reload);
+        this.listenTo(this.model, "change", this.reload.bind(this));
 
         this.reload();
     },
@@ -48,6 +53,7 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
                     semester: semester,
                     isRemovable: true,
                     isPreferencable: this.isPreferencable,
+                    isDraggable: this.isDraggable,
                     isPassedPlan: this.isPassedPlan
                 })
             );
@@ -76,13 +82,17 @@ edu.kit.informatik.studyplan.client.view.components.uielement.Plan = Backbone.Vi
      */
     addSemester: function () {
         "use strict";
+        if(this.model.get('semesterCollection').length>200) {
+            alert(edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("semesterLimit"));
+            return;
+        }
         var newSemester = new edu.kit.informatik.studyplan.client.model.plans.Semester({
             planId: this.model.get("id"),
             semesterNum: this.model.get('semesterCollection').length,
             modules: []
         }, {
             parse: true,
-            collection: this.model
+            collection: this.model.get('semesterCollection')
         });
 
         this.model.get('semesterCollection').push(newSemester);

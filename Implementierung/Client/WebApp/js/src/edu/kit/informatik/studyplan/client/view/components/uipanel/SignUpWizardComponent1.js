@@ -8,6 +8,8 @@ goog.provide("edu.kit.informatik.studyplan.client.view.components.uipanel.SignUp
  */
 
 edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1 = edu.kit.informatik.studyplan.client.view.components.uipanel.WizardComponent.extend( /** @lends {edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1.prototype}*/ {
+    //amount of years that shall be counted back for semesters    
+    countBackYears: 10,    
     //just for the dropdown of studystart options
     beginningArray: [],
     //the new student
@@ -21,7 +23,6 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
     },
     //current date to generate options of studystart
     date: null,
-
 
     /** 
      * constructor: sets date on the current year, initialize a disciplineCollection and fetches content from server --> neccesary for the discipline dropdown. needs new  student as a parameter
@@ -64,6 +65,7 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
         "use strict";
         this.onChange1();
         this.onChange2();
+	
         var temp = new edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent2({
             student: this.student
         });
@@ -74,10 +76,10 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
      */
     onChange1: function () {
         "use strict";
-        //console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1] semester:")
-        //console.log(this.beginningArray[(this.$el.find("select.beginningdateDropDown").val())]);
+        // console.log("[edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponent1] semester:")
+        // console.log(this.beginningArray[(this.$el.find("select.beginningdateDropDown").val())]);
         this.student.set('studyStartYear', this.beginningArray[(this.$el.find("select.beginningdateDropDown").val())]['year']);
-        this.student.set('studyStartCycle', this.beginningArray[this.$el.find("select.beginningdateDropDown").val()]['term']);
+        this.student.set('studyStartCycle', this.beginningArray[this.$el.find("select.beginningdateDropDown").val()]['type']);
 
     },
 
@@ -94,20 +96,36 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.SignUpWizardComponen
      */
     beginning: function (curyear) {
         "use strict";
-        for (var i = 0; i <= 10; i++) {
-            var temp = curyear - i;
-            this.beginningArray.push({
-                name: (edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("winterterm") + temp),
-                year: curyear - i,
-                term: "WT"
-            });
-            this.beginningArray.push({
-                name: (edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("summerterm") + temp),
-                year: curyear - i,
-                term: "ST"
-            });
-            //console.log(this.beginningArray[i]);
+        var exactDate = new Date(Date.now()).getMonth();
+        //checks if the winterterm has allready begun
+        if(exactDate>8){
+            var temp = curyear;
+            this.beginningArray.push(this.makeTerm(curyear, "ST"));
         }
+	    //checks if the summerterm has allready begun
+        if(exactDate>2){
+            var temp = curyear;
+            this.beginningArray.push(this.makeTerm(curyear, "ST"));
+        }
+        for (var i = 1; i <= this.countBackYears; i++) {
+            var temp = curyear - i;
+            this.beginningArray.push(this.makeTerm(curyear - i, "WT"));
+            this.beginningArray.push(this.makeTerm(curyear - i, "ST"));
+        }
+    },
+    makeTerm : function(year, type){
+        "use strict";
+        //if(type != "ST" || type != "WT") {
+          //  return null;
+        //}
+        var tmp = {};
+        tmp.year = year;
+        tmp.type = type;
+        if (type == "ST") {
+            tmp.name = (edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("summerterm") + year);
+        } else if (type == "WT") {
+            tmp.name = (edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance().getMessage("winterterm") + year + "/" + (year + 1));
+        }
+        return tmp;
     }
-
 });

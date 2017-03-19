@@ -8,8 +8,12 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.FieldCollection")
  */
 
 edu.kit.informatik.studyplan.client.model.system.FieldCollection = edu.kit.informatik.studyplan.client.model.system.OAuthCollection.extend( /** @lends {edu.kit.informatik.studyplan.client.model.system.FieldCollection.prototype}*/ {
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "fields",
     url: API_DOMAIN + "/fields",
-
+    
     model: edu.kit.informatik.studyplan.client.model.system.Field,
     /**
      *parses every field on his own

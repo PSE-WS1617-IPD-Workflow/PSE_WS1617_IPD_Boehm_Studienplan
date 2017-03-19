@@ -102,14 +102,15 @@ edu.kit.informatik.studyplan.client.view.components.uipanel.GenerationWizardComp
         this.information.set('min-semester-ects', temp1);
         this.information.set('max-semester-ects', temp2);
 
-        $("#minECTS").val(ui.values[0]);
-        $("#maxECTS").val(ui.values[1]);
+        $("#minECTS").val(temp1);
+        $("#maxECTS").val(temp2);
     },
     /**
      *updating and saving the slider for preferredd number of semesters
      */
     updateVal2: function (event, ui) {
         "use strict";
+        // currently not in use
         var temp1 = ui.values[0];
         var temp2 = ui.values[1];
         this.information.set('min-semesters', temp1);

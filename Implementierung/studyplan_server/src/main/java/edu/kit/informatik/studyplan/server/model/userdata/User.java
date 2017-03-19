@@ -49,7 +49,7 @@ public class User implements Principal {
 	@Embedded
 	private Semester studyStart;
 	
-	@OneToMany
+	@OneToMany(orphanRemoval =  true)
 	@Cascade(CascadeType.ALL)
 	@JoinTable(name = "passed_modules", 
 		joinColumns = @JoinColumn(name = "user_id"), 

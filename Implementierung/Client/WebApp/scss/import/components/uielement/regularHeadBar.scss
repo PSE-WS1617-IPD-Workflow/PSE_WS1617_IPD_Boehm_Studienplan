@@ -54,8 +54,15 @@
             }
         }
     }
+    .editNamePencil{
+        margin:0px;
+    }
 }
 .ui-front{
     z-index:100;
     position:fixed;
+}
+.rename-plan-icon{
+    width:15px;
+    height:auto;    
 }

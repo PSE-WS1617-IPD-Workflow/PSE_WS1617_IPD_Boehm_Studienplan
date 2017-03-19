@@ -14,6 +14,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
      * @name edu.kit.informatik.studyplan.client.router.MainRouter
      */
     var Constructor = Backbone.Router.extend({
+        firstTimeHelp:false,
         /**
          * The MainView of the application used
          * @type {edu.kit.informatik.studyplan.client.view.MainView}
@@ -80,6 +81,10 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                         planCollection: planCollection
                     });
                     this.view.render();
+                    if (this.firstTimeHelp) {
+                        this.view.tourHandler();
+                        this.firstTimeHelp=false;
+                    }
                     this.hideLoading();
                 }.bind(this)
             });
@@ -105,6 +110,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                 plan: plan
                             });
                             this.hideLoading();
+                            this.view.render();
                         }.bind(this)
                     });
                 }.bind(this)
@@ -118,6 +124,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             //console.info("[edu.kit.informatik.studyplan.client.router.MainRouter] comparisonPage");
             this.showLoading();
             this.hideLoading();
+            this.view.render();
             throw new Error("Not implemented");
         },
         /**
@@ -153,11 +160,13 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                                         isAddable: false
                                     });
                                     this.hideLoading();
+                                    this.view.render();
                                 }.bind(this)
                             });
                         }.bind(this)
                     });
                     this.hideLoading();
+                    this.view.render();
                 }.bind(this)
             });
         },
@@ -205,35 +214,9 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             // This actually seems to be a legit request...
             var info = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance();
             info.set('access_token', redirectData["access_token"]);
-            info.set('expires_in', redirectData["expires_in"]);
+            info.set('expires_in', Date.now() + redirectData["expires_in"]*1000);
             info.save();
-            window.setTimeout(function () {
-                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
-                    .add(
-                        new edu.kit.informatik.studyplan.client.model.system.Notification({
-                            title: LM.getMessage("authEndTitle"),
-                            text: LM.getMessage("authEndText"),
-                            wasShown: false,
-                            type: "error"
-                        })
-                    );
-            }, (redirectData["expires_in"] * 1000 - (100 * 1000)));
-            window.setTimeout(function () {
-                info.set('access_token', undefined);
-                info.save();
-                this.navigate("/login", {
-                    trigger: true
-                });
-                edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
-                    .add(
-                        new edu.kit.informatik.studyplan.client.model.system.Notification({
-                            title: LM.getMessage("realAuthEndTitle"),
-                            text: LM.getMessage("realAuthEndText"),
-                            wasShown: false,
-                            type: "error"
-                        })
-                    );
-            }.bind(this), redirectData["expires_in"] * 1000);
+            info.setLogoutTimeouts();
             //console.log("[edu.kit.informatik.studyplan.client.router.MainRouter] authentication successful");
             info.set('student', new edu.kit.informatik.studyplan.client.model.user.Student());
             var student = info.get('student');
@@ -269,6 +252,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             this.showLoading();
             this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.LoginPage, {});
             this.hideLoading();
+            this.view.render();
         },
         /**
          * Show profile page
@@ -287,6 +271,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     this.view.render();
                     // Do stuff heresignUpWizard
                     this.hideLoading();
+                    this.view.render();
                 }.bind(this)
             });
         },
@@ -310,14 +295,17 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                             // Callback student saved
                             success: function () {
                                 this.hideLoading();
+                                this.view.render();
                                 this.navigate("/", {
                                     trigger: true
                                 });
+                                this.firstTimeHelp=true;
                             }.bind(this)
                         });
                     }.bind(this)
                 });
                 this.hideLoading();
+                this.view.render();
             }.bind(this);
             if (student.loaded) {
                 done();
@@ -337,6 +325,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             this.showLoading();
             this.view.setContent(edu.kit.informatik.studyplan.client.view.subview.NotFoundPage, {});
             this.hideLoading();
+            this.view.render();
         },
         /**
          * logsout user and redirects to /login
@@ -348,6 +337,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
             var info = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance();
             info.set('access_token', undefined);
             info.save();
+            var LM = edu.kit.informatik.studyplan.client.model.system.LanguageManager.getInstance();
             edu.kit.informatik.studyplan.client.model.system.NotificationCollection.getInstance()
                 .add(
                     new edu.kit.informatik.studyplan.client.model.system.Notification({
@@ -358,6 +348,7 @@ edu.kit.informatik.studyplan.client.router.MainRouter = (function () {
                     })
                 );
             this.hideLoading();
+            this.view.render();
             this.navigate("/login", {
                 trigger: true
             });

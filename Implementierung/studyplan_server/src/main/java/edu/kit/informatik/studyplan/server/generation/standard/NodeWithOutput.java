@@ -2,6 +2,8 @@ package edu.kit.informatik.studyplan.server.generation.standard;
 
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import edu.kit.informatik.studyplan.server.model.moduledata.Module;
 import edu.kit.informatik.studyplan.server.model.moduledata.constraint.ModuleConstraint;
@@ -56,7 +58,6 @@ public class NodeWithOutput extends Node {
 			if (newNode == null) {
 				y = false;
 				newNode = new NodeWithOutput(module, getPlan(), getGenerator());
-				newNode.setPlan(this.getPlan());
 			}
 			if (c.getConstraintType() instanceof PrerequisiteModuleConstraintType
 					&& this.getModule().getToConstraints().contains(c)) {
@@ -68,7 +69,10 @@ public class NodeWithOutput extends Node {
 			} else if (c.getConstraintType() instanceof SemesterLinkModuleConstraintType) {
 				addInnerNode(newNode);
 				getGenerator().getNodes().add(newNode, random);
+			} else {
+				y = true; // so that fulfillConstraints wouldn't be called for newNode
 			}
+			
 			if (!y) {
 				newNode.fulfillConstraints(random);				
 			}
@@ -89,6 +93,19 @@ public class NodeWithOutput extends Node {
 		return children.remove(node);
 	}
 
-
+	@Override
+	List<Node> getPrerequisiteChildren() {
+		List<Node> list = new ArrayList<Node>();
+		for (ModuleConstraint constraint : getModule().getConstraints().stream()
+				.filter(c -> c.getConstraintType() instanceof PrerequisiteModuleConstraintType)
+				.collect(Collectors.toList())) {
+				for (Node child : getChildren()) {
+					if (child.getModule().equals(getRemainingModuleFromConstraint(constraint))) {
+						list.add(child);
+					}
+				}
+		}
+		return list;
+	}
 
 }

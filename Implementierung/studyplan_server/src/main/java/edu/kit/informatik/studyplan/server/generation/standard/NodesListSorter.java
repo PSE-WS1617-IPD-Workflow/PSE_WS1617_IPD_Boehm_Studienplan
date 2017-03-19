@@ -28,42 +28,6 @@ public class NodesListSorter {
 		this.nodesList = nodesList;
 	}
 	
-//	private void sortUtil(Node node) {
-// 		visited.add(node);
-// 		Node n = node;
-// 		while (n.hasInnerNode()) {
-// 			n = node.getInnerNode();
-// 			visited.add(n);
-// 		}
-// 		n = node;
-// 		while (n.hasOuterNode()) {
-// 			n = node.getOuterNode();
-// 			visited.add(n);
-// 		}
-// 		List<Node> children = node.getChildren();
-// 		//LAI doesn't have child LAII ?
-// 		int j = 0;
-// 		while (j < children.size()) {
-// 			//
-// 			if (!visited.contains(children.get(j))) {
-// 				sortUtil(children.get(j));
-// 			}
-// 			j++;
-//  		}
-//  		stack.push(node);
-//  	}
-//	
-//	protected List<Node> sort() {
-//  		visited.clear();
-//  		stack.clear();
-// 		for (Node n : nodesList) {
-//  			if (!visited.contains(n)) {
-//  				sortUtil(n);
-//  			}
-//  		}
-//  		return stack;
-//  	}
-	
 	/**
 	 * Returns a topologically sorted list of the nodes of the list given. This
 	 * method considers a node and its inner nodes as one so that the result
@@ -125,10 +89,7 @@ public class NodesListSorter {
 	 *         false if not.
 	 */
 	private void sortUtil(Node node) {
-		// this boolean says if this node has a child that has already been
-		// visited
 		visited.add(node);
-//		System.out.println("visit" + node.getModule().getIdentifier());
 		Node n = node;
 		//mark all inner nodes as visited
 		while (n.hasInnerNode()) {

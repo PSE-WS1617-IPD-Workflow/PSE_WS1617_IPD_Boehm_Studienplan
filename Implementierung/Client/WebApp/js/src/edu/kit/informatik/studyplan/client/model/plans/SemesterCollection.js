@@ -11,12 +11,19 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
     planId: null,
     initialize: function (attributes, options) {
         this.plan = options.plan;
-        this.listenTo(this, "change", this.onChange);
+        this.listenTo(this, "change", this.onChange.bind(this));
     },
     /**
      * Transfers the "change" event to the plan
      */
     onChange: function () {
+        this.plan.get('verificationResult').set({
+            status:'not-verified',
+            violations: [],
+            "compulsory-violations": [],
+            "field-violations": [],
+            "rule-group-violations": []
+        }, {silent: true});
         this.plan.trigger("change");
     },
     parse: function (response, options) {
@@ -66,6 +73,16 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
             },{parse:true, collection: this})
         }
         this.length = semesters.length;
+        // Find first cycle of student to assign cycles to semesters.
+        var cycles = ["WT", "ST"];
+        var firstCycle = 0;
+        if(student.get('studyStartCycle') == cycles[1]){
+            firstCycle = 1;
+        }
+        for(var i = 1; i < semesters.length; i++){
+            // Calculates cycle of current Semester (0=>WT, 1=>ST)
+            semesters[i].setCycleType(cycles[ ( ( (i-1)+firstCycle) %2) ]);
+        }
         return semesters;
     },
     toJSON: function (options) {
@@ -126,6 +143,14 @@ edu.kit.informatik.studyplan.client.model.plans.SemesterCollection = Backbone.Mo
      * Adds a new semester to the collection
      */
     push: function (semester) {
+        var cycles = ["WT", "ST"];
+        var firstCycle = 0;
+        var student = edu.kit.informatik.studyplan.client.model.user.SessionInformation.getInstance()
+            .get('student');
+        if(student.get('studyStartCycle') == cycles[1]){
+            firstCycle = 1;
+        }
+        semester.setCycleType(cycles[ ( ( ( this.length + 1) + firstCycle) %2) ]);
         this.attributes[this.length + 1] = semester;
         this.length++;
     }

@@ -8,7 +8,15 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.ProposedPlan");
  */
 
 edu.kit.informatik.studyplan.client.model.plans.ProposedPlan = edu.kit.informatik.studyplan.client.model.plans.Plan.extend( /** @lends {edu.kit.informatik.studyplan.client.model.plans.ProposedPlan.prototype}*/ {
-
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "plans-proposal",
+    parse: function (response, options) {
+        // Set parent ID as "ID" of current plan (necessary for module information)
+        response["plan"]["id"] = this.get('id');
+        return edu.kit.informatik.studyplan.client.model.plans.Plan.prototype.parse.apply(this,[response, options]);
+    },
     /**
      * Computes the url where the proposed plan can be found
      */

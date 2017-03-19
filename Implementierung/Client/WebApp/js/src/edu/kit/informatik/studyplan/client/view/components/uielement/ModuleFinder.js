@@ -29,7 +29,6 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
     initialize: function (options) {
         "use strict";
         this.planId = options.planId;
-        //TODO: fetchModuleCollection
         this.moduleCollection = new edu.kit.informatik.studyplan.client.model.system.SearchCollection(null, {
             planId: this.planId
         });
@@ -86,11 +85,11 @@ edu.kit.informatik.studyplan.client.view.components.uielement.ModuleFinder = Bac
      * Reloads modules with applied filters
      */
     refreshSearchCollection: function () {
-        edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().showLoading();
+        $(".filterButton").addClass("loadingModules")
         this.moduleCollection.fetch({
             reset: true,
             success: function () {
-                edu.kit.informatik.studyplan.client.router.MainRouter.getInstance().hideLoading();
+                $(".filterButton").removeClass("loadingModules")
             }
         });
     }

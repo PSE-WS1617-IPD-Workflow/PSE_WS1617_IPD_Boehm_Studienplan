@@ -1,0 +1,133 @@
+\FloatBarrier
+\section{Behobene Fehler}
+
+Es folgt eine Auflistung aller behobenen Produktmängel. (Bei mit „---“ markierten Spalten erschien die Nennung von Ursache/Behebung überflüssig.)
+
+% Etwa 70 Mängel.
+
+\begin{longtable}{| >{\hspace{0pt}} p{.32\textwidth} | >{\hspace{0pt}} p{.32\textwidth} | >{\hspace{0pt}} p{.32\textwidth} | }
+	\hline
+	\textbf{Fehler} & \textbf{Ursache}  & \textbf{Behebung} \\ 
+	\hhline{|=|=|=|}
+	\endfirsthead
+	\endhead
+	%%
+	expires\_in-Daten werden nicht in SessionInformation gespeichert/verarbeitet & --- & --- \\
+	\hline
+	Modulinfo-Leiste zeigt nichts an und lässt sich nicht schließen. & Schließen: Ein Event war nicht richtig registriert; Keine Anzeige: Falsche Übergabe der Daten an Template & --- \\
+	\hline
+	Module können in jedem beliebigen Turnus abgelegt werden & Client/Server validieren die Eingabe nicht & Validierung, ob das gewählte Semester mit dem Modul-Turnus kompatibel ist \\
+	\hline
+	Nutzer wird nach Löschen des Kontos nicht ausgeloggt & Fehlende/Fehlerhafte URI-Weiterleitung & --- \\
+	\hline
+	Beim Erstlogin kann ein Semester aus der Zukunft erstellt werden & Fehler beim dynamischen Erstellen der Auswahlmöglichkeiten auf Basis des aktuellen Datums & Erstlogin-Wizard zeigt keine Semester aus der Zukunft mehr an \\
+	\hline
+	Modulsuchleisten"=Scrollbar wird nach Filter-Anwendung zurückgesetzt & Der Lade-Bildschirm führte automatisch zu einem neu-rendern der Seite & --- \\
+	\hline
+	Server akzeptiert Modulbelegungen in nicht-positive Semester & Fehlende Validierung der Eingabe & Eingabevalidierung ergänzt \\
+	\hline
+	Der Kategorie-Filter kann nicht verändert werden & Bei Neu-Rendern des Felds wurde das aktuell ausgewählte Feld nicht berücksichtigt & Aktuell ausgewähltes Feld bei Rendering als ausgewählt setzen \\
+	\hline
+	Bestandene Module erscheinen nach Verifizierung fehlerhaft, sollten aber ignoriert werden & \texttt{SemesterLinkCon"=straint\#isValid()} berücksichtigte abgeschlossene Module nicht & Wenn beide Module im Plan vorhanden und mind. eines von beiden bestanden ist, wird \texttt{\textbf{true}} zurückgegeben \\
+	\hline
+	Keine Zielfunktionen im Generierungs-Wizard & FunctionDto-Klasse war nicht statisch und konnte daher nicht serialisiert werden & + \texttt{static} \\
+	\hline
+	Client rendert Ansicht zu häufig  & --- & Render-Aufrufe überprüft  \\
+	\hline
+	Server akzeptiert Erstellung eines namenlosen Plans & Fehlende Eingabevalidierung & Validierung hinzugefügt \\
+	\hline
+	Plan-Duplizierung schlägt fehl & Bei Clientanfrage fehlt Modulliste, dem Server fehlt Validierung & Modulliste wird mitgesendet;  Aufbereitung der Eingabe zur Speicherung hinzugefügt\\
+	\hline
+	Planansicht verzählt sich bei Semesternummer & Fehlende „< 0“"=Abfrage,  unerwartetes Verhalten bei der Längenmessung von JS-Arrays & --- \\
+	\hline
+	Beim Neuladen der Seitenleiste wird nicht nur dort ein Ladesymbol angezeigt & --- & Neues Ladesymbol erstellt und verdrahtet \\
+	\hline
+	Client zeigt zu viele Benachrichtigungen an & Benachrichtigungen werden pro Anfrage ausgegeben. Deshalb werden bei mehreren (ähnlichen) aufeinanderfolgenden Anfragen die Benachrichtigungen mehrfach angezeigt. & Sperre: Jede Benachrichtigung darf nicht häufiger als alle zwei Sekunden gezeigt werden. \\
+	\hline
+	Filter sind nach einmaligem Setzen nicht mehr änderbar & Fehlende Ausnutzung der JS-Typumwandlung bei Vergleichen, fehlerhafter Bezeichner  & --- \\
+	\hline
+	Ändern von Modulpräferenzen bleibt wirkungslos & Server ändert vorhandene Präferenzen nicht & --- \\
+	\hline
+	Verifizierungs-Ergebnis-Popup kann nur einmal verschoben werden & Das Drop"=Event einer Semesterzeile wurde getriggert, daraufhin saß das Pop"=up fest & --- \\
+	\hline
+	Verifizierungs-Ergebnis-Popup hat einen Schließen-Button ohne Symbol & Fehlende Einbindung eines jQuery-UI-Icon-Sets & --- \\
+	\hline
+	Fehlermeldungen haben wenig Aussagekraft & --- & verfassen von genaueren, situationsspezifischen Fehlermeldungen \\
+	\hline
+	Nach Klick auf „Konto speichern“ friert der Client ein & Fehlendes Aufheben des Lade-Bildschirms & --- \\
+	\hline
+	Client sendet beim Profil-Speichern nur neu hinzugefügte Module an den Server & Spezifikation der REST-Schnittstelle wurde nicht berücksichtigt & --- \\
+	\hline
+	„Plan löschen“ hatte keine Sicherheitsabfrage & --- & Hinzugefügt. \\
+	\hline
+	Modulpräferenzen können nicht im Client zurückgesetzt werden & Fehlerhafter Eventhandler & --- \\
+	\hline
+	Modul-Constraints werden in der Seitenleiste mehrfach angezeigt & Fehlendes Zurücksetzen der Liste der Modul"=Constraints im View (hierduch wird das Modul beim Rendern wieder und wieder hinzugefügt) & --- \\
+	\hline
+	Verifizierungs-Ergebnis-Popup nicht immer im Vordergrund (überdeckbar) & Fehlerhafte z-Indizes & --- \\
+	\hline
+	Wahlfilter-Dropdown hatte zu geringe Breite, Zahlenfeld zu breit & --- & --- \\
+	\hline
+	Suche nach spezifischem Turnus liefert keine Module, die in beiden angeboten werden & Server filtert nur nach gegebenem Turnus (BOTH $\neq$ WINTER\_TERM) & Sonderfall im ConditionQueryConverter eingefügt \\
+	\hline
+	Moduleinfügen löst keinen sichtbaren Verlust des Verifikationsstatus aus & Fehlendes UI-Refreshing & --- \\
+	\hline
+	Modulinfo: Constraints werden mit falscher Richtung angezeigt & Fehlende Weiterverarbeitung der vom Server gelieferten Constraints & --- \\
+	\hline
+	Modulboxen nicht vollständig anklickbar & ---  & --- \\
+	\hline
+	Fehlende Semesterbegrenzung nach oben & --- & Festgelegt auf max. 200 \\
+	\hline
+	Durch Verifizierung ehemals fehlerhaft markierte Module verlieren Status erst nach Neuladen und erneutem Verifizieren & Fehlerhaftes Event- und Rendering-Triggern & --- \\
+	\hline
+	Modulinfo in der Profilansicht/Generierungsergebnis"=ansicht nicht aufrufbar & Aufrufen von plans/Plan-ID/modules mit Plan-ID = undefined & Fallback eingebaut \\
+	\hline
+	Generierung funktioniert nicht & --- & --- \\
+	\hline
+	Generierungsergebnis wird nicht angezeigt & ---  & --- \\
+	\hline
+	Generierungsergebnis-Buttons sind ohne Effekt & Kleiner Fehler  & --- \\
+	\hline
+	Generierung verwendet nur max"=semester"=ects"=Parameter & --- & Beachtung weiterer Parameter eingebaut \\
+	\hline
+	Verifizierung überprüft Turnus nicht & --- & --- \\
+	\hline
+	Nach Generierung Wechsel zum Hauptmenü nicht möglich & Fehlerhafter Event"=Handler & --- \\
+	\hline
+	Bei Duplizierung eines Plans wird erst nach Neuladen korrekte ECTS-Summe angezeigt & Serialisierungsfehler, falscher Inhalt wurde gesendet & --- \\
+	\hline
+	Nach dem Umbenennen eines Plans verschwinden alle platzierten Module & Server serialisiert ein leeres modules-Attribut & Serialisierung des modules-Attributs entfernt. \\
+	\hline
+	Präferieren von Modulen erst nach zweimaligem Klick möglich & Fehlender null-Check & --- \\
+	\hline
+	Übernommenes Generierungsergebnis hat keinen Verifikationsstatus & PUT /plans lässt kein clientseitiges Setzen des Status zu & Aufruf von GET /plans/id/verify nach Speichern des Ergebnisses \\
+	\hline
+	Wintersemester werden mit nur einer Jahreszahl dargestellt & --- & Wintersemester werden – wie gewohnt – mit „WS XXXX/YYYY“ dargestellt \\
+	\hline
+	Präferenzen/Bestandene Module löschen zeigt nur temporäre Wirkung & Server vergisst gelöschte Modulpräferenzen/bestanene Module (Hibernate"=Problem) & In den Hibernate"=Annotationen zu den Planpräferenzen/bestandenen Modulen \texttt{orphanRemoval = true} gesetzt \\
+	\hline
+	In Generierungs-Ergebnis-Ansicht können Module verschoben werden, Semesterzeilen hinzugefügt werden etc. & Fehlende Sperre & --- \\
+	\hline
+	Plan-Duplizierung lässt Client einfrieren & Parsing-Probleme, welche verhindern, dass nach der GET"=Anfrage keine POST- und PUT"=Anfrage gesendet werden & --- \\
+	\hline
+	Bei mehrfachem Klick auf „Überprüfen“ erscheint das Ergebnisfenster mehrfach & --- & --- \\
+	\hline
+	In Modulinfo-Leiste werden Constraint-Module viel zu groß angezeigt & fehlendes CSS (u.a. fehlender max"=height"=Parameter) & --- \\
+	\hline
+	Buttons der Generierungs"=Sidebar nach Anzeigen von Modulinformationen nicht mehr verwendbar & Fehlerhaftes Setzen der Events & --- \\
+	\hline
+	Cycle-Type-Sperre darf in Profilansicht nicht gesetzt sein & Eingestellt in Semesterklasse, die sowohl bei Planbearbeitung als auch in Profil verwendet wird & Behandlung der einzelnen Fälle \\
+	\hline
+	„Phantom-Plan“ bei Duplikationsversuch unter gleichem Namen & Fehlendes Rollback nach Plan-Erstellung vor Plan-Ersetzung & --- \\
+	\hline
+	Sicherheitsabfrage beim Plan-Verwerfen fehlt & --- & --- \\
+	\hline
+	Es lassen sich keine Informationen über Constraint-Modul in Info-Sidebar laden & Fehlende Ressourcen-URL im Constraint-Modul & --- \\
+	\hline
+	Bei Modul-Bewertung/Modul-Detail-Anzeige werden Verifikations-Informationen zurückgesetzt & Verifikations"=Informationen werden bei jeder Planänderung zurückgesetzt & Verifikations"=Informationen werden nur noch beim Hinzufügen und Entfernen von Modulen sowie Ändern des Modul"=Semesters zurückgesetzt. \\
+	\hline
+	Der Button „Filter zurücksetzen“ funktioniert nur bei einmaliger Benutzung & Referenzen wurden übergeben, jedoch keine Kopie erzeugt & Erzeugen einer Kopie \\
+	\hline
+	Diverse Rechtschreibfehler in den UI-Texten & --- & --- \\
+	\hhline{|=|=|=|}
+\end{longtable}

@@ -102,6 +102,7 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
         <define name="API_TOKEN" value="${API_TOKEN}" />
         <define name="DEBUG_ALWAYS_LOGIN" value="${DEBUG_ALWAYS_LOGIN}" />
       <externs dir="${basedir}/build/externs">
+        <file name="shepherd.js"/>
         <file name="extern.js"/>
         <file name="cookie.js"/>
         <file name="require.js"/>
@@ -134,6 +135,7 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
             <file name="Filter.js"/>
             <file name="FilterCollection.js"/>
             <file name="LanguageManager.js"/>
+            <file name="TourManager.js"/>
             <file name="Notification.js"/>
             <file name="NotificationCollection.js"/>
             <file name="ObjectiveFunction.js"/>
@@ -202,6 +204,11 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
             <file name="SignUpWizardComponent1.js"/>
             <file name="SignUpWizardComponent2.js"/>
         </sources>
+        <sources dir="${basedir}/resources/tours">
+            <file name="MainPage.js"/>  
+            <file name="PlanEditPage.js"/>
+            <file name="ProfilePage.js"/>
+      </sources>
         <sources dir="${basedir}/js/src/edu/kit/informatik/studyplan/client/view/subview">
             <file name="ComparisonPage.js"/>
             <file name="Header.js"/>
@@ -229,7 +236,7 @@ TemplateLoader.bind(edu.kit.informatik.studyplan.client.model.system.TemplateMan
          destfile="${basedir}/htdocs/js/app.js" overwrite="yes">
          <filelist dir="${basedir}/htdocs/js/" files="app-compiled.js"/>
       <header>
-          define("studyplan",["underscore", "backbone", "jquery","cookies","jquery-ui"],function(_, Backbone, $, Cookies){
+          define("studyplan",["underscore", "backbone", "jquery","cookies","tether","shepherd","jquery-ui"],function(_, Backbone, $, Cookies, Tether, Shepherd){
         </header>
       </concat>
       <concat destfile="${basedir}/htdocs/js/app.js" append="yes">

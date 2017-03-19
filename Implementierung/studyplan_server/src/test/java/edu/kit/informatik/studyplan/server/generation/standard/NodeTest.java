@@ -1,8 +1,7 @@
 package edu.kit.informatik.studyplan.server.generation.standard;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertFalse;
+import static org.mockito.Mockito.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -60,6 +59,11 @@ public class NodeTest {
 		tseNode.removeInnerNode(pseNode);
 		assertFalse(tseNode.hasOuterNode());
 
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testaddInnerNode() {
+		pseNode.addInnerNode(pseNode);
 	}
 
 }

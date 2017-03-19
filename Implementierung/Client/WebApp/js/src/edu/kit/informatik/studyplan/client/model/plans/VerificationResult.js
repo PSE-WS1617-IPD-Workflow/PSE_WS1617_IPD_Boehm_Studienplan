@@ -8,10 +8,14 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.VerificationResult
  */
 
 edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend( /** @lends {edu.kit.informatik.studyplan.client.model.plans.VerificationResult.prototype}*/ {
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "plans-verification",
     plan: null,
     initialize: function (attributes, options) {
         this.plan = options.plan;
-        this.listenTo(this.model, "change", this.onChange);
+        this.listenTo(this, "change", this.onChange.bind(this));
     },
     /**
      * Transfer the "change" event to the plan
@@ -36,38 +40,41 @@ edu.kit.informatik.studyplan.client.model.plans.VerificationResult = edu.kit.inf
             }));
         }
         var fieldViolations = [];
-        if (typeof response["field-violations"] !== "undefined") {
-            for (var i = 0; i < response["field-violations"].length; i++) {
-                fieldViolations[i] = new edu.kit.informatik.studyplan.client.model.system.Field(
-                    response["field-violations"][i], {
+        if (typeof result["field-violations"] !== "undefined") {
+            for (var i = 0; i < result["field-violations"].length; i++) {
+                fieldViolations.push(new edu.kit.informatik.studyplan.client.model.system.Field(
+                    {
+                        field: result["field-violations"][i]
+                    }, {
                         parse: true
-                    });
+                    }));
             }
         }
         var ruleGroupViolations = [];
-        if (typeof response["rule-group-violations"] !== "undefined") {
-            for (var i = 0; i < response["rule-group-violations"].length; i++) {
-                ruleGroupViolations[i] = new edu.kit.informatik.studyplan.client.model.plans.RuleGroup(
-                    response["rule-group-violations"][i], {
+        if (typeof result["rule-group-violations"] !== "undefined") {
+            for (var i = 0; i < result["rule-group-violations"].length; i++) {
+                ruleGroupViolations.push(new edu.kit.informatik.studyplan.client.model.plans.RuleGroup(
+                    result["rule-group-violations"][i], {
                         parse: true
-                    });
+                    }));
             }
         }
         var compulsoryViolations = [];
-        if (typeof response["compulsory-violations"] !== "undefined") {
-            for (var i = 0; i < response["compulsory-violations"].length; i++) {
-                compulsoryViolations[i] = new edu.kit.informatik.studyplan.client.model.module.Module({
+        if (typeof result["compulsory-violations"] !== "undefined") {
+            for (var i = 0; i < result["compulsory-violations"].length; i++) {
+                compulsoryViolations.push(new edu.kit.informatik.studyplan.client.model.module.Module({
                     module: {
-                        id: response["compulsory-violations"][i]["id"],
-                        name: response["compulsory-violations"][i]["name"]
+                        id: result["compulsory-violations"][i]["id"],
+                        name: result["compulsory-violations"][i]["name"]
                     }
                 }, {
                     parse: true
-                });
+                }));
             }
         }
-        response["field-violations"] = fieldViolations;
-        response["rule-group-violations"] = ruleGroupViolations;
+        result["field-violations"] = fieldViolations;
+        result["rule-group-violations"] = ruleGroupViolations;
+        result["compulsory-violations"] = compulsoryViolations;
         result["violations"] = violations;
         return result;
     }

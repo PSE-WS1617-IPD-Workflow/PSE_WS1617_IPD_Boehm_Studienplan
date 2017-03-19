@@ -34,9 +34,16 @@ public interface Generator {
 	 *            modules from)
 	 * @param maxECTSperSemester
 	 *            the maximum number of credit points per semester
+	 * @param minECTSperSemester
+	 *            the minimum number of credit points per semester
+	 * @param minSemesterNum
+	 * 			the minimum number of semesters that should be in the plan
+	 * @param maxSemesterNum
+	 * 			the minimum number of semesters that should be in the plan
 	 * @return a complete, correct and optimized study plan with type `Plan` if
 	 *         such a plan could be created, if not this method returns an invalid plan.
 	 */
 	Plan generate(PartialObjectiveFunction objectiveFunction, Plan currentPlan, ModuleDao moduleDAO,
-			Map<Field, Category> preferredSubjects, double maxECTSperSemester);
+			Map<Field, Category> preferredSubjects, double maxECTSperSemester, double minECTSperSemester,
+			int minSemesterNum, int maxSemesterNum);
 }

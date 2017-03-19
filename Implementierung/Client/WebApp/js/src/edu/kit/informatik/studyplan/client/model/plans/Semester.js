@@ -9,6 +9,10 @@ goog.provide("edu.kit.informatik.studyplan.client.model.plans.Semester");
  */
 
 edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.studyplan.client.model.module.ModuleCollection.extend( /** @lends {edu.kit.informatik.studyplan.client.model.plans.Semester.prototype}*/ {
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "plans-modules",
     planId: null,
     semesterNum: 0,
     /** 
@@ -23,11 +27,7 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
      */
     initialize: function (attributes, options) {
         this.collection = options.collection;
-        this.listenTo(this, "destroy", this.onChange);
-        this.listenTo(this, "change", this.onChange);
-        this.listenTo(this, "all", this.onChange);
-        this.listenTo(this, "add", this.onChange);
-        this.listenTo(this, "reset", this.onChange);
+        this.listenTo(this, "change:semester reset add remove", this.onChange.bind(this));
     },
     /**
      * This method makes sure the semester collection (and plan) is being notified, when the semester changes
@@ -90,5 +90,19 @@ edu.kit.informatik.studyplan.client.model.plans.Semester = edu.kit.informatik.st
             sum += module.get('creditpoints');
         });
         return sum;
+    },
+    /**
+     * Method to set the cycle type of the semester
+     * @param {string} type Either "WT" or "ST"
+     */
+    setCycleType: function (type) {
+        this.cycleType = type;
+    },
+    /**
+     * Method to set the cycle type of the semester
+     * @return {string} Either "WT" or "ST"
+     */
+    getCycleType: function () {
+        return this.cycleType;
     }
 });

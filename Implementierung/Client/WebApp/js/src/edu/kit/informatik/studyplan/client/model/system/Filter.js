@@ -6,6 +6,10 @@ goog.provide("edu.kit.informatik.studyplan.client.model.system.Filter");
  */
 
 edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.studyplan.client.model.system.OAuthModel.extend( /** @lends {edu.kit.informatik.studyplan.client.model.system.Filter.prototype}*/ {
+    /**
+     * Key by which error messages are identified
+     */
+    modelErrorKey: "filters",
     /*
      * Information concerning the curValue of filters:
      * For range filters it is set by an object of the form {min: <min val>, max: <max val>}
@@ -14,9 +18,10 @@ edu.kit.informatik.studyplan.client.model.system.Filter = edu.kit.informatik.stu
      */
     parse: function (response, options) {
         "use strict";
-        response["curValue"] = response["default-value"];
+        response["curValue"] = JSON.parse(JSON.stringify(response["default-value"]));
         if (response["specification"]["type"] === "list") {
             response["curValue"] = "none";
+            response["default-value"] = "none";
         }
         return response;
     },

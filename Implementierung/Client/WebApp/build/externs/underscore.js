@@ -1339,8 +1339,9 @@ _.prototype.unescape = function() {};
  * Object-style notation
  * @param {Object} obj
  * @param {string} property
+ * @param {Object=} defaultValue
  */
-_.result = function(obj, property) {};
+_.result = function(obj, property, defaultValue) {};
 
 /**
  * Functional-style notation

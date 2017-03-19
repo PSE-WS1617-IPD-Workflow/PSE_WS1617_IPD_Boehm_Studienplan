@@ -19,11 +19,13 @@
         width: 50%;
     }
     .currentMinRange{
+	width: 50px;
         float: left;
         text-align: left;
     }
     .currentMaxRange{
         float: right;
         text-align: right;
+	width: 50px;
     }
 }
