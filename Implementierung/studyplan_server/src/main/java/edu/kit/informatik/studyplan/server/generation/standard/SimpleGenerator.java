@@ -44,6 +44,8 @@ public class SimpleGenerator implements Generator {
 	final private int NUM_NODES_TO_CHANGE = 10;
 	
 	final private int NUM_PLANS_TO_CREATE = 5;
+	
+	final private long DEMO_RANDOM_SEED = 424242424242424242L;
 
 
 	/**
@@ -804,6 +806,7 @@ public class SimpleGenerator implements Generator {
 	private Set<Integer> randomNumbers(int max, int i) {
 		Set<Integer> generated = new LinkedHashSet<Integer>();
 		Random rand = new Random();
+		rand.setSeed(DEMO_RANDOM_SEED);
 		while (generated.size() < i) {
 			Integer next = rand.nextInt(max);
 			generated.add(next);
