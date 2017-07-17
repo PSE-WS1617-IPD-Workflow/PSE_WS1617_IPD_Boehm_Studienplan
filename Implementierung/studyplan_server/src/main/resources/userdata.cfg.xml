@@ -10,7 +10,7 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost/studyplan_userdata</property>
+        <property name="connection.url">jdbc:mysql://localhost/studyplan_userdata?useJDBCCompliantTimezoneShift=true&amp;serverTimezone=UTC</property>
         <property name="connection.username">NiklasUhl</property>
         <property name="connection.password"></property>
 
